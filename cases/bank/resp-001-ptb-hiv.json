@@ -1,0 +1,95 @@
+{
+  "id": "resp-001-ptb-hiv",
+  "version": 1,
+  "stationType": "clinical",
+  "discipline": "resp",
+  "diagnosis": "Pulmonary tuberculosis with newly diagnosed HIV",
+  "commonness": "common",
+  "difficulty": 2,
+  "framework": "chronic cough + constitutional symptoms",
+  "patient": {
+    "name": "Nomvula Dlamini",
+    "age": 28,
+    "sex": "F",
+    "occupation": "till operator",
+    "personality": "soft-spoken, worried, minimises symptoms unless asked directly",
+    "openingLine": "Doctor, I've had this cough that just won't go away..."
+  },
+  "presentingComplaint": "6-week productive cough with weight loss and night sweats",
+  "history": [
+    { "id": "hx-onset", "fact": "Cough started about 6 weeks ago and has gradually worsened", "disclosure": "volunteered", "triggers": [] },
+    { "id": "hx-sputum", "fact": "Cough is productive of yellow sputum; twice noticed streaks of blood", "disclosure": "onAsk", "triggers": ["sputum", "phlegm", "coughing up", "blood", "haemoptysis", "wet cough", "productive", "mucus"] },
+    { "id": "hx-nightsweats", "fact": "Drenching night sweats for the past month — has to change her nightdress", "disclosure": "onAsk", "triggers": ["night sweats", "sweating", "sweat at night", "wake up wet"] },
+    { "id": "hx-weightloss", "fact": "Lost about 6 kg over 2 months without dieting; clothes hang loose", "disclosure": "onAsk", "triggers": ["weight", "lost weight", "clothes", "appetite", "eating", "thinner"] },
+    { "id": "hx-fever", "fact": "Feels feverish most evenings, has not measured it", "disclosure": "onAsk", "triggers": ["fever", "hot", "temperature", "chills", "rigors"] },
+    { "id": "hx-dyspnoea", "fact": "Gets short of breath climbing the hill to the taxi rank, which is new", "disclosure": "onAsk", "triggers": ["breath", "breathing", "dyspnoea", "exercise", "walking", "stairs", "hill", "exertion"] },
+    { "id": "hx-chestpain", "fact": "No chest pain", "disclosure": "onAsk", "triggers": ["chest pain", "pain", "sore chest", "pleuritic"] },
+    { "id": "hx-hiv", "fact": "Never tested for HIV; her partner was diagnosed HIV positive three months ago", "disclosure": "onAsk", "triggers": ["hiv", "test", "tested", "status", "partner", "boyfriend", "sexual", "relationship", "std", "sti"] },
+    { "id": "hx-tb-contact", "fact": "Her uncle, who lives in the same household, was treated for TB last year", "disclosure": "onAsk", "triggers": ["tb", "tuberculosis", "contact", "household", "family sick", "anyone sick", "lives with", "home", "exposure"] },
+    { "id": "hx-pmh", "fact": "No previous illnesses, never been admitted to hospital, no previous TB", "disclosure": "onAsk", "triggers": ["medical history", "illnesses", "conditions", "hospital", "admitted", "before", "previous", "past"] },
+    { "id": "hx-meds", "fact": "Takes no regular medication, only paracetamol occasionally for headaches", "disclosure": "onAsk", "triggers": ["medication", "medicine", "pills", "tablets", "treatment", "taking anything", "muti"] },
+    { "id": "hx-allergies", "fact": "No known allergies", "disclosure": "onAsk", "triggers": ["allergies", "allergic", "reactions"] },
+    { "id": "hx-social", "fact": "Never smoked, does not drink alcohol; lives in Umlazi with her mother, uncle and two children in a four-room house", "disclosure": "onAsk", "triggers": ["smoke", "smoking", "cigarettes", "alcohol", "drink", "social", "live", "home", "house", "children", "work"] },
+    { "id": "hx-family", "fact": "Mother has high blood pressure; no family history of diabetes or cancer", "disclosure": "onAsk", "triggers": ["family history", "mother", "father", "parents", "genetic", "runs in the family"] },
+    { "id": "hx-sysreview", "fact": "No headache, no vomiting, no diarrhoea, no urinary symptoms, periods regular, no rash", "disclosure": "onAsk", "triggers": ["headache", "vomiting", "diarrhoea", "urine", "urinary", "periods", "menstrual", "rash", "other symptoms", "anything else"] }
+  ],
+  "examination": {
+    "general": "Thin, chronically unwell-looking young woman. Pallor +. No clubbing, no cyanosis, no oedema. Generalised small-volume lymphadenopathy (cervical and axillary). Oral thrush noted.",
+    "vitals": { "hr": 104, "bp": "108/68", "rr": 22, "temp": 37.9, "spo2": "94% on room air", "bmi": 18 },
+    "respiratory": "Trachea central. Right upper zone: dull to percussion with bronchial breathing and coarse crackles. No wheeze.",
+    "cardio": "Normal heart sounds, no murmurs, JVP not elevated.",
+    "abdo": "Soft, non-tender. 2 cm smooth hepatomegaly. No splenomegaly, no ascites.",
+    "neuro": "Alert and orientated, no meningism, grossly intact.",
+    "other": {}
+  },
+  "investigations": [
+    { "name": "Sputum GeneXpert MTB/RIF", "result": "MTB detected, rifampicin resistance NOT detected", "key": true },
+    { "name": "HIV ELISA (with consent)", "result": "Positive; confirmed on second assay", "key": true },
+    { "name": "CD4 count", "result": "187 cells/µL", "key": true },
+    { "name": "Chest X-ray", "result": "Right upper lobe consolidation with early cavitation; no pleural effusion", "key": true },
+    { "name": "Full blood count", "result": "Hb 9.8 g/dL normocytic, WCC 7.2, Plt 512", "key": false },
+    { "name": "Urea & electrolytes", "result": "Normal", "key": false },
+    { "name": "CRP", "result": "86 mg/L", "key": false },
+    { "name": "Random glucose", "result": "5.4 mmol/L", "key": false },
+    { "name": "Sputum culture (TB)", "result": "Sent — results in 2-6 weeks", "key": false },
+    { "name": "Blood cultures", "result": "No growth at 48 hours", "key": false }
+  ],
+  "differentials": [
+    { "dx": "Pulmonary tuberculosis", "rank": 1, "for": ["household TB contact", "cough > 2 weeks", "constitutional symptoms", "haemoptysis", "high local prevalence", "HIV risk"], "against": [] },
+    { "dx": "Community-acquired pneumonia", "rank": 2, "for": ["productive cough", "fever", "focal signs"], "against": ["6-week course", "profound weight loss", "night sweats"] },
+    { "dx": "Bronchiectasis", "rank": 3, "for": ["chronic productive cough", "haemoptysis"], "against": ["short 6-week history", "no childhood chest disease"] },
+    { "dx": "Lung malignancy", "rank": 4, "for": ["weight loss", "haemoptysis"], "against": ["age 28", "never smoked"] }
+  ],
+  "pathophys": {
+    "night sweats": "Cytokine-mediated (TNF-α, IL-1) fluctuation of the hypothalamic temperature set-point in chronic granulomatous infection",
+    "haemoptysis": "Caseating granulomas eroding into bronchial vessels; cavitation exposes vasculature",
+    "weight loss": "TNF-α (cachectin) driven catabolism plus anorexia of chronic infection, compounded by HIV wasting",
+    "upper lobe predilection": "Higher alveolar oxygen tension and reduced lymphatic clearance in the apices favour bacillary growth"
+  },
+  "staging": "WHO HIV clinical stage 3 (pulmonary TB, oral candidiasis); drug-susceptible TB, new patient",
+  "management": {
+    "immediate": ["Respiratory precautions / cough hygiene counselling", "Notify TB (notifiable medical condition)"],
+    "definitive": ["Standard 6-month regimen 2HRZE/4HR, weight-banded fixed-dose combination", "Start ART ~2 weeks after TB treatment initiation (CD4 <50: within 2 weeks; otherwise within 8 weeks)", "Co-trimoxazole preventive therapy (CD4 <200)", "Pyridoxine with isoniazid"],
+    "supportive": ["Nutritional support and grant referral if eligible", "Contact tracing and household screening, including the children", "Adherence counselling and treatment supporter", "Counsel on IRIS symptoms when ART starts"],
+    "followUp": ["Sputum smear at 2 months", "Monitor LFTs if symptomatic on treatment", "VL and CD4 monitoring per ART guidelines"]
+  },
+  "stationChecklist": [
+    { "id": "cl-intro", "phase": "history", "item": "Introduces self, confirms patient identity, gains consent", "answer": null, "why": "Professionalism / communication", "weight": 1, "critical": false },
+    { "id": "cl-cough", "phase": "history", "item": "Characterises the cough (duration, sputum, haemoptysis, pattern)", "answer": "6 weeks, productive yellow sputum, twice blood-streaked", "why": "Cough >2 weeks triggers TB workup in South Africa", "weight": 2, "critical": true },
+    { "id": "cl-constitutional", "phase": "history", "item": "Screens constitutional symptoms (weight loss, night sweats, fever)", "answer": "All present — 6 kg loss, drenching sweats, evening fevers", "why": "Core TB symptom screen", "weight": 2, "critical": true },
+    { "id": "cl-hiv", "phase": "history", "item": "Asks HIV status / offers testing; takes sexual history sensitively", "answer": "Never tested; partner diagnosed positive 3 months ago", "why": "HIV testing is standard of care in any SA TB presentation", "weight": 3, "critical": true },
+    { "id": "cl-tb-contact", "phase": "history", "item": "Asks about TB contacts", "answer": "Household uncle treated for TB last year", "why": "Strongest single risk factor in this history", "weight": 2, "critical": true },
+    { "id": "cl-resp-exam", "phase": "examination", "item": "Performs focused respiratory exam (inspection, percussion, auscultation)", "answer": "Right upper zone dullness, bronchial breathing, coarse crackles", "why": "Localises pathology and supports cavitary disease", "weight": 2, "critical": false },
+    { "id": "cl-general-exam", "phase": "examination", "item": "Notes general signs: wasting, pallor, lymphadenopathy, oral thrush", "answer": "All present — thrush suggests advanced immunosuppression", "why": "Staging clues for HIV", "weight": 1, "critical": false },
+    { "id": "cl-ddx", "phase": "differentials", "item": "Offers ranked differential with linked reasoning (TB > CAP > bronchiectasis > malignancy)", "answer": null, "why": "Symptom-to-differential reasoning is the exam philosophy", "weight": 3, "critical": true },
+    { "id": "cl-ix", "phase": "investigations", "item": "Requests sputum GeneXpert, HIV test with consent, CXR (± CD4 once positive)", "answer": "See investigations catalogue", "why": "Confirmatory pathway per SA TB guidelines", "weight": 3, "critical": true },
+    { "id": "cl-mx", "phase": "management", "item": "Outlines 2HRZE/4HR, ART timing, co-trimoxazole, pyridoxine, notification, contact tracing", "answer": null, "why": "Management per SA EML / TB guidelines", "weight": 3, "critical": false }
+  ],
+  "examinerBank": [
+    { "id": "ex-1", "triggerPhase": "history", "triggerAfterSec": 300, "question": "Before you go on, doctor — what is your differential diagnosis at this point, and what in the history drives each item?", "modelAnswer": "TB first (household contact, >2-week cough, constitutional symptoms, haemoptysis, HIV exposure risk), then community-acquired pneumonia (productive cough, fever — but the 6-week course and weight loss argue against), bronchiectasis (chronic productive cough — but no prior chest disease), and lung malignancy (weight loss and haemoptysis — but very unlikely at 28 in a never-smoker).", "gradingNotes": "Full marks: ranked differential WITH linked reasoning for each. Partial: unranked list or no reasoning." },
+    { "id": "ex-2", "triggerPhase": "examination", "question": "You mentioned she reports night sweats. Walk me through the pathophysiology of night sweats in this condition.", "modelAnswer": "Chronic granulomatous infection drives macrophage release of TNF-alpha and IL-1, which act on the hypothalamus to reset and fluctuate the temperature set-point; the evening fever breaks during sleep with compensatory sweating.", "gradingNotes": "Wants mechanism (cytokines, hypothalamic set-point), not a restatement of the symptom." },
+    { "id": "ex-3", "triggerPhase": "investigations", "question": "Her CD4 count comes back at 187 cells per microlitre. How does that specific number change your management, and why?", "modelAnswer": "CD4 <200: start co-trimoxazole preventive therapy against PJP; ART timing — since CD4 >50, start ART within 8 weeks of TB treatment (within 2 weeks if it had been <50); heightened vigilance for other opportunistic infections; counsel about IRIS when ART begins.", "gradingNotes": "Critical thinking under new information — wants the CD4 thresholds applied, not generic 'start ART'." },
+    { "id": "ex-4", "triggerPhase": "management", "question": "Who else in this household needs attention, and under which programme?", "modelAnswer": "Household contact screening under the TB programme: symptom-screen all household members; the two children need evaluation and, if under 5 or HIV-positive and TB-free, TB preventive therapy; the partner needs HIV care linkage; the case must be notified.", "gradingNotes": "Public health thinking — contacts, TPT for the children, notification." }
+  ],
+  "rubric": { "communication": 10, "historyTaking": 25, "examination": 15, "clinicalReasoning": 25, "investigations": 10, "management": 15 }
+}
