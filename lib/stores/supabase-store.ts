@@ -13,7 +13,9 @@ export class SupabaseSessionStore implements SessionStore {
     if (client) {
       this.client = client;
     } else {
-      const url = process.env.SUPABASE_URL;
+      // Tolerate the URL as copied from the dashboard's REST snippet
+      // ("https://xxx.supabase.co/rest/v1/") — supabase-js needs the bare origin.
+      const url = process.env.SUPABASE_URL?.trim().replace(/\/+$/, "").replace(/\/rest\/v1$/, "");
       const key = process.env.SUPABASE_SECRET_KEY;
       if (!url || !key) {
         throw new Error("STORE=supabase requires SUPABASE_URL and SUPABASE_SECRET_KEY (server only)");

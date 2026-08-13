@@ -111,7 +111,14 @@ export default async function SessionPickerPage() {
     return <LoginGate passwordConfigured={Boolean(process.env.APP_ACCESS_PASSWORD)} />;
   }
 
-  const [cases, sessions] = await Promise.all([getCaseStore().list(), getSessionStore().list()]);
+  // A store hiccup must never 500 the picker — degrade to empty lists + banner.
+  const [casesRes, sessionsRes] = await Promise.allSettled([getCaseStore().list(), getSessionStore().list()]);
+  const cases = casesRes.status === "fulfilled" ? casesRes.value : [];
+  const sessions = sessionsRes.status === "fulfilled" ? sessionsRes.value : [];
+  const storeError = [casesRes, sessionsRes]
+    .filter((r): r is PromiseRejectedResult => r.status === "rejected")
+    .map((r) => (r.reason instanceof Error ? r.reason.message : String(r.reason)))
+    .join("; ");
   const resumable = sessions.filter((s) => s.status === "active");
   const finished = sessions.filter((s) => s.status !== "active").slice(0, 10);
 
@@ -124,6 +131,12 @@ export default async function SessionPickerPage() {
             Text-mode OSCE practice. 20 minutes clinical, 7 minutes interpretation — the examiner keeps time.
           </p>
         </header>
+
+        {storeError && (
+          <p className="mb-6 rounded bg-amber-950 p-3 text-sm text-amber-300">
+            Storage warning: {storeError} — sessions may not be listed. Check STORE / SUPABASE_* env vars.
+          </p>
+        )}
 
         <section className="mb-8 flex flex-wrap gap-2">
           <RandomButton label="Random station" />
