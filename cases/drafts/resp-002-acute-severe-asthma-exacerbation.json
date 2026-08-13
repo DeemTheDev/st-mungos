@@ -1,0 +1,575 @@
+{
+  "id": "resp-002-acute-severe-asthma-exacerbation",
+  "version": 1,
+  "discipline": "resp",
+  "diagnosis": "Acute severe asthma exacerbation on a background of poorly controlled persistent asthma",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "triggerAfterSec": 300,
+      "question": "Walk me through your approach to this patient's dyspnoea and wheeze — what is your differential and how does the history and exam support your ranking?",
+      "modelAnswer": "Top of the list is acute severe asthma exacerbation: childhood-onset episodic wheeze, atopic triad, URTI trigger, bilateral wheeze, and marked PEFR reversibility. Community-acquired pneumonia is possible given the URTI prodrome and tachypnoea but there's no fever, no focal crackles, and CXR shows hyperinflation not consolidation. Foreign body is unlikely given bilateral symmetrical wheeze and a chronic episodic pattern since childhood rather than a sudden choking event. Rheumatic/valvular heart disease with cardiac wheeze is an important KZN differential for dyspnoea in a young adult, but there's no murmur, no raised JVP, no oedema, and the strong atopic/childhood-onset picture favours asthma.",
+      "gradingNotes": "Full marks: ranked list with specific history/exam features cited for and against each. Partial: unranked list without justification."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "You've documented that her chest is wheezy on both sides, not silent. Explain the pathophysiology of wheeze, and why would a silent chest actually be more worrying, not less?",
+      "modelAnswer": "Airway narrowing from bronchospasm, mucosal oedema and mucus plugging creates high-velocity turbulent airflow that vibrates the airway walls, producing an audible musical tone. This requires a critical minimum airflow to generate sound. If the chest becomes silent, it usually means airflow has dropped so low — due to near-total obstruction and exhaustion — that there isn't enough movement of air to make a sound at all; it is a pre-arrest sign of life-threatening asthma, not a sign that the attack is resolving.",
+      "gradingNotes": "Wants explicit mechanism (turbulent airflow vibrating airway walls, minimum airflow threshold) and explicit statement that silent chest = critical airflow limitation, not improvement."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Her venous blood gas shows a normal pCO2 of 4.6 kPa despite a respiratory rate of 32. Is that reassuring? What would change your assessment?",
+      "modelAnswer": "In an acute asthma attack, hyperventilation typically drives pCO2 down initially, so a low or low-normal pCO2 with tachypnoea is expected and not immediately alarming. A truly reassuring gas would show a low pCO2. However, a normal or rising pCO2 in a tachypnoeic, severely obstructed patient is an ominous sign — it suggests the patient is tiring and can no longer sustain the hyperventilation needed to blow off CO2, heralding impending respiratory failure requiring urgent escalation (ICU, consider ventilation).",
+      "gradingNotes": "Tests understanding that a 'normalising' CO2 in this context is a red flag for fatigue, not stability — a commonly missed nuance."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "She improves with nebulisers and you now want to start her on a preventer inhaler for the first time. Before you step up her chronic therapy, what must you check, and what dose would you start?",
+      "modelAnswer": "Before stepping up therapy, confirm correct inhaler/spacer technique, adherence to any current medication, trigger avoidance (dust, cold air, colds), exclude aggravating drugs (NSAIDs, beta-blockers), and re-exclude alternative diagnoses such as CCF. Since she has never been on a controller, start at Step 2: low-dose inhaled corticosteroid — beclomethasone MDI 200mcg twice daily — with a spacer and technique teaching, and reassess in a month before any further step-up.",
+      "gradingNotes": "Wants the explicit 'before stepping up' checklist plus the correct starting step and exact dose (200mcg BD)."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "episodic wheeze/dyspnoea/nocturnal cough → asthma vs mimics, graded by attack severity, confirmed by PEFR reversibility",
+  "patient": {
+    "name": "Sibongile Mkhize",
+    "age": 19,
+    "sex": "F",
+    "occupation": "first-year student at Durban University of Technology",
+    "personality": "anxious, speaks in short breathless bursts, tries to appear brave but grips the bed rail",
+    "openingLine": "Doctor... I can't... catch my breath... it's been like this since... last night."
+  },
+  "presentingComplaint": "Acute worsening of wheeze and shortness of breath over 2 days, on a background of longstanding episodic wheeze since childhood",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Has had episodic wheeze and breathlessness since about age 5, usually settling with her inhaler within a day or two",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-current-episode",
+      "fact": "This episode started 2 days ago and has steadily worsened; last night she could not lie flat and sat up in a chair all night",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-inhaler-ranout",
+      "fact": "Ran out of her blue inhaler 3 days ago; borrowed a neighbour's pump this morning but it gave almost no relief this time",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-triggers",
+      "fact": "Attacks are usually brought on by the common cold, cold weather, dusty rooms, or running for the taxi; this one started after a cold last week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "trigger",
+        "triggers",
+        "cold air",
+        "exercise",
+        "running",
+        "dust",
+        "pollen",
+        "smoke",
+        "cold",
+        "flu",
+        "allergen",
+        "weather"
+      ]
+    },
+    {
+      "id": "hx-nocturnal",
+      "fact": "For the past 2 months has been waking up coughing and wheezy about 3-4 nights a week, even before this current attack",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night",
+        "nocturnal",
+        "wake up",
+        "sleep",
+        "cough at night",
+        "waking",
+        "early morning",
+        "bed",
+        "sleeping"
+      ]
+    },
+    {
+      "id": "hx-atopy",
+      "fact": "Has had itchy, sneezy nose and watery eyes since childhood (especially in spring), and eczema on her elbows as a young child",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergy",
+        "allergies",
+        "rhinitis",
+        "hay fever",
+        "eczema",
+        "skin",
+        "itchy",
+        "rash",
+        "sneezing",
+        "runny nose",
+        "watery eyes"
+      ]
+    },
+    {
+      "id": "hx-inhaler-use",
+      "fact": "Only ever uses a salbutamol (blue) inhaler when short of breath; has never been given a brown or preventer inhaler, and no one has taught her spacer technique",
+      "disclosure": "onAsk",
+      "triggers": [
+        "inhaler",
+        "pump",
+        "salbutamol",
+        "blue inhaler",
+        "puffer",
+        "reliever",
+        "preventer",
+        "ventolin",
+        "spacer",
+        "medication",
+        "treatment"
+      ]
+    },
+    {
+      "id": "hx-preceding-urti",
+      "fact": "Had a runny nose and sore throat about a week before this attack started, which she thought was 'just a cold'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cold",
+        "flu",
+        "sore throat",
+        "runny nose",
+        "urti",
+        "virus",
+        "sick before",
+        "started with a cold",
+        "infection"
+      ]
+    },
+    {
+      "id": "hx-prev-admission",
+      "fact": "Has been admitted to hospital twice before for her chest — once as a young child, and once at age 12 when she was put on a ventilator in ICU for a bad attack",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hospital",
+        "admitted",
+        "admission",
+        "icu",
+        "ventilator",
+        "tube",
+        "intensive care",
+        "before",
+        "previous attacks",
+        "ever been in hospital",
+        "ward"
+      ]
+    },
+    {
+      "id": "hx-tb-hiv",
+      "fact": "No chronic cough before this, no fevers, no night sweats, no weight loss; tested HIV negative at a campus clinic screening last year",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "weight loss",
+        "night sweats",
+        "chronic cough",
+        "sick contacts"
+      ]
+    },
+    {
+      "id": "hx-smoking",
+      "fact": "Has never smoked and does not use any substances; her mother cooks on an electric stove, no household smoking or open fires",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "passive smoke",
+        "household smoke",
+        "wood",
+        "paraffin",
+        "biomass",
+        "cooking fire",
+        "vaping"
+      ]
+    },
+    {
+      "id": "hx-drugs",
+      "fact": "Denies taking any NSAIDs, aspirin or beta-blockers; only medication is the salbutamol inhaler",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "aspirin",
+        "ibuprofen",
+        "beta blocker",
+        "medication",
+        "tablets",
+        "painkillers",
+        "anti-inflammatory",
+        "any other medicine"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No other chronic illnesses, no heart problems, no previous TB, no surgeries",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "past",
+        "previous",
+        "surgery",
+        "operations",
+        "hospital before"
+      ]
+    },
+    {
+      "id": "hx-allergies-drug",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergic",
+        "allergy",
+        "allergies",
+        "reactions",
+        "drug allergy",
+        "medicine allergy"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Mother has allergic rhinitis and her younger brother also has asthma; no family history of heart disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "siblings",
+        "brother",
+        "sister",
+        "runs in the family",
+        "asthma in family"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives with her mother and brother in Umlazi; first year at DUT studying business, no pets at home, dormitory room is carpeted and dusty",
+      "disclosure": "onAsk",
+      "triggers": [
+        "live",
+        "home",
+        "house",
+        "student",
+        "study",
+        "work",
+        "occupation",
+        "social",
+        "family",
+        "dorm",
+        "residence"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No chest pain, no palpitations, no leg swelling, no urinary symptoms, appetite normal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "fever",
+        "weight",
+        "appetite",
+        "palpitations",
+        "swelling",
+        "legs",
+        "other symptoms",
+        "anything else",
+        "urinary"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Young woman sitting forward in tripod position, visibly distressed, speaking in short 3-4 word phrases between breaths. Using sternocleidomastoid and intercostal accessory muscles. No cyanosis. Allergic shiners noted (dark under-eye creases). No lymphadenopathy.",
+    "vitals": {
+      "hr": 122,
+      "bp": "118/76",
+      "rr": 32,
+      "temp": 36.8,
+      "spo2": "91% on room air",
+      "bmi": 21
+    },
+    "respiratory": "Trachea central. Chest hyperexpanded with reduced expansion. Widespread bilateral expiratory wheeze with prolonged expiratory phase; air entry reduced but present bilaterally throughout — not silent. No focal crackles, no dullness to percussion.",
+    "cardio": "Sinus tachycardia, normal heart sounds, no murmurs, JVP not raised, no peripheral oedema.",
+    "abdo": "Soft, non-tender, no organomegaly.",
+    "neuro": "Alert, anxious, oriented, no confusion or drowsiness — reassuring against life-threatening exhaustion.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "PEFR pre-bronchodilator",
+      "result": "150 L/min (38% of predicted best for age/height/sex)",
+      "key": true
+    },
+    {
+      "name": "PEFR post-bronchodilator (after nebulised salbutamol)",
+      "result": "260 L/min — absolute improvement 110 L/min and 73% improvement from baseline (both far exceed the ≥60 L/min or ≥20% diagnostic threshold)",
+      "key": true
+    },
+    {
+      "name": "SpO2 and venous blood gas",
+      "result": "SpO2 91% room air improving to 96% on supplemental O2; pH 7.41, pCO2 4.6 kPa (not yet retaining CO2), mild hypoxaemia — reassures against imminent respiratory failure",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Hyperinflated lung fields with flattened diaphragms; no consolidation, no pneumothorax, no cardiomegaly",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.1 g/dL, WCC 8.9 (mild eosinophilia 0.6 x10^9/L), Plt 310 — supportive of atopic asthma",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB not detected — sent given cough, though clinical picture is not suggestive of TB",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, no ischaemic changes, no right heart strain pattern",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Acute severe asthma exacerbation",
+      "rank": 1,
+      "for": [
+        "childhood-onset episodic wheeze",
+        "atopic triad (rhinitis, eczema, asthma)",
+        "triggered by URTI/cold air",
+        "bilateral expiratory wheeze with prolonged expiratory phase",
+        "marked PEFR reversibility post-bronchodilator",
+        "previous ICU admission for asthma"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Community-acquired pneumonia",
+      "rank": 2,
+      "for": [
+        "recent URTI-type prodrome",
+        "tachypnoea",
+        "tachycardia"
+      ],
+      "against": [
+        "no fever",
+        "no focal crackles or dullness",
+        "wheeze rather than consolidation signs",
+        "CXR shows hyperinflation not consolidation"
+      ]
+    },
+    {
+      "dx": "Foreign body aspiration",
+      "rank": 3,
+      "for": [
+        "wheeze and dyspnoea"
+      ],
+      "against": [
+        "bilateral symmetrical wheeze not unilateral",
+        "long-standing episodic pattern since childhood",
+        "clear atopic background",
+        "gradual 2-day onset rather than sudden choking episode"
+      ]
+    },
+    {
+      "dx": "Rheumatic/valvular heart disease with cardiac wheeze/CCF",
+      "rank": 4,
+      "for": [
+        "dyspnoea",
+        "young adult in KZN (RHD-endemic setting)"
+      ],
+      "against": [
+        "no murmur on auscultation",
+        "no orthopnoea/PND prior to this episode",
+        "no oedema or raised JVP",
+        "normal heart sounds",
+        "strong atopic and childhood-onset history favouring asthma"
+      ]
+    }
+  ],
+  "pathophys": {
+    "wheeze": "Bronchial smooth muscle spasm, mucosal oedema and mucus plugging narrow the airway lumen; the resulting high-velocity turbulent airflow causes the airway wall to vibrate, generating a musical tone — this requires a critical minimum airflow, so a truly silent chest means airflow has fallen too low to generate sound, not that obstruction has resolved",
+    "nocturnal cough/symptoms": "Circadian fall in endogenous cortisol overnight, increased vagal (parasympathetic) tone, and cooling/drying of airways during sleep all lower the bronchoconstriction threshold — nocturnal frequency is therefore a key marker of poor background control",
+    "atopy": "Genetically predisposed Th2-skewed IgE-mediated hypersensitivity to environmental antigens produces the allergic triad of rhinitis, eczema and asthma via mast cell degranulation and eosinophilic inflammation on allergen re-exposure",
+    "exacerbation triggered by URTI": "Viral upper respiratory infection incites epithelial damage and a further surge in Th2 cytokine-driven airway inflammation, amplifying bronchial hyperresponsiveness on top of an already sensitised airway",
+    "hypoxaemia during attack": "Ventilation-perfusion mismatch from patchy airway narrowing and mucus plugging causes hypoxaemia before hypercapnia; CO2 initially falls (hyperventilation) and only rises with progressive fatigue — a rising or normalising pCO2 in a tachypnoeic patient is an ominous sign of exhaustion"
+  },
+  "staging": "Acute severe asthma exacerbation (PEFR 33-50% predicted, RR>25, HR>110, unable to complete full sentences, SpO2 <92%) on a background of poorly controlled persistent asthma (nocturnal symptoms 3-4x/week, never on inhaled corticosteroid); previous ICU admission and ventilation is a marker of near-fatal asthma requiring heightened vigilance",
+  "management": {
+    "immediate": [
+      "High-flow oxygen via face mask to maintain SpO2 ≥94%",
+      "Nebulised salbutamol, back-to-back/continuous given severity",
+      "Add nebulised ipratropium bromide (severe attack)",
+      "Oral prednisone 40mg stat (or IV hydrocortisone if unable to tolerate oral) — start early, do not delay",
+      "Reassess PEFR, RR, HR, SpO2 and mental state after each nebuliser cycle",
+      "Consider IV magnesium sulfate if poor response after first hour",
+      "Admit for observation given severe attack plus prior ICU/ventilation history (near-fatal marker); low threshold for HDU referral if deteriorating"
+    ],
+    "definitive": [
+      "Once stabilised, since patient has never been on a controller: start low-dose inhaled corticosteroid — beclomethasone MDI 200mcg BD (Step 2 of stepwise ladder)",
+      "If control remains inadequate after 1 month on correct technique/adherence, double ICS dose to high-dose (800mcg/day) before further step-up",
+      "If high-dose ICS fails after 1 month, switch to combination LABA/ICS — salmeterol/fluticasone 50/200mcg 1 puff BD",
+      "Before any step-up: confirm inhaler technique, adherence, trigger avoidance, exclude aggravating drugs (NSAIDs/beta-blockers) and exclude alternative diagnoses (explicitly reconsider CCF/RHD) — do not step up therapy on a bad-technique patient"
+    ],
+    "supportive": [
+      "Teach and demonstrate correct MDI + spacer technique before discharge",
+      "Provide/prescribe a spacer device",
+      "Trigger avoidance counselling: dust reduction in dormitory, early treatment of colds, avoid cold-air exposure",
+      "Written asthma action plan with PEFR diary and red-flag symptoms for return to hospital",
+      "Address that she has never had a preventer inhaler — this is a controllable gap in her chronic care"
+    ],
+    "followUp": [
+      "Chest clinic follow-up within 1 week post-exacerbation to reassess control and technique",
+      "Reassess adherence and inhaler technique at every visit before considering any step-up",
+      "Given history of a near-fatal attack (previous ICU ventilation), consider referral to a specialist respiratory clinic for closer monitoring",
+      "Step down therapy only once well controlled for a sustained period, reviewing the PEFR diary at each visit"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-symptom-pattern",
+      "phase": "history",
+      "item": "Characterises the symptom pattern — episodic wheeze/dyspnoea/nocturnal cough with childhood onset",
+      "answer": "Episodic wheeze since age 5, nocturnal symptoms 3-4x/week for 2 months, acute worsening over 2 days",
+      "why": "Establishes the core asthma symptom pattern framework before jumping to diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-atopy-triggers",
+      "phase": "history",
+      "item": "Screens for atopy (rhinitis, eczema, conjunctivitis) and identifies triggers/relievers",
+      "answer": "Allergic rhinitis and childhood eczema; triggers are colds, cold air, dust, exercise; reliever is salbutamol",
+      "why": "Atopic triad and identifiable triggers support asthma over other causes of wheeze",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mimics-redflags",
+      "phase": "history",
+      "item": "Excludes mimics/red flags — TB, HIV, cardiac disease (RHD/CCF), smoking, precipitating drugs",
+      "answer": "No chronic cough/weight loss/night sweats, HIV negative, no smoking, no NSAID/beta-blocker use, no cardiac symptoms",
+      "why": "In KZN, TB and RHD are essential differentials for dyspnoea/wheeze that must be actively excluded",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-prev-severity",
+      "phase": "history",
+      "item": "Asks about previous hospital/ICU admissions and ventilation history",
+      "answer": "Two previous hospitalisations, including ICU ventilation at age 12",
+      "why": "Previous ICU admission/intubation is a marker of near-fatal asthma requiring heightened vigilance",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-attack-exam",
+      "phase": "examination",
+      "item": "Performs focused respiratory exam noting ability to speak, accessory muscle use, wheeze character, and distinguishes attack findings from between-attack findings",
+      "answer": "Tripod position, short-phrase speech, accessory muscle use, widespread bilateral wheeze — air entry present, not silent",
+      "why": "Exam findings during an attack differ fundamentally from the interval exam and directly grade severity",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-severity-grading",
+      "phase": "examination",
+      "item": "Grades attack severity using RR, HR, ability to complete sentences, SpO2 and recognises that a silent chest would be a bad sign, not reassuring",
+      "answer": "Severe attack: RR 32, HR 122, unable to complete sentences, SpO2 91% — not yet life-threatening as no silent chest/cyanosis/bradycardia/confusion",
+      "why": "Correct severity grading (mild/severe/life-threatening) directly dictates management intensity",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-peFR-reversibility",
+      "phase": "investigations",
+      "item": "Requests PEFR pre- and post-bronchodilator and correctly applies the reversibility criterion (≥60 L/min or ≥20% improvement)",
+      "answer": "150 L/min pre, 260 L/min post — 110 L/min absolute and 73% relative improvement, both diagnostic",
+      "why": "PEFR reversibility is the objective confirmatory test for asthma",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-mimics-ix",
+      "phase": "investigations",
+      "item": "Orders CXR, HIV test, and considers FBC/GeneXpert to exclude mimics and complications",
+      "answer": "CXR shows hyperinflation only, HIV negative, mild eosinophilia, GeneXpert negative",
+      "why": "Confirms no alternative pathology (pneumothorax, consolidation, TB) is driving the presentation",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx-ranked",
+      "phase": "differentials",
+      "item": "Offers a ranked differential with reasoning (asthma > pneumonia > foreign body > RHD/CCF)",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the exam philosophy — must justify ranking with history/exam findings",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-acute-mx",
+      "phase": "management",
+      "item": "Manages the acute attack correctly: oxygen, back-to-back nebulised salbutamol, ipratropium, systemic steroid, escalation criteria including MgSO4/ICU threshold",
+      "answer": null,
+      "why": "Correct acute severe asthma protocol per SA STGs",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-stepup-checklist",
+      "phase": "management",
+      "item": "Before stepping up chronic therapy, checks technique, adherence, trigger avoidance, aggravating drugs, and alternative diagnoses",
+      "answer": null,
+      "why": "Explicitly stressed 'before stepping up' checklist — must not escalate therapy on a bad-technique, untreated-trigger patient",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-stepwise-doses",
+      "phase": "management",
+      "item": "Correctly outlines the stepwise ICS ladder with exact doses (beclomethasone 200mcg BD → 800mcg/day high-dose → salmeterol/fluticasone 50/200mcg BD)",
+      "answer": null,
+      "why": "OSCE-testable prescribing knowledge of the exact stepwise ladder doses",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

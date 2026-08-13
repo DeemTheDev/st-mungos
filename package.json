@@ -12,7 +12,8 @@
     "distill": "tsx scripts/distill-kb.ts",
     "gen:cases": "tsx scripts/generate-cases.ts",
     "gen:interp": "tsx scripts/generate-interp.ts",
-    "gen:coverage": "tsx scripts/coverage.ts"
+    "gen:coverage": "tsx scripts/coverage.ts",
+    "simulate": "tsx scripts/simulate-session.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",

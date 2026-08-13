@@ -18,14 +18,17 @@ try {
 }
 
 import { parseArgs } from "node:util";
-import { OsceCaseSchema, type InterpretationCase, type OsceCase } from "../lib/case-schema";
+import {
+  InterpretationCaseSchema,
+  OsceCaseSchema,
+  type InterpretationCase,
+  type OsceCase,
+} from "../lib/case-schema";
 import { ABG_ARCHETYPES, type AbgValues, type GeneratedAbg, generateAbg } from "../lib/abg";
 import {
   createAnthropicClient,
   diagnosisSlug,
-  extractJsonObject,
-  formatZodIssues,
-  generateJson,
+  generateStructured,
   nextSequence,
   normalizeDiagnosis,
   readExistingCases,
@@ -130,7 +133,7 @@ HARD RULES
 - The systematic method matters as much as the final answer — the examiner bank should probe mechanism, compensation logic and management, each with a modelAnswer and gradingNotes.
 - Ground the vignette and management in KwaZulu-Natal / South African hospital practice.
 
-OUTPUT: ONLY one JSON object, no markdown fences, no commentary. Shape (all fields required unless noted):
+OUTPUT (the JSON shape is enforced by the API against a schema — fill it with real content):
 {
   "id": kebab-case placeholder (reassigned in code),
   "version": 1,
@@ -169,9 +172,7 @@ DETERMINISTIC FINDINGS — the basis of findingsKey:
 ${JSON.stringify(gen.findings, null, 2)}
 
 STANDARD STEPWISE METHOD — keep ids, order and weights; adapt wording to this case:
-${JSON.stringify(ABG_METHOD_STEPS, null, 2)}
-
-Output ONLY the JSON object.`;
+${JSON.stringify(ABG_METHOD_STEPS, null, 2)}`;
 }
 
 /** Number-exact comparison of the echoed values against the generated ones. */
@@ -186,21 +187,13 @@ interface AttemptResult {
   feedback?: string;
 }
 
-function parseAndValidate(raw: string): AttemptResult {
-  let json: unknown;
-  try {
-    json = JSON.parse(extractJsonObject(raw));
-  } catch (err) {
-    return { ok: false, feedback: `The output was not parseable JSON: ${err instanceof Error ? err.message : err}` };
-  }
-  const parsed = OsceCaseSchema.safeParse(json);
-  if (!parsed.success) {
-    return { ok: false, feedback: `Schema validation failed:\n${formatZodIssues(parsed.error.issues)}` };
-  }
-  if (parsed.data.stationType !== "interpretation" || parsed.data.stimulus.kind !== "abg") {
+/** Structured outputs already ran the schema client-side; only the kind check remains. */
+function validateGenerated(c: InterpretationCase | null, feedback: string | null): AttemptResult {
+  if (!c) return { ok: false, feedback: feedback ?? "generation returned nothing" };
+  if (c.stationType !== "interpretation" || c.stimulus.kind !== "abg") {
     return { ok: false, feedback: `stationType must be "interpretation" with stimulus.kind "abg".` };
   }
-  return { ok: true, case: parsed.data };
+  return { ok: true, case: c };
 }
 
 async function generateAbgStations(count: number): Promise<void> {
@@ -232,16 +225,17 @@ async function generateAbgStations(count: number): Promise<void> {
       const gen = generateAbg(archetype.id);
       const userPrompt = buildUserPrompt(gen);
 
-      const firstRaw = await generateJson(client, systemPrompt, userPrompt);
-      let result = parseAndValidate(firstRaw);
+      const first = await generateStructured(client, systemPrompt, userPrompt, InterpretationCaseSchema);
+      let result = validateGenerated(first.data, first.feedback);
       if (!result.ok) {
         console.log(`        first attempt rejected — retrying once with feedback`);
-        const retryRaw = await generateJson(
+        const retry = await generateStructured(
           client,
           systemPrompt,
-          `${userPrompt}\n\nYour previous attempt was rejected. ${result.feedback}\n\nOutput the corrected complete JSON object.`,
+          `${userPrompt}\n\nYour previous attempt was rejected. ${result.feedback}\n\nOutput the corrected complete case.`,
+          InterpretationCaseSchema,
         );
-        result = parseAndValidate(retryRaw);
+        result = validateGenerated(retry.data, retry.feedback);
       }
       if (!result.ok || !result.case) {
         discarded++;

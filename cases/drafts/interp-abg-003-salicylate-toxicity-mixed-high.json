@@ -1,0 +1,137 @@
+{
+  "id": "interp-abg-003-salicylate-toxicity-mixed-high",
+  "version": 1,
+  "discipline": "renal",
+  "diagnosis": "Salicylate toxicity (mixed high anion gap metabolic acidosis and primary respiratory alkalosis)",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "probe",
+      "question": "The pH is 7.45 - almost perfectly normal. Why shouldn't that reassure you here?",
+      "modelAnswer": "A near-normal pH with a markedly low HCO3 and low pCO2 means two opposing primary processes are occurring simultaneously and largely cancelling each other's effect on pH - here a metabolic acidosis and a respiratory alkalosis. If this were simple respiratory compensation for the metabolic acidosis, Winter's formula predicts the pCO2 should be about 3.3-3.8 kPa, but it is 2.5 kPa - lower than compensation alone would produce - so there must be a second, independent process driving the pCO2 down.",
+      "gradingNotes": "Full marks require explicit use of Winter's formula and the conclusion of a second primary process, not just 'compensation looks appropriate'. Partial credit for recognising pH normalcy is misleading without the calculation."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "probe",
+      "question": "Why does salicylate poisoning cause both these acid-base disturbances at once?",
+      "modelAnswer": "Salicylates directly stimulate the medullary respiratory centre, causing a primary respiratory alkalosis (hyperventilation, low pCO2) early in toxicity. Concurrently, salicylate and its metabolites accumulate as unmeasured anions, uncouple oxidative phosphorylation, and cause accumulation of organic acids (including some lactate and ketoacids), producing a high anion gap metabolic acidosis. Both processes typically coexist, especially a few hours post-ingestion, and in severe or late toxicity the acidosis tends to dominate as respiratory drive fails.",
+      "gradingNotes": "Look for both mechanisms named (central respiratory stimulation AND uncoupled oxidative phosphorylation/organic acid accumulation). Bonus if student notes progression to acidosis-dominant picture in severe toxicity or in children."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "probe",
+      "question": "What would worry you about giving this patient supplemental oxygen or sedating her for agitation?",
+      "modelAnswer": "She is not hypoxic (pO2 12.2 kPa on room air), so oxygen is not indicated and won't address the underlying problem. More importantly, sedation or anything that blunts her respiratory drive (e.g. opioids, benzodiazepines, intubation without care) is dangerous - her hyperventilation is a compensatory/primary respiratory alkalosis helping to buffer the severe acidosis; if her ventilation is impaired, pCO2 will rise rapidly and she can decompensate into severe acidaemia very quickly.",
+      "gradingNotes": "Key safety point: avoid iatrogenic hypoventilation/sedation in salicylate toxicity. If intubation is unavoidable, ventilator settings must match or exceed her own minute ventilation to prevent acute acidaemia."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "probe",
+      "question": "How would you manage this patient acutely in a district or regional KZN hospital?",
+      "modelAnswer": "Resuscitate with ABCs, get IV access, send salicylate level, paracetamol level, U&E, glucose and coagulation. Activated charcoal if within 1-2 hours of ingestion (consider even later given delayed absorption with enteric-coated aspirin/bezoar formation). Start IV sodium bicarbonate to alkalinise the urine (target urine pH ~7.5-8) and enhance renal salicylate excretion, with careful potassium replacement as hypokalaemia impairs alkalinisation. Contact the Poisons Information Helpline and involve a toxicologist/nephrologist early. Haemodialysis is indicated for severe toxicity - very high salicylate levels, refractory acidosis, renal failure, pulmonary oedema, altered mental status, or clinical deterioration.",
+      "gradingNotes": "Expect: charcoal timing, urinary alkalinisation with bicarbonate + potassium correction, dialysis criteria, and use of local poison information services. Partial credit for generic 'supportive care' without specifics."
+    }
+  ],
+  "stationType": "interpretation",
+  "stimulus": {
+    "kind": "abg",
+    "vignette": "A 19-year-old woman is brought to casualty by her family after she was found with an empty aspirin packet approximately 6 hours ago. She is tinnitus-ridden, nauseated, diaphoretic, and breathing rapidly and deeply. ABG on room air:",
+    "values": {
+      "pH": 7.45,
+      "pCO2_kPa": 2.5,
+      "pO2_kPa": 12.2,
+      "HCO3": 12.5,
+      "BE": -10.4,
+      "Na": 137,
+      "Cl": 106,
+      "K": 4,
+      "lactate": 1.5
+    },
+    "imagePath": null
+  },
+  "findingsKey": [
+    {
+      "finding": "pH at the upper limit of normal (7.45) despite marked derangement — suggests a mixed acid-base disorder rather than a single compensated one",
+      "critical": true
+    },
+    {
+      "finding": "Low HCO3 (12.5 mmol/L) and markedly negative base excess (-10.4) → underlying metabolic acidosis",
+      "critical": true
+    },
+    {
+      "finding": "pCO2 (2.5 kPa) is lower than Winter's formula predicts for this HCO3 (expected ~3.3-3.8 kPa) → a co-existing primary respiratory alkalosis, not just compensation",
+      "critical": true
+    },
+    {
+      "finding": "Raised anion gap (~19 mmol/L using Na - (Cl + HCO3))",
+      "critical": true
+    },
+    {
+      "finding": "No significant hypoxaemia (pO2 12.2 kPa on room air)",
+      "critical": false
+    },
+    {
+      "finding": "Normal potassium (4 mmol/L) and only mildly raised lactate (1.5 mmol/L) — not the dominant driver of the acidosis",
+      "critical": false
+    }
+  ],
+  "interpretationChecklist": [
+    {
+      "id": "ic-1",
+      "item": "Comments on clinical context first (deliberate ingestion, time since overdose, toxidrome features - tinnitus, hyperventilation, sweating)",
+      "weight": 1
+    },
+    {
+      "id": "ic-2",
+      "item": "Assesses oxygenation (pO2 12.2 kPa on room air - adequately oxygenated, hyperventilation is not hypoxia-driven)",
+      "weight": 2
+    },
+    {
+      "id": "ic-3",
+      "item": "Identifies that pH is within normal range and recognises this may hide a mixed disorder rather than health",
+      "weight": 2
+    },
+    {
+      "id": "ic-4",
+      "item": "Identifies the primary metabolic disorder (low HCO3, negative BE = metabolic acidosis) as well as the low pCO2",
+      "weight": 3
+    },
+    {
+      "id": "ic-5",
+      "item": "Applies Winter's formula to the HCO3 and shows the actual pCO2 is lower than predicted, proving a second primary process (respiratory alkalosis) rather than simple compensation",
+      "weight": 3
+    },
+    {
+      "id": "ic-6",
+      "item": "Calculates the anion gap (~19) and identifies it as raised",
+      "weight": 2
+    },
+    {
+      "id": "ic-7",
+      "item": "Synthesises: high anion gap metabolic acidosis + primary respiratory alkalosis = mixed disorder, correlates with salicylate poisoning and its direct respiratory centre stimulation",
+      "weight": 3
+    },
+    {
+      "id": "ic-8",
+      "item": "States immediate management implications (salicylate level, urinary alkalinisation, dialysis criteria, toxicology/poison line input)",
+      "weight": 2
+    }
+  ],
+  "management": {
+    "immediate": [
+      "ABC assessment, IV access, continuous monitoring; avoid sedatives/opioids that could blunt her compensatory hyperventilation",
+      "Send salicylate level, paracetamol level, U&E/creatinine, glucose, coagulation profile and repeat ABG",
+      "Activated charcoal if within 1-2 hours of ingestion (consider later doses given possible delayed gastric emptying with aspirin overdose)"
+    ],
+    "definitive": [
+      "IV sodium bicarbonate infusion to alkalinise urine (target urine pH 7.5-8) and enhance renal elimination, with careful potassium correction to allow effective alkalinisation",
+      "Early discussion with Poisons Information Centre/toxicology and nephrology; arrange haemodialysis if severe toxicity, refractory acidosis, renal impairment, pulmonary oedema, or altered consciousness",
+      "Serial ABGs and salicylate levels to track trend and guide escalation"
+    ],
+    "supportive": [],
+    "followUp": []
+  }
+}

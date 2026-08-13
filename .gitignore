@@ -43,6 +43,9 @@ next-env.d.ts
 # private course material - never commit
 /grounding/
 
+# local session persistence (STORE=file) - her practice sessions are private
+/.sessions/
+
 # local case drafts pending review are fine to commit; secrets are not
 .env*.local
 .env

@@ -1,0 +1,633 @@
+{
+  "id": "renal-001-acute-kidney-injury-pre",
+  "version": 1,
+  "discipline": "renal",
+  "diagnosis": "Acute kidney injury (pre-renal insult progressing to acute tubular necrosis) precipitated by gastroenteritis-related volume depletion combined with a 'triple whammy' nephrotoxic drug combination (NSAID + ACE inhibitor + thiazide diuretic)",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "triggerAfterSec": 300,
+      "question": "Walk me through your approach to this patient's reduced urine output — what is your differential and how are you going to work through it?",
+      "modelAnswer": "First confirm this is AKI by KDIGO criteria using a baseline creatinine, then immediately exclude post-renal obstruction with a bladder scan and renal ultrasound since it is instantly reversible. Next assess volume status clinically to guide fluid management, then localise the cause with urine dipstick and microscopy alongside a full drug and traditional-remedy history. Here: pre-renal insult from gastroenteritis-related volume depletion, compounded by the triple whammy of NSAID, ACE inhibitor and diuretic, progressing to ATN — supported by muddy brown casts and a bland dipstick, with post-renal, GN and AIN excluded by normal imaging, absent dysmorphic RBCs/red cell casts, and no drug-allergy-type features.",
+      "gradingNotes": "Full marks for a structured localisation-based approach with reasoning; partial credit for an unranked list without justification."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "She is on an ACE inhibitor, a thiazide diuretic, and now an NSAID — explain the 'triple whammy' mechanism to me.",
+      "modelAnswer": "Renal autoregulation keeps GFR stable across a range of perfusion pressures via prostaglandin-mediated afferent arteriolar dilation and angiotensin II-mediated efferent arteriolar constriction. NSAIDs block the afferent dilation, ACE inhibitors block the efferent constriction, and diuretics reduce circulating volume — combined, these abolish the kidney's ability to protect GFR when renal perfusion falls, producing a predictable and preventable AKI.",
+      "gradingNotes": "Wants the autoregulation mechanism specifically (afferent vs efferent, prostaglandin vs angiotensin II), not just 'these drugs are bad for the kidneys'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Her urine microscopy shows muddy brown granular casts. What does this tell you, and how would the picture differ if you saw dysmorphic red cells and red cell casts instead?",
+      "modelAnswer": "Muddy brown granular casts are sloughed necrotic tubular epithelial cells with Tamm-Horsfall protein, pathognomonic of acute tubular necrosis. Dysmorphic RBCs and red cell casts instead would indicate glomerular bleeding from a proliferative glomerulonephritis or vasculitis, which is a red flag requiring urgent nephrology referral and consideration of biopsy — a very different and more urgent pathway than supportive ATN management.",
+      "gradingNotes": "Tests the exam-central urine microscopy table; should distinguish ATN from GN sediment findings and their differing urgency."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "She is drowsy with a mild asterixis, and her potassium is 6.2 mmol/L despite initial medical treatment. Does she need dialysis, and how do you decide?",
+      "modelAnswer": "Apply the AEIOU criteria: refractory Acidosis, refractory hyperkalaemia (Electrolytes), dialysable Intoxication, refractory pulmonary Overload, and Uraemic complications such as encephalopathy, pericarditis or bleeding. Her drowsiness and asterixis suggest uraemic encephalopathy, and if her hyperkalaemia does not correct with calcium gluconate, insulin-dextrose and salbutamol, both criteria are met and urgent renal replacement therapy should be arranged with nephrology.",
+      "gradingNotes": "Wants explicit AEIOU recitation applied to this specific patient's findings, not a vague 'yes she probably needs dialysis'."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "investigations",
+      "question": "She is on a thiazide diuretic — does that change how you'd use FeNa (fractional excretion of sodium) to distinguish pre-renal AKI from ATN here?",
+      "modelAnswer": "Diuretics invalidate FeNa because they force sodium excretion regardless of the underlying cause, so a low FeNa can be falsely elevated in a genuinely pre-renal patient on diuretics. In that situation, fractional excretion of urea should be used instead, with a value below 35% suggesting a pre-renal state. It's also worth remembering that a low FeNa isn't specific to pre-renal AKI alone — it can also be seen in contrast nephropathy, rhabdomyolysis, glomerulonephritis, hepatorenal syndrome, early obstruction, and pre-existing CKD.",
+      "gradingNotes": "Tests awareness of the FeNa caveats table — diuretic invalidation, use of fractional excretion of urea, and the list of conditions where FeNa is unreliable."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "reduced urine output / rising creatinine → confirm AKI, exclude post-renal obstruction first, assess volume status, localise cause by urine dipstick/microscopy and drug history, stage severity, assess RRT indications",
+  "patient": {
+    "name": "Thandeka Mkhize",
+    "age": 62,
+    "sex": "F",
+    "occupation": "retired primary school teacher",
+    "personality": "polite but drowsy and slow to answer; her daughter, who is present, fills in gaps and is anxious",
+    "openingLine": "Doctor... I haven't been to the toilet properly in three days, and my legs are so swollen."
+  },
+  "presentingComplaint": "3 days of markedly reduced urine output with swollen ankles and increasing drowsiness, on a background of a recent bout of vomiting and diarrhoea",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Noticed she was passing very little urine over the last 3 days; at first thought it was the hot weather",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-gastro",
+      "fact": "Had vomiting and watery diarrhoea for about 4 days last week, which has now mostly settled, but she ate and drank very little during that time",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomiting",
+        "diarrhoea",
+        "sick",
+        "runny stomach",
+        "stomach bug",
+        "not eating",
+        "not drinking",
+        "fluids",
+        "dehydrated",
+        "tummy"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Her ankles and face have become puffy over the past 2 days; rings feel tight",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "swollen",
+        "ankles",
+        "puffy",
+        "oedema",
+        "legs swollen",
+        "face swollen",
+        "rings tight",
+        "fluid",
+        "bloated"
+      ]
+    },
+    {
+      "id": "hx-confusion",
+      "fact": "Daughter reports she has become more drowsy and muddled today, not her usual self, slower to answer questions",
+      "disclosure": "onAsk",
+      "triggers": [
+        "confused",
+        "confusion",
+        "drowsy",
+        "sleepy",
+        "not herself",
+        "muddled",
+        "consciousness",
+        "alertness",
+        "behaviour change",
+        "acting strange"
+      ]
+    },
+    {
+      "id": "hx-nsaid",
+      "fact": "Has been taking ibuprofen tablets bought over the counter at the pharmacy for a painful knee, roughly double the recommended dose, for the past 10 days",
+      "disclosure": "onAsk",
+      "triggers": [
+        "painkiller",
+        "ibuprofen",
+        "nsaid",
+        "anti-inflammatory",
+        "knee pain",
+        "tablets for pain",
+        "over the counter",
+        "chemist",
+        "pharmacy medicine",
+        "brufen",
+        "voltaren",
+        "medication for pain"
+      ]
+    },
+    {
+      "id": "hx-bpmeds",
+      "fact": "Takes enalapril 10mg daily and hydrochlorothiazide 12.5mg daily for high blood pressure, for the past 6 years — has not missed doses even while vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure tablets",
+        "hypertension medication",
+        "enalapril",
+        "ace inhibitor",
+        "water tablet",
+        "diuretic",
+        "thiazide",
+        "hydrochlorothiazide",
+        "regular medication",
+        "chronic medication",
+        "pills for pressure"
+      ]
+    },
+    {
+      "id": "hx-muthi",
+      "fact": "Denies using any traditional medicine, muthi or enemas recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "muthi",
+        "traditional medicine",
+        "herbal",
+        "enema",
+        "traditional healer",
+        "inyanga",
+        "sangoma",
+        "herbs",
+        "home remedy",
+        "purgative"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Known hypertension for 6 years, no known diabetes, no known kidney disease previously; a clinic blood test 3 months ago was reported to her as 'normal'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "past history",
+        "blood pressure history",
+        "diabetes",
+        "kidney disease",
+        "kidney problems",
+        "previous blood test",
+        "clinic results",
+        "baseline",
+        "before this illness",
+        "sugar"
+      ]
+    },
+    {
+      "id": "hx-obstructive",
+      "fact": "No poor urine stream, no blood in urine, no loin or groin pain, no known cervical or pelvic growth, went through menopause 10 years ago with no bleeding since",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine stream",
+        "difficulty passing urine",
+        "blood in urine",
+        "loin pain",
+        "back pain",
+        "groin pain",
+        "pelvic mass",
+        "cervical cancer",
+        "menopause",
+        "vaginal bleeding",
+        "womb",
+        "prostate",
+        "obstruction"
+      ]
+    },
+    {
+      "id": "hx-uraemic",
+      "fact": "Feels mildly nauseated and has noticed some itchy skin over the last day or two, but no chest pain and no vomiting blood",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nausea",
+        "itchy",
+        "itching",
+        "skin itch",
+        "chest pain",
+        "vomiting blood",
+        "uraemia symptoms",
+        "feeling sick",
+        "unwell",
+        "off colour"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Has never been tested for HIV; widowed 5 years ago and not currently sexually active",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "sexually transmitted",
+        "std",
+        "sti",
+        "partner",
+        "tested before",
+        "blood test for hiv",
+        "immune system"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no known TB contacts, no one at home has been treated for TB",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "contact",
+        "household",
+        "family sick",
+        "anyone coughing",
+        "exposure to tb"
+      ]
+    },
+    {
+      "id": "hx-allergy",
+      "fact": "No known drug allergies and has never had a reaction to any medicine before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergy",
+        "allergies",
+        "allergic",
+        "reaction",
+        "rash from medicine",
+        "sensitive to",
+        "bad reaction",
+        "penicillin",
+        "medicine allergy",
+        "drug allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Does not smoke, drinks alcohol occasionally at family gatherings only; lives in Pinetown with her daughter and two grandchildren",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "alcohol",
+        "drink",
+        "social history",
+        "live",
+        "home",
+        "house",
+        "family",
+        "who stays with you"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Her mother also had high blood pressure; no family history of kidney disease, diabetes or cancer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "hereditary"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No rash, no joint pains, no oral ulcers, no coughing up blood, no nosebleeds",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rash",
+        "joint pain",
+        "joints",
+        "oral ulcers",
+        "mouth sores",
+        "coughing blood",
+        "haemoptysis",
+        "nosebleed",
+        "other symptoms",
+        "anything else"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Elderly-looking woman, drowsy but rousable to voice, oriented to person only, mild flap (asterixis) present. Facial and periorbital puffiness. No pallor, no jaundice. No rash.",
+    "vitals": {
+      "hr": 96,
+      "bp": "158/94",
+      "rr": 22,
+      "temp": 37.2,
+      "spo2": "92% on room air",
+      "bmi": 27
+    },
+    "respiratory": "Bibasal fine crackles to mid-zones, no wheeze, trachea central.",
+    "cardio": "JVP elevated 4cm above sternal angle, displaced apex, soft S3 gallop, no murmurs, no pericardial rub.",
+    "abdo": "Soft, mildly distended, non-tender, no renal angle tenderness, no palpable masses. Bladder not palpable or percussable.",
+    "neuro": "Drowsy (GCS 14/15), mild asterixis, no focal neurological deficit, no meningism, pupils equal and reactive.",
+    "other": {
+      "bladderScan": "Post-void residual <50ml — bladder not distended",
+      "peripheral": "2+ pitting oedema to mid-shin bilaterally, no sacral oedema"
+    }
+  },
+  "investigations": [
+    {
+      "name": "U&E and creatinine",
+      "result": "Creatinine 480 µmol/L (up from a clinic baseline of 78 µmol/L 3 months ago), urea 22 mmol/L, K+ 6.2 mmol/L, Na+ 133 mmol/L, HCO3- 14 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Old clinic record (retrieved)",
+      "result": "Creatinine 78 µmol/L, checked 3 months ago — confirms acute-on-normal-baseline picture, not CKD",
+      "key": true
+    },
+    {
+      "name": "Urine dipstick",
+      "result": "Blood negative, protein trace, leucocytes negative, nitrites negative, glucose negative",
+      "key": true
+    },
+    {
+      "name": "Urine microscopy",
+      "result": "Numerous muddy brown granular casts, occasional renal tubular epithelial cells; no dysmorphic RBCs, no red cell casts, no WCC casts",
+      "key": true
+    },
+    {
+      "name": "Bladder scan / renal tract ultrasound",
+      "result": "Both kidneys normal size (right 11.2cm, left 11.0cm) with preserved corticomedullary differentiation; no hydronephrosis; bladder empty, no pelvic mass seen",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Peaked T waves in precordial leads, mildly widened QRS — changes of hyperkalaemia",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas",
+      "result": "pH 7.28, HCO3- 14 mmol/L, K+ 6.1 mmol/L, lactate 1.8 mmol/L — metabolic acidosis",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 11.2 g/dL, WCC 9.8 x10^9/L, platelets 240 x10^9/L",
+      "key": false
+    },
+    {
+      "name": "Creatine kinase (CK)",
+      "result": "110 U/L (normal) — no evidence of rhabdomyolysis",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Urine albumin:creatinine ratio",
+      "result": "45 mg/mmol (mildly elevated, non-nephrotic range)",
+      "key": false
+    },
+    {
+      "name": "Serum protein electrophoresis + serum free light chains",
+      "result": "No paraprotein band, normal kappa:lambda ratio — sent as she is over 40 with AKI, now less relevant given a clear precipitant identified",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Pre-renal AKI progressing to acute tubular necrosis (drug-induced 'triple whammy' plus volume depletion)",
+      "rank": 1,
+      "for": [
+        "preceding vomiting/diarrhoea with poor intake",
+        "concurrent NSAID + ACE inhibitor + thiazide diuretic use",
+        "marked creatinine rise from a normal 3-month baseline",
+        "muddy brown granular casts on microscopy",
+        "bland dipstick without haematuria/significant proteinuria"
+      ],
+      "against": [
+        "no clear alternative explanation excludes this, but oedema and hypertension could suggest a glomerular process instead"
+      ]
+    },
+    {
+      "dx": "Post-renal obstruction (e.g., pelvic/cervical mass)",
+      "rank": 2,
+      "for": [
+        "elderly woman",
+        "reduced urine output",
+        "common local cause of bilateral ureteric obstruction"
+      ],
+      "against": [
+        "bladder scan and renal ultrasound show no hydronephrosis or pelvic mass",
+        "no haematuria, no loin-to-groin pain, no PV bleeding"
+      ]
+    },
+    {
+      "dx": "Acute glomerulonephritis / rapidly progressive GN",
+      "rank": 3,
+      "for": [
+        "peripheral oedema",
+        "hypertension",
+        "reduced urine output"
+      ],
+      "against": [
+        "urine sediment shows muddy brown casts, not dysmorphic RBCs or red cell casts",
+        "no systemic features (rash, joint pain, haemoptysis)"
+      ]
+    },
+    {
+      "dx": "Acute interstitial nephritis (NSAID-related)",
+      "rank": 4,
+      "for": [
+        "recent new NSAID exposure"
+      ],
+      "against": [
+        "no rash, no eosinophilia sought/suspected, no sterile pyuria or WCC casts",
+        "clinical and sediment picture better fits ATN"
+      ]
+    },
+    {
+      "dx": "Rhabdomyolysis",
+      "rank": 5,
+      "for": [
+        "drowsiness could reflect a collapse event"
+      ],
+      "against": [
+        "no history of collapse, seizure, restraint or prolonged immobility",
+        "CK normal",
+        "dipstick blood negative"
+      ]
+    }
+  ],
+  "pathophys": {
+    "reduced urine output": "Ischaemic/nephrotoxic injury to proximal tubule and thick ascending limb (outer medulla, low baseline oxygen tension, high metabolic demand) causes tubular cell death, back-leak of filtrate, and cast obstruction of tubular lumen, reducing effective GFR and urine output",
+    "peripheral oedema": "Reduced GFR causes sodium and water retention; combined with ongoing oral fluid intake despite oliguria, this leads to expansion of extracellular volume and interstitial fluid accumulation",
+    "drowsiness/confusion": "Uraemic encephalopathy from accumulation of nitrogenous waste products and disturbed neurotransmission, compounded by metabolic acidosis and electrolyte derangement",
+    "triple whammy mechanism": "Renal autoregulation normally maintains GFR across a range of perfusion pressures via afferent arteriolar vasodilation (prostaglandin-mediated) and efferent arteriolar vasoconstriction (angiotensin II-mediated); NSAIDs block afferent dilation, ACE inhibitors block efferent constriction, and diuretics reduce circulating volume — together they abolish the kidney's ability to protect GFR during any volume insult",
+    "muddy brown granular casts": "Sloughed necrotic tubular epithelial cells and Tamm-Horsfall protein aggregate within the tubular lumen in acute tubular necrosis, forming the classic 'muddy brown' cast seen on microscopy",
+    "hyperkalaemia ECG changes": "Reduced renal potassium excretion causes hyperkalaemia, which alters resting membrane potential of cardiac myocytes, slowing phase 0 depolarisation and producing peaked T waves progressing to QRS widening as conduction velocity falls"
+  },
+  "staging": "KDIGO AKI Stage 3 (creatinine >3x baseline: 480 µmol/L vs baseline 78 µmol/L; oliguric)",
+  "management": {
+    "immediate": [
+      "Stop all nephrotoxic/contributing drugs immediately: ibuprofen, enalapril, hydrochlorothiazide (the 'triple whammy')",
+      "Treat hyperkalaemia urgently given ECG changes: 10ml 10% calcium gluconate IV, insulin-dextrose infusion, salbutamol nebuliser, cardiac monitoring",
+      "Correct metabolic acidosis if severe (consider IV sodium bicarbonate per protocol if pH persistently <7.1-7.2)",
+      "Careful fluid management — she is now volume overloaded (oedema, crackles, raised JVP) despite the preceding dehydration, so avoid further fluid boluses; consider a diuretic trial while monitoring response",
+      "Confirm no obstruction (already excluded by bladder scan/ultrasound) and no ongoing sepsis source"
+    ],
+    "definitive": [
+      "Supportive management of established acute tubular necrosis while awaiting tubular recovery",
+      "Urgent nephrology referral and consideration of renal replacement therapy given refractory hyperkalaemia risk and uraemic encephalopathy (drowsiness/asterixis) — meets AEIOU criteria",
+      "Renal-dose adjustment of all medications while renal function is impaired"
+    ],
+    "supportive": [
+      "Strict fluid balance charting and daily weights",
+      "Avoid further nephrotoxins (no NSAIDs, no IV contrast unless essential, avoid aminoglycosides)",
+      "Correct electrolyte and acid-base disturbances as they trend",
+      "Nutritional support with attention to potassium and phosphate content of diet",
+      "Anticipate a polyuric recovery phase — monitor closely for hypokalaemia, hypomagnesaemia, hypophosphataemia and volume depletion once diuresis begins"
+    ],
+    "followUp": [
+      "Recheck renal function and blood pressure at outpatient follow-up — AKI survivors carry increased long-term risk of CKD and mortality",
+      "Medication reconciliation: counsel on avoiding OTC NSAIDs permanently; cautious, staged rechallenge of ACE inhibitor only once renal function has recovered and stabilised, under monitoring",
+      "Referral to nephrology outpatient clinic for structured follow-up",
+      "Patient and family education on safe use of over-the-counter medicines and when to seek care for reduced urine output"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-baseline",
+      "phase": "history",
+      "item": "Actively seeks a baseline/previous creatinine to confirm this is AKI rather than CKD",
+      "answer": "Clinic creatinine 78 µmol/L three months ago, now 480 µmol/L",
+      "why": "Old creatinine is the single most useful AKI-vs-CKD discriminator; eGFR is invalid in AKI so trended creatinine is essential",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-drughx",
+      "phase": "history",
+      "item": "Takes a full drug and traditional-remedy history, specifically naming NSAIDs, ACE inhibitors/ARBs, diuretics and muthi/enemas",
+      "answer": "Ibuprofen (double dose, 10 days) plus enalapril and hydrochlorothiazide — the 'triple whammy'; no muthi use",
+      "why": "Triple whammy is one of the commonest, most preventable causes of AKI and a classic OSCE drug-chart trap",
+      "weight": 5,
+      "critical": true
+    },
+    {
+      "id": "cl-volumehx",
+      "phase": "history",
+      "item": "Screens for volume loss/sepsis source (vomiting, diarrhoea, fever, poor intake)",
+      "answer": "4 days of vomiting and diarrhoea with poor oral intake preceding the oliguria",
+      "why": "Identifies the precipitating pre-renal insult",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-obstructivehx",
+      "phase": "history",
+      "item": "Screens for obstructive/gynaecological symptoms (poor stream, haematuria, loin pain, PV bleeding, known pelvic mass)",
+      "answer": "All negative, including no PV bleeding since menopause",
+      "why": "Post-renal causes including cervical carcinoma are a common and easily missed cause of AKI in KZN women",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-volumeexam",
+      "phase": "examination",
+      "item": "Performs a focused volume status assessment (JVP, mucous membranes, chest, peripheral/sacral oedema)",
+      "answer": "Raised JVP, bibasal crackles, S3 gallop, bilateral pitting oedema — now fluid overloaded",
+      "why": "Volume status is the pivotal exam step that dictates fluid management before anything else",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-bladder",
+      "phase": "examination",
+      "item": "Performs or requests a bladder scan (± considers catheterisation) to exclude obstruction before other work-up",
+      "answer": "Post-void residual <50ml, bladder not distended — obstruction excluded",
+      "why": "Post-renal obstruction must never be missed; it is instantly reversible and should be excluded first, always",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-urine",
+      "phase": "investigations",
+      "item": "Orders urine dipstick AND microscopy to localise the cause of AKI",
+      "answer": "Bland dipstick, muddy brown granular casts on microscopy — consistent with ATN, not GN or AIN",
+      "why": "Urine microscopy separates pre-renal/ATN from glomerular/interstitial disease better than any blood test; this is exam-central",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-imaging",
+      "phase": "investigations",
+      "item": "Orders renal tract ultrasound (and interprets kidney size/corticomedullary differentiation)",
+      "answer": "Normal-sized kidneys with preserved corticomedullary differentiation, no hydronephrosis — supports acute rather than chronic process, confirms no obstruction",
+      "why": "Ultrasound should be done in all AKI without an obvious cause and within 24h if obstruction is suspected",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-hyperk",
+      "phase": "investigations",
+      "item": "Recognises and acts on ECG/biochemical hyperkalaemia",
+      "answer": "Peaked T waves, K+ 6.2 mmol/L — requires urgent treatment",
+      "why": "Refractory hyperkalaemia is a life-threatening emergency and an RRT indication",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Presents a ranked, anatomically localised differential (pre-renal/ATN > post-renal > GN > AIN > rhabdomyolysis) with reasoning linked to findings",
+      "answer": null,
+      "why": "Symptom-to-cause localisation is the core exam philosophy for AKI",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-triple",
+      "phase": "management",
+      "item": "Stops all three triple-whammy drugs and treats hyperkalaemia as first management priority",
+      "answer": "Stop ibuprofen, enalapril, hydrochlorothiazide; give calcium gluconate, insulin-dextrose, salbutamol",
+      "why": "Removing the precipitant and treating the immediate life threat come before anything else",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-rrt",
+      "phase": "management",
+      "item": "Correctly recites AEIOU indications for renal replacement therapy and applies them to this patient",
+      "answer": "Refractory Acidosis, refractory hyperkalaemia (Electrolytes), dialysable Intoxication, refractory pulmonary Overload, Uraemic complications — this patient has uraemic encephalopathy and hyperkalaemia, both concerning for RRT need",
+      "why": "AEIOU is explicitly flagged as an expected recitation point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-followup",
+      "phase": "management",
+      "item": "Plans post-discharge follow-up: renal function and BP recheck, medication reconciliation/rechallenge plan",
+      "answer": "Recheck creatinine and BP at follow-up; cautious staged ACE inhibitor rechallenge once recovered; permanent NSAID avoidance advice",
+      "why": "Discharge follow-up is explicitly flagged as one of the commonest omissions in AKI management",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

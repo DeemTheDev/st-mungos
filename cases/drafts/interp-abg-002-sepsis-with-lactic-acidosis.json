@@ -1,0 +1,143 @@
+{
+  "id": "interp-abg-002-sepsis-with-lactic-acidosis",
+  "version": 1,
+  "discipline": "id",
+  "diagnosis": "Sepsis with lactic acidosis (high anion gap metabolic acidosis, raised lactate)",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "probe",
+      "question": "You calculated an anion gap of 22. Talk me through how you got that and why it matters here.",
+      "modelAnswer": "Anion gap = Na − (Cl + HCO3) = 133 − (97+14) = 22, which is raised above the normal range of ~8–12. A raised anion gap tells us there are unmeasured acid anions present — in this context, lactate — rather than a simple bicarbonate-losing (normal anion gap) acidosis such as diarrhoea or renal tubular acidosis.",
+      "gradingNotes": "Must show the calculation, not just state the number. Full marks link the raised gap to lactate specifically."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "probe",
+      "question": "Is the respiratory system compensating appropriately, or is there a second acid-base disorder?",
+      "modelAnswer": "Using Winter's formula, expected pCO2 (mmHg) = 1.5×HCO3 + 8 ± 2 = 1.5×14 + 8 = 29 mmHg (~3.9 kPa), which is exactly what she has. This means the hyperventilation is an appropriate physiological compensation for the metabolic acidosis, not evidence of a separate primary respiratory alkalosis.",
+      "gradingNotes": "Expect the formula applied with working. Partial credit for stating 'compensation is appropriate' without calculation."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "probe",
+      "question": "Why is the lactate raised, and what does a level of 8 mmol/L tell you about severity?",
+      "modelAnswer": "Lactate rises when tissue oxygen delivery fails to meet demand (type A/hypoperfusion lactic acidosis) — here from septic shock causing poor perfusion, or possibly from impaired hepatic clearance. A lactate of 8 mmol/L is markedly elevated and, combined with hypotension despite likely fluid resuscitation, meets criteria for septic shock; it's also a marker of poor prognosis and should be trended to assess response to treatment.",
+      "gradingNotes": "Wants mechanism (type A lactic acidosis/hypoperfusion) plus prognostic/severity significance; bonus for mentioning serial lactate clearance."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "probe",
+      "question": "Given her HIV status, what broadens your differential for the source of sepsis, and how does that change your initial workup?",
+      "modelAnswer": "In an HIV-positive patient with a productive cough and fevers progressing to septic shock, differentials include bacterial pneumonia (including resistant organisms), TB, PJP, and other HIV-associated opportunistic infections; I'd check CD4 count and ART adherence, send blood cultures, sputum for microscopy/culture and GeneXpert MTB/RIF, and consider a chest X-ray alongside standard sepsis bundle investigations.",
+      "gradingNotes": "Look for TB and GeneXpert mention specifically (KZN relevance) plus standard sepsis workup; not just 'consider HIV infections' vaguely."
+    }
+  ],
+  "stationType": "interpretation",
+  "stimulus": {
+    "kind": "abg",
+    "vignette": "A 44-year-old woman, known HIV-positive on ART, presents with 3 days of productive cough and fevers. She is now confused, hypotensive (BP 85/50) with cool, mottled peripheries. ABG on 40% face mask oxygen:",
+    "values": {
+      "pH": 7.3,
+      "pCO2_kPa": 3.9,
+      "pO2_kPa": 10.7,
+      "HCO3": 14,
+      "BE": -11.1,
+      "Na": 133,
+      "Cl": 97,
+      "K": 4.5,
+      "lactate": 8
+    },
+    "imagePath": null
+  },
+  "findingsKey": [
+    {
+      "finding": "Acidaemia (pH 7.3)",
+      "critical": true
+    },
+    {
+      "finding": "Low HCO3 (14) → primary metabolic acidosis",
+      "critical": true
+    },
+    {
+      "finding": "pCO2 3.9 kPa (~29 mmHg) matches Winter's prediction → appropriate respiratory compensation",
+      "critical": true
+    },
+    {
+      "finding": "Raised anion gap (~22)",
+      "critical": true
+    },
+    {
+      "finding": "No significant hypoxaemia (pO2 10.7 kPa on 40% O2)",
+      "critical": false
+    },
+    {
+      "finding": "Raised lactate (8 mmol/L) → tissue hypoperfusion",
+      "critical": true
+    },
+    {
+      "finding": "Mild hyponatraemia (Na 133) consistent with sepsis",
+      "critical": false
+    },
+    {
+      "finding": "Clinical picture of septic shock (hypotension, confusion, cool peripheries)",
+      "critical": false
+    }
+  ],
+  "interpretationChecklist": [
+    {
+      "id": "ic-1",
+      "item": "Comments on clinical context first (fever, cough, confusion, hypotension suggesting sepsis)",
+      "weight": 1
+    },
+    {
+      "id": "ic-2",
+      "item": "Assesses oxygenation (pO2 10.7 kPa on 40% O2 — reasonably oxygenated despite sepsis)",
+      "weight": 2
+    },
+    {
+      "id": "ic-3",
+      "item": "Identifies acidaemia from pH (7.3)",
+      "weight": 2
+    },
+    {
+      "id": "ic-4",
+      "item": "Identifies the primary disorder as metabolic acidosis (low HCO3/negative BE)",
+      "weight": 3
+    },
+    {
+      "id": "ic-5",
+      "item": "Assesses respiratory compensation using Winter's formula (expected pCO2 ~29 mmHg/3.9 kPa vs actual — appropriate compensation, not a second disorder)",
+      "weight": 3
+    },
+    {
+      "id": "ic-6",
+      "item": "Calculates the anion gap (~22, raised) and links to lactate",
+      "weight": 2
+    },
+    {
+      "id": "ic-7",
+      "item": "Synthesises: high anion gap metabolic acidosis due to lactate → septic shock with tissue hypoperfusion",
+      "weight": 3
+    },
+    {
+      "id": "ic-8",
+      "item": "States immediate management implications (fluids, source control, antibiotics, lactate clearance)",
+      "weight": 2
+    }
+  ],
+  "management": {
+    "immediate": [
+      "Activate sepsis bundle: blood cultures before antibiotics, broad-spectrum IV antibiotics within the hour, IV crystalloid fluid bolus (e.g. 30 mL/kg) with reassessment",
+      "Supplemental oxygen to maintain SpO2 targets, continuous monitoring (BP, HR, urine output), consider vasopressor support if hypotension persists after fluids"
+    ],
+    "definitive": [
+      "Identify and control the septic source (sputum microscopy/culture, GeneXpert MTB/RIF, chest X-ray, consider PJP if CD4 low), check CD4 count and ART history",
+      "Serial lactate measurement to guide resuscitation and escalate to ICU/HDU if shock or lactate fails to clear"
+    ],
+    "supportive": [],
+    "followUp": []
+  }
+}

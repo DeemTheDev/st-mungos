@@ -1,30 +1,49 @@
 // POST /api/admin/login — exchanges APP_ACCESS_PASSWORD for the httpOnly admin
-// cookie, then bounces back to /admin/review. Accepts a plain HTML form post
-// (the no-JS login form on the review page) or JSON { password }.
+// cookie, then bounces back to the page that sent the form (`next`, same-site
+// paths only; defaults to /admin/review). Accepts a plain HTML form post
+// (the no-JS login forms on the review and session pages) or JSON { password }.
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE, adminToken, passwordMatches } from "@/lib/admin-auth";
 
 export const runtime = "nodejs";
 
-async function readPassword(request: Request): Promise<string> {
+interface LoginBody {
+  password: string;
+  next: string | null;
+}
+
+async function readBody(request: Request): Promise<LoginBody> {
   const contentType = request.headers.get("content-type") ?? "";
   if (contentType.includes("application/json")) {
-    const body = (await request.json().catch(() => null)) as { password?: unknown } | null;
-    return typeof body?.password === "string" ? body.password : "";
+    const body = (await request.json().catch(() => null)) as { password?: unknown; next?: unknown } | null;
+    return {
+      password: typeof body?.password === "string" ? body.password : "",
+      next: typeof body?.next === "string" ? body.next : null,
+    };
   }
   const form = await request.formData().catch(() => null);
-  const value = form?.get("password");
-  return typeof value === "string" ? value : "";
+  const password = form?.get("password");
+  const next = form?.get("next");
+  return {
+    password: typeof password === "string" ? password : "",
+    next: typeof next === "string" ? next : null,
+  };
+}
+
+/** Same-site relative paths only — never an open redirect. */
+function safeNext(next: string | null): string {
+  if (next && /^\/[a-zA-Z0-9\-_/]*$/.test(next)) return next;
+  return "/admin/review";
 }
 
 export async function POST(request: Request) {
-  const back = new URL("/admin/review", request.url);
+  const { password, next } = await readBody(request);
+  const back = new URL(safeNext(next), request.url);
 
   if (!process.env.APP_ACCESS_PASSWORD) {
     return new Response("APP_ACCESS_PASSWORD is not configured on the server.", { status: 500 });
   }
 
-  const password = await readPassword(request);
   if (!passwordMatches(password)) {
     back.searchParams.set("error", "1");
     return Response.redirect(back, 303);

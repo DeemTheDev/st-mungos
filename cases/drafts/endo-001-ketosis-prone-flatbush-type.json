@@ -1,0 +1,605 @@
+{
+  "id": "endo-001-ketosis-prone-flatbush-type",
+  "version": 1,
+  "discipline": "endo",
+  "diagnosis": "Ketosis-prone (Flatbush) type 2 diabetes mellitus presenting in diabetic ketoacidosis, precipitated by a urinary tract infection",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "triggerAfterSec": 300,
+      "question": "Walk me through your differential diagnosis for this man's presentation, and how you would rank them.",
+      "modelAnswer": "Top of the list is ketosis-prone (Flatbush) type 2 diabetes presenting in DKA — obese, African, older-onset, family history of typical type 2 diabetes, with a clear infective precipitant. New-onset type 1 diabetes is next — DKA and weight loss fit, but the obesity and age argue against it, and this needs to be confirmed or excluded with antibodies/C-peptide rather than assumed. Stress hyperglycaemia with ketosis secondary to the UTI in an undiagnosed type 2 diabetic is possible but the degree of acidosis is more than typically seen. HHS is against given significant ketoacidosis and preserved mental state. Secondary diabetes is unlikely given no steroid use or endocrinopathy features.",
+      "gradingNotes": "Wants a ranked list with reasoning FOR and AGAINST each, not just naming diagnoses. Full marks require explicitly flagging that ketosis-prone type 2 should be considered before committing to type 1."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Explain the pathophysiology of why he developed diabetic ketoacidosis despite this most likely being type 2, not type 1, diabetes.",
+      "modelAnswer": "In ketosis-prone (Flatbush) type 2 diabetes, severe glucotoxicity and lipotoxicity — often precipitated by an acute stressor like infection — transiently 'stun' beta-cell function, producing a temporary but severe relative or absolute insulin deficiency. This is sufficient to unleash unrestrained lipolysis and hepatic ketogenesis, producing DKA indistinguishable biochemically from type 1 DKA. Because the underlying lesion is functional beta-cell stunning rather than autoimmune destruction, beta-cell mass and function typically recover once the glucotoxic insult resolves — which is why these patients are antibody-negative, retain measurable C-peptide, and can often become insulin-independent again.",
+      "gradingNotes": "Wants the mechanism (glucotoxicity/lipotoxicity → beta-cell stunning → transient insulinopenia → ketogenesis, with expected recovery), not just a restatement of 'he has DKA'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His HbA1c comes back at 11.8%. Given everything else, how much weight do you place on this single result for diagnosing diabetes, and what caveats apply in this population?",
+      "modelAnswer": "In this case it's not being used as the sole diagnostic criterion because he is acutely symptomatic with confirmed hyperglycaemia and DKA — the confirmation rule (needing two abnormal results in an asymptomatic patient) doesn't apply here. But generally in KZN, HbA1c can be unreliable due to anaemia, HIV, CKD and haemoglobinopathies, all of which are common locally — where HbA1c and glucose disagree, the glucose result should be believed. Here it's used descriptively (reflecting weeks-months of preceding hyperglycaemia) rather than as the diagnostic test itself.",
+      "gradingNotes": "Tests understanding of the confirmation rule and the specific HbA1c caveats emphasised in the KB — anaemia, HIV, CKD, haemoglobinopathy — and the instruction to trust glucose over HbA1c when they disagree."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Once he has recovered from this DKA episode, how would you decide whether he needs to stay on insulin long-term?",
+      "modelAnswer": "Given his antibody-negative status and preserved C-peptide, this fits ketosis-prone type 2 diabetes, where beta-cell function often recovers after the acute glucotoxic insult resolves. I would continue basal-bolus insulin through the initial recovery period, then, once he is metabolically stable off IV insulin (typically 6-8 weeks later), attempt a structured trial of tapering insulin while introducing metformin, monitoring glucose closely, rather than assuming he needs lifelong insulin as would be the default in true type 1 diabetes.",
+      "gradingNotes": "Wants explicit mention of the trial-of-withdrawal approach and the time frame/rationale, not just 'continue insulin.'"
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "hyperglycaemic crisis presentation → confirm DKA biochemically → exclude/treat precipitant → classify diabetes type clinically (and with antibodies/C-peptide if unclear) → screen complications and comorbidity → individualise management",
+  "patient": {
+    "name": "Bongani Mthembu",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard at a shopping centre in Pinetown",
+    "personality": "stoic, downplays how unwell he feels, worried about losing his job if admitted",
+    "openingLine": "Doctor, I've been vomiting and my stomach is sore since yesterday... I thought it was something I ate."
+  },
+  "presentingComplaint": "2 days of vomiting and abdominal pain with 2 weeks of excessive thirst and urination, now breathing fast",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Two days ago started vomiting repeatedly and developed constant central abdominal pain; for about 2 weeks before that he had been drinking water constantly and getting up to urinate several times a night",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-polyuria",
+      "fact": "Passing large volumes of urine, day and night, for about 2 weeks — up to 4-5 times overnight",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urination",
+        "peeing",
+        "passing water",
+        "toilet at night",
+        "nocturia",
+        "wee",
+        "how much water",
+        "frequency",
+        "bladder"
+      ]
+    },
+    {
+      "id": "hx-polydipsia",
+      "fact": "Extremely thirsty, drinking far more water than usual, sometimes 3-4 litres a day",
+      "disclosure": "onAsk",
+      "triggers": [
+        "thirst",
+        "thirsty",
+        "drinking",
+        "water",
+        "fluids",
+        "dry mouth",
+        "how much do you drink"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Noticed his work trousers are loose; thinks he has lost about 4kg over the past month",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "clothes",
+        "thinner",
+        "losing weight",
+        "trousers loose",
+        "shrinking"
+      ]
+    },
+    {
+      "id": "hx-appetite",
+      "fact": "His appetite has actually increased over the past couple of weeks — eating more but still losing weight — though today he has no appetite at all because of the nausea",
+      "disclosure": "onAsk",
+      "triggers": [
+        "appetite",
+        "eating",
+        "hungry",
+        "hunger",
+        "food",
+        "eating more",
+        "not eating",
+        "diet",
+        "meals"
+      ]
+    },
+    {
+      "id": "hx-breathing",
+      "fact": "Family noticed he has been breathing fast and deeply since this morning, and his breath smells 'sweet' or like fruit",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breathing",
+        "breath",
+        "fast breathing",
+        "deep breathing",
+        "short of breath",
+        "smell",
+        "fruity",
+        "sweet smell",
+        "panting",
+        "gasping"
+      ]
+    },
+    {
+      "id": "hx-vision",
+      "fact": "Vision has been slightly blurry for the past week, especially reading small print at work",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vision",
+        "eyes",
+        "eyesight",
+        "blurred",
+        "seeing",
+        "sight",
+        "reading"
+      ]
+    },
+    {
+      "id": "hx-priorDM",
+      "fact": "Has never been told he has diabetes before and has never had his sugar checked",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "sugar sickness",
+        "diagnosed before",
+        "checked sugar",
+        "known diabetic",
+        "sugar disease",
+        "blood sugar test before"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "His father has 'sugar' diabetes, diagnosed in his 50s, on tablets; no known family history of diabetes diagnosed in childhood or young adulthood",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "runs in family",
+        "relatives",
+        "genetic",
+        "family sugar"
+      ]
+    },
+    {
+      "id": "hx-precipitant",
+      "fact": "Had burning when passing urine and lower back discomfort for about 5 days before this, which he ignored",
+      "disclosure": "onAsk",
+      "triggers": [
+        "burning",
+        "pain when peeing",
+        "urine infection",
+        "bladder infection",
+        "back pain",
+        "kidney",
+        "stinging",
+        "uti",
+        "infection",
+        "cystitis"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular medication — no steroids, no antipsychotics, no traditional muti recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "steroids",
+        "cortisone",
+        "muti",
+        "traditional medicine",
+        "treatment",
+        "taking anything"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies and no history of reactions to any medicines or foods",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy",
+        "drug allergy",
+        "food allergy",
+        "rash from medicine",
+        "anything you can't take",
+        "sensitive to"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer socially on weekends, about 4-6 beers on a Saturday, no alcohol during the week; no history of binge drinking or withdrawal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "drinking",
+        "beer",
+        "booze",
+        "tavern",
+        "shebeen",
+        "how much do you drink",
+        "weekend drinking",
+        "social drinking"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative about a year ago at a workplace wellness day; not currently on any HIV treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "wellness day",
+        "sexual history",
+        "partner status",
+        "ever tested"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no night sweats, no known TB contacts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "night sweats",
+        "contact",
+        "household",
+        "anyone sick",
+        "sputum"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Umlazi with his wife and two children; smokes about 5 cigarettes a day for 10 years; works long night shifts as a security guard with irregular meal times",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No chest pain, no leg swelling, no numbness or tingling in his feet, no foot wounds, no erectile difficulties reported so far",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "swelling",
+        "legs",
+        "numbness",
+        "tingling",
+        "feet",
+        "pins and needles",
+        "wounds",
+        "sores",
+        "erection",
+        "sexual function",
+        "other symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Obese, visibly dehydrated man, breathing rapidly and deeply (Kussmaul pattern); sweet/acetone smell on breath; dry mucous membranes, reduced skin turgor; acanthosis nigricans noted at the back of the neck; no lipodystrophy, no thrush, no lymphadenopathy",
+    "vitals": {
+      "hr": 118,
+      "bp": "100/62",
+      "rr": 28,
+      "temp": 37.6,
+      "spo2": "98% on room air",
+      "bmi": 31
+    },
+    "respiratory": "Deep, sighing (Kussmaul) breathing; chest clear on auscultation, no crackles or wheeze",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs; postural BP drop of 20 mmHg systolic on sitting up; JVP not raised",
+    "abdo": "Diffuse mild tenderness on palpation, soft, no guarding or rebound (pseudo-peritonism of DKA); bowel sounds present; no organomegaly; mild suprapubic and left flank tenderness",
+    "neuro": "Alert and orientated (GCS 15), no focal deficits; grossly intact sensation on brief screening; reflexes present",
+    "other": {
+      "feet": "No ulcers, calluses or deformity; pulses palpable bilaterally; monofilament sensation intact today",
+      "fundoscopy": "Not yet performed — deferred until acutely unwell period settles",
+      "injectionSites": "Not applicable — insulin-naive"
+    }
+  },
+  "investigations": [
+    {
+      "name": "Capillary/point-of-care glucose",
+      "result": "28.4 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas",
+      "result": "pH 7.18, HCO3 9 mmol/L, base excess -16, pCO2 3.1 kPa (compensatory)",
+      "key": true
+    },
+    {
+      "name": "Blood β-hydroxybutyrate (ketones)",
+      "result": "5.8 mmol/L (markedly elevated)",
+      "key": true
+    },
+    {
+      "name": "Urine dipstick",
+      "result": "Glucose 4+, ketones 3+, leucocytes 2+, nitrites positive, no haematuria",
+      "key": false
+    },
+    {
+      "name": "Mid-stream urine culture",
+      "result": "E. coli >10^5 CFU/mL, sensitive to standard agents — confirms UTI as DKA precipitant",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Na 132 mmol/L, K 5.6 mmol/L (pre-treatment), urea 9.8 mmol/L, creatinine 118 µmol/L, eGFR 68 mL/min/1.73m²",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "WCC 14.2 x10^9/L (mild leukocytosis, likely stress/infection), Hb 13.1 g/dL, platelets normal",
+      "key": false
+    },
+    {
+      "name": "HbA1c",
+      "result": "11.8% (undiagnosed, poorly controlled hyperglycaemia over preceding weeks-months)",
+      "key": false
+    },
+    {
+      "name": "GAD65 and IA-2 autoantibodies",
+      "result": "Both negative",
+      "key": true
+    },
+    {
+      "name": "C-peptide (paired with glucose, drawn once acutely stable)",
+      "result": "0.9 nmol/L — preserved, not in the undetectable/type 1 range",
+      "key": true
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray / TB symptom screen",
+      "result": "No TB symptoms on screen; CXR clear, no cavitation or infiltrate",
+      "key": false
+    },
+    {
+      "name": "Fasting lipogram and urine ACR",
+      "result": "Deferred until acute illness resolves, to be done at follow-up once euglycaemic",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Ketosis-prone (Flatbush) type 2 diabetes presenting in DKA",
+      "rank": 1,
+      "for": [
+        "obese, older-onset presentation",
+        "African ethnicity",
+        "family history of typical type 2 diabetes",
+        "antibody-negative",
+        "preserved C-peptide",
+        "clear infective precipitant"
+      ],
+      "against": []
+    },
+    {
+      "dx": "New-onset type 1 diabetes presenting in DKA",
+      "rank": 2,
+      "for": [
+        "DKA at presentation",
+        "weight loss",
+        "osmotic symptoms"
+      ],
+      "against": [
+        "obesity rather than lean habitus",
+        "age 34 rather than childhood/adolescence",
+        "antibodies negative",
+        "C-peptide preserved"
+      ]
+    },
+    {
+      "dx": "DKA precipitated by an infective illness in undiagnosed type 2 diabetes (without ketosis-prone phenotype)",
+      "rank": 3,
+      "for": [
+        "clear UTI precipitant",
+        "hyperglycaemia and ketosis can occur in stressed type 2 diabetes"
+      ],
+      "against": [
+        "degree of ketoacidosis is more marked than typically seen in straightforward stress hyperglycaemia"
+      ]
+    },
+    {
+      "dx": "Hyperosmolar hyperglycaemic state (HHS)",
+      "rank": 4,
+      "for": [
+        "marked hyperglycaemia",
+        "dehydration"
+      ],
+      "against": [
+        "significant ketosis and acidosis present, which is atypical for HHS",
+        "patient alert with GCS 15, not the altered mental state typical of HHS"
+      ]
+    },
+    {
+      "dx": "Secondary diabetes (steroid-induced, pancreatic, endocrinopathy)",
+      "rank": 5,
+      "for": [
+        "hyperglycaemia"
+      ],
+      "against": [
+        "no steroid or antipsychotic use",
+        "no features of Cushing's or acromegaly",
+        "no history of pancreatitis or alcohol excess pattern"
+      ]
+    }
+  ],
+  "pathophys": {
+    "polyuria": "Glucose exceeds the renal tubular reabsorption threshold (~10-11 mmol/L), causing osmotic diuresis as unreabsorbed glucose drags water into the tubular lumen",
+    "polydipsia": "Osmotic diuresis causes intracellular and extracellular dehydration, raising plasma osmolality and stimulating hypothalamic thirst centres",
+    "weight loss with increased appetite": "Cellular glucose starvation (impaired uptake despite hyperglycaemia) drives catabolism of fat and muscle for energy despite increased calorie intake — a relative insulinopenic state",
+    "vomiting and abdominal pain": "Ketoacidosis directly irritates the gastric mucosa and slows gastric emptying; metabolic acidosis and electrolyte derangement stimulate the vomiting centre — this 'pseudo-peritonism' can mimic a surgical abdomen",
+    "Kussmaul breathing": "Compensatory hyperventilation to blow off CO2 and raise pH in response to severe metabolic (ketoacidotic) acidosis",
+    "fruity/acetone breath": "Volatile ketone body (acetone) exhaled via the lungs",
+    "blurred vision": "Acute osmotic shifts alter the water content and refractive index of the lens, causing transient blurring independent of true retinopathy",
+    "ketosis-prone type 2 (Flatbush) mechanism": "Severe glucotoxicity/lipotoxicity transiently 'stuns' beta-cells, precipitating a temporary absolute insulin deficiency sufficient to trigger DKA; because the underlying defect is beta-cell dysfunction rather than autoimmune destruction, beta-cell function characteristically recovers once glucotoxicity resolves, allowing eventual insulin independence — hence antibody-negative and C-peptide-preserved"
+  },
+  "staging": "Diabetic ketoacidosis, moderate-to-severe (pH 7.18, HCO3 9 mmol/L, significant ketosis); newly diagnosed diabetes, phenotype consistent with ketosis-prone (Flatbush) type 2 diabetes pending recovery-phase reassessment",
+  "management": {
+    "immediate": [
+      "Resuscitate with IV 0.9% sodium chloride per DKA protocol (rapid initial bolus then rate guided by hydration status/response)",
+      "Start a fixed-rate IV insulin infusion (0.1 units/kg/hour), only after ensuring K+ is not already dangerously low",
+      "Monitor and replace potassium aggressively once insulin started (K+ will fall as it shifts intracellularly) — add potassium to fluids once K+ <5.5 mmol/L and urine output confirmed",
+      "Hourly capillary glucose, 1-2 hourly ketones/VBG until acidosis resolving",
+      "Add 10% dextrose infusion alongside saline once glucose falls below ~14 mmol/L to prevent hypoglycaemia while continuing insulin to clear ketones",
+      "Treat the precipitant: empirical antibiotics for the urinary tract infection per local antibiogram, adjust once culture/sensitivity available",
+      "VTE prophylaxis once stable; strict fluid balance and hourly observations"
+    ],
+    "definitive": [
+      "Transition to subcutaneous basal-bolus insulin once eating, drinking and ketones cleared (overlap IV and SC insulin by 1-2 hours)",
+      "Given obesity, antibody-negative status and preserved C-peptide, plan a structured trial of insulin reduction/withdrawal with introduction of metformin (± other oral agents) 6-8 weeks after recovery, once glucotoxicity has resolved and beta-cell function has had a chance to recover",
+      "Do NOT commit him to a label of lifelong type 1 diabetes on the basis of presenting in DKA alone — reassess type in the recovery phase",
+      "Structured diabetes education, home glucose/ketone monitoring, and sick-day rules for future illness"
+    ],
+    "supportive": [
+      "Dietary counselling and weight management given obesity and metabolic syndrome features",
+      "Smoking cessation counselling",
+      "Screen and address cardiovascular risk factors (BP, lipids) once stable",
+      "Psychosocial support and reassurance regarding return to work"
+    ],
+    "followUp": [
+      "Repeat GAD65/IA-2 antibodies and C-peptide are not usually needed again if already clearly negative/preserved, but reassess insulin requirement at 6-8 weeks",
+      "Baseline dilated fundoscopy, urine ACR, foot risk screening and fasting lipogram once acutely stable, then annually",
+      "HbA1c recheck at 3 months to guide ongoing therapy",
+      "Diabetes and TB cross-screening at every future visit given local epidemiology",
+      "Repeat HIV testing annually"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-characterise",
+      "phase": "history",
+      "item": "Characterises the presentation: distinguishes classic osmotic symptoms, tempo of onset, and recognises presentation via a decompensated crisis (DKA) rather than incidental finding",
+      "answer": "2 weeks of polyuria/polydipsia/weight loss with increased appetite, now 2 days of vomiting, abdominal pain and fast breathing",
+      "why": "First step of the framework — establishes this is a crisis presentation requiring urgent biochemical confirmation",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ketosis-symptoms",
+      "phase": "history",
+      "item": "Actively screens for ketosis symptoms: nausea, vomiting, abdominal pain, rapid/deep breathing, breath odour",
+      "answer": "All present — vomiting, abdo pain, Kussmaul breathing, fruity breath noted by family",
+      "why": "Identifies red flags for DKA requiring urgent management, not just a hyperglycaemia workup",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-precipitant",
+      "phase": "history",
+      "item": "Actively searches for a precipitant (infection symptoms, medication non-adherence, new-onset presentation, drug history)",
+      "answer": "5 days of dysuria and loin discomfort suggestive of urinary tract infection; no steroid/antipsychotic use",
+      "why": "DKA always needs an identified and treated precipitant, per the framework's 'exclude acute precipitant' step",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-classify-clinically",
+      "phase": "history",
+      "item": "Gathers features to classify diabetes type clinically: age, BMI/habitus, tempo, ketosis, family history",
+      "answer": "34 years old, obese (BMI 31), African, father with typical type 2 diabetes, 2-week tempo",
+      "why": "Clinical classification comes before reaching for antibodies/C-peptide",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-avoid-premature-label",
+      "phase": "differentials",
+      "item": "Explicitly avoids labelling an obese African patient presenting in DKA as lifelong type 1 diabetes without further testing",
+      "answer": "Recognises ketosis-prone (Flatbush) type 2 diabetes as a genuine and locally common possibility requiring active exclusion",
+      "why": "Named red flag in the KB — committing to lifelong insulin prematurely is a common and clinically significant error",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-confirmatory-tests",
+      "phase": "investigations",
+      "item": "Requests GAD65/IA-2 autoantibodies and C-peptide (with paired glucose) to resolve diabetes type once the acute crisis is controlled",
+      "answer": "Antibodies negative, C-peptide 0.9 nmol/L (preserved) — supports ketosis-prone type 2, not type 1",
+      "why": "Framework step 5 — use antibodies/C-peptide only when the answer changes management, exactly the scenario here",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-dka-biochem",
+      "phase": "investigations",
+      "item": "Orders and interprets the biochemical confirmation of DKA: glucose, ketones/VBG, U&E (especially potassium)",
+      "answer": "Glucose 28.4, pH 7.18, HCO3 9, ketones 5.8 mmol/L, K+ 5.6 pre-treatment",
+      "why": "Confirms diagnosis and severity, and guides safe initiation of insulin/fluids/potassium replacement",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-comorbidity-screen",
+      "phase": "history",
+      "item": "Performs bidirectional HIV and TB screening as part of new diabetes workup",
+      "answer": "HIV negative (tested a year prior), no TB symptoms",
+      "why": "Mandatory bidirectional TB-DM and HIV screening per SA/KZN guidelines for every new diabetic",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-complication-screen",
+      "phase": "examination",
+      "item": "Screens for complications appropriate to a new diagnosis: acanthosis nigricans, postural BP, feet, plans fundoscopy",
+      "answer": "Acanthosis nigricans present, postural drop of 20 mmHg, feet currently normal, fundoscopy deferred to when stable",
+      "why": "Complication screening is part of the framework even at first presentation of type 2-pattern diabetes",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-immediate-mx",
+      "phase": "management",
+      "item": "Outlines immediate DKA management: fluids, fixed-rate insulin infusion, potassium monitoring/replacement, treating the precipitant",
+      "answer": "IV 0.9% saline, insulin infusion 0.1 U/kg/hr, K+ replacement once <5.5, antibiotics for UTI",
+      "why": "Core DKA protocol per SA Adult Hospital Level STGs",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-definitive-mx",
+      "phase": "management",
+      "item": "Plans definitive management including a structured trial of insulin withdrawal/introduction of metformin once recovered, rather than committing to lifelong insulin",
+      "answer": "Transition to SC insulin at recovery, reassess at 6-8 weeks with a trial of oral therapy given antibody-negative, C-peptide-preserved status",
+      "why": "Directly reflects the ketosis-prone type 2 management pathway emphasised in the KB",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 12,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 13
+  }
+}

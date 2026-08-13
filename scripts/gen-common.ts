@@ -3,12 +3,16 @@
 // call shape, and draft writing.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import Anthropic from "@anthropic-ai/sdk";
-import type { ZodIssue } from "zod";
+import Anthropic, { AnthropicError, APIError } from "@anthropic-ai/sdk";
+import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import type { ZodIssue, ZodType } from "zod";
 import { OsceCaseSchema, type OsceCase } from "../lib/case-schema";
 
 // Examiner/marking/case-gen model per DECISIONS.md (2026-08-12).
 export const GENERATION_MODEL = "claude-sonnet-5";
+// Generation is JSON transcription against a fixed schema, not open reasoning —
+// thinking is disabled on these calls, so the whole budget belongs to the case
+// JSON (~5k tokens) and 8000 has comfortable headroom.
 export const MAX_TOKENS = 8000;
 
 export const BANK_DIR = join(process.cwd(), "cases", "bank");
@@ -101,17 +105,6 @@ export function nextSequence(prefix: string, existing: ExistingCaseInfo[]): numb
 // --------------------------------------------------------------------------
 // LLM response handling
 
-/** Strip markdown fences / prose and return the outermost JSON object text. */
-export function extractJsonObject(text: string): string {
-  const unfenced = text.replace(/```(?:json)?/gi, "");
-  const start = unfenced.indexOf("{");
-  const end = unfenced.lastIndexOf("}");
-  if (start === -1 || end <= start) {
-    throw new Error("response contained no JSON object");
-  }
-  return unfenced.slice(start, end + 1);
-}
-
 export function formatZodIssues(issues: ZodIssue[]): string {
   return issues.map((i) => `- ${i.path.join(".") || "(root)"}: ${i.message}`).join("\n");
 }
@@ -127,22 +120,49 @@ export function createAnthropicClient(): Anthropic {
   return new Anthropic();
 }
 
+/** Result of one structured generation attempt. Exactly one field is set. */
+export interface StructuredResult<T> {
+  data: T | null;
+  /** Retryable client-side validation feedback (refine rules the API-side schema can't express). */
+  feedback: string | null;
+}
+
 /**
- * One generation call. The system prompt is static across a run and carries the
- * cache_control breakpoint (prompt-caching: stable prefix in `system`, per-case
- * content in the user message).
+ * One structured-outputs generation call. The JSON *shape* is enforced by the
+ * API via `output_config.format` (zodOutputFormat), so shape retries should be
+ * rare; refine rules (rubric sum, trigger fatness) are validated client-side by
+ * `messages.parse` and surface as retryable `feedback`.
+ *
+ * The system prompt is static across a run and carries the cache_control
+ * breakpoint (prompt-caching: stable prefix in `system`, per-case content in
+ * the user message). Thinking is disabled — this is JSON transcription against
+ * a fixed schema, not open reasoning.
  */
-export async function generateJson(
+export async function generateStructured<T>(
   client: Anthropic,
   systemPrompt: string,
   userPrompt: string,
-): Promise<string> {
-  const response = await client.messages.create({
-    model: GENERATION_MODEL,
-    max_tokens: MAX_TOKENS,
-    system: [{ type: "text", text: systemPrompt, cache_control: { type: "ephemeral" } }],
-    messages: [{ role: "user", content: userPrompt }],
-  });
+  schema: ZodType<T>,
+): Promise<StructuredResult<T>> {
+  let response;
+  try {
+    response = await client.messages.parse({
+      model: GENERATION_MODEL,
+      max_tokens: MAX_TOKENS,
+      thinking: { type: "disabled" },
+      output_config: { format: zodOutputFormat(schema) },
+      system: [{ type: "text", text: systemPrompt, cache_control: { type: "ephemeral" } }],
+      messages: [{ role: "user", content: userPrompt }],
+    });
+  } catch (err) {
+    // messages.parse throws a plain AnthropicError (not an APIError) when the
+    // response fails the client-side Zod backstop — its message carries the
+    // formatted issues, which is exactly the retry feedback we want.
+    if (err instanceof AnthropicError && !(err instanceof APIError) && /Failed to parse structured output/.test(err.message)) {
+      return { data: null, feedback: err.message };
+    }
+    throw err;
+  }
 
   if (response.stop_reason === "refusal") {
     throw new Error("model declined the request (stop_reason: refusal)");
@@ -150,13 +170,10 @@ export async function generateJson(
   if (response.stop_reason === "max_tokens") {
     throw new Error(`response truncated at ${MAX_TOKENS} tokens (stop_reason: max_tokens)`);
   }
-
-  const text = response.content
-    .filter((b): b is Anthropic.TextBlock => b.type === "text")
-    .map((b) => b.text)
-    .join("\n");
-  if (!text.trim()) throw new Error("model returned no text content");
-  return text;
+  if (response.parsed_output == null) {
+    throw new Error("model returned no structured output");
+  }
+  return { data: response.parsed_output, feedback: null };
 }
 
 // --------------------------------------------------------------------------

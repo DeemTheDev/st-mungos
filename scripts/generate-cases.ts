@@ -2,10 +2,12 @@
 // Usage: tsx scripts/generate-cases.ts --system resp --count 5 [--uncommon]
 //
 // Per case: pick a KB topic for the requested system (rotating for variety),
-// call claude-sonnet-5 with the topic + KZN epidemiology brief + the full seed
-// case as a few-shot example, validate the JSON with the Zod schema (one retry
-// with the issues fed back), dedupe against bank + drafts, and write the draft
-// to cases/drafts/<id>.json. Nothing reaches the bank without human review.
+// pick the target diagnosis IN CODE from the per-system pool (excluding
+// everything already in bank/drafts — no dedupe-collision waste), then call
+// claude-sonnet-5 with structured outputs (the Zod schema rides in
+// output_config.format, so the JSON shape is API-enforced; refine rules like
+// rubric-sums-to-100 are validated client-side with one feedback retry).
+// Drafts land in cases/drafts/<id>.json. Nothing reaches the bank unreviewed.
 
 try {
   process.loadEnvFile(".env.local");
@@ -16,7 +18,15 @@ try {
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
-import { DisciplineSchema, OsceCaseSchema, type Discipline, type OsceCase } from "../lib/case-schema";
+import { z } from "zod";
+import {
+  ClinicalCaseSchema,
+  DisciplineSchema,
+  ExaminationSchema,
+  OsceCaseSchema,
+  type ClinicalCase,
+  type Discipline,
+} from "../lib/case-schema";
 import {
   BANK_DIR,
   EPI_BRIEF_PATH,
@@ -24,15 +34,15 @@ import {
   KB_INDEX_PATH,
   createAnthropicClient,
   diagnosisSlug,
-  extractJsonObject,
   formatZodIssues,
-  generateJson,
+  generateStructured,
   nextSequence,
   normalizeDiagnosis,
   readExistingCases,
   writeDraft,
   type ExistingCaseInfo,
 } from "./gen-common";
+import { pickDiagnosis, usedDiagnoses } from "./diagnosis-pool";
 
 interface KbIndexEntry {
   slug: string;
@@ -46,6 +56,33 @@ const SEED_CASE_PATH = join(BANK_DIR, "resp-001-ptb-hiv.json");
 // The task brief asks for 8+ triggers per onAsk fact; we hard-require a floor
 // of 6 so a single stingy fact doesn't discard an otherwise excellent case.
 const MIN_TRIGGERS_PER_ONASK_FACT = 6;
+
+// ---------------------------------------------------------------------------
+// Generation-side schema. Structured outputs forces additionalProperties:false
+// on every object, which would pin open-key records (pathophys,
+// examination.other) to be permanently empty — so for generation, pathophys is
+// an array of {symptom, mechanism} pairs (converted back to the record shape
+// in code) and `other` is omitted (filled with {} in code).
+const GenClinicalCaseSchema = ClinicalCaseSchema.omit({ pathophys: true, examination: true }).extend({
+  examination: ExaminationSchema.omit({ other: true }),
+  pathophys: z
+    .array(
+      z.object({
+        symptom: z.string().min(1),
+        mechanism: z.string().min(1),
+      }),
+    )
+    .min(3),
+});
+type GenClinicalCase = z.infer<typeof GenClinicalCaseSchema>;
+
+function toClinicalCase(gen: GenClinicalCase): unknown {
+  return {
+    ...gen,
+    examination: { ...gen.examination, other: {} },
+    pathophys: Object.fromEntries(gen.pathophys.map((p) => [p.symptom, p.mechanism])),
+  };
+}
 
 function fail(message: string): never {
   console.error(message);
@@ -116,37 +153,28 @@ PEDAGOGY (non-negotiable)
 - Ground everything in KwaZulu-Natal epidemiology and South African practice (SA EML / Adult Hospital Level STGs, WHO clinical staging for HIV, SA TB guidelines).
 
 OUTPUT FORMAT
-- Output ONLY one JSON object. No markdown fences, no commentary before or after.
+- The JSON shape is enforced by the API against a schema — your job is to fill every field with real, deep clinical content, not to worry about syntax.
 
-SCHEMA (every field required unless marked optional)
-{
-  "id": kebab-case string (placeholder is fine — it is reassigned in code),
-  "version": 1,
-  "stationType": "clinical",
-  "discipline": one of "resp"|"cardio"|"gi-hep"|"endo"|"neuro"|"renal"|"haem"|"id"|"rheum",
-  "diagnosis": string — the final diagnosis,
-  "commonness": "common" | "uncommon",
-  "difficulty": 1 | 2 | 3,
-  "framework": string — the symptom-to-differential framework in play (from the KB topic),
-  "patient": { "name", "age" (int), "sex" "M"|"F", "occupation", "personality", "openingLine" },
-  "presentingComplaint": string,
-  "history": array of AT LEAST 12 facts covering the full HPI, systems-review negatives, PMH, medications, allergies, social history and family history. Each fact:
-    { "id": "hx-...", "fact": string, "disclosure": "volunteered"|"onAsk", "triggers": string[] }
-    - "volunteered" facts: triggers may be [].
-    - "onAsk" facts: FAT trigger lists — 8 to 12 triggers each, covering medical terms AND lay phrasings a nervous student might use (e.g. for haemoptysis: "blood", "coughing up", "phlegm", "spit"). The engine gates disclosure on these strings; thin lists break the game.
-  "examination": { "general", "vitals": { "hr" (num), "bp" (string), "rr" (num), "temp" (num), "spo2" (string), "bmi" (num, optional) }, "respiratory", "cardio", "abdo", "neuro", "other": {} } — findings only revealed when the student performs the step,
-  "investigations": AT LEAST 6 entries { "name", "result", "key": boolean } with REAL result values — include the confirmatory pathway ("key": true) AND plausible non-key tests so ordering everything isn't free,
-  "differentials": AT LEAST 3, each { "dx", "rank" (1 = most likely), "for": string[], "against": string[] },
-  "pathophys": object mapping each cardinal symptom → its mechanism (used for examiner "why" questions),
-  "staging": string (optional — WHO stage, NYHA class, CKD stage etc. where relevant),
-  "management": { "immediate": [], "definitive": [], "supportive": [], "followUp": [] } per SA guidelines,
-  "stationChecklist": AT LEAST 8 items — THE MARK SHEET. Every question/action expected of the student:
-    { "id": "cl-...", "phase": "history"|"examination"|"differentials"|"investigations"|"management", "item", "answer" (string or null), "why", "weight" 1-5 (int), "critical": boolean }
-    - Derive the checklist from the KB topic's framework: the checklist IS that framework turned into a mark sheet, in the order a good candidate would work.
-    - Mark items "critical": true when missing them would be an examiner red flag.
-  "examinerBank": 3 to 5 viva questions { "id": "ex-...", "triggerPhase": phase, "triggerAfterSec" (int, optional), "question", "modelAnswer", "gradingNotes" }
-    - Include one "walk me through your approach / differential" question and one pathophysiology-mechanism question pulled from the pathophys map.
-  "rubric": { "communication", "historyTaking", "examination", "clinicalReasoning", "investigations", "management" } — integers that MUST sum to exactly 100.
+CONTENT REQUIREMENTS (the schema enforces shape; you must supply the substance)
+- "id": kebab-case placeholder (it is reassigned in code); "version": 1; "stationType": "clinical".
+- "diagnosis": EXACTLY the diagnosis you are given in the request — do not substitute or reword it.
+- "framework": the symptom-to-differential framework in play (from the KB topic).
+- "history": AT LEAST 12 facts covering the full HPI, systems-review negatives, PMH, medications, allergies, social history and family history.
+  - "volunteered" facts: triggers may be [].
+  - "onAsk" facts: FAT trigger lists — 8 to 12 triggers each, covering medical terms AND lay phrasings a nervous student might use (e.g. for haemoptysis: "blood", "coughing up", "phlegm", "spit"). The engine gates disclosure on these strings; thin lists break the game.
+- "examination": findings only revealed when the student performs the step — write real signs consistent with the diagnosis, including a full vitals set.
+- "investigations": AT LEAST 6 entries with REAL result values — include the confirmatory pathway ("key": true) AND plausible non-key tests so ordering everything isn't free.
+- "differentials": AT LEAST 3, ranked (1 = most likely), each with "for" and "against" evidence drawn from this case.
+- "pathophys": an ARRAY of { "symptom", "mechanism" } pairs — one per cardinal symptom, real mechanisms (used for examiner "why" questions). (The seed example below shows the older object form; you must produce the array-of-pairs form.)
+- "staging": WHO stage, NYHA class, CKD stage etc. where relevant (optional).
+- "management": { "immediate", "definitive", "supportive", "followUp" } per SA guidelines.
+- "stationChecklist": AT LEAST 8 items — THE MARK SHEET. Every question/action expected of the student.
+  - Derive the checklist from the KB topic's framework: the checklist IS that framework turned into a mark sheet, in the order a good candidate would work.
+  - Mark items "critical": true when missing them would be an examiner red flag.
+  - weights are integers 1-5.
+- "examinerBank": 3 to 5 viva questions, each with a modelAnswer and gradingNotes.
+  - Include one "walk me through your approach / differential" question and one pathophysiology-mechanism question pulled from the pathophys pairs.
+- "rubric": { communication, historyTaking, examination, clinicalReasoning, investigations, management } — integers that MUST sum to exactly 100.
 
 PATIENT REALISM
 - Patients speak layperson language ("sugar sickness", not "poorly controlled T2DM"); the personality field should make them playable (worried, stoic, chatty, minimising...).
@@ -163,43 +191,39 @@ function buildUserPrompt(
   topic: KbIndexEntry & { content: string },
   system: Discipline,
   commonness: "common" | "uncommon",
-  avoidPairs: Array<{ diagnosis: string; presentingComplaint: string | null }>,
+  diagnosis: string,
 ): string {
-  const avoidList =
-    avoidPairs.length > 0
-      ? avoidPairs
-          .map((p) => `- ${p.diagnosis}${p.presentingComplaint ? ` — presenting: ${p.presentingComplaint}` : ""}`)
-          .join("\n")
-      : "- (none yet)";
-  return `Write ONE new clinical OSCE case.
+  return `Write ONE new clinical OSCE case for exactly this diagnosis: ${diagnosis}
 
 Requirements:
+- "diagnosis": exactly "${diagnosis}" (verbatim — it was chosen in code and is checked in code)
 - "discipline": "${system}"
-- "commonness": "${commonness}"${commonness === "uncommon" ? " — pick a genuinely less-common but examinable diagnosis for this system (still plausible in KZN)" : ""}
+- "commonness": "${commonness}"
 - "stationType": "clinical"
 - Base the case on the KB topic below. Derive "framework" and the "stationChecklist" from the topic's framework/approach — the checklist is that framework turned into a mark sheet. Weight heavily anything under a "Her notes emphasise" section.
-- The case MUST have a different diagnosis AND a different presenting-complaint pattern from every existing case listed here:
-${avoidList}
 
 KB TOPIC — ${topic.title}:
-${topic.content}
-
-Output ONLY the JSON object.`;
+${topic.content}`;
 }
 
 /** Checks beyond the Zod schema; returns retryable feedback lines. */
-function extraChecks(c: OsceCase, system: Discipline, commonness: "common" | "uncommon"): string[] {
+function extraChecks(
+  c: ClinicalCase,
+  system: Discipline,
+  commonness: "common" | "uncommon",
+  pinnedDiagnosis: string,
+): string[] {
   const problems: string[] = [];
-  if (c.stationType !== "clinical") problems.push(`stationType must be "clinical", got "${c.stationType}"`);
+  if (normalizeDiagnosis(c.diagnosis) !== normalizeDiagnosis(pinnedDiagnosis)) {
+    problems.push(`diagnosis must be exactly "${pinnedDiagnosis}", got "${c.diagnosis}"`);
+  }
   if (c.discipline !== system) problems.push(`discipline must be "${system}", got "${c.discipline}"`);
   if (c.commonness !== commonness) problems.push(`commonness must be "${commonness}", got "${c.commonness}"`);
-  if (c.stationType === "clinical") {
-    for (const fact of c.history) {
-      if (fact.disclosure === "onAsk" && fact.triggers.length < MIN_TRIGGERS_PER_ONASK_FACT) {
-        problems.push(
-          `history fact "${fact.id}" has only ${fact.triggers.length} triggers — onAsk facts need 8-12 (minimum ${MIN_TRIGGERS_PER_ONASK_FACT}) including lay phrasings`,
-        );
-      }
+  for (const fact of c.history) {
+    if (fact.disclosure === "onAsk" && fact.triggers.length < MIN_TRIGGERS_PER_ONASK_FACT) {
+      problems.push(
+        `history fact "${fact.id}" has only ${fact.triggers.length} triggers — onAsk facts need 8-12 (minimum ${MIN_TRIGGERS_PER_ONASK_FACT}) including lay phrasings`,
+      );
     }
   }
   return problems;
@@ -207,22 +231,23 @@ function extraChecks(c: OsceCase, system: Discipline, commonness: "common" | "un
 
 interface AttemptResult {
   ok: boolean;
-  case?: OsceCase;
+  case?: ClinicalCase;
   feedback?: string;
 }
 
-function parseAndValidate(raw: string, system: Discipline, commonness: "common" | "uncommon"): AttemptResult {
-  let json: unknown;
-  try {
-    json = JSON.parse(extractJsonObject(raw));
-  } catch (err) {
-    return { ok: false, feedback: `The output was not parseable JSON: ${err instanceof Error ? err.message : err}` };
-  }
-  const parsed = OsceCaseSchema.safeParse(json);
+function validateGenerated(
+  gen: GenClinicalCase,
+  system: Discipline,
+  commonness: "common" | "uncommon",
+  pinnedDiagnosis: string,
+): AttemptResult {
+  // Convert the generation shape (pathophys pairs, no `other`) back to the
+  // canonical case shape and re-validate — mechanical, so failures are rare.
+  const parsed = ClinicalCaseSchema.safeParse(toClinicalCase(gen));
   if (!parsed.success) {
     return { ok: false, feedback: `Schema validation failed:\n${formatZodIssues(parsed.error.issues)}` };
   }
-  const problems = extraChecks(parsed.data, system, commonness);
+  const problems = extraChecks(parsed.data, system, commonness, pinnedDiagnosis);
   if (problems.length > 0) {
     return { ok: false, feedback: `Fix these problems:\n${problems.map((p) => `- ${p}`).join("\n")}` };
   }
@@ -246,10 +271,9 @@ async function main(): Promise<void> {
 
   const topics = loadKbTopics(system);
   const existing: ExistingCaseInfo[] = readExistingCases();
-  const seenDiagnoses = new Set(existing.map((c) => normalizeDiagnosis(c.diagnosis)).filter(Boolean));
-  const avoidPairs = existing
-    .filter((c) => c.diagnosis)
-    .map((c) => ({ diagnosis: c.diagnosis, presentingComplaint: c.presentingComplaint }));
+  // Diagnoses picked in code, excluded up front — no generation is ever spent
+  // on a diagnosis that would collide with bank/drafts.
+  const seenDiagnoses = usedDiagnoses(existing);
 
   const client = createAnthropicClient();
   const systemPrompt = buildSystemPrompt(seedCaseJson, epidemiologyBrief);
@@ -261,28 +285,33 @@ async function main(): Promise<void> {
 
   for (let i = 0; i < count; i++) {
     const topic = topics[i % topics.length];
-    console.log(`[${i + 1}/${count}] topic: ${topic.slug}`);
+    const diagnosis = pickDiagnosis(system, commonness, topic, seenDiagnoses);
+    if (!diagnosis) {
+      console.warn(
+        `[${i + 1}/${count}] diagnosis pool for "${system}" (${commonness}) is exhausted — stopping early. ` +
+          `Add entries to scripts/diagnosis-pool.ts to generate more.`,
+      );
+      break;
+    }
+    console.log(`[${i + 1}/${count}] topic: ${topic.slug} → ${diagnosis}`);
     try {
-      const userPrompt = buildUserPrompt(topic, system, commonness, avoidPairs);
-      const firstRaw = await generateJson(client, systemPrompt, userPrompt);
-      let result = parseAndValidate(firstRaw, system, commonness);
-
-      // A within-run duplicate diagnosis is retryable feedback too.
-      if (result.ok && seenDiagnoses.has(normalizeDiagnosis(result.case!.diagnosis))) {
-        result = {
-          ok: false,
-          feedback: `The diagnosis "${result.case!.diagnosis}" already exists in the case bank. Produce a case with a genuinely different diagnosis.`,
-        };
-      }
+      const userPrompt = buildUserPrompt(topic, system, commonness, diagnosis);
+      const first = await generateStructured(client, systemPrompt, userPrompt, GenClinicalCaseSchema);
+      let result: AttemptResult = first.data
+        ? validateGenerated(first.data, system, commonness, diagnosis)
+        : { ok: false, feedback: first.feedback ?? "generation returned nothing" };
 
       if (!result.ok) {
         console.log(`        first attempt rejected — retrying once with feedback`);
-        const retryRaw = await generateJson(
+        const retry = await generateStructured(
           client,
           systemPrompt,
-          `${userPrompt}\n\nYour previous attempt was rejected. ${result.feedback}\n\nOutput the corrected complete JSON object.`,
+          `${userPrompt}\n\nYour previous attempt was rejected. ${result.feedback}\n\nOutput the corrected complete case.`,
+          GenClinicalCaseSchema,
         );
-        result = parseAndValidate(retryRaw, system, commonness);
+        result = retry.data
+          ? validateGenerated(retry.data, system, commonness, diagnosis)
+          : { ok: false, feedback: retry.feedback ?? "generation returned nothing" };
       }
 
       if (!result.ok || !result.case) {
@@ -291,7 +320,7 @@ async function main(): Promise<void> {
         continue;
       }
 
-      // Code-level dedupe guard — refuse to write a duplicate diagnosis.
+      // Belt-and-braces dedupe guard — the pool pick should make this unreachable.
       const normalized = normalizeDiagnosis(result.case.diagnosis);
       if (seenDiagnoses.has(normalized)) {
         discarded++;
@@ -307,10 +336,6 @@ async function main(): Promise<void> {
       sequence++;
       written++;
       seenDiagnoses.add(normalized);
-      avoidPairs.push({
-        diagnosis: final.diagnosis,
-        presentingComplaint: final.stationType === "clinical" ? final.presentingComplaint : null,
-      });
       console.log(`        WROTE ${path}`);
       console.log(`        ${final.diagnosis}`);
     } catch (err) {

@@ -1,0 +1,158 @@
+// Ports & adapters (CLAUDE.md §3): the session engine depends only on these
+// interfaces. Anthropic / the filesystem / Supabase are adapters behind them —
+// swap any vendor without touching the engine. Implementations live in
+// lib/brains/* and lib/stores/*.
+
+import type { ClinicalCase, HistoryFact, OsceCase, Phase } from "./case-schema";
+import type { MarkingReport } from "./marking-schema";
+
+// ---------------------------------------------------------------------------
+// CaseStore / KbStore
+
+export interface CaseSummary {
+  id: string;
+  stationType: "clinical" | "interpretation";
+  discipline: string;
+  diagnosis: string;
+  commonness: "common" | "uncommon";
+  difficulty: number;
+}
+
+export interface CaseStore {
+  list(): Promise<CaseSummary[]>;
+  get(id: string): Promise<OsceCase | null>;
+}
+
+export interface KbTopic {
+  slug: string;
+  title: string;
+  system: string;
+  keywords: string[];
+  content: string;
+}
+
+export interface KbStore {
+  search(keywords: string[]): Promise<KbTopic[]>;
+  upsert(topic: KbTopic): Promise<void>;
+}
+
+// ---------------------------------------------------------------------------
+// Session state (CLAUDE.md §9) — persisted after EVERY turn
+
+export type Speaker = "student" | "patient" | "examiner";
+
+export interface TranscriptEntry {
+  speaker: Speaker;
+  text: string;
+  /** ISO timestamp. */
+  ts: string;
+  phase: Phase;
+}
+
+export type ExamSection = "general" | "vitals" | "respiratory" | "cardio" | "abdo" | "neuro" | "other";
+
+export interface SessionState {
+  id: string;
+  caseId: string;
+  stationType: "clinical" | "interpretation";
+  status: "active" | "completed" | "abandoned";
+  phase: Phase;
+  startedAt: string;
+  endedAt: string | null;
+  /** Accumulated ACTIVE seconds — time while quit/suspended never counts. */
+  elapsedActiveSec: number;
+  /** Wall-clock anchor of the last engine interaction (turn or resume). */
+  lastActivityAt: string;
+  timeLimitSec: number;
+  transcript: TranscriptEntry[];
+  /** Includes volunteered facts (seeded at creation) + everything trigger-revealed. */
+  revealedFactIds: string[];
+  revealedExamSections: ExamSection[];
+  orderedInvestigations: string[];
+  askedExaminerQIds: string[];
+  answeredExaminerQIds: string[];
+  /** Bank question awaiting the student's answer, if any. */
+  pendingExaminerQId: string | null;
+  /** Investigations whose result is withheld until the student interprets the stimulus (§6). */
+  pendingInterpretations: string[];
+  /** Timer-warning thresholds (seconds) already announced. */
+  issuedWarningsSec: number[];
+  /** Phases the examiner has already time-nudged out of. */
+  nudgedPhases: Phase[];
+  report: MarkingReport | null;
+}
+
+export interface SessionSummary {
+  id: string;
+  caseId: string;
+  stationType: "clinical" | "interpretation";
+  status: SessionState["status"];
+  startedAt: string;
+  band: string | null;
+}
+
+export interface SessionStore {
+  get(id: string): Promise<SessionState | null>;
+  save(state: SessionState): Promise<void>;
+  list(): Promise<SessionSummary[]>;
+}
+
+// ---------------------------------------------------------------------------
+// Brain
+
+/**
+ * Engine-gated disclosure (DECISIONS.md): the patient brain receives ONLY
+ * volunteered + already-revealed + newly-triggered facts — never the full
+ * hidden case. It cannot leak what it never saw.
+ */
+export interface PatientTurnCtx {
+  osceCase: ClinicalCase;
+  utterance: string;
+  /** Facts whose triggers matched THIS utterance (revealed now or previously). */
+  matchedFacts: HistoryFact[];
+  /** Everything the patient may draw on: volunteered + all revealed so far. */
+  knownFacts: HistoryFact[];
+  transcript: TranscriptEntry[];
+}
+
+export type ExaminerDirective =
+  | { type: "bank-question"; questionId: string; question: string }
+  | { type: "followup-or-continue"; questionId: string; question: string; modelAnswer: string; gradingNotes: string; studentAnswer: string }
+  | { type: "nudge"; fromPhase: Phase; toPhase: Phase }
+  | { type: "timer-warning"; minutesLeft: number }
+  | { type: "time-up" }
+  | { type: "acknowledge" };
+
+export interface ExaminerTurnCtx {
+  osceCase: OsceCase;
+  directive: ExaminerDirective;
+  transcript: TranscriptEntry[];
+}
+
+export interface MarkingCtx {
+  osceCase: OsceCase;
+  state: SessionState;
+}
+
+export interface Brain {
+  patientTurn(ctx: PatientTurnCtx): Promise<string>;
+  examinerTurn(ctx: ExaminerTurnCtx): Promise<string>;
+  mark(ctx: MarkingCtx): Promise<MarkingReport>;
+}
+
+// ---------------------------------------------------------------------------
+// The redacted view the client is allowed to see (never the hidden case JSON)
+
+export interface SessionView {
+  id: string;
+  caseId: string;
+  stationType: "clinical" | "interpretation";
+  discipline: string;
+  status: SessionState["status"];
+  phase: Phase;
+  elapsedSec: number;
+  timeLimitSec: number;
+  transcript: TranscriptEntry[];
+  patient: { name: string; age: number; sex: "M" | "F" } | null;
+  report: MarkingReport | null;
+}
