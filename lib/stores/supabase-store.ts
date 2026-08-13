@@ -20,6 +20,12 @@ export class SupabaseSessionStore implements SessionStore {
       if (!url || !key) {
         throw new Error("STORE=supabase requires SUPABASE_URL and SUPABASE_SECRET_KEY (server only)");
       }
+      if (key.startsWith("sb_publishable_")) {
+        throw new Error(
+          "SUPABASE_SECRET_KEY holds the PUBLISHABLE key — session saves will violate RLS. " +
+            "Use the sb_secret_... key: Supabase dashboard → Settings → API Keys → Secret keys.",
+        );
+      }
       this.client = createClient(url, key, { auth: { persistSession: false } });
     }
   }
