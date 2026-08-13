@@ -162,9 +162,9 @@ Interpretation stations (ABG/ECG/CXR) run the shorter `present → interpret →
 
 ---
 
-## 6. Voice turn (Phase 3 — next to build)
+## 6. Voice turn (Phase 3 — shipped)
 
-Push-to-talk wraps the *existing* text turn; nothing in §2 changes. The browser never sees the Azure key — it gets a ~10-minute token.
+Push-to-talk wraps the *existing* text turn; nothing in §2 changes. The browser never sees the Azure key — it gets a ~10-minute token (served as 540s; refreshed at ~8 min). Voice starts **OFF** and is opt-in per session ("🎙 Enable voice" requests mic permission + token); any failure — mic denied, token route down, SDK error — drops a notice chip and the station carries on in text mode.
 
 ```mermaid
 sequenceDiagram
@@ -174,18 +174,22 @@ sequenceDiagram
   participant AZ as Azure Speech (eastus)
   participant API as /api/session/:id/turn
 
-  UI->>TOK: on load (authed)
-  TOK->>AZ: exchange server key
+  A->>UI: 🎙 Enable voice (mic permission)
+  UI->>TOK: POST (authed — same admin cookie)
+  TOK->>AZ: exchange server key (key stays server-side)
   AZ-->>TOK: short-lived token
-  TOK-->>UI: token (~10 min, auto-refresh)
-  A->>UI: holds SPACE, speaks
-  UI->>AZ: audio stream (STT, live partial captions)
-  AZ-->>UI: final transcript
+  TOK-->>UI: { token, region, expiresInSec: 540 } — auto-refresh ~8 min
+  A->>UI: holds SPACE / hold-to-talk button, speaks
+  UI->>AZ: audio stream (STT en-ZA, live partial captions)
+  A->>UI: releases — final transcript
   UI->>API: { utterance } — same flow as §2
   API-->>UI: replies [{speaker, text}]
-  UI->>AZ: TTS — patient=en-ZA-Leah, examiner=en-ZA-Luke
-  AZ-->>A: 🔊 spoken reply (3D model bobs on speaking events — Phase 4)
+  UI->>AZ: TTS queue, strictly sequential (patient finishes before examiner)
+  Note over UI,AZ: voices follow the case patient's sex:<br/>F patient = Leah / examiner Luke; M patient = Luke / examiner Leah.<br/>"Done" = playback end (SpeakerAudioDestination), not synthesis end.
+  AZ-->>A: 🔊 spoken reply + pulsing speaker chip & caption<br/>(3D model bobs on the same speaking events — Phase 4)
 ```
+
+Voice code lives in `lib/speech/` behind the `SpeechToText`/`TextToSpeech` ports (`lib/ports.ts`) and is dynamic-imported on enable — the Azure SDK never rides in the text-mode chunk. HUD gains mute, repeat-last-line, and voice on/off; text input remains functional throughout.
 
 ---
 

@@ -141,6 +141,36 @@ export interface Brain {
 }
 
 // ---------------------------------------------------------------------------
+// Voice (CLAUDE.md §3) — Azure Speech is an adapter behind these two ports
+// (lib/speech/); the station UI depends only on the interfaces.
+
+export type VoiceRole = "patient" | "examiner";
+
+export interface SpeakingEvent {
+  role: VoiceRole;
+  text: string;
+  state: "started" | "stopped";
+}
+
+export interface SpeechToText {
+  /** Open the mic and stream. Partials fire while she speaks; the accumulated
+   *  final transcript is delivered to onFinal after stop(). */
+  start(onPartial: (text: string) => void, onFinal: (text: string) => void): Promise<void>;
+  stop(): Promise<void>;
+}
+
+export interface TextToSpeech {
+  /** Queued + strictly sequential — resolves when THIS utterance finishes
+   *  playing (the examiner waits for the patient, never talks over). */
+  speak(text: string, role: VoiceRole): Promise<void>;
+  onSpeaking(cb: (ev: SpeakingEvent) => void): void;
+  /** Cut current playback and drop the queue. */
+  stop(): void;
+  setMuted(muted: boolean): void;
+  repeatLast(): Promise<void>;
+}
+
+// ---------------------------------------------------------------------------
 // The redacted view the client is allowed to see (never the hidden case JSON)
 
 export interface SessionView {
