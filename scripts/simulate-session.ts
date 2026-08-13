@@ -4,7 +4,11 @@
 //   1. a good student — covers intro → history (HIV / TB-contact triggers) →
 //      examination → differentials → investigations → management → end & mark;
 //   2. a "bad student" — never asks about HIV, asserting cl-hiv is missed AND
-//      critically flagged.
+//      critically flagged;
+//   3. quit/resume timer semantics;
+//   4. the MockBrain's conversational floor — openers, repeat requests,
+//      acknowledgements and the rotated soft fallbacks, with a hard assertion
+//      that the opener path leaks NO onAsk fact.
 // Time is injected per turn, so timer warnings, the history nudge and the
 // 20:00 cut-off are all exercised deterministically. NO Anthropic calls.
 //
@@ -13,7 +17,7 @@
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { MockBrain } from "../lib/brains/mock";
+import { MockBrain, PATIENT_FALLBACKS } from "../lib/brains/mock";
 import { MarkingReportSchema, type MarkingReport } from "../lib/marking-schema";
 import { SessionEngine, type TurnResult } from "../lib/session-engine";
 import { FileSessionStore, FsCaseStore } from "../lib/stores/file-store";
@@ -239,6 +243,55 @@ async function timerResumeCheck(engine: SessionEngine): Promise<void> {
   check("session is still comfortably inside the station timer", !r.timeUp);
 }
 
+/**
+ * The conversational floor: the turns that hit NO fact trigger. Before this
+ * existed every one of them returned "I'm not sure, doctor.", which reads as a
+ * broken patient. The information model is unchanged — the opener path must
+ * still leak nothing that the student has not earned by asking.
+ */
+async function conversationalFloorRun(engine: SessionEngine): Promise<void> {
+  console.log("\n=== RUN 4: conversational floor (opener / repeat / ack / fallback) ===");
+  const s = await engine.createSession(CASE_ID, at(0));
+
+  // -- opener: restate the presenting story, not the not-sure fallback.
+  let r = await engine.takeTurn(s.id, "What brings you in today?", at(10));
+  const opener = replyText(r);
+  check("opener 'what brings you in' restates the presenting complaint (the cough) instead of the fallback",
+    /cough/i.test(opener) && !/not sure/i.test(opener), opener);
+  check("opener narrates the volunteered onset fact", /6 weeks/i.test(opener), opener);
+  // Every onAsk fact in this case, by its most distinctive words.
+  check("opener leaks NO onAsk-only fact text",
+    !/sputum|phlegm|blood|night sweat|weight|hiv|partner|uncle|smoke|allerg|paracetamol|umlazi|breath/i.test(opener),
+    opener);
+  check("opener reveals no new facts — only the volunteered one stays revealed",
+    r.state.revealedFactIds.length === 1 && r.state.revealedFactIds[0] === "hx-onset",
+    r.state.revealedFactIds.join(", "));
+
+  // -- repeat request: echo the previous patient line.
+  const previousLine = r.replies.find((x) => x.speaker === "patient")!.text;
+  r = await engine.takeTurn(s.id, "Sorry, could you repeat that?", at(20));
+  const echo = replyText(r);
+  check("repeat request echoes the patient's previous line",
+    echo.includes("I said,") && echo.includes(previousLine.split("—").pop()!.trim().slice(0, 40)),
+    echo);
+
+  // -- acknowledgement: a beat, not a fallback.
+  r = await engine.takeTurn(s.id, "Okay, thank you.", at(30));
+  const ack = replyText(r);
+  check("acknowledgement gets a brief natural beat, not the not-sure fallback",
+    /doctor/i.test(ack) && !/not sure|don t understand|couldn t say/i.test(ack), ack);
+
+  // -- unmatched questions: softened AND rotated, deterministically.
+  const f1 = replyText(await engine.takeTurn(s.id, "Quorble frazzle wibbet?", at(40)));
+  const f2 = replyText(await engine.takeTurn(s.id, "Snarfle bimbly zonk?", at(50)));
+  check("consecutive unmatched questions rotate to DIFFERENT fallbacks", f1 !== f2, `${f1} / ${f2}`);
+  check("both fallbacks come from the fixed rotation (deterministic, no RNG)",
+    PATIENT_FALLBACKS.some((p) => f1.endsWith(p)) && PATIENT_FALLBACKS.some((p) => f2.endsWith(p)),
+    `${f1} / ${f2}`);
+
+  await engine.endSession(s.id, "abandon", at(60));
+}
+
 async function main(): Promise<void> {
   const dir = mkdtempSync(join(tmpdir(), "st-mungos-sim-"));
   const engine = new SessionEngine({
@@ -253,6 +306,7 @@ async function main(): Promise<void> {
     good = await goodStudentRun(engine);
     bad = await badStudentRun(engine);
     await timerResumeCheck(engine);
+    await conversationalFloorRun(engine);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

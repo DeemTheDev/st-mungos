@@ -4,6 +4,8 @@
 // scripts/verify-speech-token.ts so the verified code path IS the route's.
 // Never import this from client code.
 
+import { voiceConfigFromEnv, type VoiceConfig } from "./voices";
+
 /**
  * Azure STS tokens are valid for 10 minutes; we advertise 540s (9 min) and the
  * client refreshes at ~8 min, so a token is never used near its cliff.
@@ -11,8 +13,18 @@
 export const SPEECH_TOKEN_TTL_SEC = 540;
 
 export type SpeechTokenResult =
-  | { ok: true; token: string; region: string; expiresInSec: number }
+  | { ok: true; token: string; region: string; expiresInSec: number; voices: VoiceConfig }
   | { ok: false; status: 502 | 503; message: string };
+
+/**
+ * Voice names ride with the token because they are the one piece of speech
+ * config the browser needs and the server owns: changing VOICE_PATIENT_F /
+ * VOICE_PATIENT_M / VOICE_EXAMINER in Vercel swaps the voices on the next
+ * token fetch (≤8 min), with no code deploy.
+ */
+export function speechVoices(): VoiceConfig {
+  return voiceConfigFromEnv(process.env);
+}
 
 export async function issueSpeechToken(): Promise<SpeechTokenResult> {
   const key = process.env.AZURE_SPEECH_KEY;
@@ -40,7 +52,7 @@ export async function issueSpeechToken(): Promise<SpeechTokenResult> {
     if (!token) {
       return { ok: false, status: 502, message: "Azure token service returned an empty token." };
     }
-    return { ok: true, token, region, expiresInSec: SPEECH_TOKEN_TTL_SEC };
+    return { ok: true, token, region, expiresInSec: SPEECH_TOKEN_TTL_SEC, voices: speechVoices() };
   } catch {
     return { ok: false, status: 502, message: "Could not reach the Azure token service." };
   }

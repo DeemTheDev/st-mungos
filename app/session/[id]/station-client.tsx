@@ -9,9 +9,17 @@
 // submits the final transcript through the SAME turn flow; replies are spoken
 // sequentially in per-speaker voices. Every voice failure degrades to a notice
 // chip — the text station is never blocked by voice.
+// Phase 4 puts a room behind all of it: the r3f ward scene (toggleable, off by
+// default on phones and under prefers-reduced-motion), an examiner bubble, and
+// the stimulus viewer for interpretation stations. All three are decoration —
+// pull them and the station still works exactly as it did in Phase 3.
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { ExaminerBubble } from "@/components/ward/examiner-bubble";
+import { useScenePreference } from "@/components/ward/scene-preference";
+import { StimulusViewer } from "@/components/ward/stimulus-viewer";
+import { WardStage } from "@/components/ward/ward-stage";
 import type { MarkingReport } from "@/lib/marking-schema";
 import type { SessionView, Speaker, TranscriptEntry, VoiceRole } from "@/lib/ports";
 import type { VoiceSession } from "@/lib/speech";
@@ -302,10 +310,44 @@ export function StationClient({ sessionId }: { sessionId: string }) {
   const holdingRef = useRef(false);
   const busyRef = useRef(false);
   const ttsFailuresRef = useRef(0);
+  const mutedRef = useRef(false);
+
+  // Room / bubble / stimulus (Phase 4) — none of it gates the station.
+  const scene = useScenePreference();
+  const [stimulusOpen, setStimulusOpen] = useState(false);
+  const stimulusAutoOpened = useRef(false);
+  // Text-mode stand-in for a SpeakingEvent: a fresh reply "speaks" for a beat
+  // so the examiner bubble pulses and the patient bobs without any voice layer.
+  const [textCue, setTextCue] = useState<{ role: VoiceRole; text: string } | null>(null);
+  const cueTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  /** One stream for the UI: real speaking events when voice is audible, cues otherwise. */
+  const activeSpeaker = speaking ?? textCue;
 
   function setBusyBoth(value: boolean): void {
     busyRef.current = value;
     setBusy(value);
+  }
+
+  function clearCue(): void {
+    if (cueTimerRef.current) clearTimeout(cueTimerRef.current);
+    cueTimerRef.current = null;
+    setTextCue(null);
+  }
+
+  /** Raise a short cue for the line she should be reading right now. */
+  function cueReplies(replies: Array<{ speaker: Speaker; text: string }>): void {
+    // Audible voice emits the real events — don't double up.
+    if (voiceRef.current && !mutedRef.current) return;
+    const examiner = replies.find((r) => r.speaker === "examiner");
+    const target = examiner ?? [...replies].reverse().find((r) => r.speaker === "patient");
+    if (!target) return;
+    if (cueTimerRef.current) clearTimeout(cueTimerRef.current);
+    setTextCue({ role: target.speaker as VoiceRole, text: target.text });
+    cueTimerRef.current = setTimeout(
+      () => setTextCue(null),
+      Math.min(9000, Math.max(2500, target.text.length * 45)),
+    );
   }
 
   useEffect(() => {
@@ -339,6 +381,22 @@ export function StationClient({ sessionId }: { sessionId: string }) {
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [view?.transcript.length]);
+
+  // An interpretation station opens on its stimulus — the values/image ARE the
+  // station (§4b). Only ever auto-opened once; after that it's her call.
+  useEffect(() => {
+    if (view?.stimulus && !stimulusAutoOpened.current) {
+      stimulusAutoOpened.current = true;
+      setStimulusOpen(true);
+    }
+  }, [view?.stimulus]);
+
+  useEffect(
+    () => () => {
+      if (cueTimerRef.current) clearTimeout(cueTimerRef.current);
+    },
+    [],
+  );
 
   const remaining = view ? view.timeLimitSec - elapsed : 0;
 
@@ -399,6 +457,7 @@ export function StationClient({ sessionId }: { sessionId: string }) {
       setElapsed(data.elapsedSec);
       setError(null);
       speakReplies(data.replies);
+      cueReplies(data.replies);
     } finally {
       setBusyBoth(false);
     }
@@ -452,6 +511,8 @@ export function StationClient({ sessionId }: { sessionId: string }) {
         },
       });
       voiceRef.current = session;
+      mutedRef.current = false;
+      clearCue(); // real speaking events take over from here
       setVoiceState("on");
       // Free the spacebar for push-to-talk (the input grabs focus on mount).
       (document.activeElement as HTMLElement | null)?.blur?.();
@@ -467,6 +528,7 @@ export function StationClient({ sessionId }: { sessionId: string }) {
     voiceRef.current = null;
     holdingRef.current = false;
     ttsFailuresRef.current = 0;
+    mutedRef.current = false;
     setHolding(false);
     setPartial("");
     setSpeaking(null);
@@ -478,6 +540,7 @@ export function StationClient({ sessionId }: { sessionId: string }) {
   function toggleMute(): void {
     const next = !muted;
     voiceRef.current?.tts.setMuted(next);
+    mutedRef.current = next;
     setMuted(next);
   }
 
@@ -577,13 +640,29 @@ export function StationClient({ sessionId }: { sessionId: string }) {
   }
 
   return (
-    <main className="flex min-h-screen flex-col bg-neutral-950 text-neutral-200">
+    <main className="relative flex min-h-screen flex-col text-neutral-200">
       <style>{PRINT_CSS}</style>
 
+      {/* the room sits behind everything; always paints a dark backdrop, even
+          while the 3D chunk loads or when the scene is switched off */}
+      <WardStage
+        enabled={scene.enabled}
+        patientSpeaking={activeSpeaker?.role === "patient"}
+        reducedMotion={scene.reducedMotion}
+      />
+      <ExaminerBubble speaking={activeSpeaker} />
+
       {/* HUD */}
-      <header className="no-print sticky top-0 z-10 border-b border-neutral-800 bg-neutral-950/95 px-4 py-3">
+      <header className="no-print sticky top-0 z-30 border-b border-neutral-800 bg-neutral-950/95 px-4 py-3 backdrop-blur-sm">
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2 text-sm">
+            <Link
+              href="/session"
+              title="Back to the station list — this session is saved"
+              className="rounded px-1.5 py-0.5 text-xs text-neutral-400 hover:bg-neutral-800 hover:text-neutral-200"
+            >
+              ← Stations
+            </Link>
             <span
               className={`font-mono text-lg ${remaining <= 60 && active ? "text-red-400" : "text-neutral-100"}`}
             >
@@ -599,6 +678,24 @@ export function StationClient({ sessionId }: { sessionId: string }) {
             )}
           </div>
           <div className="flex items-center gap-2">
+            {view.stimulus && (
+              <button
+                onClick={() => setStimulusOpen(true)}
+                className="rounded bg-sky-950 px-3 py-1.5 text-sm text-sky-300 hover:bg-sky-900"
+              >
+                Stimulus
+              </button>
+            )}
+            {scene.ready && scene.supported && (
+              <button
+                onClick={() => scene.setEnabled(!scene.enabled)}
+                aria-pressed={scene.enabled}
+                title={scene.enabled ? "Hide the 3D room" : "Show the 3D room"}
+                className="rounded bg-neutral-800 px-2.5 py-1.5 text-xs text-neutral-300 hover:bg-neutral-700"
+              >
+                {scene.enabled ? "3D on" : "3D off"}
+              </button>
+            )}
             {active && voiceState === "off" && (
               <button
                 onClick={() => void enableVoice()}
@@ -676,46 +773,42 @@ export function StationClient({ sessionId }: { sessionId: string }) {
         )}
       </header>
 
-      {/* transcript */}
-      <div ref={scrollRef} className="mx-auto w-full max-w-3xl flex-1 space-y-3 overflow-y-auto px-4 py-4">
-        {view.transcript.map((entry, i) => (
-          <Bubble key={i} entry={entry} />
-        ))}
-        {error && <p className="rounded bg-red-950 p-2 text-sm text-red-300">{error}</p>}
-        {view.report && <ReportView report={view.report} />}
-        {!view.report && !active && (
-          <div className="no-print rounded border border-neutral-800 p-4 text-sm text-neutral-400">
-            Station over.{" "}
-            <button onClick={() => void endSession("mark")} className="underline" disabled={busy}>
-              Run marking
-            </button>
-          </div>
-        )}
+      {/* transcript — translucent panel so it stays the most readable thing on
+          screen with the room rendering behind it */}
+      <div ref={scrollRef} className="relative z-10 mx-auto w-full max-w-3xl flex-1 overflow-y-auto px-3 py-4 sm:px-4">
+        <div className="space-y-3 rounded-lg border border-neutral-800/70 bg-neutral-950/80 p-3 backdrop-blur-sm sm:p-4 print:border-none print:bg-transparent print:p-0 print:backdrop-blur-none">
+          {view.transcript.map((entry, i) => (
+            <Bubble key={i} entry={entry} />
+          ))}
+          {error && <p className="rounded bg-red-950 p-2 text-sm text-red-300">{error}</p>}
+          {view.report && <ReportView report={view.report} />}
+          {!view.report && !active && (
+            <div className="no-print rounded border border-neutral-800 p-4 text-sm text-neutral-400">
+              Station over.{" "}
+              <button onClick={() => void endSession("mark")} className="underline" disabled={busy}>
+                Run marking
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* who's speaking (pulsing chip: patient neutral / examiner amber) — kept
-          outside the footer so a final line keeps its caption after time-up */}
-      {speaking && (
-        <div className="no-print flex items-center justify-center gap-2 border-t border-neutral-800 bg-neutral-950 px-4 py-2">
-          <span
-            className={`flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1 text-xs ${
-              speaking.role === "examiner" ? "bg-amber-950 text-amber-300" : "bg-neutral-800 text-neutral-200"
-            }`}
-          >
-            <span
-              className={`h-2 w-2 animate-pulse rounded-full ${
-                speaking.role === "examiner" ? "bg-amber-400" : "bg-neutral-400"
-              }`}
-            />
-            {speaking.role === "examiner" ? "Examiner" : (view.patient?.name ?? "Patient")}
+      {/* who's speaking — the patient's caption chip (the examiner gets the
+          corner bubble). Kept outside the footer so a final line keeps its
+          caption after time-up. */}
+      {activeSpeaker?.role === "patient" && (
+        <div className="no-print relative z-10 flex items-center justify-center gap-2 border-t border-neutral-800 bg-neutral-950/90 px-4 py-2 backdrop-blur-sm">
+          <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-neutral-800 px-2.5 py-1 text-xs text-neutral-200">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-neutral-400" />
+            {view.patient?.name ?? "Patient"}
           </span>
-          <span className="truncate text-xs text-neutral-400">{speaking.text}</span>
+          <span className="truncate text-xs text-neutral-400">{activeSpeaker.text}</span>
         </div>
       )}
 
       {/* input — text mode always works; voice adds push-to-talk above it */}
       {active && (
-        <footer className="no-print border-t border-neutral-800 px-4 py-3">
+        <footer className="no-print relative z-10 border-t border-neutral-800 bg-neutral-950/90 px-4 py-3 backdrop-blur-sm">
           <div className="mx-auto max-w-3xl space-y-2">
             {voiceState === "on" && (
               <div className="flex flex-col items-center gap-1.5">
@@ -766,6 +859,11 @@ export function StationClient({ sessionId }: { sessionId: string }) {
             </div>
           </div>
         </footer>
+      )}
+
+      {/* stimulus overlay (interpretation stations) — over the room, above the HUD */}
+      {stimulusOpen && view.stimulus && (
+        <StimulusViewer stimulus={view.stimulus} onClose={() => setStimulusOpen(false)} />
       )}
     </main>
   );

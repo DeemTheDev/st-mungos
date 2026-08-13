@@ -24,11 +24,87 @@ import type {
   SessionState,
   TranscriptEntry,
 } from "../ports";
-import { examinerCannedLine } from "./shared";
+import { examinerCannedLine, leaksHiddenTopic } from "./shared";
 
 const GREETING = /\b(hello|hi|good (morning|day|afternoon|evening)|my name)\b/;
 
 type ChecklistItem = ClinicalCase["stationChecklist"][number];
+
+// ---------------------------------------------------------------------------
+// The conversational floor. Real students open with "what brings you in today?"
+// and pepper the consultation with "sorry?", "okay", "tell me more" — none of
+// which hit a fact trigger. Without these paths every such turn collapsed into
+// "I'm not sure, doctor.", which reads as a broken patient. NONE of these paths
+// may reveal an onAsk fact: disclosure stays engine-gated (DECISIONS.md), so
+// they draw only on the opening line the patient has ALREADY said plus facts
+// with `disclosure: "volunteered"`.
+
+/** Openers and invitations to narrate — "tell me your story in your words". */
+const OPENER = new RegExp(
+  [
+    "\\bwhat brings you (in|here|to)\\b",
+    "\\bwhat (can i do for you|brings you)\\b",
+    "\\bwhat s (wrong|the problem|the matter|the trouble|been happening|bothering you|troubling you|going on)\\b",
+    "\\bwhat (seems to be|is) the (problem|matter|trouble)\\b",
+    "\\btell me (more|about|what|everything|your story)\\b",
+    "\\b(can|could|would) you tell me (more|about|what)\\b",
+    "\\bhow (are you|have you been|are things)( been)? (feeling|doing|going)\\b",
+    "\\bstart (from|at) the (beginning|start)\\b",
+    "\\bwhy (are you here|did you come|have you come)\\b",
+    "\\bin your own words\\b",
+  ].join("|"),
+);
+
+/** "Sorry?" / "pardon" — she wants the previous line repeated, not new facts. */
+const REPEAT = new RegExp(
+  [
+    "^sorry( doctor)?$",
+    "^pardon( me)?( doctor)?$",
+    "^what( doctor)?$",
+    "\\bcome again\\b",
+    "\\b(can|could|would) you (please )?(repeat|say) (that|it|this)( again)?\\b",
+    "\\brepeat (that|it|what you said)\\b",
+    "\\bsay (that )?again\\b",
+    "\\bwhat did you say\\b",
+    "\\bi (didn t|did not|couldn t|could not) (catch|hear|get) (that|you)\\b",
+  ].join("|"),
+);
+
+/** Pure acknowledgements — a beat, not an answer. Whole-utterance match only,
+ *  so "thank you, now tell me about the cough" never lands here. */
+const ACK_CHUNK =
+  "(ok|okay|alright|all right|right|i see|i understand|understood|got it|thank you|thanks|sure|mm|mmm|mhm|noted|fine|good|great|lovely|perfect|no problem|of course)";
+const ACK = new RegExp(`^${ACK_CHUNK}( ${ACK_CHUNK}){0,3}$`);
+
+/**
+ * Softer replies for "no fact matched", rotated by patient-turn count so the
+ * patient never repeats herself twice running — and so `pnpm simulate` stays
+ * bit-for-bit reproducible (no RNG anywhere in this brain).
+ */
+export const PATIENT_FALLBACKS = [
+  "I'm not sure I follow, doctor — could you ask me another way?",
+  "Sorry doctor, I don't understand.",
+  "I couldn't say, doctor.",
+  "I'm not sure, doctor.",
+] as const;
+
+/** Brief natural beats for acknowledgements, rotated on the same counter. */
+const PATIENT_ACKS = ["Okay, doctor.", "Thank you, doctor.", "Alright, doctor."] as const;
+
+/** Lowercase the first letter — except a leading "I", which stays capitalised. */
+function lowerFirst(s: string): string {
+  if (/^I\b|^I['’]/.test(s)) return s;
+  return s.charAt(0).toLowerCase() + s.slice(1);
+}
+
+/** Trim to a clean standalone sentence. */
+function sentence(s: string): string {
+  const t = s.trim().replace(/[.…\s]+$/, "");
+  return t ? `${t.charAt(0).toUpperCase()}${t.slice(1)}.` : "";
+}
+
+/** The patient's own lead-ins, stripped before an "I said, ..." echo. */
+const LEAD_IN = /^(well|like i said|i said|okay|alright|sorry),?\s*(doctor)?\s*[—–-]?\s*/i;
 
 /** Third-person case facts → first-person lay speech, template-only. */
 function factToSpeech(fact: string): string {
@@ -43,6 +119,55 @@ function factToSpeech(fact: string): string {
     .replace(/\bhe is\b/gi, "I am")
     .replace(/\bhe\b/gi, "I");
   return firstPerson.charAt(0).toLowerCase() + firstPerson.slice(1);
+}
+
+/**
+ * How many times the patient has spoken so far (the opening line counts) — the
+ * rotation counter for the softened fallbacks and acknowledgements. Derived
+ * from the transcript, so it is a pure function of session state: two identical
+ * runs produce identical words.
+ */
+function patientTurnCount(ctx: PatientTurnCtx): number {
+  return ctx.transcript.filter((e) => e.speaker === "patient").length;
+}
+
+/** "Sorry?" / "could you repeat that" → re-say the patient's own last line. */
+function repeatPreviousLine(ctx: PatientTurnCtx): string {
+  const previous = [...ctx.transcript].reverse().find((e) => e.speaker === "patient")?.text;
+  const line = previous ?? ctx.osceCase.patient.openingLine;
+  return `I said, ${lowerFirst(line.trim().replace(LEAD_IN, ""))}`;
+}
+
+/**
+ * The answer to "what brings you in today?" — the PUBLIC story only: the
+ * opening line she has already said out loud, plus her `volunteered` facts.
+ * onAsk facts never travel this path; they are spoken only through
+ * ctx.matchedFacts, after the engine matched one of their triggers.
+ */
+function openingRestatement(ctx: PatientTurnCtx, greeted: boolean): string {
+  const c = ctx.osceCase;
+  const opening = c.patient.openingLine
+    .trim()
+    .replace(/^doctor[,\s]+/i, "")
+    .replace(/[.…\s]+$/, "");
+  const lead = greeted ? "Like I said" : "Like I said, doctor";
+  const parts = [opening ? `${lead} — ${lowerFirst(opening)}.` : `${lead}, it's the same trouble.`];
+
+  for (const fact of ctx.knownFacts.filter((f) => f.disclosure === "volunteered")) {
+    parts.push(sentence(factToSpeech(fact.fact)));
+  }
+
+  // The written presentingComplaint is a CLINICAL summary — it routinely names
+  // topics deliberately gated behind onAsk triggers ("...with weight loss and
+  // night sweats"). Restate it only when it cannot give any of them away.
+  const hidden = c.history.filter(
+    (f) => f.disclosure === "onAsk" && !ctx.knownFacts.some((k) => k.id === f.id),
+  );
+  if (!leaksHiddenTopic(c.presentingComplaint, hidden)) {
+    parts.push(sentence(`that's what brought me in — ${lowerFirst(c.presentingComplaint)}`));
+  }
+
+  return `${greeted ? "Good morning, doctor. " : ""}${parts.filter(Boolean).join(" ")}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -254,11 +379,22 @@ function padThree(items: string[], fillers: string[]): [string, string, string] 
 
 export class MockBrain implements Brain {
   async patientTurn(ctx: PatientTurnCtx): Promise<string> {
+    // A trigger matched: unchanged behaviour — this is the part that works.
     if (ctx.matchedFacts.length > 0) {
       return ctx.matchedFacts.map((f) => `Well, doctor — ${factToSpeech(f.fact)}`).join(" ");
     }
-    if (GREETING.test(normalizeText(ctx.utterance))) return "Good morning, doctor.";
-    return "I'm not sure, doctor.";
+
+    const norm = normalizeText(ctx.utterance);
+    const turn = patientTurnCount(ctx);
+
+    if (REPEAT.test(norm)) return repeatPreviousLine(ctx);
+
+    const greeted = GREETING.test(norm);
+    if (OPENER.test(norm)) return openingRestatement(ctx, greeted);
+    if (greeted) return "Good morning, doctor.";
+    if (ACK.test(norm)) return PATIENT_ACKS[turn % PATIENT_ACKS.length];
+
+    return PATIENT_FALLBACKS[turn % PATIENT_FALLBACKS.length];
   }
 
   async examinerTurn(ctx: ExaminerTurnCtx): Promise<string> {

@@ -3,9 +3,14 @@
 // (Azure tokens live 10; the route advertises 540s). invalidate() forces a
 // refresh after 401-type SDK failures.
 
+import { normalizeVoiceConfig, type VoiceConfig } from "./voices";
+
 export interface SpeechToken {
   token: string;
   region: string;
+  /** Server-resolved voice names — refreshed with the token, so an env change
+   *  reaches a live session within one refresh cycle and never needs a deploy. */
+  voices: VoiceConfig;
 }
 
 const REFRESH_AFTER_MS = 8 * 60 * 1000;
@@ -37,8 +42,13 @@ export class TokenProvider {
       const detail = await res.text().catch(() => "");
       throw new Error(detail || `Speech token request failed (HTTP ${res.status}).`);
     }
-    const data = (await res.json()) as { token: string; region: string };
-    this.cached = { value: { token: data.token, region: data.region }, fetchedAt: Date.now() };
+    const data = (await res.json()) as { token: string; region: string; voices?: unknown };
+    // normalizeVoiceConfig keeps an older/partial payload working — a missing
+    // `voices` block just falls back to the shipped en-ZA pair.
+    this.cached = {
+      value: { token: data.token, region: data.region, voices: normalizeVoiceConfig(data.voices) },
+      fetchedAt: Date.now(),
+    };
     return this.cached.value;
   }
 }

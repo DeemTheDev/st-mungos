@@ -206,3 +206,29 @@ Voice code lives in `lib/speech/` behind the `SpeechToText`/`TextToSpeech` ports
 | Mock station, review UI, timers, ABG math, ingest | — | always | $0 |
 
 Azure Speech (Phase 3): F0 free tier = 5h STT + 0.5M TTS chars/month; beyond that ~$1/h.
+
+---
+
+## 8. Voice options (Azure, region `eastus`)
+
+Verified against the live catalogue with `pnpm voices:list` (774 voices, 154 locales). **en-ZA has exactly two voices — Leah and Luke — both first-generation `Neural`, both style-incapable.** That is the entire South African catalogue: there is no more natural SA voice to move to, so every naturalness upgrade trades away the accent. The other African-English voices in region (`en-KE-*`, `en-NG-*`, `en-TZ-*`) are the same older generation — a lateral accent move, not an upgrade.
+
+All three slots are server env vars returned on `/api/speech/token`; changing one in Vercel takes effect within a token refresh (≤8 min), **no redeploy**.
+
+```bash
+# ── Option A — RECOMMENDED: authentic SA patient, upgraded examiner ──
+# The examiner reads the long clinical narration (exam findings, results, viva
+# questions) — where the robotic read hurts most — and a British examiner at
+# UKZN costs no plausibility. The patient stays South African.
+VOICE_EXAMINER=en-GB-Ollie:DragonHDLatestNeural
+
+# ── Option B — maximum naturalness, no SA accent anywhere ──
+VOICE_PATIENT_F=en-GB-Sonia:DragonHDLatestNeural
+VOICE_PATIENT_M=en-GB-Ollie:DragonHDLatestNeural
+VOICE_EXAMINER=en-GB-Ryan:DragonHDLatestNeural
+
+# ── Option C — shipped default: leave all three UNSET ──
+# → Leah/Luke by patient sex; the examiner takes the other voice.
+```
+
+Other Dragon HD candidates confirmed present in `eastus`: `en-GB-Ada` (lighter female timbre), `en-GB-Ryan` (older, firmer — the most "consultant examiner" read). The en-US Dragon HD family is the most natural in the catalogue but an American patient in a KZN station is the largest authenticity cost on offer.

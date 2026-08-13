@@ -15,5 +15,12 @@ export async function POST() {
 
   const result = await issueSpeechToken();
   if (!result.ok) return new Response(result.message, { status: result.status });
-  return Response.json({ token: result.token, region: result.region, expiresInSec: result.expiresInSec });
+  // `voices` is server-owned config (VOICE_PATIENT_F / VOICE_PATIENT_M /
+  // VOICE_EXAMINER) — the client never hardcodes voice names.
+  return Response.json({
+    token: result.token,
+    region: result.region,
+    expiresInSec: result.expiresInSec,
+    voices: result.voices,
+  });
 }

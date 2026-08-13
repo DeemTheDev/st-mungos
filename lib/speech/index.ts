@@ -10,11 +10,11 @@
 import type { SpeakingEvent, SpeechToText, TextToSpeech } from "../ports";
 import { AzureSpeechToText, AzureTextToSpeech } from "./azure-speech";
 import { TokenProvider } from "./token-client";
-import { voicesForPatientSex } from "./voices";
 
 export interface VoiceSessionOptions {
-  /** Case patient sex — picks the voice pair (F→Leah patient / M→Luke patient,
-   *  examiner always the other; null = interpretation station, no patient). */
+  /** Case patient sex — picks the voice pair from the server-supplied names
+   *  (default F→Leah patient / M→Luke patient, examiner always the other, or
+   *  VOICE_EXAMINER when pinned; null = interpretation station, no patient). */
   patientSex: "M" | "F" | null;
   onSpeaking: (ev: SpeakingEvent) => void;
   /** Async voice failures (auth drop, network) — surface a notice, fall back to text. */
@@ -33,7 +33,8 @@ export async function createVoiceSession(opts: VoiceSessionOptions): Promise<Voi
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   for (const track of stream.getTracks()) track.stop();
 
-  // 2. Prove the token route works before claiming voice is on.
+  // 2. Prove the token route works before claiming voice is on. The same fetch
+  //    warms the cache with the server's voice names.
   const tokens = new TokenProvider();
   await tokens.get();
 
@@ -41,7 +42,7 @@ export async function createVoiceSession(opts: VoiceSessionOptions): Promise<Voi
   const sdk = await import("microsoft-cognitiveservices-speech-sdk");
 
   const stt = new AzureSpeechToText(sdk, tokens, opts.onError);
-  const tts = new AzureTextToSpeech(sdk, tokens, voicesForPatientSex(opts.patientSex));
+  const tts = new AzureTextToSpeech(sdk, tokens, opts.patientSex);
   tts.onSpeaking(opts.onSpeaking);
 
   return {

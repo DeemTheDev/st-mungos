@@ -18,6 +18,7 @@ import type {
   CaseStore,
   CaseSummary,
   ExamSection,
+  SessionMode,
   SessionState,
   SessionStore,
   SessionView,
@@ -26,6 +27,8 @@ import type {
 
 export const CLINICAL_TIME_LIMIT_SEC = 20 * 60; // 20:00 hard (§6)
 export const INTERPRETATION_TIME_LIMIT_SEC = 7 * 60; // 7:00 (§4b)
+/** Management-focus viva is deliberately short — it is "rapid-fire" (§8). */
+export const MANAGEMENT_TIME_LIMIT_SEC = 10 * 60;
 /** Examiner nudges the student out of history after 8 minutes (§6). */
 export const HISTORY_NUDGE_SEC = 8 * 60;
 /** In-character timer warnings at 10:00 and 17:00 elapsed (§6). */
@@ -266,6 +269,10 @@ export function toSessionView(state: SessionState, osceCase: OsceCase): SessionV
       osceCase.stationType === "clinical"
         ? { name: osceCase.patient.name, age: osceCase.patient.age, sex: osceCase.patient.sex }
         : null,
+    // The stimulus is meant to be SHOWN (§4b) — the values/image are the
+    // station. Everything that would give the answer away (findingsKey,
+    // interpretationChecklist, examinerBank) stays behind on the server.
+    stimulus: osceCase.stationType === "interpretation" ? osceCase.stimulus : null,
     report: state.report,
   };
 }
@@ -282,22 +289,34 @@ export class SessionEngine {
     return osceCase;
   }
 
-  async createSession(caseId: string, nowMs: number = Date.now()): Promise<SessionState> {
+  async createSession(
+    caseId: string,
+    nowMs: number = Date.now(),
+    mode: SessionMode = "full",
+  ): Promise<SessionState> {
     const osceCase = await this.loadCase(caseId);
     const id = `s-${nowMs.toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
     const clinical = osceCase.stationType === "clinical";
+    // Management focus is a clinical-station concept (§8): an interpretation
+    // station has no management phase to skip to, so the flag is ignored there.
+    const managementFocus = clinical && mode === "management";
 
     const state: SessionState = {
       id,
       caseId,
       stationType: osceCase.stationType,
+      mode: managementFocus ? "management" : "full",
       status: "active",
-      phase: clinical ? "intro" : "present",
+      phase: clinical ? (managementFocus ? "management" : "intro") : "present",
       startedAt: nowIso(nowMs),
       endedAt: null,
       elapsedActiveSec: 0,
       lastActivityAt: nowIso(nowMs),
-      timeLimitSec: clinical ? CLINICAL_TIME_LIMIT_SEC : INTERPRETATION_TIME_LIMIT_SEC,
+      timeLimitSec: clinical
+        ? managementFocus
+          ? MANAGEMENT_TIME_LIMIT_SEC
+          : CLINICAL_TIME_LIMIT_SEC
+        : INTERPRETATION_TIME_LIMIT_SEC,
       transcript: [],
       revealedFactIds: clinical
         ? osceCase.history.filter((f) => f.disclosure === "volunteered").map((f) => f.id)
@@ -314,7 +333,18 @@ export class SessionEngine {
     };
 
     if (osceCase.stationType === "clinical") {
-      pushEntry(state, "patient", osceCase.patient.openingLine, nowMs);
+      if (managementFocus) {
+        // The diagnosis is handed over deliberately — this mode drills treatment,
+        // not the symptom→differential work-up (§8).
+        pushEntry(
+          state,
+          "examiner",
+          `You have already established the diagnosis: ${osceCase.diagnosis}. Take me through your management.`,
+          nowMs,
+        );
+      } else {
+        pushEntry(state, "patient", osceCase.patient.openingLine, nowMs);
+      }
     } else {
       pushEntry(state, "examiner", presentStimulus(osceCase), nowMs);
       state.phase = "interpret";
@@ -540,8 +570,14 @@ export class SessionEngine {
 
     // Default responder (§6): the patient — unless the student addressed the
     // examiner (phase announcement / differential or management presentation).
+    // In management focus there is no bedside left to run: the examiner holds
+    // the floor for the whole viva.
     const examinerDirected =
-      phaseChanged || DDX_INTENT.test(norm) || MGMT_INTENT.test(norm) || /\bexaminer\b/.test(norm);
+      state.mode === "management" ||
+      phaseChanged ||
+      DDX_INTENT.test(norm) ||
+      MGMT_INTENT.test(norm) ||
+      /\bexaminer\b/.test(norm);
 
     const producedReply = state.transcript[state.transcript.length - 1]?.speaker !== "student";
     if (!producedReply) {

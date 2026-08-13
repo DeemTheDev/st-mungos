@@ -4,6 +4,7 @@
 // /admin/review. Text mode is the Phase 2 deliverable and permanent fallback.
 import { cookies } from "next/headers";
 import Link from "next/link";
+import { SiteNav } from "@/components/site-nav";
 import { ADMIN_COOKIE, isAdminToken } from "@/lib/admin-auth";
 import type { CaseSummary, SessionSummary } from "@/lib/ports";
 import { getCaseStore, getSessionStore } from "@/lib/stores";
@@ -12,7 +13,7 @@ export const metadata = { title: "St Mungo's — New station" };
 
 function LoginGate({ passwordConfigured }: { passwordConfigured: boolean }) {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-neutral-950 px-4 text-neutral-200">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-neutral-950 px-4 text-neutral-200">
       <div className="w-full max-w-sm rounded-lg border border-neutral-800 bg-neutral-900 p-6">
         <h1 className="text-lg font-semibold text-neutral-100">St Mungo&apos;s</h1>
         <p className="mt-1 text-sm text-neutral-400">Enter the access password to practise a station.</p>
@@ -43,18 +44,58 @@ function LoginGate({ passwordConfigured }: { passwordConfigured: boolean }) {
   );
 }
 
-function RandomButton({ label, stationType }: { label: string; stationType?: string }) {
+function RandomButton({
+  label,
+  stationType,
+  mode,
+  tone = "emerald",
+}: {
+  label: string;
+  stationType?: string;
+  mode?: "management";
+  tone?: "emerald" | "amber";
+}) {
   return (
     <form action="/api/session" method="post">
       <input type="hidden" name="random" value="1" />
       {stationType && <input type="hidden" name="stationType" value={stationType} />}
+      {mode && <input type="hidden" name="mode" value={mode} />}
       <button
         type="submit"
-        className="rounded bg-emerald-700 px-3 py-1.5 text-sm font-medium text-emerald-50 hover:bg-emerald-600"
+        className={
+          tone === "amber"
+            ? "rounded border border-amber-800 px-3 py-1.5 text-sm font-medium text-amber-200 hover:bg-amber-950"
+            : "rounded bg-emerald-700 px-3 py-1.5 text-sm font-medium text-emerald-50 hover:bg-emerald-600"
+        }
       >
         {label}
       </button>
     </form>
+  );
+}
+
+/** §8 management-focus mode: skip the work-up, drill treatment of a known diagnosis. */
+function ManagementRow({ c }: { c: CaseSummary }) {
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-3 rounded border border-neutral-800 p-3">
+      <div>
+        <p className="text-sm text-neutral-200">{c.diagnosis}</p>
+        <p className="mt-1 flex flex-wrap gap-1.5 text-xs text-neutral-500">
+          <span className="rounded bg-neutral-800 px-1.5 py-0.5">{c.discipline}</span>
+          <span className="rounded bg-neutral-800 px-1.5 py-0.5">difficulty {c.difficulty}</span>
+        </p>
+      </div>
+      <form action="/api/session" method="post">
+        <input type="hidden" name="caseId" value={c.id} />
+        <input type="hidden" name="mode" value="management" />
+        <button
+          type="submit"
+          className="rounded border border-amber-800 px-3 py-1.5 text-sm font-medium text-amber-200 hover:bg-amber-950"
+        >
+          Viva me
+        </button>
+      </form>
+    </div>
   );
 }
 
@@ -121,9 +162,12 @@ export default async function SessionPickerPage() {
     .join("; ");
   const resumable = sessions.filter((s) => s.status === "active");
   const finished = sessions.filter((s) => s.status !== "active").slice(0, 10);
+  const clinicalCases = cases.filter((c) => c.stationType === "clinical");
 
   return (
-    <main className="min-h-screen bg-neutral-950 px-4 py-8 text-neutral-200">
+    <div className="min-h-screen bg-neutral-950 text-neutral-200">
+      <SiteNav active="stations" />
+      <main className="px-4 py-8">
       <div className="mx-auto max-w-3xl">
         <header className="mb-6">
           <h1 className="text-xl font-semibold text-neutral-100">New station</h1>
@@ -178,6 +222,27 @@ export default async function SessionPickerPage() {
           )}
         </section>
 
+        {clinicalCases.length > 0 && (
+          <section className="mb-8">
+            <h2 className="mb-2 text-xs font-semibold uppercase tracking-widest text-neutral-500">
+              Management focus — rapid viva
+            </h2>
+            <p className="mb-3 text-sm text-neutral-500">
+              Skips the work-up: the examiner hands you the diagnosis and grills you on treatment for 10
+              minutes. Marked against the whole station checklist, so expect the history and examination
+              rows to come back missed.
+            </p>
+            <div className="mb-3">
+              <RandomButton label="Random management viva" mode="management" tone="amber" />
+            </div>
+            <div className="space-y-2">
+              {clinicalCases.map((c) => (
+                <ManagementRow key={c.id} c={c} />
+              ))}
+            </div>
+          </section>
+        )}
+
         {finished.length > 0 && (
           <section>
             <h2 className="mb-2 text-xs font-semibold uppercase tracking-widest text-neutral-500">Past sessions</h2>
@@ -186,9 +251,17 @@ export default async function SessionPickerPage() {
                 <SessionRow key={s.id} s={s} />
               ))}
             </div>
+            <p className="mt-3 text-sm text-neutral-500">
+              Everything you have taken, with what you keep forgetting, lives on{" "}
+              <Link href="/notes" className="underline underline-offset-4 hover:text-neutral-300">
+                the notes page
+              </Link>
+              .
+            </p>
           </section>
         )}
       </div>
-    </main>
+      </main>
+    </div>
   );
 }

@@ -3,7 +3,7 @@
 // swap any vendor without touching the engine. Implementations live in
 // lib/brains/* and lib/stores/*.
 
-import type { ClinicalCase, HistoryFact, OsceCase, Phase } from "./case-schema";
+import type { ClinicalCase, HistoryFact, InterpretationCase, OsceCase, Phase } from "./case-schema";
 import type { MarkingReport } from "./marking-schema";
 
 // ---------------------------------------------------------------------------
@@ -51,10 +51,19 @@ export interface TranscriptEntry {
 
 export type ExamSection = "general" | "vitals" | "respiratory" | "cardio" | "abdo" | "neuro" | "other";
 
+/**
+ * New-exam flow (CLAUDE.md §8). "full" is the whole station from the presenting
+ * complaint; "management" is the management-focus rapid viva — the diagnosis is
+ * handed to the student up front and the station opens in the management phase.
+ */
+export type SessionMode = "full" | "management";
+
 export interface SessionState {
   id: string;
   caseId: string;
   stationType: "clinical" | "interpretation";
+  /** Sessions persisted before this field existed read back undefined → "full". */
+  mode: SessionMode;
   status: "active" | "completed" | "abandoned";
   phase: Phase;
   startedAt: string;
@@ -173,6 +182,13 @@ export interface TextToSpeech {
 // ---------------------------------------------------------------------------
 // The redacted view the client is allowed to see (never the hidden case JSON)
 
+/**
+ * Exactly the stimulus an interpretation station is MEANT to show her (§4b/§8):
+ * kind, vignette, ABG values, image path. It carries none of the hidden case —
+ * findingsKey, interpretationChecklist and examinerBank stay server-side.
+ */
+export type StimulusView = InterpretationCase["stimulus"];
+
 export interface SessionView {
   id: string;
   caseId: string;
@@ -184,5 +200,7 @@ export interface SessionView {
   timeLimitSec: number;
   transcript: TranscriptEntry[];
   patient: { name: string; age: number; sex: "M" | "F" } | null;
+  /** Interpretation stations only — the stimulus viewer renders this. */
+  stimulus: StimulusView | null;
   report: MarkingReport | null;
 }

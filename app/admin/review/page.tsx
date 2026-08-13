@@ -7,6 +7,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cookies } from "next/headers";
 import type { ReactNode } from "react";
+import { SiteNav } from "@/components/site-nav";
 import {
   OsceCaseSchema,
   type ClinicalCase,
@@ -488,7 +489,9 @@ export default async function ReviewPage({
   const actionError = typeof params.actionError === "string" ? params.actionError : null;
 
   return (
-    <main className="min-h-screen bg-neutral-950 px-4 py-8 text-neutral-200">
+    <div className="min-h-screen bg-neutral-950 text-neutral-200">
+      <SiteNav active="review" />
+      <main className="px-4 py-8">
       <div className="mx-auto max-w-4xl">
         <header className="mb-6">
           <h1 className="text-xl font-semibold text-neutral-100">Draft review</h1>
@@ -513,6 +516,7 @@ export default async function ReviewPage({
           </p>
         )}
       </div>
-    </main>
+      </main>
+    </div>
   );
 }

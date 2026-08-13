@@ -6,7 +6,7 @@
 import type { SpeakingEvent, SpeechToText, TextToSpeech, VoiceRole } from "../ports";
 import { SerialQueue } from "./serial-queue";
 import type { TokenProvider } from "./token-client";
-import { buildSsml } from "./voices";
+import { buildSsml, voicesForPatientSex } from "./voices";
 
 type Sdk = typeof import("microsoft-cognitiveservices-speech-sdk");
 
@@ -124,7 +124,10 @@ export class AzureTextToSpeech implements TextToSpeech {
   constructor(
     private readonly sdk: Sdk,
     private readonly tokens: TokenProvider,
-    private readonly voices: Record<VoiceRole, string>,
+    /** Case patient's sex — the voice PAIR is derived per utterance from the
+     *  server-supplied names on the token, so an env-driven voice change lands
+     *  on the next token refresh without reloading the station. */
+    private readonly patientSex: "M" | "F" | null,
   ) {}
 
   speak(text: string, role: VoiceRole): Promise<void> {
@@ -165,7 +168,8 @@ export class AzureTextToSpeech implements TextToSpeech {
 
   private async speakNow(text: string, role: VoiceRole): Promise<void> {
     if (this.muted) return; // muted lines are skipped, not stockpiled
-    const { token, region } = await this.tokens.get();
+    const { token, region, voices } = await this.tokens.get();
+    const voiceName = voicesForPatientSex(this.patientSex, voices)[role];
     const sdk = this.sdk;
 
     const config = sdk.SpeechConfig.fromAuthorizationToken(token, region);
@@ -205,7 +209,7 @@ export class AzureTextToSpeech implements TextToSpeech {
           if (synthesisOk) settle();
         };
         synthesizer.speakSsmlAsync(
-          buildSsml(text, this.voices[role]),
+          buildSsml(text, voiceName, { role }),
           (result) => {
             if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
               synthesisOk = true;
