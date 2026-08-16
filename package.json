@@ -14,6 +14,7 @@
     "gen:interp": "tsx scripts/generate-interp.ts",
     "gen:coverage": "tsx scripts/coverage.ts",
     "simulate": "tsx scripts/simulate-session.ts",
+    "verify:framing": "tsx components/ward/verify-framing.ts",
     "verify:speech-token": "tsx scripts/verify-speech-token.ts",
     "voices:list": "tsx scripts/list-voices.ts",
     "smoke:speech": "tsx scripts/smoke-speech-logic.ts"

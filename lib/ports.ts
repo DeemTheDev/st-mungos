@@ -177,6 +177,9 @@ export interface TextToSpeech {
   stop(): void;
   setMuted(muted: boolean): void;
   repeatLast(): Promise<void>;
+  /** Change the patient's voice for SUBSEQUENT utterances — "random" (derive it
+   *  from the session id) or a concrete voice name. Never reloads the page. */
+  setPatientVoice(choice: string): void;
 }
 
 // ---------------------------------------------------------------------------

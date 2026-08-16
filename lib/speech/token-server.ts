@@ -17,10 +17,12 @@ export type SpeechTokenResult =
   | { ok: false; status: 502 | 503; message: string };
 
 /**
- * Voice names ride with the token because they are the one piece of speech
- * config the browser needs and the server owns: changing VOICE_PATIENT_F /
- * VOICE_PATIENT_M / VOICE_EXAMINER in Vercel swaps the voices on the next
- * token fetch (≤8 min), with no code deploy.
+ * Voice config rides with the token because it is the one piece of speech
+ * config the browser needs and the server owns. Changing any of
+ * `VOICE_PATIENT_F` / `VOICE_PATIENT_M` (explicit pins — they disable the
+ * student's picker), `VOICE_EXAMINER`, or `VOICE_PATIENT_POOL_F` /
+ * `VOICE_PATIENT_POOL_M` (the comma-separated selectable sets) in Vercel takes
+ * effect on the next token fetch (≤8 min), with no code deploy.
  */
 export function speechVoices(): VoiceConfig {
   return voiceConfigFromEnv(process.env);

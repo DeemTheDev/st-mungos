@@ -1,55 +1,72 @@
 "use client";
 
-// Examiner bubble (CLAUDE.md §8): a corner monogram avatar that animates while
-// the examiner is talking and captions the line she is hearing.
+// The examiner (CLAUDE.md §8): a monogram presence that animates while he is
+// talking and captions the line she is hearing.
+//
+// It used to pin itself `fixed` to the viewport, which left a circle floating
+// over whatever happened to be underneath. It now has a real home — its own
+// bento tile beside the patient — so it reads as the second person in the room
+// rather than a stray badge. Positioning is still the CALLER's job.
 //
 // It is driven by whatever the station hands it, so it behaves identically in
 // both modes: in voice mode that is the TTS SpeakingEvent stream, in text-only
 // mode it is a short cue the station raises when a new examiner line lands.
-// Left corner on purpose — the HUD's quit/voice controls own the right one.
 
 import type { VoiceRole } from "@/lib/ports";
+
+// It shrinks to a single row below `lg` rather than switching component
+// variants: a phone's vertical budget belongs to the transcript, and a prop that
+// only ever tracks a breakpoint is a prop that goes stale.
 
 export interface ExaminerBubbleProps {
   /** The line currently being spoken/shown, or null when nobody is talking. */
   speaking: { role: VoiceRole; text: string } | null;
+  className?: string;
 }
 
-export function ExaminerBubble({ speaking }: ExaminerBubbleProps) {
+export function ExaminerBubble({ speaking, className = "" }: ExaminerBubbleProps) {
   const active = speaking?.role === "examiner";
 
   return (
-    <div className="no-print pointer-events-none fixed left-3 top-[4.5rem] z-20 flex max-w-[min(22rem,calc(100vw-1.5rem))] items-start gap-2 sm:left-4 sm:top-20">
+    <section
+      aria-label="Examiner"
+      className={`no-print flex min-w-0 items-center gap-3 rounded-xl border px-3 py-2 transition-colors duration-300 lg:items-start lg:py-2.5 ${
+        active ? "border-amber-700/50 bg-amber-950/25" : "border-neutral-800/60 bg-neutral-900/40"
+      } ${className}`}
+    >
       <div className="relative shrink-0">
-        {active && (
-          <span className="absolute inset-0 animate-ping rounded-full bg-amber-500/30" aria-hidden />
-        )}
+        {active && <span className="absolute inset-0 animate-ping rounded-full bg-amber-500/25" aria-hidden />}
         <span
-          className={`relative flex h-11 w-11 items-center justify-center rounded-full border text-xs font-semibold tracking-widest transition-colors duration-300 ${
+          className={`relative flex h-9 w-9 items-center justify-center rounded-full border text-[11px] font-semibold tracking-widest transition-colors duration-300 ${
             active
-              ? "border-amber-400 bg-amber-950 text-amber-200 shadow-[0_0_18px_-2px_rgba(245,158,11,0.7)]"
-              : "border-neutral-700 bg-neutral-900/80 text-neutral-500"
+              ? "border-amber-400/70 bg-amber-950 text-amber-200 shadow-[0_0_20px_-4px_rgba(245,158,11,0.7)]"
+              : "border-neutral-700/70 bg-neutral-900/80 text-neutral-500"
           }`}
-          title="Examiner"
         >
           EX
         </span>
       </div>
 
-      <div aria-live="polite" className="min-w-0">
-        <p
-          className={`text-[10px] font-semibold uppercase tracking-widest transition-colors duration-300 ${
-            active ? "text-amber-400" : "text-neutral-600"
-          }`}
-        >
-          Examiner
+      <div className="min-w-0 flex-1">
+        <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.14em] text-neutral-500">
+          <span className={active ? "text-amber-400" : "text-neutral-400"}>Examiner</span>
+          <span aria-hidden className="text-neutral-700">·</span>
+          <span className={active ? "text-amber-500" : ""}>{active ? "speaking" : "observing"}</span>
         </p>
-        {active && speaking && (
-          <p className="mt-1 max-h-32 overflow-hidden rounded border border-amber-900/70 bg-neutral-950/85 px-2.5 py-1.5 text-xs italic leading-relaxed text-amber-200 backdrop-blur-sm">
-            {speaking.text}
-          </p>
-        )}
+        {/* aria-live sits on a wrapper that is always mounted — announcing from
+            a node that mounts with the text would re-announce on every render. */}
+        <div aria-live="polite" className="min-w-0">
+          {active && speaking ? (
+            <p className="mt-1 truncate text-xs italic leading-relaxed text-amber-200 lg:mt-1.5 lg:max-h-28 lg:overflow-y-auto lg:whitespace-normal">
+              {speaking.text}
+            </p>
+          ) : (
+            <p className="mt-1.5 hidden text-xs leading-relaxed text-neutral-600 lg:block">
+              He interrupts when he wants your reasoning. Address him directly to present.
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

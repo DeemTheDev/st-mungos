@@ -6,7 +6,7 @@
 import type { SpeakingEvent, SpeechToText, TextToSpeech, VoiceRole } from "../ports";
 import { SerialQueue } from "./serial-queue";
 import type { TokenProvider } from "./token-client";
-import { buildSsml, voicesForPatientSex } from "./voices";
+import { RANDOM_PATIENT_VOICE, buildSsml, voicesForSession } from "./voices";
 
 type Sdk = typeof import("microsoft-cognitiveservices-speech-sdk");
 
@@ -121,14 +121,26 @@ export class AzureTextToSpeech implements TextToSpeech {
   private currentDest: import("microsoft-cognitiveservices-speech-sdk").SpeakerAudioDestination | null = null;
   private cancelCurrent: (() => void) | null = null;
 
+  /** "random" ⇒ derived from the session id; anything else is a concrete voice. */
+  private patientVoice: string;
+
   constructor(
     private readonly sdk: Sdk,
     private readonly tokens: TokenProvider,
-    /** Case patient's sex — the voice PAIR is derived per utterance from the
-     *  server-supplied names on the token, so an env-driven voice change lands
-     *  on the next token refresh without reloading the station. */
+    /** Case patient's sex — picks which pool the patient voice comes from. */
     private readonly patientSex: "M" | "F" | null,
-  ) {}
+    /** Seed for "random each station": stable per station, different across
+     *  them, so the patient never changes voice on a re-render or a resume. */
+    private readonly sessionId: string,
+    patientVoice: string = RANDOM_PATIENT_VOICE,
+  ) {
+    this.patientVoice = patientVoice;
+  }
+
+  /** Applies from the NEXT utterance — the one already playing is left alone. */
+  setPatientVoice(choice: string): void {
+    this.patientVoice = choice.trim() || RANDOM_PATIENT_VOICE;
+  }
 
   speak(text: string, role: VoiceRole): Promise<void> {
     const line = text.trim();
@@ -169,7 +181,15 @@ export class AzureTextToSpeech implements TextToSpeech {
   private async speakNow(text: string, role: VoiceRole): Promise<void> {
     if (this.muted) return; // muted lines are skipped, not stockpiled
     const { token, region, voices } = await this.tokens.get();
-    const voiceName = voicesForPatientSex(this.patientSex, voices)[role];
+    // Resolved per utterance, so BOTH a server env change (arrives on the next
+    // token refresh) and her picker change (arrives immediately) take effect
+    // without reloading the station.
+    const voiceName = voicesForSession({
+      sex: this.patientSex,
+      sessionId: this.sessionId,
+      choice: this.patientVoice,
+      config: voices,
+    })[role];
     const sdk = this.sdk;
 
     const config = sdk.SpeechConfig.fromAuthorizationToken(token, region);

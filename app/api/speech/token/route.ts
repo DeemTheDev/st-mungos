@@ -15,8 +15,11 @@ export async function POST() {
 
   const result = await issueSpeechToken();
   if (!result.ok) return new Response(result.message, { status: result.status });
-  // `voices` is server-owned config (VOICE_PATIENT_F / VOICE_PATIENT_M /
-  // VOICE_EXAMINER) — the client never hardcodes voice names.
+  // `voices` is server-owned config — the pins (VOICE_PATIENT_F /
+  // VOICE_PATIENT_M / VOICE_EXAMINER) plus the selectable pools
+  // (VOICE_PATIENT_POOL_F / VOICE_PATIENT_POOL_M) that fill the station's
+  // patient-voice dropdown. The client never hardcodes voice names; it ships
+  // the same defaults only so the picker works before a token exists.
   return Response.json({
     token: result.token,
     region: result.region,

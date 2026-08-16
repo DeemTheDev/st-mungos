@@ -18,23 +18,65 @@ export const VOICE_MALE = "en-ZA-LukeNeural";
 /** Used when a hand-typed voice name has no parseable locale prefix. */
 const FALLBACK_LOCALE = "en-ZA";
 
+/**
+ * The selectable patient voices, per sex. Every name here was confirmed present
+ * in region `eastus` by `pnpm voices:list` and is documented in
+ * docs/ARCHITECTURE.md §8. These are DEFAULTS: `VOICE_PATIENT_POOL_F` /
+ * `VOICE_PATIENT_POOL_M` replace them wholesale without a deploy.
+ *
+ * Shipped South African first — it is the authentic accent for a KZN station,
+ * and the deterministic picker indexes into the list, not past it.
+ */
+export const DEFAULT_POOL_F: readonly string[] = [
+  VOICE_FEMALE,
+  "en-GB-Sonia:DragonHDLatestNeural",
+  "en-GB-Ada:DragonHDLatestNeural",
+  "en-KE-AsiliaNeural",
+  "en-NG-EzinneNeural",
+  "en-TZ-ImaniNeural",
+];
+
+export const DEFAULT_POOL_M: readonly string[] = [
+  VOICE_MALE,
+  "en-GB-Ollie:DragonHDLatestNeural",
+  "en-GB-Ryan:DragonHDLatestNeural",
+  "en-KE-ChilembaNeural",
+  "en-NG-AbeoNeural",
+  "en-TZ-ElimuNeural",
+];
+
+/** The picker value meaning "derive it from the session id". */
+export const RANDOM_PATIENT_VOICE = "random";
+
 // ---------------------------------------------------------------------------
 // configuration
 
 export interface VoiceConfig {
-  /** Voice for a female case patient. */
+  /** Effective default voice for a female case patient (pin ?? shipped). */
   patientF: string;
-  /** Voice for a male case patient. */
+  /** Effective default voice for a male case patient (pin ?? shipped). */
   patientM: string;
   /** null = not pinned by env; the examiner then takes the OTHER patient voice
    *  so the two speakers are never confusable. A set value always wins. */
   examiner: string | null;
+  /** VOICE_PATIENT_F verbatim, or null when unset. Non-null disables picking. */
+  pinnedF: string | null;
+  /** VOICE_PATIENT_M verbatim, or null when unset. Non-null disables picking. */
+  pinnedM: string | null;
+  /** Selectable female-patient voices (VOICE_PATIENT_POOL_F ?? DEFAULT_POOL_F). */
+  poolF: string[];
+  /** Selectable male-patient voices (VOICE_PATIENT_POOL_M ?? DEFAULT_POOL_M). */
+  poolM: string[];
 }
 
 export const DEFAULT_VOICES: VoiceConfig = {
   patientF: VOICE_FEMALE,
   patientM: VOICE_MALE,
   examiner: null,
+  pinnedF: null,
+  pinnedM: null,
+  poolF: [...DEFAULT_POOL_F],
+  poolM: [...DEFAULT_POOL_M],
 };
 
 const clean = (value: string | undefined): string | null => {
@@ -42,16 +84,30 @@ const clean = (value: string | undefined): string | null => {
   return trimmed ? trimmed : null;
 };
 
+/** "a, b ,, b" → ["a", "b"]. Blank/duplicate entries are dropped, order kept. */
+export function parseVoicePool(value: string | undefined): string[] | null {
+  const raw = clean(value);
+  if (!raw) return null;
+  const names = [...new Set(raw.split(",").map((n) => n.trim()).filter(Boolean))];
+  return names.length > 0 ? names : null;
+}
+
 /**
  * SERVER-side env → VoiceConfig. Pure (the env bag is a parameter), so it is
  * smoke-testable and safe to keep in this client-reachable module — nothing
  * here touches `process`.
  */
 export function voiceConfigFromEnv(env: Record<string, string | undefined>): VoiceConfig {
+  const pinnedF = clean(env.VOICE_PATIENT_F);
+  const pinnedM = clean(env.VOICE_PATIENT_M);
   return {
-    patientF: clean(env.VOICE_PATIENT_F) ?? DEFAULT_VOICES.patientF,
-    patientM: clean(env.VOICE_PATIENT_M) ?? DEFAULT_VOICES.patientM,
+    patientF: pinnedF ?? DEFAULT_VOICES.patientF,
+    patientM: pinnedM ?? DEFAULT_VOICES.patientM,
     examiner: clean(env.VOICE_EXAMINER),
+    pinnedF,
+    pinnedM,
+    poolF: parseVoicePool(env.VOICE_PATIENT_POOL_F) ?? [...DEFAULT_POOL_F],
+    poolM: parseVoicePool(env.VOICE_PATIENT_POOL_M) ?? [...DEFAULT_POOL_M],
   };
 }
 
@@ -59,10 +115,19 @@ export function voiceConfigFromEnv(env: Record<string, string | undefined>): Voi
 export function normalizeVoiceConfig(raw: unknown): VoiceConfig {
   const v = (raw ?? {}) as Partial<Record<keyof VoiceConfig, unknown>>;
   const str = (x: unknown): string | null => (typeof x === "string" ? clean(x) : null);
+  const pool = (x: unknown, fallback: readonly string[]): string[] => {
+    if (!Array.isArray(x)) return [...fallback];
+    const names = [...new Set(x.filter((n): n is string => typeof n === "string").map((n) => n.trim()).filter(Boolean))];
+    return names.length > 0 ? names : [...fallback];
+  };
   return {
     patientF: str(v.patientF) ?? DEFAULT_VOICES.patientF,
     patientM: str(v.patientM) ?? DEFAULT_VOICES.patientM,
     examiner: str(v.examiner),
+    pinnedF: str(v.pinnedF),
+    pinnedM: str(v.pinnedM),
+    poolF: pool(v.poolF, DEFAULT_POOL_F),
+    poolM: pool(v.poolM, DEFAULT_POOL_M),
   };
 }
 
@@ -79,6 +144,141 @@ export function voicesForPatientSex(
   const patient = sex === "M" ? config.patientM : config.patientF;
   const opposite = sex === "M" ? config.patientF : config.patientM;
   return { patient, examiner: config.examiner ?? opposite };
+}
+
+// ---------------------------------------------------------------------------
+// per-session patient voice (the picker)
+
+/** The selectable pool for this patient's sex. Interpretation stations → female. */
+export function patientVoicePool(
+  sex: "M" | "F" | null | undefined,
+  config: VoiceConfig = DEFAULT_VOICES,
+): string[] {
+  return sex === "M" ? config.poolM : config.poolF;
+}
+
+/** The env pin for this sex, or null when the student is free to choose. */
+export function pinnedPatientVoice(
+  sex: "M" | "F" | null | undefined,
+  config: VoiceConfig = DEFAULT_VOICES,
+): string | null {
+  return sex === "M" ? config.pinnedM : config.pinnedF;
+}
+
+/**
+ * FNV-1a, 32-bit. Any stable string hash would do; the requirement is only that
+ * it is DETERMINISTIC — `Math.random()` at render time would re-cast the patient
+ * mid-station on every re-render and again on resume.
+ */
+export function hashSeed(seed: string): number {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return h >>> 0;
+}
+
+export interface PatientVoiceRequest {
+  sex: "M" | "F" | null | undefined;
+  /** The session id — the seed. Same station ⇒ same voice, forever. */
+  sessionId: string;
+  /** "random" (or null/unknown) ⇒ derive from the seed; anything else is a pin. */
+  choice?: string | null;
+  config?: VoiceConfig;
+  /** The examiner's voice, so a random patient never collides with it. */
+  examiner?: string | null;
+}
+
+/**
+ * Precedence, highest first:
+ *   1. `VOICE_PATIENT_F` / `VOICE_PATIENT_M` — a server pin. The student's
+ *      picker is disabled while one is set; this is the pre-existing
+ *      "operator decides" behaviour and stays backward-compatible.
+ *   2. Her explicit choice, if it is actually in the pool.
+ *   3. "Random each station" (the default) — `hash(sessionId) % pool.length`,
+ *      nudged one along if it lands on the examiner's voice.
+ *   4. Empty pool ⇒ the shipped en-ZA default for that sex.
+ */
+export function resolvePatientVoice(req: PatientVoiceRequest): string {
+  const config = req.config ?? DEFAULT_VOICES;
+  const pin = pinnedPatientVoice(req.sex, config);
+  if (pin) return pin;
+
+  const pool = patientVoicePool(req.sex, config);
+  const fallback = req.sex === "M" ? config.patientM : config.patientF;
+  if (pool.length === 0) return fallback;
+
+  const choice = clean(req.choice ?? undefined);
+  if (choice && choice !== RANDOM_PATIENT_VOICE && pool.includes(choice)) return choice;
+
+  let index = hashSeed(req.sessionId) % pool.length;
+  // Two speakers with one voice is unusable in an exam — step off the collision.
+  if (pool.length > 1 && req.examiner && pool[index] === req.examiner) {
+    index = (index + 1) % pool.length;
+  }
+  return pool[index] ?? fallback;
+}
+
+/**
+ * The full pair for a live session: the examiner exactly as before (env pin, or
+ * the opposite shipped voice), the patient through the picker.
+ */
+export function voicesForSession(req: PatientVoiceRequest): Record<VoiceRole, string> {
+  const config = req.config ?? DEFAULT_VOICES;
+  const examiner = config.examiner ?? (req.sex === "M" ? config.patientF : config.patientM);
+  return { patient: resolvePatientVoice({ ...req, config, examiner }), examiner };
+}
+
+// ---------------------------------------------------------------------------
+// human labels for the picker
+
+/** Locale → the accent a human would name it by. */
+const ACCENTS: Record<string, string> = {
+  "en-ZA": "South African",
+  "en-GB": "British",
+  "en-KE": "Kenyan",
+  "en-NG": "Nigerian",
+  "en-TZ": "Tanzanian",
+  "en-GH": "Ghanaian",
+  "en-US": "American",
+  "en-AU": "Australian",
+  "en-IE": "Irish",
+  "en-IN": "Indian",
+  "en-NZ": "New Zealand",
+  "en-CA": "Canadian",
+  "en-SG": "Singaporean",
+  "en-PH": "Filipino",
+  "en-HK": "Hong Kong",
+};
+
+export interface VoiceDescription {
+  /** "Leah". */
+  name: string;
+  /** "South African", or the raw locale when it is not one we have a word for. */
+  accent: string;
+  /** New-generation (Dragon HD / MAI) — noticeably more natural. */
+  hd: boolean;
+  /** "Leah — South African" / "Sonia — British (HD)". */
+  label: string;
+}
+
+/**
+ * Derived, not table-driven, so a voice pinned through `VOICE_PATIENT_POOL_*`
+ * that nobody has ever heard of still gets a sensible label instead of a raw
+ * Azure identifier in the dropdown.
+ */
+export function describeVoice(voiceName: string): VoiceDescription {
+  const locale = localeFromVoiceName(voiceName);
+  const hd = isHdVoice(voiceName);
+  const stem = voiceName.startsWith(`${locale}-`) ? voiceName.slice(locale.length + 1) : voiceName;
+  const name =
+    stem
+      .split(":")[0]
+      .replace(/(Multilingual)?Neural$/, "")
+      .trim() || voiceName;
+  const accent = ACCENTS[locale] ?? locale;
+  return { name, accent, hd, label: `${name} — ${accent}${hd ? " (HD)" : ""}` };
 }
 
 // ---------------------------------------------------------------------------
