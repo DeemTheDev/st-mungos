@@ -1,0 +1,723 @@
+{
+  "id": "id-002-cryptococcal-disease-presenting-with",
+  "version": 1,
+  "discipline": "id",
+  "diagnosis": "Cryptococcal disease presenting with headache in HIV",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient's headache, and explain how the CD4 count changes your thinking.",
+      "modelAnswer": "In an HIV-positive patient with CD4 58 presenting with a 12-day headache, fever, mild neck stiffness, vomiting and cognitive slowing, cryptococcal meningitis is top of the list given the profound immunosuppression, subacute course and raised-ICP features. TB meningitis is a close second given KZN's TB burden and must always be screened for. Toxoplasmosis/CNS lymphoma are considered at this CD4 level but usually present with more focal deficits. Bacterial meningitis is less likely given the subacute rather than hyperacute course. Primary headache is a diagnosis of exclusion only after red flags are addressed — here it would be dangerous to assume this.",
+      "gradingNotes": "Wants CD4-gated reasoning explicitly stated, not just a list of diagnoses. Full marks for linking CD4 <100 specifically to cryptococcal risk."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology behind why this patient has such a markedly raised CSF opening pressure, and why this matters clinically.",
+      "modelAnswer": "The cryptococcal polysaccharide capsule accumulates in the subarachnoid space and clogs the arachnoid granulations, impairing CSF reabsorption. This causes a disproportionate rise in intracranial pressure relative to the degree of CSF inflammation, unlike bacterial meningitis. Clinically this matters because uncontrolled raised ICP is a major driver of mortality and visual loss in cryptococcal meningitis, so therapeutic drainage via repeated large-volume LPs (aiming to reduce pressure below 20 cmH2O or by 50%) is as important as antifungal therapy itself.",
+      "gradingNotes": "Should mention arachnoid villi obstruction mechanism and the clinical imperative of pressure-lowering LPs, not just 'the fungus causes pressure'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His CSF white cell count comes back at only 15 cells/µL despite a clearly positive India ink and high antigen titre. Does this low cell count make you doubt the diagnosis? Why or why not?",
+      "modelAnswer": "No — a paucicellular CSF response is well recognised in advanced HIV with severe CD4 depletion, because the host lacks sufficient lymphocytes to mount a robust inflammatory response in the CSF despite a heavy organism burden. This is a classic pitfall: relying on CSF cell count alone to rule out cryptococcal meningitis in profoundly immunosuppressed patients is unsafe. The positive India ink stain and high CrAg titre are diagnostic regardless of cell count.",
+      "gradingNotes": "Tests understanding that CSF findings can be atypical in advanced immunosuppression; should not retreat from the diagnosis based on low WCC alone."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "The patient's family asks why you aren't restarting his HIV treatment (ART) today, since he's already been off it for months. How do you respond, and what is the evidence-based reasoning?",
+      "modelAnswer": "I would explain that starting ART too soon in the setting of untreated or newly-treated cryptococcal meningitis can trigger cryptococcal immune reconstitution inflammatory syndrome (IRIS), where the recovering immune system mounts a dangerous inflammatory response against residual organisms in the CNS, which can worsen raised intracranial pressure and has been shown to increase mortality. Current guidance is to treat the cryptococcal infection first with induction antifungal therapy and control raised ICP, then start or restart ART approximately 4 to 6 weeks later once the patient is clinically stable.",
+      "gradingNotes": "Wants explicit mention of cryptococcal IRIS risk and the 4-6 week delay recommendation; should communicate this in a way understandable to family (communication skill overlap)."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "HIV symptom work-up: confirm HIV status/CD4/VL/ART → WHO clinical stage → localise complaint by system → differential (direct HIV effect vs OI vs malignancy vs ART toxicity vs IRIS) → CD4-gated differential → screen for TB always → identify red flags → investigate, treat OI, decide ART timing, follow-up",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, downplays how bad the headache really is, embarrassed about missing ART clinic visits",
+    "openingLine": "Doctor, my head has been paining me for almost two weeks now, it's not getting better with the tablets from the pharmacy."
+  },
+  "presentingComplaint": "progressively worsening headache for 12 days with low-grade fever, in a patient known HIV positive but off ART for several months",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Headache started gradually about 12 days ago, initially mild and intermittent, now constant and worsening",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-character",
+      "fact": "Headache is dull, generalised, worse in the mornings, not like any headache he has had before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "character",
+        "describe",
+        "worse in morning",
+        "morning",
+        "dull",
+        "throbbing",
+        "type of pain",
+        "what does it feel like",
+        "severity",
+        "how bad",
+        "worse",
+        "type",
+        "pain",
+        "bad"
+      ]
+    },
+    {
+      "id": "hx-photophobia",
+      "fact": "Bright light makes it worse; has been staying in a dark room",
+      "disclosure": "onAsk",
+      "triggers": [
+        "light",
+        "photophobia",
+        "bright",
+        "sun",
+        "glare",
+        "curtains",
+        "dark room",
+        "dark",
+        "room"
+      ]
+    },
+    {
+      "id": "hx-neck",
+      "fact": "No neck stiffness noticed by him, but he hasn't really tried to test it",
+      "disclosure": "onAsk",
+      "triggers": [
+        "neck",
+        "stiff",
+        "stiffness",
+        "meningism",
+        "neck pain",
+        "move neck",
+        "bend neck",
+        "pain",
+        "move",
+        "bend"
+      ]
+    },
+    {
+      "id": "hx-vomiting",
+      "fact": "Vomited twice yesterday morning, not related to food, described as forceful",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomit",
+        "vomiting",
+        "sick",
+        "throw up",
+        "nausea",
+        "nauseous",
+        "been sick",
+        "throw"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Feels warm on and off, has not measured temperature at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-confusion",
+      "fact": "His sister says he has seemed 'slower' and more forgetful over the past 4-5 days, repeating himself",
+      "disclosure": "onAsk",
+      "triggers": [
+        "confusion",
+        "confused",
+        "memory",
+        "forgetful",
+        "behaviour change",
+        "personality",
+        "slow",
+        "concentration",
+        "mental state",
+        "acting strange",
+        "behaviour",
+        "change",
+        "mental",
+        "state",
+        "acting",
+        "strange"
+      ]
+    },
+    {
+      "id": "hx-seizure",
+      "fact": "No seizures or fits witnessed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "seizure",
+        "fit",
+        "convulsion",
+        "shaking",
+        "jerking",
+        "epilepsy"
+      ]
+    },
+    {
+      "id": "hx-visual",
+      "fact": "Mild blurring of vision in both eyes over the last few days, no double vision",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vision",
+        "blurred",
+        "blurry",
+        "eyesight",
+        "seeing",
+        "double vision",
+        "eyes",
+        "double"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Has lost some weight over the past 2-3 months, clothes looser, not weighed formally",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "clothes",
+        "thinner",
+        "appetite",
+        "eating",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "No drenching night sweats",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating at night",
+        "sweat",
+        "wet",
+        "drenched",
+        "night",
+        "sweats",
+        "sweating"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "No cough, no shortness of breath, no chest pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "chest",
+        "breath",
+        "breathing",
+        "sputum",
+        "phlegm",
+        "tb symptoms",
+        "symptoms"
+      ]
+    },
+    {
+      "id": "hx-diarrhoea",
+      "fact": "No diarrhoea, no abdominal pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diarrhoea",
+        "stool",
+        "bowel",
+        "abdominal pain",
+        "stomach",
+        "abdominal",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-hivdx",
+      "fact": "Diagnosed HIV positive 3 years ago at a local clinic in KwaMashu",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "diagnosed",
+        "when found out",
+        "positive",
+        "tested",
+        "found",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-art",
+      "fact": "Was started on TLD (tenofovir/lamivudine/dolutegravir) but stopped collecting medication about 5 months ago after losing his job and moving; last CD4 he recalls was 'low', around 90, done about a year ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "art",
+        "antiretroviral",
+        "treatment",
+        "tablets",
+        "medication",
+        "adherence",
+        "taking pills",
+        "cd4",
+        "stopped",
+        "defaulted",
+        "clinic",
+        "regimen",
+        "taking",
+        "pills"
+      ]
+    },
+    {
+      "id": "hx-priortb",
+      "fact": "No previous TB, never been treated for TB before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "previous tb",
+        "treated for tb before",
+        "tb history",
+        "previous",
+        "treated",
+        "before",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-tbcontact",
+      "fact": "No known TB contacts at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb contact",
+        "household",
+        "anyone sick",
+        "family tb",
+        "exposure",
+        "contact",
+        "anyone",
+        "sick",
+        "family"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No other chronic illnesses, no diabetes, no hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "chronic",
+        "diabetes",
+        "hypertension",
+        "past medical",
+        "medical",
+        "history",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Only took over-the-counter paracetamol and ibuprofen for the headache, no relief",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets treatment",
+        "taking anything",
+        "muti",
+        "painkillers",
+        "tablets",
+        "treatment",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives alone in a rented room in KwaMashu, previously worked as a security guard, currently unemployed; drinks alcohol occasionally on weekends, smokes about 5 cigarettes a day",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "occupation",
+        "job"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of note; parents both alive and well",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-skin",
+      "fact": "No new rashes or skin lesions noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rash",
+        "skin",
+        "spots",
+        "lesions",
+        "sores"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, mildly unwell-looking young man, alert but slow to respond to questions, intermittently drifting off during conversation. No oral thrush. No lymphadenopathy. No skin rash.",
+    "vitals": {
+      "hr": 96,
+      "bp": "118/76",
+      "rr": 18,
+      "temp": 37.8,
+      "spo2": "98% on room air",
+      "bmi": 19
+    },
+    "respiratory": "Clear breath sounds bilaterally, no crackles, no dullness",
+    "cardio": "Normal heart sounds, no murmurs, JVP not elevated",
+    "abdo": "Soft, non-tender, no organomegaly, no ascites",
+    "neuro": "GCS 14/15 (E4 V4 M6, disorientated to time), mild neck stiffness present, Kernig's sign equivocal, no papilloedema seen on fundoscopy (though view limited), no focal limb weakness, cranial nerves grossly intact, plantars downgoing, no photophobia demonstrable on exam beyond patient's report",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Serum cryptococcal antigen (CrAg)",
+      "result": "Positive, titre 1:160",
+      "key": true
+    },
+    {
+      "name": "Lumbar puncture — opening pressure",
+      "result": "Elevated at 32 cmH2O (markedly raised)",
+      "key": true
+    },
+    {
+      "name": "CSF India ink stain",
+      "result": "Positive — encapsulated budding yeasts seen",
+      "key": true
+    },
+    {
+      "name": "CSF cryptococcal antigen",
+      "result": "Positive, titre 1:512",
+      "key": true
+    },
+    {
+      "name": "CSF biochemistry and cell count",
+      "result": "Protein mildly raised at 0.8 g/L, glucose 2.1 mmol/L (paired serum glucose 5.8 mmol/L), WCC 15 cells/µL (lymphocyte predominant) — often paucicellular in advanced HIV",
+      "key": false
+    },
+    {
+      "name": "CD4 count",
+      "result": "58 cells/µL",
+      "key": true
+    },
+    {
+      "name": "HIV viral load",
+      "result": "210,000 copies/mL (detectable — consistent with treatment interruption)",
+      "key": false
+    },
+    {
+      "name": "CSF TB GeneXpert",
+      "result": "Not detected",
+      "key": false
+    },
+    {
+      "name": "CSF VDRL",
+      "result": "Non-reactive",
+      "key": false
+    },
+    {
+      "name": "CSF fungal culture",
+      "result": "Sent — Cryptococcus neoformans grown after 5 days (result pending at time of consult)",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Clear lung fields, no consolidation or effusion",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.9 g/dL normocytic, WCC 4.1, Plt 178",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Mildly low sodium 132 mmol/L, otherwise normal",
+      "key": false
+    },
+    {
+      "name": "LFTs",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "Hepatitis B surface antigen",
+      "result": "Negative",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Cryptococcal meningitis",
+      "rank": 1,
+      "for": [
+        "subacute headache over 12 days",
+        "CD4 <100 (58)",
+        "raised opening pressure",
+        "confusion/cognitive decline",
+        "positive serum and CSF CrAg",
+        "classic in advanced HIV off ART"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Tuberculous meningitis",
+      "rank": 2,
+      "for": [
+        "subacute headache and confusion in HIV",
+        "weight loss",
+        "common co-pathology in KZN",
+        "raised protein in CSF"
+      ],
+      "against": [
+        "CSF TB GeneXpert not detected",
+        "no cough or other TB features",
+        "no known TB contact",
+        "CSF glucose only mildly reduced rather than markedly low as classically seen in TBM"
+      ]
+    },
+    {
+      "dx": "Toxoplasma encephalitis / CNS mass lesion (toxoplasmosis vs primary CNS lymphoma)",
+      "rank": 3,
+      "for": [
+        "CD4 <100",
+        "confusion",
+        "headache"
+      ],
+      "against": [
+        "no focal neurological deficit",
+        "no seizures",
+        "CT brain not yet needed given clear meningitic picture and positive CrAg"
+      ]
+    },
+    {
+      "dx": "Bacterial meningitis",
+      "rank": 4,
+      "for": [
+        "headache, fever, neck stiffness, vomiting"
+      ],
+      "against": [
+        "subacute 12-day course rather than hours-to-days",
+        "CSF not neutrophilic",
+        "patient not septic/haemodynamically unstable"
+      ]
+    },
+    {
+      "dx": "Primary/tension headache or medication-overuse headache",
+      "rank": 5,
+      "for": [
+        "headache is the presenting complaint"
+      ],
+      "against": [
+        "red flag features present — fever, confusion, raised opening pressure, immunosuppression — make this very unlikely and dangerous to assume"
+      ]
+    }
+  ],
+  "pathophys": {
+    "headache": "Cryptococcal polysaccharide capsule and yeast burden in the subarachnoid space provoke a low-grade inflammatory response and impair CSF reabsorption at the arachnoid granulations, causing raised intracranial pressure that manifests as headache, worse with recumbency/mornings",
+    "raised CSF opening pressure": "Cryptococcal polysaccharide antigen clogs arachnoid villi and obstructs CSF outflow, causing a communicating hydrocephalus-like rise in ICP disproportionate to the degree of CSF pleocytosis — a hallmark of cryptococcal meningitis distinct from bacterial meningitis",
+    "confusion/cognitive slowing": "Raised intracranial pressure and diffuse fungal burden in the meninges/perivascular spaces impair cortical and subcortical function; can progress to obtundation and coma if pressure is not controlled",
+    "vomiting": "Raised intracranial pressure stimulates the area postrema (chemoreceptor trigger zone) and vestibular pathways, producing vomiting often without preceding nausea ('projectile')",
+    "visual blurring": "Chronically raised ICP transmitted along the optic nerve sheath causes papilloedema and axoplasmic stasis, leading to transient visual obscurations and blurring; untreated raised ICP risks permanent optic atrophy",
+    "paucicellular CSF (low WCC despite infection)": "Severe CD4 depletion (here 58 cells/µL) blunts the host's lymphocytic/inflammatory response in the CSF, so classic meningitic pleocytosis may be minimal despite heavy organism burden — a recognised pitfall in advanced HIV"
+  },
+  "staging": "WHO HIV clinical stage 4 (cryptococcal meningitis is AIDS-defining); CD4 58 cells/µL — severe immunosuppression",
+  "management": {
+    "immediate": [
+      "Urgent lumbar puncture for diagnosis AND therapeutic drainage to reduce opening pressure (remove CSF until pressure <20 cmH2O or 50% reduction, may need repeated daily LPs)",
+      "Admit for induction antifungal therapy and neuro-observation",
+      "Correct mild hyponatraemia cautiously, monitor GCS/neuro obs regularly",
+      "Notify as per local surveillance if required and ensure infection control precautions"
+    ],
+    "definitive": [
+      "Induction: Amphotericin B (liposomal or conventional per resource-adjusted SA protocol) plus flucytosine for 2 weeks where available; alternative high-dose fluconazole-based regimen if amphotericin/flucytosine unavailable, per updated WHO/SA guidance",
+      "Consolidation: fluconazole 400-800mg daily for 8 weeks",
+      "Maintenance: fluconazole 200mg daily until CD4 >200 for at least 12 months and virally suppressed",
+      "Delay ART initiation by approximately 4-6 weeks after starting antifungal therapy to reduce risk of cryptococcal IRIS and associated mortality",
+      "Repeat therapeutic LPs as needed to control raised ICP during induction phase"
+    ],
+    "supportive": [
+      "Analgesia for headache once ICP controlled",
+      "Nutritional support given weight loss",
+      "Adherence counselling — address the ART treatment interruption directly, non-judgementally, link to adherence support/treatment supporter",
+      "Screen for and treat coexisting TB given high co-prevalence, despite negative CSF Xpert here — consider sputum GeneXpert if any respiratory features develop",
+      "Psychosocial support, HIV disclosure counselling as needed"
+    ],
+    "followUp": [
+      "Monitor renal function and potassium closely if amphotericin B used (nephrotoxicity, hypokalaemia)",
+      "Clinical and CSF CrAg monitoring is not required to guide fluconazole duration — use clinical response and CD4 recovery",
+      "Restart ART (TLD) around 4-6 weeks after amphotericin/antifungal induction, once clinically stable",
+      "CD4 and viral load monitoring after ART restart; watch for IRIS symptoms (worsening headache, fever, new neuro signs) in the weeks following ART reinitiation",
+      "Ensure fluconazole maintenance continued until CD4 >200 sustained for 12 months on suppressive ART"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-hivstatus",
+      "phase": "history",
+      "item": "Confirms HIV status and establishes ART history: regimen, duration, adherence, when last collected, nadir and most recent CD4/VL",
+      "answer": "Known HIV+ 3 years, was on TLD, defaulted 5 months ago, last CD4 recalled as ~90 a year ago",
+      "why": "ART status/adherence and CD4 trajectory are essential to gate the differential and explain the presentation",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-headache-character",
+      "phase": "history",
+      "item": "Characterises the headache fully (onset, duration, character, photophobia, positional/morning pattern)",
+      "answer": "12 days, dull, generalised, worse in mornings, photophobia present",
+      "why": "Subacute progressive headache pattern is typical of cryptococcal meningitis versus acute bacterial presentations",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-redflags",
+      "phase": "history",
+      "item": "Screens for red flag features: fever, vomiting, neck stiffness, seizures, confusion/behaviour change, visual symptoms",
+      "answer": "Fever intermittent, vomiting x2, mild neck stiffness, no seizures, cognitive slowing over 4-5 days noted by sister, visual blurring",
+      "why": "These red flags mandate urgent LP and change management urgency",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tbscreen",
+      "phase": "history",
+      "item": "Screens for TB symptoms and TB contact history in every symptomatic HIV patient",
+      "answer": "No cough, no night sweats beyond mild fever, no TB contacts, no prior TB treatment",
+      "why": "TB must be screened at any CD4 count as the default 'must exclude' diagnosis in HIV",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-constitutional",
+      "phase": "history",
+      "item": "Asks about constitutional symptoms — weight loss, night sweats, fever pattern, duration",
+      "answer": "Some weight loss over 2-3 months, no drenching night sweats",
+      "why": "Helps assess disease chronicity and WHO staging",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-neuroexam",
+      "phase": "examination",
+      "item": "Performs a focused neurological examination including GCS, meningism (neck stiffness/Kernig's), fundoscopy for papilloedema, and a bedside cognitive screen",
+      "answer": "GCS 14/15, mild neck stiffness, blurred disc margins on limited fundoscopy, MMSE 22/30",
+      "why": "Localises the process to the CNS and assesses severity/safety for LP (papilloedema/raised ICP signs)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-generalexam",
+      "phase": "examination",
+      "item": "Performs general examination for wasting, oral thrush, lymphadenopathy, skin lesions as staging clues",
+      "answer": "Thin, no thrush, no lymphadenopathy, no skin lesions",
+      "why": "Supports overall WHO staging assessment and looks for co-existing OIs",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a CD4-gated, ranked differential for headache in HIV (cryptococcal meningitis vs TB meningitis vs toxoplasmosis/CNS lymphoma vs bacterial meningitis vs primary headache) with reasoning",
+      "answer": null,
+      "why": "Demonstrates the core symptom-to-differential framework using CD4 as the key gating variable",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-crag",
+      "phase": "investigations",
+      "item": "Requests serum CrAg as first-line screen, then proceeds to LP with opening pressure measurement, India ink, CSF CrAg, and CSF TB GeneXpert",
+      "answer": "Serum CrAg positive 1:160; LP opening pressure 32 cmH2O; India ink positive; CSF CrAg 1:512; CSF Xpert not detected",
+      "why": "This is the confirmatory diagnostic pathway per SA guidelines — reflex CrAg screening at low CD4 with LP for definitive diagnosis and pressure management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cd4vl",
+      "phase": "investigations",
+      "item": "Orders CD4 count and viral load to stage disease and confirm degree of immunosuppression",
+      "answer": "CD4 58 cells/µL, viral load 210,000 copies/mL",
+      "why": "Confirms severe immunosuppression consistent with cryptococcal disease and treatment interruption",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-induction",
+      "phase": "management",
+      "item": "Outlines induction antifungal therapy (amphotericin B + flucytosine or resource-adjusted alternative), therapeutic LP for raised ICP, and appropriate ART timing delay (4-6 weeks) to avoid IRIS",
+      "answer": null,
+      "why": "Correct sequencing of antifungal induction before ART reinitiation is critical to reducing mortality from cryptococcal IRIS",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-followup",
+      "phase": "management",
+      "item": "Plans consolidation/maintenance fluconazole course, monitoring for amphotericin toxicity, and adherence support/counselling addressing the ART interruption",
+      "answer": null,
+      "why": "Ensures continuity of care and addresses the modifiable risk factor (treatment interruption) that led to this presentation",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 18,
+    "clinicalReasoning": 25,
+    "investigations": 13,
+    "management": 12
+  }
+}

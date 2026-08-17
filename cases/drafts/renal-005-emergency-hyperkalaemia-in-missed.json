@@ -1,0 +1,609 @@
+{
+  "id": "renal-005-emergency-hyperkalaemia-in-missed",
+  "version": 1,
+  "discipline": "renal",
+  "diagnosis": "Emergency hyperkalaemia in missed dialysis",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "history",
+      "question": "Walk me through your differential diagnosis for this patient's weakness and palpitations, and how the history supports each.",
+      "modelAnswer": "Top of the list is hyperkalaemia secondary to missed dialysis — he is a known anuric ESRD patient who missed two consecutive sessions, has increased his dietary potassium intake (bananas, potatoes), and presents with weakness and palpitations. Drug-induced hyperkalaemia is less likely as he is only on amlodipine and a phosphate binder, neither of which raise potassium. A primary cardiac arrhythmia is possible given the palpitations and bradycardia but is better explained by the metabolic disturbance. Adrenal insufficiency is a rarer cause of hyperkalaemia and there's no supporting history here, and a clear alternative cause is already present.",
+      "gradingNotes": "Wants a ranked differential explicitly tied to case features, not just a list of causes of hyperkalaemia in general."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology behind the ECG changes you'd expect to see, and why they progress in the order they do.",
+      "modelAnswer": "Hyperkalaemia reduces the resting membrane potential gradient across cardiac myocytes. Early changes are peaked T waves from accelerated repolarisation. As potassium rises further, sodium channel availability falls, slowing phase 0 depolarisation — this widens the QRS and flattens/loses the P wave (atrial tissue is more sensitive). At critical levels, the QRS merges with the T wave to form a sine wave pattern, which precedes ventricular fibrillation or asystole.",
+      "gradingNotes": "Expect explanation of membrane potential shift and sodium channel inactivation, not just a list of ECG findings."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His venous gas shows K+ 7.8 mmol/L with ECG changes. Talk me through your immediate management in the correct sequence, and explain why calcium gluconate is given first even though it doesn't lower potassium.",
+      "modelAnswer": "Calcium gluconate is given first because it stabilises the cardiac cell membrane by restoring the threshold potential gradient, protecting against arrhythmia within minutes — it buys time but does not change serum potassium. Next, insulin with dextrose drives potassium intracellularly via the Na-K-ATPase pump, and nebulised salbutamol adds a beta-2 mediated intracellular shift. These are temporising measures only; definitive treatment is emergency haemodialysis to actually remove potassium from the body, which must be arranged urgently in parallel with these steps.",
+      "gradingNotes": "Critical answer must distinguish membrane-stabilising vs potassium-shifting vs potassium-removing therapies and get the sequence right."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Recite the AEIOU indications for emergency renal replacement therapy and identify which one applies here.",
+      "modelAnswer": "AEIOU: refractory Acidosis, refractory hyperkalaemia (Electrolytes), dialysable Intoxication/ingestion, refractory pulmonary Overload, and Uraemic complications (encephalopathy, pericarditis, bleeding). This patient meets the 'E' criterion — severe, symptomatic hyperkalaemia with ECG changes refractory to medical therapy alone, requiring emergency dialysis.",
+      "gradingNotes": "Expect the full mnemonic recited accurately plus correct application to this specific case."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Beyond treating this acute episode, what would you address before this patient is discharged, and why is this commonly missed?",
+      "modelAnswer": "I would address the underlying social driver — he missed dialysis because he lost his job and couldn't afford transport, so a social work referral to explore grant eligibility or transport assistance is essential to prevent recurrence. I'd also reconcile his medications, ensuring his phosphate binder supply is restored, and arrange close renal clinic follow-up. This is commonly missed because clinicians focus on resolving the acute metabolic emergency and discharge without addressing the root cause, leading to repeat presentations.",
+      "gradingNotes": "Rewards identifying the social/financial precipitant explicitly and linking it to relapse prevention, not just generic 'follow up in clinic.'"
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "AKI/ESRD framework: confirm baseline (known ESRD on HD), exclude reversible contributors, assess volume status, urgent bedside ECG/VBG for hyperkalaemia severity, identify precipitant (missed sessions, dietary indiscretion, medication error), stage severity and RRT/AEIOU indications, treat as emergency in parallel with work-up",
+  "patient": {
+    "name": "Bongani Mthembu",
+    "age": 52,
+    "sex": "M",
+    "occupation": "security guard, currently on unpaid leave",
+    "personality": "stoic, slightly embarrassed about missing treatment, downplays how unwell he feels until directly asked",
+    "openingLine": "Doctor, I'm just feeling very weak and my heart feels like it's skipping... I missed my dialysis this week."
+  },
+  "presentingComplaint": "Generalised weakness and palpitations in a known haemodialysis patient who missed his last two dialysis sessions",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Weakness started yesterday evening and has progressively worsened; today he felt too weak to stand from a chair without help",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-dialysis-schedule",
+      "fact": "Normally dialyses Monday, Wednesday, Friday at the renal unit; missed both Wednesday and Friday sessions this week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dialysis",
+        "missed",
+        "last session",
+        "when last",
+        "schedule",
+        "hd",
+        "haemodialysis",
+        "treatment",
+        "renal unit",
+        "skip",
+        "last",
+        "session",
+        "renal",
+        "unit"
+      ]
+    },
+    {
+      "id": "hx-reason-missed",
+      "fact": "Missed sessions because he lost his job two weeks ago and could not afford the taxi fare to the hospital for dialysis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "why missed",
+        "reason",
+        "transport",
+        "taxi",
+        "money",
+        "afford",
+        "job",
+        "work",
+        "fare",
+        "cost",
+        "unemployed",
+        "missed"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "Describes intermittent 'fluttering' in his chest and a sense his heart is 'skipping beats' since this morning",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "heart racing",
+        "skipping",
+        "fluttering",
+        "heart beat",
+        "irregular",
+        "chest flutter",
+        "pounding",
+        "heart",
+        "racing",
+        "beat",
+        "chest",
+        "flutter"
+      ]
+    },
+    {
+      "id": "hx-weakness",
+      "fact": "Weakness is symmetrical, worse in the legs, no facial weakness, no slurred speech",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weak",
+        "weakness",
+        "legs",
+        "arms",
+        "strength",
+        "paralysis",
+        "numbness",
+        "limbs"
+      ]
+    },
+    {
+      "id": "hx-nausea",
+      "fact": "Mild nausea today, no vomiting, no diarrhoea",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nausea",
+        "vomit",
+        "sick",
+        "stomach",
+        "diarrhoea",
+        "bowel"
+      ]
+    },
+    {
+      "id": "hx-diet",
+      "fact": "Has been eating more bananas and boiled potatoes this week because they were the cheapest food available at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diet",
+        "food",
+        "eating",
+        "bananas",
+        "potatoes",
+        "fruit",
+        "vegetables",
+        "salt",
+        "meals",
+        "what have you eaten",
+        "eaten"
+      ]
+    },
+    {
+      "id": "hx-esrd-cause",
+      "fact": "Known end-stage renal disease due to longstanding hypertension, on haemodialysis for the past 3 years via an arteriovenous fistula in his left arm",
+      "disclosure": "onAsk",
+      "triggers": [
+        "kidney disease",
+        "renal disease",
+        "cause",
+        "why on dialysis",
+        "esrd",
+        "ckd",
+        "fistula",
+        "how long",
+        "years on dialysis",
+        "kidney",
+        "disease",
+        "renal",
+        "dialysis",
+        "long",
+        "years"
+      ]
+    },
+    {
+      "id": "hx-urine-output",
+      "fact": "Passes almost no urine now, less than a cupful a day, unchanged for over a year",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "pee",
+        "urinate",
+        "output",
+        "passing water",
+        "wee",
+        "anuria",
+        "passing",
+        "water"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes amlodipine and a phosphate binder (calcium carbonate); ran out of his phosphate binder a week ago and has not been able to refill it",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "binder",
+        "phosphate",
+        "amlodipine",
+        "taking anything",
+        "ran out",
+        "refill",
+        "taking",
+        "ran",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-otc",
+      "fact": "Has not taken any NSAIDs, herbal remedies, or muthi; specifically denies using traditional enemas or preparations",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "ibuprofen",
+        "herbal",
+        "muthi",
+        "traditional",
+        "enema",
+        "remedy",
+        "alternative",
+        "over the counter",
+        "over",
+        "counter"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Hypertension for 15 years, on treatment; no diabetes; no known cardiac disease before starting dialysis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "hypertension",
+        "blood pressure",
+        "diabetes",
+        "sugar",
+        "heart disease",
+        "previous illness",
+        "past history",
+        "medical",
+        "history",
+        "blood",
+        "pressure",
+        "heart",
+        "disease",
+        "previous",
+        "illness",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in KwaMashu with his wife and two teenage children; lost his security job two weeks ago after the company downsized; no alcohol, quit smoking 5 years ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "live",
+        "home",
+        "family",
+        "job",
+        "work",
+        "smoke",
+        "smoking",
+        "alcohol",
+        "drink",
+        "children",
+        "wife"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of a stroke; no family history of kidney disease that he knows of",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no shortness of breath at rest, mild breathlessness only on exertion which he says is his usual baseline",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "breathless",
+        "shortness of breath",
+        "dyspnoea",
+        "breathing",
+        "sore chest",
+        "chest",
+        "pain",
+        "shortness",
+        "breath",
+        "sore"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV negative on last test done at the renal clinic 6 months ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "tested",
+        "test",
+        "aids"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert but visibly fatigued, mildly anxious male sitting upright. Left forearm AV fistula with palpable thrill and audible bruit, no signs of infection. No overt fluid overload but mild bilateral ankle oedema. No pallor, no jaundice.",
+    "vitals": {
+      "hr": 48,
+      "bp": "162/94",
+      "rr": 20,
+      "temp": 36.6,
+      "spo2": "97% on room air"
+    },
+    "respiratory": "Chest clear, no crackles, no effusion signs; mild bibasal reduced air entry consistent with mild fluid overload",
+    "cardio": "Irregular rhythm palpated at radial pulse, heart sounds soft but no murmurs, JVP mildly elevated at 4 cm, no pericardial rub",
+    "abdo": "Soft, non-tender, no organomegaly, no ascites; old peritoneal dialysis scar noted from a prior failed PD attempt years ago (not currently used)",
+    "neuro": "Reduced power 4/5 symmetrically in both lower limbs, reflexes present but slightly diminished, no sensory deficit; no asterixis, no encephalopathy, alert and oriented",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "ECG (12-lead)",
+      "result": "Peaked T waves in precordial leads, widened QRS complex (140ms), flattened P waves, bradycardia at 48 bpm",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas with electrolytes (point-of-care)",
+      "result": "K+ 7.8 mmol/L, pH 7.28, HCO3- 16 mmol/L, lactate 1.4 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Serum urea and creatinine",
+      "result": "Urea 38 mmol/L, creatinine 1120 µmol/L (baseline pre-dialysis creatinine documented at 890 µmol/L)",
+      "key": true
+    },
+    {
+      "name": "Serum calcium, phosphate, magnesium",
+      "result": "Corrected calcium 1.95 mmol/L (low), phosphate 2.9 mmol/L (high), magnesium 1.1 mmol/L (normal)",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 9.1 g/dL normocytic (chronic anaemia of CKD), WCC 6.8, platelets 240",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Mild pulmonary vascular congestion, no frank pulmonary oedema, cardiomegaly consistent with known uraemic cardiomyopathy",
+      "key": false
+    },
+    {
+      "name": "Random glucose",
+      "result": "5.6 mmol/L",
+      "key": false
+    },
+    {
+      "name": "Troponin",
+      "result": "Mildly elevated at 65 ng/L, likely reflecting reduced renal clearance rather than acute ischaemia; no dynamic change on repeat",
+      "key": false
+    },
+    {
+      "name": "Bladder scan",
+      "result": "Not applicable — patient is anuric with established ESRD, no bladder distension",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Emergency hyperkalaemia due to missed dialysis sessions",
+      "rank": 1,
+      "for": [
+        "known ESRD/anuric on HD, missed 2 consecutive sessions",
+        "dietary potassium load (bananas, potatoes)",
+        "peaked T waves and widened QRS on ECG",
+        "K+ 7.8 with bradycardia and weakness fitting the clinical picture"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Medication-related hyperkalaemia (e.g. ACEi/ARB, potassium-sparing diuretic, NSAID)",
+      "rank": 2,
+      "for": [
+        "hyperkalaemia can be drug-precipitated in CKD patients"
+      ],
+      "against": [
+        "medication list only includes amlodipine and a phosphate binder, neither raises potassium",
+        "no NSAID or ACEi/ARB use reported"
+      ]
+    },
+    {
+      "dx": "Digoxin toxicity or primary cardiac arrhythmia",
+      "rank": 3,
+      "for": [
+        "palpitations, bradycardia, irregular pulse could suggest a primary rhythm disturbance"
+      ],
+      "against": [
+        "not on digoxin",
+        "ECG changes classically fit hyperkalaemia (peaked T, widened QRS) rather than digoxin toxicity pattern",
+        "biochemistry directly confirms severe hyperkalaemia as the driver"
+      ]
+    },
+    {
+      "dx": "Adrenal insufficiency (hyporeninaemic hypoaldosteronism / Addisonian crisis)",
+      "rank": 4,
+      "for": [
+        "hyperkalaemia can occur with adrenal insufficiency"
+      ],
+      "against": [
+        "clear alternative explanation (missed dialysis, dietary K load)",
+        "no postural hypotension, hyperpigmentation, or other adrenal insufficiency features",
+        "known ESRD is a far more likely and directly demonstrable cause"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Weakness (symmetrical, lower limb predominant)": "Hyperkalaemia depolarises the resting membrane potential of skeletal muscle cells; initially this increases excitability, but sustained depolarisation inactivates voltage-gated sodium channels, reducing membrane excitability and causing progressive flaccid weakness, typically ascending and symmetrical",
+    "Palpitations and bradyarrhythmia": "Elevated extracellular K+ reduces the resting membrane potential gradient in cardiac myocytes, slowing conduction through the AV node and His-Purkinje system, and altering repolarisation — producing peaked T waves, PR prolongation, QRS widening, and ultimately bradyarrhythmias or sine-wave pattern preceding cardiac arrest",
+    "ECG changes (peaked T waves, widened QRS)": "Peaked T waves result from accelerated but exaggerated repolarisation of ventricular myocytes; progressive hyperkalaemia slows phase 0 depolarisation (reduced Na+ channel availability) widening the QRS, eventually merging with the T wave to form a sine-wave pattern",
+    "Volume overload (oedema, raised JVP, weight gain)": "Anuric ESRD removes the kidney's capacity to excrete free water and sodium; missed dialysis sessions allow progressive fluid accumulation in the interstitial and intravascular space, raising venous pressures and producing dependent oedema and mild pulmonary congestion",
+    "Metabolic acidosis": "Failure of renal acid excretion (loss of ammoniagenesis and bicarbonate regeneration) in anuric ESRD leads to accumulating hydrogen ions between dialysis sessions, worsening extracellular potassium shift as H+ exchanges for intracellular K+"
+  },
+  "staging": "KDIGO staging not directly applicable (established ESRD on maintenance haemodialysis, baseline creatinine markedly elevated); this represents an acute life-threatening metabolic emergency (severe hyperkalaemia, K+ 7.8 mmol/L) superimposed on chronic kidney failure — RRT indication under 'E' (Electrolytes) of AEIOU criteria, emergent dialysis required",
+  "management": {
+    "immediate": [
+      "Continuous cardiac monitoring and repeat ECG",
+      "IV calcium gluconate 10% 10ml over 5-10 minutes to stabilise cardiac membrane (repeat if ECG changes persist, does not lower K+)",
+      "Insulin-dextrose: 10 units short-acting insulin in 50ml 50% dextrose IV to shift potassium intracellularly",
+      "Salbutamol nebuliser 10-20mg to further shift potassium intracellularly",
+      "Consider IV sodium bicarbonate if significant metabolic acidosis present",
+      "Withhold any potassium-containing fluids or foods immediately",
+      "Urgent nephrology referral for emergency haemodialysis — definitive potassium removal"
+    ],
+    "definitive": [
+      "Emergency haemodialysis via existing AV fistula as soon as arranged — the only definitive way to remove potassium load",
+      "Correct fluid overload and dry weight assessment during dialysis session",
+      "Resume regular thrice-weekly dialysis schedule immediately"
+    ],
+    "supportive": [
+      "Restart phosphate binder and address phosphate control",
+      "Dietary counselling on potassium restriction (avoid bananas, potatoes, oranges, tomatoes) tailored to what is affordable and accessible",
+      "Address the underlying reason for missed sessions — social work referral for transport assistance / grant application support",
+      "Monitor for rebound hyperkalaemia after insulin-dextrose effect wanes (transient, lasts 4-6 hours)"
+    ],
+    "followUp": [
+      "Engage medical social worker regarding transport costs and financial support (disability grant application if not already in place)",
+      "Renal clinic follow-up to reinforce dialysis adherence counselling",
+      "Review and reconcile medication list, ensure phosphate binder supply is uninterrupted",
+      "Recheck electrolytes and volume status at next dialysis session and clinic visit"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms identity, establishes rapport sensitively given missed treatment",
+      "answer": null,
+      "why": "Professionalism and non-judgemental communication with a patient who may feel ashamed",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-baseline",
+      "phase": "history",
+      "item": "Establishes known ESRD status and baseline dialysis schedule/creatinine",
+      "answer": "Known ESRD on HD 3x/week for 3 years via AV fistula; baseline pre-dialysis creatinine ~890 µmol/L",
+      "why": "Baseline values are the single most useful discriminator and confirm this is chronic dialysis-dependent disease, not new AKI",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-precipitant",
+      "phase": "history",
+      "item": "Identifies why dialysis was missed (social/financial barrier) and dietary potassium intake",
+      "answer": "Missed 2 sessions due to job loss/transport cost; increased banana and potato intake",
+      "why": "Identifying the precipitant is essential for both immediate risk assessment and preventing recurrence",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-symptom-screen",
+      "phase": "history",
+      "item": "Screens for hyperkalaemia symptoms: weakness, palpitations, and excludes alternative causes (chest pain, diarrhoea, drug history)",
+      "answer": "Symmetrical leg weakness, palpitations/skipped beats, no NSAID/ACEi/muthi use, phosphate binder ran out",
+      "why": "Directly characterises the presenting emergency and screens for other precipitants (drugs, dietary indiscretion)",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-volume-exam",
+      "phase": "examination",
+      "item": "Assesses volume status clinically (JVP, oedema, weight vs dry weight, lung fields)",
+      "answer": "3.5kg above dry weight, mild ankle oedema, mildly raised JVP, clear-ish chest",
+      "why": "Volume status determines fluid management and dialysis prescription alongside potassium removal",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-fistula-check",
+      "phase": "examination",
+      "item": "Examines the AV fistula for patency (thrill/bruit) and signs of infection",
+      "answer": "Patent fistula with thrill and bruit, no infection",
+      "why": "Vascular access must be confirmed functional before emergency dialysis can proceed",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ecg-urgent",
+      "phase": "examination",
+      "item": "Recognises the need for an URGENT ECG as the first bedside investigation in suspected hyperkalaemia",
+      "answer": "Peaked T waves, widened QRS, bradycardia, flattened P waves",
+      "why": "ECG changes determine urgency of treatment and correlate with cardiac membrane instability, independent of waiting for lab potassium",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a reasoned differential for weakness/palpitations in a dialysis patient, ranking hyperkalaemia from missed dialysis highest",
+      "answer": "Missed dialysis hyperkalaemia > drug-induced hyperkalaemia > primary arrhythmia > adrenal insufficiency",
+      "why": "Symptom-to-differential reasoning core to station philosophy; must justify why hyperkalaemia is top of list",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Orders VBG with electrolytes, formal U&E, ECG, calcium/phosphate/magnesium as first-line bedside/lab tests",
+      "answer": "K+ 7.8, creatinine 1120, acidosis pH 7.28, low calcium, high phosphate",
+      "why": "Confirms severity and guides emergency treatment; VBG gives immediate actionable potassium value while formal labs pending",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-stabilise",
+      "phase": "management",
+      "item": "Sequences emergency treatment correctly: calcium gluconate first for cardiac stabilisation, then insulin-dextrose and salbutamol to shift potassium, while arranging emergency dialysis",
+      "answer": "IV calcium gluconate, insulin-dextrose, nebulised salbutamol, urgent dialysis referral",
+      "why": "Correct emergency sequencing is a critical patient-safety checkpoint; calcium does not lower K+ but must be given first if ECG changes present",
+      "weight": 5,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Recognises that emergency haemodialysis is the only definitive treatment and arranges this urgently via the fistula",
+      "answer": "Refer immediately for emergency haemodialysis",
+      "why": "Temporising measures only shift potassium intracellularly; dialysis is required for actual removal",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-social-followup",
+      "phase": "management",
+      "item": "Addresses the social/financial barrier to attending dialysis and arranges follow-up (social work, transport support, medication reconciliation)",
+      "answer": "Social work referral for transport/grant support, reinforce dialysis adherence, restart phosphate binder",
+      "why": "Addressing the root cause prevents recurrence; discharge follow-up and medication reconciliation is a commonly missed step",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 20,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 20
+  }
+}

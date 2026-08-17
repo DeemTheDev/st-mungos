@@ -41,11 +41,16 @@ const FIXED_STRUCTURE = `# <Topic>
 ## KZN/SA notes
 ## Her notes emphasise   <- include ONLY when her-notes material is available (see rules)`;
 
-export function buildSystemPrompt(groundingDir: string): string {
+/**
+ * `epidemiologyOverride` exists for the server pipeline: grounding/ is
+ * gitignored, so the brief file is absent in production — the caller supplies
+ * the bundled fallback instead (lib/library/generate-job.ts).
+ */
+export function buildSystemPrompt(groundingDir: string, epidemiologyOverride?: string): string {
   const epiPath = join(groundingDir, "_epidemiology-kzn.md");
-  const epidemiology = existsSync(epiPath)
-    ? readFileSync(epiPath, "utf8").trim()
-    : "(no epidemiology brief found)";
+  const epidemiology =
+    epidemiologyOverride ??
+    (existsSync(epiPath) ? readFileSync(epiPath, "utf8").trim() : "(no epidemiology brief found)");
 
   return `You are a senior internal-medicine registrar at a KwaZulu-Natal teaching hospital, distilling clinical study material into a structured knowledge base for a 4th-year UKZN medical student preparing for her end-of-block OSCE.
 
@@ -145,9 +150,10 @@ const TITLE_SYSTEM_HINTS: Array<[RegExp, System]> = [
   [/\b(arthritis|lupus|rheum|vasculitis)\b/i, "rheum"],
 ];
 
-interface KbMeta { system?: string; keywords?: string[] }
+export interface KbMeta { system?: string; keywords?: string[] }
 
-function parseKbFile(content: string): { title: string; meta: KbMeta } {
+/** Reads back the meta line the distil prompt is told to emit. */
+export function parseKbFile(content: string): { title: string; meta: KbMeta } {
   const titleMatch = content.match(/^#\s+(.+)$/m);
   const metaMatch = content.match(/<!--\s*meta:\s*(\{[\s\S]*?\})\s*-->/);
   let meta: KbMeta = {};
@@ -161,7 +167,7 @@ function parseKbFile(content: string): { title: string; meta: KbMeta } {
   return { title: titleMatch ? titleMatch[1].trim() : "Untitled", meta };
 }
 
-function inferSystem(title: string, sourceSlug: string): System {
+export function inferSystem(title: string, sourceSlug: string): System {
   for (const [re, system] of SOURCE_SYSTEM_HINTS) if (re.test(sourceSlug)) return system;
   for (const [re, system] of TITLE_SYSTEM_HINTS) if (re.test(title)) return system;
   return "id";
@@ -237,7 +243,7 @@ function kbSlugFor(section: NormalizedSection, manifest: Manifest): string {
   return slug;
 }
 
-function buildUserMessage(section: NormalizedSection, herNotes: NormalizedSection[]): string {
+export function buildUserMessage(section: NormalizedSection, herNotes: NormalizedSection[]): string {
   const parts: string[] = [`<topic>${section.title}</topic>`];
   if (section.isHerNotes) {
     parts.push(
@@ -280,7 +286,8 @@ function usageFrom(response: Anthropic.Message): UsageRecord {
   };
 }
 
-async function distillOne(
+/** ONE chapter → one KB document. Shared by the CLI and the upload job. */
+export async function distillOne(
   client: Anthropic,
   systemPrompt: string,
   section: NormalizedSection,

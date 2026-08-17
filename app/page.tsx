@@ -1,6 +1,6 @@
 // The front door. Keeps the St Mungo's identity + the §1 disclaimer, but the
-// point of the page is now the two primary actions — landing here used to dead-end
-// with no way through to /session or /admin/review. Server component, zero JS.
+// point of the page is now the primary actions — landing here used to dead-end
+// with no way through to /session or the review queue. Server component, zero JS.
 import Link from "next/link";
 import { SiteNav } from "@/components/site-nav";
 
@@ -9,6 +9,8 @@ const EXPLAINERS: Array<[string, string]> = [
   ["Examiner viva", "A UKZN-style examiner interrupts to probe your reasoning, mid-station."],
   ["Marked report", "Scored against the real station checklist, with the model answers to study from."],
   ["Flashcards", "Upload a Q&A document — extracted cards come back on a spaced-repetition schedule."],
+  ["Your library", "Drop in a study guide. It becomes knowledge-base topics, and those become stations."],
+  ["Your say-so", "Every generated case waits in review until you decide it holds up clinically."],
 ];
 
 export default function Home() {
@@ -40,7 +42,13 @@ export default function Home() {
             Flashcards
           </Link>
           <Link
-            href="/admin/review"
+            href="/library"
+            className="rounded border border-neutral-700 px-4 py-2 text-sm font-medium text-neutral-200 transition-colors hover:border-neutral-500 hover:bg-neutral-900"
+          >
+            Add study guides
+          </Link>
+          <Link
+            href="/review"
             className="rounded border border-neutral-700 px-4 py-2 text-sm font-medium text-neutral-200 transition-colors hover:border-neutral-500 hover:bg-neutral-900"
           >
             Case review
@@ -50,7 +58,21 @@ export default function Home() {
           </Link>
         </div>
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* The pipeline in one line: it is not obvious that the bank is something
+            she builds, so the front door says it out loud. */}
+        <p className="mt-6 max-w-xl text-sm text-neutral-500">
+          The station bank is yours to grow:{" "}
+          <Link href="/library" className="text-neutral-300 underline underline-offset-4 hover:text-neutral-100">
+            upload a study guide
+          </Link>
+          , generate cases from what it learns, then{" "}
+          <Link href="/review" className="text-neutral-300 underline underline-offset-4 hover:text-neutral-100">
+            approve the ones that hold up
+          </Link>
+          . Nothing is playable until you say so.
+        </p>
+
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {EXPLAINERS.map(([title, body]) => (
             <li key={title} className="rounded border border-neutral-800 p-4">
               <p className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">{title}</p>

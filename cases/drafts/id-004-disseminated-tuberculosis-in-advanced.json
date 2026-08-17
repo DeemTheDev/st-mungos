@@ -1,0 +1,693 @@
+{
+  "id": "id-004-disseminated-tuberculosis-in-advanced",
+  "version": 1,
+  "discipline": "id",
+  "diagnosis": "Disseminated tuberculosis in advanced HIV",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient and how you would rank it.",
+      "modelAnswer": "Given a CD4 of 38, disseminated (miliary) TB ranks highest — supported by constitutional symptoms, generalised lymphadenopathy, hepatosplenomegaly, ascites, a miliary CXR pattern and positive urine LAM/sputum Xpert. Disseminated MAC is a differential at this CD4 threshold but is less common locally and not yet supported by culture. Lymphoma could explain lymphadenopathy and B-symptoms but is refuted by caseating granulomas with AFB on node FNA. Cryptococcal dissemination is considered given the CD4 but the negative serum CrAg and absence of neurological signs argue strongly against it. IRIS is excluded since he has not yet restarted ART.",
+      "gradingNotes": "Full marks: ranked list with case-specific for/against reasoning tied to CD4 threshold. Partial: unranked or generic list."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why is it critical to establish this patient's CD4 count and ART history early in the consultation, beyond just confirming his HIV status?",
+      "modelAnswer": "CD4 count is the single most useful discriminator in HIV medicine — it stratifies which opportunistic infections are plausible (e.g. candida <200, CMV/MAC <50) and dictates urgent management decisions such as ART timing relative to TB treatment (within 2 weeks if CD4<50) and need for cotrimoxazole prophylaxis (CD4<200). Nadir CD4 and ART adherence history also explain why an apparently controlled patient has decompensated — in this case, an 8-month treatment default has allowed CD4 to fall from ~250 to 38, permitting disseminated disease.",
+      "gradingNotes": "Wants explicit CD4-threshold reasoning, not just 'it's important to know his HIV status'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology of the miliary pattern seen on this patient's chest X-ray.",
+      "modelAnswer": "Miliary TB results from haematogenous dissemination of M. tuberculosis, typically after a caseating focus erodes into a pulmonary vessel (or via lymphohaematogenous spread from a primary complex), showering the bloodstream with bacilli that seed innumerable small granulomas (1-3mm, resembling millet seeds) throughout both lung fields. In profound immunosuppression, CD4 depletion prevents IFN-gamma-mediated macrophage activation, so granulomas cannot organise and contain the infection, permitting widespread dissemination beyond the lungs to liver, spleen, marrow and peritoneum.",
+      "gradingNotes": "Wants both the vascular erosion mechanism AND the immunological failure of granuloma containment linked to CD4 depletion."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "His serum cryptococcal antigen test comes back negative. How does this change your interpretation, and would you still consider a lumbar puncture?",
+      "modelAnswer": "A negative serum CrAg makes disseminated cryptococcal disease very unlikely and does not mandate a diagnostic LP for cryptococcus in an asymptomatic patient (no headache, meningism, or visual change). However, given his CD4<50 and systemic unwellness, TB meningitis remains possible even without overt meningism, so if any neurological symptom develops, an LP with opening pressure and CSF Xpert Ultra should be pursued despite the negative CrAg.",
+      "gradingNotes": "Tests whether the student understands CrAg's role as a screening step and appropriately reconsiders neuro-invasive TB rather than closing the loop prematurely."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Given his CD4 of 38, when would you start ART relative to his TB treatment, and why does this timing matter?",
+      "modelAnswer": "With CD4<50, ART should be started within 2 weeks of TB treatment initiation, as early ART in profoundly immunosuppressed patients reduces mortality despite a higher risk of TB-IRIS. If CD4 had been ≥50, ART would be deferred to within 8 weeks. The patient and clinical team must be counselled about IRIS — a paradoxical worsening of TB symptoms or new lymphadenopathy in the 2-12 week window after starting ART, caused by immune reconstitution unmasking or exaggerating the inflammatory response to residual mycobacterial antigen.",
+      "gradingNotes": "Wants the specific CD4-gated timing rule applied correctly, plus recognition of the IRIS trade-off, not just 'start ART soon'."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "unwell/deteriorating patient with known or suspected HIV — confirm status, stage disease (CD4/VL/nadir/ART), localise symptoms anatomically, CD4-stratify differential, screen for TB in everyone, consider IRIS timing and drug toxicity, assume dual pathology",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard, currently not working due to illness",
+    "personality": "withdrawn, fatigued, gives short answers unless gently encouraged, embarrassed about not taking his treatment properly",
+    "openingLine": "Doctor... I just feel like I'm wasting away. I don't know what's wrong with me anymore."
+  },
+  "presentingComplaint": "3-month history of fever, drenching night sweats and profound weight loss in a patient with known HIV, poorly adherent to ART",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms began gradually about 3 months ago with low-grade fevers, now present most days",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-fever-pattern",
+      "fact": "Fever is present almost daily, worse in the evenings, no clear rigors",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "temperature",
+        "hot",
+        "chills",
+        "rigors",
+        "evening",
+        "daily",
+        "how often",
+        "often"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Drenching night sweats requiring a change of clothes and bedsheets most nights for the last 6 weeks",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat at night",
+        "wake up wet",
+        "drenched",
+        "soaking",
+        "sweaty",
+        "wet through",
+        "bedsheets",
+        "clothes wet",
+        "night",
+        "sweats",
+        "sweat",
+        "wake",
+        "wet",
+        "through",
+        "clothes"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost approximately 12 kg over 3 months, clothes and belt no longer fit, has noticed his face looking thinner",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "clothes",
+        "belt",
+        "thinner",
+        "appetite",
+        "eating",
+        "losing weight",
+        "how much",
+        "lost",
+        "losing"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "Has a mild dry cough for about a month, no clear sputum, no haemoptysis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "coughing",
+        "sputum",
+        "phlegm",
+        "blood",
+        "haemoptysis",
+        "chest",
+        "coughing up",
+        "spit",
+        "wet cough",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-abdopain",
+      "fact": "Vague generalised abdominal discomfort and bloating for the past 3-4 weeks, worse after eating",
+      "disclosure": "onAsk",
+      "triggers": [
+        "abdo",
+        "abdomen",
+        "stomach",
+        "belly",
+        "tummy",
+        "bloating",
+        "pain",
+        "discomfort",
+        "full"
+      ]
+    },
+    {
+      "id": "hx-diarrhoea",
+      "fact": "Intermittent loose stools, 2-3 times a day, no blood, no mucus, for about a month",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diarrhoea",
+        "stool",
+        "bowel",
+        "loose",
+        "toilet",
+        "runny",
+        "poo",
+        "bowel movements",
+        "movements"
+      ]
+    },
+    {
+      "id": "hx-hiv-history",
+      "fact": "Diagnosed HIV positive 4 years ago; started on TLD but stopped taking it about 8 months ago after moving house and running out of tablets, has not been back to clinic since",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "art",
+        "tablets",
+        "treatment",
+        "medication",
+        "clinic",
+        "adherence",
+        "taking your",
+        "stopped",
+        "status",
+        "when diagnosed",
+        "how long",
+        "taking",
+        "diagnosed",
+        "long"
+      ]
+    },
+    {
+      "id": "hx-cd4-history",
+      "fact": "Does not know his most recent CD4 count; last one he remembers being told was 'around 250' about a year ago, before he defaulted",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cd4",
+        "count",
+        "immune",
+        "last test",
+        "checked",
+        "number",
+        "last",
+        "test"
+      ]
+    },
+    {
+      "id": "hx-tb-history",
+      "fact": "No previous TB treatment; his younger brother died of 'chest problems' two years ago, was never properly diagnosed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "brother",
+        "chest problems",
+        "exposure",
+        "anyone sick",
+        "family",
+        "sick",
+        "chest",
+        "problems",
+        "anyone"
+      ]
+    },
+    {
+      "id": "hx-lymphnodes",
+      "fact": "Has noticed painless lumps in his neck for the past 2 months, slowly growing",
+      "disclosure": "onAsk",
+      "triggers": [
+        "lumps",
+        "glands",
+        "neck",
+        "swelling",
+        "nodes",
+        "lymph"
+      ]
+    },
+    {
+      "id": "hx-headache",
+      "fact": "No headache, no neck stiffness, no visual disturbance, no confusion reported by himself",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "head pain",
+        "confusion",
+        "vision",
+        "eyes",
+        "neck stiff",
+        "meningism",
+        "seeing",
+        "head",
+        "pain",
+        "neck",
+        "stiff"
+      ]
+    },
+    {
+      "id": "hx-skin",
+      "fact": "No rash, no skin lesions noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "skin",
+        "rash",
+        "lesions",
+        "spots",
+        "sores"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No other chronic illnesses, no diabetes, no hypertension, never previously hospitalised",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "chronic",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Not currently on any medication, stopped cotrimoxazole along with his ART",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "cotrimoxazole",
+        "bactrim",
+        "taking anything",
+        "muti",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives alone in a backroom in KwaMashu; recently divorced, poor social support; occasional alcohol use, no smoking, no drug use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "support",
+        "family situation",
+        "occupation",
+        "work",
+        "family",
+        "situation"
+      ]
+    },
+    {
+      "id": "hx-disclosure",
+      "fact": "Has not disclosed his HIV status to anyone, feels ashamed and isolated since his divorce",
+      "disclosure": "onAsk",
+      "triggers": [
+        "disclose",
+        "disclosure",
+        "told anyone",
+        "family know",
+        "support",
+        "ashamed",
+        "stigma",
+        "told",
+        "anyone",
+        "family"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No urinary symptoms, no joint pains, no chest pain, denies any vomiting or blood in stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urinary",
+        "joints",
+        "joint pain",
+        "chest pain",
+        "vomit",
+        "blood in stool",
+        "other symptoms",
+        "anything else",
+        "joint",
+        "pain",
+        "chest",
+        "blood",
+        "stool",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Cachectic, chronically ill-looking man. Marked temporal wasting, pallor +, no jaundice, no clubbing. Multiple firm, non-tender, matted lymph nodes palpable in the cervical and axillary chains, largest 2.5cm. Oral thrush present on the palate and buccal mucosa.",
+    "vitals": {
+      "hr": 112,
+      "bp": "98/62",
+      "rr": 24,
+      "temp": 38.6,
+      "spo2": "95% on room air",
+      "bmi": 15.8
+    },
+    "respiratory": "Trachea central. Reduced air entry at both bases with scattered fine crackles. No overt consolidation or effusion signs. No wheeze.",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not elevated.",
+    "abdo": "Distended with shifting dullness suggesting mild ascites. Hepatomegaly 4cm below costal margin, tender. Spleen tip palpable. Mild generalised tenderness, no peritonism, no organomegaly-associated masses felt discretely.",
+    "neuro": "Alert and orientated to person, place and time. No neck stiffness, no photophobia, no focal deficit, no papilloedema on fundoscopy. Peripheral sensation grossly intact.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "HIV ELISA (confirmatory, already known positive)",
+      "result": "Positive, reconfirmed",
+      "key": false
+    },
+    {
+      "name": "CD4 count",
+      "result": "38 cells/µL",
+      "key": true
+    },
+    {
+      "name": "HIV viral load",
+      "result": "680,000 copies/mL (patient defaulted ART 8 months ago)",
+      "key": true
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB detected, rifampicin resistance NOT detected",
+      "key": true
+    },
+    {
+      "name": "Urine TB-LAM",
+      "result": "Positive (grade 3 band intensity)",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Diffuse bilateral micronodular (miliary) pattern with small bilateral pleural effusions",
+      "key": true
+    },
+    {
+      "name": "Abdominal ultrasound",
+      "result": "Hepatosplenomegaly, multiple hypoechoic para-aortic and mesenteric lymph nodes, mild ascites",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 7.9 g/dL normocytic, WCC 3.1 (lymphopenia), Plt 148",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Mild transaminitis: ALT 68, AST 74, ALP 190, albumin 24 g/L (low)",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Mild hyponatraemia (Na 129), creatinine normal",
+      "key": false
+    },
+    {
+      "name": "Serum CrAg (cryptococcal antigen)",
+      "result": "Negative",
+      "key": true
+    },
+    {
+      "name": "Blood cultures (including mycobacterial blood culture)",
+      "result": "Pending — mycobacterial culture sent, results in 2-6 weeks",
+      "key": false
+    },
+    {
+      "name": "Ascitic tap (diagnostic)",
+      "result": "Exudate, lymphocyte-predominant, ADA elevated at 58 U/L, Xpert MTB/RIF Ultra on fluid: MTB detected",
+      "key": true
+    },
+    {
+      "name": "Hepatitis B surface antigen",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Lymph node fine needle aspirate",
+      "result": "Caseating granulomas, AFB seen on ZN stain",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Disseminated (miliary) tuberculosis",
+      "rank": 1,
+      "for": [
+        "CD4 38 — profound immunosuppression",
+        "constitutional symptoms (fever, night sweats, 12kg weight loss)",
+        "generalised lymphadenopathy",
+        "hepatosplenomegaly and ascites",
+        "miliary pattern on CXR",
+        "positive urine TB-LAM and sputum GeneXpert",
+        "ascitic fluid ADA elevated with Xpert positive",
+        "household TB contact (brother)"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Disseminated Mycobacterium avium complex (MAC)",
+      "rank": 2,
+      "for": [
+        "CD4 <50 fits threshold",
+        "fever, weight loss, hepatosplenomegaly, diarrhoea"
+      ],
+      "against": [
+        "sputum and urine LAM already confirming MTB specifically",
+        "MAC less prevalent locally than TB, usually a diagnosis of exclusion here"
+      ]
+    },
+    {
+      "dx": "Lymphoma (HIV-associated)",
+      "rank": 3,
+      "for": [
+        "marked lymphadenopathy",
+        "weight loss",
+        "hepatosplenomegaly",
+        "B symptoms (fever, night sweats)"
+      ],
+      "against": [
+        "microbiological confirmation of TB obtained",
+        "lymph node FNA shows caseating granulomas with AFB, not malignant cells"
+      ]
+    },
+    {
+      "dx": "Cryptococcal disease with dissemination",
+      "rank": 4,
+      "for": [
+        "advanced HIV, CD4<50, systemic unwellness"
+      ],
+      "against": [
+        "serum CrAg negative",
+        "no headache, meningism or neurological signs"
+      ]
+    },
+    {
+      "dx": "IRIS (unmasking)",
+      "rank": 5,
+      "for": [
+        "advanced immunosuppression can unmask subclinical infection"
+      ],
+      "against": [
+        "patient has not restarted ART yet — no recent immune reconstitution to trigger IRIS"
+      ]
+    }
+  ],
+  "pathophys": {
+    "night sweats and fever": "Chronic granulomatous inflammation drives macrophage and T-cell release of TNF-alpha, IL-1 and IL-6, resetting the hypothalamic thermoregulatory set-point; profound immunosuppression allows unchecked mycobacterial proliferation and antigen load, amplifying cytokine release",
+    "weight loss / cachexia": "TNF-alpha (cachectin)-driven catabolism, anorexia from chronic cytokine exposure, and malabsorption from TB-related gut and hepatic involvement, compounded by the direct wasting effect of uncontrolled HIV replication",
+    "generalised lymphadenopathy": "Haematogenous and lymphatic dissemination of M. tuberculosis in the setting of failed granuloma containment (CD4 depletion impairs macrophage activation via IFN-gamma from CD4 T-cells), leading to caseating necrosis within multiple nodal groups",
+    "hepatosplenomegaly and ascites": "Miliary seeding of the reticuloendothelial system (liver, spleen) and peritoneum by haematogenous spread; peritoneal TB produces a lymphocyte-predominant exudative ascites with elevated adenosine deaminase from activated lymphocytes",
+    "miliary pattern on chest X-ray": "Erosion of a caseating focus into a pulmonary vessel (classically after primary infection or reactivation) allows massive haematogenous dissemination of bacilli, seeding innumerable 1-3mm granulomas throughout both lung fields",
+    "profound CD4 depletion enabling dissemination": "Progressive HIV-driven destruction of CD4 T-helper cells impairs IFN-gamma-mediated macrophage activation, the central mechanism that normally walls off M. tuberculosis within organised granulomas; below a CD4 threshold (~50-100) granuloma architecture fails and containment is lost, permitting extrapulmonary and disseminated spread"
+  },
+  "staging": "WHO HIV clinical stage 4 (disseminated/miliary TB); CD4 38 cells/µL (advanced HIV disease); ART-defaulted for 8 months, viral load 680,000 copies/mL",
+  "management": {
+    "immediate": [
+      "Admit for further assessment and monitoring given haemodynamic instability (tachycardia, hypotension) and severe wasting",
+      "Isolate for airborne precautions pending sputum smear/Xpert result review (respiratory TB component)",
+      "Notify TB (notifiable medical condition)",
+      "Correct hyponatraemia cautiously and provide IV fluids/nutritional support as needed",
+      "Screen for other CD4<50 threshold opportunistic disease (fundoscopy for CMV retinitis, serum CrAg — already done, negative)"
+    ],
+    "definitive": [
+      "Start TB treatment: standard weight-banded 2HRZE/4HR fixed-dose combination (rifampicin-sensitive confirmed)",
+      "Start ART (TLD) within 2 weeks of TB treatment initiation given CD4 <50 (early ART in profound immunosuppression reduces mortality despite IRIS risk)",
+      "Co-trimoxazole preventive therapy (CD4 <200) — restart immediately",
+      "Pyridoxine supplementation with isoniazid to prevent peripheral neuropathy"
+    ],
+    "supportive": [
+      "Nutritional rehabilitation and dietician referral given BMI 15.8 and severe wasting",
+      "Adherence counselling addressing the default — explore barriers (disclosure, social isolation, clinic access)",
+      "Psychosocial support and consideration of disclosure counselling given his isolation and stigma concerns",
+      "Contact tracing — screen for TB in any household/close contacts",
+      "Counsel explicitly on IRIS symptoms/signs before ART initiation given high risk in this CD4 range"
+    ],
+    "followUp": [
+      "Sputum smear/culture conversion check at 2 months of TB treatment",
+      "Repeat CD4 and viral load at 6 months on ART to assess immune recovery and virological suppression",
+      "Monitor LFTs given baseline transaminitis, especially once on concurrent TB drugs and ART",
+      "Close early follow-up (weeks 2, 4, 8) to detect IRIS, drug toxicity or non-adherence early",
+      "Re-engage with adherence support structures/treatment supporter"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport with a withdrawn/ashamed patient, gains consent",
+      "answer": null,
+      "why": "Communication skill essential given the patient's stigma and low mood",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-hiv-status",
+      "phase": "history",
+      "item": "Confirms HIV status, establishes when diagnosed and WHO stage at diagnosis",
+      "answer": "Diagnosed 4 years ago, defaulted ART 8 months ago",
+      "why": "Reflex confirmation of HIV status is the first step of the framework in any unexplained illness in KZN",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-staging",
+      "phase": "history",
+      "item": "Establishes current/most recent CD4, viral load, nadir CD4, ART regimen and adherence history",
+      "answer": "Last known CD4 ~250 a year ago, defaulted TLD 8 months ago, current CD4 will be found to be 38",
+      "why": "CD4/VL/nadir/regimen is repeated as the single most useful discriminator in her notes — core organising principle",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-constitutional",
+      "phase": "history",
+      "item": "Screens constitutional symptoms (fever, night sweats, weight loss) in detail",
+      "answer": "Daily evening fevers, drenching night sweats 6 weeks, 12kg weight loss over 3 months",
+      "why": "Core TB/disseminated disease symptom screen",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Performs full TB symptom screen (cough, contacts, prior TB treatment) regardless of presenting complaint",
+      "answer": "Mild dry cough for a month, brother died of undiagnosed 'chest problems'",
+      "why": "\"Test/screen everyone\" for TB is explicitly emphasised in the framework",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-localise",
+      "phase": "history",
+      "item": "Systematically localises symptoms anatomically (GI: abdo pain/diarrhoea; neuro: headache/confusion/vision; lymphatic: lumps) before naming a diagnosis",
+      "answer": "Abdominal bloating/diarrhoea present; no headache, neck stiffness or visual symptoms; painless enlarging neck lumps",
+      "why": "Symptom-to-differential reasoning requires anatomical localisation before diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-adherence-social",
+      "phase": "history",
+      "item": "Explores adherence barriers, disclosure status and social support sensitively",
+      "answer": "Non-disclosed, isolated after divorce, ran out of tablets and never returned to clinic",
+      "why": "Adherence barriers are key to both diagnosis (advanced disease) and future management planning",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Performs general examination noting wasting, pallor, lymphadenopathy, oral thrush, skin",
+      "answer": "Cachectic, temporal wasting, matted cervical/axillary nodes, oral thrush",
+      "why": "General signs stage the severity of immunosuppression and guide differential",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-systems",
+      "phase": "examination",
+      "item": "Performs focused respiratory, abdominal and neurological examination",
+      "answer": "Reduced air entry with crackles, hepatosplenomegaly with ascites (shifting dullness), no meningism/focal neurology",
+      "why": "Localises disseminated pathology across systems as per framework step 3",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers ranked, CD4-stratified differential with reasoning (disseminated TB > MAC > lymphoma > cryptococcal disease > IRIS)",
+      "answer": null,
+      "why": "CD4-stratified differential reasoning is the exam philosophy explicitly taught in her notes",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests CD4, viral load, sputum GeneXpert, urine TB-LAM, CXR, serum CrAg, abdominal ultrasound, and considers ascitic tap/lymph node FNA for tissue diagnosis",
+      "answer": "See investigations catalogue — confirms disseminated TB with negative CrAg excluding concurrent cryptococcal disease",
+      "why": "Confirmatory pathway per SA TB/HIV guidelines; CrAg specifically screens for a key CD4<100 differential",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines TB treatment (2HRZE/4HR), correct ART timing given CD4<50 (within 2 weeks), cotrimoxazole restart, pyridoxine, notification, contact tracing, and explicit IRIS counselling",
+      "answer": null,
+      "why": "CD4-specific ART timing and IRIS anticipation are management anchors central to this framework",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

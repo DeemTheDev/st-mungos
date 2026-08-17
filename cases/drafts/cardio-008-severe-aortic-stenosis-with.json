@@ -1,0 +1,668 @@
+{
+  "id": "cardio-008-severe-aortic-stenosis-with",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Severe aortic stenosis with syncope",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "history",
+      "question": "Walk me through your differential diagnosis for this man's collapse, and how the history helps you rank it.",
+      "modelAnswer": "Top of the list is severe aortic stenosis causing exertional syncope — the collapse occurred specifically during exertion, preceded by chest tightness and breathlessness, fitting the classic triad, and there is a slow-rising pulse and ejection systolic murmur on exam. Cardiac arrhythmia remains important to exclude, especially given his father's sudden death, but the clear exertional trigger and prodrome favour a structural/obstructive cause over a primary electrical one. Vasovagal syncope is less likely as it typically follows situational triggers (prolonged standing, pain, emotional stress) rather than exertion, and usually has a different prodrome (nausea, warmth, visual dimming). Hypertensive heart disease with diastolic dysfunction could contribute to his dyspnoea but doesn't independently explain syncope or the murmur found.",
+      "gradingNotes": "Full marks for ranked list with reasoning linking specific history/exam findings to each differential; partial credit for an unranked or unjustified list."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism by which this man develops syncope specifically on exertion.",
+      "modelAnswer": "The severely stenosed, calcified aortic valve fixes the outflow resistance from the left ventricle. During exercise, peripheral vasodilation drops systemic vascular resistance in an attempt to increase flow to exercising muscle, but because the valve orifice is fixed and cannot open further, cardiac output cannot rise to match the fall in peripheral resistance. This mismatch causes a fall in blood pressure and cerebral perfusion. Additionally, the high intraventricular pressures generated against the obstruction can activate LV baroreceptors, triggering an inappropriate vasodepressor reflex that worsens the hypotension.",
+      "gradingNotes": "Wants the fixed-cardiac-output/afterload mismatch mechanism plus ideally the baroreceptor reflex component, not simply 'the heart can't pump enough blood.'"
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His echocardiogram shows a mean gradient of 58 mmHg and valve area of 0.7cm2, with LVEF of 50%. How does this severity grading change your immediate management, and why can't you just start an ACE inhibitor for his hypertension today?",
+      "modelAnswer": "A mean gradient over 40mmHg and valve area under 1.0cm2 (indexed area <0.6cm2/m2) confirms severe aortic stenosis; combined with his syncope this is a class I indication for urgent valve replacement regardless of LVEF, since LVEF can remain preserved until late in the disease. ACE inhibitors and other vasodilators are avoided or used with extreme caution in severe AS because the fixed outflow obstruction means the heart cannot increase cardiac output to compensate for a drop in systemic vascular resistance — this can precipitate profound hypotension, worsening syncope, or cardiogenic collapse.",
+      "gradingNotes": "Critical-thinking question — wants application of specific echo thresholds to urgency of referral, plus the pharmacological caution rationale, not a generic 'start antihypertensives.'"
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "He asks you why he needs an operation instead of just tablets. How would you counsel him, and what happens if he declines surgery?",
+      "modelAnswer": "I would explain in plain language that his valve has become narrow and stiff with age, and that no tablet can fix a mechanically narrowed valve — only replacing it can relieve the obstruction. I would explain that once symptoms like his fainting spell appear, the outlook without surgery is poor, with a significant risk of sudden death within a year or two if left untreated, whereas valve replacement (surgical or catheter-based) offers a good chance of returning to normal activity. If he declines, I would document his informed refusal, arrange close follow-up, strict avoidance of strenuous exertion, and safety-net him to return immediately with any recurrence of chest pain, breathlessness, or further blackouts.",
+      "gradingNotes": "Assesses communication and honesty about prognosis; should mention the poor natural history of untreated symptomatic severe AS and shared decision-making/safety-netting if surgery declined."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "Exertional dyspnoea/collapse syndrome approach: confirm the syndrome (exertional dyspnoea + effort syncope +/- chest pain = triad of severe AS, not diagnosis yet) → localise (LVF pattern vs primary valvular obstruction vs arrhythmic cause of syncope) → grade functional severity (NYHA) → characterise on echo (systolic vs diastolic, valve area/gradient) → identify dominant lesion (aortic stenosis) then any minor lesion → hunt for acute precipitant of decompensation → assess complications (arrhythmia, renal, hepatic congestion) → screen reversible contributors (anaemia, rheumatic disease, thyroid)",
+  "patient": {
+    "name": "Mandla Zulu",
+    "age": 68,
+    "sex": "M",
+    "occupation": "retired sugar-cane farm supervisor",
+    "personality": "stoic, downplays his blackout as 'just a dizzy spell', proud of still working in his garden, becomes anxious when syncope is discussed in detail",
+    "openingLine": "Doctor, I got dizzy while I was digging in my garden and next thing I was on the ground..."
+  },
+  "presentingComplaint": "Collapse with transient loss of consciousness while digging in the garden, preceded by chest tightness and breathlessness",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "The collapse happened 3 days ago while shovelling in the garden in the midday heat; he was unconscious for less than a minute and came round on his own on the ground",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-prodrome",
+      "fact": "Just before he blacked out he felt his chest go tight and became very short of breath, then everything went black",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before you fell",
+        "warning",
+        "prodrome",
+        "chest tight",
+        "chest pain",
+        "breathless before",
+        "dizzy before",
+        "what happened before",
+        "felt anything",
+        "aura",
+        "before",
+        "fell",
+        "chest",
+        "tight",
+        "pain",
+        "breathless",
+        "dizzy",
+        "happened"
+      ]
+    },
+    {
+      "id": "hx-context",
+      "fact": "The blackout occurred while he was exerting himself digging; he has had two similar but milder dizzy spells over the past 2 months, both also with activity",
+      "disclosure": "onAsk",
+      "triggers": [
+        "exertion",
+        "exercise",
+        "activity",
+        "effort",
+        "digging",
+        "working",
+        "doing anything",
+        "triggered",
+        "happened when",
+        "during exercise",
+        "doing",
+        "happened",
+        "during"
+      ]
+    },
+    {
+      "id": "hx-recovery",
+      "fact": "He regained consciousness within a minute, was confused for only a few seconds, no tongue biting, no incontinence, no post-ictal drowsiness reported by his wife who witnessed it",
+      "disclosure": "onAsk",
+      "triggers": [
+        "after",
+        "recover",
+        "confused",
+        "tongue",
+        "bite",
+        "wet himself",
+        "incontinence",
+        "witness",
+        "wife saw",
+        "how long unconscious",
+        "came round",
+        "wet",
+        "himself",
+        "wife",
+        "saw",
+        "long",
+        "unconscious",
+        "came",
+        "round"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "For the past 3-4 months he gets breathless walking up his garden path, worse than before; now stops after about 50 metres on the flat",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "walking",
+        "distance",
+        "exercise tolerance",
+        "how far",
+        "stairs",
+        "exertion",
+        "short",
+        "exercise",
+        "tolerance",
+        "far"
+      ]
+    },
+    {
+      "id": "hx-anginapattern",
+      "fact": "He gets a dull central chest tightness with exertion that goes away with rest, happening more often over the last 2 months",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "chest tight",
+        "angina",
+        "pressure",
+        "squeezing",
+        "central chest",
+        "pain with walking",
+        "pain on exertion",
+        "chest",
+        "pain",
+        "tight",
+        "central",
+        "walking",
+        "exertion"
+      ]
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Sleeps propped up on two pillows now, previously slept flat",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "lying flat",
+        "sleep",
+        "propped up",
+        "how many pillows",
+        "lying",
+        "flat",
+        "propped"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "No episodes of waking up gasping for air at night",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pnd",
+        "paroxysmal",
+        "wake up gasping",
+        "night breathless",
+        "choking at night",
+        "wake",
+        "gasping",
+        "night",
+        "breathless",
+        "choking"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Mild ankle swelling by the end of the day for the past month, resolves overnight",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "oedema",
+        "edema",
+        "ankles",
+        "feet",
+        "legs swollen",
+        "puffy",
+        "legs",
+        "swollen"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "No palpitations noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "heart racing",
+        "fluttering",
+        "skipping beats",
+        "pounding heart",
+        "heart",
+        "racing",
+        "skipping",
+        "beats",
+        "pounding"
+      ]
+    },
+    {
+      "id": "hx-otherLOC",
+      "fact": "No previous history of fainting before these last two months; no seizure history",
+      "disclosure": "onAsk",
+      "triggers": [
+        "previous blackout",
+        "fainted before",
+        "seizure",
+        "epilepsy",
+        "fits",
+        "collapsed before",
+        "history of fainting",
+        "previous",
+        "blackout",
+        "fainted",
+        "before",
+        "collapsed",
+        "history",
+        "fainting"
+      ]
+    },
+    {
+      "id": "hx-rheumatic",
+      "fact": "No history of childhood joint pains, chorea, or rheumatic fever that he recalls",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rheumatic fever",
+        "joint pains as a child",
+        "chorea",
+        "childhood illness",
+        "sore joints",
+        "st vitus dance",
+        "rheumatic",
+        "fever",
+        "joint",
+        "pains",
+        "child",
+        "childhood",
+        "illness",
+        "sore",
+        "joints",
+        "vitus",
+        "dance"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Known hypertensive for 15 years, poorly controlled; no known diabetes; no prior heart attack or stroke",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "hypertension",
+        "blood pressure",
+        "diabetes",
+        "sugar",
+        "heart attack",
+        "stroke",
+        "previous illness",
+        "conditions",
+        "medical",
+        "history",
+        "blood",
+        "pressure",
+        "heart",
+        "attack",
+        "previous",
+        "illness"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes amlodipine 10mg daily, often misses doses because the clinic is far and he runs out; no other regular medication",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "compliance",
+        "adherence",
+        "clinic",
+        "collect",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative two years ago at a wellness day",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Retired farm supervisor, lives with his wife in a rural area near Nongoma, about 40km from the nearest clinic; smoked 20 cigarettes a day for 30 years, quit 10 years ago; drinks a beer occasionally, no heavy alcohol use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "occupation",
+        "work",
+        "travel",
+        "clinic distance",
+        "clinic",
+        "distance"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died suddenly in his 60s, cause unknown; mother had high blood pressure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "sudden death",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "sudden",
+        "death",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No fever, no cough, no recent illness, no weight loss, appetite normal, bowel and bladder habits unchanged",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "cough",
+        "weight loss",
+        "appetite",
+        "bowel",
+        "bladder",
+        "other symptoms",
+        "anything else",
+        "systems",
+        "weight",
+        "loss",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Elderly man, alert, mildly anxious, no acute distress at rest. No pallor, no cyanosis, no clubbing. No peripheral stigmata of endocarditis.",
+    "vitals": {
+      "hr": 72,
+      "bp": "108/86",
+      "rr": 18,
+      "temp": 36.7,
+      "spo2": "97% on room air",
+      "bmi": 24
+    },
+    "respiratory": "Fine bibasal inspiratory crepitations at both lung bases, clearing partially on deep breath. No wheeze.",
+    "cardio": "Apex beat sustained and forceful, not displaced, in the 5th intercostal space midclavicular line. Slow-rising, low-volume carotid pulse (pulsus parvus et tardus). Harsh late-peaking ejection systolic murmur, loudest at the right 2nd intercostal space, radiating to the carotids, softer S2 (single second heart sound, A2 not audible). Narrow pulse pressure. No diastolic murmur. JVP not elevated.",
+    "abdo": "Soft, non-tender, no hepatomegaly, no ascites, no shifting dullness.",
+    "neuro": "Alert, orientated, no focal deficit, no post-ictal features, no tongue laceration.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Transthoracic echocardiogram",
+      "result": "Severely calcified trileaflet aortic valve; peak velocity 4.6 m/s, mean gradient 58 mmHg, aortic valve area 0.7 cm2; concentric LV hypertrophy; LVEF 50%; mild mitral regurgitation; no significant pericardial effusion",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus rhythm, left ventricular hypertrophy with strain pattern (deep S in V1-V2, tall R in V5-V6 with ST depression/T inversion laterally), no arrhythmia captured",
+      "key": true
+    },
+    {
+      "name": "Troponin",
+      "result": "Mildly elevated at 45 ng/L (upper limit 34), consistent with demand ischaemia from LVH/outflow obstruction rather than acute plaque rupture",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly with boot-shaped left ventricular contour, mild upper lobe diversion, no overt alveolar oedema, aortic knuckle calcification suspected",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.1 g/dL, WCC 6.8, Plt 240 — no anaemia to account for high-output state",
+      "key": false
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Urea 6.2 mmol/L, creatinine 98 µmol/L, potassium 4.3 mmol/L — normal renal function, safe for diuretic/ACEi titration if needed",
+      "key": false
+    },
+    {
+      "name": "24-hour Holter monitor",
+      "result": "Sinus rhythm throughout, occasional ventricular ectopics, no significant pauses or arrhythmia during the recorded period",
+      "key": true
+    },
+    {
+      "name": "TSH",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (repeat, consistent with prior test)",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Severe aortic stenosis with syncope",
+      "rank": 1,
+      "for": [
+        "exertional syncope preceded by chest tightness and dyspnoea",
+        "harsh late-peaking ejection systolic murmur radiating to carotids",
+        "slow-rising low-volume pulse (pulsus parvus et tardus)",
+        "soft/single S2",
+        "echo confirms severe calcific AS with valve area 0.7cm2 and mean gradient 58mmHg",
+        "age-appropriate degenerative calcific valve disease"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Cardiac arrhythmia (e.g. paroxysmal complete heart block or ventricular tachycardia)",
+      "rank": 2,
+      "for": [
+        "sudden transient loss of consciousness",
+        "father died suddenly, possible arrhythmic family history",
+        "LVH predisposes to ventricular arrhythmia"
+      ],
+      "against": [
+        "clear exertional trigger with prodromal chest tightness/dyspnoea typical of outflow obstruction",
+        "Holter showed no significant arrhythmia",
+        "classic murmur and pulse findings point to a structural valve cause"
+      ]
+    },
+    {
+      "dx": "Vasovagal (reflex) syncope",
+      "rank": 3,
+      "for": [
+        "brief loss of consciousness with rapid spontaneous recovery",
+        "no tongue biting or incontinence"
+      ],
+      "against": [
+        "occurred specifically on exertion rather than with typical vasovagal triggers (prolonged standing, pain, emotion)",
+        "preceded by chest tightness/dyspnoea rather than typical prodrome of nausea/warmth/visual greying",
+        "structural murmur found on exam"
+      ]
+    },
+    {
+      "dx": "Hypertensive heart disease with diastolic dysfunction",
+      "rank": 4,
+      "for": [
+        "long-standing poorly controlled hypertension",
+        "LVH on ECG and echo",
+        "exertional dyspnoea and orthopnoea"
+      ],
+      "against": [
+        "does not explain the exertional syncope or the specific murmur/pulse character",
+        "echo demonstrates a discrete severely stenotic valve as the dominant lesion"
+      ]
+    }
+  ],
+  "pathophys": {
+    "exertional syncope": "The fixed, severely stenosed aortic valve limits the ability of the left ventricle to augment cardiac output during exercise; peripheral vasodilation from exertion drops systemic vascular resistance while cardiac output cannot rise to compensate (fixed afterload obstruction), causing transient cerebral hypoperfusion. Left ventricular baroreceptors may also trigger an inappropriate vasodepressor reflex in response to the high intraventricular pressure generated against the obstruction.",
+    "exertional chest tightness (angina)": "Concentric LV hypertrophy increases myocardial oxygen demand while the hypertrophied wall compresses intramural coronary vessels and prolongs systolic ejection time, reducing diastolic coronary filling time; this occurs even without epicardial coronary disease, producing a supply-demand mismatch ('mismatch angina').",
+    "exertional dyspnoea": "Chronic pressure overload leads to concentric LV hypertrophy with impaired ventricular relaxation (diastolic dysfunction); raised LV end-diastolic pressure transmits back to the pulmonary capillaries, increasing hydrostatic pressure and causing exertional pulmonary congestion.",
+    "slow-rising pulse (pulsus parvus et tardus)": "The stenotic valve orifice prolongs and delays the transmission of the systolic pressure wave into the aorta and peripheral arteries, producing a pulse that rises slowly and reaches a diminished peak amplitude.",
+    "soft/absent second heart sound (A2)": "Severe calcification and immobility of the aortic valve leaflets reduce the sudden valve closure that normally generates the aortic component of S2, sometimes leaving only the pulmonary component (P2) audible as a single S2.",
+    "orthopnoea and mild peripheral oedema": "Progressive diastolic dysfunction from LVH raises left-sided filling pressures, which in recumbency are compounded by redistribution of splanchnic and dependent fluid, increasing venous return and pulmonary venous pressure; long-standing elevated left-sided pressures can secondarily raise pulmonary pressures and produce mild right-sided congestive signs."
+  },
+  "staging": "NYHA class II-III (symptomatic severe aortic stenosis); echo-defined severe AS (valve area <1.0cm2, mean gradient >40mmHg); LVEF preserved at 50%",
+  "management": {
+    "immediate": [
+      "Admit for cardiac monitoring given history of exertional syncope with a critical valve lesion — high risk of sudden cardiac death",
+      "Avoid strenuous exertion, isometric exercise, and dehydration until definitive management is arranged",
+      "Avoid nitrates, ACE inhibitors, and other preload/afterload reducers acutely — these can cause dangerous hypotension in fixed-outflow-obstruction states",
+      "Correct hypertension cautiously and gradually only once valve severity is confirmed, avoiding aggressive vasodilation",
+      "Continuous ECG monitoring for arrhythmia while inpatient given syncope history"
+    ],
+    "definitive": [
+      "Urgent cardiology/cardiothoracic surgical referral for aortic valve replacement (surgical AVR) — definitive treatment for severe symptomatic AS",
+      "Consider transcatheter aortic valve implantation (TAVI) if surgical risk is prohibitive/high, where available and resourced",
+      "Coronary angiography prior to valve surgery to assess for concurrent coronary artery disease (routine pre-AVR work-up given his age and risk factors)",
+      "Optimise blood pressure control with careful medication choice once valve corrected (avoid aggressive vasodilators pre-operatively)"
+    ],
+    "supportive": [
+      "Patient education: avoid strenuous exertion and heavy manual labour (e.g. digging, heavy garden work) until valve intervention performed",
+      "Salt and fluid moderation appropriate to mild congestive symptoms, avoid over-diuresis which can drop preload dangerously in AS",
+      "Address medication adherence barriers — assist with transport/clinic access for chronic antihypertensive collection",
+      "Pneumococcal and influenza vaccination",
+      "Endocarditis prophylaxis counselling if invasive dental/surgical procedures anticipated pre- or post-valve replacement per current guidance"
+    ],
+    "followUp": [
+      "Serial echocardiography to monitor valve gradient and LV function while awaiting surgery",
+      "Cardiology follow-up post-AVR for anticoagulation (if mechanical valve) or antiplatelet management (if bioprosthetic)",
+      "Chronic disease clinic follow-up for blood pressure control and cardiovascular risk factor modification",
+      "Safety-net counselling: return immediately if further syncope, chest pain, or worsening breathlessness occurs before surgery"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport, obtains consent",
+      "answer": null,
+      "why": "Professionalism and communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-syndrome",
+      "phase": "history",
+      "item": "Characterises the collapse event fully: onset, context/trigger, prodrome, duration of unconsciousness, recovery, witnessed features (tongue biting, incontinence, post-ictal state)",
+      "answer": "Exertional collapse while digging, preceded by chest tightness and dyspnoea, brief LOC, rapid recovery, no seizure features",
+      "why": "Confirms true syncope vs seizure and establishes the exertional trigger pattern central to the AS syncope mechanism",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-triad",
+      "phase": "history",
+      "item": "Screens for the classic severe AS triad: syncope, angina, exertional dyspnoea",
+      "answer": "All three present: exertional syncope, exertional chest tightness relieved by rest, progressive exertional dyspnoea with orthopnoea",
+      "why": "These three symptoms define the ominous natural history of severe AS and drive urgency of referral",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cardiac-risk",
+      "phase": "history",
+      "item": "Takes cardiovascular risk factor history: hypertension, diabetes, smoking, family history of sudden death",
+      "answer": "Long-standing poorly controlled hypertension, ex-smoker, father died suddenly",
+      "why": "Establishes background cardiovascular risk and possible familial arrhythmic/structural disease to consider in differential",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-rheumatic-screen",
+      "phase": "history",
+      "item": "Asks about childhood rheumatic fever/joint pains/chorea as a cause of valve disease",
+      "answer": "No history of rheumatic fever",
+      "why": "Rheumatic valve disease is a key KZN differential for valvular pathology, must be actively excluded",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-adherence",
+      "phase": "history",
+      "item": "Explores medication adherence and access to chronic care (distance to clinic, ability to collect medication)",
+      "answer": "Poor adherence to amlodipine due to distance from rural home to clinic",
+      "why": "Identifies a modifiable precipitant/contributor and social barrier relevant to South African rural care context",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-cardiac-exam",
+      "phase": "examination",
+      "item": "Performs focused cardiovascular exam: pulse character, apex beat, auscultation for murmurs, assessment of S2",
+      "answer": "Slow-rising low-volume pulse, sustained forceful undisplaced apex, harsh late-peaking ejection systolic murmur radiating to carotids, soft/single S2",
+      "why": "These are the classic bedside signs of severe aortic stenosis and directly support the diagnosis",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-resp-exam",
+      "phase": "examination",
+      "item": "Examines respiratory system for signs of pulmonary congestion",
+      "answer": "Fine bibasal crepitations",
+      "why": "Detects degree of associated diastolic dysfunction/congestion contributing to dyspnoea",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential for exertional syncope/collapse (severe AS, arrhythmia, vasovagal syncope, hypertensive heart disease) with reasoning for and against each",
+      "answer": null,
+      "why": "Demonstrates symptom-to-differential clinical reasoning central to the exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests ECG, echocardiogram, troponin, and Holter monitor as the key confirmatory and risk-stratifying work-up",
+      "answer": "See investigations catalogue — echo confirms severe AS with AVA 0.7cm2, mean gradient 58mmHg",
+      "why": "Echocardiography is the key confirmatory test for AS severity; ECG and Holter exclude arrhythmic causes of syncope",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Recognises severe symptomatic AS with syncope as a surgical emergency requiring urgent cardiology/cardiothoracic referral for valve replacement, and avoids preload/afterload-reducing agents acutely",
+      "answer": null,
+      "why": "Symptomatic severe AS carries a high risk of sudden death without intervention; inappropriate vasodilator use can precipitate collapse",
+      "weight": 4,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 20,
+    "clinicalReasoning": 20,
+    "investigations": 12,
+    "management": 13
+  }
+}

@@ -1,0 +1,679 @@
+{
+  "id": "resp-007-bronchogenic-carcinoma",
+  "version": 1,
+  "discipline": "resp",
+  "diagnosis": "Bronchogenic carcinoma",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This man has a history of mild wheeze as a young man and describes his current symptoms as 'asthma coming back.' Walk me through your differential diagnosis and how you would distinguish these possibilities.",
+      "modelAnswer": "Top of the list is bronchogenic carcinoma given his heavy smoking history, new fixed unilateral wheeze unresponsive to bronchodilator, haemoptysis, marked weight loss, hoarseness (suggesting recurrent laryngeal nerve involvement) and clubbing. True asthma is less likely — his wheeze pattern has changed from episodic and presumably diffuse to constant and lateralised, and there's no reversibility on PEFR testing. COPD is possible given his smoking history but wouldn't typically present with a discrete unilateral fixed wheeze, haemoptysis or hoarseness. TB is relevant given the endemic setting but his GeneXpert is negative and the imaging pattern (discrete hilar mass with collapse) doesn't fit typical TB. I would confirm with CXR/CT and tissue diagnosis via bronchoscopy.",
+      "gradingNotes": "Expects a ranked differential with specific supporting and refuting evidence from this case, not just a list of diagnoses."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiological mechanism behind why his wheeze is now fixed and unilateral rather than the variable, diffuse wheeze of asthma.",
+      "modelAnswer": "In asthma, wheeze results from diffuse, variable bronchial smooth muscle constriction and mucosal oedema across both lungs, which improves with bronchodilator relaxation of that smooth muscle. Here, an endobronchial tumour causes a fixed mechanical narrowing of a single bronchus; because the obstruction is a rigid mass rather than reversible smooth muscle spasm, salbutamol cannot dilate it, producing a constant monophonic wheeze localised to the affected side that doesn't improve with treatment.",
+      "gradingNotes": "Wants the mechanistic distinction between reversible bronchospasm and fixed structural/mechanical obstruction, not just a restatement that 'it's a tumour.'"
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His PEFR shows only a 7% improvement post-bronchodilator. How do you interpret this and how does it change your workup?",
+      "modelAnswer": "The diagnostic threshold for asthma reversibility is an improvement of ≥60 L/min or ≥20% from baseline. A 7% improvement is well below this and argues strongly against asthma as the primary diagnosis. Given this, combined with his red-flag symptoms, I would proceed to CXR and CT chest for structural imaging, and arrange bronchoscopy with biopsy or sputum cytology to obtain tissue diagnosis, rather than escalating his asthma inhaler therapy.",
+      "gradingNotes": "Must state the exact reversibility threshold and correctly conclude it is negative, then link this to appropriate escalation of investigations rather than stepping up asthma treatment."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Before considering stepping up this man's asthma treatment, what should you check, and why is that approach wrong in this case?",
+      "modelAnswer": "Normally, before stepping up asthma therapy, one checks inhaler technique, adherence, ongoing trigger exposure, use of aggravating drugs like NSAIDs or beta-blockers, and excludes alternative diagnoses such as cardiac failure. In this case, doing so would be inappropriate as the first move because his history and examination already reveal multiple red flags (haemoptysis, weight loss, hoarseness, clubbing, fixed unilateral wheeze) that point away from simple poorly-controlled asthma toward a structural or malignant cause. The correct action is urgent investigation for an alternative diagnosis, not blind escalation of the asthma ladder.",
+      "gradingNotes": "Tests recognition that the 'before stepping up' checklist from the asthma framework is a trap here — the correct answer is to investigate for malignancy rather than assume poor asthma control."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Given the staging findings — hilar mass with mediastinal invasion, nodal involvement and likely liver metastases — what is the general treatment intent and what supportive measures are essential?",
+      "modelAnswer": "This presentation is consistent with Stage IV non-small cell lung carcinoma, which is generally beyond curative surgical resection; treatment intent shifts to palliative systemic therapy (chemotherapy, and immunotherapy if available/eligible) aimed at prolonging survival and controlling symptoms, alongside early palliative care involvement for symptom control (breathlessness, pain, cough), nutritional support, smoking cessation counselling, and honest discussion of prognosis with the patient and family.",
+      "gradingNotes": "Expects recognition that curative intent is unlikely given metastatic disease, and that early palliative care integration is standard of care, not a last resort."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "recurrent/persistent wheeze and dyspnoea — episodic asthma pattern vs fixed structural obstruction (COPD, TB sequelae, malignancy) vs cardiac cause",
+  "patient": {
+    "name": "Mandla Ngcobo",
+    "age": 61,
+    "sex": "M",
+    "occupation": "retired sugar-cane farm supervisor, lifelong pipe and cigarette smoker",
+    "personality": "stoic, downplays symptoms, jokes to deflect worry, reluctant to admit weight loss until pressed",
+    "openingLine": "Doctor, it's this wheezing and my chest feels tight, like I'm getting asthma in my old age."
+  },
+  "presentingComplaint": "3-month history of progressive wheeze, breathlessness and a cough that started as 'just like his old asthma' but now won't settle with his blue inhaler",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Wheeze and breathlessness started roughly 3 months ago and have been steadily worsening, unlike his usual occasional wheeze",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-wheeze-pattern",
+      "fact": "Wheeze is now constant, not episodic like before, and is localised more to the right side of his chest — he has noticed it doesn't come and go with the weather like it used to",
+      "disclosure": "onAsk",
+      "triggers": [
+        "wheeze",
+        "wheezing",
+        "whistling",
+        "chest sound",
+        "one side",
+        "localised",
+        "constant",
+        "always there",
+        "pattern",
+        "triggers",
+        "chest",
+        "sound",
+        "one",
+        "side",
+        "always"
+      ]
+    },
+    {
+      "id": "hx-childhood-asthma",
+      "fact": "Had mild wheeze as a young man that he was told was 'a touch of asthma', used a blue inhaler occasionally, no hospital admissions, no childhood eczema or hay fever",
+      "disclosure": "onAsk",
+      "triggers": [
+        "asthma",
+        "childhood",
+        "young",
+        "before",
+        "previous",
+        "inhaler",
+        "atopy",
+        "eczema",
+        "hay fever",
+        "allergies",
+        "rhinitis",
+        "hay",
+        "fever"
+      ]
+    },
+    {
+      "id": "hx-inhaler-response",
+      "fact": "His salbutamol (blue) inhaler used to help within minutes but for the past month it barely touches the wheeze or breathlessness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "inhaler",
+        "salbutamol",
+        "blue inhaler",
+        "puffer",
+        "relief",
+        "help",
+        "respond",
+        "reliever",
+        "better after",
+        "blue",
+        "better",
+        "after"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "Cough for about 2 months, sometimes brings up small amounts of blood-streaked sputum, especially in the mornings",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "sputum",
+        "phlegm",
+        "blood",
+        "coughing up",
+        "bringing up",
+        "haemoptysis",
+        "spit",
+        "mucus",
+        "wet cough",
+        "coughing",
+        "bringing",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost around 8 kg in the past 2 months, belt now on the tightest hole; admits appetite has dropped off",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "thinner",
+        "clothes",
+        "belt",
+        "appetite",
+        "eating less",
+        "shrinking",
+        "lost",
+        "eating",
+        "less"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "No drenching night sweats, occasionally feels warm at night but has not soaked his sheets",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat",
+        "wake up wet",
+        "drenched",
+        "soaking",
+        "night",
+        "sweats",
+        "wake",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "Dull ache in the right side of his chest for the past month, worse on deep breaths, not sharp or stabbing",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "sore chest",
+        "ache",
+        "pleuritic",
+        "hurts",
+        "discomfort",
+        "chest",
+        "sore"
+      ]
+    },
+    {
+      "id": "hx-hoarseness",
+      "fact": "Voice has become noticeably hoarse over the past 3 weeks, family has commented on it",
+      "disclosure": "onAsk",
+      "triggers": [
+        "voice",
+        "hoarse",
+        "hoarseness",
+        "husky",
+        "croaky",
+        "speaking"
+      ]
+    },
+    {
+      "id": "hx-smoking",
+      "fact": "Smoked roughly 20 cigarettes a day for over 40 years, plus a pipe most evenings; has not managed to quit despite several attempts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco",
+        "pipe",
+        "pack years",
+        "quit",
+        "stopped",
+        "pack",
+        "years"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks a few beers on weekends, no history of binge drinking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "drinking"
+      ]
+    },
+    {
+      "id": "hx-tb-hiv",
+      "fact": "Never tested for HIV, no known TB contact, was tested for TB two years ago after a persistent cough and it was negative at that time",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "tb",
+        "tuberculosis",
+        "test",
+        "tested",
+        "status",
+        "contact",
+        "household",
+        "exposure"
+      ]
+    },
+    {
+      "id": "hx-occupational",
+      "fact": "Worked outdoors on a sugar-cane farm for over 30 years supervising burning of cane fields, significant smoke exposure over his career",
+      "disclosure": "onAsk",
+      "triggers": [
+        "occupation",
+        "work",
+        "job",
+        "exposure",
+        "dust",
+        "smoke",
+        "chemicals",
+        "cane",
+        "farm",
+        "burning"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Known hypertension on treatment for 10 years, no diabetes, no known heart disease, no previous TB or pneumonia",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "conditions",
+        "illnesses",
+        "hypertension",
+        "blood pressure",
+        "diabetes",
+        "heart disease",
+        "previous",
+        "medical",
+        "history",
+        "blood",
+        "pressure",
+        "heart",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes amlodipine 10mg daily for blood pressure, uses salbutamol inhaler as needed, no other regular medication",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "amlodipine",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-nsaid-bb",
+      "fact": "Not on any beta-blockers or regular NSAIDs",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "beta blocker",
+        "painkillers",
+        "ibuprofen",
+        "aspirin",
+        "anti-inflammatory",
+        "beta",
+        "blocker"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "drug allergy",
+        "drug",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of 'a chest problem' in his 60s, details unclear; no known family history of asthma or heart disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in a rural district near Eshowe with his wife; retired, receives a small pension; house has a wood-burning stove used daily for cooking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "live",
+        "home",
+        "house",
+        "family",
+        "wife",
+        "biomass",
+        "stove",
+        "wood",
+        "cooking fire",
+        "cooking",
+        "fire"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No leg swelling, no orthopnoea, no palpitations, no urinary symptoms, no bone pain, no headaches",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "legs",
+        "orthopnoea",
+        "lying flat",
+        "palpitations",
+        "urine",
+        "bone pain",
+        "headache",
+        "other symptoms",
+        "anything else",
+        "lying",
+        "flat",
+        "bone",
+        "pain",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, older man in mild respiratory distress at rest. Visible cachexia, temporal wasting. No cyanosis at rest. Finger clubbing present. No peripheral lymphadenopathy on this visit but a firm, non-tender left supraclavicular node is palpable on careful examination.",
+    "vitals": {
+      "hr": 98,
+      "bp": "142/88",
+      "rr": 24,
+      "temp": 36.8,
+      "spo2": "91% on room air",
+      "bmi": 19.5
+    },
+    "respiratory": "Trachea deviated slightly toward the right. Reduced chest expansion on the right side. Right-sided fixed monophonic wheeze audible on auscultation, unchanged by coughing. Dull to percussion over the right upper zone with reduced breath sounds in that area. Left lung fields clear.",
+    "cardio": "Normal heart sounds, no murmurs, JVP not elevated, no peripheral oedema.",
+    "abdo": "Soft, non-tender, no hepatomegaly, no palpable masses, no ascites.",
+    "neuro": "Alert and orientated, no focal deficit, hoarse voice noted on speaking consistent with possible recurrent laryngeal nerve involvement.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Chest X-ray",
+      "result": "Right hilar mass with associated right upper lobe collapse; no cavitation; small right pleural effusion",
+      "key": true
+    },
+    {
+      "name": "Contrast CT chest/abdomen",
+      "result": "4.8cm right hilar mass invading mediastinal structures, right hilar and subcarinal lymphadenopathy, liver metastases suspected, right pleural effusion",
+      "key": true
+    },
+    {
+      "name": "Sputum cytology",
+      "result": "Malignant cells present, consistent with non-small cell carcinoma",
+      "key": true
+    },
+    {
+      "name": "Bronchoscopy with biopsy",
+      "result": "Endobronchial mass visualised occluding right upper lobe bronchus; histology confirms squamous cell carcinoma",
+      "key": true
+    },
+    {
+      "name": "PEFR pre- and post-bronchodilator",
+      "result": "Pre 210 L/min, post 225 L/min — improvement of 15 L/min (7%), below the 60 L/min or 20% threshold for reversibility",
+      "key": true
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB not detected",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.2 g/dL normocytic (anaemia of chronic disease), WCC 8.1, platelets 448 (mild reactive thrombocytosis)",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "ALP and GGT mildly elevated, ALT/AST normal, suggestive of hepatic infiltration",
+      "key": false
+    },
+    {
+      "name": "Corrected calcium",
+      "result": "2.98 mmol/L (mildly elevated), consistent with possible paraneoplastic hypercalcaemia",
+      "key": false
+    },
+    {
+      "name": "Spirometry",
+      "result": "Not performed — patient too breathless to cooperate reliably; PEFR used instead",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Bronchogenic carcinoma",
+      "rank": 1,
+      "for": [
+        "age 61 with 40+ pack-year smoking history",
+        "progressive fixed unilateral wheeze not responding to bronchodilator",
+        "haemoptysis",
+        "marked unintentional weight loss",
+        "hoarseness suggesting recurrent laryngeal nerve palsy",
+        "clubbing",
+        "supraclavicular lymphadenopathy",
+        "PEFR non-reversible"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Asthma (late-onset or pre-existing mild asthma with new pathology)",
+      "rank": 2,
+      "for": [
+        "history of mild wheeze in youth",
+        "previous response to salbutamol"
+      ],
+      "against": [
+        "wheeze now fixed and unilateral rather than episodic and diffuse",
+        "no reversibility on PEFR testing",
+        "new red flags: weight loss, haemoptysis, hoarseness, clubbing"
+      ]
+    },
+    {
+      "dx": "COPD",
+      "rank": 3,
+      "for": [
+        "heavy smoking history",
+        "chronic progressive dyspnoea",
+        "age"
+      ],
+      "against": [
+        "typically diffuse bilateral wheeze rather than unilateral fixed wheeze",
+        "imaging shows a discrete mass rather than diffuse hyperinflation",
+        "weight loss and hoarseness atypical for straightforward COPD"
+      ]
+    },
+    {
+      "dx": "Pulmonary tuberculosis",
+      "rank": 4,
+      "for": [
+        "haemoptysis",
+        "weight loss",
+        "endemic setting"
+      ],
+      "against": [
+        "GeneXpert negative",
+        "CXR shows discrete hilar mass with collapse rather than typical upper lobe cavitation",
+        "no night sweats, no TB contact"
+      ]
+    },
+    {
+      "dx": "Post-TB bronchiectasis",
+      "rank": 5,
+      "for": [
+        "chronic cough with sputum"
+      ],
+      "against": [
+        "no prior TB episode",
+        "imaging findings inconsistent (mass and collapse, not bronchiectatic changes)"
+      ]
+    }
+  ],
+  "pathophys": {
+    "fixed unilateral wheeze": "Endobronchial tumour causes a fixed, localised narrowing of a single bronchus producing a constant monophonic wheeze independent of bronchodilator response, unlike the diffuse variable airway narrowing of asthma",
+    "haemoptysis": "Tumour neovascularisation and mucosal ulceration erode into bronchial vessels, causing blood-streaking of sputum",
+    "weight loss": "Tumour-secreted cytokines (TNF-alpha, IL-6) drive systemic catabolism and anorexia, compounded by increased metabolic demand of malignancy",
+    "hoarseness": "Mediastinal nodal or tumour mass compresses or infiltrates the left recurrent laryngeal nerve as it loops under the aortic arch (or right nerve near the subclavian), causing vocal cord palsy",
+    "clubbing": "Hypertrophic pulmonary osteoarthropathy thought to be mediated by platelet-derived growth factor and VEGF released from tumour, causing digital vascular proliferation and soft tissue changes",
+    "failure of bronchodilator response": "Salbutamol relaxes bronchial smooth muscle to reverse reversible bronchospasm; a fixed intraluminal or extrinsic mass causes structural, non-reversible obstruction that mechanically cannot dilate",
+    "supraclavicular lymphadenopathy": "Lymphatic spread from a right upper lobe/hilar primary drains via the mediastinal and then supraclavicular (Virchow's) nodal chain"
+  },
+  "staging": "Clinical TNM suggestive of at least T3-T4 N2-N3 M1 (right hilar mass with mediastinal invasion, hilar/subcarinal nodes, probable liver metastases) — Stage IV non-small cell lung carcinoma pending full staging workup",
+  "management": {
+    "immediate": [
+      "Assess and manage airway obstruction/breathlessness — oxygen supplementation to maintain SpO2",
+      "Analgesia for chest pain",
+      "Urgent referral to pulmonology/oncology MDT for tissue diagnosis and staging",
+      "Address pleural effusion if symptomatic (consider therapeutic drainage)"
+    ],
+    "definitive": [
+      "Histological confirmation via bronchoscopy and biopsy (obtained: squamous cell carcinoma)",
+      "Full staging with CT chest/abdomen ± PET-CT and consideration of brain imaging given metastatic picture",
+      "MDT discussion for treatment intent — given Stage IV disease, likely palliative systemic therapy (chemotherapy ± immunotherapy) rather than curative surgery",
+      "Molecular/PD-L1 testing where available to guide systemic therapy options"
+    ],
+    "supportive": [
+      "Smoking cessation counselling and support at every contact",
+      "Nutritional support and dietician referral given significant weight loss",
+      "Palliative care team involvement early for symptom control (breathlessness, pain, cough)",
+      "Psychosocial support for patient and family; discuss prognosis honestly but compassionately",
+      "Manage paraneoplastic hypercalcaemia if symptomatic (hydration, consider bisphosphonate)"
+    ],
+    "followUp": [
+      "Regular review of symptom burden and functional status",
+      "Oncology follow-up for treatment response assessment",
+      "Advance care planning discussion",
+      "Home-based/community palliative care referral given rural location near Eshowe"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-symptom-pattern",
+      "phase": "history",
+      "item": "Characterises the wheeze/dyspnoea pattern — onset, progression, episodic vs constant, laterality",
+      "answer": "Progressive over 3 months, now constant and unilateral (right-sided), unlike his previous episodic wheeze",
+      "why": "Distinguishing episodic diffuse wheeze (asthma) from fixed unilateral wheeze (structural/malignant obstruction) is the first branch point in the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-atopy-screen",
+      "phase": "history",
+      "item": "Screens for atopic features and childhood-onset pattern (rhinitis, eczema, conjunctivitis, age of first symptoms)",
+      "answer": "Mild wheeze as a young man, no eczema or hay fever — pattern atypical for classic atopic asthma",
+      "why": "Atopic triad and childhood onset favour asthma; their absence should prompt broader differential",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-bronchodilator-response",
+      "phase": "history",
+      "item": "Asks specifically whether the inhaler/reliever still helps",
+      "answer": "Salbutamol previously effective but now barely relieves symptoms for the past month",
+      "why": "Loss of bronchodilator responsiveness is a key clinical clue toward fixed/structural obstruction rather than reversible bronchospasm",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-red-flags",
+      "phase": "history",
+      "item": "Screens for red-flag/mimic features: haemoptysis, weight loss, hoarseness, chest pain, night sweats, TB/HIV risk",
+      "answer": "Haemoptysis present, 8kg weight loss, hoarseness, dull right chest pain; no night sweats, HIV negative, TB test previously negative",
+      "why": "These systematically exclude/raise suspicion for TB, cardiac disease and malignancy as per the mimics-and-red-flags step of the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-smoking-occupational",
+      "phase": "history",
+      "item": "Takes detailed smoking history (pack-years) and occupational/environmental exposure history",
+      "answer": "40+ pack-year smoking history plus decades of cane-field smoke exposure and biomass cooking fire at home",
+      "why": "Smoking and occupational carcinogen exposure are the dominant risk factors for bronchogenic carcinoma and must be quantified",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Performs general examination looking for clubbing, cachexia, lymphadenopathy, cyanosis",
+      "answer": "Clubbing present, cachexia, palpable left supraclavicular node, no resting cyanosis",
+      "why": "These are systemic/metastatic clues consistent with the framework's between-attack examination principle, but here reveal malignant rather than atopic stigmata",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-resp",
+      "phase": "examination",
+      "item": "Performs focused respiratory examination — inspection, palpation for tracheal deviation, percussion, auscultation for wheeze character and laterality",
+      "answer": "Trachea deviated right, reduced right expansion, fixed monophonic wheeze right side, dullness and reduced breath sounds right upper zone",
+      "why": "Localises a fixed unilateral lesion, distinguishing from the diffuse bilateral wheeze expected in asthma",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-pefr",
+      "phase": "investigations",
+      "item": "Requests PEFR pre- and post-bronchodilator and correctly interprets reversibility threshold",
+      "answer": "Pre 210, post 225 L/min — only 7% improvement, below the ≥60 L/min or ≥20% diagnostic threshold for asthma reversibility",
+      "why": "This is the objective test that should have been used to confirm/exclude asthma before assuming the diagnosis; its negativity is a pivotal exam point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cxr-staging-ix",
+      "phase": "investigations",
+      "item": "Requests chest X-ray and appropriate staging investigations (CT chest, sputum cytology, bronchoscopy with biopsy) after red flags identified",
+      "answer": "CXR shows right hilar mass with collapse; CT confirms mediastinal invasion and probable liver metastases; bronchoscopy biopsy confirms squamous cell carcinoma",
+      "why": "Confirmatory diagnostic pathway once malignancy is suspected — mirrors the 'confirm objectively' step of the framework, adapted to the correct differential",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx-reasoning",
+      "phase": "differentials",
+      "item": "Generates a ranked differential explicitly weighing asthma against COPD, TB and malignancy with supporting/refuting evidence from the history and exam",
+      "answer": "Bronchogenic carcinoma ranked first given fixed unilateral wheeze, non-reversibility, weight loss, haemoptysis, hoarseness and clubbing; asthma and COPD considered and reasonably excluded",
+      "why": "This is the core symptom-to-differential reasoning the station is designed to test — recognising when an 'asthma-like' presentation is not asthma",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-approach",
+      "phase": "management",
+      "item": "Outlines appropriate management: MDT referral, staging, discussion of likely palliative intent given Stage IV disease, symptom control, smoking cessation, psychosocial/palliative support",
+      "answer": null,
+      "why": "Reflects honest, guideline-consistent management for advanced bronchogenic carcinoma rather than defaulting to an asthma treatment ladder",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

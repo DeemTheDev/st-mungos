@@ -98,9 +98,19 @@ export interface FcCallOptions<T> {
 /**
  * One structured-outputs call: shape enforced API-side via output_config.format
  * (client.messages.parse + zodOutputFormat), thinking disabled, instruction
- * block cached with cache_control ephemeral. Note Haiku 4.5's minimum cacheable
- * prefix is 4096 tokens (DECISIONS.md 2026-08-12) — shorter instruction blocks
- * silently won't cache, which only costs pennies here.
+ * block carries cache_control ephemeral, but MEASURED 2026-08-17: none of these
+ * blocks actually cache. Haiku 4.5's minimum cacheable prefix is 4096 tokens and
+ * ours are 1410 (extract), 445 (survey), 283 (reconcile) — the API ignores the
+ * breakpoint silently. This is left deliberately unpadded, unlike the patient
+ * rules block (lib/brains/anthropic.ts), because the arithmetic differs:
+ *   - a 12-window document would save ~$0.007 by caching, and
+ *   - each window is one client poll, so a backgrounded tab blows the 5-minute
+ *     TTL and a padded block then costs ~4x an unpadded one (1.25x write on 3x
+ *     the tokens).
+ * The cache_control stays so the win arrives automatically if the floor drops.
+ * The real lever here is OUTPUT, not input: the 1015-card run was $0.12 input
+ * vs $0.61 output — batching windows through the Batches API (50% off) is the
+ * fast-follow worth building, not prompt padding.
  */
 export async function fcStructuredCall<T>(opts: FcCallOptions<T>): Promise<T> {
   opts.cost.assertBudget();

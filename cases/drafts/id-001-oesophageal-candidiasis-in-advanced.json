@@ -1,0 +1,700 @@
+{
+  "id": "id-001-oesophageal-candidiasis-in-advanced",
+  "version": 1,
+  "discipline": "id",
+  "diagnosis": "Oesophageal candidiasis in advanced HIV",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential for this patient's painful swallowing, and how you would rank it.",
+      "modelAnswer": "Given a CD4 of 64 and off ART for 8 months, my leading diagnosis is oesophageal candidiasis — supported by the oral thrush, the odynophagia, and the degree of immunosuppression. Next I'd consider CMV oesophagitis and HSV oesophagitis, both of which occur in advanced HIV but classically present with large discrete ulcers rather than diffuse plaques, and I'd only pursue these with endoscopy if he fails an empirical fluconazole trial. TB oesophagitis is rare but TB must always be screened for in HIV regardless of presenting complaint — his negative TB symptom screen and normal CXR argue against it here. Oesophageal malignancy, including Kaposi sarcoma, is less likely given his age, short symptom duration, and absence of skin lesions.",
+      "gradingNotes": "Wants ranked list with reasoning tied to CD4 threshold and clinical features, not just a name-drop of diagnoses."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why do you specifically ask about CD4 count, nadir CD4, and ART history in a patient presenting with a swallowing complaint?",
+      "modelAnswer": "CD4 count is the single most useful discriminator in HIV medicine — it predicts which opportunistic infections are likely at a given level of immunosuppression. Candida oesophagitis typically occurs once CD4 falls below 200. Nadir CD4 matters because it reflects the patient's lowest-ever immune competence and risk of latent reactivation even if current CD4 has partially recovered. ART history and adherence tell me whether the patient is virologically suppressed or at ongoing risk, and whether recent ART initiation raises concern for IRIS instead of a new opportunistic infection.",
+      "gradingNotes": "Should explicitly link CD4/nadir CD4/ART timing to the CD4-stratified differential framework, not just state 'it's important to ask'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "What is the pathophysiological mechanism behind the oral white plaques you found on examination?",
+      "modelAnswer": "Candida albicans is a normal commensal organism, but depletion of CD4 T-helper cells below approximately 200 cells/µL impairs mucosal cell-mediated immunity that normally keeps fungal proliferation in check. This allows Candida to overgrow as adherent pseudomembranous plaques composed of fungal hyphae, desquamated epithelial cells, and inflammatory debris, which is why they bleed slightly when scraped, revealing raw underlying mucosa.",
+      "gradingNotes": "Pulled directly from the pathophys pairs — wants mechanism (CD4 depletion, loss of mucosal immunity, hyphal overgrowth), not just restating 'thrush is candida'."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "Why would you treat this patient empirically with fluconazole rather than proceeding straight to endoscopy?",
+      "modelAnswer": "In a resource-limited, high HIV-burden setting, the combination of odynophagia with visible oral candidiasis in a patient with a low CD4 count is considered diagnostic enough to justify an empirical trial of systemic fluconazole, which is both cheaper and less invasive than endoscopy. A clinical response within about a week confirms the diagnosis. Endoscopy with biopsy is reserved for patients who fail to respond to antifungal therapy, to look for CMV or HSV oesophagitis instead.",
+      "gradingNotes": "Wants the empirical-trial-as-diagnostic-test concept clearly articulated, and correct identification of when endoscopy actually becomes necessary."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "He was previously on ART but stopped 8 months ago. What must you check before restarting it, and why?",
+      "modelAnswer": "Before restarting or changing his ART regimen I must check his hepatitis B surface antigen status, because his regimen contains tenofovir and lamivudine, both of which have anti-HBV activity. If he is HBV-coinfected and these drugs are ever stopped or changed without care, he is at risk of a potentially fatal hepatitis flare due to rebound viral replication. I would also address his adherence barriers — his relocation and night-shift work — before simply restarting the same regimen, to try to prevent another treatment interruption.",
+      "gradingNotes": "Critical safety point emphasised in the source material — must mention HBV screening before ART changes and the flare risk, plus practical adherence planning."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "odynophagia/dysphagia in advanced HIV — CD4-stratified GI differential",
+  "patient": {
+    "name": "Sibusiso Ngcobo",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, downplays symptoms, embarrassed to discuss his HIV status, becomes more forthcoming once rapport is built",
+    "openingLine": "Doctor, it's painful when I swallow... even water burns going down."
+  },
+  "presentingComplaint": "2-week history of painful swallowing and difficulty swallowing, with poor oral intake and weight loss",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Pain on swallowing started about 2 weeks ago, initially mild, now severe enough that he avoids eating solid food",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-odynophagia",
+      "fact": "Describes a burning, retrosternal pain every time he swallows food or liquid, worse with solids",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain swallowing",
+        "odynophagia",
+        "swallow",
+        "painful swallow",
+        "burning",
+        "chest burn",
+        "hurts to swallow",
+        "sore throat swallowing",
+        "swallowing food",
+        "swallowing liquid",
+        "pain",
+        "swallowing",
+        "painful",
+        "chest",
+        "burn",
+        "hurts",
+        "sore",
+        "throat",
+        "food",
+        "liquid"
+      ]
+    },
+    {
+      "id": "hx-dysphagia",
+      "fact": "Also feels food getting stuck partway down, though he can still swallow liquids more easily than solids",
+      "disclosure": "onAsk",
+      "triggers": [
+        "stuck",
+        "dysphagia",
+        "difficulty swallowing",
+        "food stuck",
+        "choking",
+        "cant swallow",
+        "swallow solids",
+        "swallow liquids",
+        "sticking",
+        "difficulty",
+        "swallowing",
+        "food",
+        "cant",
+        "swallow",
+        "solids",
+        "liquids"
+      ]
+    },
+    {
+      "id": "hx-oral",
+      "fact": "Noticed white patches on his tongue and inside his cheeks about 3 weeks ago, which he tried to scrape off with his toothbrush",
+      "disclosure": "onAsk",
+      "triggers": [
+        "white patches",
+        "tongue",
+        "mouth",
+        "thrush",
+        "cheeks",
+        "mouth sores",
+        "white stuff",
+        "oral",
+        "scrape",
+        "white",
+        "patches",
+        "sores",
+        "stuff"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Has lost around 5 kg over the past month because eating has become so unpleasant",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "losing weight",
+        "thinner",
+        "clothes",
+        "eating less",
+        "lost",
+        "losing",
+        "eating",
+        "less"
+      ]
+    },
+    {
+      "id": "hx-appetite",
+      "fact": "Appetite is reduced, not because he isn't hungry but because eating hurts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "appetite",
+        "hungry",
+        "eating",
+        "food intake",
+        "food",
+        "intake"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "No fevers, no night sweats",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "night sweats",
+        "sweating",
+        "chills",
+        "rigors",
+        "night",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "No cough, no haemoptysis, no shortness of breath",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "phlegm",
+        "sputum",
+        "blood",
+        "breath",
+        "breathing",
+        "tb symptoms",
+        "chest symptoms",
+        "symptoms",
+        "chest"
+      ]
+    },
+    {
+      "id": "hx-hivstatus",
+      "fact": "Diagnosed HIV positive 4 years ago; was on ART initially but stopped taking his tablets about 8 months ago after moving towns for work and losing his clinic file",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "tablets",
+        "treatment",
+        "medication for hiv",
+        "antiretroviral",
+        "when diagnosed",
+        "art history",
+        "stopped",
+        "medication",
+        "diagnosed",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-cd4",
+      "fact": "Does not know his most recent CD4 count; last one he remembers being told, about a year ago, was 'low, around 90'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cd4",
+        "count",
+        "immune",
+        "viral load",
+        "last test",
+        "blood test hiv",
+        "recent test",
+        "viral",
+        "load",
+        "last",
+        "test",
+        "blood",
+        "hiv",
+        "recent"
+      ]
+    },
+    {
+      "id": "hx-adherence",
+      "fact": "Adherence was poor even before stopping completely — often missed doses when working night shifts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "adherence",
+        "compliance",
+        "missing doses",
+        "taking tablets regularly",
+        "miss pills",
+        "forget",
+        "missing",
+        "doses",
+        "taking",
+        "tablets",
+        "regularly",
+        "miss",
+        "pills"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No personal history of TB treatment; no known household TB contacts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "exposure",
+        "anyone sick at home",
+        "family",
+        "sick",
+        "anyone",
+        "home"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No other chronic illnesses, no diabetes, no hypertension, never hospitalised before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "previous",
+        "past",
+        "chronic",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Not currently taking any medication, including no cotrimoxazole prophylaxis (stopped along with ART)",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "cotrimoxazole",
+        "bactrim",
+        "prophylaxis",
+        "currently taking",
+        "currently",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "drug allergy",
+        "drug",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 5 cigarettes a day, drinks alcohol socially on weekends; lives alone in a rented room in Pinetown, works night shifts as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "job"
+      ]
+    },
+    {
+      "id": "hx-sexual",
+      "fact": "Has one regular partner, uses condoms inconsistently; partner's HIV status unknown to him",
+      "disclosure": "onAsk",
+      "triggers": [
+        "partner",
+        "sexual",
+        "relationship",
+        "girlfriend",
+        "wife",
+        "condom",
+        "sti",
+        "std"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of cancer or swallowing problems; mother has hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No vomiting, no haematemesis, no abdominal pain, no diarrhoea, no headache, no visual changes, no limb weakness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomit",
+        "blood in vomit",
+        "abdominal pain",
+        "stomach pain",
+        "diarrhoea",
+        "headache",
+        "vision",
+        "eyes",
+        "weakness",
+        "numbness",
+        "other symptoms",
+        "anything else",
+        "blood",
+        "abdominal",
+        "pain",
+        "stomach",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, chronically unwell-looking young man. Mild pallor. No peripheral lymphadenopathy. No wasting of temporal muscles but visibly underweight. Speaks softly, occasionally winces when swallowing saliva.",
+    "vitals": {
+      "hr": 98,
+      "bp": "104/66",
+      "rr": 18,
+      "temp": 36.9,
+      "spo2": "98% on room air",
+      "bmi": 17.5
+    },
+    "respiratory": "Chest clear, no crackles, no dullness, normal air entry bilaterally",
+    "cardio": "Normal heart sounds, no murmurs, no elevated JVP",
+    "abdo": "Soft, mildly tender epigastrically on deep palpation, no hepatosplenomegaly, no masses, no ascites",
+    "neuro": "Alert and orientated, no focal deficit, no meningism, cranial nerves intact",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "HIV rapid test/ELISA (confirmatory, given lapsed care)",
+      "result": "Positive, confirmed on second assay",
+      "key": true
+    },
+    {
+      "name": "CD4 count",
+      "result": "64 cells/µL",
+      "key": true
+    },
+    {
+      "name": "HIV viral load",
+      "result": "210,000 copies/mL (unsuppressed, off ART)",
+      "key": true
+    },
+    {
+      "name": "Empirical fluconazole trial with clinical response assessment",
+      "result": "Odynophagia and oral plaques substantially improved after 5 days of oral fluconazole — supports diagnosis of candida oesophagitis without need for endoscopy",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "No infiltrate, no lymphadenopathy, no effusion",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF (TB symptom screen negative but sent per protocol)",
+      "result": "MTB not detected",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.1 g/dL normocytic, WCC 3.8, Plt 198",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Mildly reduced sodium 132 mmol/L, otherwise normal; likely reduced oral intake",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Normal (baseline before ART reinitiation)",
+      "key": false
+    },
+    {
+      "name": "Hepatitis B surface antigen",
+      "result": "Negative",
+      "key": true
+    },
+    {
+      "name": "RPR/TPHA",
+      "result": "Non-reactive",
+      "key": false
+    },
+    {
+      "name": "Upper GI endoscopy with biopsy/brushings (reserved for fluconazole non-responders)",
+      "result": "Not performed — clinical response to empirical antifungal therapy was diagnostic; endoscopy planned only if symptoms fail to resolve, to exclude CMV/HSV oesophagitis",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Oesophageal candidiasis",
+      "rank": 1,
+      "for": [
+        "odynophagia with oral thrush",
+        "CD4 <200 (64 cells/µL)",
+        "off ART for 8 months",
+        "progressive weight loss",
+        "response to empirical fluconazole"
+      ],
+      "against": []
+    },
+    {
+      "dx": "CMV oesophagitis",
+      "rank": 2,
+      "for": [
+        "advanced immunosuppression (CD4<50 territory)",
+        "odynophagia"
+      ],
+      "against": [
+        "oral candida strongly suggests fungal cause first",
+        "typically presents with large, well-circumscribed ulcers on endoscopy, not diffuse plaques",
+        "would be considered only if fluconazole trial fails"
+      ]
+    },
+    {
+      "dx": "HSV oesophagitis",
+      "rank": 3,
+      "for": [
+        "can occur in advanced HIV",
+        "odynophagia"
+      ],
+      "against": [
+        "no vesicular oral/perioral lesions described",
+        "less common than candida as first presentation",
+        "would be considered on endoscopy if antifungal trial fails"
+      ]
+    },
+    {
+      "dx": "TB oesophagitis / mediastinal TB with oesophageal involvement",
+      "rank": 4,
+      "for": [
+        "endemic TB, any CD4 count can be affected",
+        "weight loss"
+      ],
+      "against": [
+        "no cough, fever, or night sweats",
+        "normal chest X-ray",
+        "negative sputum GeneXpert",
+        "much rarer presentation of TB than pulmonary/lymphatic disease"
+      ]
+    },
+    {
+      "dx": "Oesophageal malignancy (e.g. Kaposi sarcoma or squamous cell carcinoma)",
+      "rank": 5,
+      "for": [
+        "progressive dysphagia and weight loss can occur",
+        "KS is HIV-associated"
+      ],
+      "against": [
+        "age 34 makes SCC unlikely",
+        "no skin/oral KS lesions found on exam",
+        "short symptom duration and oral candida make infective cause far more likely"
+      ]
+    }
+  ],
+  "pathophys": {
+    "odynophagia": "Candida albicans overgrowth on the oesophageal mucosa in the setting of CD4-driven loss of local T-cell and mucosal immunity causes superficial ulceration and inflammation of the squamous epithelium, producing pain on the bolus passing over the inflamed mucosa",
+    "oral thrush": "Depletion of CD4 T-helper cells (normally CD4 <200 threshold) impairs mucosal cell-mediated immunity, allowing normally commensal Candida to proliferate as adherent pseudomembranous plaques of hyphae, epithelial cells and inflammatory debris",
+    "weight loss": "Reduced oral intake secondary to painful swallowing, compounded by the chronic catabolic, cytokine-driven state of untreated HIV viraemia",
+    "progression to oesophageal (vs oral-only) candidiasis": "Once oropharyngeal candidiasis is established, contiguous extension down the oesophageal mucosa occurs as local immune control fails further, marking WHO clinical stage 4 (AIDS-defining) disease"
+  },
+  "staging": "WHO HIV clinical stage 4 (oesophageal candidiasis is AIDS-defining); CD4 64 cells/µL — advanced immunosuppression; ART-experienced but currently untreated with unsuppressed viral load",
+  "management": {
+    "immediate": [
+      "Start empirical oral fluconazole 200-400mg loading dose then 200mg daily for 14-21 days (systemic azole is first-line for oesophageal candidiasis, not topical nystatin)",
+      "Assess hydration and nutritional status; consider IV fluids if oral intake very poor",
+      "Assess swallowing safety and encourage soft/liquid diet during acute phase"
+    ],
+    "definitive": [
+      "Re-initiate ART (TLD — tenofovir/lamivudine/dolutegravir) once HBsAg confirmed negative and patient counselled on adherence",
+      "Address barriers to adherence identified in history (night shift work, relocation, lost clinic file — arrange transfer of care/file retrieval)",
+      "If poor or no response to fluconazole after 7 days, refer for upper GI endoscopy with biopsy/brushings to exclude CMV/HSV oesophagitis and initiate targeted therapy (ganciclovir for CMV, aciclovir for HSV)"
+    ],
+    "supportive": [
+      "Start co-trimoxazole preventive therapy (CD4 <200)",
+      "Nutritional support and dietary counselling; consider referral to dietician given BMI 17.5",
+      "Adherence counselling, treatment supporter, and disclosure support",
+      "TB symptom screen at every visit given ongoing risk regardless of current negative screen"
+    ],
+    "followUp": [
+      "Repeat CD4 and viral load at 6 and 12 months after ART restart",
+      "Monitor for immune reconstitution inflammatory syndrome (IRIS) in first 2-12 weeks after ART re-initiation",
+      "Review oral cavity and swallowing symptoms at follow-up to confirm resolution",
+      "Screen for other coinfections: repeat RPR, consider cervical/anal dysplasia screening as appropriate",
+      "Ongoing adherence support given prior treatment interruption"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, gains consent, establishes rapport given sensitive topic",
+      "answer": null,
+      "why": "Professionalism and communication, particularly important given stigma around HIV disclosure",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-odynophagia-characterise",
+      "phase": "history",
+      "item": "Characterises the swallowing symptom — onset, whether pain (odynophagia) vs mechanical difficulty (dysphagia), solids vs liquids, progression",
+      "answer": "2 weeks of burning retrosternal pain on swallowing, worse with solids, some sensation of food sticking",
+      "why": "Anatomically localises the problem to the oesophagus and distinguishes odynophagia (infective/inflammatory) from pure dysphagia (structural/mechanical) — the framework's core step of localising before naming a diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-oral-symptoms",
+      "phase": "history",
+      "item": "Specifically asks about oral symptoms — white patches, sores, taste change",
+      "answer": "White patches on tongue and cheeks noticed 3 weeks ago",
+      "why": "Oral thrush plus odynophagia is the classic clinical pairing that clinches candida oesophagitis without needing endoscopy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-status",
+      "phase": "history",
+      "item": "Establishes HIV status, ART history, adherence, and reason for any interruption",
+      "answer": "Diagnosed 4 years ago, stopped ART 8 months ago after relocating for work, previously poor adherence",
+      "why": "Confirming HIV status and ART history is a reflex first step in any unexplained GI presentation in this setting, per framework step 1",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cd4-vl",
+      "phase": "history",
+      "item": "Asks about current/most recent CD4 count, viral load, and nadir CD4",
+      "answer": "Last known CD4 approx 90 a year ago, current unknown; needs repeat testing",
+      "why": "CD4 is repeatedly emphasised as the single most useful discriminator for CD4-stratified opportunistic disease in HIV",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB symptoms (cough, fever, night sweats, weight loss) regardless of presenting complaint",
+      "answer": "No cough, no fever, no night sweats — negative screen, but weight loss present from reduced intake",
+      "why": "TB screening is mandatory in every HIV-positive patient regardless of presenting complaint per framework step 5",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-constitutional",
+      "phase": "history",
+      "item": "Screens weight loss, appetite, and constitutional symptoms",
+      "answer": "5kg weight loss over a month due to painful eating",
+      "why": "Establishes severity and nutritional risk, and helps distinguish infective/constitutional causes from mechanical ones",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-oral-exam",
+      "phase": "examination",
+      "item": "Performs oral cavity examination looking for thrush, hairy leukoplakia, Kaposi sarcoma",
+      "answer": "Confluent white plaques on tongue and buccal mucosa, adherent, bleed slightly on scraping",
+      "why": "Direct visualisation of oral candidiasis is the key clinical sign supporting the diagnosis without invasive testing",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-general-exam",
+      "phase": "examination",
+      "item": "Assesses general nutritional status, lymphadenopathy, skin lesions (KS), wasting",
+      "answer": "Thin, BMI 17.5, no lymphadenopathy, no skin lesions",
+      "why": "Screens for alternative/coexisting HIV-associated pathology (malignancy, disseminated disease)",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers ranked differential with reasoning (candida oesophagitis > CMV/HSV oesophagitis > TB oesophagitis > malignancy)",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning localised to CD4-stratified GI framework is the core exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Confirms HIV status, requests CD4/viral load, and justifies empirical fluconazole trial as the correct diagnostic-therapeutic approach rather than jumping straight to endoscopy",
+      "answer": "HIV confirmatory test, CD4 64, viral load 210,000; empirical fluconazole trial with response assessed before considering endoscopy",
+      "why": "Per SA/WHO guidance, empirical antifungal trial is both diagnostic and therapeutic in resource-limited settings; endoscopy reserved for non-responders",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hbv-screen",
+      "phase": "investigations",
+      "item": "Screens for hepatitis B before restarting/changing ART",
+      "answer": "HBsAg negative",
+      "why": "Her notes emphasise screening for hepatitis B before any ART change — stopping tenofovir/lamivudine in an undiagnosed HBV-coinfected patient risks a fatal flare",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines fluconazole course, ART re-initiation (TLD) with adherence support, cotrimoxazole prophylaxis, and TB screening continuity",
+      "answer": null,
+      "why": "Complete, guideline-consistent management addressing both the acute OI and the underlying immunosuppression driving it",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

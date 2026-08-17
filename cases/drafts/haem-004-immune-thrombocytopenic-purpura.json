@@ -1,0 +1,647 @@
+{
+  "id": "haem-004-immune-thrombocytopenic-purpura",
+  "version": 1,
+  "discipline": "haem",
+  "diagnosis": "Immune thrombocytopenic purpura",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this woman's bruising and bleeding, and how you would distinguish between them.",
+      "modelAnswer": "Isolated severe thrombocytopenia with mucocutaneous bleeding suggests a primary haemostatic disorder. Top of the list is ITP given the post-viral trigger, isolated platelet drop with normal smear and coagulation, and no organomegaly. TTP is excluded by normal LDH/haptoglobin and no schistocytes or neurological signs. HIV-associated thrombocytopenia is excluded by a negative HIV test. Drug-induced thrombocytopenia is excluded by no new medication exposure. Marrow infiltration/leukaemia is excluded by normal white cell count, no blasts, and no organomegaly. SLE-associated thrombocytopenia is unlikely given a negative ANA and no other lupus features.",
+      "gradingNotes": "Wants ranked reasoning linking each differential to specific case findings, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "What is the pathophysiological mechanism underlying the platelet destruction in ITP?",
+      "modelAnswer": "Autoantibodies, typically IgG, target platelet surface glycoproteins such as GPIIb/IIIa or GPIb/IX. Opsonised platelets are then prematurely removed by Fc-receptor-mediated phagocytosis in the spleen and liver. Megakaryocytes can also be targeted, impairing compensatory platelet production, so destruction outpaces production. A preceding viral illness can trigger this through molecular mimicry or immune complex formation.",
+      "gradingNotes": "Wants antibody-mediated destruction mechanism with mention of Fc-receptor phagocytosis and the production/destruction mismatch; bonus for molecular mimicry link to preceding illness."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Why would you not routinely perform a bone marrow aspirate in this patient before starting treatment?",
+      "modelAnswer": "In a young patient with a typical presentation — isolated thrombocytopenia, normal white cell count and differential, no blasts on smear, no organomegaly — ITP is a clinical diagnosis of exclusion supported by peripheral blood findings. Bone marrow aspirate is reserved for atypical features, age over 60, failure to respond to first-line therapy, or before splenectomy, not for routine confirmation.",
+      "gradingNotes": "Tests understanding that ITP is a diagnosis of exclusion and marrow biopsy is not mandatory in typical young patients."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why is platelet transfusion generally avoided as first-line treatment in ITP, and when would you use it?",
+      "modelAnswer": "Transfused platelets are subject to the same autoantibody-mediated destruction as the patient's own platelets, so the increment is often minimal and short-lived. It is reserved for life-threatening bleeding such as intracranial haemorrhage or severe uncontrolled bleeding, usually given alongside IVIG and high-dose corticosteroids to try to achieve a more durable rise.",
+      "gradingNotes": "Wants explanation of the mechanism (antibody targets transfused platelets too) plus correct indication for use in emergencies only."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "How do you clinically distinguish petechiae/purpura due to thrombocytopenia from palpable purpura of vasculitis?",
+      "modelAnswer": "Thrombocytopenic petechiae and purpura are non-palpable, flat, and non-blanching, reflecting passive extravasation of red cells through capillaries due to failure of the primary platelet plug. Palpable purpura, as seen in vasculitis (e.g. Henoch-Schönlein purpura, ANCA-associated vasculitis), is raised and firm because it results from inflammatory vessel wall damage and true vasculitic infiltration, not simple failure of platelet plugging.",
+      "gradingNotes": "Wants the palpable-versus-non-palpable distinction with the underlying mechanistic reasoning, not just a description."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "bruising/bleeding tendency → confirm low platelets → classify by mechanism (production vs destruction vs consumption) → screen for driving/underlying cause → confirm isolated thrombocytopenia → treat per severity",
+  "patient": {
+    "name": "Zanele Mkhize",
+    "age": 24,
+    "sex": "F",
+    "occupation": "hairdresser's assistant in Pinetown",
+    "personality": "anxious, talkative when nervous, keeps pointing at her bruises and asking if she has 'blood cancer'",
+    "openingLine": "Doctor, I woke up covered in bruises and my gums won't stop bleeding when I brush my teeth — please tell me it's not something serious."
+  },
+  "presentingComplaint": "3-day history of spontaneous bruising and gum bleeding",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Noticed widespread bruising over arms and legs 3 days ago, appearing without any injury or bumps",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-bleeding-sites",
+      "fact": "Gum bleeding when brushing teeth for the past 2 days, plus a nosebleed yesterday that took 15 minutes to stop",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bleeding",
+        "gums",
+        "nose",
+        "nosebleed",
+        "bleed",
+        "gum",
+        "epistaxis",
+        "brushing teeth",
+        "blood",
+        "spit blood",
+        "bloody",
+        "brushing",
+        "teeth",
+        "spit"
+      ]
+    },
+    {
+      "id": "hx-petechiae",
+      "fact": "Noticed tiny red-purple pinpoint spots on her shins and forearms, like a rash that doesn't fade or itch",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rash",
+        "spots",
+        "petechiae",
+        "pinpoint",
+        "dots",
+        "purple",
+        "red spots",
+        "skin",
+        "non-blanching",
+        "little dots",
+        "red",
+        "little"
+      ]
+    },
+    {
+      "id": "hx-menorrhagia",
+      "fact": "Her period started 4 days ago and is much heavier than usual, soaking pads every 1-2 hours",
+      "disclosure": "onAsk",
+      "triggers": [
+        "period",
+        "menstrual",
+        "menorrhagia",
+        "heavy bleeding",
+        "pads",
+        "vaginal bleeding",
+        "cycle",
+        "flow",
+        "heavy",
+        "bleeding",
+        "vaginal"
+      ]
+    },
+    {
+      "id": "hx-recent-illness",
+      "fact": "Had a bad flu-like illness with fever and sore throat about 2 weeks before the bruising started, which resolved on its own",
+      "disclosure": "onAsk",
+      "triggers": [
+        "recent illness",
+        "flu",
+        "viral",
+        "infection",
+        "sick before",
+        "cold",
+        "sore throat",
+        "fever recently",
+        "virus",
+        "preceding illness",
+        "recent",
+        "illness",
+        "sick",
+        "before",
+        "sore",
+        "throat",
+        "fever",
+        "recently",
+        "preceding"
+      ]
+    },
+    {
+      "id": "hx-constitutional",
+      "fact": "No weight loss, no night sweats, no fevers currently, appetite normal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight loss",
+        "night sweats",
+        "fever",
+        "appetite",
+        "weight",
+        "sweats",
+        "lost weight",
+        "chills",
+        "loss",
+        "night",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-bonepain",
+      "fact": "No bone pain, no unusual fatigue beyond feeling anxious, no easy exhaustion on exertion",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bone pain",
+        "tired",
+        "fatigue",
+        "exhausted",
+        "energy",
+        "weak",
+        "short of breath",
+        "breathless",
+        "bone",
+        "pain",
+        "short",
+        "breath"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 6 months ago at an antenatal-style community screening; not currently pregnant",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "pregnant",
+        "pregnancy"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no TB contacts, never treated for TB",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "contact",
+        "household",
+        "exposure"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous bleeding problems, no prior hospital admissions, no known autoimmune disease like lupus",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "lupus",
+        "autoimmune",
+        "past history",
+        "medical",
+        "history",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular medication; specifically no aspirin, NSAIDs, or blood thinners; not on any new antibiotics or anticonvulsants recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "aspirin",
+        "nsaid",
+        "ibuprofen",
+        "blood thinner",
+        "warfarin",
+        "new drugs",
+        "antibiotics",
+        "blood",
+        "thinner",
+        "new",
+        "drugs"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-vaccination",
+      "fact": "Had no recent vaccinations",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vaccine",
+        "vaccination",
+        "immunisation",
+        "jab",
+        "injection recently",
+        "injection",
+        "recently"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Non-smoker, drinks alcohol socially on weekends only, lives in Pinetown with her sister, no rural travel or farm/animal exposure recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "alcohol",
+        "drink",
+        "social",
+        "travel",
+        "rural",
+        "farm",
+        "occupation",
+        "work",
+        "live",
+        "house"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of bleeding disorders, blood cancers or autoimmune disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "bleeding disorder",
+        "hereditary",
+        "family",
+        "history",
+        "runs",
+        "bleeding",
+        "disorder"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No joint pains, no rash elsewhere, no mouth ulcers, no photosensitivity, no headache or visual disturbance, no blood in urine or stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "joint pain",
+        "rash",
+        "mouth ulcers",
+        "photosensitivity",
+        "headache",
+        "vision",
+        "urine",
+        "stool",
+        "blood in urine",
+        "blood in stool",
+        "other symptoms",
+        "anything else",
+        "joint",
+        "pain",
+        "mouth",
+        "ulcers",
+        "blood",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert, anxious-looking young woman, well-nourished, no pallor, no jaundice, no lymphadenopathy. Multiple scattered ecchymoses of varying sizes on both forearms and shins. Petechiae noted on the anterior shins and hard palate.",
+    "vitals": {
+      "hr": 88,
+      "bp": "112/70",
+      "rr": 16,
+      "temp": 36.7,
+      "spo2": "99% on room air",
+      "bmi": 23
+    },
+    "respiratory": "Clear, no added sounds",
+    "cardio": "Normal heart sounds, no murmurs, no signs of anaemia-related flow murmur",
+    "abdo": "Soft, non-tender, no hepatomegaly, no splenomegaly palpable",
+    "neuro": "Alert and orientated, no focal deficit, no signs of intracranial bleed (no headache, no altered consciousness, no focal weakness)",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 12.6 g/dL, WCC 6.8 x10^9/L (normal differential), Platelets 8 x10^9/L (isolated severe thrombocytopenia), MCV 88 fL",
+      "key": true
+    },
+    {
+      "name": "Peripheral blood smear",
+      "result": "Markedly reduced platelet numbers, occasional large platelets seen; no schistocytes, no blasts, red cells and white cells morphologically normal",
+      "key": true
+    },
+    {
+      "name": "HIV ELISA (with consent)",
+      "result": "Negative",
+      "key": true
+    },
+    {
+      "name": "Coagulation screen (PT/APTT/INR)",
+      "result": "Normal — PT 12.5s, APTT 29s, INR 1.0",
+      "key": true
+    },
+    {
+      "name": "Hepatitis B and C serology",
+      "result": "Negative for both",
+      "key": false
+    },
+    {
+      "name": "ANA / autoimmune screen",
+      "result": "Negative (helps exclude SLE-associated thrombocytopenia)",
+      "key": false
+    },
+    {
+      "name": "U&E and LFTs",
+      "result": "Normal renal and liver function",
+      "key": false
+    },
+    {
+      "name": "Reticulocyte count",
+      "result": "Normal, 1.2% (excludes significant concurrent haemolysis/marrow failure)",
+      "key": false
+    },
+    {
+      "name": "LDH and haptoglobin",
+      "result": "LDH normal, haptoglobin normal (argues against microangiopathic haemolysis/TTP)",
+      "key": false
+    },
+    {
+      "name": "Direct antiglobulin test (Coombs)",
+      "result": "Negative (excludes Evans syndrome — combined AIHA/ITP)",
+      "key": false
+    },
+    {
+      "name": "Bone marrow aspirate/trephine",
+      "result": "Not performed — reserved for atypical features, age >60, or failure to respond to first-line therapy; not indicated in this typical presentation",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Immune thrombocytopenic purpura (ITP)",
+      "rank": 1,
+      "for": [
+        "isolated severe thrombocytopenia with otherwise normal FBC and smear",
+        "recent preceding viral illness (post-viral trigger)",
+        "mucocutaneous bleeding pattern (petechiae, gum bleeding, menorrhagia)",
+        "normal coagulation screen",
+        "no organomegaly or lymphadenopathy",
+        "HIV negative, no other secondary cause identified"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Thrombotic thrombocytopenic purpura (TTP)",
+      "rank": 2,
+      "for": [
+        "thrombocytopenia",
+        "young woman (typical demographic)"
+      ],
+      "against": [
+        "no schistocytes on smear",
+        "normal LDH and haptoglobin",
+        "no neurological signs",
+        "no renal impairment",
+        "no fever/pentad features"
+      ]
+    },
+    {
+      "dx": "HIV-associated thrombocytopenia",
+      "rank": 3,
+      "for": [
+        "thrombocytopenia can be presenting feature of HIV in KZN",
+        "mucocutaneous bleeding pattern overlaps"
+      ],
+      "against": [
+        "HIV ELISA negative",
+        "no lymphadenopathy, no constitutional symptoms of chronic HIV disease"
+      ]
+    },
+    {
+      "dx": "Drug-induced thrombocytopenia",
+      "rank": 4,
+      "for": [
+        "thrombocytopenia can follow drug exposure"
+      ],
+      "against": [
+        "no new medications, no NSAIDs, no antibiotics or anticonvulsants recently started"
+      ]
+    },
+    {
+      "dx": "SLE-associated (secondary) thrombocytopenia / Evans syndrome",
+      "rank": 5,
+      "for": [
+        "young woman, autoimmune thrombocytopenia possible presentation"
+      ],
+      "against": [
+        "no joint pains, rash, photosensitivity or oral ulcers",
+        "ANA negative",
+        "DAT negative excluding concurrent haemolysis"
+      ]
+    },
+    {
+      "dx": "Acute leukaemia / marrow infiltration",
+      "rank": 6,
+      "for": [
+        "bruising and bleeding can be presenting feature"
+      ],
+      "against": [
+        "no anaemia, normal WCC and differential, no blasts on smear, no organomegaly, no bone pain"
+      ]
+    }
+  ],
+  "pathophys": {
+    "petechiae and mucocutaneous bruising": "Severe thrombocytopenia (<20-30 x10^9/L) impairs primary haemostatic plug formation at sites of minor capillary trauma; small vessels leak red cells into the dermis producing non-blanching pinpoint petechiae and larger ecchymoses, in contrast to the deep muscle/joint bleeds of coagulation factor disorders",
+    "gum bleeding and epistaxis": "Mucosal surfaces are especially vulnerable because of constant minor mechanical trauma (brushing, sneezing) combined with a rich superficial capillary network reliant on platelet plug formation for haemostasis",
+    "menorrhagia": "Endometrial spiral artery bleeding at menstruation is normally controlled by platelet plug formation and vasoconstriction; profound thrombocytopenia removes this primary haemostatic mechanism, producing prolonged heavy flow",
+    "isolated thrombocytopenia (mechanism of ITP itself)": "Autoantibodies (typically IgG) directed against platelet surface glycoproteins (GPIIb/IIIa, GPIb/IX) opsonise platelets, which are then phagocytosed prematurely by splenic and hepatic macrophages via Fc receptors; megakaryocytes may also be antibody-targeted, impairing compensatory platelet production — production fails to match accelerated peripheral destruction",
+    "post-viral trigger": "Molecular mimicry between viral antigens and platelet glycoproteins, or immune complex deposition on platelet membranes following a preceding viral illness, triggers the autoantibody response typical of acute ITP, especially in younger patients"
+  },
+  "staging": "Severe thrombocytopenia (platelet count <10 x10^9/L) with active mucocutaneous bleeding — high bleeding-risk category requiring treatment rather than observation alone; newly diagnosed ITP (within 3 months of diagnosis, not yet classified as persistent or chronic)",
+  "management": {
+    "immediate": [
+      "Assess bleeding severity (mucocutaneous only vs internal/CNS bleeding) — this patient has no critical bleeding",
+      "Admit for observation given platelet count <10 x10^9/L with active bleeding",
+      "Avoid IM injections, NSAIDs, aspirin, anticoagulants",
+      "Group and save; platelet transfusion reserved ONLY for life-threatening bleeding (platelets are rapidly destroyed by circulating antibody, so transfusion is not first-line therapy)"
+    ],
+    "definitive": [
+      "First-line: oral corticosteroids — prednisone 1 mg/kg/day (or dexamethasone 40 mg/day x4 days as alternative pulsed regimen)",
+      "IVIG (1 g/kg single dose or over 2 days) if rapid platelet rise needed (active significant bleeding, pre-procedure) or steroids contraindicated",
+      "Second-line (steroid-refractory/relapse): splenectomy, rituximab, or thrombopoietin receptor agonists (eltrombopag/romiplostim) — specialist haematology referral"
+    ],
+    "supportive": [
+      "Bleeding precautions counselling: avoid contact sports, razors, NSAIDs/aspirin",
+      "Contraceptive/menstrual management referral if menorrhagia is significant (tranexamic acid can be considered, hormonal options with gynaecology)",
+      "Patient education on recognising warning signs of serious bleeding (headache, visual change, confusion — suggesting intracranial haemorrhage)"
+    ],
+    "followUp": [
+      "Repeat FBC within 48-72 hours of starting steroids to confirm platelet response",
+      "Taper steroids once platelet count recovers to safe levels (>30-50 x10^9/L) and stable",
+      "Haematology follow-up to monitor for chronic/relapsing ITP (persisting beyond 12 months)",
+      "Re-screen for secondary causes (HIV, hepatitis, autoimmune disease) if atypical course or poor response to first-line therapy"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-confirm-bleeding",
+      "phase": "history",
+      "item": "Characterises the bleeding pattern (bruising, petechiae, mucosal bleeding sites, duration, spontaneity)",
+      "answer": "3-day history of spontaneous bruising, gum bleeding, epistaxis, petechiae, heavy menses — mucocutaneous pattern",
+      "why": "Mucocutaneous bleeding pattern points to platelet/primary haemostatic disorder rather than coagulation factor deficiency",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-preceding-illness",
+      "phase": "history",
+      "item": "Asks about a preceding viral illness or infection in the weeks before onset",
+      "answer": "Flu-like illness with fever and sore throat 2 weeks prior, self-resolved",
+      "why": "Classic trigger for acute post-viral ITP, especially in young patients",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-constitutional-screen",
+      "phase": "history",
+      "item": "Screens for constitutional/systemic symptoms (weight loss, night sweats, fevers, bone pain, fatigue)",
+      "answer": "All negative",
+      "why": "Absence argues against marrow infiltration, lymphoma, or TB as the underlying driver",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-screen",
+      "phase": "history",
+      "item": "Asks about HIV status/testing history",
+      "answer": "Tested negative 6 months ago",
+      "why": "HIV-associated thrombocytopenia is a key differential in KZN and must always be screened for",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-drug-history",
+      "phase": "history",
+      "item": "Takes a thorough medication history including NSAIDs, aspirin, anticoagulants, new drugs/antibiotics",
+      "answer": "No regular medication, no NSAIDs/aspirin/anticoagulants, no new drugs",
+      "why": "Excludes drug-induced thrombocytopenia as an alternative diagnosis",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-autoimmune-screen",
+      "phase": "history",
+      "item": "Screens for autoimmune disease features (joint pains, rash, photosensitivity, oral ulcers)",
+      "answer": "All negative",
+      "why": "Excludes SLE-associated secondary thrombocytopenia",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-skin-mucosa",
+      "phase": "examination",
+      "item": "Examines skin and mucosa for petechiae, ecchymoses, and distinguishes from palpable purpura",
+      "answer": "Non-blanching petechiae on shins and hard palate; ecchymoses at various stages; no palpable purpura",
+      "why": "Non-palpable petechiae confirm a platelet-mediated bleeding disorder, not vasculitis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-organomegaly",
+      "phase": "examination",
+      "item": "Examines for lymphadenopathy and hepatosplenomegaly",
+      "answer": "None found",
+      "why": "Absence supports isolated ITP over lymphoma/leukaemia/chronic liver disease",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing ITP from TTP, HIV-associated, drug-induced, and marrow infiltrative causes with linked reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the exam philosophy — thrombocytopenia has a broad differential requiring systematic exclusion",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-core",
+      "phase": "investigations",
+      "item": "Requests FBC with smear, coagulation screen, HIV test, and considers ANA/DAT as indicated",
+      "answer": "Isolated thrombocytopenia (8 x10^9/L), normal smear (no schistocytes/blasts), normal coagulation, HIV negative",
+      "why": "Confirms isolated thrombocytopenia and excludes TTP, coagulopathy, and secondary causes — the core confirmatory pathway for a diagnosis of exclusion",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-marrow-caveat",
+      "phase": "investigations",
+      "item": "Recognises bone marrow aspirate is NOT routinely required in typical presentations",
+      "answer": "Reserved for atypical features, age >60, or treatment failure",
+      "why": "Avoids unnecessary invasive testing in a straightforward case",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-severity",
+      "phase": "management",
+      "item": "Assesses bleeding severity to guide urgency of treatment and admission decision",
+      "answer": "Platelet <10 with active mucosal bleeding warrants admission and treatment, not observation alone",
+      "why": "Bleeding risk stratification determines whether to treat, observe, or transfuse",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-firstline",
+      "phase": "management",
+      "item": "Outlines first-line treatment (corticosteroids +/- IVIG) and explains why platelet transfusion is not first-line",
+      "answer": "Prednisone 1mg/kg/day or dexamethasone pulse; IVIG if rapid response needed; platelet transfusion reserved for life-threatening bleeding as transfused platelets are also destroyed",
+      "why": "Core management reasoning per SA haematology practice",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

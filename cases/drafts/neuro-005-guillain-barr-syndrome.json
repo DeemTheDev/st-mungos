@@ -1,0 +1,708 @@
+{
+  "id": "neuro-005-guillain-barr-syndrome",
+  "version": 1,
+  "discipline": "neuro",
+  "diagnosis": "Guillain-Barré syndrome",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient's weakness — what is your differential and how does the history and examination localise the lesion?",
+      "modelAnswer": "First establish this is a genuine progressive motor/sensory deficit, not a transient event, then localise: symmetrical ascending weakness with global areflexia and glove-stocking sensory loss but no sensory level points to peripheral nerve/root pathology rather than cord (which would give hyperreflexia and a sensory level) or NMJ disease (which typically preserves reflexes and has no sensory symptoms). Combined with an antecedent diarrhoeal illness, bilateral facial/cranial nerve involvement, and CSF albuminocytological dissociation, this is most consistent with Guillain-Barré syndrome (AIDP). Differentials to actively exclude are transverse myelitis/cord compression (excluded by normal MRI and absent sensory level), myasthenic crisis (reflexes typically preserved, no sensory loss), and metabolic periodic paralysis (normal electrolytes, sensory symptoms present which periodic paralysis doesn't cause).",
+      "gradingNotes": "Full marks for structured localisation-based reasoning (root/nerve vs cord vs NMJ vs muscle) with linked evidence for and against each differential, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "What is the pathophysiological mechanism linking his diarrhoeal illness three weeks ago to his current weakness?",
+      "modelAnswer": "Molecular mimicry: Campylobacter jejuni lipo-oligosaccharides share epitopes with peripheral nerve gangliosides (e.g. GM1, GD1a). The immune response generated against the pathogen cross-reacts with these gangliosides on peripheral nerve myelin and the axolemma at the nodes of Ranvier, triggering complement-mediated demyelination (AIDP) or axonal injury (AMAN), which produces conduction block/failure beginning distally and ascending proximally.",
+      "gradingNotes": "Wants specific mechanism — molecular mimicry, gangliosides, complement-mediated demyelination — not just 'the infection caused it'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "His vital capacity has fallen from 18 to 14 mL/kg over two hours. What does this mean and what would you do?",
+      "modelAnswer": "This trend indicates progressive respiratory muscle weakness approaching the threshold for ventilatory failure (the '20/30/40' rule: VC<20mL/kg, MIP<30cmH2O, MEP<40cmH2O signals impending crisis). Rather than waiting for hypoxia or hypercapnia to develop, he should be referred urgently for ICU-level care and considered for elective intubation before a respiratory arrest occurs, since GBS patients can deteriorate rapidly and unpredictably.",
+      "gradingNotes": "Critical thinking under new information — must recognise the trend (not just the single value) as more important than the absolute number, and commit to escalation before crisis rather than a 'wait and see' answer."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "A colleague suggests giving high-dose steroids given how unwell he looks. How do you respond, and what is the evidence-based treatment instead?",
+      "modelAnswer": "Corticosteroids have been studied extensively in GBS and do not hasten recovery or improve long-term outcome, so they are not indicated. The evidence-based treatments are IV immunoglobulin (0.4 g/kg/day for 5 days) or plasma exchange, which are equally effective; they should not be combined as this offers no additional benefit. Management otherwise remains centred on monitoring for respiratory and autonomic complications.",
+      "gradingNotes": "Tests knowledge of a classic distractor — award marks for confidently stating steroids are NOT indicated and naming both accepted definitive therapies."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "Why is he areflexic despite still having 3/5 to 4/5 power in his limbs?",
+      "modelAnswer": "Reflex arcs depend on rapidly conducting, heavily myelinated afferent and efferent fibres, particularly at the nerve roots, which are the earliest and most severely affected site in AIDP. Demyelination here can abolish the reflex arc before weakness becomes profound, meaning areflexia can precede or outstrip the degree of measurable weakness — this is why reflexes are lost early and globally in GBS.",
+      "gradingNotes": "Wants understanding that root-level demyelination affects the reflex arc disproportionately early, distinguishing GBS from other causes of weakness where reflexes may be preserved or exaggerated."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "ascending weakness / acute neuromuscular presentation worked up as: transient event or progressive deficit? → localise (peripheral vs central vs NMJ) → identify preceding trigger/infection → screen for red-flag respiratory/autonomic compromise → confirm with LP and nerve conduction studies → exclude mimics (transverse myelitis, hypokalaemic paralysis, myasthenia, spinal cord compression, tick bite paralysis) → stage severity and treat",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 34,
+    "sex": "M",
+    "occupation": "taxi driver",
+    "personality": "anxious, articulate, keeps trying to stand up to 'prove he's fine', frightened by how fast it's gotten worse",
+    "openingLine": "Doctor, my legs just gave way this morning and now I can't even grip my steering wheel properly."
+  },
+  "presentingComplaint": "Progressive ascending weakness of both legs and arms over 4 days, now unable to walk unaided",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Weakness started in both feet 4 days ago as a feeling of heaviness, then climbed up to the thighs, and yesterday started affecting the hands",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-progression",
+      "fact": "Weakness has been getting worse each day, roughly doubling in severity daily; today he could not stand from a chair without help",
+      "disclosure": "onAsk",
+      "triggers": [
+        "progress",
+        "worse",
+        "getting worse",
+        "how fast",
+        "timeline",
+        "days",
+        "speed",
+        "rate",
+        "gradual",
+        "sudden",
+        "pattern",
+        "fast"
+      ]
+    },
+    {
+      "id": "hx-symmetry",
+      "fact": "Weakness is symmetrical — both legs equally affected, both hands equally affected, no side is worse",
+      "disclosure": "onAsk",
+      "triggers": [
+        "symmetrical",
+        "both sides",
+        "one side",
+        "asymmetric",
+        "left",
+        "right",
+        "equal",
+        "which leg",
+        "which arm",
+        "both",
+        "sides",
+        "one",
+        "side",
+        "leg",
+        "arm"
+      ]
+    },
+    {
+      "id": "hx-sensory",
+      "fact": "Pins-and-needles and numbness in both feet and hands, glove-and-stocking pattern; no clear sensory level on the trunk",
+      "disclosure": "onAsk",
+      "triggers": [
+        "numb",
+        "numbness",
+        "tingling",
+        "pins and needles",
+        "sensation",
+        "feeling",
+        "sensory",
+        "pain",
+        "level",
+        "band",
+        "pins",
+        "needles"
+      ]
+    },
+    {
+      "id": "hx-cranial",
+      "fact": "Over the last day his face feels 'stiff' and he has noticed difficulty whistling and food falling out of the corner of his mouth; also mild double vision this morning",
+      "disclosure": "onAsk",
+      "triggers": [
+        "face",
+        "facial",
+        "swallow",
+        "swallowing",
+        "choking",
+        "speech",
+        "slurred",
+        "vision",
+        "double vision",
+        "diplopia",
+        "eyes",
+        "droop",
+        "weak face",
+        "double",
+        "weak"
+      ]
+    },
+    {
+      "id": "hx-breathing",
+      "fact": "Feels short of breath when lying flat and has noticed he can't finish a sentence without pausing to breathe since this morning",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "short of breath",
+        "breathless",
+        "chest",
+        "cough",
+        "struggling to breathe",
+        "air hunger",
+        "gasping",
+        "ventilate",
+        "respiratory",
+        "short",
+        "struggling",
+        "breathe",
+        "air",
+        "hunger"
+      ]
+    },
+    {
+      "id": "hx-bowel-bladder",
+      "fact": "No loss of bladder or bowel control, no urinary retention",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bladder",
+        "bowel",
+        "urine",
+        "incontinence",
+        "retention",
+        "toilet",
+        "stool",
+        "constipation"
+      ]
+    },
+    {
+      "id": "hx-back-pain",
+      "fact": "Mild aching lower back pain for the past week, no radiation, worse than usual muscle ache",
+      "disclosure": "onAsk",
+      "triggers": [
+        "back pain",
+        "back",
+        "spine",
+        "ache",
+        "sore back",
+        "pain",
+        "sore"
+      ]
+    },
+    {
+      "id": "hx-antecedent-illness",
+      "fact": "About two and a half weeks ago had 3 days of watery diarrhoea and crampy abdominal pain that settled on its own without treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diarrhoea",
+        "stomach bug",
+        "gastro",
+        "tummy",
+        "vomit",
+        "sick before",
+        "recent illness",
+        "flu",
+        "cold",
+        "infection before",
+        "preceding illness",
+        "runs",
+        "stomach",
+        "bug",
+        "sick",
+        "before",
+        "recent",
+        "illness",
+        "infection",
+        "preceding"
+      ]
+    },
+    {
+      "id": "hx-autonomic",
+      "fact": "Noticed his heart 'racing' on and off over the past two days, and had one episode of feeling light-headed on standing this morning",
+      "disclosure": "onAsk",
+      "triggers": [
+        "heart racing",
+        "palpitations",
+        "dizzy",
+        "light-headed",
+        "faint",
+        "blood pressure",
+        "autonomic",
+        "sweating",
+        "pulse",
+        "heart",
+        "racing",
+        "blood",
+        "pressure"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV positive, diagnosed 3 years ago, on ART; last CD4 he recalls was 'good', around 500",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "test",
+        "tested",
+        "art",
+        "antiretroviral",
+        "cd4",
+        "immune"
+      ]
+    },
+    {
+      "id": "hx-art-regimen",
+      "fact": "Takes TLD (tenofovir/lamivudine/dolutegravir) once daily, adherent, collects from KwaMashu clinic",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "art",
+        "tld",
+        "regimen",
+        "treatment",
+        "taking anything",
+        "clinic",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No history of TB, no current TB symptoms, no TB contacts known",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "cough",
+        "tested for tb",
+        "tested"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No diabetes, no hypertension, no previous neurological illness, no prior episodes of weakness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "diabetes",
+        "blood pressure",
+        "hospital",
+        "admitted",
+        "before",
+        "past history",
+        "conditions",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "blood",
+        "pressure",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-vaccination",
+      "fact": "No recent vaccinations",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vaccine",
+        "vaccination",
+        "immunisation",
+        "flu shot",
+        "injection recently",
+        "flu",
+        "shot",
+        "injection",
+        "recently"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Drives a taxi on the Umlazi to Durban CBD route; does not smoke; drinks alcohol socially on weekends, no history of heavy drinking; lives with his wife and two children",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "work",
+        "occupation",
+        "drive",
+        "family",
+        "home",
+        "house"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of neurological or muscle disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "runs in the family",
+        "genetic",
+        "parents",
+        "siblings",
+        "neurological disease in family",
+        "family",
+        "history",
+        "runs",
+        "neurological",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No fever currently, no headache, no visual loss (other than mild diplopia), no rash, no joint pains, no recent tick bite noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "headache",
+        "rash",
+        "joint",
+        "tick",
+        "bite",
+        "other symptoms",
+        "anything else",
+        "meningism",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert, oriented, visibly anxious, speaking in short sentences due to breathlessness. No rash. No lymphadenopathy. No wasting.",
+    "vitals": {
+      "hr": 118,
+      "bp": "146/94 (fluctuating, was 100/60 twenty minutes earlier on repeat)",
+      "rr": 26,
+      "temp": 36.8,
+      "spo2": "93% on room air",
+      "bmi": 24
+    },
+    "respiratory": "Reduced chest expansion bilaterally, using accessory muscles, weak cough with poor expulsive force, single-breath count only reaches 12. Vital capacity on bedside spirometry 14 mL/kg (reduced).",
+    "cardio": "Tachycardic, regular rhythm, normal heart sounds, no murmurs; blood pressure labile on repeated measurement.",
+    "abdo": "Soft, non-tender, no organomegaly, bowel sounds present.",
+    "neuro": "Symmetrical flaccid weakness: proximal and distal power 3/5 in both lower limbs, 4/5 in both upper limbs, worse distally in legs. Reflexes globally absent (ankle, knee, biceps, triceps, supinator) — areflexia. Bilateral lower motor neuron facial weakness (unable to bury eyelashes, cannot whistle). Mild bilateral abducens weakness with horizontal diplopia on lateral gaze. Sensation: reduced light touch and vibration sense in a glove-and-stocking distribution to mid-shin and wrist; no sensory level. Coordination difficult to assess due to weakness. No sphincter involvement. Gait: unable to stand unaided.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Lumbar puncture (CSF analysis)",
+      "result": "Protein markedly elevated at 1.8 g/L (normal <0.45), white cell count 2 cells/µL (albuminocytological dissociation), glucose normal",
+      "key": true
+    },
+    {
+      "name": "Nerve conduction studies",
+      "result": "Reduced motor conduction velocities, prolonged distal motor latencies, conduction block and temporal dispersion — demyelinating sensorimotor polyneuropathy pattern (AIDP)",
+      "key": true
+    },
+    {
+      "name": "Bedside spirometry / vital capacity",
+      "result": "14 mL/kg, trending down from 18 mL/kg two hours prior — approaching threshold for ICU referral and elective intubation",
+      "key": true
+    },
+    {
+      "name": "Stool culture / Campylobacter serology",
+      "result": "Anti-ganglioside antibody testing pending; stool culture not sent (illness resolved 2.5 weeks ago) — clinical antecedent diarrhoeal illness consistent with campylobacter-triggered GBS",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA and CD4/VL",
+      "result": "HIV positive (known), CD4 486 cells/µL, viral load undetectable — well controlled on ART, unlikely to be the primary driver but relevant to differential (HIV-associated neuropathy less acute)",
+      "key": true
+    },
+    {
+      "name": "Serum electrolytes (Na, K, Ca, Mg, phosphate)",
+      "result": "Normal — excludes hypokalaemic/hypophosphataemic periodic paralysis",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, no arrhythmia, no QTc prolongation — baseline for autonomic monitoring",
+      "key": false
+    },
+    {
+      "name": "MRI spine",
+      "result": "No cord compression, no cauda equina lesion, no signal change — excludes structural cord pathology and transverse myelitis",
+      "key": true
+    },
+    {
+      "name": "Full blood count, CRP, LFTs",
+      "result": "Mild neutrophilia, CRP 18 mg/L, LFTs normal",
+      "key": false
+    },
+    {
+      "name": "Tensilon/edrophonium or AChR antibody (if myasthenia suspected)",
+      "result": "Not performed — clinical picture (areflexia, ascending pattern, CSF findings) not typical for NMJ disease",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Guillain-Barré syndrome (AIDP variant)",
+      "rank": 1,
+      "for": [
+        "ascending symmetrical flaccid weakness over days",
+        "antecedent diarrhoeal illness ~2-3 weeks prior",
+        "global areflexia",
+        "bilateral facial and abducens involvement",
+        "albuminocytological dissociation on CSF",
+        "demyelinating pattern on nerve conduction studies",
+        "autonomic instability (labile BP, tachycardia)",
+        "respiratory muscle weakness with falling vital capacity"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Transverse myelitis / spinal cord compression",
+      "rank": 2,
+      "for": [
+        "leg weakness",
+        "back pain",
+        "bladder concern raised on screening"
+      ],
+      "against": [
+        "no clear sensory level",
+        "reflexes absent rather than exaggerated",
+        "normal MRI spine",
+        "no bowel/bladder involvement",
+        "CSF pattern not typical (no pleocytosis)"
+      ]
+    },
+    {
+      "dx": "Myasthenic crisis",
+      "rank": 3,
+      "for": [
+        "facial weakness",
+        "diplopia",
+        "respiratory compromise"
+      ],
+      "against": [
+        "areflexia not typical of NMJ disease (reflexes usually preserved)",
+        "sensory symptoms present, which myasthenia does not cause",
+        "antecedent diarrhoeal illness and CSF findings point away from NMJ pathology"
+      ]
+    },
+    {
+      "dx": "Hypokalaemic / metabolic periodic paralysis",
+      "rank": 4,
+      "for": [
+        "acute onset generalised weakness"
+      ],
+      "against": [
+        "normal serum potassium and electrolytes",
+        "sensory symptoms present (periodic paralysis is pure motor)",
+        "progressive over days rather than abrupt",
+        "areflexia and cranial nerve involvement atypical"
+      ]
+    },
+    {
+      "dx": "HIV-associated peripheral neuropathy / ART-related neuropathy",
+      "rank": 5,
+      "for": [
+        "known HIV positive patient",
+        "distal sensory symptoms"
+      ],
+      "against": [
+        "typically chronic, slowly progressive, painful, distal-predominant — not acute ascending paralysis",
+        "well controlled on TLD which is not neurotoxic (unlike older d4T/ddI regimens)",
+        "does not cause acute areflexia or cranial nerve palsies"
+      ]
+    }
+  ],
+  "pathophys": {
+    "ascending symmetrical weakness": "Molecular mimicry — antibodies raised against Campylobacter jejuni lipo-oligosaccharide cross-react with peripheral nerve gangliosides (e.g. GM1, GD1a), triggering complement-mediated attack on myelin (AIDP) or the axolemma at nodes of Ranvier (AMAN), causing conduction block/failure that begins distally and ascends",
+    "global areflexia": "Demyelination of the afferent and efferent arcs of the reflex, particularly at nerve roots and proximal segments, abolishes the monosynaptic stretch reflex before there may be overt weakness",
+    "facial and bulbar/cranial nerve weakness": "Immune-mediated demyelination is not restricted to spinal roots — cranial nerve roots (VII, and lower cranial nerves, sometimes III/IV/VI in Miller Fisher-overlap variants) are equally vulnerable, producing bilateral facial weakness and ophthalmoplegia",
+    "respiratory muscle weakness": "Demyelination of phrenic and intercostal motor roots reduces diaphragmatic and accessory muscle force generation, producing a restrictive pattern with falling vital capacity independent of lung parenchymal disease",
+    "autonomic instability (labile BP, tachycardia)": "Involvement of small unmyelinated autonomic fibres and afferent baroreceptor pathways disrupts normal autonomic reflex arcs, causing swings in heart rate and blood pressure, and risk of arrhythmia",
+    "albuminocytological dissociation on CSF": "Inflammation and breakdown of the blood-nerve barrier at proximal nerve roots allows protein to leak into CSF via the perineural sheath, while the process is not primarily meningeal, so CSF white cell count remains normal or near-normal"
+  },
+  "staging": "GBS disability scale: currently Grade 4 (bedbound/chairbound, unable to walk); approaching respiratory crisis given vital capacity 14 mL/kg and falling — meets criteria for ICU-level monitoring and consideration of elective intubation before crisis occurs (20-30-40 rule: VC<20mL/kg, MIP<30cmH2O, MEP<40cmH2O)",
+  "management": {
+    "immediate": [
+      "Urgent referral to ICU/high-care for close respiratory and cardiac monitoring — do not wait for overt respiratory failure",
+      "Serial vital capacity/single-breath count and ABG monitoring (aim to intubate electively before crisis)",
+      "Continuous cardiac monitoring for autonomic instability and arrhythmia",
+      "Avoid succinylcholine if intubation required (risk of life-threatening hyperkalaemia from denervation)",
+      "DVT prophylaxis given immobility"
+    ],
+    "definitive": [
+      "IV immunoglobulin 0.4 g/kg/day for 5 days (first-line, equally effective as plasma exchange) OR plasma exchange if IVIG unavailable/contraindicated",
+      "Do not combine IVIG and plasma exchange (no added benefit)",
+      "Steroids are NOT indicated and do not improve outcome in GBS — important exam distractor point"
+    ],
+    "supportive": [
+      "Multidisciplinary input: physiotherapy for limb positioning and chest physio, early rehabilitation planning",
+      "Neuropathic pain management (e.g. gabapentin/amitriptyline) as back and limb pain can be significant",
+      "Psychological support — sudden severe paralysis in a previously well young man is highly distressing",
+      "Nutrition support (NG feeding if bulbar weakness risks aspiration)",
+      "Continue ART uninterrupted; no dose adjustment needed for TLD in this context"
+    ],
+    "followUp": [
+      "Serial neurological examination for recovery trajectory (most improvement in first weeks-months, can take up to 1-2 years)",
+      "Outpatient neurology and physiotherapy follow-up",
+      "Monitor for treatment-related fluctuation or relapse",
+      "Counsel on prognosis: majority regain independent walking by 6 months, but ~20% have residual disability, small mortality risk mainly from respiratory/autonomic complications"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-eyewitness-onset",
+      "phase": "history",
+      "item": "Characterises onset and progression of weakness (pattern, tempo, symmetry, ascending nature) rather than jumping to a label",
+      "answer": "Symmetrical ascending weakness progressing over 4 days from feet to hands",
+      "why": "Establishing the tempo and pattern of a progressive neurological deficit is the entry point of the framework, analogous to establishing whether an event was transient/abnormal before labelling it",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-sensory-screen",
+      "phase": "history",
+      "item": "Screens for sensory symptoms and asks specifically whether there is a sensory level (to help distinguish peripheral neuropathy from cord pathology)",
+      "answer": "Glove-and-stocking numbness/paraesthesia, no clear sensory level",
+      "why": "Differentiates peripheral polyneuropathy (GBS) from myelopathy/cord compression",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-bulbar-respiratory",
+      "phase": "history",
+      "item": "Actively asks about swallowing, facial weakness, diplopia, and breathlessness/ability to complete sentences",
+      "answer": "Bilateral facial weakness, diplopia, breathlessness lying flat, cannot finish sentences",
+      "why": "Bulbar and respiratory involvement are the immediate life-threatening red flags in GBS and must be actively sought, not waited for",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-antecedent-illness",
+      "phase": "history",
+      "item": "Asks about antecedent infective illness (diarrhoea, URTI) in preceding weeks",
+      "answer": "Watery diarrhoea 2.5 weeks ago, self-resolved",
+      "why": "Campylobacter-triggered molecular mimicry is the classic antecedent trigger; identifies aetiology and supports the diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-autonomic-screen",
+      "phase": "history",
+      "item": "Screens for autonomic symptoms (palpitations, dizziness/postural symptoms, bowel/bladder)",
+      "answer": "Palpitations, one episode of postural light-headedness, no bowel/bladder involvement",
+      "why": "Autonomic instability is a recognised life-threatening complication requiring monitoring",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-hiv-art",
+      "phase": "history",
+      "item": "Establishes HIV status, CD4/VL, and current ART regimen",
+      "answer": "HIV positive, CD4 486, undetectable VL, on TLD",
+      "why": "KZN context — HIV status must be established in any new neurological presentation, and ART regimen matters for any future drug-interaction consideration",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-reflexes",
+      "phase": "examination",
+      "item": "Tests and documents reflexes throughout all four limbs",
+      "answer": "Globally absent reflexes (areflexia)",
+      "why": "Areflexia is a core diagnostic feature distinguishing GBS from myelopathy (hyperreflexia) and NMJ disease (preserved reflexes)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cranial-nerve-exam",
+      "phase": "examination",
+      "item": "Examines cranial nerves including facial muscles and eye movements",
+      "answer": "Bilateral LMN facial weakness, bilateral abducens weakness with diplopia",
+      "why": "Confirms cranial nerve root involvement, supports GBS/Miller Fisher spectrum over isolated peripheral neuropathy",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-respiratory-bedside",
+      "phase": "examination",
+      "item": "Performs or requests bedside respiratory assessment — single breath count and/or vital capacity",
+      "answer": "Single breath count 12, vital capacity 14 mL/kg and falling",
+      "why": "Bedside spirometry trend is the key tool for anticipating respiratory failure and timing elective intubation before crisis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx-reasoning",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing GBS from cord compression/transverse myelitis, myasthenic crisis, and metabolic periodic paralysis with reasoning for each",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy — localisation (root/nerve vs cord vs NMJ vs muscle) drives the entire workup",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-lp-ncs",
+      "phase": "investigations",
+      "item": "Requests lumbar puncture (CSF protein/cell count) and nerve conduction studies as the confirmatory investigations",
+      "answer": "CSF: albuminocytological dissociation (protein 1.8 g/L, WCC 2); NCS: demyelinating pattern",
+      "why": "These are the two key confirmatory investigations for GBS per the diagnostic pathway",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mri-exclude",
+      "phase": "investigations",
+      "item": "Requests MRI spine to exclude structural cord compression given the leg weakness and back pain",
+      "answer": "MRI spine normal, no cord compression",
+      "why": "Must exclude a surgical/reversible cord lesion before attributing symmetrical weakness purely to a peripheral process",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-icu-referral",
+      "phase": "management",
+      "item": "Recognises the need for urgent ICU/high-care referral for respiratory and autonomic monitoring given the falling vital capacity",
+      "answer": "Urgent ICU referral, serial VC monitoring, avoid waiting for overt respiratory arrest",
+      "why": "Missing impending respiratory failure is the single most dangerous error in managing GBS",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ivig-plex",
+      "phase": "management",
+      "item": "Outlines definitive treatment — IVIG or plasma exchange, and explicitly states steroids are not indicated",
+      "answer": "IVIG 0.4g/kg/day for 5 days or plasma exchange; steroids not effective/not indicated",
+      "why": "Core management knowledge and a classic examiner trap (steroids are a common but incorrect answer)",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 18,
+    "clinicalReasoning": 25,
+    "investigations": 12,
+    "management": 13
+  }
+}

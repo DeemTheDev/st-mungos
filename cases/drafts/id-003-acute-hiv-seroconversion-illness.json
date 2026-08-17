@@ -1,0 +1,665 @@
+{
+  "id": "id-003-acute-hiv-seroconversion-illness",
+  "version": 1,
+  "discipline": "id",
+  "diagnosis": "Acute HIV seroconversion illness",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this fever, rash and lymphadenopathy presentation, and how you would rank them.",
+      "modelAnswer": "Top of the list is acute HIV seroconversion illness given the recent unprotected sexual exposure with an unknown-status partner roughly 3-4 weeks ago, fitting the classic mononucleosis-like syndrome of fever, pharyngitis, rash and generalised tender lymphadenopathy. Infectious mononucleosis (EBV) is a close differential given the similar syndrome, but would be supported by a positive monospot and less strongly tied to a sexual exposure timeline. Streptococcal pharyngitis is less likely given the absence of tonsillar exudate and the generalised (not purely cervical) lymphadenopathy and rash. Secondary syphilis can present with rash and lymphadenopathy but usually has a longer incubation and different rash distribution, and RPR would clarify. I would confirm with HIV viral load/RNA PCR and repeat serology given the window period.",
+      "gradingNotes": "Wants a ranked list with reasoning tied to specific case features, not just a list of names. Reward explicit mention of the exposure timeline driving the ranking."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "investigations",
+      "question": "His HIV rapid test came back non-reactive, but you still suspect acute HIV. Explain the pathophysiological basis for why you would not stop the workup here.",
+      "modelAnswer": "There is an eclipse/window period after HIV exposure during which viral RNA and p24 antigen are detectable in blood before the host mounts a measurable antibody response. Rapid tests, particularly antibody-only assays, can remain non-reactive for the first 2-4 weeks of infection despite very high viraemia, because seroconversion (detectable antibody) typically takes 3-12 weeks. Given his exposure timeline and classic acute retroviral syndrome, a non-reactive rapid test does not exclude the diagnosis, and HIV RNA viral load testing is the appropriate next step, expecting a markedly elevated result during this hyperviraemic phase.",
+      "gradingNotes": "Core teaching point of the case. Full marks requires explicit mention of the window/eclipse period and the antigen/antibody detection timeline, not just 'test again later'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "What specific features in his sexual history are most important to establish, and why?",
+      "modelAnswer": "The timing of the most recent unprotected exposure is critical, as it needs to fall within the plausible incubation window (typically 2-4 weeks) for the symptoms to represent acute seroconversion. I would also establish the partner's HIV status if known, number and pattern of partners, condom use consistency, and any other STI exposure risk, as these both support the diagnosis and inform onward counselling, partner notification and STI screening.",
+      "gradingNotes": "Reward specific mention of establishing exposure timing relative to symptom onset, not just a generic sexual history."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Once his acute HIV infection is confirmed, when would you start antiretroviral therapy, and does he need cotrimoxazole?",
+      "modelAnswer": "Under South Africa's universal test-and-treat policy, ART (typically TLD) should be offered and can be started promptly once the diagnosis is confirmed, regardless of CD4 count or clinical stage — there is also growing evidence for benefit of very early ART initiation during acute infection to limit reservoir seeding and reduce transmission risk. Cotrimoxazole prophylaxis is not required here as his CD4 count of 410 is well above the <200 threshold (or WHO stage 3/4 threshold) that would trigger it.",
+      "gradingNotes": "Wants explicit recognition of universal test-and-treat policy and correct application of the CD4 threshold for cotrimoxazole — a common exam trap is over-prescribing cotrimoxazole regardless of CD4."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "What is the mechanism behind the atypical lymphocytosis and mild transaminitis on his blood tests?",
+      "modelAnswer": "During acute HIV infection there is explosive viral replication producing very high plasma viraemia; this drives an intense CD8 cytotoxic T-cell response against infected cells, producing the atypical (reactive) lymphocytes seen on the film, while CD4 T-cells are transiently depleted through direct infection and immune-mediated destruction. The mild transaminitis reflects direct hepatic involvement and the systemic inflammatory/cytokine response common to acute viral syndromes, similar to what is seen in other acute systemic viral infections like EBV.",
+      "gradingNotes": "Wants the CD8 expansion/CD4 depletion mechanism explicitly, plus a plausible explanation for the transaminitis, not just restating that 'the tests are abnormal'."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "febrile illness with rash and lymphadenopathy → HIV seroconversion vs other causes; confirm HIV status, take systemic history, examine skin/mouth/nodes systematically, assign highest-stage event, send CD4/VL, screen for TB/OIs, decide on prophylaxis and ART timing",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 24,
+    "sex": "M",
+    "occupation": "security guard at a shopping centre in Pinetown",
+    "personality": "anxious, talkative once he trusts you, embarrassed to discuss his sex life, keeps saying 'it's probably just flu'",
+    "openingLine": "Doctor, I've been so sick this past week — fevers, my throat is killing me, and now there's this rash. I don't understand what's wrong with me."
+  },
+  "presentingComplaint": "1-week history of fever, sore throat, body aches and a new rash",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms started abruptly about 8 days ago with fever and severe fatigue",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Fever has been high, up to 39°C by his own hand-feel, worse in the evenings, not measured with a thermometer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "burning up",
+        "feverish",
+        "burning"
+      ]
+    },
+    {
+      "id": "hx-sorethroat",
+      "fact": "Severe sore throat for the past week, worse with swallowing, no difficulty breathing",
+      "disclosure": "onAsk",
+      "triggers": [
+        "throat",
+        "sore throat",
+        "swallow",
+        "pain swallowing",
+        "throat pain",
+        "tonsils",
+        "pharyngitis",
+        "sore",
+        "pain",
+        "swallowing"
+      ]
+    },
+    {
+      "id": "hx-rash",
+      "fact": "Noticed a rash 4 days ago — flat, pink-red spots over his chest, back and arms, not itchy, came on quite suddenly",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rash",
+        "skin",
+        "spots",
+        "red marks",
+        "bumps",
+        "itchy",
+        "itch",
+        "break out",
+        "skin change",
+        "red",
+        "marks",
+        "break",
+        "out",
+        "change"
+      ]
+    },
+    {
+      "id": "hx-nodes",
+      "fact": "Has noticed tender swollen glands in his neck and armpits over the last few days",
+      "disclosure": "onAsk",
+      "triggers": [
+        "glands",
+        "lymph nodes",
+        "neck",
+        "armpit",
+        "swelling",
+        "lumps",
+        "nodes",
+        "swollen",
+        "lymph"
+      ]
+    },
+    {
+      "id": "hx-myalgia",
+      "fact": "Widespread muscle aches and joint pains, especially the knees and lower back, since the illness started",
+      "disclosure": "onAsk",
+      "triggers": [
+        "muscle",
+        "aches",
+        "joint",
+        "pain",
+        "body pain",
+        "joints",
+        "myalgia",
+        "arthralgia",
+        "sore all over",
+        "body",
+        "sore",
+        "all",
+        "over"
+      ]
+    },
+    {
+      "id": "hx-headache",
+      "fact": "Mild-moderate headache, frontal, no photophobia, no neck stiffness, no vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "head pain",
+        "migraine",
+        "photophobia",
+        "light",
+        "neck stiff",
+        "vomit",
+        "head",
+        "pain",
+        "neck",
+        "stiff"
+      ]
+    },
+    {
+      "id": "hx-gi",
+      "fact": "Mild diarrhoea for 2 days, watery, no blood, resolving now; some nausea but no vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diarrhoea",
+        "stool",
+        "bowel",
+        "loose stool",
+        "tummy",
+        "stomach",
+        "nausea",
+        "vomit",
+        "gi",
+        "diarrhea",
+        "loose"
+      ]
+    },
+    {
+      "id": "hx-weight",
+      "fact": "No significant weight loss — he thinks he may have lost a kilo or two from not eating well this week, nothing before that",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "thinner",
+        "clothes",
+        "appetite",
+        "eating",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Some sweating at night this week but attributes it to the fever, no prior history of drenching sweats",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat at night",
+        "wake up wet",
+        "drenched",
+        "soaking",
+        "sweaty",
+        "night",
+        "sweats",
+        "sweat",
+        "wake",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-sexual",
+      "fact": "Had unprotected sex with a new partner he met at a party about 3 weeks ago; does not know her HIV status; has had other partners in the past year, inconsistent condom use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "sex",
+        "sexual",
+        "partner",
+        "girlfriend",
+        "unprotected",
+        "condom",
+        "relationship",
+        "std",
+        "sti",
+        "intercourse",
+        "new partner",
+        "new"
+      ]
+    },
+    {
+      "id": "hx-hivtest",
+      "fact": "Has never tested for HIV before; last tested negative was over 2 years ago at a work wellness day",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "last test",
+        "hiv test",
+        "last"
+      ]
+    },
+    {
+      "id": "hx-tbcontact",
+      "fact": "No known TB contacts, no one at home coughing or being treated for TB",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "anyone sick",
+        "exposure",
+        "family",
+        "sick",
+        "anyone"
+      ]
+    },
+    {
+      "id": "hx-oral",
+      "fact": "No mouth ulcers noticed, though throat feels very raw; no white patches that he's seen",
+      "disclosure": "onAsk",
+      "triggers": [
+        "mouth",
+        "ulcer",
+        "white patch",
+        "thrush",
+        "tongue",
+        "oral",
+        "white",
+        "patch"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Previously well, no chronic illnesses, no hospital admissions",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Took two paracetamol tablets for the fever with mild relief; no other medication, no antiretrovirals, no PEP taken",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "pep",
+        "arv",
+        "antiretroviral",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "penicillin"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Drinks alcohol socially on weekends, does not smoke, no recreational drug use; lives alone in a rented room in Pinetown, works night shifts as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "job",
+        "drugs"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of chronic illness that he is aware of; parents both alive and well in Nongoma",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert, mildly unwell-looking young man, flushed. No pallor, no jaundice, no clubbing. Generalised, symmetrical, tender lymphadenopathy — cervical (anterior and posterior chains) and axillary nodes, mobile, non-matted, largest ~1.5cm.",
+    "vitals": {
+      "hr": 102,
+      "bp": "112/70",
+      "rr": 18,
+      "temp": 38.6,
+      "spo2": "98% on room air",
+      "bmi": 22
+    },
+    "respiratory": "Chest clear, no crackles, no wheeze, no dullness to percussion",
+    "cardio": "Normal heart sounds, no murmurs, no added sounds",
+    "abdo": "Soft, non-tender, no organomegaly palpable, no ascites",
+    "neuro": "Alert and orientated, GCS 15, no neck stiffness, no photophobia, no focal deficits, no meningism",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "HIV rapid test (4th generation Ag/Ab combo)",
+      "result": "Non-reactive (early window period)",
+      "key": true
+    },
+    {
+      "name": "HIV RNA viral load (PCR)",
+      "result": "Markedly elevated at 1,250,000 copies/mL",
+      "key": true
+    },
+    {
+      "name": "CD4 count",
+      "result": "410 cells/µL (transient dip typical of acute infection)",
+      "key": true
+    },
+    {
+      "name": "Repeat HIV ELISA/4th-gen test at 2-4 weeks (recommended follow-up)",
+      "result": "Not yet performed — advised for confirmation of seroconversion",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.9 g/dL, WCC 3.1 (mild leucopenia with relative lymphocytosis and atypical lymphocytes), Plt 132 (mild thrombocytopenia)",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Mild transaminitis: ALT 68 U/L, AST 74 U/L, otherwise normal",
+      "key": false
+    },
+    {
+      "name": "Monospot/EBV serology",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "Not indicated — no cough or TB symptoms; not sent",
+      "key": false
+    },
+    {
+      "name": "Serum CrAg",
+      "result": "Not indicated at CD4 410 — not sent",
+      "key": false
+    },
+    {
+      "name": "Syphilis serology (RPR)",
+      "result": "Non-reactive",
+      "key": false
+    },
+    {
+      "name": "Throat swab / rapid strep test",
+      "result": "Negative",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Acute HIV seroconversion illness",
+      "rank": 1,
+      "for": [
+        "unprotected sex with unknown-status partner 3 weeks prior",
+        "fever, sore throat, rash, tender generalised lymphadenopathy, myalgia — classic mononucleosis-like syndrome",
+        "timing fits window period (2-4 weeks post-exposure)",
+        "atypical lymphocytosis and mild transaminitis on FBC/LFT",
+        "markedly elevated viral load with non-reactive rapid antibody test — classic acute infection pattern"
+      ],
+      "against": [
+        "initial rapid HIV test non-reactive (expected in window period, does not exclude)"
+      ]
+    },
+    {
+      "dx": "Infectious mononucleosis (EBV)",
+      "rank": 2,
+      "for": [
+        "fever, sore throat, lymphadenopathy, fatigue, mild hepatitis pattern on LFTs"
+      ],
+      "against": [
+        "monospot/EBV serology negative",
+        "sexual exposure history and viral load result point away from EBV"
+      ]
+    },
+    {
+      "dx": "Streptococcal pharyngitis",
+      "rank": 3,
+      "for": [
+        "sore throat, fever, tender cervical nodes"
+      ],
+      "against": [
+        "rapid strep test negative",
+        "no tonsillar exudate",
+        "widespread rash and generalised (not just cervical) lymphadenopathy atypical for strep"
+      ]
+    },
+    {
+      "dx": "Secondary syphilis",
+      "rank": 4,
+      "for": [
+        "maculopapular rash, lymphadenopathy, systemic symptoms can mimic seroconversion"
+      ],
+      "against": [
+        "RPR non-reactive",
+        "rash distribution and acute exposure timeline fit HIV better",
+        "no palmar/plantar involvement described"
+      ]
+    },
+    {
+      "dx": "Drug reaction / viral exanthem (other)",
+      "rank": 5,
+      "for": [
+        "acute onset rash with fever"
+      ],
+      "against": [
+        "no new medication started",
+        "clinical and lab picture fits acute retroviral syndrome far better"
+      ]
+    }
+  ],
+  "pathophys": {
+    "fever and myalgia": "massive early HIV viraemia triggers a cytokine storm (IFN-alpha, TNF-alpha, IL-6) analogous to other acute viral syndromes, producing systemic constitutional symptoms during the burst of viral replication before an antibody response develops",
+    "maculopapular rash": "direct viraemia and immune-complex mediated small vessel/dermal inflammatory response during acute high-level HIV replication, producing a symmetrical truncal exanthem similar to other acute retroviral/viral syndromes",
+    "generalised tender lymphadenopathy": "massive viral replication within lymphoid tissue drives acute reactive follicular hyperplasia as the immune system mounts its first response to widely disseminated virus",
+    "sore throat / pharyngitis": "direct HIV infection and inflammation of pharyngeal lymphoid tissue (mucosa-associated lymphoid tissue is an early major site of viral replication) causing non-exudative pharyngitis",
+    "transient CD4 dip with atypical lymphocytosis": "acute massive viraemia causes transient peripheral CD4 T-cell depletion (redistribution/destruction) while CD8 cytotoxic T-cells expand in response, producing the atypical lymphocytes seen on the film, before CD4 partially recovers as the immune response controls (but does not clear) the virus",
+    "non-reactive rapid antibody test with high viral load": "the eclipse/window period — viral RNA and p24 antigen appear in blood days before detectable antibody seroconversion, so 4th-generation combo tests and especially antibody-only rapid tests can be falsely non-reactive despite very high viraemia"
+  },
+  "staging": "WHO HIV clinical stage 1 (acute seroconversion illness is generally not stage-classified under the chronic WHO staging system, which applies once established infection is confirmed) — CD4 410 cells/µL; this is a discrete acute retroviral syndrome requiring confirmatory retesting rather than formal WHO staging at this visit",
+  "management": {
+    "immediate": [
+      "Explain the window period concept clearly and non-judgementally — a negative rapid test does NOT rule out HIV given this history and clinical picture",
+      "Send HIV viral load / RNA PCR and repeat 4th-generation Ag/Ab test to confirm acute infection",
+      "Counsel on onward transmission risk — viraemia is extremely high during acute infection, advise consistent condom use and partner notification",
+      "Offer same-day initiation of ART per universal test-and-treat once diagnosis is confirmed (do not need to wait for CD4/staging workup to start ART in a confirmed acute infection)"
+    ],
+    "definitive": [
+      "Initiate ART (TLD: tenofovir/lamivudine/dolutegravir) once acute infection is confirmed by viral load/repeat testing — early initiation during acute infection has clinical and public health benefit",
+      "Schedule confirmatory repeat HIV test at 2-4 weeks to demonstrate seroconversion on antibody testing",
+      "No cotrimoxazole indicated — CD4 currently 410, well above the <200 threshold"
+    ],
+    "supportive": [
+      "Symptomatic treatment: paracetamol for fever and myalgia, rest, hydration for the diarrhoea",
+      "Psychosocial support and disclosure counselling — this is often a devastating and disorienting diagnosis at a young age",
+      "Screen for and counsel on other STIs given unprotected intercourse (syphilis RPR already done, consider further STI screen)",
+      "Partner notification and testing — the recent partner and any other partners in the risk window should be linked to testing"
+    ],
+    "followUp": [
+      "Repeat CD4 and viral load at first ART follow-up visit (typically 1 and 3 months)",
+      "TB symptom screen at every visit per SA guidelines regardless of CD4",
+      "Monitor for immune reconstitution and adherence once ART started",
+      "Ongoing sexual health and contraception/condom counselling",
+      "Routine re-staging clinically at each follow-up visit"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport and consent, ensures privacy for sensitive history",
+      "answer": null,
+      "why": "Professionalism and communication, particularly important for a sensitive sexual history",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-status",
+      "phase": "history",
+      "item": "Establishes prior HIV testing history and current test status before proceeding",
+      "answer": "Last tested negative 2 years ago; never tested since; no rapid test done yet this illness",
+      "why": "Framework step 1 — confirm HIV status before staging/further workup",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-systemic",
+      "phase": "history",
+      "item": "Takes a full systemic/constitutional history: fever pattern, duration, night sweats, weight change, fatigue",
+      "answer": "Fever 8 days, evening-predominant, mild night sweats, minimal weight change, severe fatigue",
+      "why": "Framework step 2 — full systemic history is the backbone of staging/differential reasoning",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-rash-nodes",
+      "phase": "history",
+      "item": "Characterises the rash and lymphadenopathy (onset, distribution, itch, tenderness)",
+      "answer": "Sudden truncal maculopapular non-itchy rash 4 days ago; tender generalised cervical/axillary nodes",
+      "why": "Key discriminating features of acute retroviral syndrome vs other differentials",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-throat-oral",
+      "phase": "history",
+      "item": "Asks about sore throat and screens for oral lesions (thrush, ulcers)",
+      "answer": "Severe non-exudative sore throat, no oral thrush or ulcers seen",
+      "why": "Distinguishes acute HIV pharyngitis from strep/EBV and screens for stage 3 oral candidiasis",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-sexual-history",
+      "phase": "history",
+      "item": "Takes a sensitive, specific sexual history including recent new/unprotected partners and timing of exposure",
+      "answer": "Unprotected sex with new partner of unknown status ~3 weeks ago; inconsistent condom use generally",
+      "why": "Identifies the exposure window that is central to diagnosing acute seroconversion; her notes emphasise timing of exposure relative to symptom onset as the key diagnostic clue",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB symptoms and household TB contacts regardless of presentation",
+      "answer": "No cough, no TB contacts",
+      "why": "Framework step 7 — active TB screening is mandatory at every HIV-related presentation in KZN",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-systematic",
+      "phase": "examination",
+      "item": "Performs a systematic examination of skin, oral cavity, lymph nodes, chest and a basic neurological screen",
+      "answer": "Generalised tender lymphadenopathy, truncal maculopapular rash, erythematous pharynx without exudate/thrush, clear chest, no meningism",
+      "why": "Framework step 4 — systematic examination across all key systems is required for staging",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential for fever+rash+lymphadenopathy including acute HIV, EBV, streptococcal pharyngitis, secondary syphilis",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning central to the exam philosophy — recognising the mononucleosis-like syndrome as a presentation of several possible causes",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-window-period",
+      "phase": "investigations",
+      "item": "Recognises that a non-reactive rapid HIV test does not exclude acute infection and orders viral load/RNA PCR to confirm",
+      "answer": "Rapid test non-reactive; viral load 1,250,000 copies/mL confirms acute infection",
+      "why": "Core diagnostic reasoning point of this case — the window period concept; her notes emphasise this as the critical teaching point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cd4-vl",
+      "phase": "investigations",
+      "item": "Sends CD4 count and viral load alongside HIV testing as per framework step 6",
+      "answer": "CD4 410 cells/µL, VL markedly elevated",
+      "why": "CD4/VL guide prophylaxis decisions and confirm the diagnosis alongside serology",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-art",
+      "phase": "management",
+      "item": "Explains universal test-and-treat — ART can and should be offered promptly once acute infection is confirmed, without needing to wait for full staging workup",
+      "answer": "Start TLD once confirmed; no cotrimoxazole needed as CD4 >200",
+      "why": "SA policy of universal test-and-treat is central to management reasoning in this case",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-counsel",
+      "phase": "management",
+      "item": "Counsels on high transmission risk during acute infection, partner notification/testing and disclosure support",
+      "answer": null,
+      "why": "Public health responsibility — acute infection carries very high transmissibility due to massive viraemia",
+      "weight": 2,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 28,
+    "examination": 14,
+    "clinicalReasoning": 26,
+    "investigations": 12,
+    "management": 10
+  }
+}

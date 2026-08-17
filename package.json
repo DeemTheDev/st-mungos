@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "validate:cases": "tsx scripts/validate-cases.ts",
+    "migrate:library": "tsx scripts/migrate-library.ts",
     "ingest": "tsx scripts/ingest-grounding.ts",
     "distill": "tsx scripts/distill-kb.ts",
     "gen:cases": "tsx scripts/generate-cases.ts",

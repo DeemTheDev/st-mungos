@@ -208,8 +208,8 @@ export default async function SessionPickerPage() {
           {cases.length === 0 ? (
             <p className="text-sm text-neutral-500">
               The bank is empty — approve some drafts at{" "}
-              <Link href="/admin/review" className="underline">
-                /admin/review
+              <Link href="/review" className="underline">
+                /review
               </Link>
               .
             </p>

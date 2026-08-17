@@ -51,6 +51,9 @@ next-env.d.ts
 # local flashcard store (STORE=file) - extracted from her private study docs
 /.flashcards/
 
+# local library store (STORE=file) - uploaded guides + spend ledger + sidecars
+/.library/
+
 # local case drafts pending review are fine to commit; secrets are not
 .env*.local
 .env

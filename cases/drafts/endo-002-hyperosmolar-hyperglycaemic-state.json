@@ -1,0 +1,686 @@
+{
+  "id": "endo-002-hyperosmolar-hyperglycaemic-state",
+  "version": 1,
+  "discipline": "endo",
+  "diagnosis": "Hyperosmolar hyperglycaemic state",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential for this patient's confusion and hyperglycaemia, and how the biochemistry helps you distinguish between them.",
+      "modelAnswer": "Top of the list is HHS given glucose 42.8 mmol/L, calculated osmolality 356 mOsm/kg, only mild ketosis (0.4 mmol/L) and near-normal pH/bicarbonate — the picture is dominated by profound dehydration and hyperosmolality rather than ketoacidosis. DKA is next but argued against by the minimal ketosis and only mildly low bicarbonate, and absence of Kussmaul breathing. Sepsis-associated delirium alone doesn't explain the glucose/osmolality derangement, though the pneumonia is clearly the precipitant. Stroke is unlikely given no focal neurological signs, and the metabolic picture is sufficient to explain the presentation.",
+      "gradingNotes": "Full marks for ranked differential with reasoning tied to specific glucose/ketone/pH/osmolality values, not just naming HHS."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why does this patient have such profound hyperglycaemia and dehydration but only mild ketosis, unlike a typical DKA presentation?",
+      "modelAnswer": "He has type 2 diabetes with residual endogenous insulin secretion — enough circulating insulin to suppress hepatic ketogenesis and lipolysis, but not enough to control hepatic glucose output and peripheral glucose uptake. This allows glucose to climb to extreme levels while ketone production stays low, so the clinical picture is dominated by osmotic diuresis and dehydration rather than acidosis.",
+      "gradingNotes": "Wants the mechanistic distinction (residual insulin sufficient to block lipolysis/ketogenesis but not hyperglycaemia) — the core pathophysiology pearl distinguishing HHS from DKA."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "Why is initial fluid management in HHS approached more cautiously than in DKA, and what could go wrong if you correct too quickly?",
+      "modelAnswer": "HHS patients, often elderly, have extreme serum osmolality; too-rapid correction of osmolality or glucose can cause a large osmotic shift of water into brain cells, precipitating cerebral oedema. Fluid deficits (often 8-10L) should be replaced over 24-48 hours with gradual glucose decline of about 4-6 mmol/L/hour, and insulin is often delayed or given at a lower rate than in DKA until fluids alone stop dropping the glucose.",
+      "gradingNotes": "Should mention cerebral oedema risk from rapid osmotic correction and the slower, fluids-first approach distinct from DKA protocol."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "His serum sodium comes back at 152 mmol/L in the context of glucose 42.8 mmol/L. How do you interpret this, and does it change your fluid choice?",
+      "modelAnswer": "Sodium must be corrected for the hyperglycaemia (add roughly 2-4 mmol/L to measured sodium for every 5.5 mmol/L glucose above normal) — his true corrected sodium is even higher, confirming severe hypertonic dehydration. This supports starting with 0.9% saline for volume resuscitation; if corrected sodium remains very high once volume is restored, a switch to a more hypotonic fluid may be considered, but initial resuscitation should still prioritise restoring circulating volume.",
+      "gradingNotes": "Tests understanding of corrected sodium calculation and fluid choice reasoning in hyperosmolar states — partial credit for correctly identifying severe hypertonicity even without exact formula recall."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "decompensated hyperglycaemia presentation: characterise tempo and osmotic symptoms → confirm severity/precipitant → exclude DKA mimic → classify diabetes type → screen for precipitant and complications → individualise management and follow-up",
+  "patient": {
+    "name": "Muzi Ngcobo",
+    "age": 68,
+    "sex": "M",
+    "occupation": "retired security guard",
+    "personality": "drowsy and slow to answer, family (daughter) fills in most of the history, mildly confused but rousable",
+    "openingLine": "(patient is drowsy; daughter speaks) Doctor, my father has been so tired and confused these last few days, he's hardly drinking anything even though he says he's thirsty."
+  },
+  "presentingComplaint": "3-day history of progressive confusion, lethargy and reduced oral intake in a known type 2 diabetic, brought in by family after he became difficult to rouse this morning",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms have been building gradually over about 1-2 weeks, with rapid worsening of confusion in the last 2-3 days",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-polyuria",
+      "fact": "Was getting up 4-5 times a night to pass urine and drinking large amounts of water before he became too drowsy to drink",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urinate",
+        "passing water",
+        "polyuria",
+        "weeing",
+        "toilet",
+        "nocturia",
+        "thirst",
+        "polydipsia",
+        "drink",
+        "fluids",
+        "passing",
+        "water"
+      ]
+    },
+    {
+      "id": "hx-oral-intake",
+      "fact": "Over the past 2 days has barely been eating or drinking because he 'didn't feel like it' and family thought he had flu",
+      "disclosure": "onAsk",
+      "triggers": [
+        "eating",
+        "drinking",
+        "appetite",
+        "fluids",
+        "intake",
+        "food",
+        "dehydrated",
+        "dehydration"
+      ]
+    },
+    {
+      "id": "hx-confusion",
+      "fact": "Increasingly muddled over the last 2 days, not recognising his grandchildren this morning, daughter says 'he's not himself'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "confused",
+        "confusion",
+        "muddled",
+        "drowsy",
+        "altered",
+        "mental state",
+        "not himself",
+        "recognise",
+        "conscious",
+        "alert",
+        "mental",
+        "state",
+        "not",
+        "himself"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "No deliberate weight change noted recently by family, though he looks more sunken-eyed than usual",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "thinner",
+        "lost weight",
+        "clothes",
+        "sunken",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-nausea",
+      "fact": "No vomiting, no abdominal pain, no nausea reported",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomit",
+        "nausea",
+        "sick",
+        "abdominal pain",
+        "stomach",
+        "tummy",
+        "belly",
+        "nauseous",
+        "abdominal",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-breathing",
+      "fact": "No rapid or laboured breathing noticed by the family, no unusual breath smell",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breathing",
+        "breath",
+        "kussmaul",
+        "rapid breathing",
+        "fruity",
+        "ketotic smell",
+        "sighing",
+        "rapid",
+        "ketotic",
+        "smell"
+      ]
+    },
+    {
+      "id": "hx-infection-screen",
+      "fact": "Had a productive cough and fevers for about a week before this, thought to be a 'chest cold'; no urinary burning reported by family",
+      "disclosure": "onAsk",
+      "triggers": [
+        "infection",
+        "fever",
+        "cough",
+        "chest",
+        "cold",
+        "flu",
+        "urinary tract",
+        "burning",
+        "uti",
+        "sepsis",
+        "source",
+        "precipitant",
+        "urinary",
+        "tract"
+      ]
+    },
+    {
+      "id": "hx-dm-history",
+      "fact": "Known type 2 diabetic for 12 years, previously on metformin and gliclazide, control has been 'up and down' — last clinic HbA1c around 9.5%",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "diabetic",
+        "sugar",
+        "sugar sickness",
+        "dm",
+        "diagnosed",
+        "how long",
+        "hba1c",
+        "control",
+        "glucose history",
+        "sickness",
+        "long",
+        "glucose",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds-recent",
+      "fact": "Ran out of his diabetes tablets about 3 weeks ago and did not manage to get to the clinic for a refill",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "metformin",
+        "gliclazide",
+        "stopped",
+        "ran out",
+        "compliance",
+        "adherence",
+        "treatment",
+        "ran",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-other-meds",
+      "fact": "Also takes hydrochlorothiazide for blood pressure; no steroids, no antipsychotics",
+      "disclosure": "onAsk",
+      "triggers": [
+        "other medication",
+        "blood pressure tablets",
+        "diuretic",
+        "thiazide",
+        "steroid",
+        "cortisone",
+        "other tablets",
+        "chronic medication",
+        "medication",
+        "blood",
+        "pressure",
+        "tablets",
+        "chronic"
+      ]
+    },
+    {
+      "id": "hx-comorbid",
+      "fact": "Known hypertensive for 15 years; no known kidney disease, no previous stroke or heart attack",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "heart",
+        "kidney",
+        "stroke",
+        "previous illness",
+        "medical history",
+        "comorbid",
+        "chronic conditions",
+        "blood",
+        "pressure",
+        "previous",
+        "illness",
+        "medical",
+        "history",
+        "chronic",
+        "conditions"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV status unknown, has never been tested; not sexually active for many years per daughter",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "tested",
+        "status",
+        "aids",
+        "sexual history",
+        "sexual",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No known TB contact, no prior TB treatment; the cough and fever this past week raise concern",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "night sweats",
+        "exposure",
+        "night",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergy",
+        "allergic",
+        "reaction",
+        "allergies"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives with his daughter and grandchildren in KwaMashu; retired, non-smoker, drinks alcohol rarely",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "alcohol",
+        "drink",
+        "social history",
+        "lives",
+        "home",
+        "family situation",
+        "occupation",
+        "work",
+        "social",
+        "history",
+        "family",
+        "situation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Two siblings also have type 2 diabetes; no family history of type 1 diabetes or early-onset diabetes",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "siblings",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "relatives",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-priorepisodes",
+      "fact": "No previous admissions for diabetic emergencies, no known prior DKA or hypoglycaemic episodes",
+      "disclosure": "onAsk",
+      "triggers": [
+        "previous admission",
+        "hospital before",
+        "dka before",
+        "hypo before",
+        "emergency before",
+        "similar episode",
+        "previous",
+        "admission",
+        "hospital",
+        "before",
+        "dka",
+        "hypo",
+        "emergency",
+        "similar",
+        "episode"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Elderly man, drowsy but rousable to voice (GCS 12/15, E3V4M5), profound dehydration with dry mucous membranes, sunken eyes, reduced skin turgor. No Kussmaul breathing, no ketotic (fruity) breath odour. Looks chronically unwell.",
+    "vitals": {
+      "hr": 118,
+      "bp": "92/58",
+      "rr": 18,
+      "temp": 38.2,
+      "spo2": "96% on room air",
+      "bmi": 27
+    },
+    "respiratory": "Trachea central, no increased work of breathing, no Kussmaul pattern. Right basal crackles with reduced air entry, dull to percussion at right base — suggestive of consolidation.",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not visible (likely low due to dehydration), peripheries cool with delayed capillary refill (~3s), weak thready pulses.",
+    "abdo": "Soft, non-tender, no guarding, no organomegaly, bowel sounds present, no rigidity.",
+    "neuro": "GCS 12/15 (confused, opens eyes to voice, localises to pain), no focal neurological deficit, no meningism, plantars downgoing, no papilloedema. No signs of raised intracranial pressure.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Capillary/laboratory glucose",
+      "result": "42.8 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Serum osmolality (calculated: 2Na+glucose+urea)",
+      "result": "356 mOsm/kg",
+      "key": true
+    },
+    {
+      "name": "Blood ketones (β-hydroxybutyrate)",
+      "result": "0.4 mmol/L (mildly elevated, not in ketoacidosis range)",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas / bicarbonate",
+      "result": "pH 7.34, HCO3- 20 mmol/L (mild acidosis from dehydration/sepsis, not primary ketoacidosis)",
+      "key": true
+    },
+    {
+      "name": "U&E/creatinine",
+      "result": "Na+ 152 mmol/L (corrected for glucose), K+ 5.1 mmol/L, urea 22 mmol/L, creatinine 210 µmol/L (acute kidney injury, likely pre-renal)",
+      "key": true
+    },
+    {
+      "name": "Urine dipstick/ketones",
+      "result": "Glucose 4+, trace ketones, no nitrites, no leucocytes",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Right lower zone consolidation consistent with pneumonia — likely precipitant",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "WCC 14.2 x10^9/L (neutrophilia), Hb 11.8 g/dL, platelets 340",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "92 mg/L",
+      "key": false
+    },
+    {
+      "name": "HbA1c",
+      "result": "11.2%",
+      "key": false
+    },
+    {
+      "name": "Blood and urine cultures",
+      "result": "Sent, pending at time of assessment",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, no acute ischaemic changes, no peaked T waves despite K+ 5.1",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Hyperosmolar hyperglycaemic state",
+      "rank": 1,
+      "for": [
+        "very high glucose 42.8 mmol/L",
+        "markedly elevated calculated osmolality 356 mOsm/kg",
+        "profound dehydration",
+        "altered mental status",
+        "minimal ketosis (0.4 mmol/L)",
+        "near-normal pH/bicarbonate",
+        "known poorly controlled type 2 diabetic who stopped medication",
+        "identifiable precipitant (pneumonia)"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Diabetic ketoacidosis",
+      "rank": 2,
+      "for": [
+        "hyperglycaemia",
+        "known diabetic",
+        "acute illness precipitant",
+        "mild acidosis on VBG"
+      ],
+      "against": [
+        "ketones only mildly elevated (0.4 mmol/L, DKA typically >3 mmol/L)",
+        "bicarbonate only mildly low (20 vs typical DKA <15)",
+        "no Kussmaul breathing",
+        "no ketotic breath odour",
+        "clinical picture dominated by profound dehydration/hyperosmolality rather than acidosis"
+      ]
+    },
+    {
+      "dx": "Sepsis-associated encephalopathy / delirium from pneumonia alone",
+      "rank": 3,
+      "for": [
+        "fever",
+        "cough",
+        "confusion",
+        "raised WCC and CRP",
+        "consolidation on CXR"
+      ],
+      "against": [
+        "does not explain glucose of 42.8 mmol/L or osmolality of 356",
+        "hyperosmolar state itself is sufficient to cause the confusion",
+        "glucose and osmolality abnormalities far exceed what simple sepsis delirium would produce"
+      ]
+    },
+    {
+      "dx": "Stroke / acute intracerebral event",
+      "rank": 4,
+      "for": [
+        "altered consciousness in an elderly hypertensive patient"
+      ],
+      "against": [
+        "no focal neurological deficit",
+        "no localising signs on exam",
+        "biochemical picture fully explains the clinical state",
+        "symptoms improved framework points to metabolic cause first"
+      ]
+    }
+  ],
+  "pathophys": {
+    "polyuria and polydipsia (preceding the crisis)": "Sustained hyperglycaemia exceeds the renal tubular reabsorptive threshold for glucose (~10-11 mmol/L), causing glycosuria and osmotic diuresis with obligate water loss, triggering compensatory thirst",
+    "altered mental status / confusion": "Extreme hyperosmolality (>320 mOsm/kg) causes cellular dehydration of neurons and shrinkage of brain volume, disrupting neuronal function; severity of encephalopathy correlates directly with degree of osmolality elevation",
+    "profound dehydration with minimal ketosis (as opposed to DKA)": "Residual endogenous insulin secretion in type 2 diabetes is sufficient to suppress hepatic ketogenesis and lipolysis even as hepatic glucose output and impaired peripheral uptake drive severe hyperglycaemia, so the osmotic diuretic effect dominates over ketoacidosis",
+    "acute kidney injury": "Profound volume depletion from osmotic diuresis leads to pre-renal hypoperfusion of the kidneys, reducing glomerular filtration and raising urea/creatinine, which in turn worsens glucose and osmolality clearance in a vicious cycle",
+    "precipitating infection (pneumonia)": "Acute infective stress triggers a surge of counter-regulatory hormones (cortisol, catecholamines, glucagon) that increase hepatic gluconeogenesis and insulin resistance, tipping a poorly controlled type 2 diabetic into decompensation, compounded here by medication non-adherence"
+  },
+  "staging": "HHS with severe hyperosmolality (356 mOsm/kg); AKI (likely pre-renal, KDIGO stage 2 based on creatinine rise); background poorly controlled type 2 diabetes mellitus (HbA1c 11.2%)",
+  "management": {
+    "immediate": [
+      "Admit to a monitored/high-care bed, insert two large-bore IV lines",
+      "Cautious IV fluid resuscitation with 0.9% sodium chloride — correct estimated deficit (often 8-10L) slowly over 24-48 hours to avoid rapid osmotic shifts and cerebral oedema",
+      "Hourly neurological observations and GCS monitoring given altered mental status",
+      "Start low-dose IV insulin infusion only once fluid resuscitation underway and glucose stops falling with fluids alone, or immediately if ketones significant — typical fixed-rate ~0.05 units/kg/hr (lower than DKA protocol)",
+      "Aim for gradual glucose fall (~4-6 mmol/L/hr) and gradual osmolality correction to avoid cerebral oedema/osmotic demyelination",
+      "Hourly/2-hourly capillary glucose, and monitor electrolytes (especially potassium) closely with replacement as needed",
+      "Identify and treat precipitant — empirical antibiotics for community-acquired pneumonia per local protocol, blood/urine/sputum cultures sent",
+      "VTE prophylaxis (HHS carries high thrombosis risk) unless contraindicated"
+    ],
+    "definitive": [
+      "Restart/optimise diabetes therapy once stabilised — reintroduce metformin once renal function and hydration recover, reassess need for insulin vs oral agents",
+      "Address medication non-adherence — link to chronic medication supply, consider community health worker/clinic support given missed refill was the key precipitant",
+      "Diabetes education for patient and family regarding sick-day rules and warning signs of decompensation",
+      "Treat pneumonia fully per SA STG with appropriate antibiotic course and monitor for resolution"
+    ],
+    "supportive": [
+      "Nutrition support and dietitian referral once oral intake safe",
+      "Involve family/daughter in adherence planning and glucose monitoring at home",
+      "Screen for underlying complications once stable: fundoscopy, foot assessment, urine ACR, lipogram",
+      "Physiotherapy/mobility support given prolonged bed rest risk in an elderly patient"
+    ],
+    "followUp": [
+      "Diabetes clinic follow-up within 1-2 weeks post-discharge to reassess regimen and adherence",
+      "Repeat renal function to confirm resolution of AKI",
+      "Annual retinal screening and foot risk stratification if not recently done",
+      "Reinforce sick-day management rules — never stop medication outright, seek care early with reduced intake or illness",
+      "TB symptom screen given cough at presentation — arrange sputum GeneXpert if cough persists after pneumonia treatment"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-characterise",
+      "phase": "history",
+      "item": "Characterises the presentation: tempo (days-weeks), osmotic symptoms preceding admission, and how the patient came to present via decompensation/confusion rather than routine follow-up",
+      "answer": "Gradual polyuria/polydipsia over 1-2 weeks culminating in confusion and reduced intake over the last 2-3 days",
+      "why": "Distinguishes an acute crisis from an incidental glucose finding and frames the case within the symptom-to-crisis framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ketosis-symptoms",
+      "phase": "history",
+      "item": "Screens for ketosis symptoms (nausea, vomiting, abdominal pain, rapid breathing) to help distinguish HHS from DKA at the bedside",
+      "answer": "No vomiting, no abdominal pain, no rapid/laboured breathing reported",
+      "why": "Absence of ketotic symptoms alongside the biochemistry supports HHS over DKA as the working diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-precipitant",
+      "phase": "history",
+      "item": "Actively hunts for a precipitant — infection, medication non-adherence, new illness",
+      "answer": "Cough and fever for a week (pneumonia) plus 3 weeks off his diabetes tablets",
+      "why": "HHS is almost always precipitated by infection, non-adherence, or new illness; identifying and treating the precipitant is essential to recovery",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-dm-history",
+      "phase": "history",
+      "item": "Establishes diabetes history: known duration, type, prior control, current medications",
+      "answer": "12-year type 2 diabetic on metformin and gliclazide, HbA1c ~9.5% previously, ran out of tablets 3 weeks ago",
+      "why": "Confirms background type 2 diabetes and clarifies why decompensation occurred (non-adherence)",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-comorbid-screen",
+      "phase": "history",
+      "item": "Screens for comorbidities and secondary contributors: hypertension, other medications (thiazides), HIV status, TB symptoms",
+      "answer": "Hypertensive on hydrochlorothiazide (can worsen glycaemic control/dehydration); HIV never tested; cough raises TB concern",
+      "why": "KZN practice mandates HIV/TB cross-screening in any diabetic presentation, and identifies drugs contributing to dehydration/hyperglycaemia",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-hydration",
+      "phase": "examination",
+      "item": "Assesses hydration status and haemodynamic stability (mucous membranes, skin turgor, capillary refill, postural/supine vitals)",
+      "answer": "Dry mucous membranes, reduced skin turgor, tachycardic, hypotensive, delayed capillary refill — profound dehydration",
+      "why": "Degree of dehydration guides fluid resuscitation volume and rate, the cornerstone of initial HHS management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-neuro",
+      "phase": "examination",
+      "item": "Performs a focused neurological assessment including GCS and screens for focal deficit to exclude an alternative cause of altered mental status",
+      "answer": "GCS 12/15, no focal neurological deficit, no meningism",
+      "why": "Confirms hyperosmolality as the likely cause of confusion and excludes stroke/meningitis as competing differentials",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-source",
+      "phase": "examination",
+      "item": "Examines for a source of infection/precipitant (chest, abdomen, urine, skin/feet)",
+      "answer": "Right basal crackles and dullness consistent with pneumonia; no abdominal tenderness; feet without active ulceration",
+      "why": "Localises the infective precipitant driving decompensation and screens for diabetic foot sepsis as an alternative source",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing HHS from DKA, sepsis-alone delirium, and stroke, with reasoning linked to glucose, ketones, pH, and osmolality",
+      "answer": null,
+      "why": "Core diagnostic reasoning step of the framework — HHS is a diagnosis of exclusion/pattern-recognition against its closest mimics",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-confirm",
+      "phase": "investigations",
+      "item": "Requests the confirmatory panel: glucose, calculated serum osmolality, blood ketones, venous blood gas/bicarbonate, U&E",
+      "answer": "Glucose 42.8 mmol/L, osmolality 356 mOsm/kg, ketones 0.4 mmol/L, pH 7.34/HCO3 20, Na+ 152, K+ 5.1, urea 22, creatinine 210",
+      "why": "This panel is what defines HHS (severe hyperglycaemia + hyperosmolality + minimal ketosis/acidosis) versus DKA",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-precipitant",
+      "phase": "investigations",
+      "item": "Investigates for the precipitant: chest X-ray, FBC/CRP, cultures, HIV test",
+      "answer": "CXR shows right lower zone consolidation; WCC and CRP raised; HIV negative; cultures pending",
+      "why": "Identifying and treating the underlying precipitant is essential — HHS will not resolve or will recur if the trigger is missed",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-fluids",
+      "phase": "management",
+      "item": "Outlines cautious fluid resuscitation as first priority, with slow, staged correction to avoid cerebral oedema, before or alongside low-dose insulin",
+      "answer": "IV 0.9% saline to correct large fluid deficit gradually over 24-48h; low-dose insulin infusion once glucose plateaus or ketones significant",
+      "why": "HHS management differs critically from DKA — fluids come first and correction must be slower given the risk of rapid osmotic shifts in elderly patients",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-monitoring",
+      "phase": "management",
+      "item": "Describes monitoring plan: hourly glucose/neuro observations, electrolyte (especially potassium) monitoring, VTE prophylaxis",
+      "answer": "Hourly GCS and glucose, 2-hourly electrolytes, potassium replacement as needed, VTE prophylaxis given high thrombosis risk in HHS",
+      "why": "HHS carries high morbidity/mortality from cerebral oedema, arrhythmia from potassium shifts, and thrombosis if unmonitored",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-followup",
+      "phase": "management",
+      "item": "Plans definitive/follow-up care: treat pneumonia fully, address medication non-adherence, arrange diabetes clinic follow-up and complication screening",
+      "answer": "Complete antibiotic course, restart oral agents once renal function recovers, link to chronic medication supply, diabetes clinic review in 1-2 weeks",
+      "why": "Prevents recurrence by addressing both the precipitant and the root cause (non-adherence) with structured follow-up",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 13,
+    "management": 15
+  }
+}

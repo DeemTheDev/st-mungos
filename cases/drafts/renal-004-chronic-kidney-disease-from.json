@@ -1,0 +1,712 @@
+{
+  "id": "renal-004-chronic-kidney-disease-from",
+  "version": 1,
+  "discipline": "renal",
+  "diagnosis": "Chronic kidney disease from hypertension and diabetes",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient's renal impairment - what is your differential and how do you localise the cause?",
+      "modelAnswer": "First confirm chronicity using the old creatinine values (140→180→410 over 2 years) rather than treating this as new AKI. Exclude post-renal obstruction with a bladder scan and ultrasound - both normal here. Assess volume status clinically, which shows overload. Then use urine dipstick/microscopy to localise: bland sediment with heavy proteinuria in a patient with 15 years of hypertension and 12 years of poorly controlled diabetes, plus small echogenic kidneys on ultrasound and hypertensive/diabetic retinopathy, points strongly to combined hypertensive nephrosclerosis and diabetic nephropathy as the primary chronic process. I would still screen for superimposed acute injury from the recent NSAID use and muthi enema, and exclude glomerulonephritis (no dysmorphic RBCs/casts), HIVAN (HIV negative, kidneys small not enlarged) and myeloma (screen negative) before settling on the diagnosis.",
+      "gradingNotes": "Full marks: mentions chronicity confirmation, obstruction exclusion, volume assessment, urine microscopy localisation, and ranked differential with correct reasoning. Partial credit for jumping straight to diagnosis without systematic localisation."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology of why this patient's kidneys are small and echogenic on ultrasound, and why this matters clinically.",
+      "modelAnswer": "Long-standing hypertension causes arteriolar hyalinosis and glomerulosclerosis (nephrosclerosis), while chronic hyperglycaemia causes glomerular hyperfiltration injury, mesangial expansion and glomerular basement membrane thickening (diabetic nephropathy). Both processes lead to progressive nephron loss, tubulointerstitial fibrosis and scarring, which manifests as reduced renal size and increased echogenicity with loss of corticomedullary differentiation on ultrasound. This matters because small kidneys confirm chronic, largely irreversible disease - distinguishing it from acute kidney injury where kidneys are typically normal or enlarged - and it also affects decisions like biopsy safety (relatively contraindicated in small kidneys) and prognosis.",
+      "gradingNotes": "Wants pathophysiological mechanism (arteriolosclerosis, hyperfiltration injury, fibrosis) plus clinical significance (chronicity marker, biopsy caveat), not just restating 'the kidneys are scarred.'"
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "She mentions she's been taking ibuprofen and a traditional herbal enema. Why are you specifically worried about this combination in the context of her existing medications?",
+      "modelAnswer": "She is on enalapril (an ACE-inhibitor) and likely has diuretic-like volume depletion from her declining renal function and possibly a diuretic on her chart - combined with the NSAID, this creates the classic 'triple whammy': NSAIDs block afferent arteriolar vasodilation (prostaglandin-mediated) while ACE-inhibitors block efferent arteriolar vasoconstriction (angiotensin II-mediated), both of which are compensatory mechanisms that maintain glomerular filtration pressure when renal perfusion is already compromised by chronic vascular disease. Removing both simultaneously in a volume-depleted or CKD state precipitates a predictable, preventable acute decline in GFR. The muthi enema adds further risk of direct nephrotoxicity and volume/electrolyte depletion, both well-documented causes of AKI-on-CKD in this region.",
+      "gradingNotes": "Must articulate the triple-whammy mechanism specifically (afferent vs efferent arteriolar effects) and connect it to this patient's regimen, plus recognise muthi nephrotoxicity as an additional local risk factor."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Recite the indications for urgent renal replacement therapy and tell me whether this patient meets any of them today.",
+      "modelAnswer": "The mnemonic is AEIOU: refractory Acidosis, refractory hyperkalaemia (Electrolytes), dialysable Intoxication/overdose, refractory pulmonary Overload, and Uraemic complications such as encephalopathy, pericarditis or bleeding. Today she has bicarbonate 17 (mild acidosis, not refractory), potassium 5.6 (mild hyperkalaemia, no ECG changes, manageable medically for now), signs of volume overload with crackles and effusions but not yet refractory to diuretics, and no encephalopathy, pericardial rub or bleeding. So she does not meet urgent dialysis criteria today, but she is CKD stage 4 approaching stage 5 and needs nephrology referral for RRT planning and access creation before she becomes an emergency.",
+      "gradingNotes": "Must recite AEIOU correctly and apply each criterion to this specific patient's results, distinguishing 'needs dialysis today' from 'needs dialysis planning soon.'"
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "AKI vs CKD work-up applied to a patient found to have renal impairment: confirm chronicity (old creatinine, imaging), exclude reversible/post-renal causes, assess volume status, dipstick/microscopy urine, take drug history, localise cause, stage severity, plan RRT-readiness and follow-up",
+  "patient": {
+    "name": "Thandiwe Mthembu",
+    "age": 58,
+    "sex": "F",
+    "occupation": "retired domestic worker, now grant-dependent",
+    "personality": "soft-spoken, stoic, tends to underplay her swelling and breathlessness, proud of 'managing' her own tablets",
+    "openingLine": "Doctor, my legs are so swollen now I can't even fit my shoes, and I feel so tired all the time."
+  },
+  "presentingComplaint": "progressive leg swelling, fatigue and reduced urine output over 3 months in a patient with known long-standing hypertension and diabetes",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Leg swelling started about 3 months ago, gradually creeping up from ankles to knees, now also has some puffiness around the eyes in the morning",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-urine-vol",
+      "fact": "Urine output has reduced - she used to pass urine often, now goes less frequently and in smaller amounts; no complete anuria",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine output",
+        "passing urine",
+        "wee",
+        "pee",
+        "urinate",
+        "how much urine",
+        "anuria",
+        "not urinating",
+        "urine amount",
+        "urine",
+        "output",
+        "passing",
+        "not",
+        "urinating",
+        "amount"
+      ]
+    },
+    {
+      "id": "hx-foam",
+      "fact": "Has noticed her urine looks 'foamy' or 'bubbly' in the toilet bowl for several months",
+      "disclosure": "onAsk",
+      "triggers": [
+        "foamy",
+        "bubbly",
+        "frothy",
+        "foam",
+        "protein",
+        "bubbles in urine",
+        "bubbles",
+        "urine"
+      ]
+    },
+    {
+      "id": "hx-fatigue",
+      "fact": "Profound tiredness and reduced energy for daily chores over the last 2-3 months, worse than before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tired",
+        "fatigue",
+        "energy",
+        "exhausted",
+        "weak",
+        "weakness",
+        "lethargy"
+      ]
+    },
+    {
+      "id": "hx-breathless",
+      "fact": "Gets short of breath walking to the outside toilet, and now sleeps propped up on two pillows because lying flat makes her breathless",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "pillows",
+        "lying flat",
+        "orthopnoea",
+        "sleep sitting up",
+        "breathless",
+        "short",
+        "lying",
+        "flat",
+        "sleep",
+        "sitting"
+      ]
+    },
+    {
+      "id": "hx-appetite",
+      "fact": "Poor appetite for the last month, feels nauseous most mornings, has vomited twice",
+      "disclosure": "onAsk",
+      "triggers": [
+        "appetite",
+        "eating",
+        "nausea",
+        "nauseous",
+        "vomit",
+        "sick",
+        "food"
+      ]
+    },
+    {
+      "id": "hx-itch",
+      "fact": "Complains of generalised itching, especially at night, for the past few weeks",
+      "disclosure": "onAsk",
+      "triggers": [
+        "itch",
+        "itchy",
+        "scratching",
+        "skin itch",
+        "pruritus",
+        "skin"
+      ]
+    },
+    {
+      "id": "hx-htn-history",
+      "fact": "Diagnosed with high blood pressure about 15 years ago; admits she often runs out of her tablets and misses clinic visits because of transport costs from Nongoma",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "high blood pressure",
+        "hypertension",
+        "pressure tablets",
+        "bp history",
+        "how long high pressure",
+        "blood",
+        "pressure",
+        "high",
+        "tablets",
+        "history",
+        "long"
+      ]
+    },
+    {
+      "id": "hx-dm-history",
+      "fact": "Diagnosed with 'sugar sickness' (type 2 diabetes) about 12 years ago; on metformin and glibenclamide, control has been poor with several HbA1c readings 'in the high numbers' according to her clinic card",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "sugar sickness",
+        "blood sugar",
+        "diabetic",
+        "glucose",
+        "hba1c",
+        "sickness",
+        "blood"
+      ]
+    },
+    {
+      "id": "hx-old-creat",
+      "fact": "Her clinic card shows a creatinine of 180 µmol/L about 8 months ago, and one from 2 years ago around 140 µmol/L - a gradual rise over years, not a sudden change",
+      "disclosure": "onAsk",
+      "triggers": [
+        "old creatinine",
+        "previous creatinine",
+        "baseline",
+        "clinic card",
+        "past results",
+        "kidney function before",
+        "history of kidney",
+        "previous kidney test",
+        "old",
+        "creatinine",
+        "previous",
+        "clinic",
+        "card",
+        "past",
+        "results",
+        "kidney",
+        "function",
+        "before",
+        "history",
+        "test"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes amlodipine and enalapril for pressure, metformin and glibenclamide for sugar; recently started ibuprofen bought over the counter for knee pain, taking it most days for the last month",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "drugs",
+        "taking anything",
+        "enalapril",
+        "amlodipine",
+        "metformin",
+        "ibuprofen",
+        "nsaid",
+        "painkiller",
+        "treatment",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-muthi",
+      "fact": "Also been taking a traditional herbal enema ('isihlambezo') given by a neighbour for 'cleaning the blood' over the past 2 months",
+      "disclosure": "onAsk",
+      "triggers": [
+        "muthi",
+        "traditional medicine",
+        "herbal",
+        "enema",
+        "isihlambezo",
+        "sangoma",
+        "inyanga",
+        "traditional healer",
+        "herbs",
+        "traditional",
+        "medicine",
+        "healer"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives alone in a rural homestead near Nongoma, three children live in Durban, relies on her old-age grant; long distance and cost to reach clinic for follow-up",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "live",
+        "home",
+        "house",
+        "family support",
+        "children",
+        "grant",
+        "transport",
+        "distance",
+        "clinic access",
+        "family",
+        "support",
+        "clinic",
+        "access"
+      ]
+    },
+    {
+      "id": "hx-smoke-alc",
+      "fact": "Never smoked; drinks alcohol occasionally at family gatherings, no regular use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "tobacco"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Mother died of 'kidney trouble' in her 60s; father had a stroke; one sister also has sugar sickness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "sister",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-obstructive",
+      "fact": "No haematuria, no colicky loin pain, no difficulty starting or stopping urine stream, no known pelvic mass or abnormal vaginal bleeding",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood in urine",
+        "haematuria",
+        "loin pain",
+        "flank pain",
+        "stream",
+        "hesitancy",
+        "pelvic",
+        "vaginal bleeding",
+        "obstruction",
+        "stones",
+        "blood",
+        "urine",
+        "loin",
+        "pain",
+        "flank",
+        "vaginal",
+        "bleeding"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative two years ago at the clinic",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No fever, no joint pains, no rash, no recent infections, no chest pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "joint pain",
+        "rash",
+        "infection",
+        "chest pain",
+        "other symptoms",
+        "anything else",
+        "systemic",
+        "joint",
+        "pain",
+        "chest",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Chronically unwell-looking elderly woman, pale conjunctivae, mild bilateral pitting oedema to mid-shin, periorbital puffiness, scratch marks on forearms from itching, no clubbing, no cyanosis",
+    "vitals": {
+      "hr": 92,
+      "bp": "178/104",
+      "rr": 22,
+      "temp": 36.6,
+      "spo2": "96% on room air",
+      "bmi": 27
+    },
+    "respiratory": "Bibasal fine crackles on auscultation, reduced air entry at both lung bases consistent with small pleural effusions, no wheeze",
+    "cardio": "Displaced apex beat (left ventricular hypertrophy), JVP raised 4cm, soft systolic flow murmur, no pericardial rub",
+    "abdo": "Soft, non-tender, no palpable masses, no palpable bladder, no hepatosplenomegaly, no ascites",
+    "neuro": "Alert and oriented, no asterixis, no focal deficits, reduced vibration sense in both feet (peripheral neuropathy consistent with diabetes)",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Urea & electrolytes/creatinine",
+      "result": "Creatinine 410 µmol/L (baseline 140-180 µmol/L over 2 years), urea 22 mmol/L, potassium 5.6 mmol/L, bicarbonate 17 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Renal tract ultrasound",
+      "result": "Bilateral small, echogenic kidneys with reduced corticomedullary differentiation (right 8.2cm, left 8.0cm), no hydronephrosis, no obstruction",
+      "key": true
+    },
+    {
+      "name": "Urine dipstick and microscopy",
+      "result": "Protein 3+, no blood, no leucocytes/nitrites; microscopy shows no cellular casts, no dysmorphic red cells - bland sediment consistent with chronic nephrosclerosis",
+      "key": true
+    },
+    {
+      "name": "Urine protein:creatinine ratio (uPCR)",
+      "result": "310 mg/mmol (nephrotic-range proteinuria)",
+      "key": true
+    },
+    {
+      "name": "HbA1c",
+      "result": "9.8% (poor long-term glycaemic control)",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 8.9 g/dL normocytic normochromic (anaemia of CKD), WCC 6.8, platelets 240",
+      "key": false
+    },
+    {
+      "name": "Bladder scan",
+      "result": "Post-void residual 20 mL - excludes obstruction",
+      "key": true
+    },
+    {
+      "name": "Calcium, phosphate, PTH",
+      "result": "Corrected calcium 2.05 mmol/L (low-normal), phosphate 1.9 mmol/L (raised), PTH 210 pg/mL (elevated, secondary hyperparathyroidism)",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (repeat, consistent with prior)",
+      "key": false
+    },
+    {
+      "name": "Serum/urine electrophoresis and free light chains",
+      "result": "No monoclonal band, normal free light chain ratio - myeloma screen negative",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Left ventricular hypertrophy with strain pattern, no peaked T waves despite K 5.6",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly, bilateral small pleural effusions, upper lobe venous diversion consistent with early pulmonary oedema",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Chronic kidney disease secondary to hypertensive nephrosclerosis and diabetic nephropathy",
+      "rank": 1,
+      "for": [
+        "15-year history of poorly controlled hypertension",
+        "12-year history of poorly controlled diabetes with HbA1c 9.8%",
+        "gradual creatinine rise over 2 years (140→180→410)",
+        "bilateral small echogenic kidneys on ultrasound",
+        "bland urine sediment with heavy proteinuria",
+        "hypertensive and diabetic retinopathy on fundoscopy",
+        "peripheral neuropathy"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Acute-on-chronic kidney injury (superimposed AKI from NSAID and/or muthi nephrotoxicity, or triple-whammy effect)",
+      "rank": 2,
+      "for": [
+        "recent ibuprofen use for 1 month",
+        "concurrent enalapril and likely diuretic effect creating triple-whammy risk",
+        "recent traditional herbal enema use",
+        "creatinine rise appears somewhat accelerated over recent months"
+      ],
+      "against": [
+        "ultrasound shows small kidneys typical of established chronic disease, not acute insult",
+        "no eosinophils/casts suggestive of interstitial nephritis on microscopy",
+        "gradual trajectory over years fits chronicity better than acute superimposed injury alone"
+      ]
+    },
+    {
+      "dx": "Glomerulonephritis (primary or secondary, e.g. lupus nephritis, IgA nephropathy)",
+      "rank": 3,
+      "for": [
+        "nephrotic-range proteinuria",
+        "oedema and hypertension"
+      ],
+      "against": [
+        "bland urine sediment with no dysmorphic red cells or red cell casts",
+        "no systemic features (rash, joint pains, oral ulcers)",
+        "clear long-standing hypertension/diabetes history explains the picture better"
+      ]
+    },
+    {
+      "dx": "HIV-associated nephropathy (HIVAN)",
+      "rank": 4,
+      "for": [
+        "nephrotic-range proteinuria common presentation in KZN"
+      ],
+      "against": [
+        "HIV test negative on two occasions",
+        "ultrasound typically shows large echogenic kidneys in HIVAN, not small kidneys as seen here"
+      ]
+    },
+    {
+      "dx": "Obstructive uropathy (e.g. from pelvic/cervical malignancy)",
+      "rank": 5,
+      "for": [
+        "reduced urine output could suggest obstruction"
+      ],
+      "against": [
+        "no hydronephrosis on ultrasound",
+        "normal post-void residual on bladder scan",
+        "no loin pain, haematuria or pelvic mass on history/exam"
+      ]
+    }
+  ],
+  "pathophys": {
+    "peripheral and periorbital oedema": "Reduced GFR causes sodium and water retention; nephrotic-range proteinuria lowers plasma oncotic pressure, favouring fluid shift into the interstitium; hypertension and heart strain compound venous pressure",
+    "fatigue": "Reduced erythropoietin production by diseased peritubular fibroblasts causes anaemia of CKD, compounded by uraemic toxin accumulation impairing cellular metabolism",
+    "orthopnoea and breathlessness": "Sodium/water retention and left ventricular hypertrophy from chronic hypertension reduce compliance and reserve, causing pulmonary venous congestion that worsens when lying flat due to increased venous return",
+    "pruritus": "Retained uraemic toxins, secondary hyperparathyroidism and calcium-phosphate deposition in the skin stimulate cutaneous nerve endings",
+    "foamy urine": "Glomerular basement membrane damage from chronic hyperfiltration injury (diabetic nephropathy) and hypertensive arteriolosclerosis increases permeability to albumin, which reduces urine surface tension and produces persistent foam",
+    "small echogenic kidneys on ultrasound": "Long-standing nephron loss from glomerulosclerosis and tubulointerstitial fibrosis leads to progressive parenchymal scarring, loss of corticomedullary differentiation and reduction in renal size — the classic ultrasound signature of chronicity",
+    "secondary hyperparathyroidism (raised PTH, low calcium, high phosphate)": "Failing kidneys cannot excrete phosphate or activate vitamin D (1-alpha-hydroxylation), causing hyperphosphataemia and hypocalcaemia, which drive compensatory parathyroid hormone secretion — the start of CKD-mineral bone disease"
+  },
+  "staging": "CKD stage G4 (eGFR ~12 mL/min/1.73m² using MDRD, note eGFR equations less reliable at extremes) A3 (nephrotic-range albuminuria); NYHA class II-III symptoms from volume overload; poorly controlled T2DM (HbA1c 9.8%) and hypertension (178/104)",
+  "management": {
+    "immediate": [
+      "Stop nephrotoxic ibuprofen immediately and counsel against further NSAID use",
+      "Stop the traditional herbal enema and counsel sensitively about muthi nephrotoxicity risk",
+      "Assess and manage volume overload — cautious diuresis (furosemide) given pulmonary oedema signs, strict fluid balance",
+      "Check ECG and treat hyperkalaemia if it worsens (calcium gluconate, insulin-dextrose, salbutamol nebs) per SA EML/Adult STGs",
+      "Withhold/dose-adjust enalapril temporarily if creatinine rising acutely, reassess after volume status addressed"
+    ],
+    "definitive": [
+      "Optimise blood pressure control per CKD target (<130/80) with renally-appropriate agents, continue ACE-inhibitor at reduced dose once stable given proteinuria benefit, monitor potassium and creatinine closely after any dose change",
+      "Optimise glycaemic control with renally-adjusted regimen (avoid/reduce glibenclamide due to hypoglycaemia risk in CKD; consider insulin or renally-safe agents; stop metformin if eGFR <30)",
+      "Refer to nephrology for CKD stage 4 management and RRT planning/education (haemodialysis vs peritoneal dialysis vs conservative care discussion)",
+      "Start erythropoiesis-stimulating agent and iron replacement for renal anaemia if indicated",
+      "Manage CKD-mineral bone disease: phosphate binders, active vitamin D analogue, dietary phosphate restriction"
+    ],
+    "supportive": [
+      "Dietary counselling — salt restriction, protein moderation, phosphate/potassium awareness",
+      "Nutritional support given poor appetite",
+      "Vaccination status review (hepatitis B given future dialysis access risk)",
+      "Arrange transport/social support given rural distance from Nongoma to clinic to prevent missed follow-up",
+      "Educate on avoiding NSAIDs and unregulated traditional remedies long-term"
+    ],
+    "followUp": [
+      "Recheck renal function, electrolytes and blood pressure within 1-2 weeks after diuretic initiation and NSAID cessation",
+      "Formal nephrology follow-up for CKD stage 4/5 trajectory and dialysis-access planning (AV fistula referral if progressing)",
+      "Medication reconciliation at every visit — this is a commonly missed discharge step",
+      "Regular HbA1c, lipid profile, and cardiovascular risk review",
+      "Home-based or clinic-based BP and glucose monitoring with community health worker support"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, explains purpose of consultation, gains consent",
+      "answer": null,
+      "why": "Professionalism and communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-baseline-creat",
+      "phase": "history",
+      "item": "Actively seeks an old/baseline creatinine value or clinic card history to distinguish AKI from CKD",
+      "answer": "Clinic card shows creatinine 140 µmol/L 2 years ago, 180 µmol/L 8 months ago, now 410 µmol/L - gradual chronic rise",
+      "why": "Old creatinine is the single most useful discriminator between AKI and CKD",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-htn-dm-history",
+      "phase": "history",
+      "item": "Establishes duration and control of hypertension and diabetes, including adherence and clinic attendance",
+      "answer": "15 years hypertension, 12 years diabetes, poor control, erratic tablet supply and missed follow-up due to transport cost",
+      "why": "Identifies the two driving chronic diseases for this case's diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-volume-symptoms",
+      "phase": "history",
+      "item": "Screens for volume overload symptoms (oedema, orthopnoea, reduced urine output) and uraemic symptoms (itch, nausea, fatigue)",
+      "answer": "Progressive leg/periorbital oedema, orthopnoea on 2 pillows, reduced urine volume, pruritus, nausea, fatigue",
+      "why": "Defines clinical syndrome and urgency of fluid management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-drug-muthi-history",
+      "phase": "history",
+      "item": "Takes full drug history including OTC NSAIDs, ACEi/diuretic combination, and specifically asks about traditional medicine/muthi/enemas",
+      "answer": "Recent ibuprofen use, on enalapril, and traditional herbal enema (isihlambezo) for 2 months",
+      "why": "Identifies reversible/superimposed nephrotoxic contributors and the classic KZN muthi nephrotoxicity and triple-whammy traps",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-obstructive-screen",
+      "phase": "history",
+      "item": "Screens for obstructive/post-renal symptoms (stream, haematuria, loin pain, pelvic mass/bleeding)",
+      "answer": "No obstructive symptoms, no haematuria, no loin pain, no pelvic mass/bleeding",
+      "why": "Post-renal obstruction must never be missed - even when history points to chronicity, must be actively excluded",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-volume-exam",
+      "phase": "examination",
+      "item": "Performs focused volume status examination (JVP, lung bases, oedema, BP) before deciding fluid management",
+      "answer": "Raised JVP, bibasal crackles, pitting oedema, BP 178/104 - fluid overloaded and hypertensive",
+      "why": "Volume assessment is the pivotal exam step dictating fluid management direction",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-bladder-scan",
+      "phase": "examination",
+      "item": "Performs or requests bladder scan to exclude obstruction",
+      "answer": "Post-void residual 20mL, excludes obstruction",
+      "why": "30-second bedside test that must never be omitted in any renal impairment work-up",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-uraemic-signs",
+      "phase": "examination",
+      "item": "Examines for signs of uraemia (asterixis, pericardial rub) and end-organ damage (fundoscopy for retinopathy, peripheral neuropathy)",
+      "answer": "No asterixis or rub; retinopathy and peripheral neuropathy present, consistent with long-standing hypertension/diabetes",
+      "why": "Confirms chronic end-organ damage pattern and screens for dialysis-urgency signs",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers ranked differential distinguishing chronic hypertensive/diabetic nephropathy from superimposed AKI, glomerulonephritis, HIVAN and obstruction, with reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning with anatomical localisation is the exam philosophy",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-urine-microscopy",
+      "phase": "investigations",
+      "item": "Requests and correctly interprets urine dipstick/microscopy (bland sediment vs casts) to support chronic nephrosclerosis over active glomerular disease",
+      "answer": "3+ protein, bland sediment, no cellular casts or dysmorphic RBCs - supports chronic nephrosclerosis rather than active GN",
+      "why": "Urine microscopy table is exam-central for localising renal pathology",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-us-kidneys",
+      "phase": "investigations",
+      "item": "Requests renal tract ultrasound to assess kidney size/echogenicity and confirm chronicity, excluding obstruction",
+      "answer": "Bilateral small echogenic kidneys, no hydronephrosis",
+      "why": "Kidney size on ultrasound is a key chronicity marker; also excludes obstruction",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-myeloma-screen",
+      "phase": "investigations",
+      "item": "Considers/sends myeloma screen (serum/urine electrophoresis, free light chains) given unexplained renal impairment in a patient over 40",
+      "answer": "Electrophoresis and free light chains sent, negative for monoclonal disease",
+      "why": "Explicitly flagged as a mandatory screen in any unexplained AKI/CKD over 40 years",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-egfr-caveat",
+      "phase": "investigations",
+      "item": "Recognises that eGFR/creatinine trend (not a single calculated eGFR) is used to judge severity, and correctly stages CKD",
+      "answer": "Trended creatinine over 2 years shows chronic progressive decline; staged as CKD G4 A3",
+      "why": "eGFR equations and single creatinine values can mislead; trend and staging emphasised repeatedly",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-plan",
+      "phase": "management",
+      "item": "Outlines immediate management (stop NSAID/muthi, treat volume overload, correct hyperkalaemia if present) and definitive management (BP/glucose optimisation, nephrology referral, RRT planning)",
+      "answer": null,
+      "why": "Comprehensive stepwise management per SA guidelines from immediate stabilisation through to dialysis planning",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-followup",
+      "phase": "management",
+      "item": "Explicitly plans follow-up: renal function/BP recheck, medication reconciliation, nephrology referral, and addresses transport/access barriers",
+      "answer": null,
+      "why": "Discharge follow-up and medication review is flagged as one of the commonest omissions",
+      "weight": 2,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

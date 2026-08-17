@@ -1,0 +1,675 @@
+{
+  "id": "resp-008-multidrug-resistant-pulmonary-tuberculosis",
+  "version": 1,
+  "discipline": "resp",
+  "diagnosis": "Multidrug-resistant pulmonary tuberculosis",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "history",
+      "question": "Given that this patient completed TB treatment 10 months ago and is now back with similar symptoms, walk me through your differential diagnosis and how his treatment history changes your thinking.",
+      "modelAnswer": "The top differential must be drug-resistant TB relapse, given completed prior treatment with reported adherence gaps and muti use — both classic drivers of acquired resistance. Simple drug-susceptible relapse is possible but must be excluded by resistance testing, not assumed. HIV-associated bacterial pneumonia is less likely given the indolent 8-week course and marked constitutional symptoms. Post-TB bronchiectasis with secondary infection is possible given prior lung damage but doesn't explain active cavitation or the systemic symptoms as well. Malignancy is lower probability but relevant given HIV and weight loss. Crucially, any patient with a history of prior TB treatment must have GeneXpert with explicit assessment of rifampicin resistance sent as a priority, since retreatment cases have a substantially higher pre-test probability of drug resistance than new cases.",
+      "gradingNotes": "Full marks: explicitly identifies previous treatment as the key driver of resistance risk and ranks DR-TB first with clear reasoning, not just 'TB' undifferentiated. Partial: mentions TB without stratifying resistance risk."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism by which this patient's lung has developed cavitation again despite completing treatment previously.",
+      "modelAnswer": "Under sub-therapeutic drug pressure — from missed doses and possible interference from concurrent traditional muti use affecting absorption or metabolism — mycobacterial subpopulations with pre-existing or acquired resistance mutations (in this case a katG mutation conferring isoniazid resistance, plus rifampicin resistance) survive and proliferate while susceptible organisms are killed. This selects for a resistant bacterial population that continues to cause progressive caseous necrosis and cavity formation, particularly in the oxygen-rich, poorly-lymphatic-drained upper lobes.",
+      "gradingNotes": "Wants the selection-pressure mechanism (incomplete killing selects resistant subpopulations) linked to specific patient risk factors (adherence, muti), not just 'the TB came back'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "The GeneXpert result shows rifampicin resistance detected. What does this mean practically, and what would you do next while awaiting full drug susceptibility testing?",
+      "modelAnswer": "Rifampicin resistance on GeneXpert is used as a proxy for MDR-TB in South Africa because roughly 90% of rifampicin-resistant strains are also isoniazid-resistant. This mandates immediate referral to the DR-TB programme, airborne isolation, and initiation of an appropriate all-oral second-line regimen without waiting for full culture-based DST, though the LPA and culture DST should still be sent to confirm the resistance pattern (including fluoroquinolone susceptibility, which determines regimen eligibility) and to detect any additional resistance.",
+      "gradingNotes": "Wants the candidate to know that treatment is not delayed pending full DST, and that rifampicin resistance triggers immediate programmatic action and isolation."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "His HIV viral load comes back unsuppressed at 8400 copies/mL despite him being on ART. How does this affect your overall management plan?",
+      "modelAnswer": "Unsuppressed viral load on ART suggests poor adherence (consistent with his history) rather than necessarily resistance, though HIV drug resistance testing could be considered if adherence is confirmed to be good. Management requires intensified adherence counselling for both his ART and his new DR-TB regimen, ideally with a single treatment supporter coordinating both, careful review for drug-drug interactions between second-line TB drugs (e.g., bedaquiline) and his ART regimen, and closer clinical and virological follow-up. Poor immune control also increases his vulnerability to other opportunistic infections and worsens TB treatment outcomes, so this must be addressed in parallel, not sequentially.",
+      "gradingNotes": "Tests integration of HIV and DR-TB management — wants recognition of adherence as root cause, drug interaction awareness, and parallel rather than sequential care."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "chronic cough + constitutional symptoms with prior TB treatment history",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, slightly defensive about his previous treatment, worried about losing his job if admitted again",
+    "openingLine": "Doctor, this cough is back again, worse than before... I don't understand, I finished my TB tablets already."
+  },
+  "presentingComplaint": "8-week productive cough with weight loss, having previously completed TB treatment 10 months ago",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Cough began gradually about 8 weeks ago, initially mild, now constant and worsening",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-priortb",
+      "fact": "Completed a full 6-month course of first-line TB treatment (2HRZE/4HR) about 10 months ago at his local clinic, declared cured",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-sputum",
+      "fact": "Cough productive of thick yellow-green sputum, with blood streaking on and off for the past 2 weeks",
+      "disclosure": "onAsk",
+      "triggers": [
+        "sputum",
+        "phlegm",
+        "coughing up",
+        "blood",
+        "haemoptysis",
+        "wet cough",
+        "productive",
+        "mucus",
+        "spit",
+        "bringing up",
+        "anything up",
+        "coughing",
+        "wet",
+        "cough",
+        "bringing"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Drenching night sweats most nights for the past month, has had to change bedding",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat at night",
+        "wake up wet",
+        "drenched",
+        "soaking",
+        "sweaty",
+        "bedding",
+        "nightclothes",
+        "wet through",
+        "night",
+        "sweats",
+        "sweat",
+        "wake",
+        "wet",
+        "through"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost approximately 8 kg over 2 months, appetite poor, belt now on the tightest hole",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "clothes",
+        "appetite",
+        "eating",
+        "thinner",
+        "belt",
+        "losing weight",
+        "lost",
+        "losing"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Low-grade fevers most evenings, occasional chills, has not measured temperature at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "feverish"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Increasing shortness of breath, now breathless walking to the taxi rank which used to be easy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "exercise",
+        "walking",
+        "stairs",
+        "exertion",
+        "short of breath",
+        "out of breath",
+        "short",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "Mild right-sided chest discomfort, worse with deep breaths or coughing, no radiation",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "sore chest",
+        "pleuritic",
+        "ache",
+        "discomfort",
+        "chest",
+        "sore"
+      ]
+    },
+    {
+      "id": "hx-adherence",
+      "fact": "Admits he sometimes missed doses toward the end of his last course because he 'felt better' and was working night shifts; also used traditional muti alongside tablets for a few weeks",
+      "disclosure": "onAsk",
+      "triggers": [
+        "adherence",
+        "miss dose",
+        "missed",
+        "compliance",
+        "took tablets",
+        "finish treatment",
+        "muti",
+        "traditional medicine",
+        "herbs",
+        "stop early",
+        "default",
+        "miss",
+        "dose",
+        "took",
+        "tablets",
+        "finish",
+        "treatment",
+        "traditional",
+        "medicine",
+        "stop",
+        "early"
+      ]
+    },
+    {
+      "id": "hx-tb-contact",
+      "fact": "No known current household TB contacts, but he shared a room with two other men at a previous work hostel where TB was common",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "anyone sick",
+        "hostel",
+        "exposure",
+        "roommate",
+        "work colleagues",
+        "family",
+        "sick",
+        "anyone",
+        "work",
+        "colleagues"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV positive 2 years ago, on ART (TLD) since then, says he takes it 'most days' but has missed clinic visits recently due to work shifts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "art",
+        "antiretroviral",
+        "tld",
+        "cd4",
+        "viral load",
+        "positive",
+        "viral",
+        "load"
+      ]
+    },
+    {
+      "id": "hx-priorregimen",
+      "fact": "Cannot recall exact TB drug names from last time but remembers 'a lot of tablets, some red urine'; unsure if he was tested for resistance at diagnosis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "regimen",
+        "drugs",
+        "tablets",
+        "which medicine",
+        "red urine",
+        "rifampicin",
+        "previous treatment",
+        "last time",
+        "genexpert before",
+        "medicine",
+        "red",
+        "urine",
+        "previous",
+        "treatment",
+        "last",
+        "genexpert",
+        "before"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No other chronic illnesses, no diabetes, no previous hospital admissions besides TB treatment initiation",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "chronic",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Currently only on ART (TLD); no other regular medication; occasional paracetamol for fever",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "current drugs",
+        "taking",
+        "current",
+        "drugs"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 5 cigarettes a day for 10 years, drinks alcohol socially on weekends, lives alone in a rented backroom in Umlazi, works night shifts as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "job"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of TB or diabetes; father had hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No headache, no vomiting, no diarrhoea, no urinary symptoms, no skin rash, no joint pains",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "vomiting",
+        "diarrhoea",
+        "urine",
+        "urinary",
+        "rash",
+        "joint",
+        "other symptoms",
+        "anything else",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, chronically ill-looking man, visibly tired. Mild pallor. No oral thrush. No peripheral lymphadenopathy. No clubbing, no cyanosis. Speaks in full sentences but pauses to catch breath.",
+    "vitals": {
+      "hr": 102,
+      "bp": "104/66",
+      "rr": 24,
+      "temp": 38.1,
+      "spo2": "93% on room air",
+      "bmi": 17.8
+    },
+    "respiratory": "Trachea central. Reduced expansion on right side. Right upper and mid zone: dull to percussion with bronchial breathing and coarse crackles. Occasional crackles left upper zone also. No pleural rub.",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not raised.",
+    "abdo": "Soft, non-tender, no organomegaly.",
+    "neuro": "Alert, orientated, no focal deficit.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Sputum GeneXpert MTB/RIF Ultra",
+      "result": "MTB detected, rifampicin resistance DETECTED",
+      "key": true
+    },
+    {
+      "name": "Line probe assay (LPA) for isoniazid and second-line resistance",
+      "result": "katG mutation present (high-level isoniazid resistance); no fluoroquinolone resistance detected",
+      "key": true
+    },
+    {
+      "name": "Sputum culture and full drug susceptibility testing (DST)",
+      "result": "Pending — MGIT culture positive at 3 weeks, confirms rifampicin and isoniazid resistance (MDR-TB), fluoroquinolone-susceptible",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Bilateral upper lobe cavitating infiltrates, right greater than left, volume loss right upper lobe consistent with previous TB and new active cavitation",
+      "key": true
+    },
+    {
+      "name": "HIV viral load and CD4 count",
+      "result": "Viral load 8400 copies/mL (not suppressed), CD4 count 246 cells/µL — suggests suboptimal ART adherence",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.1 g/dL normocytic, WCC 9.8, Plt 480",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes and creatinine",
+      "result": "Normal — baseline needed before starting aminoglycoside/bedaquiline regimen",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Mildly elevated ALT 48 U/L, otherwise normal — baseline before hepatotoxic second-line drugs",
+      "key": false
+    },
+    {
+      "name": "ECG (baseline QTc)",
+      "result": "QTc 410 ms — baseline required before bedaquiline/clofazimine due to QT-prolongation risk",
+      "key": false
+    },
+    {
+      "name": "Random glucose",
+      "result": "5.1 mmol/L",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Multidrug-resistant pulmonary tuberculosis (relapse/reinfection with resistant strain)",
+      "rank": 1,
+      "for": [
+        "previous TB treatment 10 months ago",
+        "poor adherence toward end of last course",
+        "cough >2 weeks with constitutional symptoms",
+        "haemoptysis",
+        "cavitating bilateral upper lobe disease",
+        "HIV positive with unsuppressed viral load"
+      ],
+      "against": []
+    },
+    {
+      "dx": "TB relapse with drug-susceptible organism",
+      "rank": 2,
+      "for": [
+        "prior TB treatment",
+        "similar symptom pattern to before",
+        "radiological cavitation"
+      ],
+      "against": [
+        "GeneXpert confirms rifampicin resistance, which excludes simple drug-susceptible relapse"
+      ]
+    },
+    {
+      "dx": "HIV-associated bacterial pneumonia (non-resolving)",
+      "rank": 3,
+      "for": [
+        "fever",
+        "productive cough",
+        "tachypnoea and hypoxia"
+      ],
+      "against": [
+        "8-week indolent course rather than acute",
+        "profound weight loss and night sweats",
+        "cavitating radiology atypical for simple bacterial pneumonia"
+      ]
+    },
+    {
+      "dx": "Post-TB bronchiectasis with secondary bacterial infection",
+      "rank": 4,
+      "for": [
+        "prior TB treatment",
+        "chronic productive cough",
+        "haemoptysis"
+      ],
+      "against": [
+        "active cavitation and confirmed rifampicin resistance points to active resistant disease rather than purely structural post-TB lung damage"
+      ]
+    },
+    {
+      "dx": "Pulmonary Kaposi sarcoma or other HIV-associated malignancy",
+      "rank": 5,
+      "for": [
+        "HIV positive with low CD4",
+        "haemoptysis",
+        "weight loss"
+      ],
+      "against": [
+        "GeneXpert positive with rifampicin resistance is the unifying and confirmatory finding",
+        "no skin/mucosal KS lesions described"
+      ]
+    }
+  ],
+  "pathophys": {
+    "cough with haemoptysis": "Caseating granulomas and cavitation erode into the high-pressure bronchial arterial circulation supplying the lung parenchyma, causing brisk bleeding even from small cavities",
+    "night sweats and weight loss": "Mycobacterial antigen load drives macrophage release of TNF-alpha and IL-1, causing cytokine-mediated catabolism and hypothalamic temperature set-point dysregulation",
+    "bilateral upper lobe cavitation despite prior treatment": "Incomplete eradication of Mycobacterium tuberculosis under sub-therapeutic drug pressure (missed doses, possible muti interference with absorption) selects for resistant bacterial subpopulations, particularly against rifampicin and isoniazid, allowing progressive cavitary disease",
+    "dyspnoea on exertion": "Progressive destruction of functional lung parenchyma from bilateral cavitating disease reduces the surface area for gas exchange, causing ventilation-perfusion mismatch and increased work of breathing",
+    "low CD4 and unsuppressed viral load in a patient on ART": "Poor ART adherence allows ongoing HIV viral replication and progressive CD4 T-cell depletion, impairing granuloma formation and containment of mycobacterial infection, facilitating disease relapse and dissemination"
+  },
+  "staging": "WHO HIV clinical stage 3 (pulmonary TB, on ART with virological failure); Rifampicin-resistant/MDR-TB (isoniazid and rifampicin resistant), previously treated patient, fluoroquinolone-susceptible on LPA",
+  "management": {
+    "immediate": [
+      "Isolate in airborne infection precautions (single room, N95 for staff) given confirmed rifampicin resistance",
+      "Notify as a drug-resistant TB case (notifiable medical condition, separate DR-TB register)",
+      "Assess for hospital admission criteria (hypoxia, haemoptysis, ability to self-isolate at home)",
+      "Baseline investigations before starting second-line regimen: FBC, U&E, LFTs, ECG (QTc), audiometry if aminoglycoside considered"
+    ],
+    "definitive": [
+      "Start all-oral short/modified regimen per SA DR-TB guideline (e.g. bedaquiline + linezolid + fluoroquinolone-based regimen such as levofloxacin, plus clofazimine/cycloserine per resistance pattern) under DR-TB clinical team supervision",
+      "Confirm regimen choice using full first- and second-line DST once available",
+      "Repeat HIV viral load assessment and step up adherence counselling; consider adherence support and possible regimen switch discussion with HIV clinician if genotypic resistance suspected on repeat testing",
+      "Continue/optimise ART concurrently with DR-TB treatment, monitoring for overlapping toxicities and drug interactions (e.g. dolutegravir with bedaquiline)"
+    ],
+    "supportive": [
+      "Nutritional support and consider grant/social worker referral given wasting",
+      "Enhanced adherence counselling addressing prior default and muti use, treatment supporter allocation",
+      "Contact tracing for recent close contacts (workplace hostel, current living situation) with symptom screening",
+      "Monthly monitoring for drug toxicity: renal function, LFTs, ECG/QTc for QT-prolonging agents, audiometry and visual acuity depending on regimen",
+      "Psychosocial support — DR-TB treatment is long and stigmatising; screen for depression/anxiety"
+    ],
+    "followUp": [
+      "Monthly sputum smear/culture conversion monitoring throughout DR-TB treatment",
+      "Regular ECG monitoring while on bedaquiline/clofazimine",
+      "CD4 and viral load monitoring on ART, consider adherence-focused counselling or resistance testing if viral load remains unsuppressed",
+      "Treatment duration per current SA DR-TB guideline (typically 9-11 months for short all-oral regimen if eligible, longer if not) with DR-TB clinical team review"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport given sensitive treatment history",
+      "answer": null,
+      "why": "Professionalism / communication, especially important with a patient who may feel blamed for relapse",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-cough-characterise",
+      "phase": "history",
+      "item": "Characterises the cough fully: duration, sputum character, haemoptysis, progression",
+      "answer": "8 weeks, productive yellow-green sputum, blood streaking for 2 weeks, progressively worsening",
+      "why": "Cough >2 weeks mandates TB workup; characterising haemoptysis identifies a red flag",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-constitutional",
+      "phase": "history",
+      "item": "Screens constitutional symptoms: weight loss, night sweats, fever",
+      "answer": "8 kg weight loss, drenching night sweats, evening fevers",
+      "why": "Core TB symptom screen per framework",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-priortb-history",
+      "phase": "history",
+      "item": "Specifically asks about previous TB treatment history, when, regimen, and outcome",
+      "answer": "Completed first-line 2HRZE/4HR about 10 months ago, declared cured",
+      "why": "Previous TB treatment is the single strongest risk factor for drug-resistant TB and must directly trigger resistance testing",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-adherence",
+      "phase": "history",
+      "item": "Explores adherence to previous treatment, including any traditional/muti use",
+      "answer": "Missed doses toward end of course, used muti alongside tablets",
+      "why": "Poor adherence is a key mechanism for acquired drug resistance — directly informs pathophysiology and risk stratification",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-art",
+      "phase": "history",
+      "item": "Asks HIV status, ART regimen, adherence, and last CD4/viral load",
+      "answer": "HIV positive 2 years, on TLD, admits inconsistent adherence and missed clinic visits",
+      "why": "HIV and unsuppressed viral load worsen prognosis and affect regimen choice and monitoring",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-contact",
+      "phase": "history",
+      "item": "Asks about TB contacts (household, work, previous hostel)",
+      "answer": "No current household contacts, but shared hostel room previously where TB was common",
+      "why": "Identifies potential reinfection source and contact tracing targets",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-resp-exam",
+      "phase": "examination",
+      "item": "Performs a full, focused respiratory examination including vitals/SpO2, inspection, palpation, percussion, auscultation",
+      "answer": "SpO2 93%, RR24, right upper/mid zone dullness with bronchial breathing and crackles, reduced expansion right side",
+      "why": "Localises disease extent and quantifies severity/hypoxia per framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-red-flags",
+      "phase": "examination",
+      "item": "Explicitly screens for red flags: hypoxia, haemoptysis volume/severity, respiratory distress",
+      "answer": "SpO2 93% on room air, haemoptysis is streaking not massive, mild distress",
+      "why": "Red flag screening determines urgency of admission and isolation",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential explicitly considering drug-resistant TB given prior treatment, before committing to a diagnosis",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the exam philosophy; previous TB treatment must raise resistant TB specifically, not just 'TB relapse'",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-resistance",
+      "phase": "investigations",
+      "item": "Requests sputum GeneXpert Ultra (with explicit attention to rifampicin resistance result), line probe assay/culture DST, CXR, HIV viral load/CD4",
+      "answer": "GeneXpert: MTB detected, rifampicin resistance detected; LPA confirms isoniazid resistance too (MDR-TB)",
+      "why": "Confirmatory pathway per SA TB/DR-TB guidelines — rifampicin resistance result must be explicitly sought and reported",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-baseline-ix",
+      "phase": "investigations",
+      "item": "Orders baseline investigations required before starting second-line DR-TB drugs: FBC, renal function, LFTs, ECG/QTc",
+      "answer": "Baseline bloods and ECG obtained — QTc 410ms, mild ALT elevation",
+      "why": "Bedaquiline, clofazimine and other second-line agents carry cardiac/hepatic/renal toxicity risks requiring baseline and monitoring",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-isolation-notify",
+      "phase": "management",
+      "item": "Institutes airborne isolation precautions and notifies as a drug-resistant TB case",
+      "answer": null,
+      "why": "Infection control and mandatory notification are immediate priorities once rifampicin resistance is confirmed",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-regimen",
+      "phase": "management",
+      "item": "Outlines appropriate all-oral second-line DR-TB regimen and coordination with the DR-TB programme/ART continuation",
+      "answer": null,
+      "why": "Management must follow current SA DR-TB guideline framework, not standard first-line TB treatment",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-contact-adherence",
+      "phase": "management",
+      "item": "Addresses contact tracing, adherence support/treatment supporter, and psychosocial factors given prior default",
+      "answer": null,
+      "why": "Public health responsibility and relapse prevention given documented adherence problems",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 10,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 15
+  }
+}

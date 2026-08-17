@@ -1,0 +1,700 @@
+{
+  "id": "renal-003-hiv-associated-nephropathy-with",
+  "version": 1,
+  "discipline": "renal",
+  "diagnosis": "HIV-associated nephropathy with nephrotic syndrome",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this man's nephrotic syndrome and explain how the ultrasound findings help you rank them.",
+      "modelAnswer": "In a young HIV-positive South African man with heavy proteinuria, top of the list is HIVAN/HIV immune-complex disease, supported by his low CD4, unsuppressed viral load, and crucially the large echogenic kidneys — HIVAN causes acute inflammatory enlargement rather than the chronic shrinkage seen in hypertensive nephrosclerosis or long-standing diabetic nephropathy. Hypertensive nephrosclerosis is less likely given only recent-onset elevated BP and enlarged rather than small kidneys. Diabetic kidney disease is excluded by normal HbA1c/glucose. Primary glomerulonephritis (e.g. membranous, lupus nephritis) remains possible but is less likely given normal ANA/complement and the strong HIV risk profile pointing to a more likely unifying diagnosis.",
+      "gradingNotes": "Full marks: ranked list with reasoning tied to specific findings (CD4/VL, kidney size/echogenicity, normal glucose/ANA). Partial credit for an unranked or unreasoned list."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology of why this patient's kidneys are enlarged rather than small, given he likely has chronic kidney disease.",
+      "modelAnswer": "HIVAN is a proliferative, inflammatory glomerular and tubulointerstitial process — HIV gene products directly infect podocytes and tubular epithelial cells, causing podocyte dedifferentiation and collapse of glomerular capillary loops (collapsing FSGS), alongside mesangial hypercellularity and characteristic microcystic tubular dilatation with interstitial inflammatory infiltration. This active inflammatory process causes the kidneys to swell rather than scar down, unlike the slow fibrotic shrinkage of hypertensive nephrosclerosis or long-standing diabetic nephropathy.",
+      "gradingNotes": "Wants mechanism (podocyte HIV infection, collapsing FSGS, microcystic tubular dilatation) not just restating 'kidneys are big'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His ferritin comes back at 340 µg/L with a transferrin saturation of 14%. How do you interpret this, and does he need iron?",
+      "modelAnswer": "This is a functional iron deficiency pattern, common in chronic disease/HIV/CKD — inflammation raises hepcidin, which blocks ferroportin and traps iron within macrophages and enterocytes despite adequate or even high total body iron stores, so ferritin (an acute phase reactant) appears normal or elevated while TSAT is low, reflecting iron unavailable for erythropoiesis. This is NOT iron overload. He should still be considered for iron replacement (often IV preferred in this setting) before considering an erythropoiesis-stimulating agent, as correcting iron availability may improve the anaemia on its own.",
+      "gradingNotes": "Must identify hepcidin/functional iron deficiency mechanism, distinguish from true iron overload, and give correct management sequence (iron before ESA)."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why is restarting his ART considered definitive management here, rather than just symptomatic treatment of the nephrotic syndrome?",
+      "modelAnswer": "HIVAN is directly driven by HIV viral replication within renal parenchymal cells; suppressing the virus with effective ART removes the underlying driver of podocyte injury and tubulointerstitial inflammation, and has been shown to significantly slow, halt, or even partially reverse progression of HIVAN — unlike hypertensive nephrosclerosis or established diabetic nephropathy where the causative process cannot be 'switched off' in the same way. ACEi/ARB and diuretics remain important adjuncts for proteinuria and volume control, but ART re-engagement is the disease-modifying intervention.",
+      "gradingNotes": "Should articulate ART as addressing the causal driver of disease, not simply another supportive measure; bonus for mentioning need for co-trimoxazole given CD4<200."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "history",
+      "question": "Why is it important to specifically ask about traditional medicine or muti use in this patient, even though it wasn't volunteered?",
+      "modelAnswer": "Muti and analgesic/NSAID nephrotoxicity is a locally relevant and often underreported cause or contributor to renal impairment in KZN; patients frequently do not volunteer this unless asked directly due to stigma or not considering it 'medicine'. In this case it may be a contributing factor to renal injury alongside HIVAN, and identifying it allows for a modifiable intervention (stopping the nephrotoxic exposure) as part of a complete reversible-causes assessment.",
+      "gradingNotes": "Wants recognition that this history is commonly missed unless specifically probed, and its relevance as a reversible/contributing factor."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "raised creatinine / suspected CKD in a young adult, worked up via KDIGO CGA staging with attention to nephrotic-range proteinuria and HIV-related glomerular disease",
+  "patient": {
+    "name": "Sibusiso Ngcobo",
+    "age": 31,
+    "sex": "M",
+    "occupation": "security guard at a shopping centre in Umlazi",
+    "personality": "stoic, tends to downplay how unwell he feels, embarrassed about the swelling, becomes more forthcoming once reassured",
+    "openingLine": "Doctor, my legs and my... my whole body is swelling up. I can't even fit into my work boots anymore."
+  },
+  "presentingComplaint": "2-week history of progressive leg and facial swelling with frothy urine",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Swelling started around the ankles about 2-3 weeks ago and has gradually crept up to his shins and now his face, especially in the mornings",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-urine-froth",
+      "fact": "Has noticed his urine looks 'foamy' or 'soapy' for the past month, worse recently, doesn't go away even after shaking the toilet water",
+      "disclosure": "onAsk",
+      "triggers": [
+        "froth",
+        "foam",
+        "foamy",
+        "soapy",
+        "urine",
+        "bubbles",
+        "bubbly",
+        "frothy urine",
+        "pee",
+        "urinate",
+        "toilet",
+        "frothy"
+      ]
+    },
+    {
+      "id": "hx-urine-volume",
+      "fact": "Urine output feels reduced, going less often than before, urine looks a bit darker but not bloody",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine output",
+        "passing urine",
+        "how much urine",
+        "volume",
+        "dark urine",
+        "less urine",
+        "peeing less",
+        "wee",
+        "urinating less",
+        "urine",
+        "output",
+        "passing",
+        "dark",
+        "less",
+        "peeing",
+        "urinating"
+      ]
+    },
+    {
+      "id": "hx-weight-gain",
+      "fact": "Has gained around 5kg in the past 2-3 weeks despite eating less, notices his belt and shoes don't fit",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "weight gain",
+        "gained weight",
+        "clothes tight",
+        "shoes",
+        "belt",
+        "heavier",
+        "gain",
+        "gained",
+        "clothes",
+        "tight"
+      ]
+    },
+    {
+      "id": "hx-sob",
+      "fact": "Mild breathlessness on exertion over the past week, worse lying flat at night, sleeps with an extra pillow now",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "short of breath",
+        "sob",
+        "dyspnoea",
+        "exertion",
+        "lying flat",
+        "orthopnoea",
+        "pillow",
+        "sleep",
+        "breathless",
+        "short",
+        "lying",
+        "flat"
+      ]
+    },
+    {
+      "id": "hx-appetite",
+      "fact": "Appetite has dropped, feels a bit nauseous some mornings, no vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "appetite",
+        "eating",
+        "nausea",
+        "nauseous",
+        "vomit",
+        "sick",
+        "food"
+      ]
+    },
+    {
+      "id": "hx-nofever",
+      "fact": "No fevers, no night sweats, no cough, no recent sore throat or skin infection",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "night sweats",
+        "cough",
+        "sore throat",
+        "skin infection",
+        "rash",
+        "impetigo",
+        "recent infection",
+        "night",
+        "sweats",
+        "sore",
+        "throat",
+        "skin",
+        "infection",
+        "recent"
+      ]
+    },
+    {
+      "id": "hx-nopain",
+      "fact": "No loin pain, no dysuria, no haematuria that he has noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "loin",
+        "flank",
+        "dysuria",
+        "burning",
+        "blood in urine",
+        "haematuria",
+        "stinging",
+        "blood",
+        "urine"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Diagnosed HIV positive 4 years ago, was started on ART but admits he stopped taking his tablets about 8 months ago after moving house and losing his clinic card",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "antiretroviral",
+        "tablets",
+        "treatment",
+        "clinic",
+        "adherence",
+        "stopped",
+        "medication for hiv",
+        "positive",
+        "medication"
+      ]
+    },
+    {
+      "id": "hx-cd4",
+      "fact": "Does not know his last CD4 count or viral load, hasn't been back to a clinic in about 8 months",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cd4",
+        "viral load",
+        "last test",
+        "blood test",
+        "clinic visit",
+        "last checked",
+        "viral",
+        "load",
+        "last",
+        "test",
+        "blood",
+        "clinic",
+        "visit",
+        "checked"
+      ]
+    },
+    {
+      "id": "hx-no-htn-dm",
+      "fact": "No known history of high blood pressure or diabetes, has never had his sugar checked as far as he knows",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "sugar",
+        "diabetes",
+        "diabetic",
+        "high blood pressure",
+        "blood",
+        "pressure",
+        "high"
+      ]
+    },
+    {
+      "id": "hx-nsaid",
+      "fact": "Occasionally buys ibuprofen or takes traditional muti from a local healer for backache, roughly once every week or two",
+      "disclosure": "onAsk",
+      "triggers": [
+        "muti",
+        "traditional medicine",
+        "herbal",
+        "nsaid",
+        "ibuprofen",
+        "painkiller",
+        "pain tablets",
+        "over the counter",
+        "healer",
+        "inyanga",
+        "traditional",
+        "medicine",
+        "pain",
+        "tablets",
+        "over",
+        "counter"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous kidney problems, no prior hospital admissions, no known TB in the past",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "kidney problems before",
+        "hospital",
+        "admitted",
+        "tb before",
+        "past history",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "kidney",
+        "problems",
+        "before",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reaction to medication",
+        "reaction",
+        "medication"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Umlazi with his girlfriend, no children yet, drinks a few beers on weekends, smokes about 5 cigarettes a day",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "beer",
+        "social history",
+        "live",
+        "home",
+        "girlfriend",
+        "social",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of kidney disease, no polycystic kidneys in the family that he knows of, mother has hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "kidney disease in family",
+        "polycystic",
+        "runs in family",
+        "family",
+        "history",
+        "kidney",
+        "disease",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-tb-contact",
+      "fact": "No known TB contacts at home currently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb contact",
+        "tuberculosis",
+        "household contact",
+        "anyone sick at home",
+        "contact",
+        "household",
+        "anyone",
+        "sick",
+        "home"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Moderately built young man, facial and periorbital puffiness, pitting oedema to mid-shin bilaterally. No pallor, no jaundice, no oral thrush. No lymphadenopathy.",
+    "vitals": {
+      "hr": 88,
+      "bp": "148/92",
+      "rr": 18,
+      "temp": 36.7,
+      "spo2": "98% on room air",
+      "bmi": 24
+    },
+    "respiratory": "Reduced air entry and dullness to percussion at both lung bases, mild bibasal crackles consistent with small effusions",
+    "cardio": "Normal heart sounds, no murmurs, JVP mildly elevated, no pericardial rub",
+    "abdo": "Mildly distended, shifting dullness present suggesting ascites, no organomegaly palpable, no renal masses, no bladder distension",
+    "neuro": "Alert, no asterixis, no peripheral neuropathy detected",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Urine dipstick",
+      "result": "Protein 4+, blood negative, leucocytes negative, nitrites negative",
+      "key": true
+    },
+    {
+      "name": "Urine protein:creatinine ratio (or spot ACR)",
+      "result": "PCR 850 mg/mmol (nephrotic range, equivalent ACR markedly >70)",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine with eGFR (CKD-EPI 2021)",
+      "result": "Urea 14.2 mmol/L, Creatinine 210 µmol/L, eGFR 34 mL/min/1.73m2, Potassium 5.3 mmol/L, Bicarbonate 20 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Serum albumin",
+      "result": "18 g/L (severe hypoalbuminaemia)",
+      "key": true
+    },
+    {
+      "name": "Renal ultrasound",
+      "result": "Both kidneys enlarged (right 12.4 cm, left 12.6 cm), markedly increased echogenicity, loss of corticomedullary differentiation, no hydronephrosis, no stones, no cysts",
+      "key": true
+    },
+    {
+      "name": "HIV test (repeat/confirm) and CD4/viral load",
+      "result": "HIV positive confirmed; CD4 count 96 cells/µL; viral load 210,000 copies/mL (not virologically suppressed, consistent with treatment interruption)",
+      "key": true
+    },
+    {
+      "name": "Fasting glucose/HbA1c",
+      "result": "HbA1c 5.2%, fasting glucose 4.8 mmol/L — no diabetes",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.1 g/dL normocytic, WCC 5.4, platelets 260",
+      "key": false
+    },
+    {
+      "name": "Ferritin and transferrin saturation",
+      "result": "Ferritin 340 µg/L, TSAT 14% (functional iron deficiency pattern)",
+      "key": false
+    },
+    {
+      "name": "Calcium, phosphate, PTH",
+      "result": "Calcium 2.05 mmol/L (low-normal), phosphate 1.6 mmol/L (raised), PTH 95 pmol/L (raised) — early CKD-MBD",
+      "key": false
+    },
+    {
+      "name": "Fasting lipogram",
+      "result": "Total cholesterol 7.8 mmol/L, LDL 5.1 mmol/L — nephrotic hyperlipidaemia",
+      "key": false
+    },
+    {
+      "name": "Hepatitis B and C serology",
+      "result": "HBsAg negative, anti-HCV negative",
+      "key": false
+    },
+    {
+      "name": "ANA and complement (C3/C4)",
+      "result": "ANA negative, C3 and C4 normal — argues against lupus nephritis",
+      "key": false
+    },
+    {
+      "name": "Renal biopsy (where available/indicated)",
+      "result": "Not performed in this case — kidneys are large (atypical for chronic small kidneys), clinical picture (young, HIV positive with CD4 96, viral non-suppression, nephrotic-range proteinuria, large echogenic kidneys) is classic for HIVAN; biopsy reserved if diagnosis remains uncertain or atypical features develop",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "HIV-associated nephropathy (HIVAN) / HIV immune-complex disease",
+      "rank": 1,
+      "for": [
+        "young Black South African male",
+        "poorly controlled HIV with low CD4 and high viral load",
+        "nephrotic-range proteinuria",
+        "large echogenic kidneys on ultrasound (atypical for chronic small kidneys)",
+        "no diabetes, no long-standing hypertension"
+      ],
+      "against": [
+        "biopsy not yet performed to confirm collapsing FSGS histology"
+      ]
+    },
+    {
+      "dx": "Hypertensive nephrosclerosis",
+      "rank": 2,
+      "for": [
+        "blood pressure elevated on this admission (148/92)"
+      ],
+      "against": [
+        "kidneys enlarged rather than small",
+        "proteinuria too heavy for typical nephrosclerosis (usually mild-moderate)",
+        "no long-standing history of hypertension",
+        "young age"
+      ]
+    },
+    {
+      "dx": "Diabetic kidney disease",
+      "rank": 3,
+      "for": [
+        "nephrotic syndrome is a recognised late diabetic pattern"
+      ],
+      "against": [
+        "HbA1c and fasting glucose normal",
+        "no known diabetes",
+        "no diabetic retinopathy"
+      ]
+    },
+    {
+      "dx": "Membranous nephropathy / other primary glomerulonephritis",
+      "rank": 4,
+      "for": [
+        "nephrotic syndrome with heavy proteinuria can occur in any glomerulonephritis"
+      ],
+      "against": [
+        "ANA and complement normal, less typical demographic",
+        "clinical picture better explained by HIV disease activity and CD4/VL findings"
+      ]
+    },
+    {
+      "dx": "Minimal change disease / FSGS unrelated to HIV",
+      "rank": 5,
+      "for": [
+        "nephrotic syndrome, oedema, hypoalbuminaemia are consistent"
+      ],
+      "against": [
+        "strong HIV risk-factor profile makes HIVAN far more likely than a coincidental primary glomerulopathy"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Frothy/foamy urine": "Heavy glomerular proteinuria from podocyte injury (HIV-1 gene expression directly infecting podocytes and tubular epithelium causes podocyte dedifferentiation, collapse of glomerular capillaries — collapsing FSGS) lowers urine surface tension, producing persistent froth",
+    "Generalised oedema (facial, leg, ascites)": "Hypoalbuminaemia from urinary protein loss reduces plasma oncotic pressure, but nephrotic oedema is now understood to be driven mainly by primary renal sodium retention (activation of epithelial sodium channels in the collecting duct) rather than pure underfill physiology, causing fluid to shift into the interstitium and peritoneal cavity",
+    "Reduced urine output / rising creatinine": "HIV-induced tubulointerstitial inflammation and microcystic tubular dilatation alongside glomerular collapse reduce functioning nephron mass and GFR; proteinuria itself is nephrotoxic — reabsorbed protein activates NF-κB in proximal tubular cells causing further tubulointerstitial fibrosis",
+    "Breathlessness / orthopnoea": "Sodium and water retention plus hypoalbuminaemia lead to pulmonary interstitial fluid and pleural effusions, reducing lung compliance and causing exertional and positional dyspnoea",
+    "Large echogenic kidneys on ultrasound (rather than small kidneys)": "HIVAN causes an inflammatory, proliferative process (mesangial hypercellularity, microcystic tubular dilatation, interstitial infiltration) that enlarges the kidneys acutely, in contrast to the chronic scarring/shrinkage seen in hypertensive nephrosclerosis or long-standing diabetic nephropathy",
+    "Hyperlipidaemia": "Hepatic upregulation of lipoprotein synthesis in response to falling oncotic pressure, combined with reduced lipoprotein lipase activity from urinary loss of a regulatory cofactor, raises LDL and triglycerides in nephrotic syndrome"
+  },
+  "staging": "KDIGO CKD category G3b (eGFR 34 mL/min/1.73m2), Albuminuria category A3 (nephrotic-range, PCR 850 mg/mmol); WHO HIV clinical stage 4 given CD4 96 cells/µL with renal disease; nephrotic syndrome present (albumin 18 g/L, oedema, proteinuria, hyperlipidaemia)",
+  "management": {
+    "immediate": [
+      "Assess and manage volume overload — daily weights, fluid balance chart, salt restriction",
+      "Cautious diuresis with loop diuretics (e.g. furosemide) titrated to response, monitoring renal function and electrolytes closely",
+      "Check and manage potassium — currently 5.3 mmol/L, recheck and treat if rising or ECG changes develop",
+      "Screen for and treat any intercurrent infection given CD4 96 (high risk of opportunistic infection with nephrotic-syndrome-associated immunoparesis)"
+    ],
+    "definitive": [
+      "Start or restart ART promptly — TLD regimen; ART itself is the definitive treatment for HIVAN and can significantly slow or reverse renal decline",
+      "ACE inhibitor or ARB once volume status and potassium allow — reduces intraglomerular pressure and proteinuria, slows progression (monitor creatinine and potassium after initiation)",
+      "Co-trimoxazole preventive therapy given CD4 <200",
+      "Nephrology referral — meets multiple mandatory referral criteria: eGFR <30 is not yet met but ACR/PCR is far above 70, and rapid clinical deterioration warrants urgent referral",
+      "Consider renal biopsy if response to ART is poor or diagnosis remains uncertain, as this would change management (e.g. consideration of corticosteroids in HIV immune-complex disease)"
+    ],
+    "supportive": [
+      "Statin for nephrotic hyperlipidaemia and cardiovascular risk reduction",
+      "Thromboprophylaxis consideration given nephrotic syndrome's hypercoagulable state (urinary loss of antithrombin III), balanced against bleeding risk",
+      "Dietary counselling — moderate protein, salt restriction, monitor potassium/phosphate as CKD stage progresses",
+      "Address functional iron deficiency (ferritin 340, TSAT 14%) — iron replacement before considering ESA",
+      "Adherence counselling and re-engagement in HIV care, address barriers that led to treatment interruption (lost clinic card, relocation)"
+    ],
+    "followUp": [
+      "Repeat U&E, albumin, urine PCR at 2-4 weeks to assess response to ART and ACEi/ARB",
+      "Monitor CD4/viral load response to ART",
+      "Recheck calcium, phosphate, PTH as CKD-MBD workup given early derangement",
+      "Use KFRE to guide referral urgency and RRT planning if renal function does not improve",
+      "Vaccinate against hepatitis B if not already immune, in case of future dialysis/transplant planning"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-chronicity",
+      "phase": "history",
+      "item": "Establishes duration of symptoms and any prior abnormal renal tests to confirm this could be CKD versus AKI (>3 months criterion)",
+      "answer": "Symptoms only 2-3 weeks old; no prior renal testing documented — chronicity not yet proven, needs clarification that this may be new-onset nephrotic syndrome rather than confirmed CKD",
+      "why": "Core teaching point: a single abnormal creatinine or short symptom history does not equal CKD; must clarify timeline before labelling as chronic",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-urine-symptoms",
+      "phase": "history",
+      "item": "Characterises urinary symptoms — froth/foam, volume, colour, haematuria",
+      "answer": "Frothy urine for a month, reduced volume, darker but no visible blood",
+      "why": "Frothy urine is the classic lay descriptor of proteinuria and should trigger nephrotic syndrome workup",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-oedema-volume",
+      "phase": "history",
+      "item": "Screens for oedema, weight gain, and symptoms of fluid overload (orthopnoea, breathlessness)",
+      "answer": "5kg gain, facial and leg swelling, orthopnoea with extra pillow",
+      "why": "Defines the nephrotic syndrome clinical picture and assesses severity of volume overload",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-hiv-status",
+      "phase": "history",
+      "item": "Asks HIV status, ART history, and adherence directly and sensitively",
+      "answer": "HIV positive 4 years, stopped ART 8 months ago after losing clinic card",
+      "why": "HIV status and ART adherence are central to the diagnosis and directly modify management (ART is definitive treatment for HIVAN)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-nephrotoxin-history",
+      "phase": "history",
+      "item": "Asks specifically about NSAID use and traditional medicine/muti use",
+      "answer": "Occasional ibuprofen and muti from a local healer for backache",
+      "why": "Nephrotoxic exposures are locally relevant and often underreported unless asked directly; important reversible/contributing factor",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-dm-htn-screen",
+      "phase": "history",
+      "item": "Screens for diabetes and hypertension history as alternative causes",
+      "answer": "No known diabetes or hypertension, sugar never checked",
+      "why": "Needed to rank differentials against the SA-specific aetiology hierarchy (hypertension and diabetes are the top two causes overall, but this patient's profile points elsewhere)",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-volume",
+      "phase": "examination",
+      "item": "Performs a volume status examination — oedema, JVP, lung bases, ascites",
+      "answer": "Periorbital and pitting leg oedema, mildly raised JVP, bibasal crackles/effusions, shifting dullness",
+      "why": "Confirms and grades the severity of nephrotic syndrome and fluid overload, identifies complications needing urgent management",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-bp-general",
+      "phase": "examination",
+      "item": "Checks blood pressure and looks for HIV/uraemic stigmata (fundoscopy, skin, oral thrush, asterixis)",
+      "answer": "BP 148/92, no retinopathy, no oral thrush, no asterixis",
+      "why": "BP informs staging and cause; absence of thrush and normal fundoscopy help exclude alternative advanced disease and guide urgency",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx-ranked",
+      "phase": "differentials",
+      "item": "Generates a ranked differential for nephrotic syndrome in a young HIV-positive man, reasoning with SA aetiology hierarchy",
+      "answer": "HIVAN most likely given demographic, CD4/VL and large echogenic kidneys; hypertensive nephrosclerosis, diabetic kidney disease, and other glomerulonephritides considered and reasoned against",
+      "why": "Symptom-to-differential reasoning is the core exam philosophy; must show local epidemiological reasoning, not generic global teaching",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-confirm",
+      "phase": "investigations",
+      "item": "Requests urine PCR/ACR, U&E/eGFR, serum albumin, HIV/CD4/viral load, and renal ultrasound as the confirmatory pathway",
+      "answer": "PCR 850 mg/mmol, eGFR 34, albumin 18 g/L, CD4 96, VL 210,000, kidneys enlarged and echogenic bilaterally",
+      "why": "This is the confirmatory investigation pathway for suspected HIVAN with nephrotic syndrome per KDIGO CGA framework and local practice",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-staging",
+      "phase": "investigations",
+      "item": "Stages CKD correctly using both GFR category and albuminuria category (never eGFR alone)",
+      "answer": "G3b/A3",
+      "why": "Explicitly flagged teaching point — never stage CKD on eGFR alone; albuminuria carries independent prognostic weight",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-complications",
+      "phase": "investigations",
+      "item": "Screens for CKD complications — FBC/ferritin/TSAT, calcium/phosphate/PTH, potassium, bicarbonate, lipogram",
+      "answer": "Hb 10.1, ferritin 340/TSAT 14% (functional iron deficiency), phosphate raised, PTH raised, potassium 5.3, bicarbonate 20, cholesterol 7.8",
+      "why": "Complication screening per KDIGO framework; ferritin/TSAT interpretation is an explicitly flagged exam nuance",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-art",
+      "phase": "management",
+      "item": "Identifies ART initiation/re-engagement as definitive management for HIVAN",
+      "answer": "Restart ART (TLD), co-trimoxazole prophylaxis given CD4 <200, adherence support",
+      "why": "ART is the specific disease-modifying treatment for HIVAN and can reverse or slow progression — a critical management point",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-supportive",
+      "phase": "management",
+      "item": "Outlines supportive nephrotic syndrome management — diuretics, ACEi/ARB once stable, statin, salt restriction, thromboprophylaxis consideration",
+      "answer": "Cautious diuresis, ACEi/ARB after volume/potassium optimised, statin, dietary salt restriction, VTE risk discussion",
+      "why": "Standard nephrotic syndrome supportive care per SA guidelines, proteinuria-lowering strategy central to slowing progression",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-referral",
+      "phase": "management",
+      "item": "Recognises nephrology referral criteria are met and refers appropriately",
+      "answer": "ACR/PCR far exceeds 70 threshold; rapid new-onset nephrotic syndrome warrants urgent nephrology referral",
+      "why": "Referral thresholds are explicitly taught numeric criteria to memorise and apply",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

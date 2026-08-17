@@ -1,0 +1,672 @@
+{
+  "id": "cardio-007-constrictive-pericarditis-post-tuberculous",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Constrictive pericarditis (post-tuberculous)",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient's presentation and how the findings point you toward constrictive pericarditis over the alternatives.",
+      "modelAnswer": "The presentation is right heart failure predominant, with ascites out of proportion to peripheral oedema, a markedly raised JVP with positive Kussmaul's sign, and an impalpable apex with a pericardial knock — this favours constrictive pericarditis over restrictive cardiomyopathy (where the apex would be palpable and myocardium abnormal on echo), over dilated cardiomyopathy (EF is preserved, apex not displaced, no S3), over valvular disease (no murmur), and over primary liver disease (JVP would not be elevated). The history of previously treated pulmonary TB is the strongest risk factor, and pericardial calcification on CXR with pericardial thickening on echo confirms the pericardial origin.",
+      "gradingNotes": "Full marks: ranked differential with reasoning tying each finding to inclusion/exclusion of each diagnosis, explicitly using the apex palpation and Kussmaul's sign as the discriminating features. Partial marks for an unranked list without the constriction-vs-restriction distinction."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology of Kussmaul's sign and why it is present in this condition but not in normal physiology or in cardiac tamponade.",
+      "modelAnswer": "Normally inspiration lowers intrathoracic pressure, increasing venous return to the right heart and causing the JVP to fall. In constrictive pericarditis the rigid, thickened pericardium fixes the total cardiac volume, so the right heart cannot expand to accommodate this increased venous return; venous pressure instead rises paradoxically with inspiration. This differs from tamponade, where the pericardium is under tension from fluid but is not chronically thickened/fibrotic in the same way, and Kussmaul's sign is characteristically absent because the compressive pathology is different (equalisation occurs but without the fixed-volume rigid shell effect on respiration in the same manner).",
+      "gradingNotes": "Wants the mechanism of fixed pericardial volume limiting right heart expansion, not just a definition of the sign. Should also attempt the tamponade contrast for higher marks."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "The echocardiogram shows preserved ejection fraction and pericardial thickening with a septal bounce. How does this change your interpretation compared to if the echo had shown a dilated, poorly contracting left ventricle?",
+      "modelAnswer": "A dilated poorly contracting ventricle would suggest dilated cardiomyopathy (e.g. HIV-related or alcohol-related), requiring standard HFrEF therapy (ACEi/ARB, beta-blocker, spironolactone) and addressing the underlying toxin/infection. Instead, preserved EF with pericardial thickening and respirophasic septal shift localises the pathology to the pericardium rather than the myocardium, meaning medical HF therapy alone will not fix the underlying problem — the patient needs surgical pericardiectomy as definitive treatment, and diuretics should be used cautiously since these patients are preload-dependent for maintaining cardiac output.",
+      "gradingNotes": "Tests ability to apply echo findings to change management pathway, specifically recognising that pericardial disease requires surgery rather than standard heart failure pharmacotherapy alone."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Before committing this patient to pericardiectomy, what must you actively exclude, and why does it matter?",
+      "modelAnswer": "Active or recent TB pericarditis must be excluded, since an effusive-constrictive phase within the first few months of pericarditis may still respond to anti-tuberculous therapy with corticosteroids and can partially or fully resolve without surgery. This requires repeating sputum/GeneXpert, clinical TB screening, and considering pericardial fluid analysis if an effusion is present. Only once chronic fibrocalcific constriction is confirmed (and reversible/active disease excluded) should the patient proceed to pericardiectomy, since surgery carries significant morbidity and is not warranted if medical therapy could still work.",
+      "gradingNotes": "Wants recognition of the effusive-constrictive/early reversible phase of TB pericarditis versus chronic fibrocalcific constriction, and that TB status must be reassessed before surgical referral is finalised."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "chronic dyspnoea + right heart failure signs → cardiomyopathy vs pericardial disease differentiation",
+  "patient": {
+    "name": "Bongani Mthembu",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, downplays how limited he has become, gets anxious when asked about his abdomen swelling",
+    "openingLine": "Doctor, my stomach keeps swelling up and my legs are so tight I can't fit my work boots anymore."
+  },
+  "presentingComplaint": "progressive abdominal swelling and leg oedema over 3 months with worsening exertional dyspnoea",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Abdominal swelling and ankle swelling started about 3 months ago and has steadily worsened",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Now gets breathless walking to the taxi rank, whereas 6 months ago he could work a full 12-hour shift standing without difficulty",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "exertion",
+        "walking",
+        "exercise tolerance",
+        "stairs",
+        "climbing",
+        "short",
+        "exercise",
+        "tolerance"
+      ]
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Sleeps propped up on three pillows; used to sleep flat",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "lying flat",
+        "sleep",
+        "propped",
+        "flat",
+        "bed",
+        "lying"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "No episodes of waking up gasping at night",
+      "disclosure": "onAsk",
+      "triggers": [
+        "paroxysmal",
+        "waking up",
+        "gasping",
+        "night breathless",
+        "pnd",
+        "choking at night",
+        "waking",
+        "night",
+        "breathless",
+        "choking"
+      ]
+    },
+    {
+      "id": "hx-abdo",
+      "fact": "Abdomen has become progressively more distended; belt no longer fits; occasional dull right upper quadrant discomfort",
+      "disclosure": "onAsk",
+      "triggers": [
+        "abdomen",
+        "stomach",
+        "belly",
+        "distend",
+        "swelling",
+        "ascites",
+        "tight",
+        "belt",
+        "fluid"
+      ]
+    },
+    {
+      "id": "hx-legswelling",
+      "fact": "Both legs swell up by the end of the day, worse than a few months ago, pitting, up to the shins",
+      "disclosure": "onAsk",
+      "triggers": [
+        "legs",
+        "ankles",
+        "swelling",
+        "oedema",
+        "feet",
+        "pitting",
+        "puffy"
+      ]
+    },
+    {
+      "id": "hx-tb-history",
+      "fact": "Was treated for pulmonary TB about 2 years ago, completed 6 months of treatment, told he was 'cured'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "treated before",
+        "chest infection before",
+        "previous illness",
+        "cough before",
+        "lungs",
+        "completed treatment",
+        "treated",
+        "before",
+        "chest",
+        "infection",
+        "previous",
+        "illness",
+        "cough",
+        "completed",
+        "treatment"
+      ]
+    },
+    {
+      "id": "hx-tb-symptoms-current",
+      "fact": "No current cough, no haemoptysis, no night sweats, no fevers now",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough now",
+        "current cough",
+        "night sweats",
+        "fever",
+        "sweat",
+        "haemoptysis",
+        "blood",
+        "phlegm",
+        "sputum",
+        "cough",
+        "current",
+        "night",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "No deliberate weight loss noted recently, though clothes feel tighter around the middle from the swelling rather than looser",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "thinner",
+        "appetite",
+        "clothes",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV positive, diagnosed 4 years ago, on ART (tenofovir/lamivudine/dolutegravir), says he takes it 'most days'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "test",
+        "tested",
+        "art",
+        "antiretroviral",
+        "tablets for hiv",
+        "immune",
+        "cd4",
+        "tablets"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer socially on weekends, about 4-5 beers on a Saturday, none in the week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "drinking",
+        "booze",
+        "tavern"
+      ]
+    },
+    {
+      "id": "hx-smoking",
+      "fact": "Never smoked",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known hypertension or diabetes; no previous heart problems diagnosed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "hypertension",
+        "diabetes",
+        "heart problem",
+        "conditions",
+        "blood pressure",
+        "sugar",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "heart",
+        "problem",
+        "blood",
+        "pressure"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Only takes his ART; no diuretics or other chronic medication currently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "muti",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "penicillin"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in KwaMashu with his wife and two children in a small rented room; works night shifts as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "live",
+        "home",
+        "house",
+        "family",
+        "work",
+        "job",
+        "children"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of heart disease or sudden death; father died of 'old age', mother alive and well",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "sudden death",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "sudden",
+        "death",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No palpitations, no syncope or presyncope, no chest pain, no haemoptysis, no urinary symptoms, no joint pains",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "syncope",
+        "fainting",
+        "chest pain",
+        "urine",
+        "joint pain",
+        "other symptoms",
+        "anything else",
+        "chest",
+        "pain",
+        "joint",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Chronically unwell-looking, thin man sitting upright. Mild peripheral cyanosis absent. Visibly distended abdomen. Bilateral pitting oedema to mid-shin. No lymphadenopathy. No oral thrush.",
+    "vitals": {
+      "hr": 98,
+      "bp": "102/78",
+      "rr": 20,
+      "temp": 36.7,
+      "spo2": "97% on room air",
+      "bmi": 19
+    },
+    "respiratory": "Reduced air entry at both bases with dullness to percussion suggestive of small bilateral pleural effusions; no crackles higher up; trachea central.",
+    "cardio": "JVP markedly elevated to the angle of the jaw, with a visible rapid y-descent; JVP rises further on inspiration (Kussmaul's sign positive). Apex beat impalpable/difficult to localise. Heart sounds soft and distant with an early diastolic 'pericardial knock' heard best at the left sternal edge. No murmurs. Pulsus paradoxus not marked.",
+    "abdo": "Distended, shifting dullness confirming ascites; smooth, pulsatile-feeling hepatomegaly 4 cm below the costal margin, mildly tender; no splenomegaly.",
+    "neuro": "Alert and orientated, no focal deficit.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Chest X-ray",
+      "result": "Small bilateral pleural effusions; pericardial calcification visible along the left heart border; heart size not markedly enlarged",
+      "key": true
+    },
+    {
+      "name": "Echocardiogram",
+      "result": "Thickened, echo-bright pericardium; septal bounce with respirophasic ventricular septal shift; dilated inferior vena cava with minimal respiratory collapse; preserved biventricular systolic function (EF 58%); restrictive mitral inflow pattern with respiratory variation >25%; no significant pericardial effusion",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Low-voltage QRS complexes, non-specific T-wave flattening, no acute ischaemic changes, sinus rhythm",
+      "key": false
+    },
+    {
+      "name": "Cardiac CT/MRI",
+      "result": "Pericardial thickening measuring 6 mm with patchy calcification, consistent with chronic constrictive pericarditis",
+      "key": true
+    },
+    {
+      "name": "HIV test / CD4 count",
+      "result": "HIV positive (known), CD4 count 340 cells/µL, viral load suppressed <50 copies/mL on current ART",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.9 g/dL normocytic, WCC 6.8, platelets 298",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Mild hyponatraemia (Na 132 mmol/L) and mildly elevated urea consistent with congestive picture; creatinine normal",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Mildly elevated ALP and GGT with mild hyperbilirubinaemia, in keeping with congestive hepatopathy",
+      "key": false
+    },
+    {
+      "name": "NT-proBNP",
+      "result": "Mildly elevated (less markedly raised than typically seen in dilated cardiomyopathy of similar severity)",
+      "key": false
+    },
+    {
+      "name": "Ascitic tap (diagnostic)",
+      "result": "Exudate-range protein, no malignant cells, ADA not significantly elevated (no active TB peritonitis); consistent with cardiac ascites from constriction",
+      "key": false
+    },
+    {
+      "name": "Right and left heart catheterisation",
+      "result": "Equalisation of end-diastolic pressures across all four chambers; 'dip-and-plateau' (square root sign) in ventricular pressure tracings; discordance between RV and LV systolic pressures with respiration",
+      "key": true
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Constrictive pericarditis (post-tuberculous)",
+      "rank": 1,
+      "for": [
+        "previous treated pulmonary TB",
+        "predominant right heart failure signs with ascites out of proportion to peripheral oedema",
+        "Kussmaul's sign positive",
+        "pericardial calcification on CXR",
+        "echo showing pericardial thickening and septal bounce",
+        "pericardial knock on auscultation"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Restrictive cardiomyopathy",
+      "rank": 2,
+      "for": [
+        "raised JVP with Kussmaul's sign",
+        "right heart failure picture",
+        "ascites and hepatomegaly"
+      ],
+      "against": [
+        "apex beat impalpable rather than easily felt (favours constriction over restriction)",
+        "echo shows pericardial thickening rather than myocardial infiltration/granular sparkling",
+        "preserved rather than reduced systolic function with normal wall thickness"
+      ]
+    },
+    {
+      "dx": "Dilated cardiomyopathy (HIV-associated)",
+      "rank": 3,
+      "for": [
+        "HIV positive",
+        "biventricular congestion features",
+        "fatigue and reduced exercise tolerance"
+      ],
+      "against": [
+        "EF preserved at 58% on echo (DCM expects reduced EF)",
+        "apex not displaced/hypodynamic",
+        "no S3 gallop",
+        "JVP y-descent and Kussmaul's sign not typical of DCM"
+      ]
+    },
+    {
+      "dx": "Rheumatic valvular heart disease (e.g. tricuspid regurgitation)",
+      "rank": 4,
+      "for": [
+        "young adult from KZN",
+        "raised JVP",
+        "hepatomegaly and ascites can occur with severe TR"
+      ],
+      "against": [
+        "no murmur heard on auscultation",
+        "echo did not describe valvular pathology",
+        "pericardial calcification and thickening are the dominant echo findings, not valve disease"
+      ]
+    },
+    {
+      "dx": "Cirrhosis with portal hypertension",
+      "rank": 5,
+      "for": [
+        "ascites",
+        "mild LFT derangement",
+        "hepatomegaly"
+      ],
+      "against": [
+        "no stigmata of chronic liver disease described",
+        "JVP is markedly elevated (would be normal/low in isolated liver disease)",
+        "Kussmaul's sign and pericardial knock point to a cardiac source"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Kussmaul's sign (JVP rising on inspiration)": "The rigid, thickened pericardium prevents the right heart from accommodating the normal inspiratory increase in venous return; instead of falling, right atrial and jugular venous pressure rise as blood dams back into the venous system",
+    "Ascites out of proportion to peripheral oedema": "Chronically elevated systemic venous pressure is transmitted preferentially to the hepatic and splanchnic circulation, causing hepatic congestion and a protein-rich transudate/exudate into the peritoneal cavity before peripheral oedema becomes marked",
+    "Pericardial knock": "Ventricular filling is abruptly halted in early diastole by the non-compliant, thickened pericardial shell once the rigid limit of the sac is reached, producing an early high-pitched diastolic sound (the 'dip' before the 'plateau' seen on catheter tracings)",
+    "Impalpable/undisplaced apex beat": "The thickened, fibrocalcific pericardium encases and dampens transmission of the underlying cardiac impulse to the chest wall, unlike restrictive cardiomyopathy where the myocardium itself is diseased but the pericardium is normal and the apex remains palpable",
+    "Exertional dyspnoea": "Fixed pericardial constriction limits total cardiac filling volume and thus stroke volume/cardiac output cannot rise appropriately with exertion, causing early fatigue and breathlessness despite preserved myocardial contractility",
+    "Respirophasic septal bounce on echo": "Because the total pericardial volume is fixed, an inspiratory increase in right ventricular filling can only occur at the expense of left ventricular volume, causing the interventricular septum to shift abruptly toward the LV in inspiration (ventricular interdependence)"
+  },
+  "staging": "NYHA class III (marked limitation of physical activity); WHO HIV clinical stage 1 (virologically suppressed on ART, CD4 340); constrictive pericarditis presumed post-tuberculous based on prior treated PTB and calcified pericardium (no current active TB)",
+  "management": {
+    "immediate": [
+      "Assess volume status and initiate cautious diuresis (loop diuretic e.g. furosemide) to relieve congestion — avoid over-diuresis as filling is preload-dependent",
+      "Correct electrolyte disturbance (hyponatraemia)",
+      "Continue ART uninterrupted; reinforce adherence counselling",
+      "Exclude active TB before assuming purely post-inflammatory disease — repeat sputum/GeneXpert and clinical TB screen if any doubt"
+    ],
+    "definitive": [
+      "Refer for cardiothoracic surgical opinion for pericardiectomy — definitive treatment for symptomatic chronic constrictive pericarditis",
+      "If any suspicion of concurrent active TB or recent pericarditis (<2-3 months), consider empirical anti-TB therapy with corticosteroids first, reassess for resolution before committing to surgery",
+      "Pre-operative optimisation of nutritional and volume status",
+      "Cardiology and cardiothoracic surgery multidisciplinary referral (tertiary centre e.g. Inkosi Albert Luthuli Central Hospital)"
+    ],
+    "supportive": [
+      "Salt restriction and fluid moderation advice",
+      "Nutritional support given cachexia risk pre-surgery",
+      "Patient education on chronicity and surgical option, addressing anxiety about prognosis",
+      "Home/social support assessment given manual occupation and childcare responsibilities"
+    ],
+    "followUp": [
+      "Serial weight and abdominal girth monitoring while awaiting surgery",
+      "Post-pericardiectomy echo and clinical review to confirm haemodynamic improvement",
+      "Continued HIV care — routine CD4/viral load monitoring",
+      "Screen household contacts if any suspicion of unresolved/recurrent TB exposure"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport and consent",
+      "answer": null,
+      "why": "Baseline communication and professionalism",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-hf",
+      "phase": "history",
+      "item": "Confirms this is a heart failure/cardiac presentation before jumping to a specific diagnosis (dyspnoea, oedema, orthopnoea, exercise tolerance)",
+      "answer": "Progressive orthopnoea, exertional dyspnoea, leg and abdominal swelling over 3 months",
+      "why": "Framework step 1 — must establish the syndrome before naming the cause",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-common",
+      "phase": "history",
+      "item": "Screens for common secondary causes of impaired cardiac function — hypertension, ischaemic symptoms, valvular/rheumatic history",
+      "answer": "No hypertension, diabetes, chest pain, or known valve disease",
+      "why": "Framework step 2 — hypertensive/ischaemic/valvular disease must be excluded before invoking a less common diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-history",
+      "phase": "history",
+      "item": "Specifically asks about previous TB treatment and pericardial/chest TB history",
+      "answer": "Treated for pulmonary TB 2 years ago, completed 6 months of therapy",
+      "why": "Post-tuberculous constrictive pericarditis is the leading cause of constriction in this setting and the key unifying history point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv",
+      "phase": "history",
+      "item": "Asks HIV status, ART regimen and adherence",
+      "answer": "HIV positive on TLD, adherence described as 'most days'",
+      "why": "HIV status is standard of care in any KZN cardiac presentation and informs risk of recurrent/other opportunistic disease",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-alcohol-toxins",
+      "phase": "history",
+      "item": "Screens for alcohol use and other cardiotoxic exposures",
+      "answer": "Moderate weekend beer intake, no cocaine/chemotherapy exposure",
+      "why": "Excludes alcohol-related dilated cardiomyopathy as an alternative diagnosis",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-jvp-kussmaul",
+      "phase": "examination",
+      "item": "Examines JVP carefully and specifically checks for Kussmaul's sign",
+      "answer": "JVP markedly elevated with paradoxical rise on inspiration (Kussmaul's sign positive)",
+      "why": "Kussmaul's sign is a hallmark discriminating feature of constrictive physiology",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-apex-palpation",
+      "phase": "examination",
+      "item": "Palpates the apex beat and comments on whether it is displaced/palpable",
+      "answer": "Apex beat impalpable/difficult to localise",
+      "why": "Distinguishes constrictive pericarditis (impalpable apex due to pericardial encasement) from restrictive cardiomyopathy (apex easily palpable)",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-auscultation",
+      "phase": "examination",
+      "item": "Auscultates for a pericardial knock and absence of significant murmurs",
+      "answer": "Early diastolic pericardial knock present, no murmurs",
+      "why": "Pericardial knock supports constrictive pericarditis over valvular or myocardial disease",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-abdo-exam",
+      "phase": "examination",
+      "item": "Examines abdomen for ascites, hepatomegaly, and assesses degree of peripheral oedema",
+      "answer": "Ascites with shifting dullness, tender pulsatile hepatomegaly, bilateral pitting oedema",
+      "why": "Demonstrates the right heart failure pattern with ascites disproportionate to peripheral oedema",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing constrictive pericarditis from restrictive cardiomyopathy, DCM, valvular disease and liver disease with reasoning",
+      "answer": null,
+      "why": "Core symptom-to-differential reasoning required by the exam philosophy — especially the constriction vs restriction distinction",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-basic",
+      "phase": "investigations",
+      "item": "Requests ECG and chest X-ray as first-line tests",
+      "answer": "Low-voltage ECG; CXR shows pericardial calcification and small effusions",
+      "why": "Initial accessible investigations that raise suspicion of pericardial disease",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ix-echo",
+      "phase": "investigations",
+      "item": "Requests echocardiogram as the key definitive non-invasive test and interprets findings correctly",
+      "answer": "Thickened pericardium, septal bounce, dilated non-collapsing IVC, restrictive mitral inflow with respiratory variation, preserved EF",
+      "why": "Echocardiography is the definitive confirmatory investigation per framework step 5",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-cath",
+      "phase": "investigations",
+      "item": "Recognises the role of cardiac catheterisation (equalisation of pressures, dip-and-plateau) when echo is equivocal",
+      "answer": "Equalisation of end-diastolic pressures, dip-and-plateau sign",
+      "why": "Gold-standard invasive confirmation distinguishing constriction from restriction when non-invasive tests are inconclusive",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-surgical",
+      "phase": "management",
+      "item": "Identifies pericardiectomy as the definitive treatment and arranges appropriate surgical referral",
+      "answer": "Refer for pericardiectomy at a tertiary cardiothoracic centre",
+      "why": "Definitive management for symptomatic chronic constrictive pericarditis per guidelines",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-medical",
+      "phase": "management",
+      "item": "Outlines cautious diuresis, TB re-exclusion, and ART continuation while awaiting definitive surgery",
+      "answer": "Careful diuretic use, screen for active TB before assuming purely fibrotic disease, continue ART",
+      "why": "Bridging medical management and safety-netting for reversible active disease",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 20,
+    "clinicalReasoning": 22,
+    "investigations": 13,
+    "management": 10
+  }
+}

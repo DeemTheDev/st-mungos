@@ -1,0 +1,730 @@
+{
+  "id": "gi-hep-003-alcoholic-hepatitis",
+  "version": 1,
+  "discipline": "gi-hep",
+  "diagnosis": "Alcoholic hepatitis",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient's jaundice from first principles — what is your framework and where does this patient sit within it?",
+      "modelAnswer": "I use the three-questions framework: first, is the bilirubin conjugated or unconjugated — here dark urine and pale stools confirm conjugated. Second, is the pattern hepatocellular or cholestatic based on the relative rise of ALT/AST versus ALP/GGT compared to their upper limits of normal — here AST and ALT are markedly raised with AST much greater than ALT, giving a hepatocellular pattern. Third, since it's hepatocellular I don't necessarily need urgent ultrasound for duct dilatation, but I still perform one to assess liver texture and exclude a coexisting biliary problem — it shows a nodular, cirrhotic-looking liver with ascites and no dilated ducts. In parallel I've screened for liver failure — INR is prolonged, albumin is low, glucose is low, and he has encephalopathy — so this is severe disease. Given his heavy alcohol history, AST:ALT ratio, and stigmata of chronic liver disease, alcoholic hepatitis on a background of alcoholic cirrhosis is my leading diagnosis, though I've excluded viral hepatitis, TB drug hepatotoxicity and cholangitis as important differentials given the local epidemiology.",
+      "gradingNotes": "Full marks for explicitly verbalising the three-questions framework in order and integrating the severity/failure screen and red-flag exclusion (cholangitis) into the same answer. Partial marks for reaching the correct diagnosis without the structured reasoning."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "He has an AST of 312 and an ALT of only 98 — explain the pathophysiology behind why alcohol causes this particular pattern.",
+      "modelAnswer": "Alcohol preferentially damages hepatocyte mitochondria, and AST has both cytoplasmic and mitochondrial isoenzymes, so mitochondrial injury releases additional AST beyond what ALT (a purely cytoplasmic enzyme) can reflect. Chronic alcohol use also causes vitamin B6 (pyridoxine) deficiency, which is a cofactor required for ALT synthesis, further blunting the ALT rise relative to AST. Together these produce the classic AST:ALT ratio greater than 2, which is a helpful (though not absolute) clue pointing towards alcohol as the cause of hepatocellular injury.",
+      "gradingNotes": "Wants the mitochondrial AST leak mechanism plus the pyridoxine deficiency point; award partial marks if only one mechanism is given."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "His family says he's become confused over the past two days. How do you grade this and what precipitants must you actively look for before attributing it purely to worsening liver failure?",
+      "modelAnswer": "This looks like West Haven grade I-II hepatic encephalopathy — mild confusion, day-night reversal, and asterixis, but he is rousable and not comatose. Before assuming this is simply progression of liver failure, I must actively look for and treat reversible precipitants: constipation (which increases ammonia absorption), gastrointestinal bleeding (a common trigger, given his coagulopathy and portal hypertension), infection including spontaneous bacterial peritonitis (hence the ascitic tap), electrolyte disturbances such as hypokalaemia or hyponatraemia, and use of sedative drugs. Treating these precipitants alongside starting or increasing lactulose is essential, not just labelling it as 'end-stage liver disease'.",
+      "gradingNotes": "Wants grading terminology plus a structured precipitant search (constipation, GI bleed, infection/SBP, electrolytes, sedatives) — this is a classic examiner trap for premature closure."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "The ultrasound shows no dilated ducts. Does that reassure you there is no biliary obstruction component to worry about, and what determines your next imaging step if you were uncertain?",
+      "modelAnswer": "Not necessarily — a normal or non-dilated ultrasound does not exclude obstruction if the clinical picture is convincing, because ductal dilatation can lag behind acute obstruction by 24-48 hours, and in fibrotic conditions like PSC the ducts may never dilate significantly. However, in this patient the clinical picture (heavy alcohol use, AST-predominant hepatocellular pattern, absence of Charcot's triad, chronic stigmata of liver disease) strongly favours a hepatocellular process rather than obstruction, so I would not pursue MRCP routinely. If there were genuine diagnostic uncertainty — for example ongoing unexplained cholestatic-pattern derangement or a convincing obstructive history despite a normal scan — I would proceed to MRCP rather than accept the ultrasound as the final word.",
+      "gradingNotes": "Tests the explicit caveat from the framework about ducts not always being dilated early; wants the candidate to apply clinical judgement rather than over-relying on a single normal test."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "You've calculated a Maddrey's discriminant function of 38. What does this mean and how does it change your treatment plan?",
+      "modelAnswer": "A Maddrey's discriminant function above 32 defines severe alcoholic hepatitis, associated with a significant short-term mortality risk, and is the threshold used to consider corticosteroid therapy (such as prednisolone), provided there is no active infection or gastrointestinal bleeding, both of which need to be excluded or treated first. After starting steroids, I would reassess response using the Lille score at day 7 — a poor Lille score indicates non-response and steroids should be stopped, as continuing them offers no survival benefit and adds infection risk. Alongside this, nutritional support and strict alcohol cessation remain essential regardless of the steroid decision.",
+      "gradingNotes": "Wants the DF>32 threshold, the exclusion of infection/bleeding before steroids, and knowledge of the Lille score reassessment at day 7."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "jaundice: conjugated vs unconjugated → hepatocellular vs cholestatic pattern → ducts dilated or not → severity/failure screen, with directed alcohol/drug history throughout",
+  "patient": {
+    "name": "Mandla Ngcobo",
+    "age": 46,
+    "sex": "M",
+    "occupation": "long-distance taxi driver",
+    "personality": "guarded about his drinking, minimises quantity until pressed gently and non-judgementally, otherwise cooperative and a bit anxious about being 'sick again'",
+    "openingLine": "Doctor, my eyes have gone yellow and my stomach is swelling up... I don't know what's wrong with me."
+  },
+  "presentingComplaint": "2-week history of yellowing of the eyes, abdominal swelling and worsening fatigue in a man with heavy long-term alcohol use",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Noticed his eyes turning yellow about 2 weeks ago; has felt generally unwell and weak for about a month before that",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-jaundice-detail",
+      "fact": "Urine has become dark like Coca-Cola; stools have become paler than usual",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "dark urine",
+        "stool",
+        "stools",
+        "pale stool",
+        "poo",
+        "toilet",
+        "colour of urine",
+        "bowel",
+        "motion",
+        "dark",
+        "pale",
+        "colour"
+      ]
+    },
+    {
+      "id": "hx-abdo-swelling",
+      "fact": "Abdomen has become progressively distended over the past 10 days, feels tight and uncomfortable, no vomiting blood",
+      "disclosure": "onAsk",
+      "triggers": [
+        "abdomen",
+        "stomach",
+        "swelling",
+        "distend",
+        "belly",
+        "tummy",
+        "bloated",
+        "ascites",
+        "fluid",
+        "big stomach",
+        "big"
+      ]
+    },
+    {
+      "id": "hx-alcohol-amount",
+      "fact": "Drinks roughly 8-10 beers (quarts) most days, sometimes more on weekends, for about 15 years; increased intake in the last 3 months after losing overtime shifts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "drinking",
+        "beer",
+        "quart",
+        "booze",
+        "tot",
+        "liquor",
+        "how much do you drink",
+        "units",
+        "binge"
+      ]
+    },
+    {
+      "id": "hx-alcohol-honesty",
+      "fact": "Initially says he 'only drinks socially' but admits to daily heavy drinking when asked directly and reassured it's confidential",
+      "disclosure": "onAsk",
+      "triggers": [
+        "honest",
+        "really drink",
+        "be honest",
+        "how many drinks a day",
+        "every day",
+        "daily drinking",
+        "admit",
+        "drink",
+        "drinks",
+        "day",
+        "daily",
+        "drinking"
+      ]
+    },
+    {
+      "id": "hx-appetite",
+      "fact": "Poor appetite for 3-4 weeks, has lost interest in food, drinks more than he eats some days",
+      "disclosure": "onAsk",
+      "triggers": [
+        "appetite",
+        "eating",
+        "food",
+        "hungry",
+        "nutrition",
+        "weight"
+      ]
+    },
+    {
+      "id": "hx-weight",
+      "fact": "Not sure about weight loss because of the abdominal swelling, but his arms and legs look 'thinner'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight loss",
+        "thinner",
+        "muscle",
+        "arms",
+        "legs",
+        "wasting",
+        "lost weight",
+        "weight",
+        "loss",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-pain",
+      "fact": "Dull ache in the right upper abdomen, not colicky, worse over the last week; no fever spikes or rigors",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "ache",
+        "right side",
+        "ruq",
+        "abdominal pain",
+        "sore",
+        "tender",
+        "fever",
+        "rigor",
+        "chills",
+        "right",
+        "side",
+        "abdominal"
+      ]
+    },
+    {
+      "id": "hx-confusion",
+      "fact": "Wife says he has been more forgetful and confused the last 2 days, sleeping during the day and awake at night, occasionally talks nonsense",
+      "disclosure": "onAsk",
+      "triggers": [
+        "confusion",
+        "confused",
+        "forgetful",
+        "memory",
+        "behaviour",
+        "sleep",
+        "drowsy",
+        "strange",
+        "encephalopathy",
+        "not himself",
+        "acting odd",
+        "concentration",
+        "not",
+        "himself",
+        "acting",
+        "odd"
+      ]
+    },
+    {
+      "id": "hx-bleeding",
+      "fact": "No vomiting blood, no black stools, but gums bleed slightly when brushing teeth",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bleeding",
+        "blood",
+        "vomit blood",
+        "black stool",
+        "melena",
+        "gums",
+        "bruising",
+        "nosebleed",
+        "vomit",
+        "black",
+        "stool"
+      ]
+    },
+    {
+      "id": "hx-tb-drugs",
+      "fact": "Not currently and never previously on TB treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "tb treatment",
+        "rifampicin",
+        "isoniazid",
+        "tb medicine",
+        "tb drugs",
+        "treatment",
+        "medicine",
+        "drugs"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative about a year ago; no recent testing since",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-hep-risk",
+      "fact": "No IV drug use, no tattoos, one long-term sexual partner (his wife), no known hepatitis B or C diagnosis, no transfusions",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hepatitis",
+        "hep b",
+        "hep c",
+        "tattoo",
+        "needle",
+        "iv drug",
+        "injection",
+        "transfusion",
+        "sexual partner",
+        "std",
+        "hep",
+        "drug",
+        "sexual",
+        "partner"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Diagnosed with alcohol-related pancreatitis 2 years ago, managed conservatively; no known liver disease diagnosed before this",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "pancreatitis",
+        "hospital",
+        "admitted before",
+        "past history",
+        "conditions",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "admitted",
+        "before",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular prescribed medication; occasionally buys over-the-counter painkillers (paracetamol) for headaches after heavy drinking, and has used traditional muti for 'liver cleansing' in the past month bought from a local healer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "paracetamol",
+        "muti",
+        "traditional",
+        "herbal",
+        "over the counter",
+        "painkiller",
+        "over",
+        "counter"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reaction to medicine",
+        "reaction",
+        "medicine"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Works as a long-distance taxi driver, married with 3 children, lives in Pinetown; smokes about 10 cigarettes a day for 20 years",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "job",
+        "work",
+        "occupation",
+        "family",
+        "lives",
+        "social history",
+        "children",
+        "social",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father also drank heavily and died of 'liver problems' in his 50s; no known family history of diabetes or cancer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "liver disease in family",
+        "family",
+        "history",
+        "runs",
+        "liver",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No headache, no urinary symptoms, no joint pains, no rash, no recent travel",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "joint pain",
+        "rash",
+        "travel",
+        "urinary",
+        "other symptoms",
+        "anything else",
+        "systems review",
+        "joint",
+        "pain",
+        "symptoms",
+        "systems",
+        "review"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Deeply jaundiced, thin limbs with a distended abdomen (wasting with central adiposity pattern), fetor hepaticus present. Spider naevi over chest and arms, palmar erythema, gynaecomastia. Mild asterixis elicited. Alert but slow to answer, intermittently drowsy, oriented to person only (not fully to time/place) — consistent with grade I-II encephalopathy.",
+    "vitals": {
+      "hr": 102,
+      "bp": "104/64",
+      "rr": 20,
+      "temp": 37.6,
+      "spo2": "97% on room air",
+      "bmi": 21
+    },
+    "respiratory": "Reduced air entry at both lung bases with dullness to percussion, consistent with bilateral pleural effusions/basal atelectasis from ascites; no crackles, no wheeze",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not elevated, no peripheral oedema of the lower limbs beyond mild pitting at ankles",
+    "abdo": "Grossly distended, shifting dullness and a positive fluid thrill consistent with moderate-to-large ascites; liver edge palpable 4 cm below costal margin, tender, firm; spleen tip palpable; caput medusae absent; no Murphy's sign; bowel sounds present",
+    "neuro": "Asterixis present bilaterally; mild disorientation to time and place; no focal neurological deficit; reduced attention span on serial 7s",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.1 g/dL (macrocytic, MCV 108 fL), WCC 16.8 x10^9/L (neutrophilia), Platelets 98 x10^9/L",
+      "key": true
+    },
+    {
+      "name": "LFTs with fractionated bilirubin",
+      "result": "Total bilirubin 210 µmol/L (conjugated 160 µmol/L), AST 312 U/L, ALT 98 U/L (AST:ALT ratio ~3.2), ALP 180 U/L, GGT 410 U/L, albumin 24 g/L",
+      "key": true
+    },
+    {
+      "name": "INR / coagulation",
+      "result": "INR 2.1, prolonged PT",
+      "key": true
+    },
+    {
+      "name": "Abdominal ultrasound",
+      "result": "Coarse, heterogeneous echotexture of the liver with nodular contour; no biliary dilatation; moderate ascites; patent portal vein with normal flow; spleen mildly enlarged",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Urea 9.8 mmol/L, creatinine 132 µmol/L (mildly elevated from baseline), Na 128 mmol/L (dilutional hyponatraemia)",
+      "key": true
+    },
+    {
+      "name": "Random glucose",
+      "result": "3.1 mmol/L (hypoglycaemic)",
+      "key": true
+    },
+    {
+      "name": "Viral hepatitis screen (HBsAg, HBc IgM, HCV Ab, HAV IgM, HEV IgM)",
+      "result": "All negative",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Ascitic tap (diagnostic paracentesis)",
+      "result": "SAAG 1.4 g/dL (>1.1, consistent with portal hypertension), neutrophil count 180 cells/µL (no SBP), no organisms on Gram stain, culture pending",
+      "key": false
+    },
+    {
+      "name": "Blood cultures",
+      "result": "No growth at 48 hours",
+      "key": false
+    },
+    {
+      "name": "Discriminant function (Maddrey's) / MELD score calculation",
+      "result": "Maddrey's DF calculated at 38 (severe alcoholic hepatitis, threshold >32); MELD score 24",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Blunted costophrenic angles bilaterally consistent with small effusions, no focal consolidation",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Alcoholic hepatitis (on a background of likely alcoholic cirrhosis)",
+      "rank": 1,
+      "for": [
+        "heavy long-term daily alcohol use with recent increase",
+        "AST:ALT ratio >2",
+        "tender firm hepatomegaly",
+        "stigmata of chronic liver disease (spider naevi, palmar erythema, gynaecomastia, testicular atrophy)",
+        "ascites with high SAAG",
+        "encephalopathy and coagulopathy indicating severe disease"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Drug-induced liver injury (traditional muti / paracetamol use)",
+      "rank": 2,
+      "for": [
+        "recent muti use for 'liver cleansing'",
+        "intermittent paracetamol use",
+        "hepatocellular-pattern enzyme rise"
+      ],
+      "against": [
+        "no clear temporal drug-injury relationship as strong as alcohol history",
+        "AST:ALT ratio pattern more typical of alcohol than most DILI",
+        "chronic stigmata suggest long-standing disease, not acute drug insult alone"
+      ]
+    },
+    {
+      "dx": "Viral hepatitis (HAV/HBV/HCV/HEV)",
+      "rank": 3,
+      "for": [
+        "jaundice with hepatocellular enzyme pattern",
+        "fatigue and malaise"
+      ],
+      "against": [
+        "hepatitis serology all negative",
+        "chronic stigmata of liver disease present",
+        "classic alcohol history and AST:ASL pattern"
+      ]
+    },
+    {
+      "dx": "Ascending cholangitis / biliary obstruction",
+      "rank": 4,
+      "for": [
+        "jaundice, RUQ discomfort"
+      ],
+      "against": [
+        "no fever spikes or rigors (no true Charcot's triad)",
+        "ultrasound shows no ductal dilatation",
+        "pain is dull, not colicky",
+        "clinical picture dominated by chronic liver stigmata and ascites"
+      ]
+    },
+    {
+      "dx": "Hepatocellular carcinoma / malignancy on cirrhotic background",
+      "rank": 5,
+      "for": [
+        "chronic liver disease background",
+        "hepatomegaly"
+      ],
+      "against": [
+        "acute worsening over weeks fits an acute-on-chronic insult (alcohol binge) better than malignancy",
+        "no discrete mass on ultrasound",
+        "rapid onset of encephalopathy/coagulopathy better explained by acute hepatitis"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Jaundice (conjugated hyperbilirubinaemia)": "Alcohol-mediated hepatocyte injury and cholestasis impair conjugated bilirubin excretion into bile canaliculi; conjugated (water-soluble) bilirubin regurgitates into blood and is excreted in urine causing dark urine, while reduced bilirubin delivery to the gut causes pale stools",
+    "AST greater than ALT (ratio >2)": "Alcohol preferentially damages hepatocyte mitochondria, releasing mitochondrial AST; alcohol also causes pyridoxine (vitamin B6) deficiency which further reduces ALT synthesis relative to AST, producing the classic AST-predominant pattern",
+    "Ascites": "Portal hypertension from hepatic fibrosis/nodularity increases hydrostatic pressure in splanchnic circulation; hypoalbuminaemia from reduced hepatic synthetic function lowers oncotic pressure; splanchnic vasodilation activates RAAS causing sodium and water retention — together raising SAAG above 1.1 g/dL",
+    "Hepatic encephalopathy": "Failing hepatocyte mass and portosystemic shunting reduce ammonia clearance; ammonia crosses the blood-brain barrier, is metabolised by astrocytes to glutamine causing osmotic swelling and altered neurotransmission, worsened by precipitants such as constipation, sepsis, GI bleeding or hypokalaemia",
+    "Coagulopathy (raised INR)": "Reduced hepatic synthesis of clotting factors II, VII, IX, X (vitamin K-dependent) reflects loss of hepatic synthetic function and is a key marker of liver failure severity",
+    "Hypoglycaemia": "Loss of hepatic glycogen stores and impaired gluconeogenesis in severe hepatocellular failure removes the liver's buffering capacity for blood glucose",
+    "Spider naevi, palmar erythema, gynaecomastia, testicular atrophy": "Impaired hepatic metabolism of oestrogens in chronic liver disease leads to relative hyperoestrogenism, causing these stigmata of chronic liver disease"
+  },
+  "staging": "Severe alcoholic hepatitis by Maddrey's discriminant function (DF 38, threshold >32 defines severe disease warranting consideration of corticosteroids); MELD score 24 indicating high short-term mortality risk; West Haven grade I-II hepatic encephalopathy",
+  "management": {
+    "immediate": [
+      "ABCs, correct hypoglycaemia with IV dextrose",
+      "Give thiamine (IV) before any glucose to prevent precipitating Wernicke's encephalopathy",
+      "Screen for and treat precipitants of encephalopathy (constipation, sepsis, GI bleed, electrolyte disturbance) and start lactulose titrated to 2-3 soft stools/day",
+      "Diagnostic ascitic tap to exclude spontaneous bacterial peritonitis; if neutrophils >250 cells/µL treat empirically with IV antibiotics (e.g. ceftriaxone) plus albumin",
+      "Correct coagulopathy only if active bleeding or pre-procedure (vitamin K, consider FFP) — INR alone in liver disease should not be 'corrected' prophylactically",
+      "Strict alcohol cessation counselling and screen for/treat alcohol withdrawal (CIWA-Ar scoring, benzodiazepine taper if indicated, avoid oversedation given encephalopathy)"
+    ],
+    "definitive": [
+      "Confirm severe alcoholic hepatitis (Maddrey's DF >32 or MELD >20) and consider corticosteroids (prednisolone) after excluding active infection/GI bleeding, reassessing response with the Lille score at day 7",
+      "Nutritional support — high calorie/protein oral or enteral feeding is a cornerstone of therapy, do not protein-restrict",
+      "Address alcohol use disorder formally: refer for counselling/rehabilitation, consider pharmacotherapy for relapse prevention once medically stable",
+      "Manage ascites: sodium restriction, diuretics (spironolactone ± furosemide) once haemodynamically stable and renal function allows, therapeutic paracentesis with albumin cover if tense/refractory ascites"
+    ],
+    "supportive": [
+      "Monitor for and treat hepatorenal syndrome if renal function worsens (avoid nephrotoxins, consider terlipressin/albumin per specialist input)",
+      "Vitamin supplementation: thiamine, folate, multivitamins given malnutrition and alcohol use",
+      "Avoid sedatives, NSAIDs and hepatotoxic drugs; adjust paracetamol dosing cautiously",
+      "Involve dietitian, social worker and, where available, addiction medicine/psychology services",
+      "Family/household education about alcohol use and safety planning given confusion/encephalopathy risk"
+    ],
+    "followUp": [
+      "Serial LFTs, INR, U&E and glucose monitoring during admission",
+      "Reassess Lille score at day 7 if steroids started — stop steroids if non-responder",
+      "Hepatology/gastroenterology follow-up for chronic liver disease workup and surveillance (consider HCC surveillance if cirrhosis confirmed)",
+      "Long-term alcohol cessation support and relapse prevention follow-up",
+      "Repeat ultrasound and clinical reassessment of ascites and liver synthetic function after discharge"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-confirm-jaundice-fractionate",
+      "phase": "history",
+      "item": "Confirms jaundice and establishes it is conjugated (dark urine, pale stools) as the first of the 'three questions'",
+      "answer": "Dark urine like Coca-Cola, pale stools — conjugated pattern",
+      "why": "Core opening step of the jaundice framework — conjugated vs unconjugated",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-pattern-reasoning",
+      "phase": "history",
+      "item": "Establishes hepatocellular vs cholestatic pattern reasoning (asks about pain character, itch, and plans to compare ALT/AST rise to ALP/GGT rise relative to ULN)",
+      "answer": "Dull RUQ ache, no significant pruritus; enzyme pattern later confirms markedly hepatocellular-predominant with AST>>ALT",
+      "why": "Second of the 'three questions' — determines the downstream investigation pathway",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-alcohol-history",
+      "phase": "history",
+      "item": "Takes a detailed, non-judgemental alcohol history (quantity, duration, pattern, recent change) and elicits honest disclosure",
+      "answer": "8-10 beers daily for 15 years, increased over past 3 months",
+      "why": "Single most important risk factor in this case; sensitive, non-judgemental elicitation is a communication skill under direct assessment",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-drug-tb-history",
+      "phase": "history",
+      "item": "Asks about TB treatment start date, other hepatotoxic drugs, paracetamol use, and traditional muti use",
+      "answer": "No TB treatment; occasional paracetamol; recent muti use for 'liver cleansing'",
+      "why": "KZN-weighted differential ranks DILI (especially anti-TB) very highly — must be actively excluded before settling on alcohol as the cause",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-severity-screen",
+      "phase": "history",
+      "item": "Screens for liver failure/severity: confusion or behaviour change, bleeding tendency, and asks about symptoms of hypoglycaemia",
+      "answer": "Family reports 2 days of confusion and day-night reversal; mild gum bleeding; no overt hypoglycaemic symptoms reported by patient",
+      "why": "The severity question (INR/albumin/encephalopathy/glucose/renal function) changes management in every jaundiced patient",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cholangitis-screen",
+      "phase": "history",
+      "item": "Actively screens for and excludes ascending cholangitis (fever, rigors, colicky pain pattern)",
+      "answer": "No fever spikes or rigors, pain is dull not colicky — Charcot's triad not present",
+      "why": "Cholangitis is the emergency that must be excluded early in any jaundiced patient with RUQ symptoms",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-clde-exam",
+      "phase": "examination",
+      "item": "Examines for stigmata of chronic liver disease (spider naevi, palmar erythema, gynaecomastia, testicular atrophy, Dupuytren's)",
+      "answer": "Spider naevi, palmar erythema, gynaecomastia, testicular atrophy, Dupuytren's contracture all present",
+      "why": "Supports a chronic alcoholic liver disease background underlying the acute presentation",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-encephalopathy-exam",
+      "phase": "examination",
+      "item": "Tests for asterixis and assesses mental state/orientation, grading encephalopathy",
+      "answer": "Bilateral asterixis, disoriented to time/place, grade I-II encephalopathy",
+      "why": "Directly assesses the liver failure red flag and guides urgency of management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ascites-exam",
+      "phase": "examination",
+      "item": "Examines abdomen for ascites (shifting dullness, fluid thrill) and hepatosplenomegaly",
+      "answer": "Shifting dullness and fluid thrill positive, tender firm hepatomegaly, splenic tip palpable",
+      "why": "Confirms portal hypertension component and directs need for diagnostic paracentesis",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx-reasoning",
+      "phase": "differentials",
+      "item": "Presents a ranked differential explicitly using the conjugated/hepatocellular framework, prioritising alcoholic hepatitis but actively considering DILI and viral hepatitis",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning using the three-questions framework is the core exam philosophy for this topic",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-pattern",
+      "phase": "investigations",
+      "item": "Requests LFTs with fractionated bilirubin, FBC, INR/albumin/glucose, U&E, and abdominal ultrasound as first-line tests",
+      "answer": "See investigations catalogue — confirms hepatocellular pattern, coagulopathy, hypoalbuminaemia, hypoglycaemia, non-dilated ducts with cirrhotic liver and ascites",
+      "why": "First-line investigation panel applicable to every jaundiced patient per the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-exclude-other",
+      "phase": "investigations",
+      "item": "Sends viral hepatitis serology and HIV test to exclude alternative hepatocellular causes despite a convincing alcohol history",
+      "answer": "All negative, supporting alcoholic hepatitis as the unifying diagnosis",
+      "why": "Must not anchor on alcohol alone without excluding treatable alternative/co-existing causes",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-severity-score",
+      "phase": "investigations",
+      "item": "Calculates or requests a severity score (Maddrey's discriminant function and/or MELD) to define severe disease",
+      "answer": "Maddrey's DF 38 (severe, >32 threshold), MELD 24",
+      "why": "Determines whether corticosteroid therapy should be considered and communicates prognosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ascitic-tap",
+      "phase": "investigations",
+      "item": "Performs/requests diagnostic ascitic tap to exclude spontaneous bacterial peritonitis and calculate SAAG",
+      "answer": "SAAG 1.4 g/dL, neutrophils 180 cells/µL — no SBP, consistent with portal hypertension",
+      "why": "Essential in any new ascites in a jaundiced patient, especially with signs of possible sepsis/encephalopathy",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-immediate",
+      "phase": "management",
+      "item": "Outlines immediate management: thiamine before glucose, correct hypoglycaemia, treat/exclude precipitants of encephalopathy, lactulose, alcohol withdrawal monitoring",
+      "answer": null,
+      "why": "Immediate stabilisation steps specific to alcoholic liver failure with encephalopathy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Discusses definitive management: corticosteroids for severe alcoholic hepatitis (with Lille score reassessment), nutritional support, alcohol cessation and rehabilitation referral",
+      "answer": null,
+      "why": "Definitive disease-specific management per severity scoring and SA/international guidance",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 13,
+    "management": 12
+  }
+}

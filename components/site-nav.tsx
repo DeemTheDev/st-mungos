@@ -6,13 +6,15 @@
 // read from usePathname(), so this stays a server component and ships zero JS.
 import Link from "next/link";
 
-export type NavKey = "home" | "stations" | "flashcards" | "notes" | "review";
+export type NavKey = "home" | "stations" | "flashcards" | "notes" | "library" | "review";
 
+// Study tools first (what she opens most), then the two that build the bank.
 const LINKS: Array<{ key: NavKey; href: string; label: string }> = [
   { key: "stations", href: "/session", label: "Stations" },
   { key: "flashcards", href: "/flashcards", label: "Flashcards" },
   { key: "notes", href: "/notes", label: "Notes" },
-  { key: "review", href: "/admin/review", label: "Review" },
+  { key: "library", href: "/library", label: "Library" },
+  { key: "review", href: "/review", label: "Review" },
 ];
 
 export function SiteNav({ active }: { active?: NavKey }) {
@@ -27,7 +29,7 @@ export function SiteNav({ active }: { active?: NavKey }) {
         >
           St Mungo&apos;s
         </Link>
-        {/* flex-wrap: with four links the row can overflow a 360px phone —
+        {/* flex-wrap: with five links the row certainly overflows a 360px phone —
             wrapping onto a second line beats clipping "Review" off-screen */}
         <ul className="flex flex-wrap items-center justify-end gap-1 text-sm">
           {LINKS.map((link) => (

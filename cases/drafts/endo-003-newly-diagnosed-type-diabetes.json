@@ -1,0 +1,699 @@
+{
+  "id": "endo-003-newly-diagnosed-type-diabetes",
+  "version": 1,
+  "discipline": "endo",
+  "diagnosis": "Newly diagnosed type 2 diabetes with sepsis of the foot",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This patient has a glucose of 28.4 mmol/L and looks septic with fast breathing. Walk me through why you are or are not calling this diabetic ketoacidosis.",
+      "modelAnswer": "DKA requires all three of the triad: glucose >11 (met here), ketonaemia ≥3 mmol/L or significant ketonuria (NOT met — his β-hydroxybutyrate is only 0.4), and pH <7.3 or bicarbonate <15 (NOT met — pH 7.34, HCO3 19). Because the full triad is absent, this is not DKA; his presentation is better explained by sepsis from the infected diabetic foot causing a hyperglycaemic, mildly acidotic (lactate-driven) picture in a patient with newly unmasked type 2 diabetes. His tachypnoea is more consistent with compensatory septic tachypnoea than true ketoacidotic Kussmaul breathing.",
+      "gradingNotes": "Full marks for explicitly citing all three numeric thresholds and stating none/only one is met; must distinguish DKA from sepsis-driven hyperglycaemia, not just say 'no DKA'."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why does this man report so little pain from such a severe-looking foot wound, and what does that tell you clinically?",
+      "modelAnswer": "Chronic hyperglycaemia damages peripheral nerves via polyol pathway accumulation of sorbitol/fructose in Schwann cells, microvascular ischaemia of the vasa nervorum, and non-enzymatic glycation of nerve structural proteins, producing a distal symmetric sensorimotor polyneuropathy. This blunts protective pain sensation, so minor trauma goes unnoticed and untreated, allowing progressive tissue destruction and infection — explaining both why the wound reached this severity and confirming underlying chronic (not acute) diabetes.",
+      "gradingNotes": "Wants the polyol pathway/microvascular/glycation mechanism, not just 'diabetic neuropathy' as a label; should link back to why this indicates chronicity of hyperglycaemia."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His urine dipstick shows only trace ketones and his capillary β-hydroxybutyrate is 0.4 mmol/L. Can you rule out significant ketosis based on the urine dipstick alone?",
+      "modelAnswer": "No. Urine dipstick only detects acetoacetate, not β-hydroxybutyrate, which is actually the predominant ketone body in DKA, especially early in the illness. This means dipstick can underestimate true ketosis at presentation, and paradoxically can appear to 'worsen' during recovery as acetoacetate rises while beta-hydroxybutyrate (the true marker of severity) is falling. Capillary or serum β-hydroxybutyrate measurement is the correct test to rely on, and in this case it is genuinely low (0.4), supporting that this is not a ketoacidotic process.",
+      "gradingNotes": "Must explain the acetoacetate vs beta-hydroxybutyrate distinction and the paradoxical worsening-during-recovery trap; simply saying 'dipstick is unreliable' without the mechanism scores partial credit only."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "His potassium comes back as 4.9 mmol/L. Talk me through why you check this before starting insulin, and what you would have done differently if it had been 3.2 mmol/L.",
+      "modelAnswer": "Insulin drives potassium intracellularly (via Na-K-ATPase stimulation), and total body potassium is often already substantially depleted (300-600mmol deficit) despite a normal or even high admission level, due to acidosis, insulin deficiency and osmotic diuresis masking the true deficit. Starting insulin without checking/replacing potassium first risks a precipitous, potentially fatal fall in serum potassium causing cardiac arrhythmia. Since his level here is 4.9 (safe), insulin can proceed with regular monitoring. If it had been 3.2, I would replace potassium first (or run replacement concurrently) and would withhold or delay the insulin infusion briefly until potassium is at a safer level, per protocol thresholds (generally hold insulin if K+ <3.5 until replacement started).",
+      "gradingNotes": "Must state the mechanism (insulin drives K+ intracellularly, total body deficit masked) and the explicit rule to replace before/alongside, never after, insulin; bonus for citing a specific threshold value."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "differentials",
+      "question": "What is HHS and why does this patient not fit that diagnosis despite his very high glucose?",
+      "modelAnswer": "HHS is typically seen in older type 2 diabetics with a gradual onset over days to weeks, extremely elevated glucose, minimal ketosis and acidosis (unlike DKA, because residual endogenous insulin suppresses lipolysis/ketogenesis even though it can't control glucose), and very high serum osmolality with profound dehydration and often significant confusion. While this patient has some overlapping features (raised glucose, raised osmolality at 312, confusion), his presentation is dominated by an acute, days-long septic illness from a foot wound, with degree of osmolality not reaching the extremes typical of classic HHS (often >320-350) and clinical trajectory that is better explained as acute sepsis in a patient with previously unrecognised type 2 diabetes, rather than a primary HHS presentation.",
+      "gradingNotes": "Wants comparison of tempo, degree of osmolality, and the precipitant-driven explanation, not just a rote definition of HHS."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "hyperglycaemia + unwell patient: confirm triad (glucose/ketones/gas) to exclude DKA, grade severity via JBDS markers, hunt actively for the precipitant (here a foot wound), screen potassium before insulin, rank the HAGMA/ketosis differential, treat and monitor to biochemical resolution, then address new diabetes diagnosis and prevention",
+  "patient": {
+    "name": "Bongani Mkhize",
+    "age": 54,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, minimises pain, embarrassed about not seeking help sooner, worried about losing his job if admitted",
+    "openingLine": "Doctor, my foot has gone bad and now I just feel terrible all over."
+  },
+  "presentingComplaint": "5-day history of a smelly, discharging right foot wound with fever, and 2 days of feeling generally unwell, confused and breathless",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Noticed a small crack between his toes about 2 weeks ago after wearing new work boots; it slowly turned into an open sore",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-wound-progress",
+      "fact": "Over the last 5 days the wound has become larger, with yellow-green pus and a bad smell; the whole foot is now swollen and red up past the ankle",
+      "disclosure": "onAsk",
+      "triggers": [
+        "wound",
+        "sore",
+        "ulcer",
+        "foot",
+        "discharge",
+        "pus",
+        "smell",
+        "swelling",
+        "swollen",
+        "redness",
+        "red",
+        "spreading",
+        "infection",
+        "cut"
+      ]
+    },
+    {
+      "id": "hx-pain-sensation",
+      "fact": "Says the foot doesn't actually hurt that much, which he found strange given how bad it looks; has noticed his feet 'feel funny', like walking on cotton wool, for the past year or so",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "hurt",
+        "sore",
+        "feeling",
+        "numb",
+        "numbness",
+        "sensation",
+        "tingling",
+        "pins and needles",
+        "cotton wool",
+        "nerve",
+        "pins",
+        "needles",
+        "cotton",
+        "wool"
+      ]
+    },
+    {
+      "id": "hx-systemic",
+      "fact": "For the past 2 days has felt hot and shivery, very tired, and this morning his wife said he was 'talking nonsense' and seemed confused",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "shivering",
+        "chills",
+        "rigors",
+        "confused",
+        "confusion",
+        "drowsy",
+        "unwell",
+        "tired",
+        "fatigue",
+        "talking nonsense",
+        "strange",
+        "talking",
+        "nonsense"
+      ]
+    },
+    {
+      "id": "hx-polyuria",
+      "fact": "Over the past 2-3 months has been getting up 3-4 times a night to urinate and drinking water constantly; also lost weight without trying, about 5kg",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urinating",
+        "peeing",
+        "thirst",
+        "thirsty",
+        "drinking water",
+        "weight loss",
+        "weight",
+        "polyuria",
+        "polydipsia",
+        "toilet at night",
+        "drinking",
+        "water",
+        "loss",
+        "toilet",
+        "night"
+      ]
+    },
+    {
+      "id": "hx-vision",
+      "fact": "Has noticed his vision has been a bit blurry recently, thought he just needed new glasses",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vision",
+        "eyes",
+        "blurry",
+        "eyesight",
+        "seeing"
+      ]
+    },
+    {
+      "id": "hx-diabetes-known",
+      "fact": "Has never been told he has diabetes or 'sugar sickness' before; never tested his blood sugar",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "sugar sickness",
+        "blood sugar",
+        "tested before",
+        "diagnosed before",
+        "known diabetic",
+        "sickness",
+        "blood",
+        "tested",
+        "before",
+        "diagnosed",
+        "known",
+        "diabetic"
+      ]
+    },
+    {
+      "id": "hx-nausea-oral",
+      "fact": "Has vomited twice today and has not been eating or drinking properly since yesterday because he feels so nauseated",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomit",
+        "nausea",
+        "nauseous",
+        "eating",
+        "drinking",
+        "appetite",
+        "sick",
+        "throwing up",
+        "throwing"
+      ]
+    },
+    {
+      "id": "hx-breathing",
+      "fact": "Family noticed he has been breathing fast and deeply, almost like he'd been running, even lying still",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breathing",
+        "breath",
+        "breathless",
+        "short of breath",
+        "hyperventilating",
+        "fast breathing",
+        "deep breathing",
+        "short",
+        "fast",
+        "deep"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous hospital admissions; no known heart, kidney or lung disease; no prior surgery",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "conditions",
+        "hospital",
+        "admitted",
+        "surgery",
+        "operations",
+        "past history",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular medication; occasionally uses traditional muti for 'general health' bought from a local healer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "muti",
+        "traditional",
+        "treatment",
+        "taking anything",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "penicillin"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 10 cigarettes a day for 20 years; drinks beer on weekends, denies binge drinking; lives in KwaMashu with his wife and two teenage children; works night shifts as a security guard, often standing for long hours in ill-fitting boots",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "beer",
+        "social",
+        "work",
+        "job",
+        "occupation",
+        "live",
+        "house",
+        "home"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "His mother had 'sugar' and lost a leg before she died; father had high blood pressure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "runs in the family",
+        "genetic",
+        "diabetes in family",
+        "family",
+        "history",
+        "runs",
+        "diabetes"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Last tested HIV negative about 3 years ago; not currently sexually active with anyone other than his wife",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "sexual",
+        "partner",
+        "std",
+        "sti"
+      ]
+    },
+    {
+      "id": "hx-footcare",
+      "fact": "Never checks his feet routinely and did not know diabetics need special foot care; walks around barefoot at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "foot care",
+        "check feet",
+        "barefoot",
+        "shoes",
+        "footwear",
+        "inspect",
+        "look after feet",
+        "foot",
+        "care",
+        "check",
+        "feet",
+        "look",
+        "after"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Overweight, unwell and lethargic man, rousable but drowsy and disoriented to time. Flushed, dry mucous membranes. Deep, sighing rapid breathing noted at rest.",
+    "vitals": {
+      "hr": 124,
+      "bp": "96/58",
+      "rr": 30,
+      "temp": 38.9,
+      "spo2": "95% on room air",
+      "bmi": 31
+    },
+    "respiratory": "Kussmaul-pattern breathing, chest clear on auscultation bilaterally, no crackles or wheeze",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, peripheral pulses present but weak, capillary refill 3-4 seconds",
+    "abdo": "Soft, mildly tender generally, no guarding, bowel sounds present but reduced",
+    "neuro": "Reduced sensation to 10g monofilament and vibration in a stocking distribution bilaterally to mid-shin; drowsy but no focal neurological deficit; pupils equal and reactive",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Capillary/random venous glucose",
+      "result": "28.4 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Capillary β-hydroxybutyrate",
+      "result": "0.4 mmol/L (not significantly raised)",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas",
+      "result": "pH 7.34, HCO₃⁻ 19 mmol/L, lactate 2.8 mmol/L, K⁺ 4.9 mmol/L, base excess -5",
+      "key": true
+    },
+    {
+      "name": "HbA1c",
+      "result": "11.8% (105 mmol/mol)",
+      "key": true
+    },
+    {
+      "name": "X-ray right foot",
+      "result": "Soft tissue swelling; cortical irregularity and loss of definition at the 1st metatarsal head concerning for osteomyelitis; no gas in soft tissues",
+      "key": true
+    },
+    {
+      "name": "Wound swab / deep tissue culture",
+      "result": "Pending — deep tissue sample sent for culture (superficial swab avoided as unreliable)",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 11.2 g/dL, WCC 19.6 x10^9/L with marked left shift, Platelets 456",
+      "key": false
+    },
+    {
+      "name": "U&E",
+      "result": "Urea 12.1 mmol/L, Creatinine 148 µmol/L, Na⁺ 131 mmol/L (corrected Na⁺ ~137 mmol/L), K⁺ 4.9 mmol/L",
+      "key": true
+    },
+    {
+      "name": "CRP",
+      "result": "212 mg/L",
+      "key": false
+    },
+    {
+      "name": "Blood cultures",
+      "result": "Pending at time of assessment",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Urine dipstick",
+      "result": "Glucose 3+, ketones trace, no nitrites",
+      "key": false
+    },
+    {
+      "name": "Serum osmolality (calculated)",
+      "result": "312 mOsm/kg",
+      "key": false
+    },
+    {
+      "name": "CXR",
+      "result": "No consolidation, no cavitation, heart size normal",
+      "key": false
+    },
+    {
+      "name": "Anion gap",
+      "result": "14 mmol/L (normal 8-16, not significantly widened)",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Newly diagnosed type 2 diabetes with foot sepsis (cellulitis/osteomyelitis) precipitating sepsis/SIRS without significant ketoacidosis",
+      "rank": 1,
+      "for": [
+        "glucose 28.4 with new polyuria/polydipsia/weight loss history",
+        "obese, age 54, strong family history of T2DM",
+        "florid foot wound with spreading cellulitis, probe-to-bone, purulent discharge",
+        "fever, tachycardia, hypotension, confusion consistent with sepsis",
+        "ketones only mildly raised, pH only mildly low, HCO3 only mildly reduced — does not meet DKA triad"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Diabetic ketoacidosis",
+      "rank": 2,
+      "for": [
+        "marked hyperglycaemia",
+        "Kussmaul-pattern breathing noted on exam",
+        "vomiting and drowsiness"
+      ],
+      "against": [
+        "ketones only 0.4 mmol/L (needs ≥3 for DKA)",
+        "pH 7.34 and HCO3 19 (both above DKA thresholds of <7.3 and <15)",
+        "anion gap not significantly widened",
+        "breathing pattern more likely a compensatory/septic tachypnoea than true Kussmaul, and lactate mildly raised fits sepsis better"
+      ]
+    },
+    {
+      "dx": "Hyperosmolar hyperglycaemic state (HHS)",
+      "rank": 3,
+      "for": [
+        "very high glucose",
+        "osmolality raised at 312 mOsm/kg",
+        "confusion",
+        "dehydration"
+      ],
+      "against": [
+        "osmolality not as extreme as classic HHS (often >320-350)",
+        "acute precipitating wound sepsis and rapid tempo of illness (days not weeks) better explains picture",
+        "minimal true acidosis but this is not typical HHS itself, it is sepsis-driven"
+      ]
+    },
+    {
+      "dx": "Necrotising fasciitis of the foot/lower limb",
+      "rank": 4,
+      "for": [
+        "rapidly spreading erythema",
+        "systemic sepsis",
+        "diabetic risk factor"
+      ],
+      "against": [
+        "no crepitus on exam",
+        "no gas on X-ray",
+        "pain out of proportion classically expected but patient reports minimal pain likely due to neuropathy, not the typical severe pain of necrotising fasciitis",
+        "no bullae, no dusky/purple skin discolouration described"
+      ]
+    },
+    {
+      "dx": "Lactic acidosis from sepsis alone (without significant diabetic component)",
+      "rank": 5,
+      "for": [
+        "raised lactate 2.8",
+        "hypotension and tachycardia"
+      ],
+      "against": [
+        "new glucose 28.4 and HbA1c 11.8% confirm genuinely new, significant diabetes rather than incidental stress hyperglycaemia",
+        "polyuria/polydipsia/weight loss over months predates this acute illness"
+      ]
+    }
+  ],
+  "pathophys": {
+    "reduced pain despite severe-looking foot wound": "chronic hyperglycaemia causes distal symmetric sensorimotor polyneuropathy via polyol pathway accumulation of sorbitol/fructose, microvascular ischaemia of vasa nervorum and non-enzymatic glycation of nerve proteins, blunting protective pain sensation and allowing tissue destruction to progress unnoticed",
+    "foot ulceration and poor healing": "combination of sensory neuropathy (unnoticed trauma), motor neuropathy (small muscle wasting causing altered foot biomechanics and abnormal pressure points), and peripheral arterial disease (reduced tissue perfusion) impair wound healing; hyperglycaemia itself impairs neutrophil chemotaxis and phagocytosis, worsening infection control",
+    "polyuria and polydipsia": "once plasma glucose exceeds the renal tubular reabsorptive threshold (~10 mmol/L), glucose spills into urine causing osmotic diuresis and free water loss, triggering compensatory thirst",
+    "confusion": "combination of hyperosmolar state causing cerebral cell dehydration/osmotic shifts, plus systemic sepsis-related encephalopathy from cytokine and perfusion effects on the brain — correlates better with osmolality and sepsis severity than with pH",
+    "tachypnoea/deep breathing": "in this case predominantly a compensatory septic tachypnoea and mild metabolic acidosis from lactate rather than true ketoacid-driven Kussmaul breathing, since the ketone/pH/bicarbonate triad does not meet DKA thresholds",
+    "absent pedal pulse and cool foot": "diabetic macrovascular disease causes accelerated atherosclerosis of the tibial/peroneal vessels, reducing perfusion pressure and oxygen delivery, compounding the neuropathic ulcer's inability to heal and enabling deeper infection to track to bone"
+  },
+  "staging": "Newly diagnosed type 2 diabetes mellitus (HbA1c 11.8%); does NOT meet DKA criteria (mild ketosis only, pH/HCO3 above threshold); Wagner grade 3 diabetic foot ulcer (deep, probes to bone, suspected osteomyelitis) with surrounding cellulitis and sepsis (qSOFA-positive: hypotension, altered mentation, tachypnoea)",
+  "management": {
+    "immediate": [
+      "IV access, send bloods including blood cultures and lactate",
+      "IV 0.9% saline resuscitation bolus for hypotension, then ongoing fluid replacement guided by response",
+      "Empirical broad-spectrum IV antibiotics per local sepsis/diabetic foot protocol (e.g. IV co-amoxiclav or piperacillin-tazobactam plus consideration of anaerobic and MRSA cover per local antibiogram) after cultures taken",
+      "Check potassium before starting any insulin infusion — here K+ 4.9 mmol/L is safe to proceed",
+      "Start fixed-rate IV insulin infusion (weight-based) to control marked hyperglycaemia and given clinical concern for a ketotic/mixed picture even though full DKA criteria not met, with hourly glucose monitoring",
+      "Urgent surgical/orthopaedic referral for surgical debridement/washout of the foot given suspected osteomyelitis and deep infection",
+      "Analgesia, keep foot elevated and off-loaded, elevate to reduce oedema"
+    ],
+    "definitive": [
+      "Targeted antibiotic therapy once deep tissue culture and sensitivities return; likely prolonged course (weeks) if osteomyelitis confirmed, in conjunction with surgical source control",
+      "MRI foot if available/needed to further delineate extent of osteomyelitis if X-ray equivocal and management would change",
+      "Formal vascular assessment (ABPI/Doppler) given absent posterior tibial pulse — consider vascular surgery referral for possible revascularisation",
+      "Transition from IV insulin infusion to subcutaneous basal-bolus insulin regimen once eating, stable and infection controlling, given very high HbA1c confirming genuinely new significant hyperglycaemia requiring insulin initiation acutely (may step down to oral agents/metformin later once stabilised, as an obese phenotype)",
+      "Confirm diabetes type formally once acutely stable — clinical picture (age, obesity, family history, gradual symptom onset) strongly favours type 2 diabetes; defer C-peptide/antibody testing to after acute illness resolves if any diagnostic doubt"
+    ],
+    "supportive": [
+      "Strict glucose, electrolyte and clinical monitoring (2-4 hourly initially)",
+      "Daily wound review and dressing changes; podiatry referral",
+      "Pressure offloading footwear/devices for the affected foot",
+      "VTE prophylaxis once bleeding risk from any surgery allows",
+      "Nutritional support, dietician referral for diabetes-appropriate diet",
+      "Smoking cessation counselling given peripheral vascular disease risk"
+    ],
+    "followUp": [
+      "Structured diabetes clinic follow-up for education, home glucose monitoring, and long-term regimen optimisation",
+      "Diabetic foot care education — daily foot inspection, appropriate footwear, avoid barefoot walking, first point of contact for any new wound",
+      "Sick-day rules and insulin/medication adherence education for the future",
+      "Vascular surveillance and consideration of revascularisation if significant peripheral arterial disease confirmed",
+      "Repeat HbA1c at 3 months to assess response to treatment",
+      "Screening for other diabetes complications once stable: fundoscopy/retinal screening, urine ACR for nephropathy, lipid profile and cardiovascular risk assessment"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, explains purpose, obtains consent",
+      "answer": null,
+      "why": "Basic professionalism and communication",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-wound-history",
+      "phase": "history",
+      "item": "Characterises the foot wound in detail: onset, progression, discharge, smell, pain (or lack of), spread",
+      "answer": "2-week history progressing to a large discharging, malodorous ulcer with ascending erythema; strikingly painless",
+      "why": "Localises the septic source and reveals the sensory neuropathy clue pointing to underlying diabetes",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-diabetes-symptom-screen",
+      "phase": "history",
+      "item": "Screens for classic hyperglycaemia symptoms: polyuria, polydipsia, unintentional weight loss, blurred vision",
+      "answer": "All present over 2-3 months — polyuria, polydipsia, ~5kg weight loss, blurred vision",
+      "why": "Establishes that this is genuinely new-onset diabetes rather than incidental stress hyperglycaemia",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-known-diabetic-check",
+      "phase": "history",
+      "item": "Explicitly asks whether patient has ever been diagnosed with or tested for diabetes before",
+      "answer": "Never previously diagnosed or tested",
+      "why": "Confirms this is a new diagnosis, changing management priorities toward education and initiation of treatment",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-systemic-sepsis-screen",
+      "phase": "history",
+      "item": "Screens for systemic/septic symptoms: fever, chills, confusion, nausea/vomiting, breathlessness",
+      "answer": "Fever, rigors, confusion (per wife), vomiting x2, fast/deep breathing noted by family",
+      "why": "Identifies systemic sepsis requiring urgent resuscitation, separate from and in addition to the glycaemic picture",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-risk-factors",
+      "phase": "history",
+      "item": "Explores risk factors and precipitants: footwear/occupation, foot care habits, family history of diabetes, smoking/alcohol, HIV status, medication/muti use",
+      "answer": "Ill-fitting boots, no foot care knowledge, strong family history (mother lost a leg to 'sugar'), smoker, HIV negative, uses traditional muti",
+      "why": "Establishes modifiable risk factors and excludes/considers other precipitants per the differential framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-vitals-sepsis",
+      "phase": "examination",
+      "item": "Performs full vital signs and recognises signs of sepsis (tachycardia, hypotension, tachypnoea, fever, altered mentation)",
+      "answer": "HR 124, BP 96/58, RR 30, Temp 38.9, GCS 13/15",
+      "why": "Sepsis recognition drives urgent resuscitation independent of glucose result",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-foot",
+      "phase": "examination",
+      "item": "Performs focused examination of the foot: inspects wound, probes to bone if appropriate, assesses pulses, sensation (monofilament/vibration), and extent of spreading infection",
+      "answer": "4x3cm plantar ulcer probing to bone, absent posterior tibial pulse, stocking-distribution sensory loss, ascending cellulitis to mid-shin",
+      "why": "Confirms Wagner grade, osteomyelitis risk, vascular status and underlying neuropathy — core diabetic foot assessment",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-triad-confirm",
+      "phase": "investigations",
+      "item": "Requests capillary glucose, capillary/serum ketones (β-hydroxybutyrate), and venous blood gas to formally assess for DKA before assuming diagnosis",
+      "answer": "Glucose 28.4, ketones 0.4 (not significant), pH 7.34/HCO3 19 (both above DKA threshold) — DKA triad NOT met",
+      "why": "Framework mandates confirming or excluding the DKA triad explicitly rather than assuming any hyperglycaemic diabetic is in DKA",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-potassium-check",
+      "phase": "investigations",
+      "item": "Checks potassium before considering insulin therapy",
+      "answer": "K+ 4.9 mmol/L — safe to start insulin without prior replacement",
+      "why": "Potassium physiology explicitly flagged as the most dangerous/examinable step; insulin must never be given before confirming K+ is safe",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-septic-workup",
+      "phase": "investigations",
+      "item": "Orders septic workup: FBC, CRP, blood cultures, wound/deep tissue culture, foot X-ray, HbA1c",
+      "answer": "WCC 19.6 with left shift, CRP 212, X-ray suggests osteomyelitis at 1st metatarsal head, HbA1c 11.8% confirming significant chronic hyperglycaemia",
+      "why": "Identifies and characterises the septic source and confirms the chronicity/severity of the new diabetes diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx-reasoning",
+      "phase": "differentials",
+      "item": "Presents a ranked differential distinguishing foot sepsis with new T2DM from DKA, HHS, necrotising fasciitis, and pure sepsis-driven lactic acidosis, explicitly using the triad/JBDS framework to argue against DKA",
+      "answer": null,
+      "why": "Core symptom-to-differential reasoning central to the case; must use objective threshold values (ketones, pH, HCO3) rather than assumption",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-sepsis-priority",
+      "phase": "management",
+      "item": "Prioritises sepsis resuscitation (fluids, cultures, empirical antibiotics) as an immediate step alongside glycaemic control",
+      "answer": "IV fluids, blood cultures then empirical broad-spectrum IV antibiotics, urgent surgical referral for debridement",
+      "why": "Recognising and treating sepsis takes priority; foot sepsis is the driver of the acute illness, not incidental",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-insulin-safe",
+      "phase": "management",
+      "item": "Initiates insulin therapy only after confirming potassium is safe, and plans transition to long-term diabetes management appropriate to new T2DM diagnosis",
+      "answer": "Fixed-rate IV insulin infusion started once K+ confirmed safe; plan to transition to subcutaneous basal-bolus then oral agents as appropriate",
+      "why": "Correct sequencing prevents iatrogenic hypokalaemia; also addresses the newly diagnosed diabetes definitively",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-surgical-referral",
+      "phase": "management",
+      "item": "Arranges urgent surgical/orthopaedic referral for probable osteomyelitis and considers vascular assessment given absent pulse",
+      "answer": "Urgent surgical debridement referral; vascular assessment (ABPI/Doppler) for absent posterior tibial pulse",
+      "why": "Source control is essential in diabetic foot sepsis and cannot be achieved by antibiotics/insulin alone",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-followup-education",
+      "phase": "management",
+      "item": "Plans diabetes education and foot care follow-up as part of long-term management",
+      "answer": "Diabetes clinic follow-up, foot care education, sick-day rules, podiatry and vascular follow-up",
+      "why": "Newly diagnosed diabetes requires structured education and prevention planning to avoid recurrence",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 24,
+    "examination": 16,
+    "clinicalReasoning": 26,
+    "investigations": 14,
+    "management": 10
+  }
+}

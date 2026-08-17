@@ -1,0 +1,684 @@
+{
+  "id": "gi-hep-004-abdominal-tuberculosis-with-ascites",
+  "version": 1,
+  "discipline": "gi-hep",
+  "diagnosis": "Abdominal tuberculosis with ascites",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This patient has ascites, weight loss and fever, but her liver synthetic function is entirely normal. Walk me through your differential and how the SAAG result changes your thinking.",
+      "modelAnswer": "With normal albumin, INR and bilirubin, cirrhotic portal hypertension becomes unlikely despite the ascites — this is the classic teaching trap. My differential is led by TB peritonitis, given her advanced untreated HIV, constitutional symptoms and KZN epidemiology, followed by peritoneal carcinomatosis and, less likely, constrictive pericarditis (excluded by normal JVP) and nephrotic-range ascites. The SAAG divides these into high-gradient (cirrhosis, cardiac) versus low-gradient (TB, malignancy, pancreatic, nephrotic) causes — a SAAG <11 g/L here points away from a portal hypertensive process entirely and towards TB or malignancy.",
+      "gradingNotes": "Must explicitly invoke the SAAG dichotomy and use the normal synthetic function as the discriminator; full marks for ranked reasoning, partial for an unranked list."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "investigations",
+      "question": "Explain the pathophysiological basis for the elevated ascitic ADA level in this patient.",
+      "modelAnswer": "Adenosine deaminase is an enzyme released by activated T-lymphocytes and macrophages during the cell-mediated granulomatous immune response to Mycobacterium tuberculosis. In TB peritonitis, the peritoneal cavity is heavily infiltrated with these activated lymphocytes reacting to mycobacterial antigen, causing local ADA release into the ascitic fluid, which is why ADA is a useful, cheap adjunct to Xpert/culture in a lymphocyte-predominant ascites.",
+      "gradingNotes": "Wants the immunological mechanism (T-cell/macrophage activation), not just 'it's a TB marker'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "Why did you specifically check her JVP during the abdominal examination?",
+      "modelAnswer": "A raised JVP in a patient with ascites should make you reconsider a cardiac or pericardial cause — particularly constrictive pericarditis, which in KZN is often TB-related and potentially curable with pericardiectomy. Cirrhotic and TB peritoneal ascites should not raise the JVP, so its presence would fundamentally redirect the workup towards an echocardiogram and consideration of Kussmaul's sign or a pericardial knock.",
+      "gradingNotes": "Should identify constrictive pericarditis as the specific 'don't miss' local diagnosis and note it's often TB-related and curable."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Her CD4 comes back at 96 cells/microlitre. How does this specifically alter your management plan?",
+      "modelAnswer": "CD4 <200 mandates co-trimoxazole preventive therapy for PJP prophylaxis. For ART timing in TB co-infection, current guidance favours early initiation — within 2 weeks of starting TB treatment — for patients with very low CD4 counts and advanced disease, balanced against IRIS risk, which must be counselled for. I would also heighten surveillance for other opportunistic infections given WHO stage 4 disease and ensure she is relinked to ART services given her previous default, addressing barriers to adherence rather than just re-prescribing.",
+      "gradingNotes": "Wants specific CD4-threshold-driven actions (co-trimoxazole, ART timing, IRIS counselling), not a generic 'start ART' answer."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "chronic abdominal distension + ascites, cirrhosis vs non-cirrhotic causes of ascites (SAAG-based approach)",
+  "patient": {
+    "name": "Thandeka Mthembu",
+    "age": 34,
+    "sex": "F",
+    "occupation": "domestic worker",
+    "personality": "quiet, stoic, tends to downplay how unwell she feels, worried about being away from her children",
+    "openingLine": "Doctor, my stomach has been getting bigger and bigger for weeks now, and I just don't have energy anymore."
+  },
+  "presentingComplaint": "progressive abdominal distension over 2 months with weight loss and low-grade fevers",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Abdominal swelling started about 2 months ago, gradually increasing, now clothes and skirts no longer fit",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-pain",
+      "fact": "Dull, diffuse abdominal ache, worse after eating, no radiation, not severe",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "abdo pain",
+        "stomach ache",
+        "sore",
+        "tender",
+        "cramps",
+        "ache",
+        "abdo",
+        "stomach"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Low-grade fevers most evenings for the past 6 weeks, has not measured temperature at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "sweats at night",
+        "night sweats",
+        "sweats",
+        "night"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost around 8 kg over 2 months, appetite has been poor, feels full quickly",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "appetite",
+        "eating",
+        "thinner",
+        "clothes loose",
+        "lost",
+        "clothes",
+        "loose"
+      ]
+    },
+    {
+      "id": "hx-bowel",
+      "fact": "Alternating constipation and loose stools over the last month, no blood seen in stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bowel",
+        "stool",
+        "constipation",
+        "diarrhoea",
+        "poo",
+        "toilet",
+        "blood in stool",
+        "blood"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Drenching night sweats, has had to change nightclothes on several occasions",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat at night",
+        "wake up wet",
+        "drenched",
+        "soaking",
+        "sweaty",
+        "nightdress",
+        "night",
+        "sweats",
+        "sweat",
+        "wake",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "No cough, no haemoptysis, no shortness of breath at rest",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "phlegm",
+        "sputum",
+        "blood",
+        "haemoptysis",
+        "chest",
+        "breathing",
+        "breath"
+      ]
+    },
+    {
+      "id": "hx-jaundice",
+      "fact": "No yellowing of eyes or skin, no itching, no dark urine or pale stools",
+      "disclosure": "onAsk",
+      "triggers": [
+        "jaundice",
+        "yellow",
+        "eyes yellow",
+        "skin yellow",
+        "itch",
+        "pruritus",
+        "dark urine",
+        "pale stool",
+        "eyes",
+        "skin",
+        "dark",
+        "urine",
+        "pale",
+        "stool"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Does not drink alcohol, never smoked",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV positive 4 years ago, not currently on ART — defaulted treatment about a year ago after moving house, has not collected medication since",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "art",
+        "antiretroviral",
+        "treatment",
+        "medication for hiv",
+        "positive",
+        "medication"
+      ]
+    },
+    {
+      "id": "hx-tbcontact",
+      "fact": "Her younger brother was treated for TB two years ago, they no longer live in the same house",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "anyone sick",
+        "exposure",
+        "family",
+        "sick",
+        "anyone"
+      ]
+    },
+    {
+      "id": "hx-menstrual",
+      "fact": "Periods have become irregular over the last 3 months, denies pregnancy, last menstrual period unclear",
+      "disclosure": "onAsk",
+      "triggers": [
+        "periods",
+        "menstrual",
+        "pregnant",
+        "pregnancy",
+        "menses"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous hospital admissions, no known chronic illnesses apart from HIV, no prior TB treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular medication currently, occasionally uses paracetamol for the fevers",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "muti",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in KwaMashu with her two children and her mother; works as a domestic worker in Durban North; no rural river or dam exposure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "live",
+        "home",
+        "house",
+        "social",
+        "children",
+        "work",
+        "river",
+        "dam",
+        "rural",
+        "travel"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Mother has hypertension; no family history of liver disease or cancer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-legswelling",
+      "fact": "No leg swelling, no shortness of breath lying flat, no palpitations",
+      "disclosure": "onAsk",
+      "triggers": [
+        "legs",
+        "ankle",
+        "swelling",
+        "oedema",
+        "breathless lying",
+        "orthopnoea",
+        "palpitations",
+        "breathless",
+        "lying"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, chronically ill-looking young woman. Mild pallor. Oral thrush present. No jaundice, no lymphadenopathy palpable. No spider naevi, no palmar erythema, no Dupuytren's, no gynaecomastia (not applicable). No asterixis.",
+    "vitals": {
+      "hr": 98,
+      "bp": "104/66",
+      "rr": 18,
+      "temp": 37.7,
+      "spo2": "97% on room air",
+      "bmi": 17.5
+    },
+    "respiratory": "Chest clear, no crackles, no dullness at the bases. No pleural effusion clinically.",
+    "cardio": "JVP not raised. Heart sounds normal, no murmurs. No Kussmaul's sign, no pericardial knock.",
+    "abdo": "Distended, doughy 'doughy abdomen' feel on palpation. Shifting dullness present, fluid thrill positive. Diffuse mild tenderness, no rebound, no guarding. Liver span normal, edge not palpable below costal margin, no splenomegaly. No caput medusae. Vague sense of matted/fixed bowel loops on deep palpation.",
+    "neuro": "Alert, oriented, no asterixis, no encephalopathy features.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Diagnostic ascitic tap: cell count and differential",
+      "result": "WCC 850 cells/mm3, lymphocyte-predominant (88% lymphocytes)",
+      "key": true
+    },
+    {
+      "name": "Ascitic fluid albumin (for SAAG) with serum albumin",
+      "result": "Serum albumin 32 g/L, ascitic albumin 24 g/L; SAAG = 8 g/L (low, <11 g/L)",
+      "key": true
+    },
+    {
+      "name": "Ascitic fluid ADA (adenosine deaminase)",
+      "result": "62 U/L (elevated, >40 U/L)",
+      "key": true
+    },
+    {
+      "name": "Ascitic fluid GeneXpert MTB/RIF",
+      "result": "MTB detected, rifampicin resistance NOT detected",
+      "key": true
+    },
+    {
+      "name": "Ascitic fluid protein and glucose",
+      "result": "Total protein 32 g/L (exudative), glucose 3.8 mmol/L",
+      "key": false
+    },
+    {
+      "name": "Ascitic fluid culture and cytology",
+      "result": "No bacterial growth at 48 hours; cytology negative for malignant cells",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA and CD4 count",
+      "result": "HIV positive (known); CD4 count 96 cells/µL",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 9.2 g/dL normocytic, WCC 6.1, Plt 398",
+      "key": false
+    },
+    {
+      "name": "LFTs and albumin",
+      "result": "ALT 28, AST 34, ALP 110, bilirubin 12 µmol/L, albumin 32 g/L — near-normal synthetic function",
+      "key": true
+    },
+    {
+      "name": "INR",
+      "result": "1.0 — normal coagulation",
+      "key": false
+    },
+    {
+      "name": "Abdominal ultrasound with Doppler",
+      "result": "Moderate free ascites, thickened peritoneum and mesentery, matted bowel loops, mesenteric lymphadenopathy; liver smooth, normal echotexture, no nodularity, normal portal vein flow, no splenomegaly",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "No cavitation or consolidation; no pleural effusion; no old TB scarring",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "74 mg/L",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Abdominal tuberculosis (TB peritonitis)",
+      "rank": 1,
+      "for": [
+        "low SAAG ascites",
+        "lymphocyte-predominant ascitic fluid",
+        "elevated ADA",
+        "positive ascitic GeneXpert",
+        "constitutional symptoms with fever and weight loss",
+        "advanced HIV with low CD4",
+        "thickened peritoneum/mesenteric nodes on ultrasound",
+        "normal liver synthetic function excluding cirrhosis"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Cirrhotic ascites (portal hypertensive)",
+      "rank": 2,
+      "for": [
+        "ascites",
+        "abdominal distension"
+      ],
+      "against": [
+        "SAAG <11 g/L (should be ≥11 in cirrhosis)",
+        "normal albumin, INR, bilirubin",
+        "no stigmata of chronic liver disease",
+        "normal liver texture on ultrasound",
+        "no splenomegaly"
+      ]
+    },
+    {
+      "dx": "Peritoneal carcinomatosis",
+      "rank": 3,
+      "for": [
+        "weight loss",
+        "ascites",
+        "abdominal distension",
+        "age"
+      ],
+      "against": [
+        "cytology negative for malignant cells",
+        "lymphocyte-predominant rather than exudative-malignant pattern typical",
+        "no pelvic/adnexal mass described",
+        "young age, no risk factors for gynaecological or GI malignancy"
+      ]
+    },
+    {
+      "dx": "Constrictive pericarditis (often TB-related) with congestive ascites",
+      "rank": 4,
+      "for": [
+        "ascites",
+        "chronic course"
+      ],
+      "against": [
+        "JVP not raised",
+        "no Kussmaul's sign or pericardial knock",
+        "no leg oedema or orthopnoea",
+        "SAAG low rather than high (cardiac ascites is typically SAAG ≥11 with high protein)"
+      ]
+    },
+    {
+      "dx": "Nephrotic syndrome-related ascites",
+      "rank": 5,
+      "for": [
+        "ascites",
+        "hypoalbuminaemia (mild)"
+      ],
+      "against": [
+        "no significant proteinuria reported",
+        "no peripheral oedema",
+        "urine dipstick not suggestive",
+        "SAAG low, protein pattern not consistent with transudative nephrotic ascites"
+      ]
+    }
+  ],
+  "pathophys": {
+    "ascites in TB peritonitis": "Mycobacterial seeding of the peritoneum (haematogenous spread or reactivation, or rupture of mesenteric lymph nodes) triggers a granulomatous inflammatory exudate; increased peritoneal capillary permeability produces a protein-rich, low-SAAG exudative fluid, distinct from the transudative, high-SAAG fluid of portal hypertension",
+    "low SAAG (<11 g/L)": "Ascitic fluid protein and albumin approximate serum levels because the fluid originates from inflamed, leaky peritoneal capillaries rather than from a pressure gradient across an intact sinusoidal-portal system, so the serum-ascites albumin gradient narrows",
+    "elevated ascitic ADA": "Adenosine deaminase is released by activated T-lymphocytes and macrophages mounting a cell-mediated granulomatous response against mycobacteria within the peritoneal cavity",
+    "night sweats and fever": "TNF-alpha and IL-1 released by macrophages processing mycobacterial antigen reset the hypothalamic thermoregulatory set-point, producing evening fever spikes with compensatory nocturnal sweating as the fever breaks",
+    "weight loss": "Chronic granulomatous inflammation drives TNF-alpha-mediated catabolism and anorexia, compounded by malabsorption from mesenteric lymphadenopathy and bowel wall involvement, and by HIV-associated wasting",
+    "doughy abdomen / matted bowel loops": "Fibrinous exudate and caseating granulomas cause adhesions between peritoneal surfaces, omentum and bowel loops, producing the palpable 'doughy' consistency and fixed, matted loops on examination and ultrasound"
+  },
+  "staging": "WHO HIV clinical stage 4 (disseminated/extrapulmonary TB, oral candidiasis); CD4 96 cells/µL — advanced HIV disease; drug-susceptible TB by GeneXpert",
+  "management": {
+    "immediate": [
+      "Diagnostic paracentesis performed (already done) — confirm no evidence of secondary bacterial peritonitis requiring surgery (glucose/LDH pattern reassuring here)",
+      "Notify TB (notifiable medical condition)",
+      "Assess nutritional status and start supplementation",
+      "Screen for other disseminated TB sites (sputum GeneXpert if any respiratory symptoms develop, consider LP if any neurological signs)"
+    ],
+    "definitive": [
+      "Standard 6-month anti-TB regimen 2HRZE/4HR (weight-banded FDC) — abdominal TB treated as per pulmonary regimen duration in most SA protocols",
+      "Start/restart ART: given CD4 <200, initiate co-trimoxazole preventive therapy immediately; start ART within 2 weeks of TB treatment initiation given CD4 <50 threshold is close and disease is advanced (use CD4 96 — start within 2 weeks per guideline for CD4 <50 is not met, but current SA guidance favours early ART within 2 weeks regardless when CD4 very low; counsel on IRIS risk)",
+      "Pyridoxine co-administered with isoniazid to prevent peripheral neuropathy",
+      "Re-link her to ART services given prior default — address barriers to adherence"
+    ],
+    "supportive": [
+      "Nutritional rehabilitation and grant/social work referral",
+      "Contact tracing — screen household members including her children and mother",
+      "Adherence counselling with a treatment supporter",
+      "Counsel on IRIS symptoms (worsening ascites, fever) when ART is started/restarted",
+      "Analgesia for abdominal discomfort as needed"
+    ],
+    "followUp": [
+      "Clinical response monitoring — resolution of fever, weight gain, reduction in ascites",
+      "LFTs monitoring while on isoniazid/rifampicin, especially with concurrent ART",
+      "CD4 and viral load monitoring once ART restarted",
+      "Repeat ultrasound if ascites fails to resolve or new complications (e.g., bowel obstruction from strictures) suspected"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, gains consent, establishes rapport",
+      "answer": null,
+      "why": "Professionalism and communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-characterise",
+      "phase": "history",
+      "item": "Characterises the distension: onset, duration, progression, associated pain, and asks whether this is chronic/insidious versus acute decompensation",
+      "answer": "2 months, gradual, dull ache, no acute bleed or confusion",
+      "why": "Framework step 1 — characterise the presentation before jumping to diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-constitutional",
+      "phase": "history",
+      "item": "Screens constitutional symptoms: fever, night sweats, weight loss, appetite",
+      "answer": "All present — 8 kg loss, evening fevers, drenching night sweats, poor appetite",
+      "why": "Core systemic screen pointing away from simple cirrhotic decompensation towards infective/TB process",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-aetiology-cld",
+      "phase": "history",
+      "item": "Screens for chronic liver disease aetiology: alcohol, viral hepatitis status, prior liver disease, jaundice, pruritus, bruising",
+      "answer": "No alcohol use, no jaundice/itch, no known liver disease",
+      "why": "Framework step 3 — screen for cause of chronic liver disease before assuming cirrhosis is the driver",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-status",
+      "phase": "history",
+      "item": "Establishes HIV status and ART history in detail (when diagnosed, on treatment, adherence, CD4 if known)",
+      "answer": "HIV positive 4 years, defaulted ART about a year ago",
+      "why": "Advanced/untreated HIV massively raises pre-test probability of TB and disseminated disease",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tbcontact",
+      "phase": "history",
+      "item": "Asks about TB contacts and prior TB treatment",
+      "answer": "Brother treated for TB two years ago, no longer co-habiting",
+      "why": "Relevant exposure history supporting TB in the differential",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-cardiac-screen",
+      "phase": "history",
+      "item": "Screens for cardiac/constrictive pericarditis symptoms: orthopnoea, leg swelling, exertional dyspnoea",
+      "answer": "None present",
+      "why": "Must not miss a curable cardiac/pericardial cause of ascites (framework red flag)",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-schisto-screen",
+      "phase": "history",
+      "item": "Screens for schistosomiasis risk: rural river/dam water exposure",
+      "answer": "None — urban KwaMashu residence, no rural water exposure",
+      "why": "Excludes the classic non-cirrhotic portal hypertension mimic taught locally",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Performs general examination for stigmata of chronic liver disease (spider naevi, palmar erythema, Dupuytren's, gynaecomastia) and notes their absence",
+      "answer": "None present",
+      "why": "Absence of CLD stigmata is a key discriminator against cirrhosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-jvp",
+      "phase": "examination",
+      "item": "Examines JVP specifically",
+      "answer": "JVP not raised",
+      "why": "Raised JVP would redirect towards cardiac/constrictive cause — explicitly flagged discriminator",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-abdo",
+      "phase": "examination",
+      "item": "Performs full abdominal exam: shifting dullness/fluid thrill, liver span, splenomegaly, tenderness, doughy feel",
+      "answer": "Shifting dullness and fluid thrill positive, doughy abdomen, no splenomegaly, no hepatomegaly",
+      "why": "Confirms ascites and detects the 'doughy abdomen' sign classically associated with TB peritonitis, and absence of portal hypertensive organomegaly",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers a ranked differential with reasoning: TB peritonitis vs cirrhotic ascites vs carcinomatosis vs constrictive pericarditis",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the exam philosophy; must use SAAG concept even before results return",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tap-mandatory",
+      "phase": "investigations",
+      "item": "States that diagnostic paracentesis is mandatory in every patient admitted with ascites, and requests appropriate ascitic fluid tests",
+      "answer": "Cell count, albumin (SAAG), protein, culture (bedside blood culture bottle inoculation), ADA, GeneXpert/AFB, cytology, glucose/LDH",
+      "why": "Explicitly emphasised teaching point — the ascitic tap is the pivotal confirmatory step",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-saag-interpret",
+      "phase": "investigations",
+      "item": "Correctly interprets SAAG result (<11 g/L) as excluding portal hypertension and pointing to an exudative/infective or malignant process",
+      "answer": "SAAG 8 g/L, lymphocyte-predominant, ADA elevated, GeneXpert positive",
+      "why": "Central discriminating investigation concept in this framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-cd4",
+      "phase": "investigations",
+      "item": "Requests HIV test/confirms status and CD4 count",
+      "answer": "HIV positive, CD4 96 — advanced immunosuppression",
+      "why": "Guides ART timing, co-trimoxazole initiation and WHO staging",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-liver-function-exclude",
+      "phase": "investigations",
+      "item": "Orders LFTs, albumin and INR and uses near-normal synthetic function to argue against cirrhosis",
+      "answer": "Albumin 32, INR 1.0, bilirubin 12 — synthetic function preserved",
+      "why": "Explicitly flagged local teaching trap — normal synthetic function excludes cirrhosis despite ascites",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines anti-TB regimen (2HRZE/4HR), pyridoxine, ART timing/restart with co-trimoxazole given CD4<200, TB notification and contact tracing",
+      "answer": null,
+      "why": "Management per SA TB and ART guidelines, tailored to advanced HIV",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

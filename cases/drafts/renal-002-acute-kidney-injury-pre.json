@@ -1,0 +1,663 @@
+{
+  "id": "renal-002-acute-kidney-injury-pre",
+  "version": 1,
+  "discipline": "renal",
+  "diagnosis": "Acute kidney injury (pre-renal) from gastroenteritis",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient's reduced urine output — what is your differential and how do you localise it anatomically?",
+      "modelAnswer": "First confirm AKI using KDIGO criteria against a baseline creatinine. Then immediately exclude post-renal obstruction with a bladder scan and consider PR/PV exam — this is reversible and must never be missed. Assess volume status clinically, as this dictates fluid management. Then dipstick and microscope the urine to localise: bland sediment with hyaline casts suggests pre-renal; muddy brown granular casts suggest ATN; dysmorphic RBCs/red cell casts suggest glomerulonephritis; WCC casts/eosinophils suggest AIN; blood on dipstick without RBCs on microscopy suggests rhabdomyolysis or haemolysis. In this patient, the history of profuse diarrhoea and vomiting with poor intake, postural hypotension, dry mucous membranes, a normal bladder scan, bland urine sediment and a low FeNa all point to pre-renal AKI from gastroenteritis-induced hypovolaemia as the leading diagnosis.",
+      "gradingNotes": "Full marks: structured anatomical localisation framework applied to case findings, post-renal exclusion mentioned explicitly, ranked differential with reasoning. Partial: correct diagnosis without framework or localisation reasoning."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "investigations",
+      "question": "Explain the pathophysiology behind why this patient's fractional excretion of sodium is low, and name two situations where a low FeNa can be misleading.",
+      "modelAnswer": "In pre-renal AKI the renal tubules are structurally intact and respond to perceived hypovolaemia by maximally reabsorbing filtered sodium via aldosterone and ADH-driven mechanisms, producing a FeNa typically below 1%. However, a low FeNa is not specific to pre-renal states — it is also seen in contrast-induced nephropathy, rhabdomyolysis, acute glomerulonephritis, hepatorenal syndrome, early obstruction, and in patients with pre-existing CKD. Additionally, diuretic use invalidates FeNa entirely, in which case fractional excretion of urea (<35% suggesting pre-renal) should be used instead.",
+      "gradingNotes": "Wants the tubular reabsorption mechanism plus at least two of the listed exceptions/caveats — this table is explicitly flagged as exam-central."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "This patient is not currently in extremis, but recite the indications for renal replacement therapy in AKI and state which, if any, apply here.",
+      "modelAnswer": "AEIOU: refractory Acidosis, refractory hyperkalaemia (Electrolytes), dialysable Intoxication, refractory pulmonary Overload, and Uraemic complications such as encephalopathy, pericarditis or bleeding. In this patient, her acidosis and hyperkalaemia are mild and responsive to expected correction with fluid resuscitation and standard hyperkalaemia treatment, she has no pulmonary oedema, no dialysable toxin ingestion, and no uraemic encephalopathy, pericarditis or bleeding — so none of the AEIOU criteria are currently met and she should be managed with fluids and close monitoring rather than urgent dialysis.",
+      "gradingNotes": "Full marks: correct recitation of AEIOU with correct application to this specific patient's data (not just reciting the mnemonic)."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "She improves with fluids over the next 48 hours and starts passing large volumes of urine. What phase is this, what is the underlying mechanism, and what must you monitor for?",
+      "modelAnswer": "This is the polyuric recovery phase of AKI. Tubular reabsorptive capacity lags behind the recovery of glomerular filtration rate, so retained solutes (urea, sodium) create an osmotic diuresis through relatively non-concentrating tubules. This can lead to significant ongoing fluid and electrolyte losses, so you must monitor closely for hypokalaemia, hypomagnesaemia, hypophosphataemia, and recurrent volume depletion/dehydration during this phase, adjusting IV and oral fluid and electrolyte replacement accordingly.",
+      "gradingNotes": "Wants the mechanism (reabsorption lagging GFR recovery, osmotic diuresis) plus the specific electrolyte derangements to monitor — a commonly missed pearl."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "history",
+      "question": "Why is it important to specifically ask about traditional medicine or muthi use in every AKI presentation in this setting, even when the history already points strongly to gastroenteritis?",
+      "modelAnswer": "Traditional remedy and muthi nephrotoxicity is a well-documented and common cause of AKI in this region — for example Callilepis laureola ('impila'), potassium dichromate-containing preparations, and purgative enemas that cause volume depletion, haemolysis or rhabdomyolysis. Even when another cause seems clear, missing a contributing or alternative nephrotoxic exposure could change management (e.g. specific antidotes, expectation of a different recovery course) and is part of a complete, systematic AKI work-up regardless of how clear-cut the initial history appears.",
+      "gradingNotes": "Wants recognition of muthi nephrotoxicity as a locally important and commonly tested cause, and the principle of thorough systematic history-taking even when a diagnosis seems obvious."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "reduced urine output / rising creatinine → confirm AKI (KDIGO), exclude post-renal obstruction, assess volume status, dipstick+microscopy urine, drug/muthi history, localise pre-renal vs intrinsic vs post-renal, stage severity, RRT indications",
+  "patient": {
+    "name": "Thandeka Mkhize",
+    "age": 34,
+    "sex": "F",
+    "occupation": "domestic worker",
+    "personality": "tired, dehydrated-looking, slightly confused but cooperative, tends to underplay how little she has been drinking",
+    "openingLine": "Doctor, I've been running to the toilet for three days and now I can barely pass urine at all..."
+  },
+  "presentingComplaint": "3 days of profuse watery diarrhoea and vomiting, now with markedly reduced urine output and dizziness",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Diarrhoea and vomiting started 3 days ago, sudden onset, watery non-bloody stools around 8-10 times a day",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-vomiting",
+      "fact": "Vomiting occurred about 5-6 times a day for the first 2 days, now settled but she still cannot keep fluids down well",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomit",
+        "vomiting",
+        "sick",
+        "throw up",
+        "throwing up",
+        "nausea",
+        "nauseous",
+        "bring up",
+        "throw",
+        "throwing",
+        "bring"
+      ]
+    },
+    {
+      "id": "hx-urine",
+      "fact": "Urine output has dropped to almost nothing in the last 24 hours, and what little she passes is dark and concentrated",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urinate",
+        "pee",
+        "wee",
+        "water",
+        "passing water",
+        "output",
+        "dark urine",
+        "how much",
+        "urinating",
+        "passing",
+        "dark"
+      ]
+    },
+    {
+      "id": "hx-fluidintake",
+      "fact": "Has barely managed to drink any fluids because everything makes her vomit or she feels too nauseated",
+      "disclosure": "onAsk",
+      "triggers": [
+        "drink",
+        "drinking",
+        "fluid intake",
+        "water intake",
+        "oral rehydration",
+        "ors",
+        "how much drinking",
+        "fluids",
+        "fluid",
+        "intake",
+        "water",
+        "oral",
+        "rehydration"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Felt mildly feverish on day 1 but no fever since; no chills or rigors",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors"
+      ]
+    },
+    {
+      "id": "hx-food",
+      "fact": "Ate chicken from a street vendor near the taxi rank two days before symptoms started; a colleague who ate the same food is also unwell",
+      "disclosure": "onAsk",
+      "triggers": [
+        "food",
+        "eat",
+        "eaten",
+        "meal",
+        "street food",
+        "vendor",
+        "takeaway",
+        "others sick",
+        "outbreak",
+        "source",
+        "street",
+        "others",
+        "sick"
+      ]
+    },
+    {
+      "id": "hx-blood",
+      "fact": "No blood or mucus seen in the stool, no severe abdominal cramping beyond ordinary colicky pain before passing stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood",
+        "bloody",
+        "mucus",
+        "stool",
+        "diarrhoea",
+        "poo",
+        "stools",
+        "cramp",
+        "abdominal pain",
+        "abdominal",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-dizzy",
+      "fact": "Feels dizzy and lightheaded on standing up, especially getting off the toilet or out of bed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dizzy",
+        "dizziness",
+        "lightheaded",
+        "faint",
+        "standing",
+        "postural",
+        "giddy"
+      ]
+    },
+    {
+      "id": "hx-drugs",
+      "fact": "Takes no regular chronic medication; specifically has NOT taken any NSAIDs, traditional muthi, enemas, or purgatives for this illness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "nsaid",
+        "ibuprofen",
+        "diclofenac",
+        "painkiller",
+        "muthi",
+        "traditional",
+        "enema",
+        "purgative",
+        "herbal",
+        "remedy"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known chronic illness, no diabetes, no hypertension, no known kidney disease, has never had a creatinine checked before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "chronic disease",
+        "diabetes",
+        "hypertension",
+        "blood pressure",
+        "kidney disease",
+        "kidney problem",
+        "before",
+        "baseline",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "chronic",
+        "disease",
+        "blood",
+        "pressure",
+        "kidney",
+        "problem"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV negative on a test done 6 months ago at the clinic",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergy",
+        "allergies",
+        "allergic",
+        "reaction"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Umlazi with her two children, works as a domestic worker; does not smoke, drinks alcohol occasionally on weekends only",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "alcohol",
+        "drink",
+        "social history",
+        "live",
+        "home",
+        "house",
+        "work",
+        "children",
+        "occupation",
+        "social",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of kidney disease; mother has hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "kidney disease in family",
+        "genetic",
+        "family",
+        "history",
+        "kidney",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-obstetric",
+      "fact": "Not pregnant, last menstrual period 2 weeks ago and normal; no vaginal bleeding or discharge",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pregnant",
+        "pregnancy",
+        "period",
+        "menstrual",
+        "bleeding",
+        "vaginal",
+        "discharge"
+      ]
+    },
+    {
+      "id": "hx-urinarysx",
+      "fact": "No dysuria, no loin pain, no poor urinary stream or hesitancy, no known pelvic mass or cervical problem",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dysuria",
+        "burning",
+        "loin pain",
+        "stream",
+        "hesitancy",
+        "obstruction",
+        "pelvic",
+        "cervical",
+        "mass",
+        "prostate",
+        "loin",
+        "pain"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert but lethargic and mildly confused with slow responses; dry mucous membranes, reduced skin turgor over the forearm, sunken eyes; no rash, no oedema, no pallor, no jaundice",
+    "vitals": {
+      "hr": 118,
+      "bp": "92/58 lying, drops to 76/48 standing with symptomatic dizziness",
+      "rr": 20,
+      "temp": 36.8,
+      "spo2": "98% on room air",
+      "bmi": 23
+    },
+    "respiratory": "Chest clear, no crackles, no effusion signs",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not visible (flat/low), capillary refill 3 seconds peripherally",
+    "abdo": "Soft, mildly generalised tenderness without guarding or rebound, bowel sounds hyperactive, no palpable bladder, no organomegaly, no masses on gentle abdominal palpation",
+    "neuro": "Mildly drowsy but orientated to person and place, not to exact date; no asterixis, no focal deficit",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Bladder scan",
+      "result": "15 mL residual — bladder empty, no obstruction",
+      "key": true
+    },
+    {
+      "name": "Urine dipstick",
+      "result": "Specific gravity high (1.030), trace protein, no blood, no leucocytes, no nitrites, no glucose",
+      "key": true
+    },
+    {
+      "name": "Urine microscopy",
+      "result": "Occasional hyaline casts only, no red cell casts, no dysmorphic RBCs, no white cell casts — bland sediment consistent with pre-renal AKI",
+      "key": true
+    },
+    {
+      "name": "Serum urea and creatinine",
+      "result": "Creatinine 245 µmol/L (baseline unknown but clinic card from 8 months ago shows 68 µmol/L), urea 18.2 mmol/L — urea:creatinine ratio markedly elevated",
+      "key": true
+    },
+    {
+      "name": "Serum electrolytes",
+      "result": "Na 132 mmol/L, K 5.6 mmol/L, bicarbonate 16 mmol/L (metabolic acidosis)",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas",
+      "result": "pH 7.30, HCO3 15 mmol/L, lactate 2.8 mmol/L — mild metabolic acidosis with mild lactataemia consistent with hypovolaemia",
+      "key": false
+    },
+    {
+      "name": "Fractional excretion of sodium (FeNa)",
+      "result": "0.8% — low, supports pre-renal aetiology (patient not on diuretics)",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.9 g/dL (mildly haemoconcentrated), WCC 11.4 x10^9/L, Plt 298 x10^9/L",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "22 mg/L — mildly raised, consistent with infective gastroenteritis",
+      "key": false
+    },
+    {
+      "name": "Stool microscopy, culture and sensitivity / stool for ova and parasites",
+      "result": "Pending — sent given foodborne pattern and colleague also affected",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, peaked T waves in V2-V4 consistent with mild hyperkalaemia, no widened QRS",
+      "key": true
+    },
+    {
+      "name": "Renal tract ultrasound",
+      "result": "Normal-sized kidneys bilaterally (11 cm), normal corticomedullary differentiation, no hydronephrosis, no stones",
+      "key": false
+    },
+    {
+      "name": "Creatine kinase",
+      "result": "142 U/L — normal, no evidence of rhabdomyolysis",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (repeat rapid test today)",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Pre-renal AKI secondary to gastroenteritis-induced hypovolaemia",
+      "rank": 1,
+      "for": [
+        "3 days profuse diarrhoea and vomiting with poor oral intake",
+        "postural hypotension and tachycardia on exam",
+        "dry mucous membranes and reduced skin turgor",
+        "bland urine sediment with hyaline casts only",
+        "low FeNa (0.8%)",
+        "elevated urea:creatinine ratio",
+        "normal bladder scan excluding obstruction",
+        "normal-sized kidneys on ultrasound with preserved corticomedullary differentiation"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Acute tubular necrosis (evolving from prolonged pre-renal insult)",
+      "rank": 2,
+      "for": [
+        "3-day duration of volume loss raises risk of progression if under-resuscitated",
+        "AKI severity (creatinine >3x baseline-equivalent rise)"
+      ],
+      "against": [
+        "bland sediment without muddy brown granular casts",
+        "low FeNa favours pre-renal rather than established ATN",
+        "no nephrotoxin exposure (no NSAIDs, aminoglycosides, contrast, muthi)"
+      ]
+    },
+    {
+      "dx": "Post-renal obstruction (e.g. pelvic mass, cervical pathology)",
+      "rank": 3,
+      "for": [
+        "reduced urine output could theoretically suggest obstruction",
+        "common and important cause to exclude in KZN women"
+      ],
+      "against": [
+        "bladder scan shows only 15 mL residual, essentially empty",
+        "no loin pain, no palpable bladder or pelvic mass",
+        "normal renal tract ultrasound with no hydronephrosis"
+      ]
+    },
+    {
+      "dx": "Rhabdomyolysis-associated AKI",
+      "rank": 4,
+      "for": [
+        "general unwell/dehydrated presentation could mask muscle injury"
+      ],
+      "against": [
+        "no history of collapse, seizure, assault or prolonged immobility",
+        "normal creatine kinase",
+        "urine dipstick negative for blood"
+      ]
+    },
+    {
+      "dx": "Glomerulonephritis / rapidly progressive GN",
+      "rank": 5,
+      "for": [
+        "AKI requires exclusion of intrinsic renal causes"
+      ],
+      "against": [
+        "no haematuria, oedema or hypertension",
+        "no dysmorphic red cells or red cell casts on microscopy",
+        "clear precipitating pre-renal history"
+      ]
+    }
+  ],
+  "pathophys": {
+    "reduced urine output / oliguria": "Volume depletion from diarrhoeal fluid losses reduces effective circulating volume and renal perfusion pressure; renal autoregulation initially maintains GFR via afferent arteriolar dilatation (prostaglandin-mediated) and efferent constriction (angiotensin II-mediated), but once compensatory mechanisms are exhausted, GFR falls and tubular reabsorption of filtrate increases, producing low urine output with high specific gravity",
+    "postural hypotension and tachycardia": "Loss of isotonic fluid from vomiting and diarrhoea reduces intravascular volume; baroreceptor-mediated sympathetic activation increases heart rate and peripheral vasoconstriction to maintain blood pressure, but this compensation fails on standing, unmasking a postural drop",
+    "bland urinary sediment with hyaline casts": "In pre-renal AKI the tubular epithelium itself is structurally intact — concentrated urine flow through normal tubules precipitates Tamm-Horsfall protein into hyaline casts, without the epithelial cell debris or pigmented granular casts seen once frank tubular necrosis develops",
+    "low fractional excretion of sodium (FeNa)": "Intact tubules respond to perceived hypovolaemia by markedly increasing sodium and water reabsorption (aldosterone and ADH driven), avidly retaining filtered sodium — hence a FeNa below 1% in the absence of diuretic use reflects preserved tubular function typical of a pre-renal state",
+    "elevated urea relative to creatinine": "Reduced tubular flow rate in hypovolaemia allows increased passive reabsorption of urea (which follows water reabsorption) disproportionately to creatinine (which is not reabsorbed), producing a urea:creatinine ratio elevated beyond what is seen in intrinsic renal disease",
+    "mild hyperkalaemia and metabolic acidosis": "Reduced GFR impairs renal excretion of potassium and hydrogen ions; combined with gastrointestinal bicarbonate loss from diarrhoea, this produces a normal-to-mildly-widened anion gap metabolic acidosis with hyperkalaemia, worsened by reduced distal tubular flow limiting kaliuresis"
+  },
+  "staging": "KDIGO AKI Stage 2 (creatinine rise to 245 µmol/L from an estimated baseline of 68 µmol/L, more than 2-fold increase); volume status: significantly hypovolaemic, no current indication for renal replacement therapy",
+  "management": {
+    "immediate": [
+      "Confirm no obstruction (bladder scan already performed — bladder empty, excluded)",
+      "Cautious but prompt IV crystalloid resuscitation (e.g. balanced solution such as Ringer's lactate) with frequent reassessment of volume status, aiming to restore perfusion without precipitating pulmonary oedema",
+      "Treat hyperkalaemia if ECG changes progress: calcium gluconate for membrane stabilisation, insulin-dextrose and salbutamol nebulisation to shift potassium intracellularly; avoid potassium-sparing agents",
+      "Withhold any nephrotoxic agents (none currently prescribed, but flag on chart) and avoid NSAIDs/ACEi/ARB/diuretics (\"triple whammy\" avoidance) until renal function recovers",
+      "Send stool for microscopy, culture and sensitivity given foodborne pattern; consider antiemetics (avoid nephrotoxic/QT-prolonging agents where possible)"
+    ],
+    "definitive": [
+      "Ongoing fluid resuscitation guided by clinical volume status, urine output and trending creatinine (not eGFR, which is invalid in AKI)",
+      "Antibiotics only if evidence of invasive bacterial gastroenteritis (bloody stool, sepsis, positive stool culture) or if patient becomes septic — most viral/toxin-mediated gastroenteritis is self-limiting and does not require antibiotics",
+      "Correct electrolyte derangements (potassium, bicarbonate) as renal perfusion improves",
+      "Escalate to nephrology and consider renal replacement therapy only if AEIOU criteria develop (refractory Acidosis, refractory hyperkalaemia/Electrolyte derangement, dialysable Intoxication, refractory pulmonary Overload, Uraemic complications) — not currently met"
+    ],
+    "supportive": [
+      "Strict fluid balance charting and daily weights",
+      "Oral rehydration solution as tolerated once vomiting settles, transitioning from IV to oral fluids",
+      "Monitor closely for the polyuric recovery phase — watch for hypokalaemia, hypomagnesaemia, hypophosphataemia and recurrent volume depletion as tubular function recovers ahead of concentrating ability",
+      "Nutritional support and antiemetics as needed",
+      "Isolate/counsel on hand hygiene and safe food handling given probable foodborne source; consider notifying if part of a cluster/outbreak"
+    ],
+    "followUp": [
+      "Recheck renal function and blood pressure at follow-up visit — AKI survivors carry increased long-term risk of CKD and mortality",
+      "Ensure no nephrotoxic medications are inadvertently started before renal function is confirmed normalised",
+      "Medication reconciliation and counselling regarding avoiding NSAIDs and unregulated traditional remedies in future illness",
+      "Advise on safe food preparation/hygiene to prevent recurrence; consider public health follow-up if outbreak suspected"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-baseline-creat",
+      "phase": "history",
+      "item": "Actively seeks a baseline/previous creatinine value (clinic card, prior admission) to confirm this is AKI and not CKD",
+      "answer": "Clinic card from 8 months ago shows creatinine 68 µmol/L",
+      "why": "Old creatinine is the single most useful discriminator between AKI and CKD",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-volume-history",
+      "phase": "history",
+      "item": "Characterises the diarrhoea/vomiting illness (onset, frequency, blood/mucus, fluid intake, associated food history)",
+      "answer": "3 days watery non-bloody diarrhoea, vomiting settling, poor oral intake, shared food with unwell colleague",
+      "why": "Establishes volume loss as the driving mechanism and foodborne source",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-urine-output",
+      "phase": "history",
+      "item": "Asks specifically about urine output and colour",
+      "answer": "Almost no urine output in the last 24 hours, dark/concentrated",
+      "why": "Core to confirming AKI by KDIGO urine output criterion",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-drug-muthi-history",
+      "phase": "history",
+      "item": "Takes a full drug and traditional remedy/muthi history including NSAIDs, ACEi/ARB, diuretics",
+      "answer": "No NSAIDs, muthi, enemas or chronic medication taken",
+      "why": "Excludes nephrotoxic and 'triple whammy' causes, a classic exam trap",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-obstructive-symptoms",
+      "phase": "history",
+      "item": "Screens for obstructive urinary symptoms and pelvic/gynaecological red flags",
+      "answer": "No dysuria, loin pain, poor stream, pelvic mass or PV bleeding",
+      "why": "Post-renal obstruction (including cervical carcinoma) must always be considered and excluded",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-volume-exam",
+      "phase": "examination",
+      "item": "Performs a focused volume status assessment: postural BP/HR, mucous membranes, skin turgor, JVP, chest and peripheral oedema",
+      "answer": "Postural drop 92/58 to 76/48, dry mucosa, reduced skin turgor, flat JVP, clear chest, no oedema",
+      "why": "Volume status assessment is the pivotal exam step dictating fluid management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-bladder-scan",
+      "phase": "examination",
+      "item": "Performs or requests a bladder scan (and would do PR/PV if indicated) to exclude obstruction before anything else",
+      "answer": "Bladder scan: 15 mL residual, bladder empty",
+      "why": "'Must never miss' mantra — post-renal obstruction is instantly reversible and must be excluded first",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-urine-dipstick-microscopy",
+      "phase": "investigations",
+      "item": "Requests urine dipstick AND microscopy to characterise the sediment",
+      "answer": "Bland sediment with occasional hyaline casts only, no dysmorphic RBCs/red cell casts/WCC casts, no blood without RBCs",
+      "why": "Urine microscopy is the exam-central discriminator between pre-renal, ATN, GN, AIN and rhabdomyolysis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-fena-interpretation",
+      "phase": "investigations",
+      "item": "Requests and correctly interprets FeNa (or fractional excretion of urea if diuretics were involved)",
+      "answer": "FeNa 0.8%, low — supports pre-renal aetiology; patient not on diuretics so FeNa is valid here",
+      "why": "Demonstrates understanding of FeNa utility and its caveats (diuretics invalidate it)",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-electrolytes-ecg",
+      "phase": "investigations",
+      "item": "Checks serum electrolytes and an ECG to screen for hyperkalaemia",
+      "answer": "K 5.6 mmol/L, ECG showing peaked T waves — mild hyperkalaemia change",
+      "why": "Hyperkalaemia is an immediately life-threatening complication of AKI that must be actively screened for",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-myeloma-screen-mention",
+      "phase": "investigations",
+      "item": "Considers/mentions myeloma screen (serum/urine electrophoresis + free light chains) as appropriate for unexplained AKI, especially over age 40 (or justifies why deferred given clear precipitant here)",
+      "answer": null,
+      "why": "Explicitly flagged teaching point — myeloma screen should be considered in unexplained AKI over 40, though this case has a clear alternative cause",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-differential-reasoning",
+      "phase": "differentials",
+      "item": "Presents a ranked differential (pre-renal AKI first) with reasoning linking history/exam/urine findings to each diagnosis",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning with anatomical localisation (pre-renal vs intrinsic vs post-renal) is the core exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-fluid-management",
+      "phase": "management",
+      "item": "Outlines cautious IV fluid resuscitation guided by ongoing volume reassessment, avoiding nephrotoxins and the triple whammy combination",
+      "answer": "IV crystalloid resuscitation with reassessment; withhold NSAIDs/ACEi/ARB/diuretics",
+      "why": "Correct fluid management follows directly from the volume status assessment and is the definitive treatment for pre-renal AKI",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-rrt-indications",
+      "phase": "management",
+      "item": "Can recite RRT indications (AEIOU) and correctly states none currently apply",
+      "answer": "Acidosis (refractory), Electrolytes (refractory hyperkalaemia), Intoxication (dialysable), Overload (refractory pulmonary), Uraemic complications — none currently met",
+      "why": "AEIOU mnemonic explicitly expected to be recited on viva",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-followup-discharge",
+      "phase": "management",
+      "item": "Plans follow-up: repeat renal function and BP check, medication reconciliation, counselling on avoiding nephrotoxins/muthi in future illness",
+      "answer": null,
+      "why": "Discharge follow-up is flagged as one of the commonest omissions and a likely marking point",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

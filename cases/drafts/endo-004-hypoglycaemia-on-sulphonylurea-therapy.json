@@ -1,0 +1,628 @@
+{
+  "id": "endo-004-hypoglycaemia-on-sulphonylurea-therapy",
+  "version": 1,
+  "discipline": "endo",
+  "diagnosis": "Hypoglycaemia on sulphonylurea therapy",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This patient is a known diabetic found confused at home. Walk me through your differential diagnosis and how you would prioritise your assessment.",
+      "modelAnswer": "Top of the list is hypoglycaemia given she is on a sulfonylurea, had reduced intake, and has renal impairment reducing drug clearance — confirmed immediately with a capillary glucose. I would also consider a hyperglycaemic crisis (DKA/HHS), which capillary glucose and ketones would rule in or out; a stroke/TIA, which the neurological exam and resolution with glucose correction help exclude; sepsis-related delirium, screened for with vitals and a focused septic work-up; and a cardiac arrhythmia causing collapse, assessed with an ECG. The single fastest, cheapest, most useful test is the capillary glucose, which should be done at the bedside before anything else.",
+      "gradingNotes": "Expect prioritisation of glucose check first, a logical ranked list with reasoning, and recognition that confirmation drives management, not just guesswork."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why is this patient particularly vulnerable to prolonged or severe hypoglycaemia compared to a diabetic on metformin alone?",
+      "modelAnswer": "Sulfonylureas like glibenclamide stimulate insulin release independent of glucose level by closing SUR1/KATP channels on beta cells, so insulin secretion continues even as glucose falls, unlike metformin which does not cause hypoglycaemia on its own. Glibenclamide also has a long half-life and active renally-cleared metabolites; with her eGFR of 29, clearance is markedly reduced, causing drug accumulation and prolonged, unpredictable insulin release — hence the risk of recurrent hypoglycaemia over the following 24-48 hours even after apparent correction.",
+      "gradingNotes": "Wants the pharmacological mechanism (non-glucose-dependent insulin secretion) plus the specific renal clearance issue with glibenclamide — a purely descriptive answer without mechanism should not score full marks."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Her HbA1c comes back at 6.8%, which looks well-controlled, yet she has just had a severe hypoglycaemic episode. How do you interpret this?",
+      "modelAnswer": "HbA1c can be unreliable in this setting — she has CKD-associated anaemia and renal impairment, both of which alter red cell turnover and can falsely lower HbA1c. Where HbA1c and glucose disagree, the capillary/laboratory glucose should be believed. Her actual glucose confirmed profound hypoglycaemia (1.8 mmol/L), which is the more clinically relevant and immediate data point, and the 'good' HbA1c likely reflects a mix of hyperglycaemic and hypoglycaemic swings averaging out, or simply reduced reliability of the test itself.",
+      "gradingNotes": "Core teaching point from the case notes — must mention HbA1c caveats (anaemia/CKD) and the principle of trusting glucose over HbA1c when they conflict."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Given her CKD stage 4, how would you adjust her diabetes regimen going forward?",
+      "modelAnswer": "Stop glibenclamide — it is inappropriate with an eGFR of 29 due to accumulation risk. Metformin should generally be avoided or used with caution below eGFR 30 per SA guidelines, so this needs review and likely discontinuation or dose reduction. A safer option would be a low-hypoglycaemia-risk approach such as basal insulin with careful titration, or if a sulfonylurea is still desired, a shorter-acting, less renally-dependent agent like low-dose gliclazide MR with close monitoring. Individualised glycaemic targets should be relaxed given her hypoglycaemia risk and comorbidities, aiming perhaps for HbA1c 7.5-8% rather than tight control.",
+      "gradingNotes": "Expect explicit renal-based drug adjustment reasoning and individualised (relaxed) glycaemic target given hypoglycaemia risk, not a generic 'continue same treatment' answer."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "On examination she has bounding peripheral pulses and reduced monofilament sensation in her feet. What is the significance of these findings?",
+      "modelAnswer": "Bounding pulses with reduced sensation suggest peripheral neuropathy with associated autonomic dysfunction causing increased peripheral blood flow through AV shunting, a pattern also seen in early Charcot neuroarthropathy — though in this acute presentation it is more simply evidence of established diabetic peripheral neuropathy from her long-standing diabetes. This finding is important because it flags her at high risk for foot ulceration and for reduced awareness of hypoglycaemic symptoms if autonomic neuropathy is also affecting her adrenergic response, contributing to hypoglycaemia unawareness risk.",
+      "gradingNotes": "Wants recognition that neuropathy signs point to chronic complications requiring foot screening/protection, and links autonomic neuropathy to hypoglycaemia unawareness risk if the candidate makes that connection."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "acute confusion/collapse in a known diabetic → hypoglycaemia vs hyperglycaemic crisis vs stroke vs sepsis, confirmed by capillary glucose and linked to drug/dose/intake history",
+  "patient": {
+    "name": "Thandeka Mkhize",
+    "age": 68,
+    "sex": "F",
+    "occupation": "retired domestic worker, lives with her daughter's family",
+    "personality": "initially drowsy and confused, becomes talkative and slightly embarrassed once glucose corrected, tends to minimise how little she ate",
+    "openingLine": "Hawu doctor... I feel so shaky and my head is spinning, I don't know what happened to me."
+  },
+  "presentingComplaint": "found sweaty, shaking and confused at home by her daughter this morning",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Found by her daughter about 45 minutes ago, sitting on the kitchen floor, sweaty and confused, unable to say what day it was",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-symptoms-now",
+      "fact": "Now feels shaky, sweaty, hungry and has a pounding heart; headache present; symptoms improved somewhat after her daughter gave her sugar water",
+      "disclosure": "onAsk",
+      "triggers": [
+        "shaky",
+        "shaking",
+        "sweaty",
+        "sweat",
+        "palpitations",
+        "heart racing",
+        "hungry",
+        "headache",
+        "tremor",
+        "dizzy",
+        "dizziness",
+        "feel now",
+        "symptoms now",
+        "how do you feel",
+        "heart",
+        "racing",
+        "symptoms"
+      ]
+    },
+    {
+      "id": "hx-lastmeal",
+      "fact": "Skipped breakfast this morning because she felt nauseous; also ate very little supper last night as she was not hungry",
+      "disclosure": "onAsk",
+      "triggers": [
+        "eat",
+        "eaten",
+        "meal",
+        "breakfast",
+        "food",
+        "appetite",
+        "last ate",
+        "skip",
+        "missed a meal",
+        "nauseous",
+        "not hungry",
+        "supper",
+        "dinner",
+        "last",
+        "ate",
+        "missed",
+        "not",
+        "hungry"
+      ]
+    },
+    {
+      "id": "hx-diabetes-history",
+      "fact": "Diagnosed with type 2 diabetes 12 years ago; usually managed on metformin and glibenclamide",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "diabetic",
+        "how long",
+        "diagnosed",
+        "sugar sickness",
+        "known diabetic",
+        "long",
+        "sickness",
+        "known"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes metformin 1g twice daily and glibenclamide 5mg twice daily; also on amlodipine for blood pressure; ran out of her metformin two weeks ago but continued taking the glibenclamide as normal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "glibenclamide",
+        "metformin",
+        "sulfonylurea",
+        "drugs",
+        "treatment",
+        "what do you take",
+        "dose",
+        "dosage",
+        "take"
+      ]
+    },
+    {
+      "id": "hx-recent-dose-change",
+      "fact": "Clinic increased her glibenclamide from once to twice daily two weeks ago because her sugar readings were 'too high'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dose change",
+        "increase",
+        "clinic visit",
+        "adjusted",
+        "new dose",
+        "changed medication",
+        "recently changed",
+        "up the dose",
+        "dose",
+        "change",
+        "clinic",
+        "visit",
+        "new",
+        "changed",
+        "medication",
+        "recently"
+      ]
+    },
+    {
+      "id": "hx-renal",
+      "fact": "Was told at her last clinic visit that her 'kidneys were a bit weak' but did not fully understand what this meant",
+      "disclosure": "onAsk",
+      "triggers": [
+        "kidney",
+        "renal",
+        "creatinine",
+        "kidney function",
+        "weak kidneys",
+        "kidney problem",
+        "function",
+        "weak",
+        "kidneys",
+        "problem"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Does not drink alcohol",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "wine",
+        "spirits",
+        "drinking"
+      ]
+    },
+    {
+      "id": "hx-previous-hypo",
+      "fact": "Has had two similar episodes of shakiness and sweating in the past month, both in the late morning before lunch, which she treated herself with a sweet or juice at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "previous episode",
+        "happened before",
+        "similar",
+        "this happened",
+        "hypo before",
+        "low sugar before",
+        "fainted before",
+        "shaky before",
+        "previous",
+        "episode",
+        "happened",
+        "hypo",
+        "low",
+        "sugar",
+        "fainted",
+        "shaky"
+      ]
+    },
+    {
+      "id": "hx-other-illness",
+      "fact": "No fever, no cough, no vomiting, no diarrhoea, no chest pain, no weakness on one side of the body",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "cough",
+        "vomit",
+        "diarrhoea",
+        "chest pain",
+        "weakness",
+        "one side",
+        "stroke symptoms",
+        "other symptoms",
+        "review of systems",
+        "anything else",
+        "chest",
+        "pain",
+        "one",
+        "side",
+        "stroke",
+        "symptoms",
+        "review",
+        "systems"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Hypertension for 10 years, no history of heart attack or stroke, no known epilepsy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "past history",
+        "previous illness",
+        "hypertension",
+        "blood pressure history",
+        "heart attack",
+        "stroke",
+        "epilepsy",
+        "seizures",
+        "medical",
+        "history",
+        "past",
+        "previous",
+        "illness",
+        "blood",
+        "pressure",
+        "heart",
+        "attack"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergy",
+        "allergic",
+        "allergies",
+        "reaction to medicine",
+        "reaction",
+        "medicine"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives with her daughter and grandchildren in Umlazi in a small house; daughter helps organise her tablets but Thandeka sometimes takes extra tablets herself if she 'feels her sugar is high'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "live",
+        "lives with",
+        "home situation",
+        "family",
+        "who helps",
+        "social history",
+        "tablets organised",
+        "who gives medicine",
+        "support at home",
+        "lives",
+        "home",
+        "situation",
+        "helps",
+        "social",
+        "history",
+        "tablets",
+        "organised",
+        "gives",
+        "medicine",
+        "support"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV negative on last test two years ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Mother also had diabetes; father had high blood pressure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "runs in family",
+        "genetic",
+        "family",
+        "history",
+        "runs"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Drowsy but rousable on arrival, now more alert after glucose correction. Profusely diaphoretic, pale, tremulous. No fruity/ketotic breath odour. No focal weakness observed.",
+    "vitals": {
+      "hr": 118,
+      "bp": "142/88",
+      "rr": 18,
+      "temp": 36.4,
+      "spo2": "98% on room air",
+      "bmi": 29
+    },
+    "respiratory": "Chest clear, no added sounds, no Kussmaul breathing",
+    "cardio": "Tachycardic, regular rhythm, normal heart sounds, no murmurs, peripheral pulses present and bounding",
+    "abdo": "Soft, non-tender, no organomegaly",
+    "neuro": "GCS 13/15 on arrival (E3V4M6), improved to 15/15 after correction; no focal neurological deficit; pupils equal and reactive; plantar reflexes downgoing bilaterally",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Capillary (point-of-care) glucose on arrival",
+      "result": "1.8 mmol/L",
+      "key": true
+    },
+    {
+      "name": "Repeat capillary glucose 15 min after IV dextrose/oral carbohydrate",
+      "result": "6.2 mmol/L, patient more alert",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Creatinine 168 µmol/L, eGFR 29 mL/min/1.73m2 (stage 4 CKD), urea 11.2 mmol/L, potassium 4.1 mmol/L",
+      "key": true
+    },
+    {
+      "name": "HbA1c",
+      "result": "6.8% — reflects recent control but unreliable given her renal impairment and possible anaemia; treat capillary glucose as gold standard here",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.4 g/dL (mild normocytic anaemia of CKD), WCC 6.8, platelets 245",
+      "key": false
+    },
+    {
+      "name": "Blood ketones (capillary beta-hydroxybutyrate)",
+      "result": "0.2 mmol/L — normal, excludes DKA",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, no ischaemic changes",
+      "key": false
+    },
+    {
+      "name": "Urine dipstick",
+      "result": "No glucose, no ketones, trace protein",
+      "key": false
+    },
+    {
+      "name": "Blood cultures / septic screen",
+      "result": "Not indicated — afebrile, no septic focus found",
+      "key": false
+    },
+    {
+      "name": "CT brain",
+      "result": "Not performed — no focal neurology or trauma, full recovery with glucose correction",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Hypoglycaemia secondary to sulphonylurea (glibenclamide) accumulation in the context of renal impairment",
+      "rank": 1,
+      "for": [
+        "known diabetic on glibenclamide",
+        "reduced oral intake this morning",
+        "recent dose increase two weeks ago",
+        "reduced renal clearance of glibenclamide (eGFR 29)",
+        "adrenergic and neuroglycopenic symptoms",
+        "capillary glucose 1.8 mmol/L with rapid symptomatic recovery on dextrose"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Hyperosmolar hyperglycaemic state / DKA",
+      "rank": 2,
+      "for": [
+        "known diabetic presenting with confusion"
+      ],
+      "against": [
+        "capillary glucose profoundly LOW not high",
+        "no ketones on testing",
+        "no dehydration or Kussmaul breathing"
+      ]
+    },
+    {
+      "dx": "Acute ischaemic stroke / TIA",
+      "rank": 3,
+      "for": [
+        "acute confusion in an elderly hypertensive patient"
+      ],
+      "against": [
+        "no focal neurological deficit",
+        "full resolution of symptoms with glucose correction, not typical of stroke",
+        "symptoms classic for hypoglycaemia (sweating, tremor, hunger)"
+      ]
+    },
+    {
+      "dx": "Sepsis-related delirium (e.g. urinary source)",
+      "rank": 4,
+      "for": [
+        "elderly patient with acute confusion"
+      ],
+      "against": [
+        "afebrile",
+        "no localising signs of infection",
+        "normal WCC",
+        "rapid resolution with dextrose alone"
+      ]
+    },
+    {
+      "dx": "Cardiac arrhythmia causing syncope/collapse",
+      "rank": 5,
+      "for": [
+        "tachycardia and collapse"
+      ],
+      "against": [
+        "ECG shows sinus tachycardia only, no arrhythmia",
+        "tachycardia explained by adrenergic response to hypoglycaemia",
+        "full neurological recovery with glucose"
+      ]
+    }
+  ],
+  "pathophys": {
+    "sweating, tremor, palpitations (adrenergic symptoms)": "Falling glucose triggers counter-regulatory catecholamine and glucagon release; sympathetic activation causes tremor, diaphoresis, tachycardia and hunger, typically at glucose thresholds around 3.6-3.9 mmol/L",
+    "confusion, drowsiness (neuroglycopenic symptoms)": "The brain relies almost entirely on glucose as fuel; once glucose falls below roughly 2.8-3 mmol/L, neuronal ATP production fails, producing cognitive impairment, confusion, and if prolonged, seizures or coma",
+    "prolonged/recurrent hypoglycaemia on sulphonylurea": "Glibenclamide binds SUR1 on pancreatic beta-cell KATP channels, causing insulin release independent of ambient glucose; it has a long half-life and active metabolites cleared renally, so reduced eGFR causes drug and metabolite accumulation and unpredictable, prolonged insulin secretion",
+    "missed meal precipitating the episode": "Sulphonylurea-driven insulin secretion is not glucose-dependent, so skipping a meal removes the substrate the drug 'assumes' will be present, producing a mismatch between insulin action and glucose supply",
+    "hypoglycaemia unawareness risk in an elderly patient with recurrent episodes": "Repeated hypoglycaemic episodes blunt the counter-regulatory hormonal and adrenergic response over time, raising the threshold at which symptoms are perceived and increasing risk of severe unrecognised hypoglycaemia"
+  },
+  "staging": "CKD stage 4 (eGFR 29 mL/min/1.73m2) contributing to sulphonylurea accumulation; Whipple's triad fulfilled (symptoms + low glucose + resolution with treatment)",
+  "management": {
+    "immediate": [
+      "Confirm capillary glucose immediately; if patient conscious and able to swallow, give 15-20g fast-acting oral carbohydrate (e.g. glucose gel, sugary drink) repeated every 15 minutes until glucose >4 mmol/L",
+      "If reduced consciousness or unable to swallow safely: IV access and 50 mL of 50% dextrose (or 25% dextrose in appropriate volume) or IM glucagon 1mg if no IV access",
+      "Recheck glucose 15 minutes after treatment and follow with a longer-acting carbohydrate/meal to prevent rebound hypoglycaemia",
+      "Admit for observation given long half-life of glibenclamide and renal impairment — risk of recurrent/prolonged hypoglycaemia over 24-48 hours"
+    ],
+    "definitive": [
+      "Withhold glibenclamide; review and adjust glucose-lowering regimen given CKD stage 4",
+      "Switch to a renally safer agent — e.g. low-dose gliclazide MR if a sulfonylurea still needed, or preferably basal insulin with dose titration, given eGFR <30 makes glibenclamide inappropriate",
+      "Restart metformin cautiously only if eGFR supports it per SA guidelines (generally avoid/dose-reduce below eGFR 30), otherwise omit",
+      "Address the medication-adherence gap — establish why metformin ran out and glibenclamide dose was increased without reassessment"
+    ],
+    "supportive": [
+      "Diabetes and hypoglycaemia education for patient and daughter — recognising early warning symptoms, appropriate meal timing with sulfonylureas, emergency carbohydrate at home",
+      "Involve family/community health worker for medication supervision given cognitive vulnerability and repeated dosing errors",
+      "Podiatry/foot care given reduced monofilament sensation found on exam",
+      "Blood pressure review — continue amlodipine, monitor for postural hypotension"
+    ],
+    "followUp": [
+      "Refer to diabetes/renal clinic for individualised glycaemic target given CKD (relaxed target, e.g. HbA1c 7.5-8%, given hypoglycaemia risk and comorbidity)",
+      "Repeat renal function and eGFR-based medication review at follow-up",
+      "Home glucose monitoring diary, especially pre-meal readings, to detect recurrent hypoglycaemia",
+      "Screen for other CKD-related complications: anaemia workup, ACR, cardiovascular risk review"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-presentation-characterise",
+      "phase": "history",
+      "item": "Characterises the presentation as an acute confusional/collapse episode and establishes timeline from the collateral history",
+      "answer": "Found 45 minutes ago, sweaty and confused, improved somewhat with sugar water given at home",
+      "why": "Distinguishes acute metabolic event from a chronic complication presentation, first step of the framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-glucose",
+      "phase": "history",
+      "item": "Asks about / confirms a point-of-care glucose reading was or should be checked immediately (Whipple's triad thinking)",
+      "answer": "Capillary glucose 1.8 mmol/L on arrival",
+      "why": "Confirmation against objective glucose is mandatory before labelling as hypoglycaemia, mirrors the confirmation-rule principle from hyperglycaemia workup applied in reverse",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-precipitant",
+      "phase": "history",
+      "item": "Actively screens for an acute precipitant: reduced intake, missed meal, alcohol, intercurrent illness, exertion",
+      "answer": "Skipped breakfast, ate poorly the night before, no alcohol, no fever/infection",
+      "why": "Identifies the trigger driving the mismatch between sulfonylurea action and glucose supply",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-drug-history",
+      "phase": "history",
+      "item": "Takes a focused medication history identifying the sulfonylurea, its dose, any recent dose change, and adherence pattern",
+      "answer": "Glibenclamide dose increased from once to twice daily two weeks ago; ran out of metformin two weeks ago but continued glibenclamide",
+      "why": "Directly identifies the causative agent and the recent change that precipitated the event",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-renal-history",
+      "phase": "history",
+      "item": "Asks about known renal impairment / kidney function",
+      "answer": "Told at last clinic visit her kidneys were 'a bit weak'",
+      "why": "Renal impairment is the key risk multiplier for sulfonylurea-induced hypoglycaemia via reduced drug clearance",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-recurrent-episodes",
+      "phase": "history",
+      "item": "Asks whether this has happened before / pattern of previous hypoglycaemic episodes",
+      "answer": "Two similar episodes of shakiness/sweating in the past month, both late morning before lunch",
+      "why": "Recurrent hypoglycaemia suggests hypoglycaemia unawareness risk and mandates regimen change, not just one-off correction",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-neuro-focal",
+      "phase": "examination",
+      "item": "Performs a focused neurological exam to exclude a focal deficit / stroke mimic",
+      "answer": "No focal neurological deficit; GCS improves to 15/15 with glucose correction",
+      "why": "Excludes stroke as differential and confirms neuroglycopenia as the mechanism of confusion",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-vitals-ketones",
+      "phase": "examination",
+      "item": "Checks vitals and looks for signs of DKA/HHS or sepsis (dehydration, ketotic breath, fever)",
+      "answer": "Afebrile, no ketotic breath, no dehydration, HR 118 due to adrenergic response",
+      "why": "Ensures a hyperglycaemic crisis or sepsis is not missed as an alternative cause of confusion",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx-reasoning",
+      "phase": "differentials",
+      "item": "Generates a ranked differential for acute confusion in a diabetic (hypoglycaemia vs DKA/HHS vs stroke vs sepsis vs arrhythmia) with reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning before diagnosis is the core exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-confirm",
+      "phase": "investigations",
+      "item": "Requests capillary glucose, ketones, U&E/creatinine (renal function), and repeat glucose post-treatment",
+      "answer": "Glucose 1.8 → 6.2 mmol/L after treatment; ketones 0.2 mmol/L; eGFR 29",
+      "why": "Confirms hypoglycaemia, excludes DKA, and identifies the renal driver of prolonged sulfonylurea action",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-acute",
+      "phase": "management",
+      "item": "Manages the acute hypoglycaemia appropriately (oral carbohydrate if conscious, IV dextrose/IM glucagon if reduced consciousness) and recognises need for prolonged observation given glibenclamide's long half-life and renal impairment",
+      "answer": null,
+      "why": "Immediate correction plus awareness that sulfonylurea hypoglycaemia can recur for 24-48 hours, especially with renal impairment",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Plans definitive medication changes: stop/avoid glibenclamide given CKD stage 4, review metformin suitability, consider safer alternative (basal insulin or renally-adjusted agent)",
+      "answer": null,
+      "why": "Addresses the underlying cause to prevent recurrence, per SA EML/STG stepwise diabetes management adapted for renal impairment",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

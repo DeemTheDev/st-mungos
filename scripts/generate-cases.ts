@@ -3,11 +3,14 @@
 //
 // Per case: pick a KB topic for the requested system (rotating for variety),
 // pick the target diagnosis IN CODE from the per-system pool (excluding
-// everything already in bank/drafts — no dedupe-collision waste), then call
-// claude-sonnet-5 with structured outputs (the Zod schema rides in
-// output_config.format, so the JSON shape is API-enforced; refine rules like
-// rubric-sums-to-100 are validated client-side with one feedback retry).
-// Drafts land in cases/drafts/<id>.json. Nothing reaches the bank unreviewed.
+// everything already in bank/drafts — no dedupe-collision waste), then hand
+// both to lib/library/generate-job.ts, which owns the prompts, the
+// structured-outputs call and the validate-then-retry loop and is the same
+// code POST /api/cases/job/[id]/step runs.
+//
+// This script keeps the LOCAL half: the KB index on disk, cases/bank +
+// cases/drafts scanning, and writing cases/drafts/<id>.json. Nothing reaches
+// the bank unreviewed.
 
 try {
   process.loadEnvFile(".env.local");
@@ -18,15 +21,13 @@ try {
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseArgs } from "node:util";
-import { z } from "zod";
+import { DisciplineSchema, OsceCaseSchema, type Discipline } from "../lib/case-schema";
 import {
-  ClinicalCaseSchema,
-  DisciplineSchema,
-  ExaminationSchema,
-  OsceCaseSchema,
-  type ClinicalCase,
-  type Discipline,
-} from "../lib/case-schema";
+  buildCaseSystemPrompt,
+  generateOneCase,
+  pickDiagnosis,
+  usedDiagnoses,
+} from "../lib/library/generate-job";
 import {
   BANK_DIR,
   EPI_BRIEF_PATH,
@@ -34,15 +35,12 @@ import {
   KB_INDEX_PATH,
   createAnthropicClient,
   diagnosisSlug,
-  formatZodIssues,
-  generateStructured,
   nextSequence,
   normalizeDiagnosis,
   readExistingCases,
   writeDraft,
   type ExistingCaseInfo,
 } from "./gen-common";
-import { pickDiagnosis, usedDiagnoses } from "./diagnosis-pool";
 
 interface KbIndexEntry {
   slug: string;
@@ -53,77 +51,6 @@ interface KbIndexEntry {
 }
 
 const SEED_CASE_PATH = join(BANK_DIR, "resp-001-ptb-hiv.json");
-// The prompt asks for 8-12 triggers per onAsk fact; the hard floor only
-// catches systematically thin generation. It matches the hand-checked seed
-// case, whose own allergies fact carries exactly 3 triggers — a stingy minor
-// negative must not burn a paid retry on an otherwise excellent case.
-// Floor applies AFTER fattenTriggers() below.
-const MIN_TRIGGERS_PER_ONASK_FACT = 3;
-
-// Words too generic to stand alone as disclosure triggers — they would fire
-// the fact on almost any question ("anything else?", "how do you feel?").
-const GENERIC_TRIGGER_WORDS = new Set([
-  "the", "and", "for", "with", "any", "anything", "something", "else", "ever",
-  "every", "feel", "feels", "felt", "get", "gets", "getting", "going", "have",
-  "has", "had", "been", "being", "know", "like", "much", "many", "more",
-  "notice", "noticed", "other", "really", "still", "tell", "think", "time",
-  "today", "want", "well", "what", "when", "where", "which", "who", "why",
-  "how", "your", "you", "about", "does", "did", "are", "was", "were",
-  "than", "usual", "very", "quite", "some", "just", "now", "then", "here",
-  "there", "this", "that", "these", "those",
-]);
-
-/**
- * Deterministic trigger fattening (the "coughing up" adjacency gap): the
- * engine's matcher only fires multi-word triggers on ADJACENT words, so every
- * multi-word trigger also contributes its meaningful single words as
- * standalone triggers. Mechanical and safe — every added word already appears
- * inside one of the model's own triggers.
- */
-function fattenTriggers(triggers: string[]): string[] {
-  const out = [...triggers];
-  const seen = new Set(triggers.map((t) => t.toLowerCase().trim()));
-  for (const trigger of triggers) {
-    const words = trigger.toLowerCase().split(/\s+/).filter(Boolean);
-    if (words.length < 2) continue;
-    for (const word of words) {
-      if (word.length < 3 || GENERIC_TRIGGER_WORDS.has(word) || seen.has(word)) continue;
-      seen.add(word);
-      out.push(word);
-    }
-  }
-  return out;
-}
-
-// ---------------------------------------------------------------------------
-// Generation-side schema. Structured outputs forces additionalProperties:false
-// on every object, which would pin open-key records (pathophys,
-// examination.other) to be permanently empty — so for generation, pathophys is
-// an array of {symptom, mechanism} pairs (converted back to the record shape
-// in code) and `other` is omitted (filled with {} in code).
-const GenClinicalCaseSchema = ClinicalCaseSchema.omit({ pathophys: true, examination: true }).extend({
-  examination: ExaminationSchema.omit({ other: true }),
-  pathophys: z
-    .array(
-      z.object({
-        symptom: z.string().min(1),
-        mechanism: z.string().min(1),
-      }),
-    )
-    .min(3),
-});
-type GenClinicalCase = z.infer<typeof GenClinicalCaseSchema>;
-
-function toClinicalCase(gen: GenClinicalCase): unknown {
-  return {
-    ...gen,
-    history: gen.history.map((f) =>
-      f.disclosure === "onAsk" ? { ...f, triggers: fattenTriggers(f.triggers) } : f,
-    ),
-    examination: { ...gen.examination, other: {} },
-    pathophys: Object.fromEntries(gen.pathophys.map((p) => [p.symptom, p.mechanism])),
-  };
-}
 
 function fail(message: string): never {
   console.error(message);
@@ -185,126 +112,6 @@ function loadKbTopics(system: Discipline): Array<KbIndexEntry & { content: strin
   return topics;
 }
 
-function buildSystemPrompt(seedCaseJson: string, epidemiologyBrief: string): string {
-  return `You are the case author for "St Mungo's", a voice-driven OSCE simulator for a 4th-year medical student at UKZN, KwaZulu-Natal, South Africa. You write complete, clinically accurate CLINICAL OSCE cases as a single JSON object.
-
-PEDAGOGY (non-negotiable)
-- Symptom → differential, never diagnosis-first. The student starts from a presenting complaint and works forward: differential → investigations to confirm → final diagnosis → management.
-- Pathophysiology of each symptom matters as much as the label.
-- Ground everything in KwaZulu-Natal epidemiology and South African practice (SA EML / Adult Hospital Level STGs, WHO clinical staging for HIV, SA TB guidelines).
-
-OUTPUT FORMAT
-- The JSON shape is enforced by the API against a schema — your job is to fill every field with real, deep clinical content, not to worry about syntax.
-
-CONTENT REQUIREMENTS (the schema enforces shape; you must supply the substance)
-- "id": kebab-case placeholder (it is reassigned in code); "version": 1; "stationType": "clinical".
-- "diagnosis": EXACTLY the diagnosis you are given in the request — do not substitute or reword it.
-- "framework": the symptom-to-differential framework in play (from the KB topic).
-- "history": AT LEAST 12 facts covering the full HPI, systems-review negatives, PMH, medications, allergies, social history and family history.
-  - "volunteered" facts: triggers may be [].
-  - "onAsk" facts: FAT trigger lists — 8 to 12 triggers each, covering medical terms AND lay phrasings a nervous student might use (e.g. for haemoptysis: "blood", "coughing up", "phlegm", "spit"). The engine gates disclosure on these strings; thin lists break the game.
-  - TRIGGER MATCHING MECHANICS (design every trigger list around these):
-    - A multi-word trigger only fires when its words appear ADJACENT and in order in the student's sentence: "coughing up" does NOT match "are you coughing anything up?". So for EVERY multi-word trigger, ALSO include each meaningful word of it as its own single-word trigger (e.g. "coughing up" plus "cough" plus "sputum" plus "phlegm" plus "blood") — single words are the safety net.
-    - Use base word forms: the matcher already tolerates simple suffixes ("cough" matches coughs/coughed/coughing; "test" matches tested/testing/tests), so "cough" is strictly better than "coughing".
-    - Include the common lay paraphrases and question-wordings a student would actually say out loud ("bringing anything up", "anything in the phlegm", "night sweats", "lost weight", "been tested").
-    - Never rely on a phrase alone to guard a fact; at least half of each trigger list should be single words.
-    - Before you finish, COUNT the triggers on EVERY onAsk fact — minor facts (smoking, alcohol, allergies, medication) included. Any fact with fewer than 8 triggers gets padded with more lay paraphrases and single words until it has 8-12.
-- "examination": findings only revealed when the student performs the step — write real signs consistent with the diagnosis, including a full vitals set.
-- "investigations": AT LEAST 6 entries with REAL result values — include the confirmatory pathway ("key": true) AND plausible non-key tests so ordering everything isn't free.
-- "differentials": AT LEAST 3, ranked (1 = most likely), each with "for" and "against" evidence drawn from this case.
-- "pathophys": an ARRAY of { "symptom", "mechanism" } pairs — one per cardinal symptom, real mechanisms (used for examiner "why" questions). (The seed example below shows the older object form; you must produce the array-of-pairs form.)
-- "staging": WHO stage, NYHA class, CKD stage etc. where relevant (optional).
-- "management": { "immediate", "definitive", "supportive", "followUp" } per SA guidelines.
-- "stationChecklist": AT LEAST 8 items — THE MARK SHEET. Every question/action expected of the student.
-  - Derive the checklist from the KB topic's framework: the checklist IS that framework turned into a mark sheet, in the order a good candidate would work.
-  - Mark items "critical": true when missing them would be an examiner red flag.
-  - weights are integers 1-5.
-  - "phase" must be EXACTLY one of: "history" | "examination" | "differentials" | "investigations" | "management" — no other value exists.
-  - EVERY checklist item MUST carry ALL of: "id", "phase", "item", "answer" (string or null), "why", "weight", "critical" — never omit "why".
-- "examinerBank": 3 to 5 viva questions.
-  - EVERY question MUST carry ALL of: "id", "triggerPhase", "question", "modelAnswer", "gradingNotes".
-  - "triggerPhase" must be EXACTLY one of: "history" | "examination" | "differentials" | "investigations" | "management".
-  - Include one "walk me through your approach / differential" question and one pathophysiology-mechanism question pulled from the pathophys pairs.
-- "rubric": { communication, historyTaking, examination, clinicalReasoning, investigations, management } — integers that MUST sum to exactly 100.
-
-PATIENT REALISM
-- Patients speak layperson language ("sugar sickness", not "poorly controlled T2DM"); the personality field should make them playable (worried, stoic, chatty, minimising...).
-- Names, places and occupations should feel like Durban / KZN (see the epidemiology brief).
-
-GOLD-STANDARD EXAMPLE (match its depth, tone and trigger fatness):
-${seedCaseJson}
-
-KZN EPIDEMIOLOGY BRIEF:
-${epidemiologyBrief}`;
-}
-
-function buildUserPrompt(
-  topic: KbIndexEntry & { content: string },
-  system: Discipline,
-  commonness: "common" | "uncommon",
-  diagnosis: string,
-): string {
-  return `Write ONE new clinical OSCE case for exactly this diagnosis: ${diagnosis}
-
-Requirements:
-- "diagnosis": exactly "${diagnosis}" (verbatim — it was chosen in code and is checked in code)
-- "discipline": "${system}"
-- "commonness": "${commonness}"
-- "stationType": "clinical"
-- Base the case on the KB topic below. Derive "framework" and the "stationChecklist" from the topic's framework/approach — the checklist is that framework turned into a mark sheet. Weight heavily anything under a "Her notes emphasise" section.
-
-KB TOPIC — ${topic.title}:
-${topic.content}`;
-}
-
-/** Checks beyond the Zod schema; returns retryable feedback lines. */
-function extraChecks(
-  c: ClinicalCase,
-  system: Discipline,
-  commonness: "common" | "uncommon",
-  pinnedDiagnosis: string,
-): string[] {
-  const problems: string[] = [];
-  if (normalizeDiagnosis(c.diagnosis) !== normalizeDiagnosis(pinnedDiagnosis)) {
-    problems.push(`diagnosis must be exactly "${pinnedDiagnosis}", got "${c.diagnosis}"`);
-  }
-  if (c.discipline !== system) problems.push(`discipline must be "${system}", got "${c.discipline}"`);
-  if (c.commonness !== commonness) problems.push(`commonness must be "${commonness}", got "${c.commonness}"`);
-  for (const fact of c.history) {
-    if (fact.disclosure === "onAsk" && fact.triggers.length < MIN_TRIGGERS_PER_ONASK_FACT) {
-      problems.push(
-        `history fact "${fact.id}" has only ${fact.triggers.length} triggers — onAsk facts need 8-12 (minimum ${MIN_TRIGGERS_PER_ONASK_FACT}) including lay phrasings`,
-      );
-    }
-  }
-  return problems;
-}
-
-interface AttemptResult {
-  ok: boolean;
-  case?: ClinicalCase;
-  feedback?: string;
-}
-
-function validateGenerated(
-  gen: GenClinicalCase,
-  system: Discipline,
-  commonness: "common" | "uncommon",
-  pinnedDiagnosis: string,
-): AttemptResult {
-  // Convert the generation shape (pathophys pairs, no `other`) back to the
-  // canonical case shape and re-validate — mechanical, so failures are rare.
-  const parsed = ClinicalCaseSchema.safeParse(toClinicalCase(gen));
-  if (!parsed.success) {
-    return { ok: false, feedback: `Schema validation failed:\n${formatZodIssues(parsed.error.issues)}` };
-  }
-  const problems = extraChecks(parsed.data, system, commonness, pinnedDiagnosis);
-  if (problems.length > 0) {
-    return { ok: false, feedback: `Fix these problems:\n${problems.map((p) => `- ${p}`).join("\n")}` };
-  }
-  return { ok: true, case: parsed.data };
-}
-
 async function main(): Promise<void> {
   const { system, count, uncommon } = parseCliArgs();
   const commonness = uncommon ? "uncommon" : "common";
@@ -324,10 +131,10 @@ async function main(): Promise<void> {
   const existing: ExistingCaseInfo[] = readExistingCases();
   // Diagnoses picked in code, excluded up front — no generation is ever spent
   // on a diagnosis that would collide with bank/drafts.
-  const seenDiagnoses = usedDiagnoses(existing);
+  const seenDiagnoses = usedDiagnoses(existing.map((c) => c.diagnosis));
 
   const client = createAnthropicClient();
-  const systemPrompt = buildSystemPrompt(seedCaseJson, epidemiologyBrief);
+  const systemPrompt = buildCaseSystemPrompt(seedCaseJson, epidemiologyBrief);
   let sequence = nextSequence(system, existing);
   let written = 0;
   let discarded = 0;
@@ -340,34 +147,23 @@ async function main(): Promise<void> {
     if (!diagnosis) {
       console.warn(
         `[${i + 1}/${count}] diagnosis pool for "${system}" (${commonness}) is exhausted — stopping early. ` +
-          `Add entries to scripts/diagnosis-pool.ts to generate more.`,
+          `Add entries to the pool in lib/library/generate-job.ts to generate more.`,
       );
       break;
     }
     console.log(`[${i + 1}/${count}] topic: ${topic.slug} → ${diagnosis}`);
     try {
-      const userPrompt = buildUserPrompt(topic, system, commonness, diagnosis);
-      const first = await generateStructured(client, systemPrompt, userPrompt, GenClinicalCaseSchema);
-      let result: AttemptResult = first.data
-        ? validateGenerated(first.data, system, commonness, diagnosis)
-        : { ok: false, feedback: first.feedback ?? "generation returned nothing" };
+      const result = await generateOneCase({
+        client,
+        systemPrompt,
+        topic,
+        system,
+        commonness,
+        diagnosis,
+        log: (line) => console.log(line),
+      });
 
       if (!result.ok) {
-        console.log(
-          `        first attempt rejected — retrying once with feedback:\n        ${(result.feedback ?? "").slice(0, 400).replace(/\n/g, "\n        ")}`,
-        );
-        const retry = await generateStructured(
-          client,
-          systemPrompt,
-          `${userPrompt}\n\nYour previous attempt was rejected. ${result.feedback}\n\nOutput the corrected complete case.`,
-          GenClinicalCaseSchema,
-        );
-        result = retry.data
-          ? validateGenerated(retry.data, system, commonness, diagnosis)
-          : { ok: false, feedback: retry.feedback ?? "generation returned nothing" };
-      }
-
-      if (!result.ok || !result.case) {
         discarded++;
         console.error(`        DISCARDED after retry:\n${result.feedback}`);
         continue;
@@ -398,7 +194,7 @@ async function main(): Promise<void> {
   }
 
   console.log(`\nDone: ${written} draft(s) written, ${discarded} discarded.`);
-  console.log(`Review at /admin/review — nothing enters cases/bank without approval.`);
+  console.log(`Review at /review — nothing enters cases/bank without approval.`);
   if (written === 0) process.exit(1);
 }
 

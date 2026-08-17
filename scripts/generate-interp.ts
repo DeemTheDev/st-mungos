@@ -277,7 +277,7 @@ async function generateAbgStations(count: number): Promise<void> {
   }
 
   console.log(`\nDone: ${written} draft(s) written, ${discarded} discarded.`);
-  console.log("Review at /admin/review — nothing enters cases/bank without approval.");
+  console.log("Review at /review — nothing enters cases/bank without approval.");
   if (written === 0) process.exit(1);
 }
 

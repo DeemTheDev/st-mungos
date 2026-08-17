@@ -1,0 +1,674 @@
+{
+  "id": "gi-hep-005-peptic-ulcer-disease-with",
+  "version": 1,
+  "discipline": "gi-hep",
+  "diagnosis": "Peptic ulcer disease with gastric outlet obstruction",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this man's vomiting, and how you would rank them.",
+      "modelAnswer": "Top of the list is peptic ulcer disease causing gastric outlet obstruction, given his 10-year history of dyspepsia, chronic NSAID use, vomiting of undigested food, and a positive succussion splash. Second is gastric or pyloric malignancy, given his weight loss, age and family history of 'stomach cancer' — this must be excluded by biopsy at endoscopy. Third is gastroparesis, which can produce a similar vomiting pattern but lacks a mechanical obstruction and wouldn't typically cause a succussion splash or this biochemical picture. Lower down are strictures from Crohn's disease or caustic injury, which don't fit his history.",
+      "gradingNotes": "Wants ranked list with reasoning linked to specific case features, not just a list of diagnoses. Should explicitly flag malignancy as a must-exclude despite lower probability."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "investigations",
+      "question": "His venous blood gas shows a pH of 7.52 with a bicarbonate of 34. Explain the mechanism behind this and why it happens in gastric outlet obstruction.",
+      "modelAnswer": "Repeated vomiting causes direct loss of hydrochloric acid and potassium-rich gastric fluid, producing a hypochloraemic, hypokalaemic metabolic alkalosis. The resulting volume depletion activates the renin-angiotensin-aldosterone system; the kidney reabsorbs sodium in exchange for secreting hydrogen and potassium ions distally, which paradoxically worsens the alkalosis and causes an acidic urine despite systemic alkalosis — so-called 'paradoxical aciduria'.",
+      "gradingNotes": "Full marks require mention of chloride loss, RAAS activation, and paradoxical aciduria mechanism, not just naming the acid-base disorder."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "How do you elicit and interpret a succussion splash, and what does a positive test on this patient tell you?",
+      "modelAnswer": "With the patient supine, place a stethoscope over the epigastrium and rock the pelvis or shake the abdomen firmly side to side. A splashing sound heard more than 3-4 hours after the last oral intake indicates retained fluid and air in a stomach that is failing to empty normally, supporting gastric outlet obstruction rather than a simple motility problem or normal delayed emptying.",
+      "gradingNotes": "Wants correct technique and the critical timing caveat (>3-4 hours post-prandial) — without this the sign is meaningless as stomachs normally retain some contents shortly after eating."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why would you avoid rapidly correcting his metabolic alkalosis with acetazolamide or ammonium chloride, and what is the correct initial approach?",
+      "modelAnswer": "The alkalosis here is 'chloride-responsive' — driven by volume and chloride depletion — so the correct treatment is IV normal saline with potassium chloride replacement, which corrects the underlying deficit and allows the kidneys to stop retaining bicarbonate. Acetazolamide or ammonium chloride are not first-line and are reserved for refractory or chloride-resistant alkalosis; jumping to them risks worsening hypovolaemia or hypokalaemia if the primary volume/electrolyte deficit isn't addressed first.",
+      "gradingNotes": "Tests understanding that volume/chloride/potassium repletion is the primary treatment, and recognition of the chloride-responsive vs chloride-resistant alkalosis distinction."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "history",
+      "question": "He mentions he's never had an endoscopy despite 10 years of symptoms. Why is it important to biopsy this ulcer rather than just treat empirically?",
+      "modelAnswer": "Any gastric ulcer, and particularly one causing outlet obstruction with associated weight loss in a 54-year-old with a family history of gastric cancer, must have biopsies taken from the ulcer edge and antrum to exclude malignancy, since benign-appearing ulcers can occasionally harbour malignant change and clinical features alone cannot reliably distinguish benign stricture from a malignant one causing obstruction.",
+      "gradingNotes": "Wants explicit statement that biopsy is mandatory to exclude malignancy, linking back to red flag features (age, weight loss, family history)."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "UGIB/dyspepsia framework applied to vomiting: resuscitate + assess severity first, confirm true GI pathology, localise (vomiting pattern, haematemesis/melaena history), risk-stratify for bleeding, generate mechanistic differential, targeted investigation (bloods, erect CXR, endoscopy), then definitive management with attention to fluid/electrolyte derangement from obstruction",
+  "patient": {
+    "name": "Mandla Ngcobo",
+    "age": 54,
+    "sex": "M",
+    "occupation": "taxi driver",
+    "personality": "stoic, downplays his pain, embarrassed about the vomiting, chatty once he trusts you",
+    "openingLine": "Doctor, I can't keep any food down anymore, everything I eat just comes back up."
+  },
+  "presentingComplaint": "2-week history of worsening vomiting after meals, with early satiety and weight loss",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Vomiting has been getting worse over about 2-3 weeks, initially only with big meals, now with almost anything he eats",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-vomit-content",
+      "fact": "Vomits large volumes of undigested food eaten many hours or even the previous day, with a sour smell; no fresh blood but has seen some dark specks like coffee grounds once",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vomit",
+        "vomiting",
+        "throw up",
+        "bring up",
+        "undigested",
+        "old food",
+        "coffee ground",
+        "blood",
+        "vomitus",
+        "sick",
+        "spew",
+        "content",
+        "throw",
+        "bring",
+        "old",
+        "food",
+        "coffee",
+        "ground"
+      ]
+    },
+    {
+      "id": "hx-timing",
+      "fact": "Vomiting typically occurs an hour or more after eating, sometimes projectile, and relieves his bloating and pain temporarily",
+      "disclosure": "onAsk",
+      "triggers": [
+        "when",
+        "timing",
+        "after eating",
+        "projectile",
+        "relief",
+        "better after",
+        "how long after",
+        "delay",
+        "after",
+        "eating",
+        "better",
+        "long"
+      ]
+    },
+    {
+      "id": "hx-pud-history",
+      "fact": "Has had burning epigastric pain on and off for about 10 years, worse when hungry, previously self-treated with antacids bought over the counter, never scoped",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "epigastric",
+        "burning",
+        "stomach pain",
+        "ulcer",
+        "dyspepsia",
+        "heartburn",
+        "indigestion",
+        "years",
+        "history of pain",
+        "chronic",
+        "stomach",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-nsaid",
+      "fact": "Takes ibuprofen tablets bought from the pharmacy several times a week for his knees, has done so for years",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "ibuprofen",
+        "painkiller",
+        "tablets",
+        "medication",
+        "medicine",
+        "aspirin",
+        "anti-inflammatory",
+        "pills",
+        "muti",
+        "over the counter",
+        "over",
+        "counter"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost roughly 8 kg over the past 6 weeks, notices his belt is now on the tightest hole",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "thinner",
+        "belt",
+        "clothes loose",
+        "appetite",
+        "losing weight",
+        "lost",
+        "clothes",
+        "loose",
+        "losing"
+      ]
+    },
+    {
+      "id": "hx-succussion-splash-symptom",
+      "fact": "Feels bloated and full in the upper abdomen most of the time now, with visible distension after eating even small amounts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bloating",
+        "full",
+        "fullness",
+        "distended",
+        "distension",
+        "early satiety",
+        "swollen belly",
+        "stomach big",
+        "early",
+        "satiety",
+        "swollen",
+        "belly",
+        "stomach",
+        "big"
+      ]
+    },
+    {
+      "id": "hx-dehydration-symptoms",
+      "fact": "Feels dizzy when standing up quickly over the last few days, and has noticed dry mouth and reduced urination",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dizzy",
+        "dizziness",
+        "light headed",
+        "urination",
+        "urine",
+        "thirsty",
+        "dry mouth",
+        "weak",
+        "faint",
+        "dehydrat",
+        "light",
+        "headed",
+        "dry",
+        "mouth"
+      ]
+    },
+    {
+      "id": "hx-melaena",
+      "fact": "No black or tarry stool, no fresh blood from the back passage",
+      "disclosure": "onAsk",
+      "triggers": [
+        "stool",
+        "black stool",
+        "melaena",
+        "tarry",
+        "poo",
+        "bowel motion",
+        "blood in stool",
+        "back passage",
+        "rectal",
+        "black",
+        "bowel",
+        "motion",
+        "blood",
+        "back",
+        "passage"
+      ]
+    },
+    {
+      "id": "hx-dysphagia",
+      "fact": "No difficulty swallowing solids or liquids, food goes down fine, the problem is it comes back up later",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swallow",
+        "swallowing",
+        "dysphagia",
+        "food stuck",
+        "choking",
+        "difficulty eating",
+        "food",
+        "stuck",
+        "difficulty",
+        "eating"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer most weekends, about 4-6 bottles, no history of binge drinking during the week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "booze",
+        "drinking",
+        "liquor"
+      ]
+    },
+    {
+      "id": "hx-smoking",
+      "fact": "Smokes about 10 cigarettes a day, has done so for 20 years",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco"
+      ]
+    },
+    {
+      "id": "hx-hpylori",
+      "fact": "Has never been tested for H. pylori or had any previous endoscopy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "h pylori",
+        "helicobacter",
+        "pylori",
+        "scope",
+        "endoscopy",
+        "gastroscopy",
+        "tested before",
+        "previous test",
+        "tested",
+        "before",
+        "previous",
+        "test"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known chronic illnesses, not on any regular chronic medication, not previously admitted to hospital",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "conditions",
+        "illnesses",
+        "chronic disease",
+        "hospital",
+        "admitted",
+        "past history",
+        "diabetes",
+        "hypertension",
+        "medical",
+        "history",
+        "chronic",
+        "disease",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative two years ago, not currently sexually active with multiple partners",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "tested",
+        "aids",
+        "sexual history",
+        "sexual",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in KwaMashu with his wife and two teenage children; works long hours driving a taxi and often eats fast food or skips meals",
+      "disclosure": "onAsk",
+      "triggers": [
+        "live",
+        "home",
+        "family",
+        "children",
+        "work",
+        "job",
+        "occupation",
+        "diet",
+        "eating habits",
+        "eating",
+        "habits"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of 'stomach cancer' in his 60s, no other known family illnesses",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "cancer",
+        "genetic",
+        "runs in family",
+        "family",
+        "history",
+        "runs"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, mildly dehydrated-looking man. Dry mucous membranes, reduced skin turgor. No jaundice, no pallor, no lymphadenopathy. No cachexia to the point of frank malignancy but visibly wasted.",
+    "vitals": {
+      "hr": 102,
+      "bp": "98/62 (drops to 82/54 on standing)",
+      "rr": 18,
+      "temp": 36.6,
+      "spo2": "98% on room air",
+      "bmi": 19.5
+    },
+    "respiratory": "Clear breath sounds bilaterally, no added sounds",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not raised",
+    "abdo": "Visibly distended epigastrium with mild peristaltic waves visible after being fed a test meal; succussion splash elicited on shaking the abdomen more than 4 hours after his last meal; mild epigastric tenderness, no rebound or guarding; no palpable mass; bowel sounds present but reduced in frequency; no organomegaly",
+    "neuro": "Alert, oriented, no asterixis, no focal deficit",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Urea and electrolytes",
+      "result": "Na+ 128 mmol/L (low), K+ 2.9 mmol/L (low), Cl- 82 mmol/L (low), Urea 11.2 mmol/L (raised), Creatinine 118 µmol/L — hypochloraemic hypokalaemic metabolic alkalosis pattern",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas",
+      "result": "pH 7.52, HCO3- 34 mmol/L, base excess +9 — metabolic alkalosis consistent with prolonged vomiting/loss of gastric HCl",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 11.8 g/dL (mild normocytic anaemia), WCC 7.1, Platelets 340",
+      "key": false
+    },
+    {
+      "name": "Erect abdominal/succussion clinical test",
+      "result": "Succussion splash positive more than 4 hours post-prandial — supports gastric outlet obstruction",
+      "key": true
+    },
+    {
+      "name": "Upper GI endoscopy (OGD)",
+      "result": "Large volume of retained food and fluid in a dilated stomach despite fasting; deformed, stenosed pylorus/duodenal bulb with a chronic duodenal ulcer causing near-complete obstruction; scope cannot be passed beyond the pylorus; biopsies taken from ulcer edge and antrum",
+      "key": true
+    },
+    {
+      "name": "H. pylori biopsy urease test / histology",
+      "result": "Positive for H. pylori on antral biopsy",
+      "key": true
+    },
+    {
+      "name": "Erect chest X-ray",
+      "result": "No free air under the diaphragm, no aspiration changes",
+      "key": false
+    },
+    {
+      "name": "Abdominal ultrasound",
+      "result": "Grossly distended, fluid-filled stomach; normal liver echotexture, no ascites, no splenomegaly, no biliary dilatation",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Normal bilirubin, ALT, AST, ALP, albumin 34 g/L (mildly low, likely nutritional)",
+      "key": false
+    },
+    {
+      "name": "CT abdomen with contrast",
+      "result": "Markedly dilated stomach with thickened, stenotic pyloric/duodenal region; no mass lesion to suggest malignancy; no lymphadenopathy",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Peptic ulcer disease with gastric outlet obstruction",
+      "rank": 1,
+      "for": [
+        "long-standing dyspepsia/epigastric pain history",
+        "chronic NSAID use",
+        "vomiting of undigested food hours after eating",
+        "succussion splash on exam",
+        "hypochloraemic hypokalaemic metabolic alkalosis",
+        "endoscopic confirmation of scarred stenosed pylorus with chronic duodenal ulcer",
+        "H. pylori positive"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Gastric or pyloric malignancy causing outlet obstruction",
+      "rank": 2,
+      "for": [
+        "weight loss",
+        "age 54",
+        "father died of 'stomach cancer'",
+        "chronicity of symptoms"
+      ],
+      "against": [
+        "no palpable epigastric mass",
+        "no Virchow's node",
+        "biopsies show benign chronic ulcer, no malignant cells",
+        "no progressive dysphagia"
+      ]
+    },
+    {
+      "dx": "Gastroparesis (e.g. diabetic, post-viral, or idiopathic)",
+      "rank": 3,
+      "for": [
+        "vomiting of undigested food",
+        "early satiety",
+        "bloating"
+      ],
+      "against": [
+        "no history of diabetes",
+        "structural obstruction demonstrated on endoscopy explains the picture better",
+        "succussion splash and metabolic alkalosis point to mechanical obstruction not motility disorder"
+      ]
+    },
+    {
+      "dx": "Duodenal web/stricture from Crohn's disease",
+      "rank": 4,
+      "for": [
+        "chronic obstructive vomiting picture"
+      ],
+      "against": [
+        "no history of diarrhoea, fistulae or perianal disease",
+        "biopsy shows ulcer not granulomatous inflammation",
+        "age and risk profile favour peptic disease"
+      ]
+    },
+    {
+      "dx": "Pyloric stenosis secondary to caustic/corrosive ingestion",
+      "rank": 5,
+      "for": [
+        "outlet obstruction pattern"
+      ],
+      "against": [
+        "no history of caustic ingestion",
+        "chronic NSAID-related ulcer history fits far better"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Vomiting of undigested food hours after meals": "Chronic peptic ulceration and healing with fibrosis at the pylorus/duodenal bulb narrows the gastric outlet; the stomach dilates and retains food well beyond normal gastric emptying time, so vomitus contains recognisable food eaten many hours or a day before",
+    "Succussion splash": "A grossly dilated, fluid- and air-filled stomach that fails to empty produces an audible splash when the abdomen is shaken more than 3-4 hours after the last meal, reflecting retained gastric contents against a mechanically obstructed outlet",
+    "Hypochloraemic hypokalaemic metabolic alkalosis": "Repeated vomiting of gastric HCl and potassium-rich fluid causes direct loss of H+ and Cl-; the resulting volume depletion activates the renin-angiotensin-aldosterone system, driving renal H+ and K+ secretion in exchange for Na+ reabsorption ('paradoxical aciduria'), compounding the alkalosis and hypokalaemia",
+    "Epigastric pain relieved by vomiting": "Gastric distension against an obstructed outlet stimulates stretch receptors causing pain; vomiting decompresses the stomach and transiently relieves the visceral discomfort",
+    "Weight loss": "Mechanical inability to empty ingested food combined with reduced oral intake from early satiety and nausea leads to a calorie deficit and catabolism",
+    "Postural hypotension/dizziness": "Volume depletion from vomiting and reduced oral intake reduces circulating volume, unmasked as an orthostatic blood pressure drop and compensatory tachycardia"
+  },
+  "staging": "Chronic peptic ulcer disease, H. pylori positive, with cicatricial gastric outlet obstruction (benign, biopsy-proven); no evidence of active UGIB at presentation (Forrest classification not applicable — no active bleeding stigmata seen at OGD, only old coffee-ground history)",
+  "management": {
+    "immediate": [
+      "Nil by mouth, insert nasogastric tube for gastric decompression to rest the stomach and reduce aspiration risk",
+      "Insert two large-bore IV lines, aggressive IV crystalloid resuscitation (0.9% saline) to correct volume depletion",
+      "Correct electrolytes: IV potassium chloride replacement guided by serum K+ and renal function; correct the metabolic alkalosis primarily by replacing volume, chloride and potassium",
+      "Catheterise and monitor hourly urine output",
+      "Start IV proton pump inhibitor (e.g. omeprazole/pantoprazole infusion) to reduce acid secretion and promote healing of the ulcer edge"
+    ],
+    "definitive": [
+      "Once stabilised, endoscopic balloon dilatation of the pyloric/duodenal stricture may be attempted if the stenosis is amenable",
+      "Test and treat H. pylori: standard triple therapy (PPI + amoxicillin + clarithromycin, or per local resistance patterns) for 14 days",
+      "Surgical referral if obstruction fails to respond to dilatation/medical therapy or recurs — options include gastrojejunostomy, vagotomy and drainage, or partial gastrectomy depending on findings and fitness for surgery",
+      "Stop NSAIDs permanently; switch analgesia for his knees to paracetamol or non-NSAID options"
+    ],
+    "supportive": [
+      "Correction of nutritional deficits, consider nasojejunal or parenteral feeding if prolonged obstruction precludes oral intake",
+      "Nutrition/dietetic referral once oral intake resumes — small, frequent, low-residue meals initially",
+      "Counsel on smoking and alcohol cessation as adjuncts to ulcer healing",
+      "Address occupational strain (long taxi shifts, irregular meals) contributing to poor ulcer management"
+    ],
+    "followUp": [
+      "Repeat endoscopy after PPI/H. pylori therapy to confirm ulcer healing and exclude malignancy on repeat biopsy",
+      "Confirm H. pylori eradication with a non-invasive test (urea breath test or stool antigen) at least 4 weeks after completing therapy and off PPI",
+      "Monitor electrolytes and renal function until normalised",
+      "Long-term surveillance if any biopsy showed dysplasia; otherwise routine follow-up for symptom recurrence"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-severity-first",
+      "phase": "history",
+      "item": "Assesses severity/hydration status before pursuing the cause (postural symptoms, urine output, dizziness)",
+      "answer": "Postural dizziness, reduced urination, dry mouth present — signs of significant volume depletion",
+      "why": "Assessing severity comes first, before assessing the cause — core principle even outside classic UGIB",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-vomit-character",
+      "phase": "history",
+      "item": "Characterises the vomiting fully — content, timing relative to meals, presence of blood/coffee-ground material, frequency",
+      "answer": "Large volumes of undigested food from hours/a day prior, occasional coffee-ground flecks, no fresh blood",
+      "why": "Localises the pathology to a gastric emptying/outlet problem versus a bleeding source",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-confirm-true-bleed-exclude",
+      "phase": "history",
+      "item": "Actively asks about melaena/PR bleeding and confirms with DRE, even though presentation is vomiting not classic UGIB",
+      "answer": "No melaena reported; DRE confirms brown stool, no melaena or fresh blood",
+      "why": "Any upper GI symptom complex must screen for occult bleeding; a normal history does not exclude it, DRE is mandatory",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-pud-risk-factors",
+      "phase": "history",
+      "item": "Elicits chronic dyspepsia history, NSAID/aspirin use, H. pylori risk, alcohol and smoking",
+      "answer": "10-year history of epigastric burning pain, chronic ibuprofen use, never tested for H. pylori, smokes and drinks alcohol",
+      "why": "Identifies the mechanistic driver of peptic ulceration central to the differential",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-red-flags",
+      "phase": "history",
+      "item": "Screens for malignancy red flags: weight loss, dysphagia, family history, age",
+      "answer": "8kg weight loss over 6 weeks, no dysphagia, father died of stomach cancer",
+      "why": "Must not miss malignant gastric outlet obstruction as an alternative or coexisting diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-abdo-exam",
+      "phase": "examination",
+      "item": "Performs focused abdominal exam specifically eliciting a succussion splash and epigastric distension/tenderness",
+      "answer": "Positive succussion splash >4h post-prandial, visible epigastric distension, mild tenderness, no peritonism",
+      "why": "Succussion splash is the classic bedside sign of gastric outlet obstruction and must be actively sought",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-dehydration-exam",
+      "phase": "examination",
+      "item": "Assesses hydration status on exam (mucous membranes, skin turgor, postural BP/HR)",
+      "answer": "Dry mucous membranes, reduced skin turgor, postural drop in BP with tachycardia",
+      "why": "Guides urgency and volume of fluid resuscitation required before further workup",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked, mechanism-based differential for vomiting/outlet obstruction (PUD vs malignancy vs gastroparesis vs stricture)",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning by mechanism is the core exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-electrolytes",
+      "phase": "investigations",
+      "item": "Requests and correctly interprets U&E/VBG showing hypochloraemic hypokalaemic metabolic alkalosis",
+      "answer": "Na+ 128, K+ 2.9, Cl- 82, HCO3- 34, pH 7.52 — classic pattern of prolonged vomiting-induced alkalosis",
+      "why": "A testable, classic biochemical signature of gastric outlet obstruction; examiners expect recognition and explanation",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-endoscopy",
+      "phase": "investigations",
+      "item": "Requests upper GI endoscopy as the definitive diagnostic and biopsy-obtaining investigation",
+      "answer": "OGD shows dilated stomach with retained food, stenosed pylorus/duodenal bulb from chronic ulcer, scope cannot pass; biopsies taken",
+      "why": "Endoscopy confirms the diagnosis, excludes malignancy on biopsy, and may be therapeutic (dilatation)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hpylori-test",
+      "phase": "investigations",
+      "item": "Sends H. pylori testing (biopsy urease/histology, noting serology or breath test alternatives)",
+      "answer": "Biopsy urease/histology positive for H. pylori",
+      "why": "H. pylori eradication is central to definitive ulcer management and recurrence prevention",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-decompress-resus",
+      "phase": "management",
+      "item": "Prioritises NG decompression and IV fluid/electrolyte correction before definitive therapy",
+      "answer": "NG tube placed, IV saline and potassium replacement instituted, PPI started",
+      "why": "Correcting volume/electrolyte derangement and resting the obstructed stomach is the immediate priority before definitive intervention",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Outlines definitive management: endoscopic balloon dilatation, H. pylori eradication, NSAID cessation, surgical options if refractory",
+      "answer": "Balloon dilatation attempted; triple therapy for H. pylori; NSAIDs stopped; surgery (gastrojejunostomy) reserved for refractory cases",
+      "why": "Definitive management addresses both the mechanical obstruction and its underlying cause to prevent recurrence",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 22,
+    "investigations": 13,
+    "management": 15
+  }
+}

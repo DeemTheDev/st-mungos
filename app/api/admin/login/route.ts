@@ -1,6 +1,6 @@
 // POST /api/admin/login — exchanges APP_ACCESS_PASSWORD for the httpOnly admin
 // cookie, then bounces back to the page that sent the form (`next`, same-site
-// paths only; defaults to /admin/review). Accepts a plain HTML form post
+// paths only; defaults to /review). Accepts a plain HTML form post
 // (the no-JS login forms on the review and session pages) or JSON { password }.
 import { cookies } from "next/headers";
 import { ADMIN_COOKIE, adminToken, passwordMatches } from "@/lib/admin-auth";
@@ -33,7 +33,7 @@ async function readBody(request: Request): Promise<LoginBody> {
 /** Same-site relative paths only — never an open redirect. */
 function safeNext(next: string | null): string {
   if (next && /^\/[a-zA-Z0-9\-_/]*$/.test(next)) return next;
-  return "/admin/review";
+  return "/review";
 }
 
 export async function POST(request: Request) {
