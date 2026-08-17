@@ -39,7 +39,7 @@ export const DIAGNOSIS_POOL: Record<Discipline, DisciplinePool> = {
     uncommon: [
       { dx: "Bronchogenic carcinoma", match: ["haemoptysis", "weight loss", "cough", "smoker", "mass"] },
       { dx: "Sarcoidosis with pulmonary involvement", match: ["cough", "breathless", "lymphadenopathy", "erythema nodosum"] },
-      { dx: "Pneumothorax (secondary, spontaneous)", match: ["chest pain", "sudden", "breathless", "pleuritic"] },
+      { dx: "Pneumothorax (secondary, spontaneous)", match: ["chest pain", "sudden", "breathless", "pleuritic", "asthma", "copd", "wheeze"] },
       { dx: "Multidrug-resistant pulmonary tuberculosis", match: ["tb", "tuberculosis", "cough", "retreatment", "resistance"] },
     ],
   },
@@ -100,6 +100,7 @@ export const DIAGNOSIS_POOL: Record<Discipline, DisciplinePool> = {
       { dx: "HIV-associated peripheral neuropathy", match: ["numbness", "burning", "feet", "neuropathy", "hiv"] },
     ],
     uncommon: [
+      { dx: "Cerebral toxoplasmosis with focal seizures in advanced HIV", match: ["seizure", "fit", "convulsion", "hiv", "headache", "focal", "toxoplasmosis", "epilepsy"] },
       { dx: "Guillain-Barré syndrome", match: ["weakness", "ascending", "paralysis", "areflexia"] },
       { dx: "Spinal cord compression from tuberculosis of the spine", match: ["back pain", "weakness", "legs", "tb", "spine", "paraplegia"] },
       { dx: "Myasthenia gravis", match: ["weakness", "fatigable", "ptosis", "diplopia"] },
@@ -141,8 +142,10 @@ export const DIAGNOSIS_POOL: Record<Discipline, DisciplinePool> = {
       { dx: "Sepsis from a urinary source", match: ["fever", "confusion", "sepsis", "dysuria", "shock"] },
       { dx: "Tick bite fever (African rickettsiosis)", match: ["fever", "eschar", "rash", "tick", "headache", "rural"] },
       { dx: "Cryptococcal disease presenting with headache in HIV", match: ["headache", "hiv", "fever", "cryptococcal", "meningitis"] },
+      { dx: "Oesophageal candidiasis in advanced HIV", match: ["hiv", "swallowing", "odynophagia", "candidiasis", "thrush", "staging", "opportunistic", "cd4", "weight loss"] },
     ],
     uncommon: [
+      { dx: "Paradoxical tuberculosis-IRIS after starting antiretroviral therapy", match: ["hiv", "art", "iris", "immune reconstitution", "tb", "antiretroviral", "cd4", "staging"] },
       { dx: "Typhoid fever", match: ["fever", "abdominal", "diarrhoea", "travel", "prolonged"] },
       { dx: "Amoebic liver abscess", match: ["fever", "right upper quadrant", "liver", "abscess", "tender"] },
       { dx: "Measles in an unvaccinated adult", match: ["rash", "fever", "coryza", "conjunctivitis", "outbreak"] },
@@ -187,10 +190,22 @@ export function pickDiagnosis(
   const pool = DIAGNOSIS_POOL[system][commonness];
   const topicTokens = tokenize(`${topic.title} ${topic.keywords.join(" ")}`);
 
+  // A pool diagnosis counts as used when an existing case's normalized
+  // diagnosis contains it (or vice versa): "acute severe asthma exacerbation"
+  // must not be re-picked because an existing case is titled "acute severe
+  // asthma exacerbation on a background of poorly controlled asthma".
+  const isUsed = (dxNorm: string): boolean => {
+    if (usedNormalized.has(dxNorm)) return true;
+    for (const used of usedNormalized) {
+      if (used.includes(dxNorm) || dxNorm.includes(used)) return true;
+    }
+    return false;
+  };
+
   let best: DiagnosisPoolEntry | null = null;
   let bestScore = -1;
   for (const entry of pool) {
-    if (usedNormalized.has(normalizeDiagnosis(entry.dx))) continue;
+    if (isUsed(normalizeDiagnosis(entry.dx))) continue;
     let score = 0;
     for (const kw of entry.match) {
       const kwTokens = tokenize(kw);

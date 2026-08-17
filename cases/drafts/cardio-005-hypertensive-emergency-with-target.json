@@ -1,0 +1,635 @@
+{
+  "id": "cardio-005-hypertensive-emergency-with-target",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Hypertensive emergency with target-organ damage",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This man has a BP of 214/128 with a bad headache. Walk me through your differential and how you decide if this is a true emergency.",
+      "modelAnswer": "An elevated BP reading alone with symptoms doesn't confirm emergency — I need evidence of acute target-organ damage. My top differential is hypertensive emergency given the headache, blurred vision, orthopnoea and raised JVP suggesting cardiac and possibly renal/retinal involvement. I must actively exclude stroke (no focal deficit here, reassuring), aortic dissection (no chest/back pain, no BP discrepancy between arms, no pulse deficit), and consider phaeochromocytoma (no episodic palpitation/sweating history). The presence of grade III retinopathy, AKI, proteinuria, and pulmonary oedema on exam/investigations would confirm this as a true hypertensive emergency rather than urgency.",
+      "gradingNotes": "Full marks for explicitly stating that BP number alone doesn't define emergency — organ damage does — and systematically excluding mimics with reasoning."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "You found grade III hypertensive retinopathy on fundoscopy. Explain the pathophysiology behind these retinal changes.",
+      "modelAnswer": "Sustained severe hypertension causes fibrinoid necrosis of the walls of retinal arterioles due to endothelial injury from high shear stress. This leads to microvascular occlusion and infarction of the nerve fibre layer, seen as cotton wool spots, and rupture of small vessels causing flame-shaped haemorrhages along the nerve fibre layer. If severe and prolonged, optic disc swelling (papilloedema) develops due to axoplasmic stasis from ischaemia of the optic nerve head, signalling malignant hypertension.",
+      "gradingNotes": "Wants fibrinoid necrosis mechanism and distinction between cotton wool spots (ischaemic microinfarcts) and flame haemorrhages, not just descriptive findings."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "Why must you avoid dropping this patient's blood pressure too quickly, and what is your target for the first hour?",
+      "modelAnswer": "Chronic hypertension shifts the cerebral autoregulatory curve rightward, so the brain and kidneys adapt to function at higher perfusion pressures. Rapidly normalising BP can drop perfusion below the new lower autoregulatory threshold, causing watershed cerebral infarction or acute kidney injury from renal hypoperfusion. The target is a controlled reduction of approximately 25% of the mean arterial pressure within the first hour using titratable IV agents like labetalol, then more gradual normalisation over the following 24-48 hours.",
+      "gradingNotes": "Core patient-safety concept — must mention autoregulatory curve shift and the specific ~25% MAP target, and reject fast-acting oral nifedipine if the student is asked what NOT to use."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "His creatinine is elevated at 186 µmol/L with 2+ proteinuria. How does this change your immediate management and choice of antihypertensive?",
+      "modelAnswer": "This suggests acute kidney injury superimposed on possible chronic hypertensive nephrosclerosis, which is itself a marker of target-organ damage confirming this is a true emergency requiring admission and IV therapy rather than oral urgency management. I would monitor renal function and potassium closely, ensure adequate but not excessive fluid balance, and delay starting an ACE inhibitor until the AKI has stabilised and trend of creatinine is known, since ACEi can transiently worsen renal function in the acute setting, though it would be a good long-term choice once stable given the proteinuria.",
+      "gradingNotes": "Wants recognition that renal impairment confirms emergency status, plus safe sequencing of ACEi initiation only after stabilisation."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "history",
+      "question": "He mentions he stopped his amlodipine three months ago. Why is this detail so important, and what would you do about it beyond just restarting the tablet?",
+      "modelAnswer": "Non-adherence to antihypertensive treatment is the most common precipitant of hypertensive emergencies in this setting. Simply restarting the drug without addressing the underlying reason for stopping — whether cost, clinic access, side effects, or lack of understanding of the silent nature of hypertension — means the patient is likely to default again. I would explore his specific barriers, provide education about hypertension as an asymptomatic but dangerous chronic disease, involve a treatment supporter if possible, and link him to a convenient follow-up clinic.",
+      "gradingNotes": "Rewards holistic, adherence-focused thinking beyond simply re-prescribing medication — reflects SA public health reality of poor HTN control rates."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "elevated blood pressure reading → confirm technique/diagnosis → grade severity and screen for emergency features → secondary causes → target-organ damage assessment → risk-stratified management",
+  "patient": {
+    "name": "Bongani Mkhize",
+    "age": 52,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, downplays symptoms, worried about missing work, admits to poor clinic attendance sheepishly",
+    "openingLine": "Doctor, my head is banging like a drum since this morning, and my eyes are seeing funny."
+  },
+  "presentingComplaint": "Severe headache and blurred vision for the past day, found to have very high blood pressure",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Headache started yesterday afternoon, band-like and worst at the back of his head, has worsened overnight",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-htn-known",
+      "fact": "Known hypertensive for about 8 years, was started on amlodipine at the clinic but ran out of tablets 3 months ago and did not go back",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "high blood pressure",
+        "known",
+        "diagnosed",
+        "tablets",
+        "medication",
+        "amlodipine",
+        "clinic",
+        "chronic",
+        "pressure",
+        "blood",
+        "high"
+      ]
+    },
+    {
+      "id": "hx-vision",
+      "fact": "Vision has been blurry since this morning, describes it as 'like looking through mist', worse in bright light",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vision",
+        "eyes",
+        "see",
+        "blurry",
+        "blurred",
+        "sight",
+        "looking",
+        "eyesight"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no tearing or ripping sensation, denies pain radiating to the back",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "chest",
+        "pain",
+        "tearing",
+        "ripping",
+        "back pain",
+        "radiate",
+        "back"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Has been short of breath climbing the stairs at work for the past 2 days, and slept propped up on 3 pillows last night because lying flat made him feel breathless",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "short of breath",
+        "dyspnoea",
+        "pillows",
+        "lying flat",
+        "orthopnoea",
+        "stairs",
+        "exertion",
+        "tired",
+        "short",
+        "lying",
+        "flat"
+      ]
+    },
+    {
+      "id": "hx-neuro",
+      "fact": "No weakness, no numbness, no slurred speech, no fits, but feels 'foggy' and slow to think since this morning",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weakness",
+        "numbness",
+        "slurred speech",
+        "fits",
+        "seizure",
+        "confusion",
+        "stroke",
+        "foggy",
+        "concentrate",
+        "thinking",
+        "memory",
+        "slurred",
+        "speech"
+      ]
+    },
+    {
+      "id": "hx-nocturia",
+      "fact": "Has been getting up 2-3 times a night to urinate for the past few months",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urinating",
+        "nocturia",
+        "night",
+        "toilet",
+        "pass water",
+        "wee",
+        "bladder",
+        "pass",
+        "water"
+      ]
+    },
+    {
+      "id": "hx-legswelling",
+      "fact": "Notices his ankles are swollen by the end of his shift, especially the last week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "ankles",
+        "legs",
+        "feet",
+        "oedema",
+        "puffy",
+        "swollen"
+      ]
+    },
+    {
+      "id": "hx-secondary-episodic",
+      "fact": "No episodes of sudden palpitations, sweating attacks, or pallor in the past",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "sweating",
+        "pallor",
+        "episodes",
+        "attacks",
+        "racing heart",
+        "phaeo",
+        "flushing",
+        "racing",
+        "heart"
+      ]
+    },
+    {
+      "id": "hx-secondary-drugs",
+      "fact": "Occasionally takes ibuprofen bought over the counter for backache, no steroid use, no traditional muti currently, denies cocaine or other recreational drugs",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "ibuprofen",
+        "steroid",
+        "muti",
+        "traditional medicine",
+        "herbal",
+        "cocaine",
+        "drugs",
+        "painkiller",
+        "tablets for pain",
+        "traditional",
+        "medicine",
+        "tablets",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known diabetes, no known HIV (last tested negative 2 years ago), no prior stroke or heart attack",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "hiv",
+        "status",
+        "tested",
+        "stroke",
+        "heart attack",
+        "previous illness",
+        "medical history",
+        "conditions",
+        "heart",
+        "attack",
+        "previous",
+        "illness",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Only medication is the amlodipine he stopped 3 months ago; not on any other chronic treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "chronic medication",
+        "taking",
+        "chronic"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies, has never had a bad reaction to any medicine or food",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy",
+        "drug allergy",
+        "bad reaction",
+        "rash from medicine",
+        "food allergy",
+        "sensitive to",
+        "drug",
+        "bad",
+        "reaction",
+        "rash",
+        "from",
+        "medicine",
+        "food",
+        "sensitive"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 10 cigarettes a day for 20 years, drinks beer on weekends (about 4-5 bottles), works night shifts as a security guard which he says is very stressful",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "beer",
+        "social",
+        "work",
+        "stress",
+        "occupation",
+        "job"
+      ]
+    },
+    {
+      "id": "hx-diet",
+      "fact": "Eats a lot of salted meat (biltong) and adds extra salt to his food, admits he does not exercise regularly",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diet",
+        "salt",
+        "food",
+        "eating",
+        "exercise",
+        "lifestyle",
+        "biltong"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of a stroke at 58; mother has hypertension and diabetes",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "stroke history",
+        "family",
+        "history",
+        "runs",
+        "stroke"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Anxious-looking, overweight middle-aged man, mildly distressed by headache, no pallor or cyanosis. No Cushingoid features. No thyroid enlargement.",
+    "vitals": {
+      "hr": 98,
+      "bp": "214/128 (right arm), 210/126 (left arm)",
+      "rr": 24,
+      "temp": 36.8,
+      "spo2": "93% on room air",
+      "bmi": 31
+    },
+    "respiratory": "Bibasal fine crackles on auscultation, no wheeze; trachea central; reduced air entry at both bases",
+    "cardio": "Apex beat displaced to the anterior axillary line, sustained in character; S4 gallop present; JVP raised 4cm; mild bilateral pitting ankle oedema; no radiofemoral delay; no carotid or abdominal bruits",
+    "abdo": "Soft, non-tender, no palpable kidneys, no bruits, no organomegaly",
+    "neuro": "Alert, oriented to person/place/time but slow responses; no focal motor or sensory deficit; reflexes symmetric; no papilloedema noted on brief exam (formal fundoscopy pending); no neck stiffness",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Urine dipstick",
+      "result": "Protein 2+, blood trace, no glucose",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Urea 12.4 mmol/L, Creatinine 186 µmol/L (baseline unknown, suggests AKI on possible chronic changes), Potassium 4.2 mmol/L",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus rhythm, voltage criteria for LVH (Sokolow-Lyon positive), no acute ST changes",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly (cardiothoracic ratio 0.58), bilateral perihilar haziness consistent with early pulmonary oedema, no widened mediastinum",
+      "key": true
+    },
+    {
+      "name": "Fundoscopy",
+      "result": "Grade III hypertensive retinopathy — flame haemorrhages and cotton wool spots",
+      "key": true
+    },
+    {
+      "name": "Fasting glucose/HbA1c",
+      "result": "Fasting glucose 5.6 mmol/L, HbA1c 5.8% — no diabetes",
+      "key": false
+    },
+    {
+      "name": "Fasting lipogram",
+      "result": "Total cholesterol 6.1 mmol/L, LDL 4.0 mmol/L, mildly elevated",
+      "key": false
+    },
+    {
+      "name": "Urine albumin:creatinine ratio",
+      "result": "48 mg/mmol (significantly elevated, consistent with hypertensive nephropathy)",
+      "key": false
+    },
+    {
+      "name": "Troponin",
+      "result": "Mildly elevated at 32 ng/L (upper limit 14), likely demand-related given LVH and strain rather than acute coronary event",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Echocardiogram",
+      "result": "Concentric LVH, ejection fraction 50% with diastolic dysfunction grade II, no significant valvular disease",
+      "key": false
+    },
+    {
+      "name": "CT brain (if focal neuro signs or reduced GCS)",
+      "result": "Not performed — no focal deficit or reduced consciousness to warrant urgent imaging",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Hypertensive emergency (malignant hypertension) with hypertensive heart disease and encephalopathy",
+      "rank": 1,
+      "for": [
+        "BP 214/128 with grade III retinopathy",
+        "new AKI and proteinuria",
+        "pulmonary oedema signs with raised JVP and crackles",
+        "encephalopathy features (headache, foggy thinking)",
+        "known poorly-controlled HTN with non-adherence"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Acute ischaemic or haemorrhagic stroke",
+      "rank": 2,
+      "for": [
+        "severe headache",
+        "altered mentation",
+        "very high BP"
+      ],
+      "against": [
+        "no focal motor/sensory deficit",
+        "no slurred speech",
+        "alert and appropriately oriented"
+      ]
+    },
+    {
+      "dx": "Aortic dissection",
+      "rank": 3,
+      "for": [
+        "severe headache could reflect referred pain",
+        "very high BP"
+      ],
+      "against": [
+        "no chest/back pain",
+        "no tearing sensation",
+        "no BP discrepancy between arms (only 4mmHg difference)",
+        "no pulse deficit"
+      ]
+    },
+    {
+      "dx": "Phaeochromocytoma crisis",
+      "rank": 4,
+      "for": [
+        "severe hypertension"
+      ],
+      "against": [
+        "no episodic palpitations/sweating/pallor history",
+        "gradual chronic hypertension history rather than paroxysmal",
+        "no prior similar episodes"
+      ]
+    },
+    {
+      "dx": "Pre-eclampsia/eclampsia",
+      "rank": 5,
+      "for": [
+        "hypertensive emergency features"
+      ],
+      "against": [
+        "patient is male — not applicable"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Occipital headache": "Acute severe rise in BP causes failure of cerebral autoregulation, leading to hyperperfusion, vasogenic oedema, and stimulation of pain-sensitive meningeal and vascular structures",
+    "Blurred vision / retinopathy": "Sustained arteriolar pressure causes fibrinoid necrosis of retinal vessel walls, leading to flame haemorrhages, cotton wool spots (microinfarcts of the nerve fibre layer), and in severe cases optic disc swelling",
+    "Orthopnoea and bibasal crackles": "Chronic pressure overload causes concentric LVH with diastolic dysfunction; the acute afterload surge further impairs left ventricular filling and raises pulmonary capillary pressure, causing transudation of fluid into alveoli",
+    "Foggy thinking / encephalopathy": "Loss of cerebral autoregulation at extreme BP leads to blood-brain barrier disruption, cerebral oedema, and microhaemorrhages, producing a subacute confusional state (hypertensive encephalopathy)",
+    "Nocturia": "Pressure natriuresis — elevated renal perfusion pressure overrides tubular sodium reabsorption at night, forcing increased sodium and water excretion when the patient is supine",
+    "Proteinuria and rising creatinine": "Hypertensive nephrosclerosis and acute fibrinoid necrosis of afferent arterioles reduce glomerular filtration and increase glomerular capillary permeability to protein"
+  },
+  "staging": "Hypertensive emergency (JNC/SA STG definition: severe BP with acute target-organ damage) with grade III hypertensive retinopathy, hypertensive heart disease (NYHA II symptoms, EF 50% with diastolic dysfunction), and AKI on likely chronic kidney disease background",
+  "management": {
+    "immediate": [
+      "Admit to a monitored bed (high care/ICU) — this is a hypertensive emergency, not urgency",
+      "Establish IV access, continuous BP and cardiac monitoring, urinary catheter for strict fluid balance",
+      "Start IV labetalol infusion (or IV nitrates if pulmonary oedema dominant) — controlled reduction",
+      "Target ~25% reduction in mean arterial pressure within the first hour; avoid rapid or excessive drops (risk of watershed cerebral/renal infarction)",
+      "Do NOT use fast-acting oral/sublingual nifedipine",
+      "Oxygen supplementation for hypoxia and pulmonary oedema, consider IV frusemide if volume overloaded",
+      "Repeat neurological assessment regularly to detect deterioration"
+    ],
+    "definitive": [
+      "Once stabilised, transition to oral antihypertensives: restart amlodipine, consider adding ACE inhibitor given proteinuria and LV dysfunction (once renal function stable and no contraindication)",
+      "Avoid ACEi if significant AKI until volume status and renal function clarified; monitor creatinine and potassium closely after starting",
+      "Address dyslipidaemia with statin given elevated LDL and overall CV risk",
+      "Screen for secondary causes only if course atypical (age, resistant control) — in this case essential hypertension with poor adherence is most likely, but renal ultrasound may be considered given AKI"
+    ],
+    "supportive": [
+      "Adherence counselling — explore reasons for stopping amlodipine (cost, clinic access, side effects) and address barriers",
+      "Lifestyle: reduce salt intake, especially biltong and added salt, weight loss, reduce alcohol, smoking cessation counselling and referral",
+      "Educate on hypertension as a silent, lifelong condition requiring continuous treatment even when asymptomatic",
+      "Home BP monitoring if accessible; involve family/treatment supporter for adherence"
+    ],
+    "followUp": [
+      "Daily clinical and BP review during admission until stable, then step-down to ward-based twice-daily BP checks",
+      "Recheck renal function, urine ACR and echocardiogram once stable to establish baseline for chronic follow-up",
+      "Outpatient review at 1 month post-discharge for BP control and medication titration",
+      "Annual screening for end-organ damage once stable: fundoscopy, ECG, urine ACR, creatinine",
+      "Refer to dietitian and consider smoking cessation programme"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-technique",
+      "phase": "history",
+      "item": "Confirms BP measurement technique/history and checks BP in both arms",
+      "answer": "BP 214/128 right arm, 210/126 left arm — no significant discrepancy",
+      "why": "Correct technique and bilateral measurement rules out aortic pathology/subclavian stenosis before accepting the reading",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-known-htn",
+      "phase": "history",
+      "item": "Establishes known hypertension status, treatment history and adherence",
+      "answer": "Known hypertensive 8 years, stopped amlodipine 3 months ago",
+      "why": "Non-adherence is the leading precipitant of hypertensive emergency in KZN",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-emergency-screen",
+      "phase": "history",
+      "item": "Actively screens for target-organ damage symptoms: headache, vision, chest/back pain, dyspnoea/orthopnoea, focal neurology, oliguria",
+      "answer": "Occipital headache, blurred vision, orthopnoea/PND, foggy thinking, no chest/back pain, no focal deficit",
+      "why": "Distinguishes hypertensive emergency (organ damage present) from urgency (BP alone) — determines management urgency",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-secondary-screen",
+      "phase": "history",
+      "item": "Screens for secondary hypertension pointers (episodic symptoms, drugs/NSAIDs/steroids/muti, age of onset)",
+      "answer": "No episodic palpitations/sweating, occasional ibuprofen use, no steroids/muti, onset in 40s",
+      "why": "Secondary causes are actively sought per framework even though this presentation is most consistent with essential hypertension with non-adherence",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-cv-risk",
+      "phase": "history",
+      "item": "Assesses cardiovascular risk factors and family history",
+      "answer": "Smoker, alcohol use, high salt diet, sedentary, father died of stroke, mother HTN/DM",
+      "why": "Global CV risk stratification informs long-term management intensity",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-fundoscopy",
+      "phase": "examination",
+      "item": "Performs fundoscopy and grades hypertensive retinopathy",
+      "answer": "Grade III retinopathy — flame haemorrhages and cotton wool spots",
+      "why": "Retinal grading reflects chronicity/severity and is a core red-flag sign of hypertensive emergency",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cardioresp-exam",
+      "phase": "examination",
+      "item": "Performs cardiovascular and respiratory exam looking for heart failure signs (JVP, apex beat, crackles, oedema)",
+      "answer": "Displaced sustained apex beat, S4, raised JVP, bibasal crackles, ankle oedema",
+      "why": "Identifies hypertensive heart disease and pulmonary oedema as target-organ damage guiding urgent IV therapy choice",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-neuro-exam",
+      "phase": "examination",
+      "item": "Performs focused neurological exam to exclude stroke and assess for encephalopathy",
+      "answer": "No focal deficit, alert but slow/foggy — consistent with hypertensive encephalopathy rather than stroke",
+      "why": "Must actively exclude stroke/mass lesion before attributing symptoms to hypertensive encephalopathy",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates ranked differential distinguishing hypertensive emergency from stroke, aortic dissection and phaeochromocytoma",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning before committing to diagnosis is the core exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests urine dipstick, U&E/creatinine, ECG, CXR and fundoscopy as first-line target-organ workup",
+      "answer": "Proteinuria, raised creatinine, LVH on ECG, cardiomegaly/pulmonary oedema on CXR, grade III retinopathy",
+      "why": "These define the target-organ damage that confirms emergency versus urgency and guide admission decision",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-immediate",
+      "phase": "management",
+      "item": "Recognises need for admission and controlled IV BP reduction (labetalol/nitrates), explicitly avoiding rapid drop or oral nifedipine",
+      "answer": "Admit, IV labetalol infusion, target ~25% MAP reduction in first hour, avoid sublingual nifedipine",
+      "why": "Overly rapid BP reduction risks watershed cerebral/renal infarction — a key patient-safety teaching point",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-adherence",
+      "phase": "management",
+      "item": "Addresses adherence barriers and lifestyle modification as part of long-term plan",
+      "answer": "Explore reasons for stopping amlodipine, counsel on salt reduction, smoking cessation, alcohol reduction",
+      "why": "Non-adherence caused this admission; addressing it is essential to prevent recurrence",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 18,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

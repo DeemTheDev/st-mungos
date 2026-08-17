@@ -1,0 +1,692 @@
+{
+  "id": "cardio-006-dilated-cardiomyopathy-hiv-associated",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Dilated cardiomyopathy (HIV-associated)",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient's breathlessness — what is your differential and how do you work through it?",
+      "modelAnswer": "First confirm this is a cardiac/heart failure syndrome — orthopnoea, PND, bilateral oedema all support this. Then exclude the commonest causes of impaired LV function in this population: ischaemic and hypertensive heart disease (no risk factors or anginal history here, argues against), and rheumatic valvular disease (no rheumatic fever history, murmur is functional not primary valvular). Then characterise the functional pattern clinically — displaced diffuse hypodynamic apex, S3, functional MR point to a dilated/systolic pattern rather than hypertrophic or restrictive. Then screen for reversible/toxic causes — his HIV status with interrupted ART and low CD4 is the standout driver, with alcohol as a possible contributor. Also consider TB pericardial disease as a differential given his HIV status but his signs (displaced apex, no Kussmaul, no pericardial effusion) argue against it. Confirm with ECG, CXR, then echocardiogram as the definitive test.",
+      "gradingNotes": "Wants a structured framework-driven answer: confirm HF syndrome, exclude common causes, characterise pattern, screen for reversible causes, confirm with imaging — not a diagnosis blurted out first."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology behind this patient's displaced, hypodynamic apex beat and the S3 you heard.",
+      "modelAnswer": "In dilated cardiomyopathy, sarcomeres are added in series rather than in parallel, causing the ventricular chamber to dilate while the walls thin (eccentric hypertrophy). This enlarges and shifts the apex beat laterally and inferiorly, and because contractile force is reduced, the impulse is diffuse and hypodynamic rather than forceful. The S3 arises because rapid early diastolic filling occurs into a ventricle that is already volume-overloaded and non-compliant for its dilated size, generating a low-frequency vibration.",
+      "gradingNotes": "Wants mechanistic explanation (sarcomeres in series, eccentric hypertrophy, volume overload) not just a restatement of the finding."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His CD4 comes back at 146 with a detectable viral load. How does this change your management plan?",
+      "modelAnswer": "CD4 <200 means he needs co-trimoxazole preventive therapy against PJP. The detectable viral load confirms non-adherence rather than treatment failure on a new regimen, so the priority is re-linking him to HIV care and restarting his existing ART regimen (TLD) with adherence counselling and addressing the psychosocial barrier that led to interruption, rather than switching regimens. He should also be screened for other opportunistic infections given this level of immunosuppression. His heart failure and HIV management must be integrated and followed up together.",
+      "gradingNotes": "Wants CD4 threshold application (co-trimoxazole), correct interpretation of detectable VL as adherence issue not resistance, and integrated follow-up planning."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why would you be cautious about giving a beta-blocker to this patient today, and when would you introduce it?",
+      "modelAnswer": "He is currently acutely decompensated with tachycardia, hypotension-borderline BP (98/64), and active fluid overload — starting a beta-blocker now could worsen acute pump failure by further reducing contractility and cardiac output. Beta-blockers should only be introduced once he is euvolaemic and haemodynamically stable on decongestive therapy, then up-titrated slowly as tolerated, alongside ACE inhibitor and spironolactone, as part of standard HFrEF therapy.",
+      "gradingNotes": "Wants recognition of timing/sequencing in HFrEF pharmacotherapy — decongest first, beta-blocker only once stable, not during acute decompensation."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "He asks you if this is 'permanent' — what determines his long-term prognosis and what would prompt you to refer for device therapy?",
+      "modelAnswer": "Prognosis depends heavily on whether the underlying driver (HIV viraemia/non-adherence, possible alcohol contribution) can be reversed with treatment — some HIV-associated DCM improves substantially with viral suppression and ART adherence plus optimal HF therapy. He needs a repeat echocardiogram in 3-6 months after optimisation; if his LVEF remains ≤35% despite optimal medical therapy (ACEi, beta-blocker, MRA at target doses) he should be referred for consideration of ICD for sudden death prevention, or CRT if there is significant dyssynchrony/broad QRS.",
+      "gradingNotes": "Wants understanding that HIV-DCM can be partially reversible with ART adherence, plus correct EF threshold and timing for device therapy referral."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "dyspnoea/heart failure syndrome → confirm cardiac cause → exclude ischaemic/hypertensive/valvular → characterise functional pattern (dilated vs hypertrophic vs restrictive) → screen reversible/toxic causes (HIV, alcohol, peripartum) → ECG/CXR → echocardiogram (key) → risk-stratify arrhythmia/thromboembolism → treat cause + HF syndrome",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard at a shopping centre in Pinetown",
+    "personality": "stoic, downplays breathlessness as 'just tired from work', becomes more forthcoming when asked directly about HIV and alcohol",
+    "openingLine": "Doctor, I can't even walk to the taxi rank anymore without stopping to catch my breath."
+  },
+  "presentingComplaint": "progressive shortness of breath and leg swelling over 2 months",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Breathlessness started about 2 months ago, initially only on exertion, now present on minimal activity like dressing himself",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Sleeps propped up on 3 pillows; if he lies flat he wakes up gasping for air",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "lie flat",
+        "sleep",
+        "breathless lying down",
+        "sit up",
+        "propped up",
+        "flat",
+        "lie",
+        "breathless",
+        "lying",
+        "down",
+        "sit",
+        "propped"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "Wakes suddenly at night choking for breath, has to sit on the edge of the bed and open a window",
+      "disclosure": "onAsk",
+      "triggers": [
+        "paroxysmal",
+        "wake at night",
+        "waking up gasping",
+        "night breathless",
+        "sudden breathless",
+        "choking at night",
+        "wake",
+        "night",
+        "waking",
+        "gasping",
+        "breathless",
+        "sudden",
+        "choking"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Notices his shoes feel tight by the end of the day; ankles and lower legs are swollen, worse in the evenings",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "oedema",
+        "ankles",
+        "legs",
+        "feet",
+        "puffy",
+        "shoes tight",
+        "swollen",
+        "shoes",
+        "tight"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "Occasional fluttering in the chest, especially when lying on his left side, no associated blackout",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "heart racing",
+        "fluttering",
+        "heartbeat",
+        "pounding heart",
+        "skip a beat",
+        "irregular heartbeat",
+        "heart",
+        "racing",
+        "pounding",
+        "skip",
+        "beat",
+        "irregular"
+      ]
+    },
+    {
+      "id": "hx-syncope",
+      "fact": "No fainting or blackout spells, no loss of consciousness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "syncope",
+        "faint",
+        "fainting",
+        "blackout",
+        "passed out",
+        "dizzy",
+        "collapse",
+        "lost consciousness",
+        "passed",
+        "out",
+        "lost",
+        "consciousness"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no pressure or tightness in the chest, no pain radiating to the arm or jaw",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "tightness",
+        "pressure",
+        "angina",
+        "sore chest",
+        "pain radiating",
+        "jaw pain",
+        "arm pain",
+        "chest",
+        "pain",
+        "sore",
+        "radiating",
+        "jaw",
+        "arm"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Diagnosed HIV positive 6 years ago; was on ART but stopped taking tablets about 8 months ago after moving house and losing his clinic file, has not gone back yet",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "antiretroviral",
+        "tablets",
+        "treatment",
+        "positive",
+        "tested",
+        "clinic",
+        "adherence",
+        "stopped medication",
+        "muti",
+        "stopped",
+        "medication"
+      ]
+    },
+    {
+      "id": "hx-cd4",
+      "fact": "Does not know his last CD4 count or viral load, thinks it was 'okay' when he last checked over a year ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cd4",
+        "viral load",
+        "count",
+        "last checked",
+        "how low",
+        "immune",
+        "viral",
+        "load",
+        "last",
+        "checked",
+        "low"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer most weekends with colleagues, about 6-8 quarts over a weekend, has done so for years but denies daily heavy drinking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "drinking",
+        "booze",
+        "liquor",
+        "tavern",
+        "shebeen",
+        "weekend drinking",
+        "weekend"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no night sweats, no weight loss, no known TB contact",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "night sweats",
+        "weight loss",
+        "contact",
+        "exposure",
+        "household sick",
+        "night",
+        "sweats",
+        "weight",
+        "loss",
+        "household",
+        "sick"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known hypertension or diabetes, has never had a heart attack or stroke, no rheumatic fever as a child",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "sugar",
+        "diabetes",
+        "heart attack",
+        "stroke",
+        "rheumatic fever",
+        "previous illness",
+        "medical history",
+        "blood",
+        "pressure",
+        "heart",
+        "attack",
+        "rheumatic",
+        "fever",
+        "previous",
+        "illness",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Not currently on any chronic medication apart from occasional paracetamol; not on ART currently as above",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "currently taking",
+        "other drugs",
+        "currently",
+        "taking",
+        "drugs"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Pinetown with his girlfriend and one child; works night shifts as a security guard; smokes occasionally, about 2-3 cigarettes a week with friends",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "social history",
+        "live",
+        "work",
+        "job",
+        "occupation",
+        "family",
+        "children",
+        "social",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of sudden death, no relatives with known heart problems at a young age",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "sudden death",
+        "heart problems in family",
+        "relatives",
+        "genetic",
+        "runs in family",
+        "family",
+        "history",
+        "sudden",
+        "death",
+        "heart",
+        "problems",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No fevers, no joint pains, no rash, no recent diarrhoea, appetite normal, no cocaine or recreational drug use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "joint pain",
+        "rash",
+        "diarrhoea",
+        "appetite",
+        "cocaine",
+        "drugs",
+        "recreational",
+        "other symptoms",
+        "anything else",
+        "joint",
+        "pain",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Mildly dyspnoeic at rest, able to speak in full sentences. No pallor, no cyanosis, no clubbing. Mild bilateral pitting oedema to mid-shin. No lipodystrophy noted.",
+    "vitals": {
+      "hr": 112,
+      "bp": "98/64",
+      "rr": 24,
+      "temp": 36.7,
+      "spo2": "95% on room air",
+      "bmi": 21
+    },
+    "respiratory": "Bibasal fine crackles extending one-third up both lung fields, dull to percussion at both bases consistent with small effusions",
+    "cardio": "JVP raised 4cm above the sternal angle. Apex beat displaced to the anterior axillary line in the 6th intercostal space, diffuse and hypodynamic. Soft pansystolic murmur at the apex radiating to the axilla (functional mitral regurgitation). Third heart sound (S3) gallop present. Pulse low-volume, regular but tachycardic.",
+    "abdo": "Tender smooth hepatomegaly 3cm below the costal margin, mild ascites suspected on shifting dullness, no splenomegaly",
+    "neuro": "Alert and orientated, no focal deficits, no signs of stroke",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Echocardiogram",
+      "result": "Dilated left ventricle (LVEDD 6.4cm), global hypokinesia, LVEF 28%, moderate functional mitral and tricuspid regurgitation, no significant valvular stenosis, no pericardial effusion, no intracardiac thrombus seen",
+      "key": true
+    },
+    {
+      "name": "HIV ELISA / rapid test",
+      "result": "Positive (patient already known positive; confirms current status)",
+      "key": true
+    },
+    {
+      "name": "CD4 count",
+      "result": "146 cells/µL",
+      "key": true
+    },
+    {
+      "name": "HIV viral load",
+      "result": "38,400 copies/mL (detectable, consistent with non-adherence)",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, poor R-wave progression, non-specific ST-T wave changes, no pathological Q waves, no LVH voltage criteria",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly (cardiothoracic ratio 0.58), upper lobe venous diversion, bilateral small pleural effusions, no pericardial calcification",
+      "key": false
+    },
+    {
+      "name": "NT-proBNP",
+      "result": "Markedly elevated at 4200 pg/mL",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 11.2 g/dL normocytic, WCC 6.1, Plt 240",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Urea 8.9 mmol/L, creatinine 118 µmol/L, Na 133 mmol/L (mild dilutional hyponatraemia), K 4.2 mmol/L",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Mildly elevated GGT 68 U/L, AST 52 U/L, ALT 40 U/L, congestive hepatopathy pattern with normal bilirubin",
+      "key": false
+    },
+    {
+      "name": "Troponin",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "TSH",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "Not indicated — no TB symptoms; not sent",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Dilated cardiomyopathy (HIV-associated)",
+      "rank": 1,
+      "for": [
+        "known HIV positive with poor ART adherence and low CD4",
+        "biventricular failure signs",
+        "displaced hypodynamic diffuse apex with S3 and functional MR",
+        "echo showing dilated LV with globally reduced EF",
+        "no ischaemic or hypertensive risk factors identified"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Alcohol-related dilated cardiomyopathy",
+      "rank": 2,
+      "for": [
+        "regular weekend heavy alcohol intake for years",
+        "can coexist with or worsen HIV cardiomyopathy",
+        "biventricular failure pattern fits"
+      ],
+      "against": [
+        "intake pattern is weekend binge rather than sustained heavy daily use",
+        "HIV non-adherence with low CD4 is a more specific and temporally fitting driver"
+      ]
+    },
+    {
+      "dx": "Rheumatic valvular heart disease",
+      "rank": 3,
+      "for": [
+        "young adult with heart failure and a systolic murmur",
+        "common in this population"
+      ],
+      "against": [
+        "no childhood rheumatic fever history",
+        "murmur pattern fits functional MR from LV dilation rather than primary valve pathology",
+        "echo shows no primary valvular stenosis or structural valve disease"
+      ]
+    },
+    {
+      "dx": "Ischaemic/hypertensive heart disease",
+      "rank": 4,
+      "for": [
+        "heart failure is the commonest presentation of these causes in KZN adults"
+      ],
+      "against": [
+        "age 34 with no hypertension, diabetes, or prior cardiac events",
+        "no anginal chest pain history",
+        "ECG shows no pathological Q waves or LVH voltage criteria"
+      ]
+    },
+    {
+      "dx": "TB pericardial disease (effusive-constrictive)",
+      "rank": 5,
+      "for": [
+        "HIV positive with low CD4, raised JVP, hepatomegaly could suggest right heart congestion"
+      ],
+      "against": [
+        "no TB symptoms, no TB contact",
+        "apex beat is displaced and easily palpable rather than pericardial-pattern signs",
+        "echo shows no pericardial effusion or thickening, instead shows a dilated globally hypokinetic LV"
+      ]
+    }
+  ],
+  "pathophys": {
+    "exertional dyspnoea and orthopnoea": "Reduced systolic contractile force from a dilated, thin-walled ventricle lowers stroke volume/cardiac output; the failing left ventricle transmits raised filling pressure backwards into the pulmonary circulation, causing pulmonary venous congestion that worsens when lying flat as venous return increases",
+    "paroxysmal nocturnal dyspnoea": "Nocturnal reabsorption of dependent oedema fluid increases venous return and preload beyond what the dilated failing ventricle can accommodate, producing a surge in pulmonary capillary pressure and acute pulmonary oedema during sleep",
+    "bilateral leg oedema and hepatomegaly": "Chronic left heart failure raises pulmonary pressures which back up into the right heart, causing right ventricular failure with elevated systemic venous pressure, hepatic congestion and dependent interstitial fluid transudation",
+    "displaced, hypodynamic, diffuse apex beat": "In DCM, sarcomeres are added in series causing chamber dilation with wall thinning (eccentric hypertrophy); the enlarged, poorly contractile ventricle shifts the apex laterally and inferiorly and weakens the palpable impulse",
+    "functional mitral regurgitation murmur": "Progressive LV dilation stretches the mitral annulus and displaces the papillary muscles, preventing coaptation of otherwise structurally normal mitral leaflets during systole",
+    "third heart sound (S3)": "Rapid early diastolic filling into a ventricle that is already volume-overloaded and has reduced compliance for its dilated size generates a low-frequency vibration audible as S3",
+    "palpitations": "Myocardial stretch and fibrosis from chamber dilation disrupt normal conduction pathways, predisposing to atrial and ventricular arrhythmias including atrial fibrillation"
+  },
+  "staging": "WHO HIV clinical stage 3 (advanced immunosuppression, CD4 146, detectable viral load on interrupted ART); NYHA functional class III heart failure",
+  "management": {
+    "immediate": [
+      "Sit patient upright, give supplemental oxygen to maintain SpO2 >94%",
+      "IV furosemide for decongestion, monitor urine output and renal function",
+      "Continuous cardiac monitoring for arrhythmia given tachycardia and dilated ventricle",
+      "Daily weights and strict fluid balance"
+    ],
+    "definitive": [
+      "Re-initiate ART promptly (TLD regimen) once stable — reintroduce with adherence counselling and address the barrier that led to interruption",
+      "Standard HFrEF therapy: ACE inhibitor (or ARB if intolerant) up-titrated as BP allows, beta-blocker introduced once euvolaemic and haemodynamically stable, spironolactone (mineralocorticoid receptor antagonist)",
+      "Loop diuretic continued for ongoing congestion, titrate to lowest effective dose",
+      "Anticoagulation consideration if atrial fibrillation develops or mural thrombus found on repeat echo",
+      "Counsel regarding alcohol reduction as a contributing/aggravating factor"
+    ],
+    "supportive": [
+      "Restart HIV care linkage — CD4/viral load monitoring, adherence counselling, treatment supporter",
+      "Co-trimoxazole preventive therapy given CD4 <200",
+      "Dietary sodium and fluid restriction advice",
+      "Cardiac rehabilitation and graded return to activity once compensated",
+      "Screen for and treat any intercurrent opportunistic infection"
+    ],
+    "followUp": [
+      "Repeat echocardiogram in 3-6 months to reassess EF and consider ICD/CRT referral if EF remains ≤35% despite optimal therapy",
+      "HF clinic follow-up with up-titration of beta-blocker and ACE inhibitor to target doses",
+      "Routine HIV clinic follow-up with viral load suppression monitoring",
+      "U&E monitoring after diuretic and ACE inhibitor initiation/titration"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport and consent",
+      "answer": null,
+      "why": "Professionalism and communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-hf",
+      "phase": "history",
+      "item": "Confirms the presenting problem is a cardiac/heart failure syndrome (orthopnoea, PND, oedema, exertional dyspnoea) before naming a cardiomyopathy",
+      "answer": "Progressive exertional dyspnoea, orthopnoea on 3 pillows, PND, bilateral ankle swelling",
+      "why": "Framework step 1 — must establish HF syndrome before attributing to a specific cardiomyopathy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-common",
+      "phase": "history",
+      "item": "Screens for and excludes common secondary causes: ischaemic heart disease, hypertension, valvular/rheumatic disease",
+      "answer": "No chest pain, no known hypertension or diabetes, no rheumatic fever history",
+      "why": "Framework step 2 — hypertensive/ischaemic and RHD are the commonest causes of impaired LV function in KZN and must be excluded first",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-toxic-screen",
+      "phase": "history",
+      "item": "Screens for reversible/toxic causes: alcohol quantity and duration, cocaine, chemotherapy, pregnancy/postpartum timing",
+      "answer": "Weekend beer drinking for years; no cocaine; male patient so pregnancy not applicable",
+      "why": "Framework step 4 — reversible causes must be actively sought and addressed",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-hiv-history",
+      "phase": "history",
+      "item": "Establishes HIV status, ART regimen and adherence, last known CD4/viral load",
+      "answer": "HIV positive 6 years, ART interrupted 8 months ago, CD4 and viral load unknown to patient",
+      "why": "Her notes emphasise HIV cardiomyopathy is multifactorial (direct viral effect, OI, ART toxicity, nutrition) — always check HIV status and ART adherence in any new DCM",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB symptoms and contact (cough, night sweats, weight loss) to exclude pericardial TB mimicking restrictive/right heart failure picture",
+      "answer": "No cough, no night sweats, no weight loss, no known contact",
+      "why": "TB pericardial disease is a key differential in HIV-positive patients with right heart failure signs and must be actively excluded",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-redflag-screen",
+      "phase": "history",
+      "item": "Screens for red flags: exertional syncope, family history of sudden death, sustained arrhythmia symptoms",
+      "answer": "No syncope, no family history of sudden death, occasional palpitations without blackout",
+      "why": "Excludes high-risk HCM/arrhythmia picture and informs risk stratification",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-cardio-exam",
+      "phase": "examination",
+      "item": "Performs focused cardiovascular exam: apex beat character/position, JVP, heart sounds/murmurs, peripheral pulse volume",
+      "answer": "Displaced diffuse hypodynamic apex, raised JVP, S3 gallop, functional MR murmur, low-volume pulse",
+      "why": "Characterises the functional pattern as dilated/systolic (framework step 3) via classic DCM signs",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-congestion-exam",
+      "phase": "examination",
+      "item": "Examines for congestion: lung bases, hepatomegaly/ascites, peripheral oedema",
+      "answer": "Bibasal crackles, tender hepatomegaly, ascites, bilateral pitting oedema",
+      "why": "Confirms biventricular failure severity and volume status guiding diuretic therapy",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing DCM (HIV) from ischaemic/hypertensive disease, alcohol DCM, RHD, and TB pericardial disease with linked reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy — must exclude common causes before confirming cardiomyopathy subtype",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-echo",
+      "phase": "investigations",
+      "item": "Requests ECG and CXR then confirms with echocardiogram as the definitive test",
+      "answer": "Echo shows dilated LV, LVEF 28%, global hypokinesia, functional MR/TR, no pericardial effusion",
+      "why": "Framework step 5 — echocardiogram is the key confirmatory investigation for cardiomyopathy subtype",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-hiv-workup",
+      "phase": "investigations",
+      "item": "Orders HIV-related workup: confirm HIV status, CD4 count, viral load",
+      "answer": "CD4 146 cells/µL, viral load 38,400 copies/mL detectable",
+      "why": "Confirms and stages the underlying systemic cause per framework step 6",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-hf",
+      "phase": "management",
+      "item": "Outlines acute stabilisation (oxygen, IV diuretic, monitoring) then definitive HFrEF therapy (ACEi, beta-blocker, spironolactone)",
+      "answer": "IV furosemide acutely, then ACE inhibitor, beta-blocker once stable, spironolactone, loop diuretic titration",
+      "why": "Standard HFrEF management per SA guidelines applied to DCM",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-art",
+      "phase": "management",
+      "item": "Addresses ART re-initiation/adherence, co-trimoxazole prophylaxis, and HIV care linkage as part of treating the underlying cause",
+      "answer": "Restart TLD with adherence counselling, co-trimoxazole given CD4 <200, HIV clinic follow-up",
+      "why": "Treating the underlying HIV disease is central to management of HIV-associated DCM, not just the HF syndrome",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 13,
+    "management": 12
+  }
+}

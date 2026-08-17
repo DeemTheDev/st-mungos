@@ -1,0 +1,146 @@
+{
+  "id": "interp-abg-004-hypochloraemic-hypokalaemic-metabolic-alkalosis",
+  "version": 1,
+  "discipline": "gi-hep",
+  "diagnosis": "Hypochloraemic hypokalaemic metabolic alkalosis secondary to protracted vomiting (gastric outlet obstruction)",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "probe",
+      "question": "Why is the chloride so low, and why does that matter mechanistically?",
+      "modelAnswer": "Vomiting loses HCl from the stomach, so both H+ and Cl- are lost. The loss of H+ raises plasma bicarbonate (metabolic alkalosis), while the low chloride and volume depletion drive renal Na+/HCO3- reabsorption and worsen the alkalosis; low Cl- also prevents the kidney from excreting the excess bicarbonate (chloride-responsive/'contraction' alkalosis), so it becomes self-perpetuating until Cl- and volume are replaced.",
+      "gradingNotes": "Wants explicit link between gastric HCl loss, low Cl-, volume depletion and bicarbonate retention — not just 'vomiting causes alkalosis'."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "probe",
+      "question": "The pCO2 is raised at 6.8 kPa — is this compensation or a second problem, and how do you decide?",
+      "modelAnswer": "For metabolic alkalosis, expected compensatory rise in pCO2 is roughly 0.7 mmHg per 1 mmol/L rise in HCO3 (or using kPa rules of thumb, a modest hypoventilatory rise), capped around 7.3-8 kPa because hypoxaemia limits further hypoventilation. Here the HCO3 is very high (41.9) so a pCO2 of 6.8 kPa is within the expected compensatory range — this is appropriate respiratory compensation, not a separate respiratory acidosis.",
+      "gradingNotes": "Full marks: states a compensation formula/rule of thumb and concludes it's appropriate, not primary respiratory acidosis. Partial: says 'compensated' without justifying the degree."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "probe",
+      "question": "Why is the potassium low, and why is correcting it essential before you can fix the alkalosis?",
+      "modelAnswer": "Volume depletion activates the renin-angiotensin-aldosterone system, causing renal K+ and H+ wasting in exchange for Na+ reabsorption; vomiting itself also causes some GI K+ loss. Hypokalaemia perpetuates the alkalosis because the kidney preferentially reabsorbs K+ over H+ in the distal tubule when K+ is low (paradoxical aciduria), so the alkalosis cannot correct until both volume and K+ are replaced.",
+      "gradingNotes": "Wants the aldosterone-driven K+/H+ exchange link and the concept that alkalosis won't resolve without KCl replacement."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "probe",
+      "question": "What is your immediate management plan for this patient?",
+      "modelAnswer": "IV isotonic saline (0.9% NaCl) to correct volume depletion and provide chloride, which allows the kidney to excrete the excess bicarbonate; potassium chloride replacement (not just KCl orally if vomiting continues); NG tube decompression and antiemetics for the gastric outlet obstruction; correct alkalosis before considering surgery; investigate the underlying cause (e.g. endoscopy for peptic ulcer disease with GOO) once stabilised.",
+      "gradingNotes": "Full marks includes saline (chloride-rich) resuscitation AND potassium replacement AND addressing the obstruction/underlying cause. Partial credit for 'rehydrate and replace K+' without chloride/mechanism reasoning."
+    }
+  ],
+  "stationType": "interpretation",
+  "stimulus": {
+    "kind": "abg",
+    "vignette": "A 34-year-old woman presents to a district hospital in KwaZulu-Natal with a week of persistent non-bilious vomiting and epigastric fullness, suspected to be due to peptic ulcer disease with gastric outlet obstruction. She is dehydrated with dry mucous membranes. ABG on room air:",
+    "values": {
+      "pH": 7.54,
+      "pCO2_kPa": 6.8,
+      "pO2_kPa": 11.2,
+      "HCO3": 41.9,
+      "BE": 18.2,
+      "Na": 137,
+      "Cl": 85,
+      "K": 3.2,
+      "lactate": 1.6
+    },
+    "imagePath": null
+  },
+  "findingsKey": [
+    {
+      "finding": "Alkalaemia (pH 7.54)",
+      "critical": true
+    },
+    {
+      "finding": "Markedly raised HCO3 (41.9 mmol/L) → primary metabolic alkalosis",
+      "critical": true
+    },
+    {
+      "finding": "Raised pCO2 (6.8 kPa) → appropriate hypoventilatory compensation",
+      "critical": true
+    },
+    {
+      "finding": "Normal anion gap (~10)",
+      "critical": false
+    },
+    {
+      "finding": "No significant hypoxaemia (pO2 11.2 kPa on room air)",
+      "critical": false
+    },
+    {
+      "finding": "Hypokalaemia (K 3.2 mmol/L)",
+      "critical": false
+    },
+    {
+      "finding": "Marked hypochloraemia (Cl 85 mmol/L) consistent with gastric HCl loss",
+      "critical": false
+    }
+  ],
+  "interpretationChecklist": [
+    {
+      "id": "ic-1",
+      "item": "Comments on clinical context first (vomiting, dehydration, suspected GOO)",
+      "weight": 1
+    },
+    {
+      "id": "ic-2",
+      "item": "Assesses oxygenation (pO2 11.2 kPa on room air — adequate)",
+      "weight": 2
+    },
+    {
+      "id": "ic-3",
+      "item": "Identifies alkalaemia from pH (7.54)",
+      "weight": 2
+    },
+    {
+      "id": "ic-4",
+      "item": "Identifies the primary disorder as metabolic alkalosis (raised HCO3 driving the pH)",
+      "weight": 3
+    },
+    {
+      "id": "ic-5",
+      "item": "Assesses compensation — checks whether the raised pCO2 (6.8 kPa) is an appropriate hypoventilatory response for the degree of metabolic alkalosis",
+      "weight": 3
+    },
+    {
+      "id": "ic-6",
+      "item": "Calculates the anion gap and notes it is normal (~10)",
+      "weight": 2
+    },
+    {
+      "id": "ic-7",
+      "item": "Synthesises: hypochloraemic hypokalaemic metabolic alkalosis from protracted vomiting/gastric outlet obstruction, correlating with the clinical picture",
+      "weight": 3
+    },
+    {
+      "id": "ic-8",
+      "item": "States immediate management implications (fluid, chloride and potassium replacement, NG decompression)",
+      "weight": 2
+    }
+  ],
+  "management": {
+    "immediate": [
+      "IV 0.9% saline resuscitation to correct volume depletion and restore chloride",
+      "IV potassium chloride replacement (with cardiac monitoring if severe)",
+      "NG tube insertion for gastric decompression and antiemetics"
+    ],
+    "definitive": [
+      "Investigate and treat underlying cause (e.g. upper GI endoscopy for peptic ulcer disease with gastric outlet obstruction; consider surgical referral if obstruction confirmed)",
+      "Repeat U&E and VBG/ABG after fluid and electrolyte replacement to confirm correction of alkalosis"
+    ],
+    "supportive": [
+      "Strict fluid balance monitoring and NG losses charting",
+      "Avoid diuretics or drugs that worsen hypokalaemia"
+    ],
+    "followUp": [
+      "Reassess electrolytes and acid-base status daily until normalised",
+      "Plan definitive management of gastric outlet obstruction once metabolically stable"
+    ]
+  }
+}

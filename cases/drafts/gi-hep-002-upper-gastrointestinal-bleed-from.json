@@ -1,0 +1,763 @@
+{
+  "id": "gi-hep-002-upper-gastrointestinal-bleed-from",
+  "version": 1,
+  "discipline": "gi-hep",
+  "diagnosis": "Upper gastrointestinal bleed from oesophageal varices",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient from the moment he arrives vomiting blood — what do you do first, and how do you build your differential?",
+      "modelAnswer": "First I resuscitate and assess severity simultaneously — ABCs, two large-bore IVs, bloods including crossmatch, before chasing a diagnosis. I confirm this is a true UGIB with history and DRE, looking for melaena, and check the urea as a clue. I risk-stratify using the Glasgow-Blatchford score and shock index. Then I predict variceal versus non-variceal by looking for stigmata of chronic liver disease, splenomegaly, thrombocytopenia — if present, I treat empirically as variceal before endoscopy confirms. I generate a differential by mechanism: mucosal erosion (PUD, gastritis), portal hypertensive (varices), traumatic (Mallory-Weiss), vascular malformation (Dieulafoy), neoplastic, or fistula (aorto-enteric if prior graft). Endoscopy is diagnostic and therapeutic, timed to instability and variceal suspicion — 24 hours for all-comers, 12 hours if variceal or unstable. Finally I reassess response to resuscitation and rebleeding risk using Forrest classification.",
+      "gradingNotes": "Wants the fixed sequence recited essentially verbatim: resuscitate/confirm → risk-stratify → predict variceal vs non-variceal → endoscopy timing → reassess rebleeding risk. Penalise jumping straight to 'I think this is varices' without the severity-first framing."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology of why this patient's varices bled suddenly, without any preceding retching or vomiting, unlike a Mallory-Weiss tear.",
+      "modelAnswer": "Oesophageal varices form when portal pressure (hepatic venous pressure gradient) exceeds about 10 mmHg, and they bleed once pressure exceeds around 12 mmHg. By Laplace's law, wall tension is proportional to pressure multiplied by radius and inversely proportional to wall thickness — large, thin-walled varices under high portal pressure are under enormous tension and can rupture spontaneously with no mechanical trigger, unlike a Mallory-Weiss tear which requires a forceful retching event to mechanically tear the mucosa at the gastro-oesophageal junction.",
+      "gradingNotes": "Must invoke Laplace's law and the HVPG thresholds (>10 mmHg for formation, >12 mmHg for bleeding) — this is flagged as a number to know cold. Partial credit for mentioning portal hypertension alone without the mechanical/Laplace explanation."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His haemoglobin is 8.1 g/dL. Does that reassure you about the severity of his bleed? Why or why not?",
+      "modelAnswer": "No — a normal or even mildly reduced haemoglobin never excludes a significant bleed. Haemoglobin reflects the pre-bleed concentration and only falls as extravascular fluid shifts into the intravascular space and with resuscitation, a process that takes 6 to 24 hours. In an acute bleed, the patient loses whole blood, so the concentration doesn't immediately drop. His clinical signs — tachycardia, hypotension with postural drop, shock index >1 — are more reliable immediate indicators of severity than the haemoglobin value.",
+      "gradingNotes": "This is the explicitly flagged exam trap. Full marks only if the candidate explicitly states Hb lags and explains why (fluid shift over 6-24h), not just 'no, he could still be bleeding'."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why do you give this patient antibiotics if he has no signs of infection?",
+      "modelAnswer": "In cirrhotic patients with variceal bleeding, prophylactic antibiotics (typically ceftriaxone) reduce mortality, rebleeding rates, and the incidence of spontaneous bacterial peritonitis. There's a bidirectional relationship — bacterial infection can precipitate a variceal bleed by increasing portal pressure and impairing haemostasis, and the variceal bleed itself, through gut bacterial translocation and reduced hepatic clearance, predisposes to infection. This is standard of care regardless of overt signs of sepsis at presentation.",
+      "gradingNotes": "Favourite examiner 'why' question per the notes. Wants explicit mention of the bidirectional relationship, not just 'to prevent infection'."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "investigations",
+      "question": "If his endoscopy had been normal despite ongoing melaena, what would you consider and what would you do next?",
+      "modelAnswer": "I would consider lesions that are easily missed on standard endoscopy — a Dieulafoy lesion, which causes torrential bleeding from normal-looking mucosa, or in a patient with a prior aortic graft, an aorto-enteric fistula presenting with a 'herald bleed' before catastrophic exsanguination, which requires immediate action. I would also consider a Cameron lesion or GAVE. Next steps would be repeat endoscopy, CT angiography, capsule or balloon enteroscopy, tagged red cell scanning for slow bleeds, or catheter angiography with embolisation if bleeding continues and the source remains unidentified.",
+      "gradingNotes": "Tests recognition of the classic missed-diagnosis exam traps explicitly flagged in the notes — Dieulafoy lesion and aorto-enteric fistula herald bleed. Award marks for mentioning escalation pathway (CTA/angiography/capsule) when endoscopy is negative."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "resuscitate and assess simultaneously → confirm true UGIB (history, DRE, urea) → risk-stratify (Glasgow-Blatchford, shock index) → predict variceal vs non-variceal (stigmata of CLD) → generate mechanism-based differential → endoscopy timing per instability → reassess rebleeding risk (Forrest/Rockall) → definitive and secondary prophylaxis",
+  "patient": {
+    "name": "Mandla Ngcobo",
+    "age": 47,
+    "sex": "M",
+    "occupation": "long-distance taxi driver",
+    "personality": "stoic, minimises alcohol use, frightened by the blood but tries to stay calm and joke with the doctor",
+    "openingLine": "Doctor... I vomited blood, a lot of it, just now in the toilet."
+  },
+  "presentingComplaint": "Sudden large-volume haematemesis with light-headedness",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Vomited a large amount of fresh red blood with clots about 1 hour ago, sudden onset with no prior retching",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-volume",
+      "fact": "Estimates it filled almost a basin, has vomited blood twice more since, smaller amounts each time",
+      "disclosure": "onAsk",
+      "triggers": [
+        "how much",
+        "volume",
+        "amount",
+        "basin",
+        "cup",
+        "again",
+        "more blood",
+        "repeat",
+        "second time",
+        "how many times",
+        "blood",
+        "second",
+        "times"
+      ]
+    },
+    {
+      "id": "hx-colour",
+      "fact": "Blood was bright red with clots, not coffee-ground looking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "colour",
+        "color",
+        "coffee ground",
+        "fresh",
+        "bright red",
+        "dark",
+        "clots",
+        "appearance",
+        "looked like",
+        "coffee",
+        "ground",
+        "bright",
+        "red",
+        "looked"
+      ]
+    },
+    {
+      "id": "hx-retching",
+      "fact": "No retching or forceful vomiting before the blood started — it came up suddenly without warning",
+      "disclosure": "onAsk",
+      "triggers": [
+        "retch",
+        "vomit before",
+        "vomiting first",
+        "heaving",
+        "gagging",
+        "before the blood",
+        "prior vomiting",
+        "straining",
+        "vomit",
+        "before",
+        "vomiting",
+        "first",
+        "blood",
+        "prior"
+      ]
+    },
+    {
+      "id": "hx-melaena",
+      "fact": "Has been passing black, tarry, very smelly stool for the past 2 days, thought it was 'just his stomach acting up'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "stool",
+        "poo",
+        "bowel",
+        "black stool",
+        "tarry",
+        "melaena",
+        "smelly",
+        "offensive",
+        "motion",
+        "toilet",
+        "dark stool",
+        "stool colour",
+        "black",
+        "dark",
+        "colour"
+      ]
+    },
+    {
+      "id": "hx-dizzy",
+      "fact": "Feels dizzy and light-headed when standing up, especially after the vomiting episodes; had one near-faint",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dizzy",
+        "dizziness",
+        "light headed",
+        "faint",
+        "fainted",
+        "standing up",
+        "blackout",
+        "weak",
+        "sweaty",
+        "palpitations",
+        "light",
+        "headed",
+        "standing"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer and traditional homebrew (utshwala) most days, has done for over 20 years, admits 'a lot, maybe 6-8 beers' on drinking days but minimises when first asked",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "drinking",
+        "beer",
+        "utshwala",
+        "traditional beer",
+        "booze",
+        "liquor",
+        "how much do you drink",
+        "social history",
+        "traditional",
+        "social",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-liver-known",
+      "fact": "Was told 'something about his liver' at a clinic two years ago but never followed up or had it investigated further",
+      "disclosure": "onAsk",
+      "triggers": [
+        "liver",
+        "liver disease",
+        "liver problem",
+        "cirrhosis",
+        "hepatitis",
+        "jaundice",
+        "yellow",
+        "told before",
+        "checked before",
+        "disease",
+        "problem",
+        "told",
+        "before",
+        "checked"
+      ]
+    },
+    {
+      "id": "hx-prior-bleed",
+      "fact": "No previous episodes of vomiting blood or black stool before this",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "previous",
+        "prior bleed",
+        "happened before",
+        "first time",
+        "ever had this",
+        "prior",
+        "bleed",
+        "happened",
+        "first"
+      ]
+    },
+    {
+      "id": "hx-dyspepsia",
+      "fact": "No epigastric pain, no heartburn, no dyspepsia",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "epigastric",
+        "stomach pain",
+        "heartburn",
+        "indigestion",
+        "dyspepsia",
+        "burning",
+        "stomach"
+      ]
+    },
+    {
+      "id": "hx-dysphagia",
+      "fact": "No difficulty swallowing, no weight loss before this event, appetite was normal until today",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swallow",
+        "dysphagia",
+        "difficulty swallowing",
+        "weight loss",
+        "appetite",
+        "eating",
+        "getting stuck",
+        "difficulty",
+        "swallowing",
+        "weight",
+        "loss",
+        "stuck"
+      ]
+    },
+    {
+      "id": "hx-nsaids",
+      "fact": "Does not take NSAIDs, aspirin, or any blood thinners; occasionally uses muti (traditional medicine) for 'cleansing' but not currently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "aspirin",
+        "ibuprofen",
+        "diclofenac",
+        "blood thinner",
+        "warfarin",
+        "medication",
+        "medicine",
+        "tablets",
+        "muti",
+        "traditional medicine",
+        "painkiller",
+        "blood",
+        "thinner",
+        "traditional"
+      ]
+    },
+    {
+      "id": "hx-abdodistension",
+      "fact": "Has noticed his belly has been getting bigger and tighter over the past few months, thought he was 'putting on weight'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "belly",
+        "stomach getting big",
+        "distension",
+        "swollen",
+        "abdomen",
+        "tight",
+        "bloated",
+        "ascites",
+        "waist",
+        "stomach",
+        "big"
+      ]
+    },
+    {
+      "id": "hx-hiv-hep",
+      "fact": "HIV status unknown, never tested; unsure of hepatitis B status, no vaccination history known",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "hepatitis b",
+        "hepatitis",
+        "hbv",
+        "vaccination",
+        "immunised"
+      ]
+    },
+    {
+      "id": "hx-bruising",
+      "fact": "Has noticed easy bruising on his arms and legs over recent months, and his gums bled a bit when brushing teeth last week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bruise",
+        "bruising",
+        "bleeding gums",
+        "gums",
+        "brushing teeth",
+        "easy bleeding",
+        "bleeds easily",
+        "bleeding",
+        "brushing",
+        "teeth",
+        "easy",
+        "bleeds",
+        "easily"
+      ]
+    },
+    {
+      "id": "hx-mimics",
+      "fact": "No nosebleeds, no dental procedures recently, no cough or coughing up blood, no recent beetroot or iron tablets",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nosebleed",
+        "epistaxis",
+        "dental",
+        "teeth work",
+        "cough",
+        "coughing up",
+        "haemoptysis",
+        "beetroot",
+        "iron tablets",
+        "iron supplement",
+        "teeth",
+        "work",
+        "coughing",
+        "iron",
+        "tablets",
+        "supplement"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known diabetes or hypertension, no previous hospital admissions, no previous surgery",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "diabetes",
+        "hypertension",
+        "admitted",
+        "hospital before",
+        "surgery",
+        "operation",
+        "previous illness",
+        "medical",
+        "history",
+        "hospital",
+        "before",
+        "previous",
+        "illness"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Divorced, lives alone in Pinetown, drives long routes to Johannesburg and back; smokes about 10 cigarettes a day for 15 years",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "social",
+        "live",
+        "work",
+        "occupation",
+        "job",
+        "family situation",
+        "marital",
+        "family",
+        "situation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of 'liver failure' in his 50s, also a heavy drinker; no family history of cancer that he knows of",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "relatives",
+        "family",
+        "history",
+        "runs"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Pale, anxious, sweaty male, moderately built with a distended abdomen. Jaundiced sclera. Spider naevi visible on chest and arms. Palmar erythema present. Gynaecomastia noted. No asterixis at present, alert and oriented.",
+    "vitals": {
+      "hr": 128,
+      "bp": "88/56 (drops to 74/48 on standing, unable to complete due to near-syncope)",
+      "rr": 24,
+      "temp": 36.4,
+      "spo2": "96% on room air",
+      "bmi": 22
+    },
+    "respiratory": "Chest clear, no crackles, no dullness",
+    "cardio": "Tachycardic, regular rhythm, no murmurs, peripherally cool with capillary refill 3 seconds, JVP not raised",
+    "abdo": "Distended abdomen with shifting dullness confirming ascites; caput medusae visible around umbilicus; spleen palpable 4 cm below costal margin; liver edge difficult to palpate due to ascites but liver span reduced on percussion; no epigastric tenderness; no peritonism; bowel sounds present",
+    "neuro": "Alert, oriented to time/place/person, no asterixis on this examination, no focal deficits",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 8.1 g/dL (likely underestimates true acute loss — pre-dilution), platelets 78 x10^9/L, WCC 6.9 x10^9/L, MCV 104 fL",
+      "key": false
+    },
+    {
+      "name": "Urea and electrolytes",
+      "result": "Urea 18.2 mmol/L, creatinine 78 µmol/L — urea:creatinine ratio markedly elevated (>100:1), consistent with digested blood protein load plus prerenal component",
+      "key": true
+    },
+    {
+      "name": "Liver function tests and albumin",
+      "result": "Bilirubin 42 µmol/L, ALT 38 U/L, AST 96 U/L (AST:ALT >2), ALP 130 U/L, GGT markedly raised, albumin 26 g/L",
+      "key": true
+    },
+    {
+      "name": "INR/coagulation profile",
+      "result": "INR 1.7, aPTT mildly prolonged, fibrinogen low-normal",
+      "key": true
+    },
+    {
+      "name": "Group and crossmatch",
+      "result": "O positive, 4 units crossmatched, activated for urgent release",
+      "key": false
+    },
+    {
+      "name": "Upper GI endoscopy (OGD)",
+      "result": "Three columns of large oesophageal varices with red wale marks and a spurting point on the largest column; band ligation performed at 5 bands; no gastric or duodenal ulcer seen",
+      "key": true
+    },
+    {
+      "name": "Abdominal ultrasound with Doppler",
+      "result": "Coarse, nodular liver echotexture consistent with cirrhosis; splenomegaly (16 cm); moderate ascites; portal vein dilated at 15 mm with patent but sluggish flow, no thrombosis",
+      "key": true
+    },
+    {
+      "name": "HIV ELISA and Hepatitis B surface antigen",
+      "result": "HIV negative; HBsAg positive, suggesting chronic hepatitis B co-contributing to liver disease",
+      "key": true
+    },
+    {
+      "name": "Venous blood gas with lactate",
+      "result": "pH 7.32, lactate 3.8 mmol/L, base excess -5, consistent with hypoperfusion",
+      "key": false
+    },
+    {
+      "name": "Erect chest X-ray",
+      "result": "No free air under the diaphragm, no aspiration changes, heart size normal",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Oesophageal varices secondary to alcoholic cirrhosis (± chronic HBV)",
+      "rank": 1,
+      "for": [
+        "known liver disease history",
+        "multiple stigmata of CLD (spider naevi, palmar erythema, gynaecomastia, caput medusae)",
+        "splenomegaly and ascites on exam",
+        "thrombocytopenia and low albumin",
+        "heavy long-standing alcohol use",
+        "sudden large-volume fresh haematemesis without preceding retching"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Peptic ulcer disease",
+      "rank": 2,
+      "for": [
+        "haematemesis and melaena are the classic presentation",
+        "common in this population"
+      ],
+      "against": [
+        "no epigastric pain or dyspepsia",
+        "no NSAID/aspirin use",
+        "prominent stigmata of chronic liver disease present instead"
+      ]
+    },
+    {
+      "dx": "Mallory-Weiss tear",
+      "rank": 3,
+      "for": [
+        "haematemesis can follow this mechanism"
+      ],
+      "against": [
+        "no antecedent retching or vomiting before the bleed — bleed was the first event",
+        "usually self-limiting, not massive volume with instability"
+      ]
+    },
+    {
+      "dx": "Oesophageal or gastric malignancy",
+      "rank": 4,
+      "for": [
+        "chronic alcohol use is a risk factor for oesophageal SCC",
+        "high local incidence of oesophageal SCC"
+      ],
+      "against": [
+        "no dysphagia",
+        "no weight loss or cachexia preceding this acute event",
+        "no palpable epigastric mass or Virchow's node"
+      ]
+    },
+    {
+      "dx": "Erosive gastritis/oesophagitis",
+      "rank": 5,
+      "for": [
+        "chronic alcohol use is a direct mucosal irritant"
+      ],
+      "against": [
+        "endoscopy identified varices as the bleeding source, not diffuse mucosal erosion",
+        "clinical picture dominated by portal hypertensive stigmata"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Haematemesis of fresh red blood without preceding retching": "Sudden rupture of a thin-walled, high-pressure oesophageal varix (Laplace's law: wall tension proportional to pressure × radius, inversely to wall thickness) causes immediate brisk bleeding into the lumen without any preceding mechanical mucosal tear",
+    "Melaena": "Bacterial degradation of haemoglobin to haematin within the gut lumen over 8-14 hours of transit of at least 50-100 mL of blood produces the characteristic black, tarry, offensive stool",
+    "Elevated urea:creatinine ratio": "Digested blood protein is absorbed as a nitrogen load in the small bowel and metabolised to urea by the liver, compounded by prerenal azotaemia from hypovolaemia, while creatinine remains relatively unaffected",
+    "Ascites and splenomegaly": "Portal hypertension from cirrhotic architectural distortion raises hydrostatic pressure in the splanchnic and splenic venous beds, driving fluid transudation into the peritoneal cavity and passive splenic congestion",
+    "Spider naevi, palmar erythema, gynaecomastia": "Impaired hepatic metabolism of oestrogens in cirrhosis leads to relative hyperoestrogenism, causing cutaneous telangiectasia and feminising signs",
+    "Thrombocytopenia": "Splenomegaly from portal hypertension causes splenic sequestration and pooling of platelets, reducing circulating platelet count",
+    "Postural hypotension and near-syncope": "Acute intravascular volume loss reduces venous return and cardiac output; compensatory tachycardia and vasoconstriction are insufficient on standing, producing a further drop in cerebral perfusion pressure"
+  },
+  "staging": "Child-Pugh class B cirrhosis (bilirubin, albumin, INR, ascites, no encephalopathy at presentation) — to be formally scored on admission; Forrest classification Ib (active spurting variceal bleed) at endoscopy",
+  "management": {
+    "immediate": [
+      "Airway assessment — protect airway if haematemesis is massive or GCS falls; left lateral position while actively vomiting blood",
+      "Two large-bore IV cannulae, send bloods (FBC, U&E, LFT, INR, group and crossmatch, VBG/lactate, HIV, HBsAg)",
+      "Crystalloid resuscitation cautiously, then blood products targeting restrictive transfusion threshold (Hb ~70 g/L) — avoid over-transfusion which raises portal pressure",
+      "IV terlipressin started empirically given strong suspicion of variceal bleed, before endoscopy confirms",
+      "Prophylactic IV antibiotic (ceftriaxone) — reduces mortality, rebleeding and spontaneous bacterial peritonitis risk in variceal bleeds",
+      "Correct coagulopathy cautiously (vitamin K, consider FFP/platelets if actively bleeding and severely deranged)",
+      "Urinary catheter, hourly urine output monitoring",
+      "Urgent upper GI endoscopy within 12 hours given suspected variceal source and haemodynamic instability"
+    ],
+    "definitive": [
+      "Endoscopic variceal band ligation at index endoscopy (performed in this case)",
+      "Continue terlipressin for 3-5 days post-bleed",
+      "Continue prophylactic antibiotics for 5-7 days",
+      "TIPS (transjugular intrahepatic portosystemic shunt) or Sengstaken-Blakemore balloon tamponade as bridge if bleeding uncontrolled or recurrent",
+      "Secondary prophylaxis: non-selective beta-blocker (e.g. propranolol) plus repeat banding programme once stabilised"
+    ],
+    "supportive": [
+      "Manage ascites — sodium restriction, spironolactone ± furosemide once stable",
+      "Monitor for and treat hepatic encephalopathy (lactulose) precipitated by the protein/blood load",
+      "Alcohol cessation counselling and referral to a cessation programme/support group",
+      "Nutritional support, thiamine (risk of Wernicke's given chronic alcohol use)",
+      "HBV assessment for antiviral therapy (tenofovir) given HBsAg positivity",
+      "Correct electrolytes (calcium, magnesium) if massive transfusion given"
+    ],
+    "followUp": [
+      "Repeat endoscopy/banding sessions until varices eradicated",
+      "Screen for hepatocellular carcinoma with 6-monthly ultrasound and AFP given cirrhosis plus chronic HBV",
+      "Long-term beta-blocker adherence and surveillance endoscopy",
+      "Address alcohol use at every visit; consider referral to hepatology clinic",
+      "HIV re-testing given ongoing risk, and safe sex counselling"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-resus",
+      "phase": "history",
+      "item": "Prioritises resuscitation and severity assessment (ABCs, IV access, vitals, postural BP) before pursuing detailed history of cause",
+      "answer": "HR 128, BP 88/56 dropping further on standing — shock index >1, indicating significant blood loss",
+      "why": "Explicitly stated rule: assessing severity comes before assessing the cause",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-confirm-bleed",
+      "phase": "history",
+      "item": "Confirms true UGIB — asks specifically about melaena (black, tarry, offensive stool) and excludes mimics (epistaxis, dental work, haemoptysis, iron/beetroot ingestion)",
+      "answer": "2 days of black, tarry, offensive stool; no nosebleeds, dental work, cough or iron/beetroot ingestion",
+      "why": "Must exclude swallowed blood, haemoptysis and false melaena before committing to UGIB workup",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-preceding",
+      "phase": "history",
+      "item": "Asks about preceding retching/vomiting to screen for Mallory-Weiss, and epigastric pain/dyspepsia to screen for PUD",
+      "answer": "No retching before the bleed; no epigastric pain or dyspepsia",
+      "why": "Discriminates between the major differentials by mechanism",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-cld-screen",
+      "phase": "history",
+      "item": "Screens for chronic liver disease and portal hypertension — known liver disease, alcohol use (quantified), prior variceal bleed, HBV/HIV risk, abdominal distension, easy bruising",
+      "answer": "20+ years heavy alcohol use, told of liver problem 2 years ago untreated, HBsAg status unknown, increasing abdominal girth, easy bruising and bleeding gums",
+      "why": "Predicting variceal vs non-variceal changes empirical management before endoscopy",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-drugs",
+      "phase": "history",
+      "item": "Asks specifically by name about NSAIDs, aspirin, anticoagulants and traditional/muti remedies",
+      "answer": "No NSAIDs, aspirin or anticoagulants; occasional muti use but not currently",
+      "why": "Key modifiable risk factor for PUD and bleeding risk, must be asked explicitly",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-dre",
+      "phase": "examination",
+      "item": "Performs digital rectal examination to confirm melaena",
+      "answer": "Black, tarry, extremely offensive stool on glove, no fresh blood",
+      "why": "Mandatory step explicitly flagged — never omit DRE in suspected UGIB",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-stigmata",
+      "phase": "examination",
+      "item": "Deliberately examines for stigmata of chronic liver disease (jaundice, spider naevi, palmar erythema, gynaecomastia, caput medusae, ascites, splenomegaly, asterixis)",
+      "answer": "Jaundice, spider naevi, palmar erythema, gynaecomastia, caput medusae, ascites with shifting dullness, splenomegaly 4cm; no asterixis currently",
+      "why": "This examination deliberately changes the diagnostic pathway toward variceal bleeding",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-severity-signs",
+      "phase": "examination",
+      "item": "Assesses shock index, postural BP, capillary refill, peripheral temperature as surrogates of hypovolaemia",
+      "answer": "Shock index >1 (HR 128/SBP 88), postural drop to 74/48, cool peripheries, CRT 3 seconds",
+      "why": "Quantifies bleed severity independent of haemoglobin, which lags",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked, mechanism-based differential (variceal bleed, PUD, Mallory-Weiss, malignancy) with supporting and refuting evidence for each",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy; must justify ranking with case-specific findings",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-gbs",
+      "phase": "investigations",
+      "item": "Applies or references the Glasgow-Blatchford score for pre-endoscopy risk stratification",
+      "answer": "High GBS given tachycardia, hypotension, elevated urea, low Hb, melaena and syncope — this patient requires admission, not outpatient management",
+      "why": "GBS 0-1 = safe for outpatient management is the single most testable GBS fact; this patient scores far above that",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-urea-ratio",
+      "phase": "investigations",
+      "item": "Interprets the urea:creatinine ratio as supportive of UGIB",
+      "answer": "Urea 18.2 mmol/L with creatinine 78 µmol/L gives a markedly elevated ratio (>100:1), consistent with digested blood protein load and prerenal component",
+      "why": "Named numeric threshold the notes emphasise as testable knowledge",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-hb-trap",
+      "phase": "investigations",
+      "item": "Recognises that haemoglobin may not reflect true acute blood loss",
+      "answer": "Hb 8.1 g/dL likely underestimates the severity given ongoing/recent massive bleed — a normal or near-normal Hb never excludes a significant bleed",
+      "why": "Explicitly flagged exam trap in the notes",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-panel",
+      "phase": "investigations",
+      "item": "Orders appropriate panel: FBC, U&E, LFT/albumin, INR/coagulation, group and crossmatch, HIV, HBsAg, abdominal ultrasound with Doppler, and urgent endoscopy",
+      "answer": "See investigations catalogue — endoscopy confirmed bleeding oesophageal varices with red wale marks",
+      "why": "Complete confirmatory pathway per the KZN-adapted UGIB approach",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ngt-distractor",
+      "phase": "investigations",
+      "item": "Does NOT propose routine NGT aspiration as a diagnostic step",
+      "answer": "NGT aspiration is no longer routinely recommended — misses closed-pylorus duodenal bleeds with no proven outcome benefit",
+      "why": "Common wrong-answer distractor explicitly flagged in the notes",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-empirical-mx",
+      "phase": "management",
+      "item": "Initiates empirical variceal-directed therapy (terlipressin and prophylactic antibiotics) before endoscopic confirmation, given strong pre-test suspicion",
+      "answer": "IV terlipressin and IV ceftriaxone started on suspicion, before endoscopy confirmed varices",
+      "why": "Treat as variceal until proven otherwise when clinical suspicion is high — reduces mortality and rebleeding",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-endoscopy-timing",
+      "phase": "management",
+      "item": "States correct endoscopy timing — within 12 hours given suspected variceal bleed and haemodynamic instability (vs 24 hours for all-comers)",
+      "answer": "Endoscopy performed urgently within 12 hours; confirmed spurting variceal bleed, band ligation performed",
+      "why": "Precise timing distinction explicitly emphasised as fixed diagnostic sequence to recite",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-secondary-prophylaxis",
+      "phase": "management",
+      "item": "Outlines secondary prophylaxis and long-term plan: non-selective beta-blocker, repeat banding programme, alcohol cessation, HBV antiviral consideration, HCC surveillance",
+      "answer": "Propranolol plus repeat banding programme, alcohol cessation counselling, tenofovir consideration for HBV, 6-monthly ultrasound/AFP surveillance",
+      "why": "Definitive and follow-up care per SA guidelines, addressing underlying cirrhosis aetiology",
+      "weight": 3,
+      "critical": false
+    },
+    {
+      "id": "cl-infection-link",
+      "phase": "management",
+      "item": "Articulates the bidirectional relationship between infection and variceal bleeding",
+      "answer": "Bacterial infection (e.g. spontaneous bacterial peritonitis) can precipitate variceal bleeding, and variceal bleeding itself predisposes to infection — hence prophylactic antibiotics are given regardless of overt sepsis",
+      "why": "Favourite examiner 'why' question flagged explicitly in the notes",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 18,
+    "clinicalReasoning": 25,
+    "investigations": 12,
+    "management": 13
+  }
+}

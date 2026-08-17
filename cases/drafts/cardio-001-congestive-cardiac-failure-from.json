@@ -1,0 +1,630 @@
+{
+  "id": "cardio-001-congestive-cardiac-failure-from",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Congestive cardiac failure from hypertensive heart disease",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "triggerAfterSec": 300,
+      "question": "Talk me through your differential diagnosis for this man's heart failure, and what points for and against each.",
+      "modelAnswer": "Hypertensive heart disease is most likely given his 12-year history of hypertension with recent non-adherence, concentric LVH on echo, and a sustained heaving apex — though some apical displacement and reduced EF suggest evolving dilated remodelling. Dilated cardiomyopathy from alcohol or HIV is next, but his alcohol intake is modest and HIV is negative. Ischaemic heart disease is possible given his age and smoking, but he has no anginal history and his ECG/troponin pattern doesn't support acute ischaemia. Rheumatic valvular disease is unlikely as a primary cause at his age, and his MR is functional on echo. TB pericardial disease is very unlikely — no Kussmaul's sign, no TB symptoms, and no effusion on echo.",
+      "gradingNotes": "Wants a ranked list with case-specific reasoning for and against each, not just a diagnosis label."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism behind his sustained, heaving apex beat and how it differs from what you'd expect in dilated cardiomyopathy.",
+      "modelAnswer": "Chronic pressure overload from long-standing hypertension causes concentric left ventricular hypertrophy — sarcomeres are added in parallel, thickening the wall without much chamber enlargement — producing a forceful, sustained but often non-displaced or minimally displaced apex. In dilated cardiomyopathy, sarcomeres are added in series, the chamber dilates and walls thin, giving a displaced, diffuse, hypodynamic apex instead.",
+      "gradingNotes": "Tests understanding of the parallel vs series sarcomere pathophysiology pearl and its clinical correlate."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "He tells you he stopped his blood pressure tablets 8 months ago because he felt fine. How does this shape your management plan and counselling approach?",
+      "modelAnswer": "This identifies a modifiable driver of his decompensation — non-adherence due to feeling asymptomatic and clinic access difficulty. Management should include re-initiating antihypertensives cautiously once decongested, but equally important is non-judgemental adherence counselling exploring his specific barriers (distance, cost, time as a taxi driver), patient education about hypertension being asymptomatic yet damaging, and practical solutions like more convenient follow-up or medication supply arrangements.",
+      "gradingNotes": "Rewards patient-centred reasoning about adherence barriers, not just restarting medication."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "His echocardiogram shows concentric LVH with EF 40% and grade II diastolic dysfunction. How does this specific result change your interpretation and management?",
+      "modelAnswer": "An EF of 40% places him in the heart failure with mildly reduced ejection fraction (HFmrEF) category, meaning he benefits from standard HFrEF-type guideline-directed therapy (ACEi/ARB, beta-blocker, MRA, consider SGLT2 inhibitor) rather than purely diastolic-directed treatment. The concentric LVH with diastolic dysfunction confirms the hypertensive aetiology, while the mild EF reduction shows early systolic involvement — both underscore the urgent need for BP control and adherence to prevent further progression to overt DCM-like remodelling.",
+      "gradingNotes": "Tests ability to apply investigation findings to management decisions and HF classification thresholds."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Why must you be cautious about the timing and combination of ACE inhibitor and spironolactone initiation in this patient?",
+      "modelAnswer": "He already has mild renal impairment (eGFR 52) from likely hypertensive nephrosclerosis. Both ACE inhibitors and spironolactone can cause hyperkalaemia and worsen renal function, especially when combined or started together while the patient is still volume-depleted from diuresis. Renal function and potassium must be checked before and shortly after initiation/uptitration, doses started low, and NSAIDs like his ibuprofen must be stopped as they worsen both renal function and fluid retention.",
+      "gradingNotes": "Assesses safe prescribing awareness and integration of the renal impairment finding into management planning."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "dyspnoea/oedema → heart failure syndrome → exclude ischaemic/valvular/toxic causes → characterise functional pattern → confirm with echo → treat underlying cause + HF syndrome",
+  "patient": {
+    "name": "Bongani Mkhize",
+    "age": 58,
+    "sex": "M",
+    "occupation": "taxi driver",
+    "personality": "stoic, downplays symptoms, reluctant to admit he stopped his tablets, becomes anxious when told his heart is 'weak'",
+    "openingLine": "Doctor, I can't breathe properly when I lie down anymore, and my legs are like balloons."
+  },
+  "presentingComplaint": "3-week history of worsening shortness of breath, orthopnoea and leg swelling",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms started gradually about 3 weeks ago, initially only on exertion, now present even at rest for the past 3 days",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Now sleeps propped up on 3 pillows; if he lies flat he wakes up gasping for air",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "lying flat",
+        "pillows",
+        "sleep",
+        "lie down",
+        "breathless lying",
+        "flat"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "Woke up twice last week gasping for breath and had to sit at the window for air",
+      "disclosure": "onAsk",
+      "triggers": [
+        "paroxysmal",
+        "wake up",
+        "night breath",
+        "gasping",
+        "sit up",
+        "window",
+        "choking at night",
+        "pnd"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Both legs swollen up to the shins for 2 weeks, worse by evening; shoes feel tight",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "legs",
+        "ankles",
+        "oedema",
+        "edema",
+        "feet",
+        "shoes tight",
+        "puffy"
+      ]
+    },
+    {
+      "id": "hx-exertion",
+      "fact": "Used to drive his taxi all day without trouble; now gets breathless after walking half a block or climbing one flight of stairs",
+      "disclosure": "onAsk",
+      "triggers": [
+        "exertion",
+        "walking",
+        "stairs",
+        "exercise tolerance",
+        "how far",
+        "climb",
+        "distance",
+        "effort"
+      ]
+    },
+    {
+      "id": "hx-htn-history",
+      "fact": "Diagnosed with high blood pressure 12 years ago; was on amlodipine and enalapril but stopped taking them about 8 months ago because he 'felt fine' and the clinic was far",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "bp",
+        "high blood pressure",
+        "sugar sickness",
+        "pressure",
+        "tablets",
+        "medication",
+        "compliance",
+        "adherence",
+        "stopped",
+        "clinic"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no crushing pain, denies any pressure or tightness in the chest",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "tightness",
+        "pressure in chest",
+        "angina",
+        "heart attack",
+        "sore chest"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "No palpitations or racing heart noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "racing heart",
+        "heart racing",
+        "fluttering",
+        "irregular heartbeat"
+      ]
+    },
+    {
+      "id": "hx-syncope",
+      "fact": "No fainting, no dizzy spells, no blackouts",
+      "disclosure": "onAsk",
+      "triggers": [
+        "syncope",
+        "fainting",
+        "blackout",
+        "dizzy",
+        "collapse",
+        "passed out"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer socially on weekends, about 4-5 bottles, no heavy or daily drinking; denies any other substance use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "beer",
+        "drink",
+        "drinking",
+        "tavern",
+        "shebeen",
+        "substance",
+        "cocaine",
+        "drugs"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative two years ago at a workplace wellness screening",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "immune"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no night sweats, no weight loss, no known TB contact",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "night sweats",
+        "weight loss",
+        "contact",
+        "exposure"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known diabetes, no previous heart attack or stroke, no known kidney disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "heart attack",
+        "stroke",
+        "kidney",
+        "medical history",
+        "conditions",
+        "previous illness"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Currently taking nothing regularly; occasionally buys ibuprofen from the pharmacy for knee pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "taking anything",
+        "treatment",
+        "ibuprofen",
+        "painkillers"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies; has never had a reaction to any medicine or food",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "allergy",
+        "reaction",
+        "rash",
+        "medicine reaction",
+        "food allergy",
+        "sensitive to",
+        "penicillin"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 5 cigarettes a day for 20 years; lives in KwaMashu with his wife; drives long hours as a taxi driver and finds it hard to get to clinic appointments",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "job",
+        "family situation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of 'heart problems' in his sixties; mother had high blood pressure; no family history of sudden death in young relatives",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "sudden death",
+        "heart problems in family"
+      ]
+    },
+    {
+      "id": "hx-diet",
+      "fact": "Diet is high in salt — enjoys his wife's cooking with lots of stock cubes and biltong; not on any special diet",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diet",
+        "salt",
+        "food",
+        "eating habits",
+        "cooking",
+        "biltong"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Overweight, middle-aged man sitting upright, mildly dyspnoeic at rest, using accessory muscles slightly. No cyanosis. No pallor.",
+    "vitals": {
+      "hr": 102,
+      "bp": "168/98",
+      "rr": 24,
+      "temp": 36.7,
+      "spo2": "93% on room air",
+      "bmi": 29
+    },
+    "respiratory": "Trachea central. Reduced air entry with bibasal fine crackles to mid-zones bilaterally. Dull to percussion at both lung bases suggestive of small effusions.",
+    "cardio": "Apex beat displaced laterally to the anterior axillary line in the 6th intercostal space, sustained and forceful (heaving). Loud S4 heard at the apex. Soft pansystolic murmur at the apex radiating to the axilla (functional MR). JVP raised to 5 cm above the sternal angle. No Kussmaul's sign.",
+    "abdo": "Mild tender hepatomegaly 3 cm below costal margin, smooth edge. No ascites detected. No splenomegaly.",
+    "neuro": "Alert, orientated, no focal deficit.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, voltage criteria for left ventricular hypertrophy (Sokolow-Lyon positive) with strain pattern (ST depression and T inversion in V5-V6, I, aVL)",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly (cardiothoracic ratio 0.58), upper lobe venous diversion, bilateral small pleural effusions, Kerley B lines",
+      "key": true
+    },
+    {
+      "name": "Echocardiogram",
+      "result": "Concentric left ventricular hypertrophy, LV internal diameter mildly increased, LVEF 40% (mildly-moderately reduced), grade II diastolic dysfunction, mild functional mitral regurgitation, no significant valve stenosis, no pericardial effusion",
+      "key": true
+    },
+    {
+      "name": "NT-proBNP",
+      "result": "3800 pg/mL (markedly elevated)",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Urea 9.1 mmol/L, Creatinine 138 µmol/L, eGFR 52 mL/min/1.73m2 (mild renal impairment, likely hypertensive nephrosclerosis), potassium 4.2 mmol/L",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.1 g/dL, WCC 7.8, Plt 260 - unremarkable",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Fasting glucose/HbA1c",
+      "result": "Fasting glucose 5.6 mmol/L, HbA1c 5.7% - non-diabetic",
+      "key": false
+    },
+    {
+      "name": "Troponin",
+      "result": "Mildly elevated at 45 ng/L (chronic elevation pattern, non-dynamic on repeat), consistent with chronic strain rather than acute coronary syndrome",
+      "key": false
+    },
+    {
+      "name": "Thyroid function (TSH)",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Mildly elevated ALP and GGT consistent with hepatic congestion; ALT/AST normal",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Congestive cardiac failure from hypertensive heart disease",
+      "rank": 1,
+      "for": [
+        "12-year history of poorly-controlled/untreated hypertension",
+        "concentric LVH on echo with preserved-to-mildly-reduced EF",
+        "sustained heaving non-displaced-to-mildly displaced apex",
+        "BP 168/98 at presentation",
+        "classic biventricular congestion signs (orthopnoea, PND, raised JVP, bibasal crackles, pedal oedema)"
+      ],
+      "against": [
+        "some apical displacement and mild EF reduction (40%) suggest an element of dilated remodelling superimposed on hypertensive change"
+      ]
+    },
+    {
+      "dx": "Dilated cardiomyopathy (alcohol/HIV/idiopathic)",
+      "rank": 2,
+      "for": [
+        "displaced apex",
+        "functional MR murmur",
+        "reduced EF",
+        "social alcohol use"
+      ],
+      "against": [
+        "alcohol intake is modest/social, not heavy chronic use",
+        "HIV negative",
+        "echo shows concentric LVH pattern rather than eccentric dilation with thin walls",
+        "long antecedent hypertension history is a more obvious driver"
+      ]
+    },
+    {
+      "dx": "Ischaemic heart disease with heart failure",
+      "rank": 3,
+      "for": [
+        "age 58",
+        "hypertension as risk factor",
+        "smoking history",
+        "mildly elevated troponin"
+      ],
+      "against": [
+        "no chest pain history",
+        "troponin pattern chronic/non-dynamic not acute",
+        "ECG shows LVH/strain pattern rather than territorial Q waves or acute ischaemic changes"
+      ]
+    },
+    {
+      "dx": "Rheumatic valvular heart disease (mitral regurgitation)",
+      "rank": 4,
+      "for": [
+        "apical pansystolic murmur radiating to axilla"
+      ],
+      "against": [
+        "age 58 is atypical for primary RHD presentation",
+        "echo confirms murmur is functional MR secondary to LV remodelling, not primary valve pathology",
+        "no history of childhood rheumatic fever or recurrent sore throats"
+      ]
+    },
+    {
+      "dx": "TB pericardial effusive-constrictive disease",
+      "rank": 5,
+      "for": [
+        "raised JVP",
+        "KZN high TB burden"
+      ],
+      "against": [
+        "no Kussmaul's sign",
+        "no TB symptoms (cough, night sweats, weight loss)",
+        "echo shows no pericardial effusion or thickening",
+        "apex easily displaced and forceful, not the dampened impulse of constriction"
+      ]
+    }
+  ],
+  "pathophys": {
+    "orthopnoea": "Recumbency redistributes blood from the splanchnic and lower-limb circulation to the central venous compartment, increasing venous return to a failing left ventricle that cannot accommodate the extra preload, raising pulmonary capillary pressure and causing breathlessness",
+    "paroxysmal nocturnal dyspnoea": "Gradual reabsorption of peripheral oedema fluid overnight plus reduced adrenergic drive during sleep unmask elevated left atrial pressure, precipitating acute pulmonary interstitial oedema that wakes the patient gasping",
+    "peripheral (pedal) oedema": "Chronically elevated systemic venous pressure from right heart failure (often secondary to left heart failure) raises hydrostatic pressure in dependent capillary beds, exceeding oncotic pressure and driving fluid into the interstitium; activation of the renin-angiotensin-aldosterone system compounds sodium and water retention",
+    "raised JVP": "Elevated right atrial pressure transmits back through the jugular venous system as the right ventricle fails to handle venous return, itself often a downstream consequence of chronically elevated left-sided filling pressures in hypertensive heart disease",
+    "displaced, sustained (heaving) apex beat": "Chronic pressure overload from sustained hypertension causes concentric left ventricular hypertrophy (sarcomeres added in parallel), producing a forceful, sustained impulse; as the ventricle begins to dilate and decompensate, the apex also displaces laterally and inferiorly",
+    "S4 gallop": "Atrial contraction forces blood into a stiff, hypertrophied, poorly compliant left ventricle in late diastole, generating a low-frequency sound as the atrium contracts against increased resistance to filling",
+    "functional mitral regurgitation murmur": "Left ventricular dilation and remodelling stretch the mitral annulus and displace the papillary muscles, preventing proper leaflet coaptation despite structurally normal valve leaflets"
+  },
+  "staging": "NYHA Class III (marked limitation of physical activity, breathless on less-than-ordinary exertion); Stage C heart failure with mildly reduced ejection fraction (HFmrEF, EF 40%) per ACC/AHA staging; hypertensive heart disease with early hypertensive nephrosclerosis (CKD stage 3a)",
+  "management": {
+    "immediate": [
+      "Sit patient upright, administer supplemental oxygen to keep SpO2 >94%",
+      "IV furosemide for acute decongestion (e.g. 40-80mg IV, titrate to urine output and symptom response)",
+      "Continuous cardiac monitoring and repeat vitals",
+      "Strict fluid balance monitoring and daily weights",
+      "Withhold NSAIDs (stop ibuprofen — worsens fluid retention and renal function)"
+    ],
+    "definitive": [
+      "Initiate/re-initiate ACE inhibitor (e.g. enalapril) once euvolaemic and renal function/potassium stable, titrate to maximum tolerated dose",
+      "Add beta-blocker (e.g. carvedilol or bisoprolol) once stable and not acutely congested, start low and up-titrate slowly",
+      "Add mineralocorticoid receptor antagonist (spironolactone) given reduced EF and to counter RAAS activation",
+      "Aggressive blood pressure control to target <130/80 per SA hypertension guidelines",
+      "Consider SGLT2 inhibitor if available/accessible given evidence in HFrEF/HFmrEF"
+    ],
+    "supportive": [
+      "Salt and fluid restriction counselling (address high-salt diet — stock cubes, biltong)",
+      "Adherence counselling — address the 8-month gap in antihypertensive therapy, explore barriers (distance to clinic, cost, understanding of asymptomatic disease)",
+      "Smoking cessation counselling and support",
+      "Weight loss and lifestyle advice given BMI 29",
+      "Arrange transport/closer clinic follow-up given occupation as taxi driver and access barriers",
+      "Educate on daily weight monitoring and when to seek urgent care"
+    ],
+    "followUp": [
+      "Repeat echocardiogram in 3-6 months to reassess EF and remodelling on optimised therapy",
+      "Renal function and potassium monitoring after starting/uptitrating ACEi and spironolactone",
+      "Home blood pressure monitoring and regular clinic BP checks",
+      "HF clinic or chronic disease clinic follow-up for medication titration",
+      "Reinforce medication adherence at every visit"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport, explains purpose of consultation",
+      "answer": null,
+      "why": "Professionalism and communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-hf-symptoms",
+      "phase": "history",
+      "item": "Confirms cardiac failure symptom complex: orthopnoea, PND, exertional dyspnoea, leg swelling; grades functional severity/effort tolerance",
+      "answer": "3 pillows, PND twice in past week, breathless after half a block, bilateral shin oedema — consistent with NYHA III",
+      "why": "Must confirm this is a heart failure syndrome before attributing a cause, per framework step 1",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-ihd",
+      "phase": "history",
+      "item": "Screens for ischaemic heart disease: chest pain, anginal pattern, risk factors",
+      "answer": "No chest pain or anginal symptoms reported",
+      "why": "Framework requires excluding IHD as a common cause of impaired ventricular function before labelling cardiomyopathy",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-htn-history",
+      "phase": "history",
+      "item": "Elicits hypertension history including duration, prior treatment, and specifically asks about adherence/compliance",
+      "answer": "12-year history, stopped amlodipine and enalapril 8 months ago due to feeling well and clinic access difficulty",
+      "why": "Directly identifies the underlying aetiology and a modifiable driver of decompensation",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-secondary-causes",
+      "phase": "history",
+      "item": "Screens for reversible/toxic causes of cardiomyopathy: alcohol quantity, HIV status, TB symptoms, family history of sudden death/cardiomyopathy",
+      "answer": "Modest social alcohol use, HIV negative, no TB symptoms, father died of 'heart problems' but no young sudden death",
+      "why": "Framework step 4 and 6 — must screen for HIV, alcohol, TB and familial disease even when hypertension is the leading cause",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-red-flags",
+      "phase": "history",
+      "item": "Screens for red flags: syncope, palpitations, sustained arrhythmia symptoms",
+      "answer": "No syncope, no palpitations",
+      "why": "Excludes high-risk features requiring urgent arrhythmia/device workup",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-cardio-exam",
+      "phase": "examination",
+      "item": "Performs focused cardiovascular examination: apex character/location, heart sounds, murmurs, JVP, peripheral pulses and oedema",
+      "answer": "Sustained heaving displaced apex, S4, functional MR murmur, raised JVP, bibasal crackles, pitting oedema",
+      "why": "Distinguishes the functional pattern (hypertrophic/concentric vs dilated) as per framework step 3",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-vitals",
+      "phase": "examination",
+      "item": "Records and interprets full vital signs including blood pressure",
+      "answer": "BP 168/98, HR 102, RR 24, SpO2 93%",
+      "why": "Confirms ongoing uncontrolled hypertension and haemodynamic status",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing hypertensive heart disease from dilated cardiomyopathy, ischaemic disease, valvular disease and TB pericardial disease with reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy; must justify ranking with case evidence",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-confirm",
+      "phase": "investigations",
+      "item": "Requests ECG, chest X-ray and echocardiogram as the confirmatory pathway; interprets LVH and reduced EF appropriately",
+      "answer": "ECG shows LVH with strain; CXR shows cardiomegaly and pulmonary congestion; echo confirms concentric LVH with EF 40%",
+      "why": "Echocardiogram is the definitive test per framework step 5",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-secondary",
+      "phase": "investigations",
+      "item": "Orders bloods to exclude/support secondary causes and assess end-organ effect: HIV test, renal function, glucose/HbA1c, troponin",
+      "answer": "HIV negative, eGFR 52 (mild renal impairment), non-diabetic, troponin mildly and chronically elevated",
+      "why": "Screens for underlying systemic disease and assesses complications (hypertensive nephrosclerosis)",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-acute",
+      "phase": "management",
+      "item": "Outlines acute decongestive management: oxygen, IV diuretics, positioning, monitoring",
+      "answer": "Sit up, oxygen, IV furosemide, fluid balance monitoring",
+      "why": "Immediate stabilisation of acute decompensated heart failure",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Outlines guideline-directed medical therapy: ACEi, beta-blocker, MRA, BP control target, and addresses adherence barriers",
+      "answer": "Re-initiate ACEi and beta-blocker once stable, add spironolactone, target BP <130/80, address adherence barriers",
+      "why": "Definitive management per SA hypertension/heart failure guidelines, targeting the root cause of decompensation",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

@@ -19,7 +19,7 @@
   "history": [
     { "id": "hx-onset", "fact": "Cough started about 6 weeks ago and has gradually worsened", "disclosure": "volunteered", "triggers": [] },
     { "id": "hx-sputum", "fact": "Cough is productive of yellow sputum; twice noticed streaks of blood", "disclosure": "onAsk", "triggers": ["sputum", "phlegm", "coughing up", "blood", "haemoptysis", "wet cough", "productive", "mucus"] },
-    { "id": "hx-nightsweats", "fact": "Drenching night sweats for the past month — has to change her nightdress", "disclosure": "onAsk", "triggers": ["night sweats", "sweating", "sweat at night", "wake up wet"] },
+    { "id": "hx-nightsweats", "fact": "Drenching night sweats for the past month — has to change her nightdress", "disclosure": "onAsk", "triggers": ["night sweats", "sweating", "sweat at night", "wake up wet", "drenched", "soaking", "sweaty", "wet through", "night clothes", "nightdress"] },
     { "id": "hx-weightloss", "fact": "Lost about 6 kg over 2 months without dieting; clothes hang loose", "disclosure": "onAsk", "triggers": ["weight", "lost weight", "clothes", "appetite", "eating", "thinner"] },
     { "id": "hx-fever", "fact": "Feels feverish most evenings, has not measured it", "disclosure": "onAsk", "triggers": ["fever", "hot", "temperature", "chills", "rigors"] },
     { "id": "hx-dyspnoea", "fact": "Gets short of breath climbing the hill to the taxi rank, which is new", "disclosure": "onAsk", "triggers": ["breath", "breathing", "dyspnoea", "exercise", "walking", "stairs", "hill", "exertion"] },

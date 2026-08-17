@@ -1,0 +1,694 @@
+{
+  "id": "haem-001-anaemia-of-chronic-disease",
+  "version": 1,
+  "discipline": "haem",
+  "diagnosis": "Anaemia of chronic disease in HIV and TB",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this woman's anaemia and how you would prioritise your workup.",
+      "modelAnswer": "Start by classifying on MCV — she is normocytic, which narrows things to anaemia of chronic disease, early combined deficiency, or marrow/renal causes rather than pure iron or B12/folate deficiency. Given her known HIV with poor ART adherence, weight loss, night sweats and a 5-week cough with a TB contact, anaemia of chronic disease driven by unsuppressed HIV and likely active TB is most likely. I would still actively exclude true iron deficiency (ferritin can be misleadingly normal/raised in inflammation, but low serum iron with a low-normal rather than raised TIBC favours ACD), exclude megaloblastic anaemia with a smear and B12/folate, and exclude marrow infiltration by checking the other cell lines are normal.",
+      "gradingNotes": "Wants MCV-first reasoning, ranked differential with case-specific evidence for and against, not just a diagnosis label."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "investigations",
+      "question": "Her ferritin came back raised at 210 µg/L. Doesn't a raised ferritin exclude iron deficiency? Explain the pathophysiology behind her iron study pattern.",
+      "modelAnswer": "No — ferritin is an acute phase reactant and will be falsely elevated in any inflammatory state, so a raised or even normal ferritin does not exclude coexisting true iron deficiency. In pure ACD, inflammatory cytokines like IL-6 upregulate hepcidin, which degrades ferroportin on enterocytes and macrophages, trapping iron within stores — this is why serum iron is low but ferritin (reflecting stores) is preserved or raised, with TIBC also low or low-normal because the liver downregulates transferrin production in inflammation. This is the opposite pattern to true iron deficiency, where ferritin is low and TIBC is raised as the body upregulates transferrin to scavenge for iron.",
+      "gradingNotes": "Must articulate hepcidin-ferroportin mechanism and correctly contrast the TIBC direction between ACD and true iron deficiency."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "Would you start this patient on oral iron supplementation while you treat her TB and re-engage her on ART? Justify your answer.",
+      "modelAnswer": "No. This is functional, not absolute, iron deficiency — her iron stores (reflected by ferritin) are adequate but sequestered due to hepcidin-mediated blockade of ferroportin. Oral iron will not correct the anaemia because the iron cannot be mobilised while the inflammatory drive persists, and it carries a theoretical risk of worsening infection by providing free iron to pathogens like Mycobacterium tuberculosis. The correct approach is to treat the underlying disease — start TB treatment and optimise HIV adherence/ART — and reassess the Hb response once the inflammatory drive resolves.",
+      "gradingNotes": "Must explicitly say no to oral iron with the hepcidin/functional deficiency rationale, not just 'treat the cause'."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "history",
+      "question": "Why is it important to specifically screen for neurological symptoms in this patient even though her anaemia is normocytic and points away from B12 deficiency?",
+      "modelAnswer": "Subacute combined degeneration of the cord from B12 deficiency is a red flag that can occur even before macrocytosis is fully established or can coexist with another anaemia masking the typical MCV rise, and missing it risks irreversible neurological damage — dorsal column signs like loss of vibration and proprioception appear before weakness or UMN signs. If neurological signs were found, empirical B12 replacement would need to start immediately without waiting for confirmatory bloods, and folate should never be given alone in that setting as it can precipitate or worsen neurological deterioration.",
+      "gradingNotes": "Wants recognition of SACD as a red flag requiring urgent action independent of the primary anaemia classification, and the folate-alone danger."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Her CD4 count is 142 with an unsuppressed viral load. How does this change your immediate management priorities beyond treating the anaemia?",
+      "modelAnswer": "A CD4 below 200 mandates starting co-trimoxazole preventive therapy against PJP and other opportunistic infections. Given she has active pulmonary TB, TB treatment should start first with ART continued/re-initiated with adherence support — since her CD4 is above 50, ART can continue on its current timing within the first 8 weeks rather than requiring the more urgent 2-week rule reserved for CD4 <50. Her poor adherence needs active exploration and a treatment supporter, since ongoing viraemia is itself perpetuating the chronic inflammatory state driving her anaemia.",
+      "gradingNotes": "Wants CD4-threshold-specific reasoning (co-trimoxazole cutoff, ART timing relative to TB treatment) rather than generic 'start ART'."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "fatigue/pallor → anaemia classification by MCV → chronic disease screen (HIV/TB) → iron studies to separate ACD from true iron deficiency vs megaloblastic anaemia",
+  "patient": {
+    "name": "Thandeka Mkhize",
+    "age": 34,
+    "sex": "F",
+    "occupation": "domestic worker",
+    "personality": "stoic, downplays how tired she has been, apologetic about 'wasting the doctor's time'",
+    "openingLine": "Doctor, I'm just so tired all the time now, I can barely finish my work."
+  },
+  "presentingComplaint": "8-week history of progressive fatigue and shortness of breath on exertion",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Fatigue started gradually about 8 weeks ago and has been getting worse; now struggles to iron clothes standing up for long without resting",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Gets short of breath walking up the driveway at work, which never used to happen; no breathlessness at rest",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "exertion",
+        "walking",
+        "stairs",
+        "hill",
+        "exercise",
+        "tired walking",
+        "short",
+        "tired"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "Occasional fluttering feeling in her chest when climbing stairs, no chest pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "heart racing",
+        "fluttering",
+        "heart pounding",
+        "chest pain",
+        "pain",
+        "heart",
+        "racing",
+        "pounding",
+        "chest"
+      ]
+    },
+    {
+      "id": "hx-pallor-selfnoted",
+      "fact": "Her sister commented that her eyes look 'pale' recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pale",
+        "pallor",
+        "colour",
+        "looking pale",
+        "eyes pale",
+        "skin colour",
+        "looking",
+        "eyes",
+        "skin"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost about 4 kg over the past 2 months, not trying to diet",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "weight loss",
+        "clothes loose",
+        "appetite",
+        "eating less",
+        "thinner",
+        "lost",
+        "loss",
+        "clothes",
+        "loose",
+        "eating",
+        "less"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Has had night sweats for the past month, sometimes soaking her sheets",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat at night",
+        "wake up wet",
+        "drenching",
+        "night",
+        "sweats",
+        "sweat",
+        "wake",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "Cough for about 5 weeks now, occasionally brings up sputum, no blood",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "coughing",
+        "sputum",
+        "phlegm",
+        "mucus",
+        "blood",
+        "coughing up",
+        "haemoptysis",
+        "spit",
+        "chest"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Feels warm and shivery most evenings, has not checked her temperature",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "shivering"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Diagnosed HIV positive 3 years ago; started on ART (TLD) but admits she has missed pills frequently over the past 6 months, last collected refill 4 months ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "test",
+        "tested",
+        "art",
+        "antiretroviral",
+        "tablets",
+        "medication for hiv",
+        "adherence",
+        "clinic",
+        "chronic medication",
+        "treatment",
+        "medication",
+        "chronic"
+      ]
+    },
+    {
+      "id": "hx-tb-contact",
+      "fact": "Her neighbour was recently diagnosed and started on TB treatment; they share a communal tap and sometimes sit together in the evenings",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "neighbour",
+        "household",
+        "exposure",
+        "anyone sick",
+        "family sick",
+        "lives near",
+        "anyone",
+        "sick",
+        "family",
+        "lives",
+        "near"
+      ]
+    },
+    {
+      "id": "hx-diet",
+      "fact": "Eats meat and vegetables regularly when she can afford it, not vegetarian, no alcohol use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diet",
+        "eating",
+        "vegetarian",
+        "vegan",
+        "meat",
+        "food",
+        "nutrition",
+        "alcohol",
+        "drink"
+      ]
+    },
+    {
+      "id": "hx-gi",
+      "fact": "No blood in stool, no black stools, no abdominal pain, no vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "stool",
+        "bowel",
+        "blood in stool",
+        "black stool",
+        "tarry",
+        "abdominal pain",
+        "vomiting",
+        "diarrhoea",
+        "tummy",
+        "blood",
+        "black",
+        "abdominal",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-gynae",
+      "fact": "Periods are regular, normal flow, no heavy bleeding",
+      "disclosure": "onAsk",
+      "triggers": [
+        "periods",
+        "menstrual",
+        "heavy bleeding",
+        "menorrhagia",
+        "cycle",
+        "flow",
+        "heavy",
+        "bleeding"
+      ]
+    },
+    {
+      "id": "hx-neuro",
+      "fact": "No numbness, no tingling in hands or feet, no unsteady walking, no memory problems",
+      "disclosure": "onAsk",
+      "triggers": [
+        "numbness",
+        "tingling",
+        "pins and needles",
+        "unsteady",
+        "balance",
+        "walking funny",
+        "memory",
+        "confusion",
+        "nerve",
+        "pins",
+        "needles",
+        "walking",
+        "funny"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Only takes her ART (TLD) when remembered; no other regular medication, no metformin, no traditional medicine",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "muti",
+        "traditional",
+        "other treatment",
+        "taking anything",
+        "treatment",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous TB treatment, no hospital admissions, no known kidney or liver disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "hospital",
+        "admitted",
+        "kidney",
+        "liver",
+        "past",
+        "before",
+        "conditions",
+        "medical",
+        "history",
+        "previous",
+        "illness"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Umlazi in a two-room house with her two children; works as a domestic worker three days a week; no smoking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "social",
+        "live",
+        "house",
+        "home",
+        "children",
+        "work",
+        "job"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Mother has hypertension; no family history of blood disorders or cancer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "blood disorder",
+        "family",
+        "history",
+        "runs",
+        "blood",
+        "disorder"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, chronically unwell-looking woman. Marked conjunctival and palmar pallor. No jaundice, no glossitis, no angular stomatitis. Mild oral thrush noted on buccal mucosa. Small bilateral cervical lymph nodes, non-tender.",
+    "vitals": {
+      "hr": 112,
+      "bp": "102/64",
+      "rr": 20,
+      "temp": 37.8,
+      "spo2": "96% on room air",
+      "bmi": 19
+    },
+    "respiratory": "Trachea central. Right upper zone: reduced air entry with occasional coarse crackles. No wheeze, no dullness to percussion elsewhere.",
+    "cardio": "Tachycardic, regular rhythm, soft ejection systolic flow murmur at the left sternal edge consistent with high-output state from anaemia, no radiation, JVP not raised.",
+    "abdo": "Soft, non-tender, no hepatomegaly, no splenomegaly, no ascites.",
+    "neuro": "Alert and orientated, vibration and proprioception intact, reflexes normal and symmetrical, gait normal, Romberg negative.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 8.1 g/dL, MCV 82 fL (normocytic), WCC 5.4 x10^9/L, Platelets 398 x10^9/L",
+      "key": true
+    },
+    {
+      "name": "Reticulocyte count",
+      "result": "Low-normal at 1.1% (inadequately elevated for degree of anaemia)",
+      "key": true
+    },
+    {
+      "name": "Iron studies",
+      "result": "Ferritin 210 µg/L (raised), serum iron 4.2 µmol/L (low), TIBC 38 µmol/L (low-normal), transferrin saturation 11%",
+      "key": true
+    },
+    {
+      "name": "CRP",
+      "result": "64 mg/L (elevated)",
+      "key": true
+    },
+    {
+      "name": "HIV viral load and CD4 count",
+      "result": "Viral load 48,600 copies/mL (unsuppressed, consistent with poor adherence); CD4 count 142 cells/µL",
+      "key": true
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB detected, rifampicin resistance NOT detected",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Right upper lobe patchy infiltrate, no cavitation, no effusion",
+      "key": false
+    },
+    {
+      "name": "Peripheral blood smear",
+      "result": "Normocytic normochromic red cells, mild anisocytosis, no hypersegmented neutrophils, no blasts",
+      "key": false
+    },
+    {
+      "name": "Serum B12 and red cell folate",
+      "result": "B12 320 pmol/L (normal), red cell folate normal",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Normal renal function",
+      "key": false
+    },
+    {
+      "name": "LFTs",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "Stool microscopy for ova and parasites",
+      "result": "No ova, cysts or parasites seen",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Anaemia of chronic disease (HIV/TB-driven)",
+      "rank": 1,
+      "for": [
+        "normocytic anaemia",
+        "raised ferritin with low serum iron and low-normal TIBC (classic ACD pattern)",
+        "raised CRP indicating active inflammation",
+        "unsuppressed HIV viral load with low CD4",
+        "newly diagnosed pulmonary TB",
+        "low/inadequate reticulocyte response"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Concurrent true iron deficiency (e.g. hookworm, menorrhagia, GI blood loss)",
+      "rank": 2,
+      "for": [
+        "chronic disease population at risk",
+        "possible dietary insufficiency"
+      ],
+      "against": [
+        "ferritin is raised not low",
+        "normal menstrual history",
+        "no GI blood loss symptoms",
+        "stool microscopy negative for parasites"
+      ]
+    },
+    {
+      "dx": "Megaloblastic anaemia (B12/folate deficiency)",
+      "rank": 3,
+      "for": [
+        "fatigue and pallor can overlap"
+      ],
+      "against": [
+        "normocytic not macrocytic MCV",
+        "no hypersegmented neutrophils on smear",
+        "normal B12 and red cell folate",
+        "no neurological signs"
+      ]
+    },
+    {
+      "dx": "Marrow infiltration (disseminated TB, lymphoma, HIV-related marrow suppression)",
+      "rank": 4,
+      "for": [
+        "advanced HIV with low CD4",
+        "systemic B symptoms (weight loss, night sweats, fever)"
+      ],
+      "against": [
+        "normal white cell and platelet counts (isolated anaemia, not pancytopenia)",
+        "no hepatosplenomegaly"
+      ]
+    },
+    {
+      "dx": "CKD-related anaemia (erythropoietin deficiency)",
+      "rank": 5,
+      "for": [
+        "normocytic anaemia pattern can overlap"
+      ],
+      "against": [
+        "normal renal function on U&E",
+        "no history of hypertension or diabetes"
+      ]
+    }
+  ],
+  "pathophys": {
+    "normocytic/microcytic anaemia despite raised ferritin": "Inflammatory cytokines (IL-6) upregulate hepatic hepcidin, which degrades ferroportin on enterocytes and macrophages, trapping iron within stores (functional iron deficiency) despite adequate total body iron",
+    "fatigue and exertional dyspnoea": "Reduced circulating haemoglobin lowers oxygen-carrying capacity, triggering compensatory tachycardia and increased cardiac output to maintain tissue oxygen delivery, which becomes symptomatic on exertion",
+    "low/inadequate reticulocyte response": "TNF-alpha and IL-1 blunt renal erythropoietin production and blunt marrow responsiveness to erythropoietin, while inflammatory cytokines also mildly shorten red cell lifespan — a triple hit on erythropoiesis",
+    "night sweats and low-grade fever": "Cytokine-mediated (TNF-alpha, IL-1) resetting of the hypothalamic thermoregulatory set-point in chronic granulomatous TB infection",
+    "weight loss": "TNF-alpha driven catabolism and anorexia of chronic infection, compounded by HIV-associated wasting and uncontrolled TB",
+    "flow murmur and tachycardia": "Compensatory high-output state from reduced blood viscosity and oxygen-carrying capacity produces a physiological systolic ejection flow murmur"
+  },
+  "staging": "WHO HIV clinical stage 3 (pulmonary TB, oral candidiasis); CD4 142 cells/µL; virologically unsuppressed on ART due to poor adherence; drug-susceptible TB, new episode",
+  "management": {
+    "immediate": [
+      "Assess for symptomatic/severe anaemia requiring transfusion (Hb 8.1 g/dL with tachycardia but haemodynamically stable — transfusion not currently indicated per SA EML thresholds, reassess if Hb <7 g/dL or decompensating)",
+      "Notify TB (notifiable medical condition)",
+      "Respiratory/cough hygiene counselling"
+    ],
+    "definitive": [
+      "Start standard TB treatment 2HRZE/4HR per SA National TB guidelines",
+      "Adherence counselling and re-engagement in HIV care; continue TLD, address barriers to adherence",
+      "Co-trimoxazole preventive therapy (CD4 <200)",
+      "Pyridoxine with isoniazid",
+      "Do NOT give oral iron — ferritin raised, iron studies show functional (not absolute) iron deficiency; oral iron will not correct ACD and could theoretically worsen infection"
+    ],
+    "supportive": [
+      "Nutritional support and grant/social work referral if eligible",
+      "Contact tracing and household/close-contact TB screening",
+      "Adherence counselling and treatment supporter for both TB and ART",
+      "Counsel on IRIS symptoms once ART/TB treatment optimised"
+    ],
+    "followUp": [
+      "Repeat FBC in 4-6 weeks to assess Hb response to TB treatment and ART re-suppression",
+      "Sputum smear/GeneXpert follow-up at 2 months of TB treatment",
+      "Repeat viral load at 6 months to confirm re-suppression on ART",
+      "Monitor for symptomatic anaemia; escalate to transfusion or further work-up if Hb falls or fails to improve despite treating underlying disease"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-confirm-severity",
+      "phase": "history",
+      "item": "Confirms anaemia symptoms and assesses severity (fatigue, dyspnoea, palpitations, symptoms of decompensation)",
+      "answer": "Progressive fatigue and exertional dyspnoea over 8 weeks, occasional palpitations, no dyspnoea at rest",
+      "why": "Establishes severity/symptomatology before further workup, per framework step 1",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-chronicity",
+      "phase": "history",
+      "item": "Establishes chronicity and systemic/constitutional features (duration, weight loss, night sweats, fevers, appetite)",
+      "answer": "8-week gradual onset, 4kg weight loss, night sweats for a month, evening fevers",
+      "why": "Distinguishes chronic process from acute blood loss/haemolysis and flags underlying chronic illness",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-screen",
+      "phase": "history",
+      "item": "Asks HIV status, ART history and adherence in detail",
+      "answer": "HIV positive 3 years, on TLD but poor adherence over past 6 months, last refill 4 months ago",
+      "why": "HIV is the single most important background driver of ACD in this population and adherence detail changes management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB symptoms (cough >2 weeks, haemoptysis) and TB contacts",
+      "answer": "5-week cough with sputum, no blood; recent close contact with neighbour on TB treatment",
+      "why": "Cough >2 weeks with contact history triggers mandatory TB workup per SA guidelines",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-diet-drug-gi",
+      "phase": "history",
+      "item": "Screens diet, drug history (metformin, anticonvulsants, NSAIDs) and GI/gynae blood loss sources",
+      "answer": "Normal diet, no alcohol, no relevant drugs, no GI bleeding, normal periods",
+      "why": "Excludes alternative/coexisting causes of anaemia (iron deficiency from blood loss, B12/folate deficiency from drugs/diet) before attributing picture to ACD",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-neuro-screen",
+      "phase": "history",
+      "item": "Screens for neurological symptoms suggestive of B12 deficiency (paraesthesiae, gait disturbance, memory change)",
+      "answer": "No numbness, tingling, unsteady gait or memory problems",
+      "why": "Red flag screen — must exclude subacute combined degeneration before assuming ACD, especially given need to differentiate from megaloblastic anaemia",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Performs general examination for pallor, wasting, lymphadenopathy, oral thrush, glossitis",
+      "answer": "Marked pallor, thin, mild oral thrush, small cervical nodes, no glossitis",
+      "why": "General signs support chronic disease/immunosuppression and help exclude nutritional deficiency anaemias",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-resp-cardio",
+      "phase": "examination",
+      "item": "Performs focused respiratory and cardiovascular examination",
+      "answer": "Right upper zone crackles/reduced air entry; tachycardia with flow murmur",
+      "why": "Localises pulmonary TB pathology and identifies compensatory high-output state from anaemia",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-neuro",
+      "phase": "examination",
+      "item": "Performs neurological exam including dorsal column testing (vibration, proprioception) if B12 deficiency being considered",
+      "answer": "Vibration and proprioception intact, normal reflexes and gait",
+      "why": "Excludes subacute combined degeneration, a red flag requiring empirical B12 treatment if present",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers ranked differential with linked reasoning (ACD > true iron deficiency > megaloblastic anaemia > marrow infiltration > CKD anaemia)",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning using MCV classification and chronic disease screen is the exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-mcv",
+      "phase": "investigations",
+      "item": "Orders FBC with smear and interprets MCV to classify the anaemia",
+      "answer": "Hb 8.1, normocytic MCV 82, smear shows no hypersegmented neutrophils or blasts",
+      "why": "MCV classification is the pivotal branch point directing all further workup",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-iron-retic",
+      "phase": "investigations",
+      "item": "Orders iron studies and reticulocyte count to distinguish ACD from true iron deficiency and haemolysis",
+      "answer": "Raised ferritin, low serum iron, low-normal TIBC, transferrin saturation 11%; low reticulocyte response",
+      "why": "Classic ACD pattern (raised ferritin distinguishes from true iron deficiency where ferritin would be low)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-hiv-tb",
+      "phase": "investigations",
+      "item": "Orders/interprets HIV viral load and CD4, sputum GeneXpert MTB/RIF, and chest X-ray",
+      "answer": "VL 48,600 unsuppressed, CD4 142; GeneXpert MTB detected, rifampicin sensitive; CXR right upper lobe infiltrate",
+      "why": "Confirms the driving chronic inflammatory illnesses (poorly controlled HIV and active pulmonary TB) per SA guidelines",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines management: treat underlying TB and re-engage HIV care/adherence, avoid oral iron, transfuse only if severe/symptomatic, notify and contact-trace",
+      "answer": null,
+      "why": "ACD management is treat-the-cause, not empirical iron; must recognise avoidance of oral iron as a key safety point",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

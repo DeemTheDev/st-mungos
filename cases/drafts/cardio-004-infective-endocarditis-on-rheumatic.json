@@ -1,0 +1,713 @@
+{
+  "id": "cardio-004-infective-endocarditis-on-rheumatic",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Infective endocarditis on a rheumatic valve",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This patient presents with the classic CCF syndrome — dyspnoea, orthopnoea, oedema. Walk me through how you moved from that syndrome to your leading diagnosis of infective endocarditis.",
+      "modelAnswer": "First confirm the syndrome (exertional dyspnoea, orthopnoea, PND, oedema = fluid overload/low CO). Localise — this is biventricular with a loud regurgitant murmur pointing to a valvular dominant lesion. History of childhood rheumatic fever and a known murmur identifies rheumatic mitral disease as the dominant structural lesion. Then hunt for the acute precipitant of decompensation — intermittent fevers with rigors, a recent unprotected dental extraction, and peripheral stigmata (splinter haemorrhages, Osler's node) all point away from simple progressive valve failure and toward an infective precipitant on the damaged valve, i.e. infective endocarditis superimposed on rheumatic heart disease.",
+      "gradingNotes": "Wants the structured framework: syndrome confirmation to localisation to dominant lesion to precipitant hunt to complication screen, ending at IE. Marks for explicit use of this sequence, not just naming the diagnosis."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism behind the splinter haemorrhages and Osler's node you found on this patient's hands.",
+      "modelAnswer": "The vegetation on the mitral valve continuously showers small septic microemboli and immune complexes into the systemic circulation. These lodge in small vessels of the nailbeds and digital pulp, causing microinfarction (splinter haemorrhages) and immune-complex-mediated vasculitis producing tender nodules (Osler's nodes), as distinct from painless embolic Janeway lesions on the palms/soles.",
+      "gradingNotes": "Should distinguish embolic vs immune-complex mechanisms and correctly differentiate Osler's nodes (tender, immune complex) from Janeway lesions (painless, embolic)."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Her urinalysis shows microscopic haematuria and mild proteinuria. How does this fit into the overall picture, and does it change your management?",
+      "modelAnswer": "This is consistent with immune-complex glomerulonephritis secondary to infective endocarditis (or renal emboli/infarction), a recognised complication from circulating immune complexes depositing in glomeruli. It doesn't change the antibiotic strategy directly but mandates monitoring of renal function, avoidance of nephrotoxic drugs, cautious dosing of gentamicin if used, and follow-up urinalysis/renal function to ensure resolution with treatment of the underlying infection.",
+      "gradingNotes": "Wants recognition of endocarditis-associated glomerulonephritis as a complication, plus practical management implications (nephrotoxic drug avoidance, monitoring)."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "She stopped her benzathine penicillin prophylaxis years ago. What is the long-term plan for secondary prevention, and why does it matter here?",
+      "modelAnswer": "Secondary rheumatic fever prophylaxis with 3-weekly IM benzathine penicillin should be lifelong given established valve damage, as it prevents further streptococcal pharyngitis-triggered rheumatic fever recurrences that would worsen valve damage. Its cessation here is directly implicated in the trajectory toward a badly damaged valve now colonised by endocarditis. This needs to be restarted once the acute infection is treated, alongside adherence counselling addressing the real-world barriers (clinic access, cost, motivation) that led to discontinuation.",
+      "gradingNotes": "Wants explicit link between non-adherence to secondary prophylaxis and disease progression, plus a practical, socially-aware follow-up plan."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "exertional dyspnoea + orthopnoea/PND + peripheral oedema (CCF syndrome) → localise LVF/RVF/biventricular → grade NYHA → identify dominant structural lesion (rheumatic mitral disease) → hunt acute precipitant of decompensation (fever/new murmur/embolic phenomena pointing to infective endocarditis) → assess complications (renal, rhythm, hepatic) → screen reversible contributors",
+  "patient": {
+    "name": "Nokuthula Mkhize",
+    "age": 24,
+    "sex": "F",
+    "occupation": "hairdresser's assistant in Pinetown",
+    "personality": "chatty but downplays how unwell she has felt, keeps saying she thought it was 'just flu that won't go'",
+    "openingLine": "Doctor, I've been so short of breath and tired, and I keep getting these fevers that come and go..."
+  },
+  "presentingComplaint": "3-week history of intermittent fevers, worsening shortness of breath and swollen ankles",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms began about 3 weeks ago with vague malaise and low-grade fevers that come and go, then breathlessness and ankle swelling developed over the last 10 days",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Gets breathless walking half a flight of stairs now, whereas a month ago she could walk to the taxi rank without stopping (NYHA III)",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "exertion",
+        "walking",
+        "stairs",
+        "climb",
+        "effort",
+        "tired",
+        "fatigue",
+        "short"
+      ]
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Now sleeps propped up on 3 pillows; used to sleep flat",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "lying flat",
+        "sleep",
+        "lie down",
+        "flat",
+        "propped",
+        "lying",
+        "lie",
+        "down"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "Woken twice last week gasping for air, had to sit up and open the window",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pnd",
+        "paroxysmal",
+        "wake up",
+        "gasping",
+        "night",
+        "choking",
+        "air hunger",
+        "sudden breathless",
+        "wake",
+        "air",
+        "hunger",
+        "sudden",
+        "breathless"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Ankles and feet swollen for about a week, worse by evening; shoes feel tight",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "oedema",
+        "edema",
+        "ankles",
+        "feet",
+        "legs",
+        "puffy",
+        "swollen"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Fevers have been intermittent, sometimes with drenching sweats and shivering (rigors), not constant",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "temperature",
+        "hot",
+        "chills",
+        "rigors",
+        "sweats",
+        "sweating"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost some weight, hasn't been eating well, feels generally wasted and weak",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "appetite",
+        "eating",
+        "thinner",
+        "weak",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-jointpains",
+      "fact": "Had painful, swollen joints (knees and ankles) as a child around age 9, was told it was 'rheumatic fever' and given injections at the clinic for years but stopped going a few years ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rheumatic fever",
+        "joint pain",
+        "joints",
+        "childhood illness",
+        "injections",
+        "penicillin injection",
+        "swollen joints",
+        "arthritis",
+        "chorea",
+        "st vitus",
+        "rheumatic",
+        "fever",
+        "joint",
+        "pain",
+        "childhood",
+        "illness",
+        "penicillin",
+        "injection",
+        "swollen",
+        "vitus"
+      ]
+    },
+    {
+      "id": "hx-murmur",
+      "fact": "Was told as a teenager that she has a 'heart murmur' or 'weak valve' but never followed up regularly at a cardiac clinic",
+      "disclosure": "onAsk",
+      "triggers": [
+        "murmur",
+        "heart valve",
+        "heart problem",
+        "told about heart",
+        "valve disease",
+        "cardiac clinic",
+        "heart condition",
+        "heart",
+        "valve",
+        "problem",
+        "told",
+        "disease",
+        "cardiac",
+        "clinic",
+        "condition"
+      ]
+    },
+    {
+      "id": "hx-dental",
+      "fact": "Had a tooth extracted at a local dentist about a month ago, no antibiotic cover given beforehand",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dental",
+        "tooth",
+        "teeth",
+        "dentist",
+        "extraction",
+        "procedure",
+        "recent procedure",
+        "recent"
+      ]
+    },
+    {
+      "id": "hx-skin",
+      "fact": "Noticed a few tender red bumps on her fingertips and some small dark lines under her fingernails in the past week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fingertip",
+        "finger",
+        "nail",
+        "splinter",
+        "bumps",
+        "skin",
+        "rash",
+        "spots",
+        "toes",
+        "painful lumps",
+        "osler",
+        "janeway",
+        "painful",
+        "lumps"
+      ]
+    },
+    {
+      "id": "hx-jointpain-recent",
+      "fact": "No recent joint pains or swelling currently, just the chronic history from childhood",
+      "disclosure": "onAsk",
+      "triggers": [
+        "joint pain now",
+        "current joints",
+        "arthritis now",
+        "recent joints",
+        "joint",
+        "pain",
+        "current",
+        "joints",
+        "arthritis",
+        "recent"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "sore chest",
+        "pleuritic",
+        "chest",
+        "sore"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "No cough, no haemoptysis, no night sweats beyond the fever episodes",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "sputum",
+        "phlegm",
+        "tb",
+        "blood",
+        "haemoptysis",
+        "night sweats",
+        "night",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 6 months ago at antenatal clinic (not pregnant now)",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-iv-drug",
+      "fact": "No history of injecting drug use, no tattoos or piercings recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "drugs",
+        "injecting",
+        "iv drug",
+        "needle",
+        "tattoo",
+        "piercing",
+        "drug"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No diabetes, no known hypertension, no previous hospital admissions as an adult besides the rheumatic fever treatment as a child",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "diabetes",
+        "blood pressure",
+        "medical",
+        "history",
+        "blood",
+        "pressure"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Not on any chronic medication currently, stopped her benzathine penicillin injections around age 16",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "muti",
+        "penicillin",
+        "injections",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "penicillin allergy",
+        "penicillin",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Non-smoker, drinks alcohol occasionally at weekends, lives with her mother and younger brother in Clermont",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "family situation",
+        "family",
+        "situation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Family history unremarkable; mother is well, no known heart disease in the family besides herself",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No urinary symptoms, no visual disturbance, no headache, no focal weakness or numbness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "urine",
+        "urinary",
+        "vision",
+        "numbness",
+        "weakness",
+        "stroke symptoms",
+        "other symptoms",
+        "anything else",
+        "stroke",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, pale, chronically unwell-looking young woman. Low-grade fever palpable. Conjunctival pallor. Clubbing absent. Splinter haemorrhages noted in two fingernails. Tender erythematous nodules on the pulp of the left index finger (Osler's nodes). No Janeway lesions seen today. Mild peripheral cyanosis absent.",
+    "vitals": {
+      "hr": 112,
+      "bp": "98/58",
+      "rr": 24,
+      "temp": 38.4,
+      "spo2": "95% on room air",
+      "bmi": 17.5
+    },
+    "respiratory": "Fine bibasal inspiratory crepitations, no wheeze, reduced air entry at both lung bases suggestive of small effusions.",
+    "cardio": "Apex beat displaced to the anterior axillary line in the 6th intercostal space, thrusting and tapping in character. Loud pansystolic murmur at the apex radiating to the axilla (mitral regurgitation), plus a soft mid-diastolic rumble. JVP raised 5cm above the sternal angle, irregularly irregular pulse consistent with atrial fibrillation. No pericardial rub.",
+    "abdo": "Soft, mildly tender in the right upper quadrant with 3cm smooth tender hepatomegaly. No splenomegaly palpable today though spleen tip was noted on a previous exam by the intern. No ascites.",
+    "neuro": "Alert and orientated, no focal deficits, no meningism; fundoscopy not yet performed (Roth spots to be sought).",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Blood cultures x3 (from separate sites, before antibiotics)",
+      "result": "2 of 3 bottles growing Streptococcus viridans group (Strep. mitis), sensitive to penicillin",
+      "key": true
+    },
+    {
+      "name": "Transthoracic echocardiogram",
+      "result": "Rheumatic mitral valve disease with severe mitral regurgitation and mild stenosis; 9mm mobile vegetation on the anterior mitral leaflet; LA dilated; LV dilated with EF 48% (mildly reduced); no significant pericardial effusion",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 8.9 g/dL normocytic normochromic, WCC 14.2 x10^9/L (neutrophilia), platelets 620 x10^9/L",
+      "key": true
+    },
+    {
+      "name": "ESR and CRP",
+      "result": "ESR 98 mm/hr, CRP 142 mg/L",
+      "key": true
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Urea 9.1 mmol/L, creatinine 118 µmol/L (mildly elevated), eGFR 62",
+      "key": false
+    },
+    {
+      "name": "Urinalysis",
+      "result": "Microscopic haematuria and mild proteinuria, no casts seen — suggestive of immune complex glomerulonephritis or renal emboli",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Atrial fibrillation, ventricular rate ~112, no acute ST changes, no evidence of new conduction block (PR interval normal — important to trend for aortic root abscess)",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly (CTR 58%), mild bilateral basal pleural effusions, no frank pulmonary oedema pattern",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (repeat, consistent with history)",
+      "key": false
+    },
+    {
+      "name": "Rheumatoid factor / ANA",
+      "result": "Not indicated as first-line but sent given renal findings — mildly positive RF, non-specific, low titre, consistent with immune complex phenomena of endocarditis rather than primary rheumatological disease",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Infective endocarditis on a rheumatic valve",
+      "rank": 1,
+      "for": [
+        "known childhood rheumatic fever and murmur",
+        "fever with rigors",
+        "new/worsening regurgitant murmur",
+        "peripheral stigmata (splinter haemorrhages, Osler's node)",
+        "recent dental extraction without antibiotic cover",
+        "microscopic haematuria (immune complex GN)",
+        "anaemia and raised inflammatory markers"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Decompensated rheumatic heart disease without endocarditis (progressive valve failure)",
+      "rank": 2,
+      "for": [
+        "known rheumatic valve disease",
+        "progressive dyspnoea, orthopnoea, PND, oedema",
+        "displaced apex, loud murmur"
+      ],
+      "against": [
+        "does not explain intermittent fevers/rigors",
+        "does not explain splinter haemorrhages/Osler's node",
+        "does not explain new haematuria"
+      ]
+    },
+    {
+      "dx": "Pulmonary tuberculosis",
+      "rank": 3,
+      "for": [
+        "fever, weight loss, malaise, high TB prevalence in KZN"
+      ],
+      "against": [
+        "no cough or haemoptysis",
+        "no night sweats beyond fever episodes",
+        "murmur and peripheral stigmata point to a cardiac source"
+      ]
+    },
+    {
+      "dx": "Acute rheumatic fever recurrence",
+      "rank": 4,
+      "for": [
+        "history of rheumatic fever in childhood",
+        "fever",
+        "new/worsening murmur"
+      ],
+      "against": [
+        "no current migratory arthritis or chorea",
+        "age atypical for recurrence (more common in children/adolescents)",
+        "peripheral embolic stigmata better explained by endocarditis"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Fever with rigors": "Bacteraemia from the vegetation showers organisms and pyrogenic cytokines (IL-1, IL-6, TNF-alpha) intermittently into the circulation, resetting the hypothalamic set-point episodically",
+    "New/worsening pansystolic murmur": "Vegetation growth and leaflet destruction on the already scarred rheumatic mitral valve worsens coaptation, increasing regurgitant volume and turbulent flow",
+    "Orthopnoea/PND": "Acute-on-chronic volume overload from worsening mitral regurgitation raises left atrial and pulmonary capillary hydrostatic pressure; supine redistribution of peripheral fluid further raises preload at night",
+    "Splinter haemorrhages and Osler's nodes": "Septic microemboli and immune complex deposition in small vessels of the nailbeds and digital pulp cause vasculitic/embolic infarcts",
+    "Microscopic haematuria/renal impairment": "Circulating immune complexes deposit in the glomerular basement membrane causing an immune-complex (endocarditis-associated) glomerulonephritis, and/or septic renal emboli cause focal infarction",
+    "Peripheral oedema and raised JVP": "Acute worsening of mitral regurgitation precipitates biventricular volume overload with raised systemic venous pressure, driving transcapillary fluid filtration into dependent tissues"
+  },
+  "staging": "NYHA class III (dyspnoea on less-than-ordinary exertion); Modified Duke Criteria - Definite infective endocarditis (2 major criteria: positive blood cultures typical organism x2, echocardiographic vegetation) on a background of established rheumatic mitral valve disease",
+  "management": {
+    "immediate": [
+      "Admit for continuous cardiac monitoring given new AF and haemodynamic compromise",
+      "Take 3 sets of blood cultures from separate sites BEFORE starting antibiotics",
+      "Empirical IV antibiotics after cultures drawn (e.g. penicillin G plus gentamicin per local protocol) pending sensitivities, then narrow to benzylpenicillin once fully sensitive viridans strep confirmed",
+      "Sit upright, supplemental O2 if hypoxic, cautious IV furosemide for volume overload",
+      "Urgent cardiology/cardiothoracic referral given severe MR with vegetation for consideration of valve surgery timing"
+    ],
+    "definitive": [
+      "Prolonged IV antibiotic course (typically 4 weeks penicillin-sensitive viridans strep, with gentamicin synergy for the first 2 weeks per protocol) via PICC line or extended hospital stay",
+      "Surgical valve repair/replacement referral - indications here include severe MR causing heart failure and large mobile vegetation with embolic risk",
+      "Anticoagulation for AF requires careful individualised discussion given endocarditis and embolic/haemorrhagic risk - deferred pending cardiology/cardiothoracic input",
+      "Recommence secondary rheumatic fever prophylaxis (benzathine penicillin IM 3-weekly) once acute infection treated, continued long-term/lifelong given valve damage"
+    ],
+    "supportive": [
+      "Fluid restriction (~1-1.5L/day) and daily weights while decompensated",
+      "Nutritional support given weight loss and cachexia",
+      "Dental hygiene education and future antibiotic prophylaxis counselling for high-risk procedures",
+      "Patient education on recognising relapse (fever, breathlessness) and adherence to prophylaxis and clinic follow-up"
+    ],
+    "followUp": [
+      "Repeat echocardiography to monitor vegetation size/response and valve function",
+      "Serial CRP/ESR and clinical review to confirm response to therapy",
+      "Renal function and urinalysis follow-up for the immune-complex glomerulonephritis",
+      "Long-term rheumatic heart disease/valve clinic follow-up with cardiology, addressing transport/adherence barriers"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, gains consent, establishes rapport",
+      "answer": null,
+      "why": "Professionalism/communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-dyspnoea-char",
+      "phase": "history",
+      "item": "Characterises dyspnoea: onset, exertional threshold, orthopnoea, PND, grades NYHA class",
+      "answer": "NYHA III, 3 pillows orthopnoea, PND twice in past week",
+      "why": "Confirms the CCF syndrome and grades functional severity per the framework",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-oedema",
+      "phase": "history",
+      "item": "Asks about oedema distribution, onset, weight gain, abdominal distension/RUQ pain",
+      "answer": "Bilateral ankle swelling for a week, RUQ discomfort from hepatomegaly",
+      "why": "Localises fluid overload and looks for hepatic congestion",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-rhd-history",
+      "phase": "history",
+      "item": "Asks about childhood joint pains/chorea/rheumatic fever and any known heart murmur",
+      "answer": "Rheumatic fever age 9 with joint pains, treated with injections; told she has a heart murmur as a teenager, stopped prophylaxis",
+      "why": "Identifies the dominant structural lesion (rheumatic valve disease) per the presentation-order framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-precipitant-screen",
+      "phase": "history",
+      "item": "Screens for a precipitant of decompensation: fevers/rigors, recent dental/procedural exposure, medication adherence, infection symptoms",
+      "answer": "Intermittent fevers with rigors, recent unprotected tooth extraction, stopped penicillin prophylaxis years ago",
+      "why": "Hunting the acute precipitant is a core framework step and reveals the endocarditis trigger",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-embolic-screen",
+      "phase": "history",
+      "item": "Asks about skin/nail changes, visual disturbance, focal neurological symptoms suggesting embolic phenomena",
+      "answer": "Noticed tender fingertip bumps and dark nail-bed lines; no neurological or visual symptoms",
+      "why": "Screens for peripheral stigmata and embolic complications of endocarditis",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-cardio",
+      "phase": "examination",
+      "item": "Performs focused cardiovascular exam: apex character/position, murmurs, JVP, pulse rhythm",
+      "answer": "Displaced thrusting apex, pansystolic murmur at apex radiating to axilla plus diastolic rumble, raised JVP, irregularly irregular pulse (AF)",
+      "why": "Localises the dominant lesion and identifies AF as a complication/precipitant",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-stigmata",
+      "phase": "examination",
+      "item": "Actively looks for peripheral stigmata of endocarditis: splinter haemorrhages, Osler's nodes, Janeway lesions, and offers fundoscopy for Roth spots",
+      "answer": "Splinter haemorrhages and tender Osler's node found",
+      "why": "These signs are the critical clinical bridge from 'CCF' to 'infective endocarditis' diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-resp-abdo",
+      "phase": "examination",
+      "item": "Examines respiratory system for crepitations/effusion and abdomen for hepatomegaly/ascites",
+      "answer": "Bibasal crepitations and reduced air entry, tender hepatomegaly, no ascites",
+      "why": "Confirms biventricular congestion pattern",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing infective endocarditis from decompensated RHD alone, TB, and recurrent rheumatic fever, with reasoning for and against each",
+      "answer": null,
+      "why": "Symptom-to-diagnosis reasoning is the core exam philosophy - the case is a diagnostic escalation from CCF syndrome to endocarditis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-cultures",
+      "phase": "investigations",
+      "item": "Requests 3 sets of blood cultures from separate sites BEFORE starting antibiotics, plus echocardiography",
+      "answer": "2/3 bottles grew Strep. viridans; echo shows vegetation and severe MR on rheumatic valve",
+      "why": "Confirmatory pathway per Modified Duke Criteria; sequencing (cultures before antibiotics) is a critical practice point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-supportive",
+      "phase": "investigations",
+      "item": "Requests supportive work-up: FBC, ESR/CRP, U&E, urinalysis, ECG, CXR",
+      "answer": "Anaemia, markedly raised inflammatory markers, mild renal impairment with haematuria, AF on ECG, cardiomegaly with effusions on CXR",
+      "why": "Completes the resource-real district/regional panel and identifies complications (renal, rhythm)",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-antibiotics",
+      "phase": "management",
+      "item": "Outlines prolonged targeted IV antibiotic therapy (culture-directed, penicillin-based for viridans strep) and surgical referral for severe MR with vegetation",
+      "answer": null,
+      "why": "Definitive management per Duke-confirmed infective endocarditis and SA practice",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-ccf-prophylaxis",
+      "phase": "management",
+      "item": "Addresses acute heart failure management (diuresis, fluid restriction) AND long-term secondary rheumatic fever prophylaxis/adherence counselling",
+      "answer": null,
+      "why": "Links the acute decompensation management to the chronic underlying disease and its modifiable driver (non-adherence to prophylaxis)",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 20,
+    "clinicalReasoning": 20,
+    "investigations": 10,
+    "management": 15
+  }
+}

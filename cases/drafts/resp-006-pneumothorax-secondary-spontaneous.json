@@ -1,0 +1,626 @@
+{
+  "id": "resp-006-pneumothorax-secondary-spontaneous",
+  "version": 1,
+  "discipline": "resp",
+  "diagnosis": "Pneumothorax (secondary, spontaneous)",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This man has a background of chronic wheeze that sounds like asthma, but today's presentation is different. Walk me through your differential and how you would distinguish pneumothorax from an acute severe asthma exacerbation.",
+      "modelAnswer": "Both can present with acute dyspnoea and tachypnoea, but pneumothorax classically causes sudden pleuritic pain, asymmetric chest signs (reduced expansion, hyper-resonance, absent breath sounds, tracheal deviation) on one side, whereas asthma produces symmetrical polyphonic wheeze with prolonged expiration and preserved (though quiet if severe) breath sounds bilaterally. His background of treated TB predisposes to bullae/cavities that can rupture, making secondary pneumothorax the leading diagnosis here; a silent chest in asthma would be bilateral and denote critical airflow limitation, not a focal absent-breath-sounds sign.",
+      "gradingNotes": "Full marks for correctly ranking pneumothorax first with mechanistic distinction from asthma; must mention asymmetry and background lung disease as the key differentiators."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism behind the tracheal deviation you found on examination.",
+      "modelAnswer": "As air continues to enter the pleural space (via a one-way flap at the ruptured bulla) faster than it can be released, intrapleural pressure on the affected side rises. This pushes the mediastinum, including the trachea, away from the affected side. This is a sign of a large or tension-developing pneumothorax and is a red flag for imminent cardiovascular compromise.",
+      "gradingNotes": "Expects mention of rising intrapleural pressure and one-way valve mechanism; should flag this as a warning sign requiring urgent action, not an incidental exam finding."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "Why is it important that he stopped his ART eight months ago in the context of this presentation?",
+      "modelAnswer": "Defaulting ART has allowed ongoing HIV-related immune suppression (CD4 142), increasing his risk of recurrent or reactivated TB and other opportunistic infections, and contributing to the chronic lung damage (fibrocavitary disease) that predisposed to this secondary pneumothorax. It also broadens his differential (PJP, recurrent TB) and mandates re-engagement in HIV care as part of definitive management.",
+      "gradingNotes": "Wants the link between ART default, immunosuppression, underlying lung pathology and recurrence risk, not just 'he needs to restart ART'."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "His PEFR post-bronchodilator only improved by 11%. How do you interpret this and does it change your primary diagnosis?",
+      "modelAnswer": "An improvement of ≥60 L/min or ≥20% is required to call PEFR reversibility diagnostic of asthma; 11% falls short of this threshold, arguing against clinically significant reversible airway disease as the primary process today. This supports the pneumothorax as the dominant acute pathology, though it does not fully exclude a degree of coexisting reactive airway disease given his chronic wheeze history.",
+      "gradingNotes": "Must correctly quote the reversibility criterion and apply it appropriately; should not abandon the chronic wheeze history entirely, but correctly prioritise the mechanical diagnosis for today's presentation."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Why is this pneumothorax managed more aggressively (with a chest drain) rather than simple observation or aspiration, unlike some primary spontaneous pneumothoraces?",
+      "modelAnswer": "This is a secondary spontaneous pneumothorax occurring on abnormal, TB-scarred lung with reduced respiratory reserve; such patients tolerate lung collapse poorly and are at higher risk of tension physiology and respiratory failure. Guidelines recommend intercostal drain insertion for secondary pneumothoraces above a smaller size threshold (and in symptomatic/hypoxic patients) rather than simple aspiration or observation, which is reserved for small, minimally symptomatic primary pneumothoraces in patients with normal underlying lungs.",
+      "gradingNotes": "Wants explicit primary-vs-secondary management distinction and reasoning based on reduced respiratory reserve, not just 'it's bigger so needs a drain'."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "acute dyspnoea/wheeze with sudden pleuritic pain — episodic breathlessness framework applied to exclude asthma mimics and red flags",
+  "patient": {
+    "name": "Sipho Ngcobo",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "anxious, guarded about his HIV status, tends to downplay how unwell he feels until pressed",
+    "openingLine": "Doctor, I was fine and then suddenly I couldn't breathe and my chest just grabbed me..."
+  },
+  "presentingComplaint": "Sudden-onset right-sided pleuritic chest pain and breathlessness while at work, 3 hours ago",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms began abruptly about 3 hours ago while sitting at his guard post, no exertion at the time",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-pain-character",
+      "fact": "Sharp, stabbing right-sided chest pain, worse on deep breathing and coughing",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "chest pain",
+        "sharp",
+        "stabbing",
+        "pleuritic",
+        "breathe in",
+        "deep breath",
+        "worse when",
+        "chest",
+        "breathe",
+        "deep",
+        "breath",
+        "worse"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Sudden severe shortness of breath since the pain started, no gradual build-up like his usual chest problems",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "short of breath",
+        "dyspnoea",
+        "cant breathe",
+        "difficulty breathing",
+        "gasping",
+        "short",
+        "cant",
+        "breathe",
+        "difficulty"
+      ]
+    },
+    {
+      "id": "hx-wheeze-history",
+      "fact": "Has had intermittent wheeze and chest tightness for years, worse at night and with dust, previously told it was 'asthma' but never properly worked up",
+      "disclosure": "onAsk",
+      "triggers": [
+        "wheeze",
+        "asthma",
+        "chest tightness",
+        "whistling",
+        "before",
+        "previous chest problem",
+        "history of",
+        "chest",
+        "tightness",
+        "previous",
+        "problem",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "Chronic cough on and off for months, sometimes productive of white sputum, no haemoptysis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "sputum",
+        "phlegm",
+        "coughing up",
+        "blood",
+        "haemoptysis",
+        "productive",
+        "mucus",
+        "coughing"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Has lost some weight over the past 2-3 months, thinks it's from 'stress at work'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "thinner",
+        "clothes",
+        "appetite",
+        "eating",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Occasional night sweats, not drenching, over the last month",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "sweat at night",
+        "wake up wet",
+        "night",
+        "sweats",
+        "sweat",
+        "wake",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Diagnosed HIV positive four years ago, was on ART but stopped taking tablets about 8 months ago after moving to a new job and losing his clinic card",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "art",
+        "antiretroviral",
+        "status",
+        "tablets",
+        "medication for hiv",
+        "clinic",
+        "positive",
+        "tested",
+        "medication"
+      ]
+    },
+    {
+      "id": "hx-tb-history",
+      "fact": "Treated for pulmonary TB twice before — once 5 years ago and again 2 years ago, both times completed treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "treated before",
+        "previous tb",
+        "chest infection before",
+        "cured",
+        "completed treatment",
+        "treated",
+        "before",
+        "previous",
+        "chest",
+        "infection",
+        "completed",
+        "treatment"
+      ]
+    },
+    {
+      "id": "hx-smoking",
+      "fact": "Smokes about 10 cigarettes a day for the past 15 years",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks alcohol socially on weekends, no history of heavy binge drinking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "drinking",
+        "beer"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "medication allergy",
+        "medication",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular medication currently since stopping ART; occasionally uses a friend's salbutamol inhaler for wheeze",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "inhaler",
+        "puffer",
+        "treatment",
+        "taking anything",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-no-nsaid",
+      "fact": "No recent NSAID or beta-blocker use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "ibuprofen",
+        "beta blocker",
+        "anti-inflammatory",
+        "painkillers",
+        "beta",
+        "blocker"
+      ]
+    },
+    {
+      "id": "hx-similar-before",
+      "fact": "Has never had an episode exactly like this before — his usual wheeze never came on this suddenly or with pain like this",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "happened before",
+        "similar",
+        "first time",
+        "previous episode like this",
+        "happened",
+        "first",
+        "previous",
+        "episode"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives alone in a rented room in KwaMashu; works night shifts as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "live",
+        "home",
+        "house",
+        "social",
+        "work",
+        "job",
+        "occupation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of heart disease, asthma or lung disease that he knows of",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No leg swelling, no palpitations, no fever felt currently, no recent trauma to the chest",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "legs",
+        "palpitations",
+        "fever",
+        "trauma",
+        "injury",
+        "hit",
+        "fall",
+        "other symptoms",
+        "anything else",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin, anxious-looking man sitting forward, using accessory muscles of respiration. No cyanosis at rest. No oral thrush. Mild pallor.",
+    "vitals": {
+      "hr": 118,
+      "bp": "104/66",
+      "rr": 32,
+      "temp": 37.1,
+      "spo2": "90% on room air",
+      "bmi": 17.5
+    },
+    "respiratory": "Trachea deviated slightly away from the right side. Reduced chest expansion on the right. Hyper-resonant to percussion over the right hemithorax. Absent breath sounds over the right upper and mid zones; normal vesicular breathing on the left with occasional scattered expiratory wheeze.",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not visibly raised, no peripheral oedema.",
+    "abdo": "Soft, non-tender, no organomegaly.",
+    "neuro": "Alert and orientated, anxious but coherent, no confusion.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Chest X-ray (erect, inspiratory)",
+      "result": "Right-sided pneumothorax approximately 35% by volume with visible visceral pleural line and absent lung markings peripherally; underlying right upper zone fibrocavitary changes consistent with old healed TB; no mediastinal shift",
+      "key": true
+    },
+    {
+      "name": "SpO2 / pulse oximetry",
+      "result": "90% on room air, improves to 96% on 15L non-rebreather",
+      "key": true
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Positive (known status, reconfirmed)",
+      "key": true
+    },
+    {
+      "name": "CD4 count",
+      "result": "142 cells/µL",
+      "key": true
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB not detected (sent to exclude active/recurrent TB given chronic cough and weight loss)",
+      "key": false
+    },
+    {
+      "name": "Arterial blood gas (on room air)",
+      "result": "pH 7.44, PaO2 62 mmHg, PaCO2 34 mmHg, HCO3 23 mmol/L — Type 1 respiratory failure",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 11.2 g/dL, WCC 8.1, Plt 340",
+      "key": false
+    },
+    {
+      "name": "PEFR (once stabilised, for asthma workup)",
+      "result": "280 L/min pre-bronchodilator, improves to 310 L/min post-bronchodilator (11% improvement) — does not meet reversibility criteria",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, no acute ischaemic changes",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Normal",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Secondary spontaneous pneumothorax (on background of post-TB lung disease/HIV)",
+      "rank": 1,
+      "for": [
+        "sudden pleuritic pain with dyspnoea",
+        "hyper-resonance and absent breath sounds right side",
+        "tracheal deviation",
+        "background fibrocavitary lung disease from previous TB",
+        "hypoxia disproportionate to chronicity"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Acute severe asthma exacerbation",
+      "rank": 2,
+      "for": [
+        "chronic history of wheeze and nocturnal symptoms",
+        "scattered wheeze on the unaffected side",
+        "tachypnoea and accessory muscle use"
+      ],
+      "against": [
+        "sudden onset without a clear trigger",
+        "asymmetric chest signs with tracheal deviation",
+        "absent rather than wheezy breath sounds on the right",
+        "poor PEFR reversibility"
+      ]
+    },
+    {
+      "dx": "Pulmonary tuberculosis (recurrent/reactivation)",
+      "rank": 3,
+      "for": [
+        "chronic cough, weight loss, night sweats",
+        "low CD4 and defaulted ART",
+        "two prior TB episodes"
+      ],
+      "against": [
+        "GeneXpert negative",
+        "acute pleuritic onset better explained mechanically",
+        "no new consolidation on CXR"
+      ]
+    },
+    {
+      "dx": "Pulmonary embolism",
+      "rank": 4,
+      "for": [
+        "acute dyspnoea and pleuritic chest pain",
+        "tachycardia and hypoxia"
+      ],
+      "against": [
+        "no risk factors for VTE elicited",
+        "clear focal hyper-resonance and absent breath sounds pointing to a mechanical pleural cause",
+        "CXR gives an alternative diagnosis"
+      ]
+    },
+    {
+      "dx": "Pneumocystis jirovecii pneumonia (PJP)",
+      "rank": 5,
+      "for": [
+        "CD4 <200",
+        "progressive dyspnoea",
+        "HIV with poor ART adherence"
+      ],
+      "against": [
+        "abrupt onset atypical for PJP",
+        "focal absent breath sounds rather than diffuse crackles",
+        "CXR shows pneumothorax, not the classic diffuse ground-glass pattern"
+      ]
+    }
+  ],
+  "pathophys": {
+    "sudden pleuritic chest pain and dyspnoea": "Rupture of a subpleural bulla or cavity wall (here related to prior TB-scarred lung) allows air to enter the pleural space, collapsing the underlying lung and stimulating parietal pleural pain fibres and stretch receptors",
+    "hyper-resonance and absent breath sounds": "Free air in the pleural space increases the air-to-tissue ratio, producing a tympanic percussion note, while the collapsed underlying lung and air-filled space prevent transmission of breath sounds to the chest wall",
+    "tracheal deviation": "Rising intrapleural pressure (as air accumulates faster than it can escape) pushes mediastinal structures away from the affected side; a sign of a large or tensioning pneumothorax",
+    "hypoxia": "Ventilation-perfusion mismatch as the collapsed lung continues to be perfused but is no longer ventilated, causing shunt physiology",
+    "chronic wheeze/nocturnal symptoms (background)": "Reversible bronchial smooth muscle constriction and airway inflammation in reactive airways, distinct from the fixed mechanical collapse causing today's acute presentation",
+    "weight loss and night sweats (background)": "TNF-alpha-driven catabolism and hypothalamic set-point disturbance from chronic HIV-related immune activation and possible subclinical mycobacterial disease"
+  },
+  "staging": "WHO HIV clinical stage 3 (prior pulmonary TB x2, current CD4 142); moderate secondary spontaneous pneumothorax (~35%) on background of post-TB fibrocavitary lung disease; defaulted ART",
+  "management": {
+    "immediate": [
+      "High-flow oxygen via non-rebreather mask to correct hypoxia (does not worsen a simple pneumothorax and aids resorption)",
+      "Urgent chest X-ray to size and confirm the pneumothorax",
+      "Intercostal underwater seal chest drain insertion (triangle of safety, 5th intercostal space, mid-axillary line) given size >20% and symptomatic hypoxia — secondary pneumothoraces are treated more aggressively than primary",
+      "Continuous monitoring for tension physiology (rising HR, falling BP, worsening tracheal shift) requiring emergency needle decompression if it develops",
+      "Analgesia for pleuritic pain"
+    ],
+    "definitive": [
+      "Admit for observation with the underwater seal drain until full lung re-expansion and cessation of air leak confirmed on repeat CXR",
+      "Cardiothoracic/surgical referral if persistent air leak >3-5 days, failure to re-expand, or recurrent pneumothorax — for consideration of pleurodesis or surgical bullectomy",
+      "Restart ART (recommend TLD) once stabilised, with adherence counselling and re-engagement in HIV care",
+      "Repeat sputum GeneXpert/culture to definitively exclude active recurrent TB given the fibrocavitary background"
+    ],
+    "supportive": [
+      "Smoking cessation counselling — smoking is a major driver of secondary pneumothorax recurrence",
+      "Advise against air travel and diving until fully resolved and cleared by a specialist",
+      "Nutritional support given weight loss and low BMI",
+      "Psychosocial support to address ART default (lost clinic card, job change) and re-link to a local ART clinic"
+    ],
+    "followUp": [
+      "Repeat CXR to confirm full resolution before discharge",
+      "Outpatient chest clinic follow-up given recurrent pneumothorax risk on scarred lung",
+      "CD4/viral load monitoring once ART restarted",
+      "Counsel that recurrence risk is significantly higher with underlying lung disease than in primary spontaneous pneumothorax"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-characterise",
+      "phase": "history",
+      "item": "Characterises the acute symptom (sudden onset, pleuritic pain, breathlessness, no preceding gradual wheeze pattern)",
+      "answer": "Abrupt onset 3 hours ago, sharp right pleuritic pain, sudden severe dyspnoea unlike his usual wheeze",
+      "why": "Distinguishing sudden mechanical onset from the episodic pattern of asthma is the first branch point in the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-atopy-trigger",
+      "phase": "history",
+      "item": "Screens for chronic wheeze pattern, atopy and typical asthma triggers/relievers to assess the background respiratory history",
+      "answer": "Years of intermittent nocturnal wheeze and dust-triggered tightness, previously labelled 'asthma' but never confirmed",
+      "why": "Establishes whether a pre-existing reactive airway history is confounding or coexisting with the acute presentation",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-red-flags",
+      "phase": "history",
+      "item": "Actively screens for red flags/mimics — TB symptoms (chronic cough, weight loss, night sweats), HIV status, cardiac symptoms",
+      "answer": "Chronic cough, weight loss, night sweats present; HIV positive, defaulted ART 8 months; no leg swelling or PND to suggest CCF",
+      "why": "Framework mandates excluding TB, HIV-related disease and cardiac causes before settling on a respiratory diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-hiv-history",
+      "phase": "history",
+      "item": "Elicits prior TB treatment episodes and ART history/adherence in detail",
+      "answer": "Two previous TB treatment courses (5 years and 2 years ago), ART stopped 8 months ago after losing clinic card",
+      "why": "Prior TB explains the underlying fibrocavitary lung disease that predisposes to secondary pneumothorax; ART default is a critical modifiable factor",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-smoking-drugs",
+      "phase": "history",
+      "item": "Asks about smoking history and any aggravating drugs (NSAIDs/beta-blockers)",
+      "answer": "Smokes 10/day for 15 years; no NSAID or beta-blocker use",
+      "why": "Smoking is a major risk factor for secondary pneumothorax recurrence and part of the 'before stepping up therapy' exclusion checklist adapted here",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-attack",
+      "phase": "examination",
+      "item": "Performs a focused respiratory exam distinguishing asymmetric mechanical signs from diffuse wheeze",
+      "answer": "Reduced expansion, hyper-resonance, absent breath sounds and tracheal deviation on the right; scattered wheeze only on the left",
+      "why": "Asymmetric hyper-resonant, silent hemithorax with tracheal shift is the exam finding that separates pneumothorax from a symmetrical asthma attack",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-severity-vitals",
+      "phase": "examination",
+      "item": "Assesses severity using vital signs (RR, HR, BP, SpO2) and looks for signs of tension physiology",
+      "answer": "RR 32, HR 118, SpO2 90% on room air, BP maintained — no current tension but at risk",
+      "why": "Grading severity/urgency mirrors the framework's attack-severity habit and drives immediate management decisions",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing pneumothorax, asthma exacerbation, recurrent TB, PE and PJP with reasoning for each",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning applying the asthma-mimics framework to this atypical presentation is the core pedagogical target",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-confirm",
+      "phase": "investigations",
+      "item": "Requests erect chest X-ray as the confirmatory test, plus SpO2/ABG for severity and HIV/CD4/GeneXpert to characterise the background",
+      "answer": "CXR shows 35% right pneumothorax with old TB scarring; SpO2 90%; CD4 142; GeneXpert negative",
+      "why": "CXR is the confirmatory investigation in this framework's 'exclude alternative pathology' step, paralleling asthma's use of CXR to rule out pneumothorax",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-pefr-consideration",
+      "phase": "investigations",
+      "item": "Recognises that PEFR reversibility testing is inappropriate acutely but considers it once stable to assess for coexisting asthma",
+      "answer": "PEFR done once stabilised: 280 to 310 L/min, 11% improvement — does not meet the ≥60 L/min or ≥20% reversibility criterion",
+      "why": "Tests whether the candidate correctly applies (and correctly times) the asthma reversibility criterion rather than blindly ordering it in an acute pneumothorax",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-immediate",
+      "phase": "management",
+      "item": "Outlines immediate management: oxygen, urgent CXR, intercostal chest drain given size/symptoms, monitoring for tension",
+      "answer": "High-flow O2, confirm on CXR, insert underwater seal drain in the triangle of safety, monitor for tension physiology",
+      "why": "Secondary pneumothoraces are managed more aggressively than primary; correct immediate steps prevent deterioration to tension pneumothorax",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Plans definitive management including surgical referral for persistent air leak/recurrence and restarting ART with adherence support",
+      "answer": "Admit with drain until re-expansion confirmed; thoracic surgery referral if leak persists >3-5 days; restart TLD with adherence counselling",
+      "why": "Definitive care must address both the mechanical problem and the underlying modifiable HIV/ART default driving recurrence risk",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

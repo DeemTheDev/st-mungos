@@ -1,0 +1,667 @@
+{
+  "id": "haem-002-symptomatic-iron-deficiency-anaemia",
+  "version": 1,
+  "discipline": "haem",
+  "diagnosis": "Symptomatic iron deficiency anaemia from menorrhagia",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach and differential diagnosis for this patient's anaemia.",
+      "modelAnswer": "First confirm the anaemia is symptomatic and assess haemodynamic stability. Then classify by MCV — here it's microcytic at 68 fL with an inappropriately low reticulocyte count, suggesting impaired production rather than destruction. This narrows the differential to iron deficiency, anaemia of chronic disease, or thalassaemia. Her heavy prolonged menstrual bleeding for a year, pica, koilonychia and angular stomatitis all point to iron deficiency as the leading diagnosis, which I'd confirm with ferritin/TIBC/transferrin saturation. Anaemia of chronic disease is less likely given she is HIV negative with no TB symptoms and normal renal function, and typically shows normal or high ferritin rather than the very low ferritin expected here. Thalassaemia trait is possible with microcytosis but there's no family history and her ferritin is low rather than normal/high. I would still exclude other bleeding sources like GI loss even though menorrhagia is the obvious culprit.",
+      "gradingNotes": "Full marks for ranked, evidence-linked reasoning following the MCV/retic framework. Partial credit if student jumps straight to iron deficiency without classifying by MCV or excluding other sources."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why is it important to ask about pica or ice-chewing in a patient you suspect has iron deficiency, and what is the proposed mechanism?",
+      "modelAnswer": "Pagophagia (ice craving) is a symptom fairly specific to iron deficiency, not seen in other anaemias. The mechanism is not fully understood but is thought to involve iron-dependent neurotransmitter or dopaminergic pathway dysfunction, and possibly a compensatory behaviour that increases cerebral blood flow or alertness in iron-deficient states. Clinically useful because it often resolves rapidly with iron repletion, even before the haemoglobin has normalised, and can be used as an early marker of treatment response.",
+      "gradingNotes": "Wants recognition that pica is iron-deficiency specific and ideally some attempt at the proposed mechanism, plus its use as an early marker of response to treatment."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology behind the ejection systolic murmur you heard on cardiac examination.",
+      "modelAnswer": "Severe anaemia reduces blood viscosity and oxygen-carrying capacity, prompting a compensatory hyperdynamic circulatory state with increased stroke volume and cardiac output. This increased flow velocity across the normal aortic and pulmonary outflow tracts creates turbulent, audible flow — a physiological or 'flow' murmur rather than structural valve disease. It typically resolves once the anaemia is corrected and the compensatory hyperdynamic state resolves.",
+      "gradingNotes": "Should distinguish this as a flow murmur secondary to hyperdynamic circulation, not structural pathology, and note it should resolve with treatment of the underlying anaemia."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "Her ferritin comes back at 4 µg/L. Why is ferritin interpretation sometimes tricky in the KZN setting, and does that concern apply here?",
+      "modelAnswer": "Ferritin is an acute phase reactant, so it can be falsely elevated into the 'normal' range in the context of concurrent inflammation, infection, HIV or TB, potentially masking true iron deficiency — this is why transferrin saturation and clinical context are also used. In this patient, however, the ferritin is unambiguously very low at 4 µg/L, and she has no HIV or TB to cause a confounding inflammatory rise, so this result is a clear and reliable confirmation of true iron deficiency without needing further caveats.",
+      "gradingNotes": "Tests whether the student understands the general caveat about ferritin as an acute phase reactant in HIV/TB-endemic settings, while correctly applying critical thinking to recognise it doesn't apply in this specific case."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Why must you address the fibroids/gynaecological cause and not just replace her iron?",
+      "modelAnswer": "Oral or IV iron will correct the current haemoglobin deficit, but if the underlying cause of ongoing blood loss — fibroid-related menorrhagia — is not addressed, her monthly iron losses will continue to exceed intake and absorption, and the anaemia will recur. Definitive management requires gynaecology referral to reduce menstrual blood loss through hormonal therapy (e.g. levonorgestrel IUS, tranexamic acid) or surgical options depending on her fertility wishes, alongside correcting the anaemia itself.",
+      "gradingNotes": "Wants recognition that treating iron deficiency without addressing the causal bleeding source leads to recurrence — cause-directed management is essential per the framework."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "anaemia work-up: confirm symptomatically/haemodynamically → classify by MCV → check retic → loss vs production vs destruction → screen HIV/TB/CKD → targeted iron studies → identify bleeding source → synthesise mechanism before labelling",
+  "patient": {
+    "name": "Thandeka Mkhize",
+    "age": 34,
+    "sex": "F",
+    "occupation": "domestic worker",
+    "personality": "stoic, has normalised her heavy periods as 'just how I am', downplays fatigue until pressed, embarrassed discussing menstrual details",
+    "openingLine": "Doctor, I'm just so tired all the time now, I can hardly finish my work."
+  },
+  "presentingComplaint": "3-month history of worsening fatigue and shortness of breath on exertion",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Fatigue has been creeping up over about 3 months, now struggles to hang washing or climb stairs at work without stopping",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Gets short of breath and her heart races when she sweeps floors or carries the laundry basket, which never used to happen",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "exertion",
+        "exercise",
+        "walking",
+        "stairs",
+        "tired on exertion",
+        "palpitations",
+        "heart racing",
+        "short",
+        "tired",
+        "heart",
+        "racing"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "Notices her heart pounding, especially when climbing stairs or carrying anything heavy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "heart racing",
+        "heart pounding",
+        "heartbeat",
+        "fast heart",
+        "fluttering",
+        "heart",
+        "racing",
+        "pounding",
+        "fast"
+      ]
+    },
+    {
+      "id": "hx-dizziness",
+      "fact": "Occasional light-headedness on standing up quickly, no actual fainting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dizzy",
+        "dizziness",
+        "light headed",
+        "lightheaded",
+        "faint",
+        "fainting",
+        "black out",
+        "vertigo",
+        "light",
+        "headed",
+        "black",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-menorrhagia",
+      "fact": "Periods have become very heavy over the past year — soaks through a pad within an hour on the heaviest days, passes large clots, bleeding lasts 8-9 days instead of her usual 5",
+      "disclosure": "onAsk",
+      "triggers": [
+        "period",
+        "periods",
+        "menstrual",
+        "menstruation",
+        "bleeding",
+        "heavy bleeding",
+        "clots",
+        "pads",
+        "flow",
+        "cycle",
+        "menorrhagia",
+        "women's cycle",
+        "heavy",
+        "women's"
+      ]
+    },
+    {
+      "id": "hx-cycle-freq",
+      "fact": "Cycles are regular, every 26-28 days, just much heavier and longer than before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "regular",
+        "frequency",
+        "how often",
+        "cycle length",
+        "irregular",
+        "between periods",
+        "spotting",
+        "often",
+        "cycle",
+        "length",
+        "between",
+        "periods"
+      ]
+    },
+    {
+      "id": "hx-other-bleeding",
+      "fact": "No blood in stool, no black stools, no vomiting blood, no nosebleeds, no easy bruising",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood in stool",
+        "stool",
+        "poo",
+        "melaena",
+        "black stool",
+        "vomit blood",
+        "haematemesis",
+        "nosebleed",
+        "bruising",
+        "bruise",
+        "gums bleed",
+        "other bleeding",
+        "blood",
+        "black",
+        "vomit",
+        "gums",
+        "bleed",
+        "bleeding"
+      ]
+    },
+    {
+      "id": "hx-diet",
+      "fact": "Eats meat about twice a week, mostly maize meal, vegetables and beans; not vegetarian by choice, just cost",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diet",
+        "eating",
+        "meat",
+        "vegetarian",
+        "vegan",
+        "nutrition",
+        "food",
+        "appetite"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Does not drink alcohol, has never smoked",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "drinking",
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco"
+      ]
+    },
+    {
+      "id": "hx-tb-screen",
+      "fact": "No cough, no night sweats, no fever, no weight loss — feels well otherwise apart from tiredness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "tb",
+        "tuberculosis",
+        "night sweats",
+        "sweating",
+        "fever",
+        "weight loss",
+        "weight",
+        "lost weight",
+        "constitutional",
+        "night",
+        "sweats",
+        "loss",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 8 months ago at the clinic when she had her contraceptive injection renewed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-pica",
+      "fact": "Has been craving and chewing on ice cubes for the past two months, finds it strange but does it often",
+      "disclosure": "onAsk",
+      "triggers": [
+        "ice",
+        "craving",
+        "chewing",
+        "pica",
+        "chew ice",
+        "strange craving",
+        "eating things",
+        "chew",
+        "strange",
+        "eating",
+        "things"
+      ]
+    },
+    {
+      "id": "hx-gynae-history",
+      "fact": "Has had heavy periods for about a year; no known fibroids diagnosed, has never had a pelvic ultrasound; last Pap smear 2 years ago was normal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fibroid",
+        "fibroids",
+        "womb",
+        "uterus",
+        "gynae",
+        "gynaecological",
+        "pelvic",
+        "ultrasound",
+        "pap smear",
+        "cervix",
+        "scan",
+        "pap",
+        "smear"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known chronic illnesses, not diabetic, not hypertensive, no previous surgery",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "chronic",
+        "diabetes",
+        "hypertension",
+        "surgery",
+        "operation",
+        "previous",
+        "past",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Uses the Depo-Provera injection for contraception, takes no other regular medication, occasionally takes paracetamol for period cramps",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "contraception",
+        "contraceptive",
+        "injection",
+        "depo",
+        "family planning",
+        "taking anything",
+        "family",
+        "planning",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in KwaMashu with her two children and her mother; works as a domestic worker in Durban North, travels by taxi daily",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "live",
+        "home",
+        "house",
+        "children",
+        "work",
+        "job",
+        "occupation",
+        "travel",
+        "taxi"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of thalassaemia, sickle cell disease, or bleeding disorders; mother has hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "thalassaemia",
+        "sickle cell",
+        "bleeding disorder",
+        "family",
+        "history",
+        "runs",
+        "sickle",
+        "cell",
+        "bleeding",
+        "disorder"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No jaundice, no dark urine, no joint pains, no rash, no neurological symptoms like tingling or numbness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "jaundice",
+        "yellow",
+        "dark urine",
+        "joint pain",
+        "rash",
+        "numbness",
+        "tingling",
+        "pins and needles",
+        "neuro",
+        "balance",
+        "dark",
+        "urine",
+        "joint",
+        "pain",
+        "pins",
+        "needles"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin-built woman, conjunctival and palmar pallor marked. No jaundice, no cyanosis, no lymphadenopathy. Koilonychia noted on both index fingers. Angular stomatitis present at corners of mouth.",
+    "vitals": {
+      "hr": 112,
+      "bp": "104/64 sitting, 92/58 standing (symptomatic postural drop)",
+      "rr": 20,
+      "temp": 36.6,
+      "spo2": "98% on room air",
+      "bmi": 21
+    },
+    "respiratory": "Chest clear, good air entry bilaterally, no crackles or wheeze",
+    "cardio": "Tachycardic, regular rhythm, soft ejection systolic murmur loudest at the left sternal edge, no radiation, JVP not raised, no peripheral oedema",
+    "abdo": "Soft, non-tender, no organomegaly, no masses palpable, bowel sounds normal",
+    "neuro": "Alert and orientated, no peripheral neuropathy, gait normal, reflexes normal, no ataxia",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 6.8 g/dL, MCV 68 fL (microcytic), MCH 21 pg, WCC 6.1, Platelets 468 (mildly reactive)",
+      "key": true
+    },
+    {
+      "name": "Reticulocyte count",
+      "result": "Low-normal for degree of anaemia (inadequate marrow response, consistent with iron-restricted erythropoiesis)",
+      "key": true
+    },
+    {
+      "name": "Iron studies (ferritin, TIBC, transferrin saturation)",
+      "result": "Ferritin 4 µg/L (low), TIBC elevated at 82 µmol/L, transferrin saturation 6% — confirms iron deficiency",
+      "key": true
+    },
+    {
+      "name": "Blood film",
+      "result": "Microcytic, hypochromic red cells with anisopoikilocytosis, occasional pencil cells, no schistocytes or target cells",
+      "key": true
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes/creatinine",
+      "result": "Normal renal function",
+      "key": false
+    },
+    {
+      "name": "Stool for occult blood and ova/parasites",
+      "result": "Negative for occult blood, no ova or parasites seen",
+      "key": false
+    },
+    {
+      "name": "Pelvic ultrasound",
+      "result": "Bulky uterus with two intramural fibroids, largest 3.2 cm, no endometrial thickening, ovaries normal",
+      "key": true
+    },
+    {
+      "name": "LDH and unconjugated bilirubin",
+      "result": "Both normal — no evidence of haemolysis",
+      "key": false
+    },
+    {
+      "name": "Group and crossmatch",
+      "result": "O positive, 2 units held pending clinical decision on transfusion",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Iron deficiency anaemia secondary to menorrhagia",
+      "rank": 1,
+      "for": [
+        "microcytic anaemia",
+        "ferritin 4 µg/L with high TIBC and low transferrin saturation",
+        "history of heavy prolonged periods for a year",
+        "koilonychia and angular stomatitis",
+        "pica (ice chewing)",
+        "fibroids on ultrasound as bleeding source"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Anaemia of chronic disease (HIV/TB/CKD-related)",
+      "rank": 2,
+      "for": [
+        "common in KZN adults",
+        "normocytic or mildly microcytic picture can occur"
+      ],
+      "against": [
+        "HIV negative",
+        "no TB symptoms",
+        "normal renal function",
+        "ferritin is low not normal/high, arguing strongly against this pattern"
+      ]
+    },
+    {
+      "dx": "Thalassaemia trait",
+      "rank": 3,
+      "for": [
+        "microcytic anaemia",
+        "MCV disproportionately low for degree of anaemia"
+      ],
+      "against": [
+        "no family history",
+        "ferritin low rather than normal/high",
+        "clear acquired bleeding source identified",
+        "would not respond to iron if pure trait"
+      ]
+    },
+    {
+      "dx": "GI source of chronic blood loss (peptic ulcer, colonic lesion)",
+      "rank": 4,
+      "for": [
+        "iron deficiency anaemia in an adult always requires excluding a GI source"
+      ],
+      "against": [
+        "no PR bleeding, melaena or haematemesis",
+        "stool occult blood negative",
+        "clear menstrual bleeding source already identified",
+        "age and clinical picture fit gynaecological cause"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Fatigue and exertional dyspnoea": "Reduced circulating haemoglobin lowers blood oxygen-carrying capacity; tissues become relatively hypoxic, triggering compensatory tachycardia and increased cardiac output to maintain oxygen delivery, which manifests as fatigue and breathlessness on exertion",
+    "Palpitations and tachycardia": "Hyperdynamic circulation compensating for reduced oxygen-carrying capacity; reduced blood viscosity from low Hb also increases venous return and stroke volume, contributing to a hyperkinetic state",
+    "Ejection systolic flow murmur": "Increased cardiac output and reduced blood viscosity create turbulent flow across the aortic/pulmonary outflow tracts, producing an innocent flow murmur that resolves once the anaemia is corrected",
+    "Postural drop and dizziness": "Reduced circulating red cell mass and often relative intravascular volume depletion from chronic blood loss impair compensatory vasoconstriction on standing, causing symptomatic orthostatic hypotension",
+    "Koilonychia and angular stomatitis": "Iron is a cofactor for enzymes required in rapidly dividing epithelial tissue (nail matrix, oral mucosa); chronic iron deficiency impairs this turnover first in high-turnover tissues, producing spoon-shaped nails and mucosal fissuring",
+    "Pica (ice chewing/pagophagia)": "Poorly understood mechanism specific to iron deficiency, postulated to involve iron-dependent neurotransmitter pathways or a compensatory oral behaviour that increases regional cerebral blood flow; resolves rapidly with iron repletion, often before Hb normalises",
+    "Menorrhagia as the cause of iron deficiency": "Fibroids increase endometrial surface area and disrupt normal myometrial contraction needed for haemostasis at the spiral arterioles, leading to prolonged heavy shedding; cumulative monthly iron loss exceeds dietary iron absorption capacity, progressively depleting iron stores"
+  },
+  "staging": "Severe symptomatic iron deficiency anaemia (Hb 6.8 g/dL) secondary to fibroid-related menorrhagia; haemodynamically compensated but symptomatic at rest with exertion",
+  "management": {
+    "immediate": [
+      "Assess haemodynamic stability and symptom severity; given Hb 6.8 g/dL with symptomatic tachycardia, exertional dyspnoea and postural drop, transfuse packed red cells (target symptom relief, not a fixed Hb number, per unit protocol)",
+      "Group and crossmatch already held — proceed with transfusion if symptomatic anaemia confirmed on assessment",
+      "Address active heavy bleeding: consider short-term tranexamic acid or hormonal measures to reduce menstrual blood loss while awaiting definitive gynaecological review"
+    ],
+    "definitive": [
+      "Oral ferrous sulfate/fumarate replacement per SA EML once haemodynamically stable, continued for at least 3-6 months after Hb normalises to replenish stores",
+      "Gynaecology referral for fibroid-related menorrhagia — options include hormonal therapy (e.g. levonorgestrel IUS, combined hormonal contraception), tranexamic acid for menstrual cycles, or surgical management (myomectomy/uterine artery embolisation) depending on fertility wishes and fibroid characteristics",
+      "IV iron if oral iron not tolerated, malabsorption suspected, or ongoing heavy losses outpace oral replacement capacity"
+    ],
+    "supportive": [
+      "Dietary counselling on iron-rich foods within her budget (offal, beans, dark leafy vegetables, vitamin C co-ingestion to enhance absorption)",
+      "Counsel on pica resolving with iron repletion",
+      "Explain menstrual blood loss quantification (pad/tampon counts) for monitoring response",
+      "Contraceptive counselling given ongoing Depo-Provera use and menorrhagia overlap"
+    ],
+    "followUp": [
+      "Repeat FBC at 2-4 weeks to confirm reticulocyte response and rising Hb trend",
+      "Repeat FBC at 3 months to confirm Hb normalisation and continue iron to replete stores",
+      "Gynaecology follow-up post-intervention to confirm reduction in menstrual blood loss",
+      "Recheck ferritin at 3-6 months once Hb normal to confirm iron store repletion before stopping supplementation"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-confirm-symptoms",
+      "phase": "history",
+      "item": "Confirms anaemia symptomatically (fatigue, exertional dyspnoea, palpitations) and screens for haemodynamic red flags",
+      "answer": "Progressive fatigue, exertional dyspnoea, palpitations, postural dizziness over 3 months",
+      "why": "First step of the framework — confirm anaemia is symptomatic before proceeding to classification",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-menstrual-history",
+      "phase": "history",
+      "item": "Takes a detailed menstrual history: flow, duration, clots, pad frequency, cycle regularity",
+      "answer": "Heavy bleeding soaking a pad within an hour on heavy days, large clots, 8-9 day duration, regular 26-28 day cycles, worsening over a year",
+      "why": "Identifies the bleeding source driving iron deficiency — core to the loss-vs-production-vs-destruction branch of the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-other-bleeding-sources",
+      "phase": "history",
+      "item": "Screens for other bleeding sources (GI, urinary, epistaxis, bruising) to avoid assuming menstrual loss alone",
+      "answer": "No PR bleeding, melaena, haematemesis, haematuria, epistaxis or easy bruising",
+      "why": "Never assume a single bleeding source without excluding others, especially GI causes",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-hiv-screen",
+      "phase": "history",
+      "item": "Screens for the KZN 'big four' drivers: TB symptoms, HIV status, CKD risk, dietary/nutritional history",
+      "answer": "No TB symptoms, HIV negative 8 months ago, no renal disease, modest meat intake twice weekly",
+      "why": "Mandatory background screen in any KZN anaemia work-up before attributing to a single cause",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-pica-signs",
+      "phase": "history",
+      "item": "Elicits iron-deficiency-specific symptoms such as pica/ice craving",
+      "answer": "Chewing ice cubes for two months",
+      "why": "Classic and specific symptom of iron deficiency, supports the working diagnosis before investigations return",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-focused-exam",
+      "phase": "examination",
+      "item": "Performs focused examination for pallor, koilonychia, angular stomatitis/glossitis, and a cardiovascular flow murmur",
+      "answer": "Marked pallor, koilonychia, angular stomatitis, tachycardia with soft ejection systolic flow murmur, postural BP drop",
+      "why": "Confirms chronic iron deficiency signs and assesses haemodynamic compensation/decompensation",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-classify-mcv",
+      "phase": "differentials",
+      "item": "Classifies the anaemia by MCV and reticulocyte count before generating a differential",
+      "answer": "Microcytic (MCV 68) with an inappropriately low reticulocyte response, indicating production failure from loss",
+      "why": "Central pillar of the framework — MCV and retic count direct the entire differential and investigation pathway",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ranked-ddx",
+      "phase": "differentials",
+      "item": "Offers a ranked differential (iron deficiency anaemia vs anaemia of chronic disease vs thalassaemia vs GI blood loss) with reasoning for each",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the exam philosophy; must justify inclusion/exclusion of each option",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-key-investigations",
+      "phase": "investigations",
+      "item": "Requests FBC with film, iron studies (ferritin/TIBC/transferrin saturation), and pelvic ultrasound to confirm cause and source",
+      "answer": "Ferritin 4 µg/L, TIBC elevated, transferrin saturation 6%, microcytic hypochromic film, pelvic ultrasound showing fibroids",
+      "why": "Confirmatory pathway for iron deficiency plus identification of the bleeding source per the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-transfusion-decision",
+      "phase": "management",
+      "item": "Recognises Hb 6.8 g/dL with symptomatic/haemodynamic compromise as a transfusion indication and initiates group & crossmatch",
+      "answer": "Symptomatic anaemia at Hb 6.8 g/dL with tachycardia and postural drop warrants packed red cell transfusion per unit protocol",
+      "why": "Red flag recognition — symptomatic severe anaemia requires urgent transfusion work-up, not just oral iron",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-definitive-mx",
+      "phase": "management",
+      "item": "Outlines definitive cause-directed management: oral/IV iron replacement, gynaecology referral for fibroid-related menorrhagia, and duration of iron therapy",
+      "answer": "Oral ferrous sulfate for 3-6 months post Hb normalisation, gynaecology referral for hormonal or surgical management of fibroids, IV iron if oral not tolerated",
+      "why": "Treating the anaemia without addressing the ongoing menstrual blood loss source will lead to recurrence",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

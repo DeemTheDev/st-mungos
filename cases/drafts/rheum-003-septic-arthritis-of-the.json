@@ -1,0 +1,655 @@
+{
+  "id": "rheum-003-septic-arthritis-of-the",
+  "version": 1,
+  "discipline": "rheum",
+  "diagnosis": "Septic arthritis of the knee",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this acute hot swollen knee, and how you would rank them.",
+      "modelAnswer": "Septic arthritis is the leading and most dangerous diagnosis given acute onset, fever, systemic upset, immunosuppression from unsuppressed HIV, and a possible skin portal of entry — this must be actively excluded first. Gout is possible given acute severe monoarthropathy but is against by knee being less typical than the 1st MTP, no prior episodes, and normal urate. Reactive arthritis is considered given his HIV status but there is no preceding GI/GU infection or extra-articular features. TB arthritis is possible in this high-burden, immunosuppressed setting but usually has a more indolent course, against the 2-day acute onset here. RA is unlikely as this is monoarticular and acute rather than symmetrical and insidious.",
+      "gradingNotes": "Expects a ranked list with reasoning linking each differential explicitly to case features, not just a name-list. Septic arthritis must be named first and justified as needing urgent exclusion."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "investigations",
+      "question": "Why must you aspirate the joint before or immediately alongside starting antibiotics, rather than starting antibiotics first?",
+      "modelAnswer": "Antibiotics can rapidly sterilise the synovial fluid, dropping the yield of Gram stain and culture and making it far harder to confirm the causative organism and its sensitivities. Aspiration (and blood cultures) should be obtained as close to simultaneously with, but ideally just before, the first antibiotic dose so that the diagnosis and organism are not lost, unless the patient is critically septic and needs immediate empirical treatment.",
+      "gradingNotes": "Tests understanding of correct sequencing — analogous to the gout teaching point that treatment sequencing is an exam trap. Should mention blood cultures too."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "Why is his HIV status and CD4 count so important in this presentation?",
+      "modelAnswer": "Immunosuppression from a low CD4 count (here 142) impairs opsonisation and neutrophil/macrophage function, increasing susceptibility to more severe, atypical and rapidly destructive septic arthritis, and broadens the differential to include TB and unusual organisms. It also affects management — need to address ART adherence, consider co-trimoxazole prophylaxis, and have a lower threshold for aggressive source control.",
+      "gradingNotes": "Wants both the pathophysiological rationale for increased susceptibility and the downstream management implications (ART restart, OI prophylaxis)."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology behind why he is holding the knee in a fixed flexed position and refusing to let you move it.",
+      "modelAnswer": "The purulent effusion distends the joint capsule; partial flexion is the position that maximises intracapsular volume and therefore minimises capsular tension and pain, so the patient adopts and guards this posture involuntarily. Direct inflammatory sensitisation of joint nociceptors from cytokines and bacterial products also lowers the pain threshold to any movement.",
+      "gradingNotes": "Pathophysiology-mechanism question — wants capsular volume/pressure relationship, not just 'it hurts'."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "His synovial Gram stain shows Gram-positive cocci in clusters. How does this change your empirical antibiotic choice, and what would you do while awaiting final culture and sensitivities?",
+      "modelAnswer": "Gram-positive cocci in clusters suggests Staphylococcus aureus, the most common cause of septic arthritis; empirical therapy should cover this (e.g. IV cloxacillin/flucloxacillin, or vancomycin if MRSA risk is high locally). Continue empirical broad cover initially if there is any doubt, then narrow once final culture and sensitivities are available, and reassess clinical response (fever, CRP trend, joint findings) to judge duration and route of therapy.",
+      "gradingNotes": "Wants organism-directed reasoning and safety-netting language about narrowing therapy once sensitivities return."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "acute hot swollen joint: mono- vs oligo- vs polyarthritis, red-flag screen for septic arthritis before assuming crystal/inflammatory cause",
+  "patient": {
+    "name": "Bongani Mthembu",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic but clearly in pain, tries to minimise how unwell he feels, reluctant to mention his HIV status unless asked directly",
+    "openingLine": "Doctor, my knee is so swollen and painful, I can't even bend it or put weight on it."
+  },
+  "presentingComplaint": "2-day history of acute right knee pain, swelling and fever, unable to weight-bear",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Knee pain and swelling started suddenly 2 days ago and has rapidly worsened",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-single-joint",
+      "fact": "Only the right knee is affected — no other joints painful or swollen",
+      "disclosure": "onAsk",
+      "triggers": [
+        "other joints",
+        "how many joints",
+        "one joint",
+        "single joint",
+        "both knees",
+        "elbow",
+        "wrist",
+        "ankle",
+        "hip",
+        "hands",
+        "joints",
+        "one",
+        "joint",
+        "single",
+        "both",
+        "knees"
+      ]
+    },
+    {
+      "id": "hx-severity",
+      "fact": "Pain is severe (9/10), worse with any movement, cannot bend or straighten the knee, cannot weight-bear",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "severe",
+        "weight bear",
+        "walk",
+        "bend",
+        "straighten",
+        "move the knee",
+        "how bad",
+        "score out of ten",
+        "weight",
+        "bear",
+        "move",
+        "knee",
+        "bad",
+        "score",
+        "out",
+        "ten"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Felt hot and shivery yesterday, sweaty overnight, has not measured temperature",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "chills",
+        "rigors",
+        "shivering",
+        "sweats",
+        "temperature",
+        "feverish"
+      ]
+    },
+    {
+      "id": "hx-trauma",
+      "fact": "No injury, fall or knock to the knee before symptoms started",
+      "disclosure": "onAsk",
+      "triggers": [
+        "injury",
+        "trauma",
+        "fall",
+        "knock",
+        "hit",
+        "hurt it",
+        "accident",
+        "twist",
+        "hurt"
+      ]
+    },
+    {
+      "id": "hx-skin-break",
+      "fact": "Noticed a small cut on his shin from a fence about a week before the knee started, which looked infected and oozed pus for a few days",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cut",
+        "wound",
+        "skin",
+        "graze",
+        "scratch",
+        "broken skin",
+        "infection",
+        "sore",
+        "pus",
+        "abscess",
+        "bite",
+        "broken"
+      ]
+    },
+    {
+      "id": "hx-prior-joint",
+      "fact": "No previous problems with this or any other joint, no gout, no arthritis before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "previous",
+        "gout",
+        "arthritis history",
+        "joint problems",
+        "past episodes",
+        "recurrent",
+        "arthritis",
+        "history",
+        "joint",
+        "problems",
+        "past",
+        "episodes"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Diagnosed HIV positive two years ago, on ART but admits he has missed clinic visits and hasn't collected his tablets in about 4 months",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "antiretroviral",
+        "tablets",
+        "clinic",
+        "cd4",
+        "immune",
+        "test",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-iv-drug",
+      "fact": "No intravenous drug use, no recent injections other than clinic ART depot",
+      "disclosure": "onAsk",
+      "triggers": [
+        "drugs",
+        "injection",
+        "needle",
+        "iv drug",
+        "inject",
+        "drug"
+      ]
+    },
+    {
+      "id": "hx-sti",
+      "fact": "No urethral discharge, no genital symptoms, no recent new sexual partners",
+      "disclosure": "onAsk",
+      "triggers": [
+        "discharge",
+        "urethral",
+        "sti",
+        "std",
+        "sexual partner",
+        "genital",
+        "urinate",
+        "burning",
+        "sexual",
+        "partner"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no night sweats beyond the fever illness, no known TB contact, has not lost weight recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "weight loss",
+        "night sweats",
+        "contact",
+        "exposure",
+        "weight",
+        "loss",
+        "night",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No diabetes, no hypertension, no other chronic illness besides HIV",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "conditions",
+        "diabetes",
+        "hypertension",
+        "chronic illness",
+        "previous illness",
+        "medical",
+        "history",
+        "chronic",
+        "illness",
+        "previous"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Should be on TLD (tenofovir/lamivudine/dolutegravir) but has not collected in 4 months; takes no other regular medication, occasional paracetamol",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "art regimen",
+        "taking",
+        "art",
+        "regimen"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes occasionally (about 2 cigarettes a day), drinks alcohol on weekends, lives alone in a rented room in KwaMashu, works night shifts as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "occupation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of arthritis, gout or autoimmune disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "gout in family",
+        "family",
+        "history",
+        "runs",
+        "gout"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No rash, no eye redness, no diarrhoea or GI symptoms preceding this, no back pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rash",
+        "eye",
+        "red eye",
+        "diarrhoea",
+        "stomach",
+        "back pain",
+        "other symptoms",
+        "anything else",
+        "red",
+        "back",
+        "pain",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Uncomfortable, guarding the right leg, lying still to avoid moving the knee. Mildly diaphoretic. No peripheral lymphadenopathy. Oral mucosa clear, no thrush.",
+    "vitals": {
+      "hr": 118,
+      "bp": "104/64",
+      "rr": 20,
+      "temp": 38.7,
+      "spo2": "97% on room air",
+      "bmi": 21
+    },
+    "respiratory": "Clear, equal air entry bilaterally, no added sounds",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, warm peripheries, brisk cap refill",
+    "abdo": "Soft, non-tender, no organomegaly",
+    "neuro": "Alert and orientated, distal neurovascular status of the right leg intact (sensation and pulses preserved), no focal deficit",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Knee joint aspiration — synovial fluid microscopy, Gram stain and culture",
+      "result": "Turbid yellow fluid, WCC 65,000/µL with 92% neutrophils, Gram stain shows Gram-positive cocci in clusters, culture pending",
+      "key": true
+    },
+    {
+      "name": "Synovial fluid crystal analysis",
+      "result": "No urate or calcium pyrophosphate crystals seen",
+      "key": false
+    },
+    {
+      "name": "Blood cultures",
+      "result": "Pending at time of assessment; drawn before antibiotics given",
+      "key": true
+    },
+    {
+      "name": "FBC",
+      "result": "WCC 16.8 x10^9/L (neutrophilia), Hb 11.2 g/dL, Plt 445",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "210 mg/L",
+      "key": true
+    },
+    {
+      "name": "ESR",
+      "result": "88 mm/hr",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA / confirm status",
+      "result": "Positive (known), rapid test confirms",
+      "key": false
+    },
+    {
+      "name": "CD4 count",
+      "result": "142 cells/µL",
+      "key": true
+    },
+    {
+      "name": "Viral load",
+      "result": "38,500 copies/mL (unsuppressed, consistent with treatment interruption)",
+      "key": false
+    },
+    {
+      "name": "U&E/creatinine",
+      "result": "Normal, eGFR >90 (baseline before any nephrotoxic antibiotic dosing)",
+      "key": false
+    },
+    {
+      "name": "Knee X-ray",
+      "result": "Soft tissue swelling and joint effusion, no bony erosion or fracture, joint space preserved",
+      "key": false
+    },
+    {
+      "name": "Serum urate",
+      "result": "0.28 mmol/L (normal)",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Septic arthritis",
+      "rank": 1,
+      "for": [
+        "acute monoarticular hot swollen joint",
+        "fever and systemic upset",
+        "immunosuppression from unsuppressed HIV (CD4 142)",
+        "possible portal of entry via recent skin wound",
+        "grade 4 tenderness, refusal to move joint",
+        "markedly raised CRP/WCC"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Gout",
+      "rank": 2,
+      "for": [
+        "acute monoarthropathy",
+        "severe pain and swelling"
+      ],
+      "against": [
+        "knee less typical than 1st MTP",
+        "no prior episodes",
+        "normal serum urate",
+        "no crystals on aspirate",
+        "systemic sepsis picture more prominent than typical gout flare"
+      ]
+    },
+    {
+      "dx": "Reactive arthritis (HIV-associated)",
+      "rank": 3,
+      "for": [
+        "HIV positive with immune dysregulation",
+        "acute joint presentation"
+      ],
+      "against": [
+        "no preceding GI/GU infection",
+        "no dactylitis, rash or conjunctivitis",
+        "fluid is purulent with organisms on Gram stain, not sterile inflammatory"
+      ]
+    },
+    {
+      "dx": "TB arthritis",
+      "rank": 4,
+      "for": [
+        "high TB/HIV burden setting",
+        "immunosuppressed with low CD4"
+      ],
+      "against": [
+        "typically subacute/chronic course, not 2-day onset",
+        "no TB contact or constitutional symptoms",
+        "Gram stain already shows bacteria, fluid grossly purulent"
+      ]
+    },
+    {
+      "dx": "Rheumatoid arthritis flare",
+      "rank": 5,
+      "for": [
+        "joint swelling and pain"
+      ],
+      "against": [
+        "monoarticular not symmetrical polyarthritis",
+        "acute onset with fever atypical",
+        "no prior RA history, no small joint involvement"
+      ]
+    }
+  ],
+  "pathophys": {
+    "acute hot swollen joint": "Haematogenous or direct inoculation of bacteria (often Staph aureus) into the synovium triggers a rapid neutrophilic inflammatory response; synovial proliferation and purulent effusion raise intra-articular pressure and pH changes plus bacterial/host proteases rapidly degrade cartilage",
+    "fever and systemic upset": "Bacteraemia and local cytokine release (IL-1, IL-6, TNF-alpha) from the infected joint act on the hypothalamus to raise the temperature set-point and drive a systemic inflammatory response",
+    "severe pain with refusal to move the joint": "Capsular distension from the purulent effusion plus direct inflammatory sensitisation of joint nociceptors causes pain at rest and on minimal motion, with reflex muscle guarding held in the position of maximum capsular volume (partial flexion) to minimise pressure",
+    "fixed flexion posture": "Partial flexion maximises intracapsular volume and minimises capsular tension, an involuntary pain-avoidance posture in any large joint effusion",
+    "increased susceptibility in HIV/immunosuppression": "Low CD4 count impairs opsonisation, neutrophil and macrophage function and adaptive immune surveillance, permitting more aggressive, atypical and rapidly destructive joint infection with a lower threshold for haematogenous seeding"
+  },
+  "staging": "WHO HIV clinical stage 3 (unsuppressed viraemia on interrupted ART, CD4 142); acute bacterial (septic) monoarthritis of the right knee, native joint",
+  "management": {
+    "immediate": [
+      "Do not give antibiotics before aspiration unless patient is septic/unstable — aspirate joint first for microscopy, Gram stain and culture",
+      "Take blood cultures before starting antibiotics",
+      "Start empirical IV antibiotics per local protocol (e.g. IV cloxacillin/flucloxacillin, or IV ceftriaxone if Gram-negative/immunosuppressed risk considered) pending culture results, adjust once organism and sensitivities known",
+      "Urgent orthopaedic referral for consideration of surgical washout/arthrotomy or repeat aspiration",
+      "Immobilise/rest the joint, analgesia (avoid delaying source control for pain control)",
+      "Mark and monitor for compartment/systemic sepsis deterioration (repeat vitals, escalate if hypotensive)"
+    ],
+    "definitive": [
+      "Prolonged antibiotic course (typically IV 2 weeks then oral to complete 4-6 weeks total, guided by clinical response and CRP trend)",
+      "Surgical washout if poor response to aspiration/antibiotics alone, or if very purulent/loculated on aspiration",
+      "Re-engage HIV care: recommence ART (TLD), address adherence barriers, and coordinate CD4/viral load follow-up",
+      "Screen and treat for other opportunistic infections given CD4 142 (e.g. co-trimoxazole preventive therapy if not already on it)"
+    ],
+    "supportive": [
+      "Physiotherapy once infection controlled to restore range of motion and prevent joint stiffness/contracture",
+      "Adherence counselling and treatment supporter for ART",
+      "Wound care for the antecedent shin lesion",
+      "Pain control with regular analgesia (paracetamol ± short-course opioid if severe) plus rest/splintage acutely"
+    ],
+    "followUp": [
+      "Serial CRP and clinical joint review to gauge response to antibiotics",
+      "Repeat aspiration if not improving after 48-72 hours of appropriate antibiotics",
+      "Orthopaedic follow-up for joint function assessment",
+      "HIV clinic follow-up: viral load re-check at 3-6 months post ART resumption, CD4 monitoring, adherence support"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, gains consent, explains examination",
+      "answer": null,
+      "why": "Professionalism / communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-pattern",
+      "phase": "history",
+      "item": "Establishes the joint pattern — confirms this is a single joint (monoarthritis) and asks about other joints",
+      "answer": "Right knee only, no other joints involved",
+      "why": "Mono- vs oligo- vs polyarthritis is the entry point to the whole framework",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-onset-red-flag",
+      "phase": "history",
+      "item": "Characterises onset/duration and screens for red flags of an acute hot joint (fever, systemic upset, immunosuppression)",
+      "answer": "Sudden 2-day onset, fever, rigors, known HIV with poor ART adherence",
+      "why": "Any acute hot swollen single joint must be treated as septic arthritis until excluded",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-source",
+      "phase": "history",
+      "item": "Asks about possible portal of entry/precipitant (trauma, skin breach, IVDU, recent infection)",
+      "answer": "Recent infected cut on the shin about a week before onset",
+      "why": "Identifies likely haematogenous or contiguous source of joint sepsis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-status",
+      "phase": "history",
+      "item": "Asks HIV status, ART use and adherence directly and sensitively",
+      "answer": "HIV positive 2 years, on ART but defaulted for 4 months",
+      "why": "Immunosuppression changes pre-test probability, severity and organism spectrum of septic arthritis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-gout-ra",
+      "phase": "history",
+      "item": "Screens for alternative causes: prior gout/arthritis history, morning stiffness pattern, other joint/systemic clues (rash, eye, GI/GU symptoms, TB contact)",
+      "answer": "No prior joint disease, no rash/eye symptoms, no TB contact or weight loss",
+      "why": "Differentiates from gout, reactive arthritis, RA and TB arthritis in the framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-look-feel-move",
+      "phase": "examination",
+      "item": "Performs systematic look-feel-move-measure-compare examination of the knee, including tenderness grading and assessment of effusion",
+      "answer": "Grossly swollen, erythematous, warm knee, ballottable effusion, grade 4 tenderness, fixed ~20 degree flexion, severely restricted ROM",
+      "why": "Systematic examination technique with formal tenderness grading is an explicitly taught exam skill",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-neurovasc",
+      "phase": "examination",
+      "item": "Checks distal neurovascular status and looks for a source (skin breach, wound) near the joint",
+      "answer": "Neurovascularly intact distally; healing scar on shin from prior wound",
+      "why": "Excludes compartment/vascular compromise and confirms possible entry source",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-differentials",
+      "phase": "differentials",
+      "item": "Generates a ranked differential (septic arthritis first, then gout, reactive arthritis, TB arthritis, RA) with reasoning linking to findings",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning with red-flag exclusion is the core exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-aspirate-before-abx",
+      "phase": "investigations",
+      "item": "States that joint aspiration (with microscopy, Gram stain, culture) must be performed before or urgently alongside starting antibiotics, plus blood cultures first",
+      "answer": "Aspirate turbid fluid, WCC 65,000 with 92% neutrophils, Gram-positive cocci in clusters; blood cultures sent before antibiotics",
+      "why": "Sequencing trap — aspirate/cultures before antibiotics to avoid sterilising the diagnostic sample, mirrors the gout-sequencing teaching point in the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-relevant-bloods",
+      "phase": "investigations",
+      "item": "Requests FBC, CRP/ESR, HIV test/CD4, U&E, and knee X-ray",
+      "answer": "WCC and CRP markedly raised, CD4 142, unsuppressed viral load, X-ray shows effusion only, no erosion",
+      "why": "Standard work-up for an acute hot joint and to stage HIV-related immunosuppression",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-immediate",
+      "phase": "management",
+      "item": "Outlines immediate management: source control (aspiration ± washout), empirical IV antibiotics after cultures taken, urgent orthopaedic referral, analgesia/immobilisation",
+      "answer": "IV antibiotics per protocol after aspirate/blood cultures, orthopaedic referral for washout, rest and analgesia",
+      "why": "Septic arthritis is an orthopaedic emergency requiring urgent source control plus antibiotics",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-hiv",
+      "phase": "management",
+      "item": "Addresses HIV re-engagement: restart ART, adherence counselling, co-trimoxazole consideration given CD4 <200",
+      "answer": "Recommence TLD, adherence support, screen for other OIs given CD4 142",
+      "why": "Underlying immunosuppression must be addressed as part of definitive and supportive management",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 18,
+    "clinicalReasoning": 22,
+    "investigations": 13,
+    "management": 15
+  }
+}

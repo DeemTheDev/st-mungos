@@ -1,0 +1,658 @@
+{
+  "id": "rheum-002-acute-gout",
+  "version": 1,
+  "discipline": "rheum",
+  "diagnosis": "Acute gout",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This man has an acute hot, swollen big toe. Walk me through your differential diagnosis and how you would prioritise excluding the most dangerous cause.",
+      "modelAnswer": "Top of the list is septic arthritis, which must always be excluded in any acute hot single joint — I would look for fever, systemic illness, and immunosuppression, and aspirate the joint for Gram stain and culture regardless of how classic it looks for gout. Acute gout is most likely here given classic podagra, recurrent similar episodes, thiazide use, and an alcohol/meat trigger. Pseudogout is possible but less typical for the first MTP and would show different crystal morphology. Cellulitis is less likely as the pain is joint-localised rather than diffuse soft tissue, and there's no skin breach.",
+      "gradingNotes": "Full marks for explicitly stating septic arthritis must be excluded before committing to gout, and for linking supporting/refuting features. Partial credit for a list without the septic arthritis safety-netting."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "What is the mechanism behind why gout classically affects the first MTP joint rather than larger, more central joints?",
+      "modelAnswer": "The first MTP is a cooler, peripheral joint with relatively poor vascularity, especially at night when core temperature drops further; urate solubility decreases at lower temperatures, favouring monosodium urate crystal precipitation there. Repetitive minor mechanical trauma to this weight-bearing joint may also help nucleate crystal formation.",
+      "gradingNotes": "Wants temperature-dependent solubility and peripheral/cooler joint physiology, not just 'it's a common site'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "His serum urate comes back elevated and joint aspirate confirms gout. Why would you NOT start allopurinol today?",
+      "modelAnswer": "Starting urate-lowering therapy during an acute flare can paradoxically worsen or prolong the attack because acute shifts in serum urate (falling levels) can further destabilise urate deposits in tissue, provoking more crystal shedding and inflammation. The flare should first be treated and settled with NSAIDs or steroids, and allopurinol started roughly 2 weeks later, with colchicine or NSAID cover during initiation to prevent a rebound flare.",
+      "gradingNotes": "This is the key sequencing trap from her notes — must state timing (~2 weeks after flare resolution) and the need for prophylactic cover (colchicine/NSAID) during initiation."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "investigations",
+      "question": "His serum urate was normal during a previous attack. Does a normal urate level during an acute attack rule out gout?",
+      "modelAnswer": "No — serum urate can be normal or even low during an acute gout flare because the inflammatory response and renal urate handling change acutely; some urate is deposited into inflamed tissue, transiently lowering serum levels. The gold standard for diagnosis remains synovial fluid microscopy showing negatively birefringent needle-shaped crystals, not the serum urate level.",
+      "gradingNotes": "Tests understanding that serum urate is an unreliable diagnostic test in the acute setting; wants mention of synovial fluid microscopy as the definitive test."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "What are the indications for starting long-term urate-lowering therapy, and does this patient meet them?",
+      "modelAnswer": "Indications include two or more attacks per year, presence of renal stones, or tophaceous disease. This patient has now had three episodes within about a year (two prior plus this one), which meets the threshold of recurrent attacks, so he should be started on allopurinol once this flare has settled.",
+      "gradingNotes": "Wants the specific threshold (≥2 attacks/year) applied to this patient's history, not just a generic statement that he needs treatment."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "acute monoarthritis: mono vs oligo vs polyarthritis, acute vs chronic, inflammatory vs mechanical, always exclude septic arthritis first",
+  "patient": {
+    "name": "Sibusiso Mkhize",
+    "age": 54,
+    "sex": "M",
+    "occupation": "taxi driver",
+    "personality": "stoic, downplays pain until asked directly, worried about missing work, enjoys weekend braais and beer",
+    "openingLine": "Doctor, my big toe is killing me, I can't even put on my shoe."
+  },
+  "presentingComplaint": "sudden severe pain and swelling of the right big toe since last night",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Pain woke him from sleep around 3am, reached maximum severity within a few hours",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-site",
+      "fact": "Pain and swelling localised to the right first metatarsophalangeal joint (big toe)",
+      "disclosure": "onAsk",
+      "triggers": [
+        "which joint",
+        "where is the pain",
+        "toe",
+        "big toe",
+        "mtp",
+        "location",
+        "site",
+        "which part",
+        "joint",
+        "pain",
+        "big",
+        "part"
+      ]
+    },
+    {
+      "id": "hx-severity",
+      "fact": "Pain is so severe he cannot bear a bedsheet touching it or wear a shoe",
+      "disclosure": "onAsk",
+      "triggers": [
+        "severity",
+        "how bad",
+        "scale",
+        "pain score",
+        "touch",
+        "bedsheet",
+        "shoe",
+        "walk",
+        "weight bear",
+        "bad",
+        "pain",
+        "score",
+        "weight",
+        "bear"
+      ]
+    },
+    {
+      "id": "hx-redness",
+      "fact": "The toe is red, shiny and swollen, looks hot compared to the other foot",
+      "disclosure": "onAsk",
+      "triggers": [
+        "red",
+        "redness",
+        "swelling",
+        "swollen",
+        "hot",
+        "warm",
+        "colour",
+        "shiny",
+        "look like",
+        "look"
+      ]
+    },
+    {
+      "id": "hx-previous",
+      "fact": "Had two similar but milder episodes in the same toe over the past year, each settled on its own after about a week",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "previous",
+        "happened before",
+        "first time",
+        "episode",
+        "recur",
+        "again",
+        "past attacks",
+        "history of this",
+        "happened",
+        "first",
+        "past",
+        "attacks",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-triggers",
+      "fact": "Had a big weekend braai two days ago with plenty of beer and red meat",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "braai",
+        "meat",
+        "diet",
+        "food",
+        "triggers",
+        "what did you eat",
+        "weekend",
+        "eat"
+      ]
+    },
+    {
+      "id": "hx-diuretic",
+      "fact": "Started on hydrochlorothiazide by his GP about 3 months ago for high blood pressure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "diuretic",
+        "water tablet",
+        "blood pressure treatment",
+        "hctz",
+        "thiazide",
+        "new medication",
+        "started anything",
+        "water",
+        "tablet",
+        "blood",
+        "pressure",
+        "treatment",
+        "new",
+        "started"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "No fevers, no chills or rigors, feels otherwise well systemically",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "chills",
+        "rigors",
+        "hot",
+        "temperature",
+        "systemically unwell",
+        "sick",
+        "systemically",
+        "unwell"
+      ]
+    },
+    {
+      "id": "hx-trauma",
+      "fact": "No recent injury, trauma or unusual walking/exercise to the foot",
+      "disclosure": "onAsk",
+      "triggers": [
+        "injury",
+        "trauma",
+        "hurt",
+        "fall",
+        "knock",
+        "bump",
+        "accident",
+        "hit"
+      ]
+    },
+    {
+      "id": "hx-otherjoints",
+      "fact": "No other joints are painful or swollen — only the one toe",
+      "disclosure": "onAsk",
+      "triggers": [
+        "other joints",
+        "any other joint",
+        "elsewhere",
+        "spread",
+        "other places",
+        "knees",
+        "ankles",
+        "wrists",
+        "hands",
+        "joints",
+        "joint",
+        "places"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Known hypertensive for 5 years, no diabetes, no known kidney disease, no prior gout diagnosis or treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "conditions",
+        "illnesses",
+        "diabetes",
+        "kidney",
+        "previous diagnosis",
+        "hypertension",
+        "high blood pressure",
+        "chronic illness",
+        "medical",
+        "history",
+        "previous",
+        "diagnosis",
+        "high",
+        "blood",
+        "pressure",
+        "chronic",
+        "illness"
+      ]
+    },
+    {
+      "id": "hx-renal",
+      "fact": "No known kidney problems, has never had a kidney stone",
+      "disclosure": "onAsk",
+      "triggers": [
+        "kidney",
+        "renal",
+        "stone",
+        "kidney stone",
+        "urine",
+        "creatinine",
+        "kidney function",
+        "function"
+      ]
+    },
+    {
+      "id": "hx-meds-other",
+      "fact": "Takes amlodipine 10mg and hydrochlorothiazide 12.5mg daily; occasionally uses ibuprofen bought over the counter for backache",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "taking anything",
+        "current treatment",
+        "otc",
+        "over the counter",
+        "ibuprofen",
+        "taking",
+        "current",
+        "treatment",
+        "over",
+        "counter"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "drug allergy",
+        "drug",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Drinks beer most weekends, about 6-8 beers on a Saturday; does not smoke; drives long hours as a taxi driver, limited time for exercise",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "social",
+        "work",
+        "exercise",
+        "lifestyle",
+        "occupation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "His father also suffered from gout in his 50s; no family history of rheumatoid arthritis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "runs in family",
+        "gout in family",
+        "genetic",
+        "parents",
+        "family",
+        "history",
+        "runs",
+        "gout"
+      ]
+    },
+    {
+      "id": "hx-tophi",
+      "fact": "No lumps noticed on his ears, elbows or fingers",
+      "disclosure": "onAsk",
+      "triggers": [
+        "lumps",
+        "tophi",
+        "bumps",
+        "nodules",
+        "ears",
+        "elbows",
+        "fingers",
+        "hard lumps",
+        "hard"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV negative, last tested a year ago at a wellness day at work",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "immune"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Overweight middle-aged man, uncomfortable, holding his right foot elevated and guarding it from contact. Not septic-looking, alert and comfortable at rest apart from the toe.",
+    "vitals": {
+      "hr": 88,
+      "bp": "148/92",
+      "rr": 16,
+      "temp": 37.1,
+      "spo2": "98% on room air",
+      "bmi": 29
+    },
+    "respiratory": "Clear, no added sounds",
+    "cardio": "Normal heart sounds, no murmurs, no oedema elsewhere",
+    "abdo": "Soft, non-tender, no organomegaly",
+    "neuro": "Grossly intact, no focal deficits",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Joint aspiration with synovial fluid microscopy (polarised light)",
+      "result": "Needle-shaped, negatively birefringent monosodium urate crystals seen; no organisms on Gram stain",
+      "key": true
+    },
+    {
+      "name": "Synovial fluid Gram stain and culture",
+      "result": "No organisms seen, culture pending — no growth at 48 hours",
+      "key": true
+    },
+    {
+      "name": "Serum urate",
+      "result": "0.52 mmol/L (elevated)",
+      "key": true
+    },
+    {
+      "name": "U&E/creatinine",
+      "result": "Creatinine 108 µmol/L, eGFR 68 mL/min/1.73m2 — mild renal impairment, GFR >30 so allopurinol not contraindicated",
+      "key": true
+    },
+    {
+      "name": "FBC",
+      "result": "WCC 11.2 x10^9/L (mild neutrophilia), Hb 14.1 g/dL, Plt 320",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "64 mg/L (raised, consistent with acute inflammatory flare)",
+      "key": false
+    },
+    {
+      "name": "X-ray right foot",
+      "result": "Soft tissue swelling around first MTP joint only; no erosions, no joint space narrowing, no chondrocalcinosis",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Random glucose",
+      "result": "5.8 mmol/L",
+      "key": false
+    },
+    {
+      "name": "Blood cultures",
+      "result": "Not indicated — no systemic sepsis features; not sent",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Acute gout",
+      "rank": 1,
+      "for": [
+        "classic first MTP joint (podagra)",
+        "sudden onset overnight",
+        "recurrent similar episodes",
+        "thiazide diuretic use",
+        "alcohol/red meat binge trigger",
+        "male, middle-aged",
+        "elevated serum urate",
+        "negatively birefringent crystals on aspirate"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Septic arthritis",
+      "rank": 2,
+      "for": [
+        "acute hot swollen joint",
+        "erythema and warmth",
+        "raised WCC and CRP"
+      ],
+      "against": [
+        "no fever or systemic sepsis",
+        "no organisms on Gram stain",
+        "recurrent similar self-limiting episodes previously",
+        "crystals confirmed on microscopy"
+      ]
+    },
+    {
+      "dx": "Pseudogout (CPPD)",
+      "rank": 3,
+      "for": [
+        "acute monoarthritis pattern",
+        "can affect large and small joints"
+      ],
+      "against": [
+        "crystals are needle-shaped and negatively birefringent, not rhomboid/positively birefringent",
+        "no chondrocalcinosis on X-ray",
+        "less typical for first MTP"
+      ]
+    },
+    {
+      "dx": "Cellulitis of the toe",
+      "rank": 4,
+      "for": [
+        "erythema, warmth, swelling"
+      ],
+      "against": [
+        "pain is intra-articular and joint-limited rather than diffuse soft tissue",
+        "no skin break or portal of entry",
+        "no systemic signs of infection",
+        "crystals confirm diagnosis"
+      ]
+    }
+  ],
+  "pathophys": {
+    "acute severe joint pain and swelling": "Hyperuricaemia leads to monosodium urate crystal precipitation in the cooler, poorly vascularised distal joint (classically first MTP); crystals are phagocytosed by synovial macrophages activating the NLRP3 inflammasome, driving IL-1β release and massive neutrophil recruitment causing acute inflammation",
+    "predilection for the first MTP joint (podagra)": "Lower peripheral joint temperature and relatively poor blood supply reduce urate solubility, favouring crystal precipitation distally; repetitive minor trauma from weight-bearing may also nucleate crystal formation",
+    "recurrent self-limiting episodes": "Acute flares are self-limiting as neutrophil apoptosis and anti-inflammatory cytokine (TGF-β) release downregulate the inflammasome response, but recurrent crystal deposition continues if hyperuricaemia is untreated, eventually risking chronic tophaceous disease and joint damage",
+    "flare precipitated by alcohol and diuretic use": "Alcohol increases urate production (purine load, lactate competing for renal excretion) while thiazide diuretics reduce renal urate clearance via enhanced proximal tubular reabsorption, both raising serum urate and precipitating crystallisation"
+  },
+  "staging": "Acute gout flare, first presentation formally diagnosed (previous 2 episodes untreated); no evidence of tophaceous or chronic gouty arthropathy on exam or imaging",
+  "management": {
+    "immediate": [
+      "Do not start allopurinol during the acute attack — treat the flare first",
+      "NSAID: ibuprofen 400mg tds with meals (renal function permitting) OR prednisone 40mg daily for 5 days if NSAID contraindicated/renal impairment significant",
+      "Rest and elevate the affected joint, avoid weight-bearing where possible",
+      "Joint aspiration performed both diagnostically and for symptomatic relief"
+    ],
+    "definitive": [
+      "Start urate-lowering therapy (allopurinol 100mg daily) approximately 2 weeks after the acute attack has settled, NOT during the flare",
+      "Titrate allopurinol by 100mg increments monthly, checking renal function and urate, targeting serum urate <0.35 mmol/L (most patients controlled on 300mg daily)",
+      "Cover the allopurinol initiation period with low-dose colchicine 0.5mg twice daily or continued NSAID for 3 months to prevent precipitating a flare",
+      "Confirm indication for long-term urate-lowering therapy: ≥2 attacks/year (met here), renal stones, or tophaceous disease"
+    ],
+    "supportive": [
+      "Dietary counselling: reduce red meat, shellfish, and alcohol (especially beer)",
+      "Advise weight loss and increased physical activity",
+      "Review and consider switching hydrochlorothiazide to an alternative antihypertensive (e.g. losartan, which has mild uricosuric effect) in discussion with his GP",
+      "Patient education on gout being a chronic metabolic condition requiring long-term therapy, not just treatment of flares"
+    ],
+    "followUp": [
+      "Recheck serum urate and renal function at each titration step (monthly until target reached)",
+      "Clinical review to confirm resolution of the acute flare within 1-2 weeks",
+      "Annual review of renal function and urate control once stable on maintenance allopurinol",
+      "Screen for tophi and joint damage at follow-up visits if attacks recur"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms identity, establishes rapport, explains process",
+      "answer": null,
+      "why": "Basic communication and professionalism",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-pattern",
+      "phase": "history",
+      "item": "Establishes joint distribution pattern — confirms this is monoarthritis (1 joint), not oligo/polyarthritis",
+      "answer": "Single joint affected — right first MTP only",
+      "why": "Defining mono vs oligo vs polyarthritis is the entry point of the framework",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-onset",
+      "phase": "history",
+      "item": "Characterises onset and timeline — acute vs chronic, inflammatory pattern",
+      "answer": "Sudden onset overnight, maximal within hours — classic acute inflammatory monoarthritis",
+      "why": "Acute vs chronic and inflammatory vs mechanical distinction guides differential",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-redflags",
+      "phase": "history",
+      "item": "Actively screens for septic arthritis red flags — fever, rigors, systemic illness, immunosuppression/HIV status",
+      "answer": "No fever or rigors, feels well systemically, HIV negative",
+      "why": "Any acute hot single joint must have septic arthritis excluded first",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-riskfactors",
+      "phase": "history",
+      "item": "Elicits gout risk factors — alcohol, diet, diuretic use, previous similar episodes, family history",
+      "answer": "Weekend alcohol/meat binge, thiazide diuretic 3 months, 2 prior similar episodes, father had gout",
+      "why": "Risk factor identification supports diagnosis and guides prevention counselling",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tophi-hx",
+      "phase": "history",
+      "item": "Asks about tophi, renal stones, or chronic joint symptoms",
+      "answer": "No lumps noticed, no history of renal stones",
+      "why": "Determines whether this is first presentation or chronic tophaceous disease, affects urate-lowering therapy indication",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-joint",
+      "phase": "examination",
+      "item": "Performs focused look-feel-move exam of the affected joint including tenderness grading",
+      "answer": "Red, hot, shiny, swollen first MTP; tenderness grade 4 (refuses palpation); unable to move joint",
+      "why": "Systematic joint examination per look-feel-move-measure-compare framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-tophi",
+      "phase": "examination",
+      "item": "Examines for tophi (ears, elbows, tendons) and screens other joints",
+      "answer": "No tophi palpable, no other joints involved",
+      "why": "Confirms monoarthritis and screens for chronic gouty disease",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates ranked differential explicitly considering and excluding septic arthritis before settling on gout",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning; septic arthritis must always be actively excluded, not assumed absent",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-aspirate",
+      "phase": "investigations",
+      "item": "Requests joint aspiration with synovial fluid microscopy (polarised light), Gram stain and culture",
+      "answer": "Negatively birefringent needle-shaped crystals, no organisms on Gram stain",
+      "why": "Aspiration is mandatory to confirm crystal diagnosis and exclude sepsis simultaneously",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-bloods",
+      "phase": "investigations",
+      "item": "Requests serum urate, U&E/creatinine, FBC, CRP",
+      "answer": "Urate 0.52 mmol/L, eGFR 68, mild neutrophilia, CRP 64",
+      "why": "Urate supports diagnosis (though may be normal in acute attack); renal function essential before allopurinol dosing",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-sequence",
+      "phase": "management",
+      "item": "Correctly sequences management — treats acute flare first (NSAID/steroid), delays starting allopurinol until ~2 weeks after settling, with colchicine/NSAID cover",
+      "answer": null,
+      "why": "Sequencing trap explicitly flagged in her notes — starting allopurinol during an acute flare can worsen or prolong it",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-lifestyle",
+      "phase": "management",
+      "item": "Advises on dietary/alcohol modification and reviewing the thiazide diuretic",
+      "answer": null,
+      "why": "Addressing modifiable risk factors is key to preventing recurrence",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 20,
+    "investigations": 15,
+    "management": 15
+  }
+}

@@ -48,6 +48,9 @@ next-env.d.ts
 # local session persistence (STORE=file) - her practice sessions are private
 /.sessions/
 
+# local flashcard store (STORE=file) - extracted from her private study docs
+/.flashcards/
+
 # local case drafts pending review are fine to commit; secrets are not
 .env*.local
 .env

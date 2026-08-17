@@ -1,0 +1,685 @@
+{
+  "id": "cardio-003-rheumatic-mitral-stenosis-with",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Rheumatic mitral stenosis with atrial fibrillation",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient's breathlessness and palpitations, and explain your ranking.",
+      "modelAnswer": "First exclude that this is a cardiac problem — confirmed by orthopnoea, PND and exertional dyspnoea. Then exclude the commonest causes in this population: ischaemic/hypertensive heart disease is unlikely given no chest pain, no hypertension history and young age. Dilated cardiomyopathy is possible given breathlessness and AF, but the apex is not displaced or hypodynamic and echo would show reduced EF, which argues against it here. Rheumatic mitral stenosis with AF ranks highest given the childhood history of rheumatic fever, the tapping non-displaced apex, the classic mid-diastolic murmur with opening snap and malar flush, and LA enlargement on imaging. TB pericardial disease is less likely without constitutional symptoms or Kussmaul's sign, and the apex being easily palpable and tapping (rather than impalpable as in constriction) argues against it.",
+      "gradingNotes": "Full marks for a ranked list with case-specific for/against reasoning for at least 3 differentials, following the exclude-common-causes-first framework."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology of the opening snap and loud S1 you heard on auscultation.",
+      "modelAnswer": "The thickened but still mobile mitral leaflets are forced shut abruptly during systole because of the elevated left atrial pressure gradient across the stenotic valve, producing a loud S1. In early diastole, the fused, doming leaflets billow open rapidly under high LA pressure but then abruptly halt their excursion due to restricted mobility at the leaflet tips, generating the opening snap; a shorter S2-opening snap interval reflects more severe stenosis and higher LA pressure.",
+      "gradingNotes": "Wants mechanism (leaflet mobility, pressure gradient, interval significance), not just identification of the sign."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "Why is it important to specifically ask about a childhood history of sore throat and joint swelling in this patient?",
+      "modelAnswer": "Rheumatic heart disease follows an autoimmune response to group A streptococcal pharyngitis (acute rheumatic fever), typically in childhood, causing progressive valve leaflet thickening, fibrosis and fusion over years to decades. Establishing this history confirms the underlying aetiology of her mitral stenosis, and is essential because it also determines that she needs long-term secondary penicillin prophylaxis to prevent further valve damage from recurrent episodes.",
+      "gradingNotes": "Should link the history to both diagnostic confirmation and its direct management implication (secondary prophylaxis)."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why can this patient not simply be given a DOAC like rivaroxaban for her atrial fibrillation instead of warfarin?",
+      "modelAnswer": "DOACs have not been shown to be effective or safe in patients with atrial fibrillation due to moderate-to-severe mitral stenosis or those with mechanical prosthetic valves; these represent a distinct thromboembolic risk profile driven by valvular pathology and atrial stasis rather than the non-valvular mechanisms studied in DOAC trials. Current guidelines mandate vitamin K antagonists (warfarin) with a target INR of 2.5-3.5 in this population.",
+      "gradingNotes": "Tests specific guideline knowledge — must identify valvular AF as a contraindication to DOACs, not just state 'anticoagulate'."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "investigations",
+      "question": "The echocardiogram shows a mitral valve area of 1.1cm² with favourable leaflet morphology and no left atrial thrombus. What definitive intervention would you consider, and what would change your decision?",
+      "modelAnswer": "With favourable morphology (mobile, non-calcified leaflets, no significant MR, no LA thrombus, no severe commissural fusion) percutaneous balloon mitral valvuloplasty is the preferred definitive intervention as it is less invasive with good outcomes. If morphology were unfavourable, significant MR were present, or LA thrombus were identified, she would need surgical mitral valve repair or replacement instead, and any LA thrombus would require anticoagulation and re-imaging before considering intervention.",
+      "gradingNotes": "Wants candidate to link echo findings to the choice between balloon valvuloplasty and surgery, showing understanding of selection criteria."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "dyspnoea/palpitations → exclude ischaemic/hypertensive heart disease → characterise functional pattern (valvular vs cardiomyopathic) → confirm with echo → risk-stratify for arrhythmia/thromboembolism → treat underlying cause and HF syndrome",
+  "patient": {
+    "name": "Thandeka Ngcobo",
+    "age": 34,
+    "sex": "F",
+    "occupation": "domestic worker in Pinetown",
+    "personality": "softly spoken, a little embarrassed about not seeking help sooner, minimises breathlessness as 'just being unfit'",
+    "openingLine": "Doctor, I get so out of breath now, even hanging the washing tires me out."
+  },
+  "presentingComplaint": "Progressive exertional shortness of breath and palpitations over 4 months",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Breathlessness started gradually about 4 months ago, initially only on climbing stairs, now present when walking on the flat",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Needs two pillows to sleep, previously slept flat; occasionally wakes gasping for air",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillow",
+        "lying flat",
+        "sleep",
+        "wake up",
+        "gasping",
+        "breathless at night",
+        "sit up",
+        "lying",
+        "flat",
+        "wake",
+        "breathless",
+        "night",
+        "sit"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "Two episodes in the past month of waking suddenly at night severely short of breath, had to sit on the edge of the bed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "paroxysmal",
+        "wake up breathless",
+        "night",
+        "sudden",
+        "gasping at night",
+        "choking",
+        "attack",
+        "wake",
+        "breathless",
+        "gasping"
+      ]
+    },
+    {
+      "id": "hx-palpitations",
+      "fact": "Describes a fast, irregular fluttering in her chest, worse with exertion, started around the same time as the breathlessness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "palpitations",
+        "heart racing",
+        "flutter",
+        "irregular",
+        "pounding",
+        "heart beat",
+        "fast heart",
+        "chest fluttering",
+        "heart",
+        "racing",
+        "beat",
+        "fast",
+        "chest",
+        "fluttering"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Ankles swell by the end of the day, especially in hot weather; rings feel tighter",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "ankle",
+        "leg swelling",
+        "oedema",
+        "feet",
+        "puffy",
+        "rings tight",
+        "leg",
+        "rings",
+        "tight"
+      ]
+    },
+    {
+      "id": "hx-haemoptysis",
+      "fact": "Once coughed up a small amount of blood-streaked sputum about 2 weeks ago after a bout of coughing",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood",
+        "coughing up",
+        "haemoptysis",
+        "sputum",
+        "phlegm",
+        "spit",
+        "cough up blood",
+        "pink frothy",
+        "coughing",
+        "cough",
+        "pink",
+        "frothy"
+      ]
+    },
+    {
+      "id": "hx-rheumaticfever",
+      "fact": "Recalls being told as a child (around age 9) that she had 'a bad sore throat and swollen joints' and was kept in hospital for weeks; was on monthly injections into her buttock for years afterwards which she stopped once she left school",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rheumatic fever",
+        "sore throat",
+        "joint pain",
+        "childhood illness",
+        "injections",
+        "penicillin",
+        "hospital as a child",
+        "joints swollen",
+        "school",
+        "rheumatic",
+        "fever",
+        "sore",
+        "throat",
+        "joint",
+        "pain",
+        "childhood",
+        "illness",
+        "hospital",
+        "child",
+        "joints",
+        "swollen"
+      ]
+    },
+    {
+      "id": "hx-syncope",
+      "fact": "No fainting or loss of consciousness, occasional light-headedness with exertion",
+      "disclosure": "onAsk",
+      "triggers": [
+        "faint",
+        "syncope",
+        "black out",
+        "dizzy",
+        "lightheaded",
+        "collapse",
+        "pass out",
+        "black",
+        "out",
+        "pass"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no pressure or tightness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "pressure",
+        "tightness",
+        "angina",
+        "chest"
+      ]
+    },
+    {
+      "id": "hx-embolic",
+      "fact": "No history of stroke, weakness, or limb pain/coldness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "stroke",
+        "weakness",
+        "numbness",
+        "limb pain",
+        "cold leg",
+        "clot",
+        "embolism",
+        "facial droop",
+        "limb",
+        "pain",
+        "cold",
+        "leg",
+        "facial",
+        "droop"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No known hypertension or diabetes; never had a heart problem diagnosed before this presentation",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "hypertension",
+        "diabetes",
+        "heart problem before",
+        "conditions",
+        "past history",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "heart",
+        "problem",
+        "before",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular medication currently, occasionally uses paracetamol for headaches",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "muti",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies, specifically no penicillin allergy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "penicillin allergy",
+        "reactions",
+        "rash to medicine",
+        "penicillin",
+        "allergy",
+        "rash",
+        "medicine"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 6 months ago at antenatal clinic during her last pregnancy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "sexual",
+        "partner"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Does not smoke; drinks alcohol occasionally at social events, denies heavy drinking; lives in KwaMashu with her husband and 3 children",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "children",
+        "work"
+      ]
+    },
+    {
+      "id": "hx-obstetric",
+      "fact": "G3P3, last pregnancy 8 months ago was uncomplicated; no hypertensive disorder of pregnancy; not currently pregnant",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pregnant",
+        "pregnancy",
+        "children",
+        "delivery",
+        "postpartum",
+        "gravida",
+        "obstetric",
+        "baby"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of sudden death or heart disease known; mother has 'sugar' (diabetes)",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "sudden death",
+        "genetic",
+        "runs in the family",
+        "heart disease in family",
+        "family",
+        "history",
+        "sudden",
+        "death",
+        "runs",
+        "heart",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No fever, no night sweats, no weight loss, no joint pains currently, no rash",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "night sweats",
+        "weight loss",
+        "joint pain",
+        "rash",
+        "other symptoms",
+        "anything else",
+        "tb symptoms",
+        "night",
+        "sweats",
+        "weight",
+        "loss",
+        "joint",
+        "pain",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert, mildly dyspnoeic at rest when talking. Malar flush noted on cheeks. No cyanosis, no clubbing. Mild bilateral pitting ankle oedema.",
+    "vitals": {
+      "hr": 128,
+      "bp": "104/72",
+      "rr": 24,
+      "temp": 36.8,
+      "spo2": "95% on room air",
+      "bmi": 22
+    },
+    "respiratory": "Trachea central. Bibasal fine crackles on auscultation, more marked at the right base. No wheeze.",
+    "cardio": "Pulse irregularly irregular, low volume. Apex beat not displaced, tapping in character. Loud S1, opening snap heard best at the apex in left lateral position. Low-pitched rumbling mid-diastolic murmur at the apex, accentuated in expiration and with left lateral decubitus, with pre-systolic accentuation lost due to AF. Loud P2 heard at the left sternal edge suggesting pulmonary hypertension. JVP mildly elevated at 4cm.",
+    "abdo": "Soft, non-tender, mild tender hepatomegaly 2cm below costal margin, no ascites, no splenomegaly.",
+    "neuro": "Alert and orientated, no focal deficits, no signs of embolic stroke.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "ECG",
+      "result": "Atrial fibrillation, ventricular rate ~125/min, no P waves visible, right axis deviation, tall R waves in V1 suggesting right ventricular hypertrophy",
+      "key": true
+    },
+    {
+      "name": "Echocardiogram (transthoracic)",
+      "result": "Thickened, doming mitral valve leaflets with restricted opening, mitral valve area 1.1 cm² (severe mitral stenosis), left atrial dilation (LA diameter 5.2 cm), no visible LA thrombus on this view, moderate pulmonary hypertension (estimated PASP 55 mmHg), preserved LV systolic function (EF 60%), mild MR, no significant AS/AR",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly with straightening of the left heart border, prominent left atrial appendage, double right heart border (LA enlargement), upper lobe venous diversion, no pericardial calcification",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 11.9 g/dL normocytic, WCC 6.8, Plt 340",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes, creatinine",
+      "result": "Normal renal function",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "TSH",
+      "result": "Normal",
+      "key": false
+    },
+    {
+      "name": "INR (if on warfarin) / baseline coagulation screen",
+      "result": "INR 1.0 (not yet anticoagulated)",
+      "key": false
+    },
+    {
+      "name": "Throat swab / ASOT",
+      "result": "ASOT not markedly elevated (past infection, not acute rheumatic fever)",
+      "key": false
+    },
+    {
+      "name": "NT-proBNP",
+      "result": "Elevated at 1450 pg/mL, consistent with heart failure",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Rheumatic mitral stenosis with atrial fibrillation",
+      "rank": 1,
+      "for": [
+        "childhood history compatible with acute rheumatic fever",
+        "tapping non-displaced apex",
+        "mid-diastolic murmur with opening snap",
+        "malar flush",
+        "irregularly irregular pulse",
+        "LA enlargement on CXR and echo"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Dilated cardiomyopathy (HIV/alcohol/idiopathic)",
+      "rank": 2,
+      "for": [
+        "breathlessness",
+        "orthopnoea/PND",
+        "biventricular failure signs"
+      ],
+      "against": [
+        "apex not displaced or hypodynamic",
+        "preserved EF on echo",
+        "HIV negative",
+        "no significant alcohol history",
+        "classic diastolic murmur present rather than functional regurgitant murmur"
+      ]
+    },
+    {
+      "dx": "Ischaemic/hypertensive heart disease",
+      "rank": 3,
+      "for": [
+        "dyspnoea",
+        "age reasonably young but possible",
+        "oedema"
+      ],
+      "against": [
+        "no hypertension history",
+        "no chest pain",
+        "young age",
+        "no risk factors",
+        "echo shows structural valve disease not regional wall motion abnormality"
+      ]
+    },
+    {
+      "dx": "TB pericardial effusive-constrictive disease",
+      "rank": 4,
+      "for": [
+        "raised JVP",
+        "hepatomegaly",
+        "dyspnoea"
+      ],
+      "against": [
+        "no fever/night sweats/weight loss",
+        "no Kussmaul sign described",
+        "echo shows valvular pathology not pericardial thickening/effusion",
+        "apex easily palpable and tapping, not diminished as in constriction"
+      ]
+    }
+  ],
+  "pathophys": {
+    "exertional dyspnoea/orthopnoea/PND": "Stenotic, doming mitral valve obstructs LA-to-LV flow; LA pressure rises to maintain cardiac output, transmitting elevated pressure to the pulmonary venous circulation, causing pulmonary congestion and transudation into alveoli, worsened by the increased venous return when supine or with exertion tachycardia shortening diastolic filling time further",
+    "palpitations/atrial fibrillation": "Chronic LA pressure and volume overload causes progressive atrial dilation and fibrosis, disrupting normal atrial conduction pathways and creating multiple re-entrant circuits, precipitating atrial fibrillation; loss of coordinated atrial contraction further reduces LV filling in a valve already limiting inflow",
+    "malar flush": "Chronically low cardiac output and mitral stenosis-related pulmonary hypertension cause cutaneous vasoconstriction with dilated, deoxygenated capillaries in the malar (cheek) skin, producing the characteristic bluish-pink flush",
+    "haemoptysis": "Sustained elevation of pulmonary venous and capillary pressure can cause rupture of thin-walled bronchial submucosal varices, or acute pulmonary oedema causing blood-tinged frothy sputum",
+    "loud S1 and opening snap": "Thickened but still mobile mitral leaflets snap shut forcefully in systole due to the pressure gradient across the valve (loud S1); in early diastole the fused, doming leaflets suddenly halt their opening excursion under high LA pressure, generating the opening snap — the LA-opening snap interval shortens as stenosis severity increases",
+    "right heart failure signs (raised JVP, hepatomegaly, ankle oedema)": "Chronic pulmonary venous hypertension progresses to pulmonary arterial hypertension via reflex vasoconstriction and vascular remodelling, increasing right ventricular afterload and eventually causing RV failure with systemic venous congestion"
+  },
+  "staging": "NYHA functional class III; severe rheumatic mitral stenosis (valve area 1.1cm²) with atrial fibrillation and moderate secondary pulmonary hypertension",
+  "management": {
+    "immediate": [
+      "Assess haemodynamic stability and control ventricular rate (IV/oral beta-blocker or digoxin if hypotensive/decompensated)",
+      "Oxygen if hypoxic, sit patient upright",
+      "IV furosemide for pulmonary congestion",
+      "Anticoagulate with therapeutic dose enoxaparin/warfarin given AF and severe MS — very high thromboembolic risk (mechanical valve-equivalent risk in rheumatic MS with AF)",
+      "Urgent echocardiogram to confirm severity and exclude LA thrombus before any planned cardioversion"
+    ],
+    "definitive": [
+      "Rate control: beta-blocker (e.g. carvedilol/bisoprolol) or digoxin; avoid rhythm control attempts until anticoagulated and valve addressed given high thrombus/stroke risk",
+      "Long-term anticoagulation with warfarin (target INR 2.5-3.5) — DOACs are NOT recommended in rheumatic mitral stenosis with AF",
+      "Refer for percutaneous balloon mitral valvuloplasty if valve morphology favourable (non-calcified, mobile leaflets, no significant MR, no LA thrombus) or surgical mitral valve replacement/repair if unsuitable for balloon valvuloplasty",
+      "Secondary rheumatic fever prophylaxis: benzathine penicillin G 1.2 MU IM every 3-4 weeks, continued long-term (until age 40 or 10 years post last episode/valve surgery, whichever is longer, per RHD guidelines) given documented childhood rheumatic fever"
+    ],
+    "supportive": [
+      "Salt restriction and fluid management for heart failure symptoms",
+      "Dental hygiene counselling and infective endocarditis prophylaxis awareness for future dental/surgical procedures",
+      "Patient education on anticoagulation adherence, INR monitoring, and bleeding precautions",
+      "Contraception counselling given pregnancy is high risk with severe MS (avoid pregnancy until valve intervention or with close specialist input)",
+      "Cardiology and rheumatic heart disease clinic follow-up"
+    ],
+    "followUp": [
+      "Serial echocardiography to monitor valve area and LA size, and pulmonary pressures",
+      "INR monitoring 4-weekly once stable on warfarin",
+      "Review post-valvuloplasty/surgery for restenosis or prosthetic valve function",
+      "Ongoing penicillin prophylaxis adherence checks",
+      "Screen and counsel regarding future pregnancies given risk of decompensation"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport and consent",
+      "answer": null,
+      "why": "Professionalism and communication foundation for the encounter",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-hf-symptoms",
+      "phase": "history",
+      "item": "Characterises the dyspnoea fully (onset, progression, orthopnoea, PND, exercise tolerance) to confirm a cardiac/heart failure problem before labelling a diagnosis",
+      "answer": "4-month progressive exertional dyspnoea, orthopnoea (2 pillows), 2 recent PND episodes",
+      "why": "Framework step 1 — confirm the presenting problem is cardiac before further workup",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exclude-ihd-htn",
+      "phase": "history",
+      "item": "Screens for ischaemic and hypertensive heart disease (chest pain, known hypertension, risk factors)",
+      "answer": "No chest pain, no known hypertension, no cardiovascular risk factors",
+      "why": "Framework step 2 — exclude the commonest causes of impaired cardiac function in KZN adults before invoking a rarer cause",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-rf-history",
+      "phase": "history",
+      "item": "Directly asks about childhood history of rheumatic fever/sore throat/joint swelling and prior cardiac diagnosis or injections",
+      "answer": "Hospitalised aged 9 with sore throat and swollen joints, had monthly injections for years",
+      "why": "Key history question for RHD in the framework — critical for establishing the underlying valvular aetiology",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-palpitations",
+      "phase": "history",
+      "item": "Explores palpitations to characterise possible arrhythmia (onset, character, regularity, triggers)",
+      "answer": "Fast irregular fluttering, worse on exertion, same timeframe as dyspnoea",
+      "why": "Screens for arrhythmia as per framework step 7 risk stratification",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-embolic-screen",
+      "phase": "history",
+      "item": "Screens for embolic phenomena (stroke, limb ischaemia) given AF and valvular disease",
+      "answer": "No stroke, weakness or limb symptoms reported",
+      "why": "Red flag screening — AF with valvular disease carries very high thromboembolic risk",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-secondary-causes",
+      "phase": "history",
+      "item": "Screens for reversible/secondary causes of impaired cardiac function (HIV status, alcohol, pregnancy/postpartum timing)",
+      "answer": "HIV negative 6 months ago, denies heavy alcohol use, not pregnant/postpartum complicated",
+      "why": "Framework step 4 — screen for reversible/toxic causes before settling on structural valvular diagnosis",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-cardiac-exam",
+      "phase": "examination",
+      "item": "Performs focused cardiovascular exam including pulse character, apex beat location/character, and full auscultation in left lateral position with bell",
+      "answer": "Irregularly irregular low-volume pulse, tapping non-displaced apex, loud S1, opening snap, mid-diastolic rumble at apex",
+      "why": "Framework step 3 — characterise the functional pattern clinically before confirming with echo",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-rhf-signs",
+      "phase": "examination",
+      "item": "Examines for signs of right heart failure/pulmonary hypertension (JVP, loud P2, hepatomegaly, peripheral oedema)",
+      "answer": "Mildly raised JVP, loud P2, tender hepatomegaly, bilateral ankle oedema",
+      "why": "Identifies pulmonary hypertension and right heart decompensation secondary to chronic MS",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing rheumatic MS/AF from dilated cardiomyopathy, ischaemic/hypertensive heart disease and TB pericardial disease with linked reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy — must justify each ranking with case-specific evidence",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests ECG, CXR and echocardiogram as the confirmatory pathway, plus HIV test and baseline bloods",
+      "answer": "See investigations catalogue — echo confirms severe MS with LA dilation, AF on ECG, LA enlargement on CXR",
+      "why": "Framework step 5-6 — confirm diagnosis and screen for underlying systemic disease before management",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-anticoag",
+      "phase": "management",
+      "item": "Identifies the need for anticoagulation given AF plus severe mitral stenosis, and specifies warfarin (not a DOAC)",
+      "answer": "Warfarin target INR 2.5-3.5; DOACs contraindicated in rheumatic MS with AF",
+      "why": "High-stakes, guideline-specific management point — thromboembolic risk in rheumatic MS with AF is markedly elevated",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-secondary-prophylaxis",
+      "phase": "management",
+      "item": "Prescribes/arranges secondary rheumatic fever prophylaxis with long-acting benzathine penicillin",
+      "answer": "Benzathine penicillin G 1.2 MU IM every 3-4 weeks long-term",
+      "why": "Prevents recurrent rheumatic fever and further valve damage — core RHD management principle emphasised in the KB",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-valve-intervention",
+      "phase": "management",
+      "item": "Discusses definitive valve intervention options (balloon mitral valvuloplasty vs surgical valve replacement/repair) based on valve morphology",
+      "answer": "Refer for percutaneous balloon mitral valvuloplasty if suitable morphology; otherwise surgical valve replacement/repair",
+      "why": "Definitive management addressing the underlying structural lesion, not just symptomatic treatment",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

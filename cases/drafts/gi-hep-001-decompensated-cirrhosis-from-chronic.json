@@ -1,0 +1,728 @@
+{
+  "id": "gi-hep-001-decompensated-cirrhosis-from-chronic",
+  "version": 1,
+  "discipline": "gi-hep",
+  "diagnosis": "Decompensated cirrhosis from chronic hepatitis B",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "This patient has splenomegaly and ascites. Walk me through why you favour cirrhotic portal hypertension here rather than schistosomiasis, which is also common in this province.",
+      "modelAnswer": "Both cause splenomegaly and portal hypertension, but the discriminator is synthetic liver function. Schistosomal (presinusoidal) portal hypertension classically spares hepatocyte function, so albumin, INR and bilirubin remain normal. This patient has albumin 22 g/L, INR 1.9 and bilirubin 78 µmol/L, all markedly deranged, plus a nodular irregular liver on ultrasound and known chronic HBsAg carriage — all pointing to true cirrhosis rather than periportal fibrosis from schistosomiasis. He also has no relevant river or dam water exposure history.",
+      "gradingNotes": "Full marks for explicitly naming synthetic function (albumin/INR/bilirubin) as the discriminator and linking it to this patient's specific values; partial credit for a vague 'his liver tests are worse' answer."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "You elicited asterixis and an abnormal star-drawing test. Explain the pathophysiology of hepatic encephalopathy and why you would not order an ammonia level to help you here.",
+      "modelAnswer": "Portosystemic shunting and loss of functioning hepatocyte mass bypass the urea cycle's normal detoxification of gut-derived ammonia and other neurotoxins, which cross the blood-brain barrier and impair astrocyte and neuronal function, producing the clinical spectrum from mild confusion to coma (West Haven grading). Ammonia level correlates poorly with clinical severity and is not required to diagnose or grade encephalopathy — the diagnosis is clinical, based on mental state and asterixis, and management should focus on finding and treating a precipitant rather than chasing a lab number.",
+      "gradingNotes": "Wants mechanism (ammonia/neurotoxins, portosystemic shunting) plus the explicit teaching point that ammonia is not diagnostically useful — this is flagged as a commonly probed point."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His ascitic tap shows 120 PMN/mm³ and SAAG of 14 g/L. Interpret both results and tell me what you would do differently if the PMN count had been 300/mm³.",
+      "modelAnswer": "SAAG ≥11 g/L indicates portal hypertensive ascites (cirrhosis or cardiac), consistent with his cirrhosis diagnosis; a SAAG <11 g/L would suggest TB peritonitis, malignancy, pancreatic or nephrotic causes. A PMN count of 120/mm³ is below the 250/mm³ threshold for spontaneous bacterial peritonitis, so empirical antibiotics are not indicated based on this tap alone, though a low ascitic protein still puts him at high future SBP risk requiring prophylaxis consideration. If the PMN count had been ≥250/mm³, I would diagnose SBP regardless of culture result and start empirical antibiotics (e.g., IV ceftriaxone) immediately, plus IV albumin if bilirubin or creatinine criteria for renal protection were met.",
+      "gradingNotes": "Full marks require correct SAAG interpretation, correct PMN threshold application, and the point that culture-negative does not exclude SBP if PMN ≥250; also credit for albumin criteria."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Walk me through your overall approach to this patient's management, from admission to long-term follow-up.",
+      "modelAnswer": "Immediately: admit, search for and treat the encephalopathy precipitant, start lactulose titrated to soft stools, correct hyponatraemia cautiously, and give thromboprophylaxis despite the raised INR since coagulopathy is rebalanced not protective. Diagnose and grade severity with Child-Pugh (ABCDE: albumin, bilirubin, coagulation, distension, encephalopathy) and MELD-Na — here Child-Pugh C. Definitively, start tenofovir for active chronic HBV, notify the case, and refer for hepatology/transplant assessment given advanced disease. Supportively, start spironolactone for ascites with salt restriction, ensure adequate protein intake despite encephalopathy, and avoid nephrotoxins and sedatives. Long-term, arrange 6-monthly ultrasound plus AFP for HCC surveillance indefinitely, endoscopic variceal screening since he doesn't meet Baveno criteria to omit it, and ongoing reassessment of Child-Pugh/MELD for transplant timing.",
+      "gradingNotes": "Looking for structured immediate/definitive/supportive/follow-up organisation covering the specific teaching points (ABCDE mnemonic, thromboprophylaxis despite INR, HCC surveillance, Baveno criteria) rather than a generic 'treat the liver failure' answer."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "history",
+      "question": "His wife mentions he seemed fine mentally until this week, but you only asked him directly and he denied any problems. Why is collateral history so important here, and what precipitants would you specifically screen for?",
+      "modelAnswer": "Patients with hepatic encephalopathy frequently lack insight into their own cognitive change, so family or caregiver collateral history is often the only way to detect early or intermittent encephalopathy. I would screen for common precipitants: gastrointestinal bleeding (ask about melaena/haematemesis and check Hb/rectal exam), infection including spontaneous bacterial peritonitis (hence the mandatory ascitic tap), constipation, dehydration or diuretic-induced electrolyte disturbance, and any new sedative or opioid use. Treating the precipitant is often more important than escalating lactulose dose alone.",
+      "gradingNotes": "Full marks for naming at least three precipitants (bleed, infection, constipation, dehydration/electrolytes, sedatives) and explicitly justifying the collateral history rationale."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "chronic liver disease presentation → compensated vs decompensated → aetiology screen → discriminate cirrhotic vs non-cirrhotic portal hypertension → mandatory ascitic tap → severity grading (Child-Pugh/MELD) → complication screen (varices, HCC, renal, encephalopathy) → management by decompensation status and cause",
+  "patient": {
+    "name": "Sipho Mkhize",
+    "age": 44,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, downplays symptoms, embarrassed about the abdominal swelling and slow to mention confusion episodes his wife noticed",
+    "openingLine": "Doctor, my stomach has been swelling up and my wife says I'm not myself lately..."
+  },
+  "presentingComplaint": "3-week history of progressive abdominal distension and leg swelling, with recent episodes of confusion",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Abdominal swelling began gradually about 3 weeks ago and has progressively worsened",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-distension-detail",
+      "fact": "Abdomen now feels tight and uncomfortable, clothes no longer fit around the waist",
+      "disclosure": "onAsk",
+      "triggers": [
+        "distension",
+        "swelling",
+        "stomach",
+        "abdomen",
+        "belly",
+        "tight",
+        "fluid",
+        "bloated",
+        "big stomach",
+        "ascites",
+        "big"
+      ]
+    },
+    {
+      "id": "hx-leg-swelling",
+      "fact": "Both ankles and lower legs have become swollen over the past 2 weeks, worse by evening",
+      "disclosure": "onAsk",
+      "triggers": [
+        "legs",
+        "ankles",
+        "swelling",
+        "oedema",
+        "feet",
+        "puffy",
+        "swollen legs",
+        "swollen"
+      ]
+    },
+    {
+      "id": "hx-confusion",
+      "fact": "Wife reports he has been muddled and forgetful for the past 4-5 days, sleeping during the day and awake at night, and once could not find his way to the toilet at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "confusion",
+        "confused",
+        "muddled",
+        "memory",
+        "forgetful",
+        "behaviour",
+        "personality",
+        "sleep pattern",
+        "not himself",
+        "disorientated",
+        "family notice",
+        "sleep",
+        "pattern",
+        "not",
+        "himself",
+        "family"
+      ]
+    },
+    {
+      "id": "hx-jaundice",
+      "fact": "Wife noticed his eyes turned yellow around 2 weeks ago; he has also noticed dark urine",
+      "disclosure": "onAsk",
+      "triggers": [
+        "jaundice",
+        "yellow",
+        "eyes",
+        "skin colour",
+        "dark urine",
+        "urine colour",
+        "icterus",
+        "skin",
+        "colour",
+        "dark",
+        "urine"
+      ]
+    },
+    {
+      "id": "hx-bleeding",
+      "fact": "No vomiting blood or black stools, but has noticed easy bruising on his arms over the past month",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood",
+        "vomit blood",
+        "haematemesis",
+        "melaena",
+        "black stool",
+        "bruising",
+        "bruise",
+        "bleeding",
+        "gums",
+        "vomit",
+        "black",
+        "stool"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Has felt mildly feverish and generally unwell for the past week; no rigors",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "unwell"
+      ]
+    },
+    {
+      "id": "hx-abdopain",
+      "fact": "Mild generalised abdominal discomfort but no severe localised pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pain",
+        "abdominal pain",
+        "sore",
+        "tender",
+        "ache",
+        "cramps",
+        "abdominal"
+      ]
+    },
+    {
+      "id": "hx-hbv",
+      "fact": "Was told he was a hepatitis B carrier around 15 years ago during a blood donation screen but never followed up or took treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hepatitis",
+        "hepatitis b",
+        "hbv",
+        "liver disease",
+        "liver infection",
+        "carrier",
+        "viral hepatitis",
+        "blood test before",
+        "screened",
+        "liver",
+        "disease",
+        "infection",
+        "viral",
+        "blood",
+        "test",
+        "before"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks alcohol socially, about 2-3 beers on weekends, denies heavy or daily drinking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "drinking",
+        "booze",
+        "tavern",
+        "liquor"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative two years ago at a workplace wellness screening",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "aids",
+        "tested",
+        "status",
+        "immune",
+        "sexual history",
+        "sexual",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-family-hbv",
+      "fact": "Mother died of 'liver problems' in her 50s; unsure if she had hepatitis B or cirrhosis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "liver disease in family",
+        "runs in family",
+        "family",
+        "history",
+        "liver",
+        "disease",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-schisto-risk",
+      "fact": "Has lived in Durban his whole life working in security; no history of swimming or bathing in rural rivers or dams",
+      "disclosure": "onAsk",
+      "triggers": [
+        "river",
+        "dam",
+        "swim",
+        "rural",
+        "water exposure",
+        "schistosomiasis",
+        "bilharzia",
+        "farm",
+        "village",
+        "water",
+        "exposure"
+      ]
+    },
+    {
+      "id": "hx-cardiac-screen",
+      "fact": "No exertional breathlessness, no orthopnoea, no known heart or valve problems, no prior TB",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breathless",
+        "short of breath",
+        "orthopnoea",
+        "heart",
+        "chest pain",
+        "valve",
+        "tb",
+        "pericarditis",
+        "rheumatic",
+        "pillows",
+        "short",
+        "breath",
+        "chest",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No diabetes, no hypertension, no previous hospital admissions, no previous surgery",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "conditions",
+        "diabetes",
+        "hypertension",
+        "blood pressure",
+        "hospital",
+        "admitted",
+        "previous",
+        "past",
+        "surgery",
+        "operation",
+        "medical",
+        "history",
+        "blood",
+        "pressure"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular chronic medication, occasionally uses traditional muti from a local healer for 'cleansing'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "muti",
+        "traditional",
+        "herbal",
+        "treatment",
+        "taking anything",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Married with 3 children, works night shifts as a security guard in Pinetown, non-smoker",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "work",
+        "occupation",
+        "job",
+        "family",
+        "children",
+        "married",
+        "live"
+      ]
+    },
+    {
+      "id": "hx-weightappetite",
+      "fact": "Appetite has been poor for the past 2-3 weeks with mild unintentional weight loss, though hard to tell with the swelling",
+      "disclosure": "onAsk",
+      "triggers": [
+        "appetite",
+        "eating",
+        "weight",
+        "weight loss",
+        "hungry",
+        "food",
+        "loss"
+      ]
+    },
+    {
+      "id": "hx-bowelhabit",
+      "fact": "Bowel habit normal, no diarrhoea, no constipation, opens bowels daily",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bowel",
+        "stool",
+        "constipation",
+        "diarrhoea",
+        "toilet"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Jaundiced, chronically ill-looking man lying semi-reclined. Mildly disoriented to time but oriented to place and person. Fetor hepaticus present. Bilateral asterixis demonstrated when arms extended and wrists dorsiflexed and held for 30 seconds. Multiple spider naevi over chest and upper arms (>5, blanch on central pressure, refill centre-outward). Palmar erythema. Gynaecomastia noted. No Dupuytren's contracture, no parotid enlargement.",
+    "vitals": {
+      "hr": 98,
+      "bp": "102/64",
+      "rr": 18,
+      "temp": 37.8,
+      "spo2": "97% on room air",
+      "bmi": 21
+    },
+    "respiratory": "Reduced air entry and dullness to percussion at the right lung base consistent with a small hepatic hydrothorax; otherwise clear.",
+    "cardio": "JVP not elevated. Normal heart sounds, no murmurs, no pericardial knock. No peripheral cyanosis.",
+    "abdo": "Distended abdomen with shifting dullness and a positive fluid thrill. Liver span reduced, edge not palpable (shrunken cirrhotic liver). Spleen tip palpable 3 cm below costal margin. Caput medusae visible around umbilicus. Mild diffuse tenderness on palpation, no rebound or guarding. Bowel sounds present.",
+    "neuro": "West Haven Grade II hepatic encephalopathy — disoriented to time, lethargic but rousable, asterixis present. Constructional apraxia demonstrated on star-drawing test. No focal neurological deficit. Pitting oedema to mid-shin bilaterally.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "HBsAg",
+      "result": "Positive",
+      "key": true
+    },
+    {
+      "name": "HBeAg / anti-HBe / HBV DNA",
+      "result": "HBeAg negative, anti-HBe positive, HBV DNA 45,000 IU/mL (active replication, HBeAg-negative chronic infection)",
+      "key": true
+    },
+    {
+      "name": "Diagnostic ascitic tap — cell count and SAAG",
+      "result": "WBC 180/mm³ with 60% PMN (120 PMN/mm³, below SBP threshold), ascitic albumin 8 g/L, serum albumin 22 g/L → SAAG 14 g/L (≥11 g/L, portal hypertensive)",
+      "key": true
+    },
+    {
+      "name": "INR and serum albumin",
+      "result": "INR 1.9, albumin 22 g/L (both markedly deranged — confirms impaired synthetic function, against schistosomiasis)",
+      "key": true
+    },
+    {
+      "name": "Abdominal ultrasound with Doppler",
+      "result": "Small, shrunken, coarse/nodular liver with irregular surface, caudate lobe hypertrophy, splenomegaly (14 cm), moderate ascites, patent but narrowed portal vein with reduced flow; no discrete focal liver lesion seen",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.2 g/dL, WCC 5.1, platelets 88 x10⁹/L (thrombocytopenia — earliest marker of portal hypertension)",
+      "key": false
+    },
+    {
+      "name": "Liver function tests",
+      "result": "Bilirubin 78 µmol/L (mostly conjugated), ALT 62 U/L, AST 110 U/L (AST:ALT ~1.8), ALP 140 U/L, GGT 95 U/L — transaminases only mildly elevated despite advanced disease",
+      "key": false
+    },
+    {
+      "name": "Urea, electrolytes and creatinine",
+      "result": "Na 128 mmol/L (hyponatraemia — prognostic marker), K 4.1 mmol/L, urea 6.8 mmol/L, creatinine 95 µmol/L",
+      "key": false
+    },
+    {
+      "name": "Ascitic fluid culture (blood culture bottles inoculated bedside)",
+      "result": "No growth at 48 hours",
+      "key": false
+    },
+    {
+      "name": "Ascitic ADA and Xpert MTB/RIF",
+      "result": "ADA 8 U/L (low), Xpert not detected — against TB peritonitis",
+      "key": false
+    },
+    {
+      "name": "Alpha-fetoprotein (AFP)",
+      "result": "12 ng/mL (mildly elevated, non-diagnostic; needs surveillance imaging)",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Ammonia level",
+      "result": "Not routinely useful for diagnosis or grading of encephalopathy — not sent",
+      "key": false
+    },
+    {
+      "name": "FibroScan / transient elastography",
+      "result": "Liver stiffness 38 kPa (consistent with cirrhosis)",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Decompensated cirrhosis from chronic hepatitis B",
+      "rank": 1,
+      "for": [
+        "known HBsAg-positive status for 15 years, untreated",
+        "stigmata of chronic liver disease (spider naevi, palmar erythema, gynaecomastia)",
+        "nodular shrunken liver with splenomegaly on US",
+        "ascites with SAAG ≥11 confirming portal hypertension",
+        "deranged INR and albumin confirming impaired synthetic function",
+        "hepatic encephalopathy with asterixis"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Alcohol-related cirrhosis",
+      "rank": 2,
+      "for": [
+        "social alcohol use",
+        "AST:ALT ratio >1.5"
+      ],
+      "against": [
+        "denies heavy or daily drinking",
+        "positive HBsAg with active HBV DNA provides a clear alternative and more likely primary cause",
+        "no Dupuytren's contracture or parotid enlargement"
+      ]
+    },
+    {
+      "dx": "Non-cirrhotic portal hypertension due to schistosomiasis",
+      "rank": 3,
+      "for": [
+        "splenomegaly",
+        "portal hypertensive ascites pattern"
+      ],
+      "against": [
+        "no rural river or dam water exposure",
+        "markedly deranged INR and albumin (schistosomiasis classically spares synthetic function)",
+        "nodular irregular liver morphology on US, not the periportal fibrosis pattern of schistosomiasis",
+        "age and known HBV carriage make this a poor fit"
+      ]
+    },
+    {
+      "dx": "TB peritonitis",
+      "rank": 4,
+      "for": [
+        "ascites",
+        "mild fever and constitutional symptoms",
+        "common HIV-related mimic in KZN"
+      ],
+      "against": [
+        "HIV negative",
+        "SAAG ≥11 g/L (TB peritonitis is typically low SAAG <11 g/L)",
+        "ascitic ADA low and Xpert not detected",
+        "liver morphology and synthetic dysfunction point clearly to cirrhosis"
+      ]
+    },
+    {
+      "dx": "Congestive hepatopathy from constrictive pericarditis",
+      "rank": 5,
+      "for": [
+        "ascites and leg oedema"
+      ],
+      "against": [
+        "JVP not elevated",
+        "no Kussmaul's sign or pericardial knock",
+        "no history of TB or exertional dyspnoea/orthopnoea",
+        "liver appearance is cirrhotic-nodular, not congested-smooth"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Ascites": "Sinusoidal portal hypertension plus splanchnic arterial vasodilatation (nitric oxide-mediated) causes effective arterial underfilling, activating RAAS/sympathetic/ADH pathways and driving renal sodium and water retention (peripheral arterial vasodilatation hypothesis)",
+    "Hepatic encephalopathy": "Portosystemic shunting and reduced hepatocyte mass bypass ammonia detoxification via the urea cycle; ammonia and other gut-derived neurotoxins cross the blood-brain barrier and impair astrocyte and neuronal function; ammonia level correlates poorly with clinical grade",
+    "Jaundice": "Loss of functioning hepatocyte mass reduces conjugation and biliary excretion of bilirubin, causing predominantly conjugated hyperbilirubinaemia",
+    "Thrombocytopenia / easy bruising": "Congestive splenomegaly from portal hypertension causes hypersplenism with platelet sequestration and destruction; coagulopathy from reduced hepatic synthesis of clotting factors compounds bleeding tendency, though anticoagulant factor synthesis is also reduced (rebalanced, not protective, haemostasis)",
+    "Spider naevi, palmar erythema, gynaecomastia": "Impaired hepatic metabolism of oestrogens leads to peripheral hyperoestrogenism, causing cutaneous vascular changes and feminisation",
+    "Hyponatraemia": "Non-osmotic ADH release driven by effective arterial underfilling causes free water retention in excess of sodium, diluting serum sodium and marking advanced, high-risk disease"
+  },
+  "staging": "Child-Pugh Class C (Albumin 22 g/L=3, Bilirubin 78 µmol/L=2, INR 1.9=3, ascites moderate=2, encephalopathy grade II=2, total ~12 points); MELD-Na markedly elevated given bilirubin, INR, creatinine and sodium; West Haven Grade II hepatic encephalopathy",
+  "management": {
+    "immediate": [
+      "Admit and resuscitate; identify and treat encephalopathy precipitant (screen for infection, GI bleed, constipation, dehydration, sedative use)",
+      "Empirical lactulose titrated to 2-3 soft stools per day; consider rifaximin if not improving",
+      "Diagnostic paracentesis already performed — PMN count below SBP threshold but low ascitic protein means high future SBP risk; keep low threshold to repeat tap if clinical deterioration",
+      "Correct hyponatraemia cautiously with fluid restriction, avoid rapid correction",
+      "Thromboprophylaxis with prophylactic LMWH despite raised INR — coagulopathy is rebalanced, not protective, against clot"
+    ],
+    "definitive": [
+      "Start tenofovir disoproxil fumarate for chronic HBV given active viral replication and decompensated cirrhosis — antiviral therapy indicated regardless of HBV DNA level in decompensated disease",
+      "Refer for hepatology/transplant unit assessment given Child-Pugh C and rising MELD",
+      "Notify hepatitis B (notifiable condition) and screen household contacts/family for HBV, including vaccination of susceptible contacts"
+    ],
+    "supportive": [
+      "Spironolactone as first-line diuretic for ascites, add furosemide if inadequate response, with close monitoring of renal function and potassium",
+      "Salt restriction (avoid strict fluid restriction unless Na <125 mmol/L)",
+      "Adequate protein intake (do NOT restrict protein despite encephalopathy) and dietitian referral for nutritional support and sarcopenia",
+      "Avoid NSAIDs, aminoglycosides and other nephrotoxins; avoid sedatives that can precipitate encephalopathy",
+      "Pruritus management if cholestatic symptoms develop"
+    ],
+    "followUp": [
+      "6-monthly abdominal ultrasound plus AFP for HCC surveillance indefinitely (chronic HBV carrier)",
+      "Upper GI endoscopy for variceal screening — cannot be omitted by Baveno criteria given platelets 88 and stiffness 38 kPa, both outside safe cut-offs",
+      "Repeat Child-Pugh/MELD-Na reassessment at follow-up to track transplant listing urgency",
+      "HBV DNA monitoring on tenofovir to confirm virological response",
+      "Long-term abstinence counselling regarding alcohol and avoidance of hepatotoxic traditional muti"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-characterise",
+      "phase": "history",
+      "item": "Characterises the presentation as acute decompensation (ascites, confusion, jaundice) rather than purely chronic or incidental",
+      "answer": "3-week progressive distension, 2-week jaundice, 4-5 day confusion — classic multi-system decompensation",
+      "why": "Framework step 1-2: distinguishing decompensated from compensated disease is the watershed clinical judgement",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-decompensation-screen",
+      "phase": "history",
+      "item": "Actively screens for all decompensating events: ascites, variceal bleed, encephalopathy, jaundice, including asking the family about confusion",
+      "answer": "Distension, leg swelling, jaundice, dark urine, bruising, and family-reported confusion and reversed sleep pattern all present; no haematemesis/melaena",
+      "why": "Patients often under-report encephalopathy themselves — family collateral history is essential",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-aetiology-screen",
+      "phase": "history",
+      "item": "Screens for aetiology: alcohol quantity/duration, known HBV/HCV/HIV status, family history of liver disease, muti/traditional remedy use",
+      "answer": "Known HBsAg-positive for 15 years untreated, modest social alcohol use, HIV negative, mother died of liver problems, uses traditional muti",
+      "why": "Aetiology drives both differential ranking and definitive treatment (antivirals vs abstinence)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-schisto-cardiac-discriminators",
+      "phase": "history",
+      "item": "Asks discriminating questions for non-cirrhotic portal hypertension: rural river/dam exposure (schistosomiasis) and cardiac/pericardial symptoms (exertional dyspnoea, orthopnoea, prior TB)",
+      "answer": "No rural water exposure; no dyspnoea, orthopnoea or TB history",
+      "why": "Framework step 4: must actively exclude schistosomiasis and cardiac causes before labelling as cirrhosis",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-stigmata",
+      "phase": "examination",
+      "item": "Examines for stigmata of chronic liver disease: spider naevi, palmar erythema, gynaecomastia, Dupuytren's, fetor hepaticus",
+      "answer": "Multiple spider naevi, palmar erythema, gynaecomastia, fetor hepaticus present; no Dupuytren's",
+      "why": "Physical stigmata support chronic liver disease over an acute or non-hepatic cause",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-encephalopathy",
+      "phase": "examination",
+      "item": "Performs and correctly demonstrates asterixis testing (arms extended, wrists dorsiflexed, held 30 seconds) and a constructional test (star-drawing or number connection)",
+      "answer": "Bilateral asterixis positive; abnormal star-drawing test consistent with Grade II encephalopathy",
+      "why": "Explicit bedside technique flagged for OSCE demonstration; grading determines urgency and precipitant search",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-jvp",
+      "phase": "examination",
+      "item": "Checks JVP specifically to exclude a cardiac/pericardial cause of ascites and hepatomegaly",
+      "answer": "JVP not elevated, no Kussmaul's sign or pericardial knock",
+      "why": "Raised JVP with ascites should redirect workup toward cardiac/constrictive pericarditis, not cirrhosis — key discriminator",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-portalHTN",
+      "phase": "examination",
+      "item": "Examines for signs of portal hypertension: splenomegaly, shifting dullness/fluid thrill, caput medusae",
+      "answer": "Splenomegaly 3 cm, positive shifting dullness and fluid thrill, visible caput medusae",
+      "why": "Confirms portal hypertension as the mechanism of ascites",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx-ranked",
+      "phase": "differentials",
+      "item": "Presents a ranked differential distinguishing cirrhotic HBV disease from alcohol, schistosomiasis, TB peritonitis and cardiac causes with explicit reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning with correct use of synthetic function as discriminator is the core exam philosophy for this framework",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-tap",
+      "phase": "investigations",
+      "item": "States that diagnostic paracentesis is mandatory in every patient admitted with ascites and sends cell count, SAAG/albumin, protein, culture (bedside blood culture bottle inoculation), ADA/Xpert",
+      "answer": "WBC 180 with 120 PMN/mm³ (below SBP threshold), SAAG 14 g/L, ADA low, Xpert not detected",
+      "why": "Explicitly stressed as mandatory in the framework; PMN ≥250 diagnoses SBP regardless of culture result",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-synthetic",
+      "phase": "investigations",
+      "item": "Requests INR and albumin as true markers of synthetic function rather than relying on transaminases alone",
+      "answer": "INR 1.9, albumin 22 g/L — both markedly deranged, confirming cirrhosis and excluding schistosomiasis",
+      "why": "Framework emphasises transaminases are often near-normal in established cirrhosis; synthetic function is the key discriminator against schistosomiasis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-hbv-imaging",
+      "phase": "investigations",
+      "item": "Sends HBV serology/DNA and requests abdominal ultrasound with Doppler ± AFP",
+      "answer": "HBsAg positive, HBV DNA 45,000 IU/mL; US shows nodular shrunken liver, splenomegaly, ascites; AFP mildly raised",
+      "why": "Confirms aetiology and screens for HCC, which chronic HBV carriers require from age ~20",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-staging",
+      "phase": "management",
+      "item": "Calculates or references Child-Pugh (ABCDE mnemonic: Albumin, Bilirubin, Coagulation, Distension, Encephalopathy) and/or MELD-Na to grade severity",
+      "answer": "Child-Pugh Class C (~12 points); markedly elevated MELD-Na",
+      "why": "Severity grading determines transplant referral urgency and prognosis",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-decompensation",
+      "phase": "management",
+      "item": "Outlines management addressing each decompensation: precipitant search and lactulose for encephalopathy, diuretics for ascites, thromboprophylaxis despite raised INR",
+      "answer": "Treat precipitant, lactulose/rifaximin, spironolactone ± furosemide, prophylactic LMWH despite INR 1.9",
+      "why": "Coagulopathy is rebalanced not protective — explicitly flagged as a commonly missed teaching point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-antiviral-surveillance",
+      "phase": "management",
+      "item": "Starts tenofovir for active chronic HBV and arranges 6-monthly HCC surveillance with ultrasound ± AFP",
+      "answer": "Tenofovir initiated; ongoing 6-monthly US/AFP surveillance, endoscopy for varices since Baveno criteria not met (platelets <150, stiffness >20 kPa)",
+      "why": "Definitive treatment of the underlying cause plus lifelong HCC surveillance is essential in chronic HBV carriers, especially African men",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 22,
+    "examination": 18,
+    "clinicalReasoning": 22,
+    "investigations": 16,
+    "management": 12
+  }
+}

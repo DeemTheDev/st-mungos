@@ -1,0 +1,692 @@
+{
+  "id": "resp-003-infective-exacerbation-of-copd",
+  "version": 1,
+  "discipline": "resp",
+  "diagnosis": "Infective exacerbation of COPD",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "What clinical and objective features help you distinguish this man's presentation from an acute asthma exacerbation?",
+      "modelAnswer": "Adult onset in a heavy smoker rather than childhood onset, no atopic history, barrel chest and hyperinflation on exam even between exacerbations, and critically a PEFR that does not improve significantly (<15-20%) with bronchodilator, indicating fixed rather than reversible airflow obstruction. Asthma classically shows ≥60 L/min or ≥20% improvement post-bronchodilator.",
+      "gradingNotes": "Wants the asthma-vs-COPD comparison table applied specifically: onset age, atopy, exam between attacks, and the reversibility criterion with the exact numeric cutoff."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Why is his oxygen target 88-92% rather than aiming for a normal saturation, and what would concern you about giving him high-flow oxygen uncontrolled?",
+      "modelAnswer": "In chronic CO2 retainers, the respiratory drive becomes partly dependent on hypoxic drive rather than the normal hypercapnic drive; giving uncontrolled high-flow oxygen can blunt this drive, worsen V/Q mismatch (reversal of hypoxic pulmonary vasoconstriction), and precipitate worsening hypercapnia and respiratory acidosis, potentially causing CO2 narcosis.",
+      "gradingNotes": "Should mention hypoxic drive concept AND V/Q mismatch mechanism, not just 'CO2 retention' as a vague answer."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "history",
+      "question": "Walk me through your approach to this patient's breathlessness from first presentation to management plan.",
+      "modelAnswer": "Start by characterising the symptom pattern (acute vs chronic, triggers, sputum change), screen for atopy versus smoking exposure, exclude mimics like cardiac failure and TB, examine for severity signs and fixed vs reversible obstruction findings, confirm objectively with PEFR/spirometry and ABG, grade the exacerbation severity, then before escalating therapy check inhaler technique, adherence, trigger avoidance and aggravating drugs, and finally treat per the acute exacerbation protocol — oxygen, bronchodilators, steroids, antibiotics — with escalation criteria in mind.",
+      "gradingNotes": "Full marks for following the systematic framework in order rather than jumping straight to a diagnosis; look for explicit mention of the 'before stepping up' checklist."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism behind this patient's barrel-shaped chest and how it affects his current breathing effort.",
+      "modelAnswer": "Chronic emphysematous destruction of alveolar walls reduces elastic recoil, causing air trapping and increased residual volume over years, which permanently remodels the chest wall into a hyperinflated barrel shape. This flattens the diaphragm, placing it at a mechanical disadvantage and reducing its contractile efficiency, so during an acute exacerbation with added airway narrowing, the work of breathing rises disproportionately, contributing to his respiratory distress and CO2 retention risk.",
+      "gradingNotes": "Wants the chronic structural mechanism linked forward to why it worsens acute decompensation, not just a definition of emphysema."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Using the Anthonisen criteria, justify your decision to start antibiotics in this patient.",
+      "modelAnswer": "Anthonisen type I exacerbation requires all three cardinal symptoms: increased dyspnoea, increased sputum volume, and increased sputum purulence. This patient has all three, meeting the threshold for antibiotic therapy. First-line choice at district level would be amoxicillin or doxycycline, guided by local resistance patterns and severity.",
+      "gradingNotes": "Wants explicit naming of the Anthonisen criteria and confirmation all three are present in this history."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "wheeze/dyspnoea symptom pattern — characterise pattern, screen atopy vs smoking, exclude mimics (asthma, CCF, TB), examine between vs during attack, confirm with PEFR/spirometry, grade severity, exclude aggravating factors before escalating therapy",
+  "patient": {
+    "name": "Mandla Zulu",
+    "age": 64,
+    "sex": "M",
+    "occupation": "retired security guard, former sugar-cane farm worker",
+    "personality": "stoic, downplays breathlessness, gruff but cooperative once trust is built, coughs frequently while talking",
+    "openingLine": "Doctor, my chest is worse than usual these past few days, I can't get my breath."
+  },
+  "presentingComplaint": "3-day history of worsening shortness of breath, increased cough with change in sputum colour",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Baseline chronic breathlessness and cough for about 8 years, but over the last 3 days it has become markedly worse",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-sputum-change",
+      "fact": "Sputum has changed from usual small amount of white/clear to a larger amount of thick yellow-green sputum over the past 3 days",
+      "disclosure": "onAsk",
+      "triggers": [
+        "sputum",
+        "phlegm",
+        "mucus",
+        "colour",
+        "yellow",
+        "green",
+        "coughing up",
+        "cough up",
+        "spit",
+        "productive",
+        "bringing up",
+        "anything in the phlegm",
+        "coughing",
+        "cough",
+        "bringing"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea-worse",
+      "fact": "Normally can walk to the corner shop; now breathless just getting up from his chair, worse than his usual baseline",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "walking",
+        "exertion",
+        "worse than usual",
+        "activity",
+        "stairs",
+        "distance",
+        "short",
+        "worse",
+        "than",
+        "usual"
+      ]
+    },
+    {
+      "id": "hx-wheeze",
+      "fact": "Noticed audible wheeze, especially when lying flat, for the past 2 days",
+      "disclosure": "onAsk",
+      "triggers": [
+        "wheeze",
+        "whistling",
+        "noisy chest",
+        "whistle",
+        "noisy",
+        "chest"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Feels hot and shivery in the evenings since the cough worsened, has not measured temperature",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "shivery"
+      ]
+    },
+    {
+      "id": "hx-smoking",
+      "fact": "Smoked roughly 20 cigarettes a day for 35 years, stopped 5 years ago after a previous hospital admission",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "tobacco",
+        "pack years",
+        "stopped smoking",
+        "quit",
+        "pack",
+        "years",
+        "stopped"
+      ]
+    },
+    {
+      "id": "hx-baseline-copd",
+      "fact": "Diagnosed with COPD 4 years ago at the clinic, uses a blue inhaler and a brown inhaler daily but often runs out and misses doses",
+      "disclosure": "onAsk",
+      "triggers": [
+        "copd",
+        "diagnosis before",
+        "chronic bronchitis",
+        "emphysema",
+        "inhaler",
+        "pump",
+        "previous chest problem",
+        "known lung disease",
+        "diagnosis",
+        "before",
+        "chronic",
+        "bronchitis",
+        "previous",
+        "chest",
+        "problem",
+        "known",
+        "lung",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-prev-admissions",
+      "fact": "Two previous hospital admissions for chest infections in the last 2 years, once needed oxygen and nebulisers but never ventilated or in ICU",
+      "disclosure": "onAsk",
+      "triggers": [
+        "admitted",
+        "hospital before",
+        "previous admission",
+        "icu",
+        "ventilator",
+        "oxygen before",
+        "nebuliser before",
+        "hospital",
+        "before",
+        "previous",
+        "admission",
+        "oxygen",
+        "nebuliser"
+      ]
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "No orthopnoea, sleeps on one pillow as usual; no ankle swelling",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "lying flat",
+        "swelling",
+        "ankles",
+        "legs swollen",
+        "oedema",
+        "sleep sitting up",
+        "lying",
+        "flat",
+        "legs",
+        "swollen",
+        "sleep",
+        "sitting"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no palpitations",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "tight chest",
+        "palpitations",
+        "heart racing",
+        "chest",
+        "tight",
+        "heart",
+        "racing"
+      ]
+    },
+    {
+      "id": "hx-weightloss-nightsweats",
+      "fact": "No weight loss and no night sweats; appetite unchanged",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "night sweats",
+        "sweating",
+        "appetite",
+        "tb symptoms",
+        "thinner",
+        "lost",
+        "night",
+        "sweats",
+        "symptoms"
+      ]
+    },
+    {
+      "id": "hx-tb-hiv",
+      "fact": "No known TB contacts, tested HIV negative two years ago at the clinic, no recent retest",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "tb",
+        "tuberculosis",
+        "test",
+        "tested",
+        "status",
+        "contact",
+        "exposure"
+      ]
+    },
+    {
+      "id": "hx-nsaid-betablocker",
+      "fact": "Not on any beta-blockers; occasionally takes ibuprofen bought over the counter for knee pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "nsaid",
+        "ibuprofen",
+        "beta blocker",
+        "anti-inflammatory",
+        "painkillers",
+        "other medication",
+        "tablets for pain",
+        "beta",
+        "blocker",
+        "medication",
+        "tablets",
+        "pain"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Known hypertensive on treatment for 10 years, no diabetes, no known heart disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "hypertension",
+        "blood pressure",
+        "diabetes",
+        "sugar",
+        "heart disease",
+        "other conditions",
+        "past illness",
+        "medical",
+        "history",
+        "blood",
+        "pressure",
+        "heart",
+        "disease",
+        "conditions",
+        "past",
+        "illness"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes amlodipine 10mg daily for blood pressure, salbutamol inhaler prn, and beclomethasone inhaler twice daily when he has it",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "inhaler",
+        "treatment",
+        "taking anything",
+        "regular medicine",
+        "taking",
+        "regular"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Umlazi with his wife in a small brick house; used to cook over an open fire as a child but now uses electricity; no biomass exposure currently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "social",
+        "live",
+        "home",
+        "house",
+        "biomass",
+        "fire",
+        "cooking",
+        "wood",
+        "occupation",
+        "work",
+        "exposure"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks alcohol occasionally, about 2 beers on weekends, no history of heavy drinking",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "drinking"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father died of 'chest problems' in his 60s, no known family history of asthma or heart disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-inhaler-technique",
+      "fact": "Admits he sometimes forgets to shake the inhaler and is not sure he is using the spacer correctly since his last one broke",
+      "disclosure": "onAsk",
+      "triggers": [
+        "inhaler technique",
+        "spacer",
+        "how do you use",
+        "shake",
+        "correctly",
+        "using the inhaler",
+        "demonstrate",
+        "inhaler",
+        "technique",
+        "use",
+        "using"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Overweight, barrel-chested elderly man sitting forward, using pursed-lip breathing. Mild central cyanosis. No accessory muscle use at rest but visible on exertion. No confusion, alert and oriented.",
+    "vitals": {
+      "hr": 108,
+      "bp": "146/88",
+      "rr": 26,
+      "temp": 37.8,
+      "spo2": "89% on room air",
+      "bmi": 27
+    },
+    "respiratory": "Barrel-shaped chest, reduced chest expansion bilaterally. Hyperresonant to percussion throughout. Widespread expiratory wheeze with prolonged expiratory phase; coarse crackles at both bases that partially clear with coughing. Reduced breath sounds globally, no signs of consolidation or effusion.",
+    "cardio": "Heart sounds normal, no murmurs. JVP not elevated. No ankle oedema.",
+    "abdo": "Soft, non-tender, no hepatomegaly, no ascites.",
+    "neuro": "Alert and orientated, no asterixis, no confusion.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "SpO2 on room air",
+      "result": "89%, improves to 92% on 2L nasal cannula",
+      "key": true
+    },
+    {
+      "name": "Arterial blood gas (on room air)",
+      "result": "pH 7.35, PaCO2 48 mmHg, PaO2 58 mmHg, HCO3 27 mmol/L — compensated respiratory acidosis with hypoxaemia",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Hyperinflated lung fields, flattened diaphragms, increased retrosternal air space; no focal consolidation, no pneumothorax, no cardiomegaly",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "WCC 13.8 x10^9/L (neutrophilia), Hb 14.2 g/dL, Plt 340",
+      "key": true
+    },
+    {
+      "name": "Sputum culture and Gram stain",
+      "result": "Gram-negative rods on stain, culture pending — likely Haemophilus influenzae or Moraxella catarrhalis",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "64 mg/L",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (retested, consistent with prior result)",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB not detected",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, right axis deviation, no acute ischaemic changes",
+      "key": false
+    },
+    {
+      "name": "PEFR (best effort, limited by acute dyspnoea)",
+      "result": "180 L/min, no significant reversibility post-bronchodilator (<15% change) — consistent with fixed airflow obstruction",
+      "key": true
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Na 138, K 4.2, Urea 6.1, Creatinine 88 — normal renal function",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Infective exacerbation of COPD",
+      "rank": 1,
+      "for": [
+        "known COPD diagnosis 4 years",
+        "35 pack-year smoking history",
+        "increased sputum volume and purulence",
+        "increased dyspnoea from baseline",
+        "fever and neutrophilia",
+        "hyperinflated fixed-obstruction chest exam",
+        "no significant PEFR reversibility"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Acute asthma exacerbation",
+      "rank": 2,
+      "for": [
+        "wheeze",
+        "dyspnoea",
+        "use of bronchodilator inhaler"
+      ],
+      "against": [
+        "adult onset in a smoker not childhood",
+        "no atopic history",
+        "no significant PEFR reversibility post-bronchodilator",
+        "barrel chest and hyperinflation between attacks suggest fixed disease"
+      ]
+    },
+    {
+      "dx": "Congestive cardiac failure / decompensated heart failure",
+      "rank": 3,
+      "for": [
+        "age",
+        "hypertension",
+        "dyspnoea"
+      ],
+      "against": [
+        "no orthopnoea",
+        "no ankle oedema",
+        "JVP not raised",
+        "CXR shows hyperinflation not cardiomegaly or effusion",
+        "normal heart sounds"
+      ]
+    },
+    {
+      "dx": "Community-acquired pneumonia",
+      "rank": 4,
+      "for": [
+        "fever",
+        "purulent sputum",
+        "tachypnoea",
+        "raised WCC and CRP"
+      ],
+      "against": [
+        "CXR shows hyperinflation not focal consolidation",
+        "gradual worsening on background of known COPD rather than acute lobar picture"
+      ]
+    },
+    {
+      "dx": "Pulmonary tuberculosis",
+      "rank": 5,
+      "for": [
+        "chronic respiratory symptoms",
+        "KZN endemic setting"
+      ],
+      "against": [
+        "no weight loss",
+        "no night sweats",
+        "no TB contact",
+        "GeneXpert negative",
+        "symptom course fits acute infective exacerbation not subacute TB pattern"
+      ]
+    }
+  ],
+  "pathophys": {
+    "wheeze": "Airway narrowing from mucosal oedema, bronchospasm and mucus plugging during infective exacerbation increases airflow velocity through narrowed airways, causing turbulent flow and audible wall vibration",
+    "increased sputum purulence": "Bacterial infection triggers neutrophil recruitment into the airway; neutrophil myeloperoxidase and breakdown products give sputum its yellow-green colour",
+    "hypoxaemia and rising CO2": "Worsening V/Q mismatch from mucus plugging and airway inflammation impairs gas exchange; long-standing hyperinflation flattens the diaphragm reducing its mechanical efficiency, and increased work of breathing with alveolar hypoventilation leads to CO2 retention",
+    "barrel chest / hyperinflation": "Chronic loss of elastic lung recoil from emphysematous destruction of alveolar walls causes air trapping, increased residual volume and permanent chest wall remodelling into a hyperinflated 'barrel' shape",
+    "exertional dyspnoea worse than baseline": "Acute inflammatory airway narrowing superimposed on fixed obstruction further increases airway resistance and dynamic hyperinflation during exertion, raising the work of breathing beyond the patient's already-reduced ventilatory reserve"
+  },
+  "staging": "GOLD group — moderate-severe COPD exacerbation (Anthonisen type I: all three of increased dyspnoea, increased sputum volume, increased sputum purulence present); compensated respiratory acidosis on ABG, not currently in type 2 respiratory failure with decompensation",
+  "management": {
+    "immediate": [
+      "Controlled oxygen therapy via nasal cannula or Venturi mask titrated to target SpO2 88-92% (avoid over-oxygenation given CO2 retention risk)",
+      "Nebulised salbutamol and ipratropium bromide, repeated as needed",
+      "Systemic corticosteroid — oral prednisone 40mg daily for 5 days",
+      "Empirical antibiotics per Anthonisen criteria — amoxicillin or doxycycline first-line at district level; escalate per local antibiogram if severe",
+      "Repeat ABG after initial treatment to reassess for evolving type 2 respiratory failure"
+    ],
+    "definitive": [
+      "Treat underlying bacterial infection guided by sputum culture if it fails to settle",
+      "Optimise maintenance COPD therapy — ensure correct inhaler technique and adherence to LABA/LAMA and/or ICS combination once stable",
+      "Consider non-invasive ventilation (BiPAP) if persistent respiratory acidosis (pH <7.35) despite initial medical therapy"
+    ],
+    "supportive": [
+      "Smoking cessation reinforcement (already quit, praise and reinforce)",
+      "Pulmonary rehabilitation referral once stable",
+      "Influenza and pneumococcal vaccination",
+      "Nutritional assessment given chronic disease burden",
+      "Inhaler technique and spacer education"
+    ],
+    "followUp": [
+      "Clinic review within 1-2 weeks post-discharge to reassess symptoms and inhaler technique",
+      "Spirometry once stable to confirm and stage fixed airflow obstruction (FEV1/FVC <0.7)",
+      "Home oxygen assessment if persistent hypoxaemia on repeat testing",
+      "Advance care planning discussion given recurrent admissions"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, gains consent, orients to a breathless patient with empathy",
+      "answer": null,
+      "why": "Professionalism and communication with an unwell patient",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-pattern",
+      "phase": "history",
+      "item": "Characterises the symptom pattern — acute worsening of dyspnoea, cough, sputum volume/colour change against a background of chronic symptoms",
+      "answer": "3-day worsening dyspnoea, increased volume and yellow-green sputum, on background of 8-year chronic cough/dyspnoea",
+      "why": "Distinguishes acute exacerbation from stable baseline and screens for the Anthonisen criteria",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-atopy-vs-smoking",
+      "phase": "history",
+      "item": "Screens for atopic features vs smoking/occupational exposure to differentiate asthma from COPD",
+      "answer": "No childhood wheeze or atopy; 35 pack-year smoking history, adult onset",
+      "why": "Asthma vs COPD differentiation is a core exam distinction",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-redflags-mimics",
+      "phase": "history",
+      "item": "Excludes mimics/red flags — cardiac failure (orthopnoea, oedema), TB (weight loss, night sweats, contacts), aggravating drugs (NSAIDs, beta-blockers)",
+      "answer": "No orthopnoea/oedema, no TB symptoms/contacts, no beta-blocker use, occasional NSAID use noted",
+      "why": "Systematic exclusion of mimics before committing to a diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-severity-history",
+      "phase": "history",
+      "item": "Assesses exacerbation severity and risk — previous admissions/ICU, baseline exercise tolerance, current inhaler use and adherence",
+      "answer": "2 previous admissions, never ventilated; poor adherence to maintenance inhalers, technique uncertain",
+      "why": "Risk-stratifies the patient and identifies a modifiable factor (technique/adherence) before escalating therapy",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Performs general inspection for severity signs — cyanosis, accessory muscle use, ability to complete sentences, level of consciousness",
+      "answer": "Central cyanosis, pursed-lip breathing, alert, RR 26, SpO2 89%",
+      "why": "Grading severity is essential before deciding escalation (ward vs HDU/ICU)",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-resp",
+      "phase": "examination",
+      "item": "Performs focused respiratory exam — inspection, percussion, auscultation for wheeze, crackles, hyperinflation",
+      "answer": "Barrel chest, hyperresonant, widespread wheeze, bibasal crackles clearing with cough",
+      "why": "Confirms fixed obstructive picture with superimposed infective changes",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers ranked differential distinguishing infective COPD exacerbation from asthma, cardiac failure, pneumonia and TB with linked reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the exam philosophy; asthma-vs-COPD table is explicitly examinable",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests SpO2/ABG, CXR, FBC/CRP, sputum culture, and PEFR to assess reversibility; considers HIV/GeneXpert given KZN context",
+      "answer": "See investigations catalogue — ABG shows compensated respiratory acidosis, CXR hyperinflated, PEFR non-reversible",
+      "why": "Confirmatory pathway distinguishing COPD from asthma (lack of reversibility) and grading severity (ABG)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-before-stepup",
+      "phase": "management",
+      "item": "Checks technique, adherence, trigger avoidance and aggravating drugs before adjusting chronic therapy",
+      "answer": "Poor adherence and uncertain spacer technique identified and addressed",
+      "why": "Explicitly stressed checklist before stepping up therapy — applies equally to COPD exacerbation management",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines acute management — controlled oxygen (88-92% target), nebulised bronchodilators, systemic corticosteroid, antibiotics per Anthonisen criteria, escalation criteria for NIV/ICU",
+      "answer": null,
+      "why": "Core acute management per SA Adult Hospital Level STGs",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 12,
+    "management": 13
+  }
+}

@@ -1,0 +1,754 @@
+{
+  "id": "neuro-003-ischaemic-stroke-with-hemiplegia",
+  "version": 1,
+  "discipline": "neuro",
+  "diagnosis": "Ischaemic stroke with hemiplegia",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient and how you would rank it.",
+      "modelAnswer": "Most likely is an ischaemic stroke, probably cardioembolic given the irregularly irregular pulse consistent with atrial fibrillation, with sudden maximal-at-onset hemiparesis, facial droop sparing the forehead, and dysarthria — supported by a normal glucose and CT showing no blood. Second, intracerebral haemorrhage must be considered given his poorly controlled hypertension, but the absence of headache, vomiting, or reduced consciousness, and a CT without blood, argue against it. Third, a stroke mimic such as Todd's paresis or hypoglycaemia is possible given the unwitnessed wake-up presentation, but normal glucose and no witnessed seizure activity make this less likely. Finally, a CNS mass lesion is unlikely given his negative HIV status and the acute rather than subacute onset.",
+      "gradingNotes": "Expect ranked list with linked reasoning for and against each; full marks require explicit exclusion reasoning, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiological basis for why his forehead movement is preserved despite the facial droop.",
+      "modelAnswer": "The upper facial muscles receive bilateral corticobulbar innervation from both cerebral hemispheres, while the lower face receives predominantly contralateral innervation. A unilateral upper motor neuron lesion, such as this cortical/subcortical infarct, therefore spares the forehead because the intact contralateral hemisphere continues to supply it, while the lower face loses its dominant contralateral input and droops. This differs from a lower motor neuron lesion (e.g. Bell's palsy) affecting the facial nerve nucleus or nerve itself, which paralyses the entire hemiface including the forehead.",
+      "gradingNotes": "Wants the bilateral vs unilateral corticobulbar innervation mechanism explicitly, not simply a restatement that 'stroke spares the forehead.'"
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His exact time of onset is unknown because this is a wake-up stroke. How does this change your immediate management, and what would you still consider?",
+      "modelAnswer": "Since time last seen well was 22:00 the previous night and he was found symptomatic at 07:00, he falls outside the standard 4.5-hour thrombolysis window calculated from a known onset. Standard-window intravenous thrombolysis is therefore not appropriate on this history alone. However, wake-up stroke is not necessarily a contraindication to reperfusion therapy — where MRI (DWI-FLAIR mismatch) or advanced CT perfusion imaging is available, some patients with a mismatch suggesting recent-onset infarction may still be eligible for thrombolysis or thrombectomy per extended-window protocols. In a resource-limited district setting without this imaging, he should proceed down the standard ischaemic stroke pathway: antiplatelet therapy once haemorrhage is excluded, permissive blood pressure, and secondary prevention workup, with referral to a regional centre if thrombectomy criteria might otherwise be met for large-vessel occlusion.",
+      "gradingNotes": "Tests understanding that wake-up stroke does not automatically exclude reperfusion therapy consideration, while being realistic about resource constraints at district level."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "differentials",
+      "question": "Using the Oxfordshire (Bamford) classification, how would you classify this stroke, and why does it matter?",
+      "modelAnswer": "This is most consistent with a Partial Anterior Circulation Syndrome (PACS), since he has a motor deficit and dysarthria but no clear homonymous visual field defect and no higher cortical dysfunction (neglect or dysphasia) to complete the triad required for Total Anterior Circulation Syndrome (TACS). This matters because Oxfordshire classification is purely clinical, requires no imaging, and carries prognostic value — TACS carries roughly 60% one-year mortality or dependency versus a better prognosis with PACS, guiding early discussions with the family about expected recovery and rehabilitation intensity.",
+      "gradingNotes": "Should be able to state the clinical criteria for each Oxfordshire category and recall approximate TACS prognosis figures without prompting."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "Why would you avoid aggressively lowering his blood pressure of 178/102 in the acute phase?",
+      "modelAnswer": "In patients with chronic hypertension, cerebral autoregulation is shifted to the right, meaning the brain — particularly the ischaemic penumbra surrounding the infarct core — relies on a higher mean arterial pressure to maintain adequate perfusion. Aggressively lowering blood pressure acutely can drop perfusion pressure below the threshold needed to sustain the penumbra, converting salvageable tissue into irreversible infarct. Therefore permissive hypertension is maintained unless blood pressure exceeds 220/110 mmHg, or unless the patient is a thrombolysis candidate, where a lower target of <185/110 is required to reduce haemorrhagic transformation risk.",
+      "gradingNotes": "Wants explicit mention of autoregulation shift and penumbra preservation, not just 'because guidelines say so.'"
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "sudden focal neurological deficit → confirm vascular syndrome → glucose → time last seen well → Oxfordshire classification → CT (blood or no blood) → mechanism (TOAST) → risk stratify → secondary prevention",
+  "patient": {
+    "name": "Bongani Mkhize",
+    "age": 61,
+    "sex": "M",
+    "occupation": "retired security guard",
+    "personality": "stoic, slightly confused about timeline, defers to his daughter who brought him in, minimises how long the weakness has been present",
+    "openingLine": "Doctor, my arm and leg on this side just stopped working this morning..."
+  },
+  "presentingComplaint": "sudden weakness of the right arm and leg with slurred speech, found by his daughter this morning",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Daughter found him on the floor next to his bed this morning at around 07:00, unable to move his right side; he was last seen completely well by her at 22:00 the night before when she said goodnight",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-timeline-clarify",
+      "fact": "He himself is vague about exact timing but confirms he went to bed feeling fine and does not remember waking up in the night; this is a 'wake-up stroke' with unknown exact onset",
+      "disclosure": "onAsk",
+      "triggers": [
+        "last seen well",
+        "time",
+        "when did it start",
+        "onset",
+        "last normal",
+        "woke up",
+        "wake up",
+        "morning",
+        "night",
+        "last night",
+        "when",
+        "last",
+        "seen",
+        "start",
+        "normal",
+        "woke",
+        "wake"
+      ]
+    },
+    {
+      "id": "hx-weakness-pattern",
+      "fact": "Weakness came on suddenly and was at its worst immediately — no gradual spreading or jerking beforehand",
+      "disclosure": "onAsk",
+      "triggers": [
+        "sudden",
+        "gradual",
+        "spread",
+        "march",
+        "worse over time",
+        "jerk",
+        "seizure",
+        "fit",
+        "shaking",
+        "how did it start",
+        "pattern",
+        "worse",
+        "over",
+        "start"
+      ]
+    },
+    {
+      "id": "hx-speech",
+      "fact": "Speech is slurred and his daughter says some words come out wrong, but he seems to understand everything said to him",
+      "disclosure": "onAsk",
+      "triggers": [
+        "speech",
+        "talk",
+        "slur",
+        "words",
+        "understand",
+        "language",
+        "aphasia",
+        "dysarthria",
+        "speaking",
+        "communicate"
+      ]
+    },
+    {
+      "id": "hx-face",
+      "fact": "Right side of his face is drooping, noticed by the daughter when he tried to smile",
+      "disclosure": "onAsk",
+      "triggers": [
+        "face",
+        "droop",
+        "smile",
+        "facial",
+        "mouth",
+        "asymmetry"
+      ]
+    },
+    {
+      "id": "hx-headache",
+      "fact": "No headache at all, no vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "head pain",
+        "vomit",
+        "nausea",
+        "sick",
+        "worst headache",
+        "thunderclap",
+        "head",
+        "pain",
+        "worst"
+      ]
+    },
+    {
+      "id": "hx-loc",
+      "fact": "No loss of consciousness or seizure activity witnessed by the daughter",
+      "disclosure": "onAsk",
+      "triggers": [
+        "loss of consciousness",
+        "blackout",
+        "faint",
+        "seizure",
+        "fit",
+        "unconscious",
+        "collapse",
+        "convulsion",
+        "loss",
+        "consciousness"
+      ]
+    },
+    {
+      "id": "hx-visual",
+      "fact": "No visual disturbance, no double vision noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vision",
+        "eyesight",
+        "see",
+        "blurred",
+        "double vision",
+        "diplopia",
+        "blind",
+        "curtain",
+        "double"
+      ]
+    },
+    {
+      "id": "hx-vertigo",
+      "fact": "No dizziness, no vertigo, no swallowing difficulty, no unsteadiness reported before this event",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dizzy",
+        "dizziness",
+        "vertigo",
+        "spinning",
+        "balance",
+        "swallow",
+        "choke",
+        "unsteady",
+        "clumsy",
+        "ataxia",
+        "hiccup"
+      ]
+    },
+    {
+      "id": "hx-htn",
+      "fact": "Known hypertensive for 15 years, admits he often forgets his tablets and hasn't seen the clinic in over a year",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "high blood pressure",
+        "bp",
+        "tablets for pressure",
+        "chronic illness",
+        "medical history",
+        "blood",
+        "pressure",
+        "high",
+        "tablets",
+        "chronic",
+        "illness",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-dm",
+      "fact": "No known diabetes, has never had his sugar checked recently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diabetes",
+        "sugar",
+        "glucose",
+        "sugar sickness",
+        "blood sugar",
+        "sickness",
+        "blood"
+      ]
+    },
+    {
+      "id": "hx-heart",
+      "fact": "No known heart disease, no palpitations, no chest pain, no known irregular heartbeat",
+      "disclosure": "onAsk",
+      "triggers": [
+        "heart",
+        "palpitations",
+        "chest pain",
+        "irregular heartbeat",
+        "atrial fibrillation",
+        "murmur",
+        "valve",
+        "rheumatic fever",
+        "chest",
+        "pain",
+        "irregular",
+        "heartbeat",
+        "atrial",
+        "fibrillation",
+        "rheumatic",
+        "fever"
+      ]
+    },
+    {
+      "id": "hx-tia",
+      "fact": "No previous episodes of weakness or speech problems that resolved on their own",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "previous episode",
+        "tia",
+        "mini stroke",
+        "came and went",
+        "resolved",
+        "transient",
+        "previous",
+        "episode",
+        "mini",
+        "stroke",
+        "came",
+        "went"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Was prescribed amlodipine and hydrochlorothiazide years ago but ran out of tablets about 8 months ago and never went back for a refill",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "treatment",
+        "taking anything",
+        "compliance",
+        "adherence",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smoked about 10 cigarettes a day for 30 years, stopped 5 years ago; drinks beer on weekends, no history of tik or other recreational drug use; lives with his daughter in KwaMashu",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "drugs",
+        "tik",
+        "whoonga",
+        "cocaine",
+        "social",
+        "live",
+        "home"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative two years ago at a wellness day; no recent test since",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "immune"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "His older brother died of a 'stroke' in his sixties; mother had high blood pressure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "brother",
+        "sister",
+        "stroke in family",
+        "runs in the family",
+        "genetic",
+        "family",
+        "history",
+        "stroke",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-trauma",
+      "fact": "No recent neck trauma, no chiropractic manipulation, no recent motor vehicle accident",
+      "disclosure": "onAsk",
+      "triggers": [
+        "trauma",
+        "neck",
+        "accident",
+        "injury",
+        "manipulation",
+        "chiropractor",
+        "whiplash",
+        "fall"
+      ]
+    },
+    {
+      "id": "hx-tb-constitutional",
+      "fact": "No cough, no night sweats, no weight loss, no known TB contact",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "night sweats",
+        "weight loss",
+        "contact",
+        "fever",
+        "appetite",
+        "night",
+        "sweats",
+        "weight",
+        "loss"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Elderly-looking man lying in bed, alert but dysarthric. Right facial droop sparing the forehead (able to wrinkle brow bilaterally). No pallor, no cyanosis. Pulse irregularly irregular.",
+    "vitals": {
+      "hr": 118,
+      "bp": "178/102 (right arm), 176/100 (left arm)",
+      "rr": 18,
+      "temp": 36.8,
+      "spo2": "97% on room air",
+      "bmi": 24
+    },
+    "respiratory": "Chest clear, no crackles, no wheeze",
+    "cardio": "Irregularly irregular pulse, no murmurs auscultated, JVP not elevated, no peripheral oedema",
+    "abdo": "Soft, non-tender, no organomegaly",
+    "neuro": "GCS 15 (E4V5M6). Right facial droop sparing forehead (UMN pattern). Dysarthria present, comprehension and repetition intact, no aphasia. Power: right upper limb 1/5, right lower limb 2/5; left side 5/5 throughout. Right-sided hyperreflexia with upgoing plantar (Babinski positive) on the right. Sensation reduced to light touch on the right side. No visual field deficit on confrontation. No neglect or extinction. NIHSS estimated at 12 (facial palsy, arm/leg weakness, dysarthria, mild sensory loss).",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Capillary glucose (bedside)",
+      "result": "6.2 mmol/L — hypoglycaemia excluded",
+      "key": true
+    },
+    {
+      "name": "Non-contrast CT brain",
+      "result": "No acute haemorrhage; subtle loss of grey-white differentiation in the left MCA territory (insular ribbon sign); ASPECTS 8",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Atrial fibrillation, ventricular rate 118/min, no acute ST changes",
+      "key": true
+    },
+    {
+      "name": "12-lead ECG rhythm strip / cardiac monitoring",
+      "result": "Confirms paroxysmal-appearing AF, no P waves visible",
+      "key": false
+    },
+    {
+      "name": "INR/aPTT",
+      "result": "INR 1.0, aPTT normal — not anticoagulated, no contraindication to thrombolysis on coagulation grounds",
+      "key": true
+    },
+    {
+      "name": "FBC",
+      "result": "Hb 13.8 g/dL, WCC 7.1, platelets 245 — normal",
+      "key": false
+    },
+    {
+      "name": "U&E/creatinine",
+      "result": "Normal renal function",
+      "key": false
+    },
+    {
+      "name": "Fasting lipogram",
+      "result": "Total cholesterol 6.4 mmol/L, LDL 4.2 mmol/L — dyslipidaemia",
+      "key": false
+    },
+    {
+      "name": "HbA1c",
+      "result": "6.0% — no diabetes",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "RPR/TPHA",
+      "result": "Non-reactive",
+      "key": false
+    },
+    {
+      "name": "Transthoracic echocardiogram",
+      "result": "Mildly dilated left atrium, no valvular vegetations, ejection fraction 50%, no clot visualised — findings consistent with AF-related atrial remodelling",
+      "key": true
+    },
+    {
+      "name": "Carotid Doppler ultrasound",
+      "result": "Mild atheromatous plaque bilaterally, no haemodynamically significant stenosis",
+      "key": false
+    },
+    {
+      "name": "CXR",
+      "result": "Mild cardiomegaly, no consolidation",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Ischaemic stroke (cardioembolic, secondary to atrial fibrillation)",
+      "rank": 1,
+      "for": [
+        "sudden maximal-at-onset focal deficit",
+        "irregularly irregular pulse confirmed on ECG as AF",
+        "hemiparesis with UMN facial droop sparing forehead",
+        "dysarthria without significant comprehension deficit",
+        "normal glucose",
+        "CT shows early ischaemic changes without haemorrhage",
+        "echo shows atrial remodelling without other embolic source excluded"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Intracerebral haemorrhage",
+      "rank": 2,
+      "for": [
+        "hypertension poorly controlled, non-adherent to medication",
+        "vascular risk factor overlap"
+      ],
+      "against": [
+        "no headache or vomiting at onset",
+        "no reduced GCS",
+        "CT shows no blood",
+        "gradual evolution of hypertensive ICH deficits less typical of this exact sudden onset without headache"
+      ]
+    },
+    {
+      "dx": "Stroke mimic — Todd's paresis (post-ictal) or hypoglycaemia",
+      "rank": 3,
+      "for": [
+        "wake-up presentation, unwitnessed exact onset",
+        "possible unwitnessed seizure overnight"
+      ],
+      "against": [
+        "no tongue-biting, incontinence, or witnessed convulsive activity",
+        "daughter noted no confusion/post-ictal drowsiness",
+        "glucose normal, excluding hypoglycaemic mimic",
+        "CT changes support a true vascular event"
+      ]
+    },
+    {
+      "dx": "CNS mass lesion (e.g. tuberculoma, toxoplasmosis) in an HIV-negative patient",
+      "rank": 4,
+      "for": [
+        "focal neurological deficit"
+      ],
+      "against": [
+        "HIV test negative",
+        "acute sudden onset rather than subacute progression",
+        "no fever, headache, or constitutional symptoms",
+        "CT shows no mass or ring-enhancing lesion"
+      ]
+    }
+  ],
+  "pathophys": {
+    "sudden maximal-at-onset hemiparesis": "Embolus from the fibrillating, poorly contractile left atrium lodges in the left MCA, abruptly occluding blood flow; core tissue with CBF <10 mL/100g/min undergoes rapid ATP depletion, Na+/K+-ATPase failure, depolarisation, glutamate excitotoxicity and Ca2+-mediated necrosis within minutes — hence 'time is brain', with an estimated 1.9 million neurons lost per minute of untreated occlusion",
+    "right facial droop sparing the forehead": "The upper face receives bilateral corticobulbar innervation while the lower face receives predominantly contralateral input; a unilateral upper motor neuron lesion (cortical/subcortical infarct) therefore spares forehead movement, distinguishing it from a lower motor neuron (Bell's) palsy where the whole hemiface is affected",
+    "dysarthria with preserved comprehension": "Involvement of the corticobulbar tracts or motor speech pathways controlling articulation (rather than the dominant perisylvian language cortex) produces slurred but linguistically intact speech, differentiating dysarthria from true aphasia",
+    "irregularly irregular pulse (atrial fibrillation)": "Chaotic atrial electrical activity leads to stasis of blood in the left atrial appendage, promoting thrombus formation; embolisation of this thrombus into the cerebral circulation is a leading mechanism of cardioembolic stroke",
+    "hyperreflexia and upgoing plantar on the affected side": "Disruption of descending corticospinal (upper motor neuron) pathways removes inhibitory modulation of spinal reflex arcs, producing hyperreflexia, increased tone (evolving over days), and an extensor plantar response (Babinski sign)"
+  },
+  "staging": "Oxfordshire (Bamford) classification: Total Anterior Circulation Syndrome (TACS) — combination of unilateral motor/sensory deficit, homonymous visual field defect (not yet assessable/absent here) and higher cortical dysfunction would classify as TACS if all three present; this patient has motor deficit plus dysarthria/facial involvement without clear visual field loss or cortical higher function deficit, most consistent with Partial Anterior Circulation Syndrome (PACS) — associated with roughly 15% one-year mortality and moderate risk of dependency, better prognosis than TACS (~60% dead or 35% dependent at one year). NIHSS approximately 12 (moderate stroke severity).",
+  "management": {
+    "immediate": [
+      "Confirm ABC, secure airway if needed, keep nil by mouth until formal swallow screen performed",
+      "Bedside capillary glucose already checked and normal — hypoglycaemia excluded",
+      "Document exact time last seen well (22:00 previous night) — outside standard 4.5-hour thrombolysis window given wake-up presentation with unknown exact onset; assess eligibility for extended-window/DWI-FLAIR mismatch-guided thrombolysis or thrombectomy only where advanced imaging and service available",
+      "Avoid aggressive antihypertensive therapy acutely (permissive hypertension) unless BP exceeds 220/120 or patient is a thrombolysis candidate (target <185/110)",
+      "Urgent non-contrast CT brain to exclude haemorrhage before any antithrombotic therapy",
+      "NIHSS and GCS documented as baseline for monitoring deterioration"
+    ],
+    "definitive": [
+      "Once haemorrhage excluded on CT, start aspirin 300 mg once daily (loading) as per protocol, or clopidogrel per local guideline",
+      "Anticoagulation for confirmed atrial fibrillation once haemorrhagic stroke excluded and after an appropriate delay post-infarct (typically 1-2 weeks depending on infarct size, per 1-3-6-12 day rule to balance recurrent embolism risk against haemorrhagic transformation)",
+      "Statin therapy (atorvastatin high-intensity) given dyslipidaemia",
+      "Optimise blood pressure control with amlodipine/thiazide restart and adherence counselling once acute phase stabilised",
+      "Refer for thrombectomy assessment if large-vessel occlusion confirmed on CT angiography and within eligible window at a regional centre with the service"
+    ],
+    "supportive": [
+      "Formal swallow assessment before any oral intake to prevent aspiration",
+      "DVT prophylaxis (mechanical initially, pharmacological once haemorrhage excluded and appropriate)",
+      "Early mobilisation and pressure area care",
+      "Glucose and temperature control",
+      "Nutritional support/dietician referral",
+      "Physiotherapy, occupational therapy, and speech-language therapy referral"
+    ],
+    "followUp": [
+      "Rehabilitation programme with modified Rankin Scale tracking over time",
+      "Secondary prevention clinic: BP, lipid, glycaemic control and adherence counselling",
+      "Anticoagulation monitoring/dose review at follow-up",
+      "Counsel patient and daughter on stroke warning signs and driving restrictions",
+      "Household and social support planning given functional deficit"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-timeline",
+      "phase": "history",
+      "item": "Establishes exact 'time last seen well' rather than time noticed/found",
+      "answer": "Last seen completely well at 22:00 the previous night; found weak at 07:00 — a wake-up stroke with unknown exact onset",
+      "why": "Gatekeeps eligibility for thrombolysis/thrombectomy and is one of the two most commonly missed items in stroke OSCEs",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-glucose",
+      "phase": "history",
+      "item": "Asks about / prioritises checking blood glucose to exclude hypoglycaemic mimic",
+      "answer": "Capillary glucose 6.2 mmol/L — normal, hypoglycaemia excluded",
+      "why": "Hypoglycaemia can perfectly mimic stroke and must be excluded immediately; second of the two commonest OSCE failure points",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-onset-pattern",
+      "phase": "history",
+      "item": "Characterises onset as sudden and maximal-at-onset versus a sequential march (seizure/migraine)",
+      "answer": "Sudden onset, maximal at onset, no march or jerking",
+      "why": "Confirms vascular syndrome and excludes seizure/migraine mimics",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-speech-screen",
+      "phase": "history",
+      "item": "Distinguishes dysarthria (slurring) from dysphasia (word-finding/comprehension)",
+      "answer": "Dysarthria present with intact comprehension and repetition — no true aphasia",
+      "why": "Localises the lesion and helps differentiate cortical from subcortical/bulbar involvement",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-headache-redflag",
+      "phase": "history",
+      "item": "Screens for thunderclap headache, vomiting, and reduced consciousness at onset",
+      "answer": "No headache, no vomiting, no loss of consciousness",
+      "why": "Their absence lowers suspicion for SAH/ICH and raised ICP as the primary red-flag differentials",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-posterior-circ",
+      "phase": "history",
+      "item": "Screens for the '5 Ds' of posterior circulation stroke (dizziness, diplopia, dysarthria, dysphagia, dystaxia)",
+      "answer": "No dizziness, no diplopia, no swallowing difficulty, no ataxia reported",
+      "why": "Excludes vertebrobasilar/posterior circulation involvement, which carries high risk of catastrophic deterioration",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-risk-factors",
+      "phase": "history",
+      "item": "Elicits vascular risk factors: hypertension control/adherence, diabetes, cardiac history, smoking, HIV status, family history",
+      "answer": "Poorly controlled/non-adherent hypertension, ex-smoker, HIV negative, family history of stroke, no known diabetes",
+      "why": "Identifies modifiable risk factors and informs likely stroke mechanism (TOAST classification)",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-facial-exam",
+      "phase": "examination",
+      "item": "Examines face specifically for forehead sparing to distinguish central (UMN) from peripheral (Bell's/LMN) palsy",
+      "answer": "Right facial droop with forehead sparing — consistent with a central (UMN) lesion",
+      "why": "Classic examinable discriminator between stroke and Bell's palsy, explicitly emphasised as core teaching",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cardio-exam",
+      "phase": "examination",
+      "item": "Performs full cardiovascular exam: pulse regularity, BP both arms, auscultation for murmurs",
+      "answer": "Irregularly irregular pulse (AF), BP elevated and symmetrical, no murmurs",
+      "why": "'The heart often holds the answer' — identifies likely cardioembolic source",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-neuro-localise",
+      "phase": "examination",
+      "item": "Performs focused neurological exam to localise the lesion (power, tone, reflexes, plantars, sensation, visual fields, higher function)",
+      "answer": "Right hemiparesis (arm>leg), hyperreflexia, upgoing plantar on right, reduced sensation right side, no visual field deficit, no neglect",
+      "why": "Localises to left MCA territory and supports Oxfordshire classification",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-oxfordshire",
+      "phase": "differentials",
+      "item": "Applies Oxfordshire (Bamford) classification based on clinical findings alone",
+      "answer": "Partial Anterior Circulation Syndrome (PACS) — motor deficit and dysarthria without clear visual field loss or higher cortical dysfunction",
+      "why": "Explicitly flagged as 'the single most examinable stroke classification' — purely clinical and prognostic",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx-ranked",
+      "phase": "differentials",
+      "item": "Offers a ranked differential (ischaemic cardioembolic stroke > ICH > mimic > mass lesion) with reasoning linked to findings",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy; must actively consider and exclude stroke mimics (~20-25% of presentations)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ct-first",
+      "phase": "investigations",
+      "item": "Requests urgent non-contrast CT brain as the first and most important investigation, framed as 'blood or no blood'",
+      "answer": "No acute haemorrhage; early ischaemic changes in left MCA territory, ASPECTS 8",
+      "why": "Dictates opposite management pathways (thrombolysis/antiplatelet vs haemorrhage management) and cannot be skipped",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ecg-af",
+      "phase": "investigations",
+      "item": "Requests ECG and identifies atrial fibrillation as the likely embolic source",
+      "answer": "AF with ventricular rate 118/min",
+      "why": "Confirms cardioembolic mechanism and directs anticoagulation decision-making",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-coag-before-lysis",
+      "phase": "investigations",
+      "item": "Checks INR/aPTT and platelet count before considering thrombolysis",
+      "answer": "INR 1.0, aPTT normal, platelets 245 — no contraindication on coagulation grounds",
+      "why": "Mandatory safety check before any thrombolytic decision",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-echo-workup",
+      "phase": "investigations",
+      "item": "Arranges echocardiogram and carotid Doppler as part of mechanism work-up",
+      "answer": "Echo shows dilated left atrium, no vegetation; carotids show mild non-significant plaque",
+      "why": "Completes TOAST mechanism classification and screens for valvular disease/endocarditis (locally relevant RHD burden)",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-permissive-htn",
+      "phase": "management",
+      "item": "Avoids aggressive acute BP lowering, citing autoregulation shift in chronic hypertensives",
+      "answer": "Permissive hypertension unless >220/120 or thrombolysis candidate (target <185/110)",
+      "why": "Aggressive lowering can extend the ischaemic penumbra into infarction",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-secondary-prevention",
+      "phase": "management",
+      "item": "Outlines antiplatelet/anticoagulation timing, statin, BP/glucose control, swallow screen, DVT prophylaxis, and rehabilitation referral",
+      "answer": "Aspirin after haemorrhage excluded, delayed anticoagulation for AF per 1-3-6-12 day rule, high-intensity statin, swallow screen before oral intake, physio/OT/speech referral",
+      "why": "Comprehensive secondary prevention and supportive care per SA guidelines",
+      "weight": 3,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 20,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 10
+  }
+}

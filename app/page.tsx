@@ -8,6 +8,7 @@ const EXPLAINERS: Array<[string, string]> = [
   ["Station practice", "Interview and examine a virtual patient in a timed OSCE station."],
   ["Examiner viva", "A UKZN-style examiner interrupts to probe your reasoning, mid-station."],
   ["Marked report", "Scored against the real station checklist, with the model answers to study from."],
+  ["Flashcards", "Upload a Q&A document — extracted cards come back on a spaced-repetition schedule."],
 ];
 
 export default function Home() {
@@ -33,6 +34,12 @@ export default function Home() {
             Start a station
           </Link>
           <Link
+            href="/flashcards"
+            className="rounded border border-emerald-900 px-4 py-2 text-sm font-medium text-emerald-300 transition-colors hover:border-emerald-700 hover:bg-emerald-950/40"
+          >
+            Flashcards
+          </Link>
+          <Link
             href="/admin/review"
             className="rounded border border-neutral-700 px-4 py-2 text-sm font-medium text-neutral-200 transition-colors hover:border-neutral-500 hover:bg-neutral-900"
           >
@@ -43,7 +50,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-3">
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {EXPLAINERS.map(([title, body]) => (
             <li key={title} className="rounded border border-neutral-800 p-4">
               <p className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">{title}</p>

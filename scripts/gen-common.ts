@@ -10,6 +10,13 @@ import { OsceCaseSchema, type OsceCase } from "../lib/case-schema";
 
 // Examiner/marking/case-gen model per DECISIONS.md (2026-08-12).
 export const GENERATION_MODEL = "claude-sonnet-5";
+// Sonnet 5 intro pricing (USD per MTok) through 2026-08-31 — same table as
+// lib/kb-pipeline/distill.ts. Used only for the per-call budget log below.
+const PRICE_IN = 2;
+const PRICE_OUT = 10;
+const PRICE_CACHE_WRITE = PRICE_IN * 1.25;
+const PRICE_CACHE_READ = PRICE_IN * 0.1;
+let runCostUsd = 0;
 // Generation is JSON transcription against a fixed schema, not open reasoning —
 // thinking is disabled on these calls, so the whole budget belongs to the case
 // JSON (~5k tokens) and 8000 has comfortable headroom.
@@ -127,11 +134,93 @@ export interface StructuredResult<T> {
   feedback: string | null;
 }
 
+// 2026-08-17: the API started rejecting the full clinical case schema at
+// request time — 400 "The compiled grammar is too large" — while the smaller
+// interpretation schema still compiles. When a schema hits that limit,
+// structured outputs cannot be used for it, so generateStructured falls back
+// to a plain (unconstrained) call and validates the returned JSON client-side
+// with the SAME Zod schema + feedback retry the structured path already uses.
+// Schemas that failed once are remembered so calls 2..N of a run skip the
+// doomed probe. If the API limit rises, the probe succeeds again and
+// structured outputs resume automatically — nothing else changes.
+const grammarTooLargeSchemas = new WeakSet<object>();
+
+function isGrammarTooLarge(err: unknown): boolean {
+  return err instanceof APIError && err.status === 400 && /grammar is too large/i.test(err.message);
+}
+
+function logUsage(response: Anthropic.Message): void {
+  const u = response.usage;
+  const cacheWrite = u.cache_creation_input_tokens ?? 0;
+  const cacheRead = u.cache_read_input_tokens ?? 0;
+  const cost =
+    (u.input_tokens * PRICE_IN + cacheWrite * PRICE_CACHE_WRITE + cacheRead * PRICE_CACHE_READ + u.output_tokens * PRICE_OUT) /
+    1_000_000;
+  runCostUsd += cost;
+  console.log(
+    `        [usage] in ${u.input_tokens} | cache write ${cacheWrite} read ${cacheRead} | out ${u.output_tokens} | $${cost.toFixed(4)} (run total $${runCostUsd.toFixed(4)})`,
+  );
+}
+
+// Pretty-printed JSON burns ~40% more output tokens than compact JSON, so the
+// fallback demands minified output and gets extra headroom over MAX_TOKENS
+// (only tokens actually generated are billed — headroom is free insurance).
+const FALLBACK_MAX_TOKENS = 16000;
+
+/** Plain-call fallback: prompted JSON, parsed + validated client-side. */
+async function generateUnstructured<T>(
+  client: Anthropic,
+  systemPrompt: string,
+  userPrompt: string,
+  schema: ZodType<T>,
+): Promise<StructuredResult<T>> {
+  const response = await client.messages.create({
+    model: GENERATION_MODEL,
+    max_tokens: FALLBACK_MAX_TOKENS,
+    thinking: { type: "disabled" },
+    system: [{ type: "text", text: systemPrompt, cache_control: { type: "ephemeral" } }],
+    messages: [
+      {
+        role: "user",
+        content: `${userPrompt}\n\nOutput ONLY the complete case as a single MINIFIED JSON object (no indentation or newlines, no prose, no markdown fences).`,
+      },
+    ],
+  });
+  logUsage(response);
+  if (response.stop_reason === "refusal") throw new Error("model declined the request (stop_reason: refusal)");
+  if (response.stop_reason === "max_tokens") {
+    throw new Error(`response truncated at ${FALLBACK_MAX_TOKENS} tokens (stop_reason: max_tokens)`);
+  }
+  let text = response.content
+    .filter((b): b is Anthropic.TextBlock => b.type === "text")
+    .map((b) => b.text)
+    .join("\n")
+    .trim();
+  // Tolerate accidental fences / leading prose around the JSON object.
+  const first = text.indexOf("{");
+  const last = text.lastIndexOf("}");
+  if (first === -1 || last <= first) return { data: null, feedback: "response contained no JSON object" };
+  text = text.slice(first, last + 1);
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text);
+  } catch (err) {
+    return { data: null, feedback: `response was not valid JSON: ${err instanceof Error ? err.message : err}` };
+  }
+  const result = schema.safeParse(parsed);
+  if (!result.success) {
+    return { data: null, feedback: `Schema validation failed:\n${formatZodIssues(result.error.issues)}` };
+  }
+  return { data: result.data, feedback: null };
+}
+
 /**
  * One structured-outputs generation call. The JSON *shape* is enforced by the
  * API via `output_config.format` (zodOutputFormat), so shape retries should be
  * rare; refine rules (rubric sum, trigger fatness) are validated client-side by
- * `messages.parse` and surface as retryable `feedback`.
+ * `messages.parse` and surface as retryable `feedback`. Schemas the API's
+ * grammar compiler rejects (see note above) transparently use the plain-call
+ * fallback instead.
  *
  * The system prompt is static across a run and carries the cache_control
  * breakpoint (prompt-caching: stable prefix in `system`, per-case content in
@@ -144,6 +233,9 @@ export async function generateStructured<T>(
   userPrompt: string,
   schema: ZodType<T>,
 ): Promise<StructuredResult<T>> {
+  if (grammarTooLargeSchemas.has(schema)) {
+    return generateUnstructured(client, systemPrompt, userPrompt, schema);
+  }
   let response;
   try {
     response = await client.messages.parse({
@@ -155,6 +247,11 @@ export async function generateStructured<T>(
       messages: [{ role: "user", content: userPrompt }],
     });
   } catch (err) {
+    if (isGrammarTooLarge(err)) {
+      console.log("        (!) schema exceeds the API grammar limit — falling back to plain JSON generation for this run");
+      grammarTooLargeSchemas.add(schema);
+      return generateUnstructured(client, systemPrompt, userPrompt, schema);
+    }
     // messages.parse throws a plain AnthropicError (not an APIError) when the
     // response fails the client-side Zod backstop — its message carries the
     // formatted issues, which is exactly the retry feedback we want.
@@ -163,6 +260,9 @@ export async function generateStructured<T>(
     }
     throw err;
   }
+
+  // Budget log (task mandate): token usage + estimated cost after every call.
+  logUsage(response);
 
   if (response.stop_reason === "refusal") {
     throw new Error("model declined the request (stop_reason: refusal)");

@@ -1,0 +1,694 @@
+{
+  "id": "neuro-004-cerebral-toxoplasmosis-with-focal",
+  "version": 1,
+  "discipline": "neuro",
+  "diagnosis": "Cerebral toxoplasmosis with focal seizures in advanced HIV",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this man's presentation, and what specifically points you toward each option.",
+      "modelAnswer": "Given a focal-onset seizure with secondary generalisation, preceding headache/fever and a progressive focal deficit in a man with CD4 48, my leading differential is cerebral toxoplasmosis — supported by multiple ring-enhancing lesions at the grey-white junction/basal ganglia and positive Toxoplasma IgG. Tuberculoma is next given the HIV/TB burden here, though sputum GeneXpert is negative and there's no TB contact. Primary CNS lymphoma is possible at this CD4 but usually presents as a single larger periventricular lesion. Neurocysticercosis is the leading cause of adult-onset seizures in South Africa generally but the lesion pattern and profound immunosuppression make it less likely here. Cryptococcoma is possible but usually presents with more meningitic features.",
+      "gradingNotes": "Full marks: ranked list with reasoning linking CD4, lesion pattern/location, and serology to each diagnosis. Partial credit for an unranked or unjustified list."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Explain the pathophysiology of why this man developed a focal seizure that became generalised.",
+      "modelAnswer": "Reactivated Toxoplasma tachyzoites cause necrotising encephalitis with surrounding vasogenic oedema at the grey-white junction/basal ganglia. This creates an irritable, disorganised cortical focus that generates abnormal hypersynchronous electrical discharge — beginning focally in the cortical area controlling the right arm — before propagating across the corpus callosum and subcortical pathways to involve the whole cortex, producing secondary generalisation.",
+      "gradingNotes": "Wants mechanism: necrotising lesion → cortical irritability → focal discharge → propagation to generalised. Simply restating 'seizure' scores no marks."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "management",
+      "question": "Your patient continues to have rhythmic jerking of the right arm 6 minutes after arrival, with no improvement. What do you do, and why is timing important?",
+      "modelAnswer": "This meets the t1 timepoint for generalised convulsive status epilepticus (5 minutes) — I would give IV lorazepam (or diazepam) immediately, or buccal/IM midazolam if no IV access, while checking glucose and electrolytes. Timing matters because GABA-A receptors progressively internalise and NMDA receptors upregulate at the synaptic membrane the longer a seizure continues, making benzodiazepines progressively less effective — so early treatment is critical to avoid needing second-line/anaesthetic agents.",
+      "gradingNotes": "Must state the 5-minute t1 threshold explicitly and explain benzodiazepine treatment-resistance mechanism for full marks."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why would you avoid starting carbamazepine or phenytoin in this patient, even though they're effective antiseizure drugs?",
+      "modelAnswer": "Carbamazepine, phenytoin, and phenobarbitone are potent hepatic enzyme inducers (CYP3A4) that significantly reduce plasma levels of dolutegravir, efavirenz, protease inhibitors, and rifampicin — risking ART/TB treatment failure and resistance. I would instead choose levetiracetam, lamotrigine, or valproate (with caution regarding teratogenicity in women of childbearing potential), none of which have this clinically significant interaction.",
+      "gradingNotes": "High-yield, explicitly flagged local point — must name the enzyme induction mechanism and specific ART/TB drugs affected, not just 'they interact'."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "investigations",
+      "question": "His serum lactate was 3.1 mmol/L drawn 30 minutes after the witnessed convulsion. How does this help confirm this was a true seizure rather than syncope or a psychogenic event?",
+      "modelAnswer": "Serum lactate rises markedly after a true generalised tonic-clonic seizure due to the intense anaerobic muscular activity during the convulsion, and characteristically normalises within about an hour. A raised lactate shortly after the event supports a true convulsion; a normal lactate drawn soon afterward would argue against one. This, combined with cyanosis during the event, lateral tongue laceration, and prolonged post-ictal confusion, collectively supports a genuine epileptic seizure over syncope or PNES.",
+      "gradingNotes": "Wants the timing-dependent physiology (rises then normalises by ~1 hour) and its use as a discriminator, not just 'lactate was raised so it was a seizure'."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "new-onset seizure: transient event characterisation → seizure vs mimic → provoked vs unprovoked → focal vs generalised onset → screen for structural/infective cause → ILAE epilepsy criteria → safety/driving/ART interactions",
+  "patient": {
+    "name": "Sibusiso Ngcobo",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard",
+    "personality": "stoic, slow to volunteer information, embarrassed about his HIV status and reluctant to admit he defaulted his ART",
+    "openingLine": "Doctor... my family says my arm was shaking and I couldn't answer them. I don't remember it."
+  },
+  "presentingComplaint": "witnessed episode of right arm jerking with brief loss of awareness, referred by family after collapse at home",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Family says the episode started with his right hand and arm jerking rhythmically for about 2 minutes before he lost awareness and the whole body stiffened and jerked for another minute",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-witness",
+      "fact": "His sister witnessed the event; she can be phoned — she says his lips went blue-grey during the shaking and he bit the side of his tongue",
+      "disclosure": "onAsk",
+      "triggers": [
+        "witness",
+        "eyewitness",
+        "who saw",
+        "saw it happen",
+        "phone",
+        "contact number",
+        "sister",
+        "family saw",
+        "describe the event",
+        "what happened",
+        "tell me what she saw",
+        "colour",
+        "tongue",
+        "saw",
+        "happen",
+        "contact",
+        "number",
+        "family",
+        "describe",
+        "event",
+        "happened",
+        "she"
+      ]
+    },
+    {
+      "id": "hx-postictal",
+      "fact": "After the shaking stopped he was confused and drowsy for about 40 minutes, then slept for an hour; did not immediately know where he was",
+      "disclosure": "onAsk",
+      "triggers": [
+        "after",
+        "recovery",
+        "confused",
+        "drowsy",
+        "post-ictal",
+        "postictal",
+        "woke up",
+        "how long to recover",
+        "orientated",
+        "back to normal",
+        "sleepy",
+        "woke",
+        "long",
+        "recover",
+        "back",
+        "normal"
+      ]
+    },
+    {
+      "id": "hx-incontinence",
+      "fact": "He was incontinent of urine during the episode, noticed by his sister",
+      "disclosure": "onAsk",
+      "triggers": [
+        "incontinence",
+        "wet himself",
+        "urine",
+        "bladder",
+        "lost control",
+        "wet the bed",
+        "pass urine",
+        "wet",
+        "himself",
+        "lost",
+        "control",
+        "bed",
+        "pass"
+      ]
+    },
+    {
+      "id": "hx-aura",
+      "fact": "No warning before the episode — no strange smell, no rising stomach feeling, no déjà vu that he recalls",
+      "disclosure": "onAsk",
+      "triggers": [
+        "aura",
+        "warning",
+        "before it started",
+        "feeling before",
+        "déjà vu",
+        "smell",
+        "funny feeling",
+        "prodrome",
+        "before",
+        "started",
+        "feeling",
+        "déjà",
+        "funny"
+      ]
+    },
+    {
+      "id": "hx-headache",
+      "fact": "Headache and low-grade fevers for the past 10 days, worse in the mornings, plus increasing clumsiness of the right hand for about a week before the seizure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "head pain",
+        "fever",
+        "hot",
+        "clumsy",
+        "weakness",
+        "right hand",
+        "right side",
+        "dropping things",
+        "arm weak",
+        "difficulty using hand",
+        "few days before",
+        "head",
+        "pain",
+        "right",
+        "hand",
+        "side",
+        "dropping",
+        "things",
+        "arm",
+        "weak",
+        "difficulty",
+        "using",
+        "few",
+        "days",
+        "before"
+      ]
+    },
+    {
+      "id": "hx-priorseizures",
+      "fact": "No previous seizures or funny turns ever before this",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before",
+        "previous seizure",
+        "fits before",
+        "ever happened",
+        "first time",
+        "past seizures",
+        "epilepsy before",
+        "previous",
+        "seizure",
+        "fits",
+        "happened",
+        "first",
+        "past",
+        "seizures",
+        "epilepsy"
+      ]
+    },
+    {
+      "id": "hx-hivstatus",
+      "fact": "Diagnosed HIV positive 6 years ago; started on ART but stopped taking his tablets about 8 months ago after he changed jobs and moved suburbs, embarrassed to say he never went back to clinic",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "antiretroviral",
+        "tablets",
+        "treatment",
+        "clinic",
+        "defaulted",
+        "stopped medication",
+        "taking your pills",
+        "cd4",
+        "viral load",
+        "when last tested",
+        "stopped",
+        "medication",
+        "taking",
+        "pills",
+        "viral",
+        "load",
+        "last",
+        "tested"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No known TB contact, no chronic cough, no night sweats besides the recent fevers, never treated for TB before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "contact",
+        "household",
+        "night sweats",
+        "tested for tb",
+        "tb treatment",
+        "night",
+        "sweats",
+        "tested",
+        "treatment"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No prior hospital admissions, no head injury with loss of consciousness, no history of stroke or high blood pressure",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "head injury",
+        "trauma",
+        "stroke",
+        "hypertension",
+        "admitted",
+        "hospital before",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "head",
+        "injury",
+        "hospital",
+        "before"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Not on any current medication since defaulting ART; occasionally uses traditional muti from a local healer for the headaches",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "muti",
+        "traditional",
+        "herbal remedy",
+        "taking anything",
+        "herbal",
+        "remedy",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergy",
+        "allergic",
+        "reaction",
+        "allergies"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Drinks alcohol occasionally on weekends, denies smoking or recreational drug use; lives in Umlazi with his sister and her children",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "smoke",
+        "smoking",
+        "drugs",
+        "recreational",
+        "social history",
+        "live",
+        "home",
+        "house",
+        "social",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of epilepsy or seizure disorders; father has hypertension",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "epilepsy in family",
+        "seizures run in family",
+        "father",
+        "mother",
+        "parents",
+        "family",
+        "history",
+        "epilepsy",
+        "seizures",
+        "run"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No visual disturbance, no neck stiffness noticed by him, no vomiting, no weight loss he's aware of, no rash",
+      "disclosure": "onAsk",
+      "triggers": [
+        "vision",
+        "eyesight",
+        "neck stiff",
+        "vomiting",
+        "weight loss",
+        "rash",
+        "other symptoms",
+        "anything else",
+        "neck",
+        "stiff",
+        "weight",
+        "loss",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Thin man, mildly unwell-looking, oriented but slow to respond, mild oral thrush noted. No neurocutaneous stigmata. No lymphadenopathy.",
+    "vitals": {
+      "hr": 98,
+      "bp": "118/76",
+      "rr": 18,
+      "temp": 38.1,
+      "spo2": "97% on room air",
+      "bmi": 19
+    },
+    "respiratory": "Clear breath sounds bilaterally, no crackles, no bronchial breathing",
+    "cardio": "Normal heart sounds, no murmurs, JVP not raised",
+    "abdo": "Soft, non-tender, no organomegaly",
+    "neuro": "GCS 15 but slow processing. Right pronator drift and mild right-sided weakness (4/5 in right arm, 4+/5 right leg) — subtle, resolving over the exam. Right-sided hyperreflexia with upgoing plantar on the right. No neck stiffness, no papilloedema on fundoscopy (though view partial). Lateral tongue laceration on the right side noted. Cranial nerves otherwise intact.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Capillary glucose",
+      "result": "5.6 mmol/L",
+      "key": false
+    },
+    {
+      "name": "CT brain with contrast",
+      "result": "Multiple (3) ring-enhancing lesions at the grey-white junction and left basal ganglia with surrounding vasogenic oedema and mild mass effect; no midline shift",
+      "key": true
+    },
+    {
+      "name": "HIV ELISA / rapid test",
+      "result": "Positive (patient already known positive)",
+      "key": false
+    },
+    {
+      "name": "CD4 count",
+      "result": "48 cells/µL",
+      "key": true
+    },
+    {
+      "name": "Viral load",
+      "result": "210,000 copies/mL (consistent with ART non-adherence)",
+      "key": true
+    },
+    {
+      "name": "Toxoplasma IgG serology",
+      "result": "Positive",
+      "key": true
+    },
+    {
+      "name": "Toxoplasma IgM serology",
+      "result": "Negative (consistent with reactivation of latent infection rather than acute primary infection)",
+      "key": false
+    },
+    {
+      "name": "Serum lactate (drawn ~30 min post-seizure)",
+      "result": "3.1 mmol/L, trending to normal on repeat at 1 hour — consistent with a true convulsive seizure",
+      "key": false
+    },
+    {
+      "name": "CK",
+      "result": "612 U/L, mildly elevated (post-ictal muscle breakdown)",
+      "key": false
+    },
+    {
+      "name": "FBC, U&E, Ca, Mg, phosphate, LFT",
+      "result": "Mild normocytic anaemia (Hb 10.9), electrolytes and renal/liver function normal",
+      "key": false
+    },
+    {
+      "name": "CRP",
+      "result": "34 mg/L",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "Not detected",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "No infiltrate, no cavitation, no lymphadenopathy",
+      "key": false
+    },
+    {
+      "name": "Lumbar puncture",
+      "result": "Deferred acutely due to focal deficit and ring-enhancing lesions with mass effect on CT — LP contraindicated until mass lesions have been addressed/re-imaged",
+      "key": false
+    },
+    {
+      "name": "EEG",
+      "result": "Not performed acutely; would be considered later for classification, not for exclusion of epilepsy",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Cerebral toxoplasmosis",
+      "rank": 1,
+      "for": [
+        "CD4 48 (severely immunosuppressed)",
+        "multiple ring-enhancing lesions at grey-white junction and basal ganglia on CT",
+        "positive Toxoplasma IgG",
+        "subacute headache and focal right-sided deficit/Todd's paresis preceding a focal-onset seizure with secondary generalisation",
+        "ART non-adherent for 8 months"
+      ],
+      "against": [
+        "cannot fully exclude tuberculoma or lymphoma without response to empirical treatment or biopsy"
+      ]
+    },
+    {
+      "dx": "Tuberculoma / CNS tuberculosis",
+      "rank": 2,
+      "for": [
+        "HIV co-infection makes CNS TB common",
+        "ring-enhancing lesions can mimic toxoplasmosis radiologically",
+        "fever and headache"
+      ],
+      "against": [
+        "GeneXpert sputum negative",
+        "no TB contact or chronic cough",
+        "no lymphadenopathy or CXR changes",
+        "single lesions more typical though multiple can occur"
+      ]
+    },
+    {
+      "dx": "Primary CNS lymphoma",
+      "rank": 3,
+      "for": [
+        "occurs at similarly low CD4 counts",
+        "can present with focal deficit and seizure",
+        "enhancing mass lesion(s) on CT"
+      ],
+      "against": [
+        "usually a single, larger, periventricular lesion rather than multiple discrete lesions",
+        "less rapid response expected to empirical anti-toxoplasma therapy — used to distinguish clinically"
+      ]
+    },
+    {
+      "dx": "Neurocysticercosis",
+      "rank": 4,
+      "for": [
+        "leading cause of adult-onset seizures in South Africa",
+        "can cause ring-enhancing lesions"
+      ],
+      "against": [
+        "lesions typically smaller with a visible scolex, not at grey-white junction/basal ganglia in this distribution",
+        "no exposure history to suggest Taenia solium",
+        "degree of immunosuppression and IgG positivity make toxoplasmosis far more likely"
+      ]
+    },
+    {
+      "dx": "Cryptococcoma",
+      "rank": 5,
+      "for": [
+        "occurs at very low CD4 counts",
+        "can cause mass lesions and seizures"
+      ],
+      "against": [
+        "far less common than toxoplasmosis as a mass lesion",
+        "typically presents more with meningitic features (headache, neck stiffness, raised ICP) than discrete ring-enhancing lesions"
+      ]
+    }
+  ],
+  "pathophys": {
+    "focal-onset seizure with secondary generalisation": "Toxoplasma gondii tachyzoites reactivate from latent bradyzoite cysts in the severely immunosuppressed brain (CD4 <100), causing necrotising encephalitis with surrounding vasogenic oedema; the irritable, disorganised cortical focus at the lesion margin generates abnormal electrical discharge that begins focally (right arm) before spreading to involve the whole cortex (secondary generalisation)",
+    "Todd's paresis / preceding right-sided weakness": "Transient post-ictal neuronal exhaustion and local inhibitory processes in the affected (left hemisphere) cortex produce contralateral weakness that resolves within 48 hours; in this case a structural lesion in the same region also contributes a true focal deficit",
+    "headache and fever preceding the seizure": "Mass effect and oedema from expanding necrotic toxoplasma abscesses raise local and sometimes global intracranial pressure, while cytokine release (TNF-α, IL-1, IL-6) from the inflammatory/necrotic process drives fever and headache",
+    "multiple ring-enhancing lesions at the grey-white junction": "Haematogenous dissemination of reactivated tachyzoites preferentially seeds the richly vascularised grey-white junction and basal ganglia; the enhancing rim represents a zone of inflammatory blood-brain barrier breakdown around central necrosis",
+    "post-ictal confusion": "Neuronal metabolic exhaustion (depleted ATP, accumulated extracellular potassium and adenosine) and ongoing subclinical cortical dysfunction after the seizure's excitation/inhibition imbalance resolves"
+  },
+  "staging": "WHO HIV clinical stage 4 (cerebral toxoplasmosis, an AIDS-defining illness); provoked (acute symptomatic) focal seizure secondary to structural CNS lesion — does not yet meet ILAE unprovoked epilepsy criteria but carries high recurrence risk while the lesion is active",
+  "management": {
+    "immediate": [
+      "Protect airway, ensure IV access, correct glucose if needed (already normal here)",
+      "If seizure recurs/persists >5 minutes (t1 for GTCS): IV lorazepam or diazepam as first-line status epilepticus treatment",
+      "Load with a non-enzyme-inducing antiseizure medication (levetiracetam preferred) given need for future ART/TB drug compatibility",
+      "Urgent CT brain with contrast (already performed) — defer lumbar puncture given mass lesions with oedema and focal deficit",
+      "Admit for neurological observation and monitoring of GCS/focal signs"
+    ],
+    "definitive": [
+      "Empirical anti-toxoplasma therapy: pyrimethamine + sulfadiazine + folinic acid (leucovorin) for 6 weeks, or co-trimoxazole high-dose as an alternative per SA guidelines",
+      "Reassess clinically and radiologically at 2 weeks — expect clinical and radiological improvement with correct diagnosis; failure to improve prompts consideration of biopsy for lymphoma/other pathology",
+      "Re-initiate ART (previous regimen review, likely TLD) after a short delay (typically ~2 weeks) once toxoplasmosis treatment established, to reduce risk of IRIS",
+      "Continue antiseizure medication — levetiracetam or lamotrigine preferred over enzyme-inducing agents (carbamazepine, phenytoin, phenobarbitone) which will reduce ART levels and vice versa",
+      "Co-trimoxazole prophylaxis (already part of/aligned with treatment given CD4 <200)"
+    ],
+    "supportive": [
+      "Adherence counselling addressing the reasons for prior ART default (relocation, embarrassment) with a treatment supporter and simplified clinic transfer arrangement",
+      "Nutritional support, treat oral thrush (fluconazole)",
+      "Seizure safety advice: avoid swimming alone, avoid operating machinery, driving cessation and document this advice given (SA Road Traffic Act medicolegal requirement)",
+      "Counsel regarding risk of IRIS symptoms when ART is reintroduced",
+      "Psychosocial support given diagnosis of advanced HIV and disclosure concerns"
+    ],
+    "followUp": [
+      "Repeat CT/MRI brain at 2 weeks to confirm radiological response to anti-toxoplasma therapy",
+      "CD4 and viral load monitoring on ART re-initiation",
+      "Neurology/HIV clinic follow-up for antiseizure medication review — reassess need for long-term therapy once the acute provoking lesion has resolved (this was a provoked seizure, not yet epilepsy by ILAE criteria)",
+      "Screen for depression and provide adherence support at each visit",
+      "Household/contact TB screening not indicated here (GeneXpert negative) but maintain vigilance"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-witness",
+      "phase": "history",
+      "item": "Obtains a detailed eyewitness/collateral account (asks for a contact number to phone the witness)",
+      "answer": "Sister witnessed right arm jerking, cyanosis, tongue bite, prolonged confusion afterward",
+      "why": "The single most valuable investigation in any seizure presentation is an eyewitness account",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-phases",
+      "phase": "history",
+      "item": "Characterises the three phases of the event: prodrome/aura, ictal phase, post-ictal phase",
+      "answer": "No aura; focal right arm jerking evolving to generalised tonic-clonic activity; 40 minutes of post-ictal confusion",
+      "why": "Localises seizure onset (focal-onset with secondary generalisation) and distinguishes from mimics",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mimic",
+      "phase": "history",
+      "item": "Actively screens for syncope/PNES discriminators (colour, tongue bite site, recovery speed, triggers)",
+      "answer": "Cyanosed (not pale), lateral tongue bite, slow/confused recovery — all favour true seizure over syncope",
+      "why": "Seizure vs syncope discrimination is a core exam teaching point",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-provoked",
+      "phase": "history",
+      "item": "Asks about precipitants and works through provoked vs unprovoked framework (glucose, alcohol, fever, focal symptoms preceding)",
+      "answer": "Preceding headache, fever, and progressive right hand clumsiness for a week before the seizure — points to an underlying structural/infective lesion",
+      "why": "Provoked vs unprovoked is explicitly flagged as THE key clinical decision determining lifelong medication vs treating the underlying cause",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-hx",
+      "phase": "history",
+      "item": "Takes a full HIV history: status, CD4/VL history, ART regimen and adherence, reasons for any default",
+      "answer": "HIV positive 6 years, defaulted ART 8 months ago after relocating, embarrassed to seek care",
+      "why": "Any new seizure with CD4 <200 needs urgent workup for HIV-related CNS opportunistic disease",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB contact, cough, night sweats, prior TB treatment",
+      "answer": "No TB contact, no cough, no prior TB treatment",
+      "why": "TB (tuberculoma/TBM) is a key differential in any HIV-positive patient with a new CNS lesion and must be actively excluded",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-focal-exam",
+      "phase": "examination",
+      "item": "Performs a focused neurological exam looking for focal deficit, Todd's paresis, meningism, papilloedema",
+      "answer": "Right pronator drift, right-sided weakness and hyperreflexia, upgoing right plantar; no neck stiffness",
+      "why": "Focal deficit lateralises the lesion and is a red flag mandating urgent imaging before LP",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tongue-oral",
+      "phase": "examination",
+      "item": "Inspects for lateral tongue laceration and other injury from the convulsion",
+      "answer": "Lateral tongue laceration present on the right side",
+      "why": "Highly specific sign for a true generalised tonic-clonic seizure versus syncope/PNES",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential centred on HIV-related CNS mass lesions (toxoplasmosis, tuberculoma, lymphoma) with reasoning linked to CD4 and imaging pattern",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning using CD4 count and lesion pattern is the core exam philosophy for this case",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-imaging",
+      "phase": "investigations",
+      "item": "Requests urgent CT brain with contrast before considering LP, plus HIV/CD4/VL and Toxoplasma serology",
+      "answer": "CT shows multiple ring-enhancing lesions at grey-white junction/basal ganglia; CD4 48; Toxoplasma IgG positive",
+      "why": "CT before LP is mandatory with focal signs and possible mass lesion; CD4 and serology confirm the diagnosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-status-timing",
+      "phase": "management",
+      "item": "Correctly states the status epilepticus t1 timepoint (5 minutes for GTCS) as the threshold to start treating with IV benzodiazepine",
+      "answer": "IV lorazepam or diazepam at 5 minutes of continuous or repeated seizure activity without recovery",
+      "why": "The t1/t2 status epilepticus timepoints are explicitly emphasised and highly testable",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-asm-choice",
+      "phase": "management",
+      "item": "Selects an antiseizure medication that avoids enzyme induction (levetiracetam/lamotrigine/valproate with caution) given ART and future TB treatment interactions",
+      "answer": "Levetiracetam preferred over carbamazepine/phenytoin/phenobarbitone",
+      "why": "Enzyme-inducing ASMs undermine ART (dolutegravir/efavirenz/PI) and rifampicin — explicitly flagged as a high-yield, locally relevant point",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-definitive",
+      "phase": "management",
+      "item": "Outlines empirical anti-toxoplasma therapy (pyrimethamine/sulfadiazine/folinic acid or co-trimoxazole), timing of ART re-initiation, and safety/driving advice",
+      "answer": "6 weeks anti-toxo therapy, ART restarted after short delay to reduce IRIS risk, driving cessation documented",
+      "why": "Complete, guideline-based management including medicolegal seizure safety advice",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 8,
+    "historyTaking": 24,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 13,
+    "management": 15
+  }
+}

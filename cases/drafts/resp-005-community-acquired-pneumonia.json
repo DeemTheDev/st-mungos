@@ -1,0 +1,599 @@
+{
+  "id": "resp-005-community-acquired-pneumonia",
+  "version": 1,
+  "discipline": "resp",
+  "diagnosis": "Community-acquired pneumonia",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this man's presentation and how you ranked it.",
+      "modelAnswer": "Community-acquired pneumonia is most likely given the acute 3-day onset, fever with rigors, rust-coloured productive sputum, and focal right lower zone consolidation with bronchial breathing. Pulmonary TB remains on the list given KZN prevalence but is downgraded because symptoms are only 3 days old, with no night sweats, weight loss or TB contact, and GeneXpert is negative. Pulmonary embolism is considered because of the sudden pleuritic pain, dyspnoea, tachycardia and hypoxia, but the fever, productive purulent sputum and lobar consolidation pattern favour infection over PE, and there are no VTE risk factors. Asthma and heart failure are unlikely given the absence of wheeze, prior asthma history, orthopnoea, leg swelling or raised JVP.",
+      "gradingNotes": "Wants a ranked list with explicit for/against reasoning for each differential, not just a diagnosis stated."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "He has bronchial breathing and dullness to percussion over the right base. Explain the pathophysiology behind these two findings.",
+      "modelAnswer": "In lobar pneumonia the alveoli fill with inflammatory exudate rather than air. Solid, fluid-filled lung transmits the sound of large airway turbulence more efficiently than normal air-filled lung, producing bronchial breath sounds instead of the usual vesicular sounds. The same consolidated tissue is denser than aerated lung, so percussion over it produces a dull note rather than the normal resonant note.",
+      "gradingNotes": "Expects mechanism — sound transmission through consolidated tissue and tissue density change — not just restating that these are signs of pneumonia."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His CXR shows lobar consolidation and GeneXpert is negative for MTB. Does this fully exclude TB, and how does it change your immediate management?",
+      "modelAnswer": "A single negative GeneXpert does not fully exclude TB, particularly with paucibacillary disease, but combined with an acute 3-day history, absence of constitutional symptoms, and a classic lobar consolidation pattern, TB is not the working diagnosis here. Management proceeds with empiric antibiotics for bacterial CAP; if he fails to improve or develops a more chronic pattern, TB workup would be revisited with repeat sputum or further sampling.",
+      "gradingNotes": "Tests critical thinking about test limitations rather than treating a single negative test as absolute exclusion."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "His CURB-65 score works out to about 1, which usually suggests low-severity CAP manageable as an outpatient. Why are you admitting him?",
+      "modelAnswer": "CURB-65 is a useful severity tool but does not capture everything — his SpO2 is 91% on room air with a type 1 respiratory failure pattern on ABG, and he is tachypnoeic at 26/min. Hypoxia requiring oxygen therapy is an independent indication for admission regardless of the calculated score, so clinical judgement overrides a borderline low-risk score.",
+      "gradingNotes": "Wants recognition that severity scores are adjuncts, not replacements, for clinical assessment — particularly oxygenation status."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "history",
+      "question": "He tells you he tested HIV negative 8 months ago. Do you need to retest him now, and why does this matter for a pneumonia presentation in this setting?",
+      "modelAnswer": "Yes — HIV status should ideally be reconfirmed given it changes the differential and management significantly; an 8-month-old result does not reflect current status, and any respiratory presentation in KZN warrants HIV testing as standard of care. If he were HIV-positive with a low CD4, PJP and other opportunistic infections would need to be considered, and co-trimoxazole prophylaxis initiated.",
+      "gradingNotes": "Assesses understanding that HIV testing is routine standard of care per KZN protocol, not a one-off historical fact to accept at face value."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "acute cough + dyspnoea + fever → localise mechanism (airway/parenchyma/pleura/vascular/cardiac) → red flags → TB/HIV screen → systematic exam → first-line resource-appropriate investigations → severity/disposition → ranked differential",
+  "patient": {
+    "name": "Bongani Mthembu",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard at a shopping centre in Pinetown",
+    "personality": "stoic, downplays how unwell he feels because he cannot afford to miss shifts, becomes more forthcoming with direct questions",
+    "openingLine": "Doctor, I've had this fever and chest pain for the last three days, I can hardly breathe when I walk."
+  },
+  "presentingComplaint": "3-day history of fever, productive cough and pleuritic right-sided chest pain",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms started suddenly 3 days ago with fever and chills, followed the next day by cough",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-cough-sputum",
+      "fact": "Cough is productive of rust-coloured/blood-tinged sputum, moderate amount, no foul smell",
+      "disclosure": "onAsk",
+      "triggers": [
+        "sputum",
+        "phlegm",
+        "cough",
+        "coughing up",
+        "blood",
+        "rust",
+        "colour",
+        "mucus",
+        "spit",
+        "bringing up",
+        "anything in the phlegm",
+        "coughing",
+        "bringing"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "Sharp right-sided chest pain, worse on deep breathing and coughing, better lying on the right side",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "sore chest",
+        "pleuritic",
+        "breathing in",
+        "stabbing",
+        "sharp pain",
+        "hurts to breathe",
+        "chest",
+        "sore",
+        "breathing",
+        "sharp",
+        "hurts",
+        "breathe"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Short of breath even at rest since yesterday, worse than his usual fitness for the job",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "short of breath",
+        "winded",
+        "out of breath",
+        "exertion",
+        "walking",
+        "short",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-fever-chills",
+      "fact": "Fever with rigors on day 1, measured 39.2°C at the clinic yesterday",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "shivering"
+      ]
+    },
+    {
+      "id": "hx-duration-tb-screen",
+      "fact": "Symptoms have been present for only 3 days, not the 2+ weeks that would raise TB concern; denies night sweats or weight loss",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweating",
+        "weight",
+        "lost weight",
+        "tb",
+        "tuberculosis",
+        "how long",
+        "duration",
+        "weeks",
+        "appetite",
+        "clothes",
+        "night",
+        "sweats",
+        "lost",
+        "long"
+      ]
+    },
+    {
+      "id": "hx-tb-contact",
+      "fact": "No known TB contacts at home or work",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb contact",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "anyone sick",
+        "exposure",
+        "lives with",
+        "family",
+        "sick",
+        "anyone",
+        "lives"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 8 months ago at a workplace wellness screening; no new partners since",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "partner",
+        "sexual",
+        "relationship",
+        "std",
+        "sti",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No chronic illnesses, no asthma or COPD, never hospitalised before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "chronic",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "No regular medication; took two doses of paracetamol at home which helped the fever briefly",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "muti",
+        "paracetamol",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "penicillin"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 5 cigarettes a day for 10 years (2.5 pack-years); drinks beer socially on weekends; lives in Pinetown with his wife and one child",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "family",
+        "work"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Father has hypertension; no family history of TB, asthma or cancer",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "father",
+        "mother",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "family",
+        "history",
+        "runs"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No orthopnoea, no leg swelling, no palpitations, no calf pain or recent long travel, no diarrhoea or urinary symptoms",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "leg swelling",
+        "swollen legs",
+        "palpitations",
+        "calf",
+        "travel",
+        "flight",
+        "diarrhoea",
+        "urine",
+        "other symptoms",
+        "anything else",
+        "leg",
+        "swelling",
+        "swollen",
+        "legs",
+        "symptoms"
+      ]
+    },
+    {
+      "id": "hx-wheeze",
+      "fact": "No wheeze and no prior episodes of wheeze or asthma diagnosis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "wheeze",
+        "wheezing",
+        "whistling",
+        "asthma"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Uncomfortable-looking man, flushed, using accessory muscles mildly, splinting right side of chest when coughing. No cyanosis, no clubbing, no peripheral oedema, no lymphadenopathy.",
+    "vitals": {
+      "hr": 112,
+      "bp": "118/74",
+      "rr": 26,
+      "temp": 39.1,
+      "spo2": "91% on room air",
+      "bmi": 23
+    },
+    "respiratory": "Trachea central. Reduced chest expansion on the right. Right lower zone: dull to percussion with bronchial breathing and coarse crackles. Vocal fremitus increased over the dull area. Pleural rub audible right base. Left lung clear.",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not raised.",
+    "abdo": "Soft, non-tender, no organomegaly.",
+    "neuro": "Alert and orientated, no confusion, GCS 15.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Chest X-ray",
+      "result": "Dense right lower lobe consolidation with air bronchograms; no effusion; no cavitation",
+      "key": true
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB not detected",
+      "key": true
+    },
+    {
+      "name": "HIV ELISA (with consent)",
+      "result": "Negative",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.8 g/dL, WCC 16.4 x10^9/L (neutrophilia), Plt 340",
+      "key": true
+    },
+    {
+      "name": "CRP",
+      "result": "188 mg/L",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Urea 7.8 mmol/L, Creatinine 98 µmol/L, Na 133 mmol/L",
+      "key": false
+    },
+    {
+      "name": "SpO2 / arterial blood gas",
+      "result": "SpO2 91% room air; ABG pH 7.45, PaO2 8.1 kPa, PaCO2 4.4 kPa — type 1 respiratory failure",
+      "key": true
+    },
+    {
+      "name": "Blood cultures",
+      "result": "Pending at time of consult",
+      "key": false
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia, no ischaemic changes, no right heart strain pattern",
+      "key": false
+    },
+    {
+      "name": "Sputum microscopy and culture",
+      "result": "Gram-positive diplococci seen; culture pending",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Community-acquired pneumonia",
+      "rank": 1,
+      "for": [
+        "acute 3-day onset",
+        "fever with rigors",
+        "productive rust-coloured sputum",
+        "focal right lower zone dullness with bronchial breathing",
+        "CXR lobar consolidation",
+        "raised WCC and CRP"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Pulmonary tuberculosis",
+      "rank": 2,
+      "for": [
+        "cough",
+        "chest signs",
+        "KZN high background prevalence"
+      ],
+      "against": [
+        "symptoms only 3 days not >2 weeks",
+        "no night sweats or weight loss",
+        "no TB contact",
+        "GeneXpert negative"
+      ]
+    },
+    {
+      "dx": "Pulmonary embolism",
+      "rank": 3,
+      "for": [
+        "sudden onset pleuritic chest pain",
+        "dyspnoea",
+        "tachycardia",
+        "hypoxia"
+      ],
+      "against": [
+        "no DVT risk factors or immobility",
+        "fever and productive sputum favour infection",
+        "CXR shows consolidation not typical wedge/oligaemia",
+        "no right heart strain on ECG"
+      ]
+    },
+    {
+      "dx": "Acute exacerbation of asthma/reactive airway disease",
+      "rank": 4,
+      "for": [
+        "dyspnoea",
+        "tachypnoea"
+      ],
+      "against": [
+        "no wheeze on auscultation",
+        "no prior asthma history",
+        "focal consolidation rather than diffuse airway signs"
+      ]
+    },
+    {
+      "dx": "Heart failure / pulmonary oedema",
+      "rank": 5,
+      "for": [
+        "dyspnoea",
+        "tachycardia"
+      ],
+      "against": [
+        "no orthopnoea, PND or leg swelling",
+        "JVP not raised",
+        "unilateral focal signs rather than bibasal crackles",
+        "young patient with no cardiac history"
+      ]
+    }
+  ],
+  "pathophys": {
+    "fever and rigors": "Pneumococcal cell wall components trigger macrophage release of IL-1 and IL-6, resetting the hypothalamic thermostat upward; rigors reflect rapid compensatory heat generation via shivering as the set-point rises",
+    "rust-coloured sputum": "Pneumococcal pneumonia causes red cell extravasation into alveoli during the classic 'red hepatisation' stage of lobar consolidation, giving sputum its characteristic colour",
+    "pleuritic chest pain": "Lung parenchyma itself is pain-insensitive; inflammatory exudate extending to the visceral/parietal pleura irritates pain fibres, producing sharp pain that worsens with the pleural stretch of inspiration",
+    "dyspnoea and hypoxia": "Alveolar filling with inflammatory exudate causes a ventilation-perfusion mismatch and intrapulmonary shunting, impairing gas exchange despite preserved ventilatory drive",
+    "bronchial breathing and dullness to percussion": "Consolidated, fluid-filled alveoli transmit sound better than air-filled lung, producing bronchial breath sounds; the solid tissue also produces a dull percussion note compared to normal air-filled lung"
+  },
+  "staging": "CURB-65 score 1 (RR ≥30 not met but tachypnoeic at 26; confusion absent; urea 7.8 not >7 threshold marginally; age <65; BP not low) — calculated as mild-moderate severity but SpO2 91% and hypoxia on ABG warrant admission for oxygen therapy and monitoring rather than outpatient management",
+  "management": {
+    "immediate": [
+      "Supplemental oxygen via nasal cannula/face mask titrated to SpO2 ≥94%",
+      "IV access, assess hydration and give IV fluids if needed",
+      "Analgesia for pleuritic pain (paracetamol ± NSAID if no contraindication)",
+      "Admit for monitoring given hypoxia (SpO2 91%) despite modest CURB-65 score"
+    ],
+    "definitive": [
+      "Empiric antibiotics per Adult Hospital Level STG for moderate CAP: IV amoxicillin/ampicillin or ceftriaxone; consider adding a macrolide if atypical cover needed or patient more unwell",
+      "De-escalate/switch to oral therapy once clinically improving and afebrile 24-48h",
+      "Complete 5-7 day course depending on clinical response"
+    ],
+    "supportive": [
+      "Chest physiotherapy and encourage deep breathing/incentive spirometry to prevent atelectasis",
+      "Smoking cessation counselling given 2.5 pack-year history",
+      "Adequate analgesia to allow effective coughing",
+      "Monitor fluid balance and renal function"
+    ],
+    "followUp": [
+      "Repeat clinical review at 48-72h to confirm response to antibiotics",
+      "Repeat CXR at 6 weeks if smoker or age >50 to exclude underlying lesion (not urgent at 34 but reasonable safety-net)",
+      "Advise re-presentation if symptoms worsen or fail to resolve",
+      "Reinforce completed HIV testing was negative; no further HIV workup needed unless risk changes"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity and consent",
+      "answer": null,
+      "why": "Professionalism / communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-characterise",
+      "phase": "history",
+      "item": "Characterises the symptom complex: onset (sudden vs gradual), duration, pattern of cough/dyspnoea/chest pain",
+      "answer": "Sudden onset 3 days ago, rapidly progressive, not episodic",
+      "why": "Step 1 of framework — onset/tempo distinguishes infective/PE/pneumothorax from chronic causes",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-localise",
+      "phase": "history",
+      "item": "Attempts to localise the mechanism using pain/sputum/wheeze character (airway vs parenchyma vs pleura vs vascular vs cardiac)",
+      "answer": "Pleuritic pain plus productive rust sputum and fever point to parenchymal/pleural infective process",
+      "why": "Step 2 of framework — mechanism localisation before naming a diagnosis",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-redflags",
+      "phase": "history",
+      "item": "Screens red flags: haemoptysis volume, sudden pleuritic pain with hypoxia (PE/pneumothorax), confusion, respiratory distress",
+      "answer": "No massive haemoptysis; pleuritic pain present but with fever and productive sputum rather than sudden isolated onset; no confusion",
+      "why": "Red flags must be actively excluded before differential is finalised",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-tbhiv-screen",
+      "phase": "history",
+      "item": "Takes TB/HIV-oriented history in every respiratory case: cough duration, night sweats, weight loss, TB contact, HIV status",
+      "answer": "Only 3 days duration, no night sweats/weight loss, no TB contact, HIV negative 8 months ago",
+      "why": "Mandatory screen per KZN protocol regardless of how likely TB seems",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-cardiac-discrim",
+      "phase": "history",
+      "item": "Asks cardiac discriminators (orthopnoea, PND, leg swelling) to screen out heart failure",
+      "answer": "None present",
+      "why": "Distinguishes pneumonia from cardiac cause of dyspnoea/crackles",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-social",
+      "phase": "history",
+      "item": "Takes smoking/occupational/exposure history",
+      "answer": "5 cigarettes/day x10 years, security guard, no biomass exposure",
+      "why": "Relevant to severity assessment and differential (COPD exacerbation, occupational lung disease)",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-systematic",
+      "phase": "examination",
+      "item": "Performs systematic respiratory exam: vitals/SpO2 first, then inspection, palpation (trachea, expansion), percussion, auscultation",
+      "answer": "SpO2 91%, RR26, right-sided reduced expansion, dull percussion, bronchial breathing, crackles, pleural rub",
+      "why": "Framework step 5 — systematic order matters and localises the pathology",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-severity",
+      "phase": "examination",
+      "item": "Risk-stratifies severity (e.g. CURB-65 or equivalent) before committing to disposition",
+      "answer": "CURB-65 ~1 but hypoxic on room air — admission warranted",
+      "why": "Framework step 7 — severity/disposition decision must precede definitive differential commitment",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates ranked differential (CAP > TB > PE > asthma > heart failure) with reasoning for and against each",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning is the core exam philosophy — never diagnosis-first",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Orders first-line resource-appropriate investigations: CXR, SpO2/ABG, FBC, U&E, HIV test, sputum GeneXpert",
+      "answer": "See investigations catalogue — CXR shows lobar consolidation, GeneXpert MTB not detected, HIV negative",
+      "why": "Confirmatory pathway per framework and KZN resource-real work-up",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines oxygen therapy, empiric antibiotics per STG, admission decision, and supportive/follow-up plan",
+      "answer": null,
+      "why": "Management per Adult Hospital Level STG for CAP with hypoxia",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 20,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 10
+  }
+}

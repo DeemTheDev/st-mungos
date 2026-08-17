@@ -1,0 +1,630 @@
+{
+  "id": "neuro-001-new-onset-generalised-tonic",
+  "version": 1,
+  "discipline": "neuro",
+  "diagnosis": "New-onset generalised tonic-clonic seizures (neurocysticercosis)",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient's collapse, and how the history and CT findings support your ranking.",
+      "modelAnswer": "Top of the list is neurocysticercosis, supported by his rural pig-rearing background, the CT showing a single ring-enhancing lesion with a scolex, and positive EITB serology. HIV-related CNS disease (toxoplasmosis, cryptococcoma, tuberculoma) is next but is against here because his HIV test is negative and there's no TB contact. Acute symptomatic seizure from a metabolic or toxic cause is essentially excluded by normal glucose, electrolytes and calcium and no alcohol withdrawal history. Idiopathic generalised epilepsy is unlikely given the clear focal onset (his prior lip-smacking spells) and a structural lesion on imaging. Post-traumatic epilepsy doesn't fit as there's no head injury history.",
+      "gradingNotes": "Expect a ranked list with reasoning linked to specific history/exam/investigation findings, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "What is the ILAE operational definition of epilepsy, and does this patient meet it?",
+      "modelAnswer": "Epilepsy is defined by at least two unprovoked seizures occurring more than 24 hours apart; OR one unprovoked seizure with a probability of further seizures similar to the general recurrence risk after two unprovoked seizures (at least 60% over the next 10 years); OR diagnosis of an epilepsy syndrome. This patient meets the first criterion — his two prior brief focal spells (blanking, lip-smacking) were unrecognised unprovoked seizures, and now he's had a further focal-onset seizure with secondary generalisation, all unprovoked and more than 24 hours apart.",
+      "gradingNotes": "Wants the definition close to verbatim, then correct application to this specific case (recognising the prior unrecognised spells as seizures)."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His serum lactate was 3.1 mmol/L when drawn about 45 minutes after the event. How do you interpret this, and what would change your interpretation?",
+      "modelAnswer": "Lactate rises markedly after a true generalised tonic-clonic seizure due to the anaerobic muscular burst, then normalises within about an hour. A lactate of 3.1 taken close to the event and trending down is consistent with a true convulsion. If the sample had been taken several hours later and was already normal, that would be less informative; a normal lactate drawn very soon after an alleged convulsion would argue against a true GTCS and raise suspicion for syncope or PNES instead.",
+      "gradingNotes": "Wants the physiological reasoning and the time-dependence of the test — not just 'it's raised so it's a seizure'."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Why did you choose levetiracetam over carbamazepine or phenytoin here, and what is the broader local relevance of this choice?",
+      "modelAnswer": "Levetiracetam is preferred because it is not a hepatic enzyme inducer, unlike carbamazepine, phenytoin and phenobarbitone. Enzyme-inducing antiseizure medications significantly reduce plasma levels of dolutegravir, efavirenz, protease inhibitors and rifampicin, risking treatment failure of ART or TB therapy. Given the very high local burden of HIV and TB, this drug interaction is a critical, high-yield prescribing point even though this particular patient is HIV-negative today — good practice and awareness matter for the broader population he represents.",
+      "gradingNotes": "Wants explicit mention of the ART/rifampicin enzyme-induction interaction as the key locally relevant teaching point, not just 'levetiracetam has fewer side effects'."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "Explain the pathophysiology behind why he bit the side of his tongue and was incontinent during the event.",
+      "modelAnswer": "During the tonic phase of a generalised tonic-clonic seizure, there is sustained, forceful contraction of the masseter and jaw muscles which clamps the tongue between the teeth, classically causing a lateral tongue laceration (as opposed to a tip laceration, which is less specific and can occur with other causes of collapse). Similarly, involuntary contraction of the detrusor muscle and pelvic floor during the intense generalised motor activity leads to loss of bladder sphincter control and urinary incontinence.",
+      "gradingNotes": "Wants mechanism (forceful involuntary muscle contraction), and ideally the point that lateral tongue bite is more specific for seizure than a tip bite."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "transient event characterisation → seizure vs mimic → provoked vs unprovoked → focal vs generalised → screen for structural/infective cause → ILAE epilepsy criteria → safety/driving/ART counselling",
+  "patient": {
+    "name": "Sipho Ngcobo",
+    "age": 26,
+    "sex": "M",
+    "occupation": "taxi rank marshal",
+    "personality": "embarrassed and a bit evasive about the event, relies heavily on his sister who witnessed it, worried about losing his job if he can't drive/work at the rank",
+    "openingLine": "Doctor, they tell me I was shaking on the ground yesterday... I don't remember any of it."
+  },
+  "presentingComplaint": "Witnessed convulsion with loss of consciousness at the taxi rank yesterday",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Collapsed suddenly yesterday afternoon while standing at the taxi rank; his sister was with him and saw the whole event",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-witness",
+      "fact": "Sister reports he suddenly stiffened, fell, then his whole body jerked rhythmically for about 2 minutes; his lips looked blue/cyanosed during the event",
+      "disclosure": "onAsk",
+      "triggers": [
+        "witness",
+        "saw",
+        "eyewitness",
+        "collateral",
+        "sister",
+        "what happened",
+        "describe",
+        "account",
+        "see him",
+        "tell me what happened",
+        "color",
+        "colour",
+        "blue",
+        "cyanosed",
+        "happened",
+        "see",
+        "him"
+      ]
+    },
+    {
+      "id": "hx-tonguebite",
+      "fact": "He bit the side of his tongue — there was blood in his mouth afterwards, and his tongue is still sore on the left side",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tongue",
+        "bite",
+        "bit",
+        "blood in mouth",
+        "sore mouth",
+        "cut",
+        "blood",
+        "mouth",
+        "sore"
+      ]
+    },
+    {
+      "id": "hx-incontinence",
+      "fact": "He wet himself during the event (urinary incontinence)",
+      "disclosure": "onAsk",
+      "triggers": [
+        "incontinence",
+        "wet himself",
+        "urine",
+        "bladder",
+        "bowel",
+        "soiled",
+        "pants",
+        "wet",
+        "himself"
+      ]
+    },
+    {
+      "id": "hx-postictal",
+      "fact": "After the shaking stopped he remained confused and drowsy for about 30-40 minutes, not making sense when spoken to, before slowly coming right",
+      "disclosure": "onAsk",
+      "triggers": [
+        "after",
+        "recovery",
+        "confused",
+        "confusion",
+        "drowsy",
+        "how long to wake",
+        "post-ictal",
+        "postictal",
+        "came round",
+        "orientated",
+        "alert again",
+        "long",
+        "wake",
+        "came",
+        "round",
+        "alert",
+        "again"
+      ]
+    },
+    {
+      "id": "hx-notriggers",
+      "fact": "No preceding chest pain, no palpitations, was not exerting himself, was not standing for long in heat, no warning of feeling faint or nauseated beforehand",
+      "disclosure": "onAsk",
+      "triggers": [
+        "trigger",
+        "before it happened",
+        "warning",
+        "aura",
+        "dizzy",
+        "faint",
+        "nausea",
+        "chest pain",
+        "palpitations",
+        "standing long",
+        "heat",
+        "exertion",
+        "before",
+        "happened",
+        "chest",
+        "pain",
+        "standing",
+        "long"
+      ]
+    },
+    {
+      "id": "hx-priorevents",
+      "fact": "On direct questioning, admits to two episodes over the past 3 months of brief 'blanking out' and lip-smacking lasting under a minute, which he never mentioned to anyone, thinking it was tiredness",
+      "disclosure": "onAsk",
+      "triggers": [
+        "before this",
+        "previous",
+        "any other episodes",
+        "funny turns",
+        "blackouts",
+        "blank out",
+        "zoning out",
+        "déjà vu",
+        "deja vu",
+        "strange feeling",
+        "lip smack",
+        "staring",
+        "before",
+        "episodes",
+        "funny",
+        "turns",
+        "blank",
+        "out",
+        "zoning",
+        "déjà",
+        "deja",
+        "strange",
+        "feeling",
+        "lip",
+        "smack"
+      ]
+    },
+    {
+      "id": "hx-headache",
+      "fact": "Has had intermittent dull headaches over the past 2 months, worse in the mornings, no vomiting",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "head pain",
+        "migraine",
+        "morning headache",
+        "head",
+        "pain",
+        "morning"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 8 months ago at the clinic; not on ART",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No TB contact, no cough, no night sweats, no weight loss, never treated for TB",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "night sweats",
+        "weight loss",
+        "contact",
+        "household",
+        "night",
+        "sweats",
+        "weight",
+        "loss"
+      ]
+    },
+    {
+      "id": "hx-pigs",
+      "fact": "Grew up in a rural area near Nongoma where the family kept pigs in the yard; often ate homemade pork/boerewors from home slaughter, sometimes undercooked",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pig",
+        "pork",
+        "farm",
+        "rural",
+        "meat",
+        "undercooked",
+        "slaughter",
+        "tapeworm",
+        "taenia",
+        "cysticercosis",
+        "where grew up",
+        "home village",
+        "raised",
+        "grew",
+        "home",
+        "village"
+      ]
+    },
+    {
+      "id": "hx-alcohol",
+      "fact": "Drinks beer socially on weekends, about 4-5 beers, denies binge drinking or withdrawal symptoms; no recent heavy drinking or missed doses of anything",
+      "disclosure": "onAsk",
+      "triggers": [
+        "alcohol",
+        "drink",
+        "beer",
+        "drinking",
+        "withdrawal",
+        "binge"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes no regular chronic medication, no traditional muti recently, no known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "muti",
+        "traditional remedy",
+        "allergy",
+        "allergic",
+        "traditional",
+        "remedy"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No history of head injury with loss of consciousness, no febrile convulsions as a child, no developmental delay, no family history of epilepsy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "head injury",
+        "trauma",
+        "accident",
+        "childhood",
+        "febrile",
+        "fits as a child",
+        "development",
+        "delay",
+        "family history",
+        "epilepsy in family",
+        "seizures in family",
+        "head",
+        "injury",
+        "fits",
+        "child",
+        "family",
+        "history",
+        "epilepsy",
+        "seizures"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in KwaMashu now, works at the taxi rank as a marshal which involves standing near moving vehicles; worried about losing his job if he cannot drive or work near traffic",
+      "disclosure": "onAsk",
+      "triggers": [
+        "work",
+        "job",
+        "occupation",
+        "drive",
+        "driving",
+        "taxi",
+        "live",
+        "home",
+        "house",
+        "social"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Alert, orientated, mild fatigue. No pallor, no jaundice, no lymphadenopathy. Lateral tongue laceration on the left side, healing. No subcutaneous nodules palpated on trunk or limbs. No neurocutaneous stigmata (no ash-leaf macules, no café-au-lait patches, no port-wine stain).",
+    "vitals": {
+      "hr": 78,
+      "bp": "122/76",
+      "rr": 16,
+      "temp": 36.8,
+      "spo2": "98% on room air",
+      "bmi": 22
+    },
+    "respiratory": "Clear, no added sounds.",
+    "cardio": "Normal heart sounds, no murmurs, regular rhythm.",
+    "abdo": "Soft, non-tender, no organomegaly.",
+    "neuro": "GCS 15/15. Cranial nerves intact, no papilloedema on fundoscopy. Tone, power (5/5 throughout), reflexes and sensation normal in all four limbs. No pronator drift, no dysmetria. Gait normal, Romberg negative. No focal deficit, no Todd's paresis at this time.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "CT brain with and without contrast",
+      "result": "Single well-defined 12mm ring-enhancing lesion with an eccentric hyperdense nodule (scolex) in the right parietal cortex, surrounded by mild vasogenic oedema — consistent with a viable/degenerating neurocysticercosis cyst (colloidal vesicular stage)",
+      "key": true
+    },
+    {
+      "name": "Capillary/serum glucose",
+      "result": "5.6 mmol/L — normal",
+      "key": true
+    },
+    {
+      "name": "Serum electrolytes (Na, K, Ca, Mg, phosphate)",
+      "result": "All within normal range; corrected calcium 2.3 mmol/L",
+      "key": true
+    },
+    {
+      "name": "12-lead ECG",
+      "result": "Normal sinus rhythm, normal QTc, no delta wave, no Brugada pattern",
+      "key": true
+    },
+    {
+      "name": "Serum lactate (drawn ~45 min post-event on admission)",
+      "result": "3.1 mmol/L, taken close to the event and trending down — consistent with recent true convulsion",
+      "key": false
+    },
+    {
+      "name": "Serum CK",
+      "result": "612 U/L, mildly elevated — consistent with recent generalised tonic-clonic activity",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": true
+    },
+    {
+      "name": "Cysticercosis serology (EITB)",
+      "result": "Positive for Taenia solium antibodies",
+      "key": true
+    },
+    {
+      "name": "Stool microscopy for Taenia ova",
+      "result": "No ova seen on single sample",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 13.9 g/dL, WCC 8.1 (mild eosinophilia 6%), platelets normal",
+      "key": false
+    },
+    {
+      "name": "CXR",
+      "result": "Clear lung fields, no cavitation, no lymphadenopathy",
+      "key": false
+    },
+    {
+      "name": "EEG (routine, awake)",
+      "result": "Mildly slowed background over the right posterior-temporal region; no epileptiform discharges captured on this single study",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Neurocysticercosis",
+      "rank": 1,
+      "for": [
+        "ring-enhancing lesion with visible scolex on CT",
+        "positive EITB serology",
+        "rural upbringing with home pig-rearing and pork consumption",
+        "new focal-onset seizure with secondary generalisation in a young adult",
+        "HIV negative excluding alternative CNS infection"
+      ],
+      "against": []
+    },
+    {
+      "dx": "HIV-related CNS disease (toxoplasmosis, cryptococcoma, tuberculoma/TBM)",
+      "rank": 2,
+      "for": [
+        "would present similarly with focal seizure and ring-enhancing lesion(s)"
+      ],
+      "against": [
+        "HIV ELISA negative",
+        "no TB symptoms or contact",
+        "single lesion with scolex rather than multiple lesions at grey-white junction"
+      ]
+    },
+    {
+      "dx": "Acute symptomatic seizure — metabolic/toxic/withdrawal",
+      "rank": 3,
+      "for": [
+        "must always be excluded at presentation"
+      ],
+      "against": [
+        "normal glucose, electrolytes and calcium",
+        "no alcohol withdrawal history, no toxin exposure",
+        "structural lesion identified on imaging explains the seizure"
+      ]
+    },
+    {
+      "dx": "Idiopathic/genetic generalised epilepsy (e.g. JME)",
+      "rank": 4,
+      "for": [
+        "young adult with new-onset seizure"
+      ],
+      "against": [
+        "focal onset (aura-like blank spells with lip-smacking) rather than primary generalised pattern",
+        "structural lesion found on CT, which excludes a purely genetic generalised epilepsy label"
+      ]
+    },
+    {
+      "dx": "Post-traumatic epilepsy",
+      "rank": 5,
+      "for": [
+        "common cause locally"
+      ],
+      "against": [
+        "no history of significant head injury or loss of consciousness"
+      ]
+    }
+  ],
+  "pathophys": {
+    "Focal seizures with lip-smacking and blank spells (preceding weeks)": "Focal cortical irritation from the degenerating cysticercus cyst generates abnormal hypersynchronous discharges in the surrounding cortex, producing focal (previously 'complex partial') seizures before secondary generalisation",
+    "Generalised tonic-clonic convulsion with cyanosis": "Widespread cortical hypersynchronous discharge spreads via cortico-cortical and thalamocortical pathways to involve both hemispheres; tonic contraction of respiratory muscles causes transient apnoea and cyanosis",
+    "Lateral tongue laceration and urinary incontinence": "Forceful, involuntary masseter and pelvic floor/detrusor muscle contraction during the tonic-clonic phase causes tongue biting (classically lateral, as the tongue is caught between clenched teeth) and loss of sphincter control",
+    "Prolonged post-ictal confusion": "Neuronal exhaustion and ongoing subclinical cortical dysfunction (GABAergic inhibitory overshoot and metabolic depletion) after the seizure's excitation-inhibition imbalance resolves, producing a gradual return to baseline cognition",
+    "Elevated CK and transiently raised lactate post-event": "Sustained tonic-clonic muscular activity causes anaerobic metabolism (raised lactate, normalising within about an hour) and muscle fibre injury (CK rising over 3-12 hours), reflecting the systemic metabolic burst of a true convulsion rather than syncope",
+    "Morning headache preceding the seizure": "Perilesional vasogenic oedema and mild mass effect from the degenerating cysticercus raise local (and occasionally global) intracranial pressure, worse after nocturnal recumbency and CO2 retention"
+  },
+  "staging": "Single viable/degenerating-stage neurocysticercosis lesion (right parietal, ring-enhancing with scolex); ILAE operational definition met — at least 2 unprovoked seizures (>24h apart, including the unrecognised focal spells) with an identified structural cause; classified as focal-onset seizure with secondary bilateral tonic-clonic generalisation",
+  "management": {
+    "immediate": [
+      "Seizure did not meet status epilepticus criteria (self-terminated within ~2 minutes) — no acute benzodiazepine required now, but counsel on t1=5 minute threshold for future events",
+      "Exclude reversible provoking causes: glucose, electrolytes, calcium, ECG — all normal here",
+      "Ensure airway/positioning safety education for any future event (recovery position, do not restrain, time the seizure)"
+    ],
+    "definitive": [
+      "Start an antiseizure medication given ILAE criteria are met and a structural lesion is confirmed — levetiracetam first-line (avoids enzyme induction, no ART interaction relevant here but good practice given prevalent local ART/rifampicin co-prescribing); avoid carbamazepine/phenytoin/phenobarbitone as first choice",
+      "Discuss antiparasitic therapy (albendazole ± corticosteroid cover) for symptomatic neurocysticercosis under specialist/neurology guidance — timing depends on cyst stage and oedema, steroids given first to prevent post-treatment inflammatory seizure exacerbation",
+      "Refer to neurology for management planning and follow-up imaging"
+    ],
+    "supportive": [
+      "Seizure safety counselling: avoid swimming alone, heights, operating machinery, working near moving vehicles at the taxi rank until seizure-free on treatment",
+      "Formal driving cessation advice given and documented per the SA Road Traffic Act; explain the legal requirement to notify and the seizure-free period before re-application",
+      "Household/family education on Taenia solium transmission: proper meat inspection/cooking, hand hygiene, sanitation to prevent (re)infection and household spread",
+      "Screen and treat any tapeworm carriers in the household (stool exam of family members) to prevent further cysticercosis transmission",
+      "Psychological support — address anxiety about diagnosis, employment, and stigma of 'fits'"
+    ],
+    "followUp": [
+      "Neurology/epilepsy clinic review with repeat CT/MRI to monitor lesion resolution and calcification",
+      "Monitor for treatment adherence and side effects of antiseizure medication",
+      "Reinforce driving restriction status at each visit and document",
+      "Educate on recognising further seizures and safety-netting advice for household members"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-eyewitness",
+      "phase": "history",
+      "item": "Obtains a detailed eyewitness/collateral account of the event (movements, colour, duration, tongue, incontinence, recovery)",
+      "answer": "Sister witnessed stiffening then 2 minutes of rhythmic jerking, cyanosis, lateral tongue bite, incontinence, 30-40 min post-ictal confusion",
+      "why": "The single most valuable investigation in seizure history-taking is an eyewitness account",
+      "weight": 5,
+      "critical": true
+    },
+    {
+      "id": "cl-phases",
+      "phase": "history",
+      "item": "Characterises prodrome, aura, ictal and post-ictal phases distinctly",
+      "answer": "No prodrome/aura reported for this event, but prior brief blank/lip-smacking spells suggest a focal aura; prolonged confused recovery afterwards",
+      "why": "Phase characterisation localises the seizure and distinguishes it from mimics",
+      "weight": 3,
+      "critical": false
+    },
+    {
+      "id": "cl-mimic",
+      "phase": "history",
+      "item": "Actively screens for syncope/cardiac/PNES discriminators (colour, tongue-bite site, recovery speed, triggers)",
+      "answer": "Cyanosis (not pallor), lateral tongue bite, slow confused recovery, no exertional/vasovagal trigger — all favour true seizure over syncope or PNES",
+      "why": "Seizure vs syncope vs PNES discrimination is a core exam skill before labelling epilepsy",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-provoked",
+      "phase": "history",
+      "item": "Screens for provoking/acute symptomatic causes (glucose, alcohol, drugs, fever, trauma, pregnancy)",
+      "answer": "No alcohol withdrawal, no toxin exposure, no fever, no trauma, not pregnant",
+      "why": "Provoked vs unprovoked is the key clinical decision determining lifelong medication vs treating the cause",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-priorevents",
+      "phase": "history",
+      "item": "Specifically asks about previous unrecognised seizure-like episodes",
+      "answer": "Two prior brief blanking/lip-smacking episodes over 3 months, previously dismissed as tiredness",
+      "why": "Reveals this is not truly a first seizure and helps meet ILAE recurrence criteria",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-riskfactors",
+      "phase": "history",
+      "item": "Asks about HIV status, TB contact, and neurocysticercosis risk factors (rural pig-rearing, pork consumption)",
+      "answer": "HIV negative; no TB contact; grew up around home-reared pigs and ate home-slaughtered pork",
+      "why": "Locally relevant aetiology screen — neurocysticercosis is the leading cause of adult-onset epilepsy in this setting",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-socialsafety",
+      "phase": "history",
+      "item": "Asks about occupation/driving and safety implications",
+      "answer": "Works as a taxi marshal near moving vehicles; concerned about driving/work restrictions",
+      "why": "Needed to guide safety counselling and legal driving declaration",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam",
+      "phase": "examination",
+      "item": "Performs a full neurological exam looking for focal deficit, Todd's paresis, tongue injury, and neurocutaneous stigmata",
+      "answer": "Lateral tongue laceration present; no focal deficit; no neurocutaneous stigmata; no papilloedema",
+      "why": "Interictal exam is usually normal but informs localisation, cause, and excludes other structural mimics",
+      "weight": 3,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Presents a ranked differential (neurocysticercosis > HIV-related CNS disease > acute symptomatic > genetic generalised epilepsy > post-traumatic) with linked reasoning",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning drives the whole station philosophy",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests glucose, electrolytes/calcium, ECG, HIV test, and CT brain with contrast in every adult with new-onset seizure",
+      "answer": "See investigations catalogue — CT shows ring-enhancing lesion with scolex, HIV negative, metabolic panel normal",
+      "why": "CT with contrast in every adult first unprovoked seizure is mandatory in this setting to detect neurocysticercosis/OIs",
+      "weight": 5,
+      "critical": true
+    },
+    {
+      "id": "cl-ilae",
+      "phase": "differentials",
+      "item": "Applies the ILAE 2014 operational definition of epilepsy to this patient",
+      "answer": "Meets criteria via ≥2 unprovoked seizures more than 24 hours apart (prior focal spells plus this GTCS)",
+      "why": "Explicitly flagged as a verbatim exam definition that determines whether lifelong ASM treatment is indicated",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Selects an appropriate antiseizure medication avoiding enzyme inducers, plans antiparasitic therapy under specialist guidance, and addresses driving/safety counselling",
+      "answer": "Levetiracetam preferred; albendazole ± steroid cover via neurology; document driving cessation advice",
+      "why": "Enzyme-inducing ASMs undermine ART/rifampicin and are a high-yield locally relevant exam point; driving advice is a medicolegal requirement",
+      "weight": 4,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 28,
+    "examination": 12,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

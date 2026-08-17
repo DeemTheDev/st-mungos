@@ -1,0 +1,616 @@
+{
+  "id": "cardio-002-peripartum-cardiomyopathy",
+  "version": 1,
+  "discipline": "cardio",
+  "diagnosis": "Peripartum cardiomyopathy",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "triggerAfterSec": 300,
+      "question": "Walk me through your differential diagnosis for this woman's heart failure, and what in the history and examination supports or argues against each.",
+      "modelAnswer": "Peripartum cardiomyopathy is most likely - onset within weeks of delivery, no prior cardiac history despite two previous uncomplicated pregnancies, and a dilated poorly-contracting ventricle on echo with no valve lesion. Pre-eclampsia-related heart failure is next but there was no antenatal hypertension or proteinuria to support it. Rheumatic heart disease is common in young KZN women but there's no murmur and no rheumatic fever history, and the echo pattern doesn't fit. HIV or alcohol-related dilated cardiomyopathy can look identical on echo but she is HIV-negative and does not drink, and the tight temporal link to delivery favours PPCM. Pulmonary embolism is possible postpartum but the gradual 3-week course, absence of pleuritic pain or calf signs, and an echo showing LV rather than RV dysfunction argue against it.",
+      "gradingNotes": "Full marks for ranked list with reasoning drawing on specific history/exam/echo findings for each differential, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "What is the proposed pathophysiological mechanism underlying peripartum cardiomyopathy?",
+      "modelAnswer": "The leading hypothesis involves an anti-angiogenic, oxidative-stress state in late pregnancy: placental/pituitary-derived factors including a cleaved 16-kDa fragment of prolactin and soluble Flt-1 (sFlt-1) impair cardiac microvascular endothelial function and are directly toxic to cardiomyocytes, precipitating systolic dysfunction in susceptible women, particularly around delivery when these factors peak.",
+      "gradingNotes": "Wants mention of prolactin fragment/sFlt-1 anti-angiogenic mechanism, not just 'hormonal changes in pregnancy'."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Her echocardiogram shows an LVEF of 30% with a globally dilated, poorly contracting left ventricle and no valve lesion. How does this specific finding change your immediate management plan?",
+      "modelAnswer": "An LVEF this low carries a significant risk of intracardiac thrombus formation, compounded by the postpartum hypercoagulable state, so she needs thromboprophylaxis or therapeutic anticoagulation depending on local protocol and any evidence of thrombus. It also confirms this is a primary myocardial (systolic) process rather than a valvular one, so beta-blockade must wait until she is euvolaemic and compensated, and ACE inhibitor introduction needs careful timing and breastfeeding counselling.",
+      "gradingNotes": "Wants recognition of thrombus risk with severe EF reduction and correct sequencing of drug initiation (diuresis first, beta-blocker only once compensated)."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "She asks whether it is safe to fall pregnant again in the future. What do you tell her?",
+      "modelAnswer": "Future pregnancy carries a high risk of recurrence or worsening of peripartum cardiomyopathy, particularly if her left ventricular function has not fully recovered on repeat echocardiography. She should be counselled to avoid pregnancy until cardiac function is reassessed, ideally with full recovery of EF, and should be referred for effective contraception and pre-conception counselling with cardiology input before considering another pregnancy.",
+      "gradingNotes": "Critical thinking under new information - wants recurrence risk emphasised and a concrete contraception/counselling plan, not a vague reassurance."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "exertional dyspnoea + orthopnoea/PND + peripheral oedema syndrome → localise LVF/RVF/biventricular → grade NYHA → echo systolic/diastolic → identify dominant cause → hunt precipitant → assess complications → screen reversible contributors",
+  "patient": {
+    "name": "Thandeka Mchunu",
+    "age": 29,
+    "sex": "F",
+    "occupation": "domestic worker",
+    "personality": "anxious new mother, focused on the baby, tends to attribute her own symptoms to 'just being tired from the baby' unless asked directly",
+    "openingLine": "Doctor, I can't breathe properly since I had my baby... I thought it was just tiredness."
+  },
+  "presentingComplaint": "Progressive shortness of breath and leg swelling three weeks after delivery",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Breathlessness started about 3 weeks after delivering her third child, initially only on exertion, now present even at rest for the past 3 days",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-delivery",
+      "fact": "Delivered a healthy baby girl 3 weeks ago at term via normal vaginal delivery at her local clinic, no complications noted at the time",
+      "disclosure": "onAsk",
+      "triggers": [
+        "delivery",
+        "birth",
+        "gave birth",
+        "baby born",
+        "labour",
+        "pregnancy",
+        "when did you deliver",
+        "postpartum",
+        "after birth"
+      ]
+    },
+    {
+      "id": "hx-orthopnoea",
+      "fact": "Now sleeping propped up on 3 pillows; used to sleep flat before pregnancy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "orthopnoea",
+        "pillows",
+        "sleep flat",
+        "lying down",
+        "sleeping position",
+        "breathless lying",
+        "sleep upright"
+      ]
+    },
+    {
+      "id": "hx-pnd",
+      "fact": "Woken twice in the past week gasping for air, has to sit up and open the window",
+      "disclosure": "onAsk",
+      "triggers": [
+        "pnd",
+        "paroxysmal",
+        "wake up breathless",
+        "gasping",
+        "night breathless",
+        "wake at night",
+        "choking at night",
+        "sudden breathless"
+      ]
+    },
+    {
+      "id": "hx-oedema",
+      "fact": "Both legs and ankles swollen for the past 2 weeks, worse by evening; also noticed her wedding ring is tight",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "oedema",
+        "legs swollen",
+        "ankles",
+        "feet swollen",
+        "puffy",
+        "ring tight",
+        "fingers swollen",
+        "fluid"
+      ]
+    },
+    {
+      "id": "hx-nyha",
+      "fact": "Now breathless just walking to the outside toilet or lifting the baby; could climb the stairs at work without difficulty before this pregnancy",
+      "disclosure": "onAsk",
+      "triggers": [
+        "how far",
+        "exercise tolerance",
+        "walking",
+        "stairs",
+        "exertion",
+        "daily activities",
+        "function",
+        "what can you do",
+        "limit"
+      ]
+    },
+    {
+      "id": "hx-chestpain",
+      "fact": "No chest pain, no palpitations noticed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "chest pain",
+        "pain",
+        "palpitations",
+        "heart racing",
+        "pounding",
+        "chest tight"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "Occasional dry cough at night, no fever, no blood, no green or yellow sputum",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "sputum",
+        "phlegm",
+        "blood",
+        "coughing up",
+        "tb symptoms",
+        "night cough",
+        "haemoptysis"
+      ]
+    },
+    {
+      "id": "hx-priorpreg",
+      "fact": "Two previous pregnancies (5 and 3 years ago) were completely normal with no breathlessness or swelling afterwards; this is the first time she has felt like this",
+      "disclosure": "onAsk",
+      "triggers": [
+        "previous pregnancy",
+        "other children",
+        "before this baby",
+        "prior pregnancies",
+        "earlier pregnancies",
+        "first time",
+        "past deliveries"
+      ]
+    },
+    {
+      "id": "hx-htpreg",
+      "fact": "No high blood pressure was ever recorded during antenatal visits, no pre-eclampsia, no protein in urine flagged",
+      "disclosure": "onAsk",
+      "triggers": [
+        "blood pressure",
+        "hypertension",
+        "pre-eclampsia",
+        "preeclampsia",
+        "high bp",
+        "antenatal",
+        "protein in urine",
+        "toxaemia"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV tested negative at antenatal booking this pregnancy; not on any HIV treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "antenatal test",
+        "hiv positive",
+        "hiv negative"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous heart problems, no rheumatic fever or childhood joint pains as a child, no known chronic illnesses",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "heart problems",
+        "rheumatic fever",
+        "joint pains",
+        "chorea",
+        "conditions",
+        "illnesses before",
+        "past medical"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Not on any regular medication apart from the multivitamin and iron tablets given at the antenatal clinic; no traditional muti taken",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "taking anything",
+        "muti",
+        "traditional medicine",
+        "treatment",
+        "iron tablets",
+        "vitamins"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies and no history of reactions to any medicines or foods",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions",
+        "allergy",
+        "any allergies",
+        "sensitive to medicine",
+        "drug reaction",
+        "rash from medicine",
+        "adverse reaction"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Does not smoke, does not drink alcohol; lives in KwaMashu with her husband and three children in a small rented room, husband works as a security guard",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social history",
+        "live",
+        "home",
+        "house",
+        "husband",
+        "family support",
+        "work",
+        "occupation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of heart disease, hypertension or diabetes that she knows of; mother is alive and well",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "heart disease family",
+        "relatives"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No fever, no urinary symptoms, no headache, no visual disturbance, no abdominal pain; bowel habit normal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "urine",
+        "urinary",
+        "headache",
+        "vision",
+        "blurred vision",
+        "abdominal pain",
+        "bowels",
+        "other symptoms",
+        "anything else",
+        "systems review"
+      ]
+    },
+    {
+      "id": "hx-baby",
+      "fact": "Baby is feeding and growing well, no concerns from the clinic nurse at the 2-week check",
+      "disclosure": "onAsk",
+      "triggers": [
+        "baby",
+        "infant",
+        "feeding",
+        "breastfeeding",
+        "baby well",
+        "child health",
+        "growth"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Visibly breathless at rest, speaking in short sentences. Mildly cachectic-looking despite recent pregnancy. No cyanosis. Pallor mild. Bilateral pitting oedema to mid-shin, 2+. Raised JVP at 5cm above the sternal angle, no cannon waves.",
+    "vitals": {
+      "hr": 112,
+      "bp": "104/72",
+      "rr": 26,
+      "temp": 36.8,
+      "spo2": "93% on room air",
+      "bmi": 24
+    },
+    "respiratory": "Trachea central. Bilateral fine basal inspiratory crepitations, worse on the right. Reduced air entry at both bases with mild dullness to percussion suggesting small effusions.",
+    "cardio": "Displaced apex beat in the 6th intercostal space, anterior axillary line. Soft S3 gallop heard at the apex. No significant murmur. No parasternal heave.",
+    "abdo": "Soft, mildly tender hepatomegaly 3cm below costal margin, smooth edge. No ascites, no shifting dullness. Uterus well involuted, no wound complications.",
+    "neuro": "Alert and orientated, no focal deficit, no asterixis.",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Echocardiography",
+      "result": "Globally dilated left ventricle, LVEDD 6.1cm, severely reduced systolic function, LVEF 30%, no significant valve lesion, no pericardial effusion, mild functional mitral regurgitation",
+      "key": true
+    },
+    {
+      "name": "ECG",
+      "result": "Sinus tachycardia 112/min, non-specific ST-T changes in lateral leads, no pathological Q waves, no signs of prior MI or hypertrophy",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "Cardiomegaly (CTR 58%), upper lobe venous diversion, bilateral small pleural effusions, no obvious consolidation",
+      "key": true
+    },
+    {
+      "name": "NT-proBNP",
+      "result": "Markedly elevated at 4200 pg/mL (reserved for this diagnostic dilemma given cost)",
+      "key": true
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.8 g/dL mild normocytic anaemia (physiological postpartum), WCC 8.1, Plt 290",
+      "key": false
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Na 137, K 4.2, urea 5.1, creatinine 68 - normal renal function",
+      "key": true
+    },
+    {
+      "name": "Troponin",
+      "result": "Mildly elevated at 0.04 ng/mL (non-specific in severe heart failure), no dynamic rise on repeat",
+      "key": false
+    },
+    {
+      "name": "TSH",
+      "result": "Normal, 2.1 mIU/L",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA",
+      "result": "Negative",
+      "key": false
+    },
+    {
+      "name": "Urine dipstick / protein:creatinine ratio",
+      "result": "No proteinuria, no haematuria - argues against ongoing pre-eclampsia/eclampsia spectrum",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Peripartum cardiomyopathy",
+      "rank": 1,
+      "for": [
+        "onset within 5 months of delivery",
+        "no prior cardiac history",
+        "first-time symptoms after third pregnancy with two prior normal pregnancies",
+        "globally dilated poorly contracting LV on echo with no other structural cause",
+        "no antenatal hypertension to explain hypertensive heart disease",
+        "biventricular failure signs (raised JVP, hepatomegaly, bilateral crepitations, pedal oedema)"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Pre-eclampsia/eclampsia-related heart failure",
+      "rank": 2,
+      "for": [
+        "postpartum presentation",
+        "oedema",
+        "dyspnoea"
+      ],
+      "against": [
+        "no hypertension recorded antenatally or now",
+        "no proteinuria",
+        "no history of pre-eclampsia this pregnancy"
+      ]
+    },
+    {
+      "dx": "Rheumatic heart disease (mitral stenosis/regurgitation)",
+      "rank": 3,
+      "for": [
+        "young woman",
+        "biventricular failure signs",
+        "common in KZN young adults"
+      ],
+      "against": [
+        "no murmur on exam",
+        "no childhood rheumatic fever or joint pains",
+        "echo shows dilated cardiomyopathy pattern, not valvular"
+      ]
+    },
+    {
+      "dx": "HIV-associated or alcohol-related dilated cardiomyopathy",
+      "rank": 4,
+      "for": [
+        "dilated poorly contracting LV pattern on echo can look identical"
+      ],
+      "against": [
+        "HIV negative",
+        "no alcohol use",
+        "temporal relationship tightly linked to peripartum period"
+      ]
+    },
+    {
+      "dx": "Pulmonary embolism",
+      "rank": 5,
+      "for": [
+        "postpartum hypercoagulable state",
+        "dyspnoea"
+      ],
+      "against": [
+        "gradual 3-week onset rather than acute",
+        "no pleuritic chest pain",
+        "no calf swelling/tenderness",
+        "echo shows LV dysfunction rather than RV strain pattern"
+      ]
+    }
+  ],
+  "pathophys": {
+    "orthopnoea/PND": "Supine position redistributes splanchnic and dependent leg fluid into the central circulation, increasing venous return and left ventricular end-diastolic pressure, which raises pulmonary capillary hydrostatic pressure and drives transudation into alveoli; PND is worsened by blunted nocturnal adrenergic support and respiratory drive",
+    "peripheral oedema": "Reduced cardiac output activates the renin-angiotensin-aldosterone system and sympathetic drive, causing renal sodium and water retention; combined with raised systemic venous pressure, Starling forces favour fluid movement into the interstitium of dependent tissues",
+    "raised JVP and hepatomegaly": "Impaired right ventricular forward flow (from biventricular failure) backs up into the systemic venous system, distending the jugular veins and stretching the hepatic capsule via hepatic vein congestion, causing tender hepatomegaly",
+    "fine bibasal crepitations": "Elevated left atrial and pulmonary capillary hydrostatic pressure disrupts the normal Starling balance in the alveolar-capillary membrane, causing transudation of fluid into alveolar spaces, heard as crepitations on inspiration as they pop open",
+    "peripartum myocardial dysfunction": "Proposed mechanism involves an anti-angiogenic state in late pregnancy/early postpartum: cleaved prolactin (16-kDa fragment) and soluble Flt-1 (sFlt-1) from the placenta impair cardiac microvascular endothelial function and directly injure cardiomyocytes, precipitating a systolic dilated cardiomyopathy in genetically or otherwise predisposed women"
+  },
+  "staging": "NYHA Class IV (symptomatic at rest/minimal exertion) at presentation; LVEF 30% (moderate-severe systolic dysfunction) on echocardiography; European Society of Cardiology definition of peripartum cardiomyopathy met - heart failure with LVEF <45% towards the end of pregnancy or in the months following delivery, no other identifiable cause",
+  "management": {
+    "immediate": [
+      "Sit upright, high-flow oxygen to target SpO2 >94%",
+      "IV furosemide 40-80mg with reassessment of response and renal function",
+      "Strict fluid restriction ~1-1.5L/day with daily weights",
+      "Continuous cardiac monitoring given tachycardia and risk of arrhythmia",
+      "Thromboprophylaxis with enoxaparin 40mg SC daily given postpartum hypercoagulable state and severe LV dysfunction (risk of intracardiac thrombus), unless contraindicated",
+      "Urgent cardiology referral and echocardiography to confirm diagnosis and exclude alternative structural cause"
+    ],
+    "definitive": [
+      "ACE inhibitor (enalapril, start low and titrate) once haemodynamically stable - avoid if still breastfeeding without discussing safer alternatives (hydralazine/nitrates preferred in some breastfeeding protocols, but enalapril considered compatible by most references) - counsel and individualise",
+      "Beta-blocker (carvedilol) introduced once euvolaemic and compensated, not during acute decompensation",
+      "Spironolactone if NYHA III-IV once renal function and potassium allow",
+      "Bromocriptine consideration in selected units (inhibits prolactin, targets proposed pathophysiology) - discuss with cardiology/obstetric team where available per local protocol",
+      "Anticoagulation continued given severely reduced EF (<35%) and thrombus risk until reassessment"
+    ],
+    "supportive": [
+      "Salt restriction and fluid restriction education",
+      "Contraception counselling - future pregnancy carries high risk of recurrence/deterioration and should be discussed before discharge",
+      "Breastfeeding decision individualised with medication safety profile discussed",
+      "Psychosocial support - new mother with severe illness, involve family/support structures",
+      "Nutritional support"
+    ],
+    "followUp": [
+      "Repeat echocardiography at 6 weeks and 6 months to assess for LV recovery (around 50% of women recover EF)",
+      "Chronic disease/cardiology clinic follow-up for medication titration",
+      "Strong pre-conception counselling before any future pregnancy given recurrence risk",
+      "Contraception review at follow-up visits",
+      "Monitor renal function and electrolytes with ongoing ACEi/spironolactone therapy"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport with new mother, gains consent",
+      "answer": null,
+      "why": "Professionalism/communication",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-syndrome",
+      "phase": "history",
+      "item": "Confirms the CCF syndrome by asking about exertional dyspnoea, orthopnoea, PND and peripheral oedema together",
+      "answer": "All present - progressive dyspnoea, 3 pillows, PND twice in a week, bilateral leg swelling",
+      "why": "Confirming the syndrome before chasing a diagnosis is the core framework step",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-nyha",
+      "phase": "history",
+      "item": "Grades functional severity using NYHA class (not MRC)",
+      "answer": "NYHA IV - symptomatic at rest/minimal exertion",
+      "why": "Correct grading system distinguishes cardiac from respiratory candidates",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-timing-pregnancy",
+      "phase": "history",
+      "item": "Establishes the timing of symptom onset relative to delivery and asks specifically about the pregnancy/postpartum course",
+      "answer": "Onset 3 weeks postpartum, third pregnancy, first two pregnancies were entirely normal",
+      "why": "Temporal relationship to delivery is the defining clue that should trigger peripartum cardiomyopathy as a leading differential",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-htpreg-screen",
+      "phase": "history",
+      "item": "Screens for antenatal hypertension/pre-eclampsia and prior rheumatic fever/childhood joint pains",
+      "answer": "No hypertension or pre-eclampsia this pregnancy; no rheumatic fever history",
+      "why": "Helps rank out hypertensive heart disease and rheumatic heart disease as the dominant lesion",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-precipitant-screen",
+      "phase": "history",
+      "item": "Screens for precipitants/contributors - HIV status, alcohol use, medication adherence, infection symptoms, anaemia symptoms",
+      "answer": "HIV negative, no alcohol, not on chronic medication, no fever, mild physiological anaemia",
+      "why": "Reversible contributors and precipitants must be actively excluded per framework",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-resp-exam",
+      "phase": "examination",
+      "item": "Performs focused cardiorespiratory exam: JVP, apex beat, auscultation for gallop/murmur, bibasal crepitations",
+      "answer": "Raised JVP 5cm, displaced apex, S3 gallop, bibasal crepitations with reduced air entry",
+      "why": "Localises to biventricular failure and identifies dilated cardiomyopathy pattern (displaced apex, no murmur)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-abdo-exam",
+      "phase": "examination",
+      "item": "Examines abdomen for tender hepatomegaly and ascites, and legs for pitting oedema grading",
+      "answer": "Tender hepatomegaly 3cm, no ascites, 2+ pitting oedema to mid-shin",
+      "why": "Confirms systemic venous congestion component of CCF",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers ranked differential explicitly reasoning through peripartum cardiomyopathy vs pre-eclampsia-related failure vs rheumatic heart disease vs HIV/alcohol cardiomyopathy vs PE",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning with the KZN case-mix framework is central to the exam philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests echocardiography, ECG, CXR, U&E, and considers BNP given diagnostic uncertainty",
+      "answer": "Echo confirms dilated cardiomyopathy with LVEF 30%, no valve lesion; CXR cardiomegaly with effusions; ECG sinus tachycardia only",
+      "why": "Echocardiography is the key confirmatory investigation; BNP appropriately reserved for diagnostic dilemma per resource-conscious KZN approach",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-acute",
+      "phase": "management",
+      "item": "Outlines acute management: sit up, oxygen, IV furosemide, fluid restriction, thromboprophylaxis given severe LV dysfunction",
+      "answer": null,
+      "why": "Correct acute decompensated heart failure management per SA guidelines, with attention to the specific thrombus risk of PPCM",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-chronic",
+      "phase": "management",
+      "item": "Discusses chronic therapy (ACEi, beta-blocker once stable, spironolactone), breastfeeding/medication safety, contraception counselling and recurrence risk in future pregnancy",
+      "answer": null,
+      "why": "PPCM-specific counselling (contraception, recurrence risk, breastfeeding safety) is essential and often missed",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 10,
+    "management": 15
+  }
+}

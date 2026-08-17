@@ -1,0 +1,672 @@
+{
+  "id": "haem-003-hiv-associated-lymphoma-with",
+  "version": 1,
+  "discipline": "haem",
+  "diagnosis": "HIV-associated lymphoma with B symptoms",
+  "commonness": "common",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this patient's fever, night sweats, weight loss and lymphadenopathy, and how you would prioritise your work-up.",
+      "modelAnswer": "Given advanced HIV with likely low CD4, the top differential is HIV-associated lymphoma given painless progressive rubbery nodal enlargement, B symptoms, splenomegaly and markedly raised LDH. Disseminated TB is a very close second given the same B-symptom picture and high background prevalence, so GeneXpert and CXR must be sent regardless. Anaemia of chronic disease alone doesn't explain the pancytopenia or organomegaly. Castleman disease and reactive causes are lower probability but considered. I'd confirm with lymph node biopsy as the definitive test while excluding TB in parallel.",
+      "gradingNotes": "Wants ranked reasoning linking each differential to specific case findings, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why does anaemia of chronic disease typically show a raised or normal ferritin, and why can't you use ferritin alone to exclude iron deficiency in this patient?",
+      "modelAnswer": "Inflammatory cytokines, particularly IL-6, upregulate hepcidin, which degrades ferroportin and traps iron within enterocytes and macrophages, producing a functional iron deficiency despite normal or replete stores. Ferritin is also an acute-phase reactant and rises independently of stores during inflammation, so a normal or high ferritin in an inflamed patient can mask a true co-existing iron deficiency — ferritin must be interpreted alongside CRP and the clinical context.",
+      "gradingNotes": "Tests the core ACD pathophysiology pearl — expects mention of hepcidin/ferroportin and ferritin as an acute-phase reactant."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "The bone marrow biopsy shows lymphomatous infiltration. How does this change your interpretation of his pancytopenia compared to a simple anaemia of chronic disease picture?",
+      "modelAnswer": "Simple ACD typically causes an isolated normocytic anaemia through hepcidin-mediated iron restriction and blunted erythropoietin response, without significantly affecting white cells or platelets. Pancytopenia here instead reflects direct marrow infiltration by malignant lymphoid cells crowding out normal haematopoietic precursors across all three lineages — this pushes the diagnosis beyond ACD toward marrow infiltrative disease (lymphoma, TB, or other malignancy), which is exactly what the framework flags as a red flag requiring marrow work-up rather than routine ACD management.",
+      "gradingNotes": "Should articulate why pancytopenia is a red flag distinguishing marrow infiltration from isolated ACD, per the framework's red flags section."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "His CD4 is 62 and he defaulted ART a year ago. How do you sequence starting chemotherapy versus restarting ART, and what specific complication are you trying to avoid?",
+      "modelAnswer": "ART should be restarted but carefully coordinated with the oncology team managing chemotherapy initiation, because starting ART simultaneously with rapid immune reconstitution during aggressive chemotherapy can precipitate immune reconstitution inflammatory syndrome (IRIS), potentially unmasking or worsening other subclinical opportunistic infections or paradoxically worsening lymphoma-related inflammation. Co-trimoxazole prophylaxis should start immediately given CD4 <200 regardless of ART timing, and chemotherapy for an aggressive lymphoma like DLBCL should not be delayed for ART optimisation.",
+      "gradingNotes": "Expects mention of IRIS risk and appropriate sequencing/coordination between chemotherapy and ART restart, plus immediate co-trimoxazole regardless."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "What is the pathophysiological explanation for his generalised pruritus, and how does it relate to his overall clinical picture?",
+      "modelAnswer": "Pruritus is a recognised paraneoplastic feature of lymphoma, thought to relate to cytokine release including IL-5 and eosinophil-related mediators from the tumour and associated immune response, rather than a primary skin or hepatic process. In this patient, it fits alongside the other B symptoms (fever, night sweats, weight loss) as part of the systemic cytokine-driven syndrome caused by the underlying lymphoma.",
+      "gradingNotes": "Looking for recognition of pruritus as a paraneoplastic/cytokine-mediated lymphoma feature rather than attributing it solely to dry skin or scabies."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "anaemia/systemic illness work-up: confirm anaemia and classify by MCV, distinguish acute vs chronic, screen for driving chronic inflammatory state (HIV/TB/malignancy), iron studies + retic count to separate ACD from true deficiency, and pursue marrow infiltration work-up when B symptoms and pancytopenia point beyond simple ACD",
+  "patient": {
+    "name": "Sibusiso Ngcobo",
+    "age": 34,
+    "sex": "M",
+    "occupation": "security guard at a Pinetown shopping centre",
+    "personality": "stoic, downplays how unwell he feels, gets anxious when the word 'HIV' comes up, answers in short sentences unless prompted",
+    "openingLine": "Doctor, I'm just so tired all the time now, and these lumps in my neck won't go away."
+  },
+  "presentingComplaint": "6-week history of fatigue, neck swelling, drenching night sweats and weight loss",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Noticed a lump in his neck about 6 weeks ago; it has slowly grown and now there are several lumps",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-fatigue",
+      "fact": "Fatigue has worsened over the same period; struggles to stay awake on night shifts at work",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tired",
+        "fatigue",
+        "energy",
+        "weak",
+        "exhausted",
+        "sleepy",
+        "worn out",
+        "no energy",
+        "worn",
+        "out"
+      ]
+    },
+    {
+      "id": "hx-lymphnodes",
+      "fact": "Lumps are in the neck and both armpits, non-tender, feel firm and rubbery, have grown over weeks",
+      "disclosure": "onAsk",
+      "triggers": [
+        "lumps",
+        "glands",
+        "swelling",
+        "neck",
+        "armpit",
+        "nodes",
+        "lymph",
+        "growth",
+        "mass"
+      ]
+    },
+    {
+      "id": "hx-nightsweats",
+      "fact": "Drenching night sweats most nights for the past month, has to change his shirt and sometimes the sheets",
+      "disclosure": "onAsk",
+      "triggers": [
+        "night sweats",
+        "sweat",
+        "sweating",
+        "wake up wet",
+        "damp",
+        "soaked",
+        "perspire",
+        "night",
+        "sweats",
+        "wake",
+        "wet"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "Lost about 8 kg over 2 months without trying; belt is now on the tightest hole",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "thinner",
+        "clothes",
+        "belt",
+        "appetite",
+        "eating less",
+        "slimmer",
+        "lost",
+        "eating",
+        "less"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Intermittent fevers, worse in the evenings, comes and goes over the past 6 weeks",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors",
+        "burning up",
+        "burning"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "No cough, no shortness of breath, no chest pain",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "tb",
+        "chest",
+        "breathing",
+        "breath",
+        "sputum",
+        "phlegm",
+        "tuberculosis"
+      ]
+    },
+    {
+      "id": "hx-itch",
+      "fact": "Complains of generalised itching (pruritus) for the past 3 weeks, worse at night, no rash seen by him",
+      "disclosure": "onAsk",
+      "triggers": [
+        "itch",
+        "itchy",
+        "scratch",
+        "pruritus",
+        "skin"
+      ]
+    },
+    {
+      "id": "hx-abdopain",
+      "fact": "Some vague left-sided abdominal fullness/discomfort, no vomiting, no diarrhoea, no blood in stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "abdomen",
+        "stomach",
+        "belly",
+        "tummy",
+        "pain",
+        "fullness",
+        "discomfort",
+        "bloating"
+      ]
+    },
+    {
+      "id": "hx-bleeding",
+      "fact": "No easy bruising, no bleeding gums, no blood in urine or stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bleeding",
+        "bruising",
+        "blood",
+        "gums",
+        "bruise",
+        "nosebleed"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Diagnosed HIV positive 4 years ago; was on ART (TLD) but stopped attending clinic about a year ago due to work shift changes and stigma fears",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "antiretroviral",
+        "test",
+        "tested",
+        "clinic",
+        "treatment",
+        "positive",
+        "tld"
+      ]
+    },
+    {
+      "id": "hx-cd4hist",
+      "fact": "Does not remember his last CD4 count; was told 'it was low' when he defaulted",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cd4",
+        "count",
+        "immune",
+        "last test",
+        "viral load",
+        "last",
+        "test",
+        "viral",
+        "load"
+      ]
+    },
+    {
+      "id": "hx-tbcontact",
+      "fact": "No known TB contacts; not previously treated for TB",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "exposure",
+        "anyone sick",
+        "anyone",
+        "sick"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No other chronic illnesses; no hypertension, no diabetes; never hospitalised before",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "chronic",
+        "medical",
+        "history"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Was on tenofovir/lamivudine/dolutegravir (TLD) but has not taken any for about 12 months; occasionally uses paracetamol for fevers",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "muti",
+        "art",
+        "arv",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Smokes about 5 cigarettes a day for 10 years, drinks alcohol socially on weekends, lives alone in a rented room in Pinetown, sexually active with one regular partner, uses condoms inconsistently",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "partner",
+        "sexual",
+        "condom",
+        "relationship"
+      ]
+    },
+    {
+      "id": "hx-diet",
+      "fact": "Eats mostly takeaways and pap, not vegetarian, no history of restrictive diet",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diet",
+        "food",
+        "eating",
+        "vegetarian",
+        "vegan",
+        "meat",
+        "nutrition"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of cancer, blood disorders, or diabetes that he knows of; mother alive and well",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "cancer in family",
+        "family",
+        "history",
+        "runs",
+        "cancer"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No joint pains, no rash, no headache, no visual changes, no neurological symptoms like numbness or tingling",
+      "disclosure": "onAsk",
+      "triggers": [
+        "joint",
+        "rash",
+        "headache",
+        "vision",
+        "numbness",
+        "tingling",
+        "neuro",
+        "other symptoms",
+        "anything else",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Cachectic, chronically ill-looking man. Pallor of conjunctivae and palmar creases. Oral thrush noted on buccal mucosa. Multiple firm, rubbery, non-tender lymph nodes palpable bilaterally in the cervical and axillary chains, largest 3cm, matted together in places. No skin rash.",
+    "vitals": {
+      "hr": 110,
+      "bp": "104/66",
+      "rr": 20,
+      "temp": 38.4,
+      "spo2": "97% on room air",
+      "bmi": 17.5
+    },
+    "respiratory": "Trachea central, chest clear to auscultation bilaterally, no dullness or crackles",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, JVP not raised",
+    "abdo": "Soft, mildly tender left upper quadrant; spleen palpable 4cm below costal margin; liver edge palpable 2cm below costal margin, smooth; no ascites",
+    "neuro": "Alert and orientated, no focal deficits, vibration and proprioception intact, reflexes normal",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 8.6 g/dL (normocytic normochromic), WCC 3.1 x10^9/L (lymphopenia), Platelets 118 x10^9/L — mild pancytopenia",
+      "key": true
+    },
+    {
+      "name": "Peripheral smear",
+      "result": "Normocytic normochromic red cells, no blasts, no schistocytes; reactive-looking lymphocytes",
+      "key": false
+    },
+    {
+      "name": "Reticulocyte count",
+      "result": "Low-normal (1.2%), inappropriately low for degree of anaemia",
+      "key": false
+    },
+    {
+      "name": "Iron studies",
+      "result": "Ferritin 480 µg/L (raised), serum iron low, TIBC low-normal — pattern consistent with anaemia of chronic disease/inflammation",
+      "key": false
+    },
+    {
+      "name": "HIV ELISA / confirmatory test",
+      "result": "Positive (known status, reconfirmed)",
+      "key": true
+    },
+    {
+      "name": "CD4 count",
+      "result": "62 cells/µL",
+      "key": true
+    },
+    {
+      "name": "HIV viral load",
+      "result": "180,000 copies/mL (unsuppressed, consistent with ART non-adherence)",
+      "key": false
+    },
+    {
+      "name": "LDH",
+      "result": "Markedly elevated at 890 U/L (normal <250)",
+      "key": true
+    },
+    {
+      "name": "Excisional lymph node biopsy (cervical node)",
+      "result": "Diffuse large B-cell lymphoma, CD20 positive; EBV-encoded RNA (EBER) positive on in-situ hybridisation",
+      "key": true
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "No consolidation, no cavitation, no pleural effusion; no mediastinal widening",
+      "key": false
+    },
+    {
+      "name": "Sputum GeneXpert MTB/RIF",
+      "result": "MTB not detected",
+      "key": false
+    },
+    {
+      "name": "CT neck/chest/abdomen/pelvis (staging)",
+      "result": "Bulky cervical, axillary, mediastinal and para-aortic lymphadenopathy; splenomegaly with focal lesions; no bone lesions seen",
+      "key": true
+    },
+    {
+      "name": "Bone marrow aspirate and trephine",
+      "result": "Focal infiltration by large atypical lymphoid cells, consistent with marrow involvement by lymphoma; no granulomas seen",
+      "key": false
+    },
+    {
+      "name": "U&E and LFTs",
+      "result": "Urea and creatinine normal; ALT/AST mildly elevated, likely reactive; uric acid elevated (tumour turnover)",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "HIV-associated non-Hodgkin lymphoma (diffuse large B-cell lymphoma)",
+      "rank": 1,
+      "for": [
+        "progressive painless rubbery lymphadenopathy",
+        "B symptoms (fever, night sweats, weight loss >10%)",
+        "markedly elevated LDH",
+        "advanced HIV with CD4 62",
+        "hepatosplenomegaly",
+        "EBV association common in HIV lymphoma"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Disseminated tuberculosis / TB lymphadenitis",
+      "rank": 2,
+      "for": [
+        "B symptoms",
+        "lymphadenopathy",
+        "advanced HIV/low CD4",
+        "high background TB prevalence in KZN"
+      ],
+      "against": [
+        "GeneXpert negative",
+        "nodes described as non-matted-to-skin, rubbery not caseating/fluctuant",
+        "no cough",
+        "CXR clear"
+      ]
+    },
+    {
+      "dx": "HIV-associated anaemia of chronic disease alone (without malignancy)",
+      "rank": 3,
+      "for": [
+        "normocytic anaemia",
+        "raised ferritin, low serum iron pattern",
+        "chronic HIV infection driving inflammation"
+      ],
+      "against": [
+        "does not explain markedly raised LDH, bulky matted lymphadenopathy, splenomegaly with lesions, or pancytopenia — points to marrow infiltration beyond simple ACD"
+      ]
+    },
+    {
+      "dx": "Castleman disease (HIV/HHV-8 associated)",
+      "rank": 4,
+      "for": [
+        "HIV positive",
+        "lymphadenopathy",
+        "B symptoms can occur",
+        "splenomegaly"
+      ],
+      "against": [
+        "biopsy showed diffuse large B-cell lymphoma histology, not Castleman's plasma-cell/hyaline-vascular pattern"
+      ]
+    },
+    {
+      "dx": "Reactive lymphadenopathy (opportunistic infection e.g. atypical mycobacteria, CMV)",
+      "rank": 5,
+      "for": [
+        "advanced HIV predisposes to multiple infections with lymphadenopathy"
+      ],
+      "against": [
+        "biopsy confirmed malignant lymphoma, not a reactive/infective pattern"
+      ]
+    }
+  ],
+  "pathophys": {
+    "night sweats (B symptom)": "Lymphoma cells and associated macrophages release pyrogenic cytokines (IL-6, TNF-alpha, IL-1) that reset the hypothalamic thermoregulatory set-point, producing evening fevers that break overnight with compensatory drenching sweats",
+    "weight loss (B symptom)": "Tumour-derived and host cytokines (TNF-alpha/cachectin, IL-6) drive a hypercatabolic state and anorexia, accelerated further by HIV-associated wasting and increased metabolic demand from high tumour turnover",
+    "lymphadenopathy": "Clonal proliferation of malignant B-lymphocytes within nodal follicles/paracortex causes progressive, painless nodal enlargement, distinct from the tender reactive nodes of acute infection",
+    "normocytic anaemia": "Chronic inflammatory cytokines (IL-6) upregulate hepcidin, which degrades ferroportin and traps iron within enterocytes and macrophages (functional iron deficiency); cytokines also blunt erythropoietin production/response and shorten red cell survival — compounded here by marrow infiltration reducing erythropoietic capacity",
+    "pancytopenia": "Direct marrow infiltration by malignant lymphoid cells crowds out normal haematopoietic precursors, reducing output of all three cell lines",
+    "splenomegaly": "Lymphomatous infiltration of splenic white pulp/red pulp and extramedullary involvement causes organ enlargement, occasionally with sequestration contributing further to cytopenias",
+    "pruritus": "Cytokine release (notably IL-5 and eosinophil-related mediators) and possibly bile-salt-independent mechanisms from lymphoma cells cause generalised itch, a recognised paraneoplastic feature of lymphoma",
+    "elevated LDH": "High cellular turnover and death of rapidly proliferating malignant lymphocytes release intracellular LDH, correlating with tumour bulk and proliferative activity — used as a prognostic marker in lymphoma staging"
+  },
+  "staging": "WHO HIV clinical stage 4 (presumed AIDS-defining illness: HIV-associated lymphoma); CD4 62 cells/µL, unsuppressed viral load due to ART non-adherence; lymphoma staged as Ann Arbor Stage III-IV with B symptoms given bilateral supradiaphragmatic and infradiaphragmatic nodal disease plus splenic involvement",
+  "management": {
+    "immediate": [
+      "Assess for oncological emergencies: tumour lysis risk (check uric acid, K+, phosphate, calcium, creatinine), superior vena cava obstruction, spinal cord compression — none present currently but must actively exclude",
+      "Correct anaemia if symptomatic (Hb 8.6 with tachycardia — consider transfusion per SA EML thresholds if symptomatic)",
+      "Treat oral candidiasis (fluconazole)",
+      "Urgent referral to haematology/oncology for confirmed diffuse large B-cell lymphoma"
+    ],
+    "definitive": [
+      "Re-initiate ART (TLD) — timing coordinated with oncology to reduce IRIS risk once chemotherapy underway; do not delay lymphoma treatment for ART optimisation alone",
+      "Combination chemotherapy: R-CHOP (rituximab-cyclophosphamide, doxorubicin, vincristine, prednisone) or CHOP if rituximab access limited/CD20 confirmed access issues — per local oncology protocol",
+      "Co-trimoxazole preventive therapy (CD4 <200) for PJP prophylaxis",
+      "Consider CNS prophylaxis (intrathecal methotrexate) given advanced stage and marrow involvement risk factors"
+    ],
+    "supportive": [
+      "Nutritional support and social work/grant referral given wasting and unemployment risk",
+      "Adherence counselling and re-engagement in HIV care with a treatment supporter, addressing stigma concerns identified in history",
+      "Tumour lysis prophylaxis (hydration, allopurinol) prior to and during first chemotherapy cycle",
+      "Psychological support given diagnosis of both HIV disengagement and cancer"
+    ],
+    "followUp": [
+      "Interim and end-of-treatment PET-CT or CT restaging",
+      "Monitor FBC closely during chemotherapy for cytopenias/sepsis risk",
+      "CD4 and viral load monitoring once ART re-established",
+      "Long-term survivorship follow-up and HIV clinic reintegration"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-confirm-anaemia",
+      "phase": "history",
+      "item": "Confirms anaemia symptoms and severity (fatigue, dyspnoea, functional impact)",
+      "answer": "Progressive fatigue over 6 weeks, affecting ability to stay awake at work",
+      "why": "Step 1 of framework: confirm anaemia and establish symptomatic burden",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-chronicity",
+      "phase": "history",
+      "item": "Establishes chronicity and screens for B symptoms (fever, night sweats, weight loss)",
+      "answer": "6-week history with drenching night sweats, 8kg weight loss, evening fevers — all three B symptoms present",
+      "why": "Distinguishes chronic/systemic illness from acute process and flags lymphoma/TB/malignancy pathway",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-lymphnode-history",
+      "phase": "history",
+      "item": "Characterises the lymphadenopathy (site, duration, growth, tenderness, associated symptoms)",
+      "answer": "Bilateral cervical and axillary, firm, rubbery, non-tender, progressively enlarging over 6 weeks",
+      "why": "Painless, progressive, rubbery nodes are a key discriminator toward lymphoma over reactive/infective causes",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-screen",
+      "phase": "history",
+      "item": "Establishes HIV status, ART history and adherence",
+      "answer": "HIV positive 4 years, was on TLD, defaulted ~12 months ago due to work/stigma",
+      "why": "HIV status and CD4 level are central to both the anaemia framework and the lymphoma risk assessment — mandatory in any KZN systemic illness presentation",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB symptoms and contacts (cough >2 weeks, contacts, prior TB treatment)",
+      "answer": "No cough, no known TB contacts, no prior TB treatment",
+      "why": "TB is the leading differential for B symptoms plus lymphadenopathy in this setting and must be actively excluded",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-nodes",
+      "phase": "examination",
+      "item": "Performs full lymph node examination (cervical, axillary, inguinal) and abdominal exam for organomegaly",
+      "answer": "Bilateral cervical/axillary lymphadenopathy, splenomegaly 4cm, hepatomegaly 2cm",
+      "why": "Localises disease extent and supports staging (Ann Arbor)",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Notes general signs of chronic illness/immunosuppression (wasting, pallor, oral thrush)",
+      "answer": "Cachectic, pallor, oral candidiasis present",
+      "why": "Signs of advanced immunosuppression correlating with low CD4 and staging",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates ranked differential linking anaemia framework to lymphoma vs TB vs ACD-alone vs other causes",
+      "answer": "Lymphoma > disseminated TB > ACD alone > Castleman disease > reactive lymphadenopathy, with reasoning for each",
+      "why": "Core exam philosophy: symptom-to-differential reasoning before diagnosis-anchoring",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mcv-classify",
+      "phase": "differentials",
+      "item": "Classifies the anaemia by MCV and interprets iron studies (ferritin/serum iron/TIBC) in context of inflammation",
+      "answer": "Normocytic anaemia with raised ferritin, low serum iron — ACD pattern, but with pancytopenia suggesting marrow infiltration beyond pure ACD",
+      "why": "Applies framework steps 2 and 5 (classify by MCV; iron studies to separate ACD from true deficiency) and recognises when the picture exceeds simple ACD",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-key",
+      "phase": "investigations",
+      "item": "Orders FBC with smear and retic count, iron studies, HIV/CD4/VL, LDH, and lymph node biopsy",
+      "answer": "FBC pancytopenia, ACD-pattern iron studies, CD4 62, LDH 890, biopsy confirms DLBCL EBV-positive",
+      "why": "Confirmatory pathway — biopsy is the definitive diagnostic step, LDH and CD4 guide staging and prognosis",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-staging",
+      "phase": "investigations",
+      "item": "Requests staging imaging (CT neck/chest/abdo/pelvis) and bone marrow biopsy",
+      "answer": "CT shows bulky multi-site lymphadenopathy and splenic lesions; marrow shows lymphomatous infiltration",
+      "why": "Required for Ann Arbor staging and to explain the pancytopenia (marrow infiltration beyond ACD)",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-mx-plan",
+      "phase": "management",
+      "item": "Outlines management: exclude oncological emergencies, initiate/re-engage ART appropriately timed, chemotherapy (R-CHOP/CHOP) referral, co-trimoxazole prophylaxis, avoid oral iron for the ACD component",
+      "answer": "Refer haematology-oncology for R-CHOP, restart ART with oncology coordination, co-trimoxazole given CD4<200, do not give oral iron for the ACD picture",
+      "why": "Management must address both the underlying malignancy (definitive) and correctly apply ACD principles (no oral iron) rather than treating anaemia symptomatically alone",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}

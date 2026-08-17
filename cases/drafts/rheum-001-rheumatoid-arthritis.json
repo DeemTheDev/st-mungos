@@ -1,0 +1,633 @@
+{
+  "id": "rheum-001-rheumatoid-arthritis",
+  "version": 1,
+  "discipline": "rheum",
+  "diagnosis": "Rheumatoid arthritis",
+  "commonness": "common",
+  "difficulty": 2,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your approach to this patient's polyarthritis and your differential diagnosis.",
+      "modelAnswer": "First define the pattern — this is a symmetrical polyarthritis (>5 joints) affecting small joints of the hands and wrists, sparing the DIPs, present for 3 months, which is chronic and inflammatory (morning stiffness >1.5 hours, improves with movement). I would first exclude red flags — no acute hot single joint or sepsis, so septic arthritis is unlikely. Top differential is rheumatoid arthritis given the symmetry, DIP sparing, prolonged stiffness and extra-articular sicca symptoms. Osteoarthritis is less likely given the stiffness duration and joint distribution, though her mechanical knee changes are a separate incidental finding. Seronegative spondyloarthropathy is less likely as she is HIV-negative with no psoriasis, dactylitis or preceding infection. SLE is possible given sicca symptoms and fatigue but the joint pattern and serology point more specifically to RA.",
+      "gradingNotes": "Wants explicit application of the pattern-recognition framework (oligo/poly, acute/chronic, inflammatory/mechanical, symmetry, red flags) before naming differentials, not just a list."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why is the duration of morning stiffness such an important discriminating feature between rheumatoid arthritis and osteoarthritis?",
+      "modelAnswer": "In RA, overnight rest allows inflammatory synovial fluid and cytokines to accumulate within a thickened, hypervascular pannus, so stiffness is prolonged (classically over 1 hour) until movement disperses this inflammatory build-up. In OA, stiffness is due to mechanical cartilage loss and osteophyte formation, so it is brief (under 30 minutes) as it simply reflects the joint 'warming up' rather than clearing an inflammatory infiltrate.",
+      "gradingNotes": "Tests the pathophysiology pearl directly — wants mechanism (cytokine/pannus accumulation vs mechanical loading), not just the numeric cutoff."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "Her RF and anti-CCP come back positive. How does anti-CCP compare to RF in terms of clinical utility, and does a positive RF alone confirm the diagnosis?",
+      "modelAnswer": "RF is sensitive (~70% of RA patients are positive) but not specific — it can be positive in other conditions (Sjögren's, hepatitis C, chronic infections) and even in a proportion of healthy people. Anti-CCP is highly specific for RA and can predict more erosive disease course, so a positive anti-CCP in the right clinical context is much more confirmatory. Neither is diagnostic in isolation — diagnosis remains clinical, supported by the joint pattern, duration, examination findings, and imaging, with serology adding weight rather than being definitive alone.",
+      "gradingNotes": "Wants understanding that serology supports rather than defines diagnosis, and correct sensitivity/specificity trade-off between RF and anti-CCP."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "Before starting methotrexate, what must you check, and why is folic acid always co-prescribed?",
+      "modelAnswer": "Baseline FBC and LFTs must be checked before starting methotrexate to screen for pre-existing cytopenia or liver dysfunction, and HIV status should be confirmed given the immunosuppressive effect of the drug. Renal function should also be checked as methotrexate is renally cleared. Folic acid is co-prescribed (on a different day to the methotrexate dose) to reduce methotrexate-related toxicity, particularly mucositis, GI upset, and bone marrow suppression, without blunting its therapeutic efficacy.",
+      "gradingNotes": "Wants baseline monitoring bloods, HIV check rationale, and the specific purpose/dosing logic of folic acid co-prescription."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "examination",
+      "question": "What is Felty's syndrome and why is it relevant to examine for in this patient?",
+      "modelAnswer": "Felty's syndrome is the triad of rheumatoid arthritis, splenomegaly, and neutropenia, typically occurring in longstanding seropositive RA. It is relevant to screen for on abdominal examination because it predisposes to recurrent bacterial infections due to neutropenia, and its presence would indicate more severe, longstanding systemic disease requiring closer specialist monitoring.",
+      "gradingNotes": "Wants the specific triad recalled accurately and a reason why it matters clinically (infection risk, marker of severe disease)."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "polyarthritis pattern recognition: mono vs oligo vs poly, acute vs chronic, inflammatory vs mechanical, symmetry and joint distribution, red-flag exclusion of septic arthritis, extra-articular screen, then targeted investigation and diagnosis-specific management",
+  "patient": {
+    "name": "Thandeka Mkhize",
+    "age": 42,
+    "sex": "F",
+    "occupation": "domestic worker in Pinetown",
+    "personality": "stoic, keeps working through pain, downplays how much it affects her until pressed, worried about losing her job if her hands stop working",
+    "openingLine": "Doctor, my hands are so stiff in the morning, I can hardly hold my broom until nearly ten o'clock."
+  },
+  "presentingComplaint": "3-month history of symmetrical pain and swelling in the hands and wrists with prolonged morning stiffness",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms started gradually about 3 months ago, no clear trigger or injury",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-joints",
+      "fact": "Both wrists and the knuckles of both hands (MCPs and PIPs) are affected symmetrically; the very end joints of her fingers (DIPs) are not sore",
+      "disclosure": "onAsk",
+      "triggers": [
+        "which joints",
+        "joints affected",
+        "hands",
+        "wrists",
+        "knuckles",
+        "fingers",
+        "symmetrical",
+        "both sides",
+        "dip",
+        "end joints",
+        "distribution",
+        "pattern",
+        "joints",
+        "affected",
+        "both",
+        "sides",
+        "end"
+      ]
+    },
+    {
+      "id": "hx-stiffness",
+      "fact": "Morning stiffness lasts over 1.5 hours before her hands feel like they loosen up; it is much worse than it used to be",
+      "disclosure": "onAsk",
+      "triggers": [
+        "morning stiffness",
+        "stiff",
+        "stiffness",
+        "how long",
+        "wakes up",
+        "loosen up",
+        "gel",
+        "time to loosen",
+        "morning",
+        "long",
+        "wakes",
+        "loosen"
+      ]
+    },
+    {
+      "id": "hx-swelling",
+      "fact": "Notices visible puffiness over the knuckles, worse on bad days, with warmth over the joints",
+      "disclosure": "onAsk",
+      "triggers": [
+        "swelling",
+        "swollen",
+        "puffy",
+        "puffiness",
+        "warm",
+        "warmth",
+        "hot joints",
+        "hot",
+        "joints"
+      ]
+    },
+    {
+      "id": "hx-pattern-improve",
+      "fact": "Pain and stiffness are worse with rest and improve somewhat with gentle movement through the day, unlike the mechanical pain she gets in her right knee",
+      "disclosure": "onAsk",
+      "triggers": [
+        "better with movement",
+        "worse with rest",
+        "activity",
+        "use",
+        "exercise helps",
+        "moving around",
+        "rest",
+        "better",
+        "movement",
+        "worse",
+        "exercise",
+        "helps",
+        "moving",
+        "around"
+      ]
+    },
+    {
+      "id": "hx-systemic",
+      "fact": "Feels generally tired and run-down, occasional low-grade fevers in the evenings, but no drenching night sweats",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "tired",
+        "fatigue",
+        "exhausted",
+        "energy",
+        "night sweats",
+        "sweats",
+        "unwell",
+        "malaise",
+        "night"
+      ]
+    },
+    {
+      "id": "hx-weightloss",
+      "fact": "No significant weight loss, appetite is normal",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "appetite",
+        "eating",
+        "thinner",
+        "lost"
+      ]
+    },
+    {
+      "id": "hx-eyes-dry",
+      "fact": "Reports dry, gritty eyes and a dry mouth for the past month",
+      "disclosure": "onAsk",
+      "triggers": [
+        "dry eyes",
+        "gritty",
+        "dry mouth",
+        "eyes",
+        "sicca",
+        "tears",
+        "saliva",
+        "dry",
+        "mouth"
+      ]
+    },
+    {
+      "id": "hx-skin",
+      "fact": "No rash, no psoriasis, no nodules that she has noticed herself",
+      "disclosure": "onAsk",
+      "triggers": [
+        "rash",
+        "skin",
+        "psoriasis",
+        "nodules",
+        "lumps",
+        "bumps"
+      ]
+    },
+    {
+      "id": "hx-gi-gu",
+      "fact": "No preceding diarrhoea, no urethral discharge, no red eye before joints started",
+      "disclosure": "onAsk",
+      "triggers": [
+        "diarrhoea",
+        "stomach bug",
+        "discharge",
+        "urine",
+        "std",
+        "sti",
+        "red eye",
+        "conjunctivitis",
+        "preceding infection",
+        "stomach",
+        "bug",
+        "red",
+        "eye",
+        "preceding",
+        "infection"
+      ]
+    },
+    {
+      "id": "hx-tb-contact",
+      "fact": "No known TB contact, no cough, no known TB exposure at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "cough",
+        "exposure",
+        "household sick",
+        "household",
+        "sick"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Tested HIV negative 8 months ago at the clinic; not currently on any HIV treatment",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids",
+        "retroviral"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No previous joint problems apart from an old mechanical right knee ache; no diabetes, no known kidney disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous illness",
+        "conditions",
+        "kidney",
+        "diabetes",
+        "past history",
+        "medical",
+        "history",
+        "previous",
+        "illness",
+        "past"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes paracetamol and occasional ibuprofen bought over the counter, no prescribed chronic medication, no diuretics",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "tablets",
+        "pills",
+        "taking anything",
+        "diuretic",
+        "treatment",
+        "muti",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Non-smoker, drinks alcohol occasionally on weekends; works as a domestic worker doing a lot of hand washing and cleaning, worried the stiffness will cost her the job; lives in Pinetown with her husband and two teenage children",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "work",
+        "occupation",
+        "job",
+        "live",
+        "home",
+        "house",
+        "family",
+        "social"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "Her mother had 'crooked hands' in old age which the family always called arthritis, but was never formally diagnosed; no known gout or psoriasis in the family",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "runs in family",
+        "genetic",
+        "arthritis in family",
+        "gout family",
+        "psoriasis family",
+        "family",
+        "history",
+        "runs",
+        "arthritis",
+        "gout",
+        "psoriasis"
+      ]
+    },
+    {
+      "id": "hx-function",
+      "fact": "Struggles to grip her broom handle and wring out cloths in the mornings, affecting her work; can manage by mid-morning once stiffness eases",
+      "disclosure": "onAsk",
+      "triggers": [
+        "grip",
+        "function",
+        "work affected",
+        "daily activities",
+        "hold things",
+        "dropping things",
+        "broom",
+        "work",
+        "affected",
+        "daily",
+        "activities",
+        "hold",
+        "things",
+        "dropping"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Middle-aged woman, mild discomfort moving her hands, no acute distress. No obvious cachexia. No rash. No lymphadenopathy.",
+    "vitals": {
+      "hr": 82,
+      "bp": "124/78",
+      "rr": 16,
+      "temp": 37.4,
+      "spo2": "98% on room air",
+      "bmi": 26
+    },
+    "respiratory": "Chest clear, no crackles, normal air entry bilaterally, no evidence of ILD",
+    "cardio": "Normal heart sounds, no murmurs, no pericardial rub",
+    "abdo": "Soft, non-tender, no hepatosplenomegaly",
+    "neuro": "Alert and orientated, no focal deficit, no cervical spine tenderness or instability on gentle assessment",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Rheumatoid factor (RF)",
+      "result": "Positive, titre elevated",
+      "key": true
+    },
+    {
+      "name": "Anti-CCP antibody",
+      "result": "Strongly positive",
+      "key": true
+    },
+    {
+      "name": "X-ray both hands and wrists",
+      "result": "Periarticular soft tissue swelling, juxta-articular osteopenia at MCPs bilaterally, early joint space narrowing; no erosions yet visible",
+      "key": true
+    },
+    {
+      "name": "ESR",
+      "result": "58 mm/hr (raised)",
+      "key": true
+    },
+    {
+      "name": "CRP",
+      "result": "42 mg/L (raised)",
+      "key": false
+    },
+    {
+      "name": "Full blood count",
+      "result": "Hb 10.8 g/dL normocytic (anaemia of chronic disease), platelets 480 (reactive thrombocytosis), WCC normal",
+      "key": false
+    },
+    {
+      "name": "U&E/creatinine",
+      "result": "Normal renal function, eGFR >90",
+      "key": false
+    },
+    {
+      "name": "Liver function tests (baseline before DMARD)",
+      "result": "Normal ALT/AST, normal albumin",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (retested to confirm before immunosuppression)",
+      "key": true
+    },
+    {
+      "name": "Serum urate",
+      "result": "0.28 mmol/L, normal",
+      "key": false
+    },
+    {
+      "name": "Joint aspiration (right knee, minimal effusion)",
+      "result": "Not performed — no significant effusion present, low suspicion for septic or crystal arthritis given symmetrical small joint pattern and chronicity",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Rheumatoid arthritis",
+      "rank": 1,
+      "for": [
+        "symmetrical small joint polyarthritis of MCPs/PIPs",
+        "DIP sparing",
+        "morning stiffness >1.5 hours",
+        "improves with movement",
+        "positive RF and anti-CCP",
+        "juxta-articular osteopenia on X-ray",
+        "raised ESR/CRP",
+        "anaemia of chronic disease"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Osteoarthritis",
+      "rank": 2,
+      "for": [
+        "pre-existing mechanical right knee crepitus",
+        "age 42 makes early OA possible"
+      ],
+      "against": [
+        "morning stiffness far exceeds 30 minutes",
+        "symmetrical MCP/PIP involvement rather than DIP/weight-bearing joints",
+        "systemic symptoms and raised inflammatory markers not typical of OA"
+      ]
+    },
+    {
+      "dx": "Seronegative spondyloarthropathy (psoriatic/reactive, HIV-associated)",
+      "rank": 3,
+      "for": [
+        "dry eyes could suggest an overlapping sicca/connective tissue picture",
+        "need to consider in HIV-endemic setting"
+      ],
+      "against": [
+        "HIV negative",
+        "no psoriasis, no preceding GI/GU infection",
+        "symmetrical small joint pattern rather than asymmetric oligoarthritis",
+        "no dactylitis or enthesitis found"
+      ]
+    },
+    {
+      "dx": "Systemic lupus erythematosus",
+      "rank": 4,
+      "for": [
+        "polyarthritis, fatigue, low-grade fevers",
+        "dry eyes/mouth could suggest overlap syndrome"
+      ],
+      "against": [
+        "no rash, no photosensitivity, no renal or serosal involvement",
+        "positive RF/anti-CCP more specific for RA",
+        "X-ray changes point to RA not lupus arthropathy (usually non-erosive)"
+      ]
+    }
+  ],
+  "pathophys": {
+    "prolonged morning stiffness (>1 hour)": "Overnight immobility allows inflammatory cytokines and synovial fluid to accumulate within a thickened, hypervascular pannus; movement is needed to disperse this before the joint feels 'loose' again",
+    "symmetrical small joint swelling with DIP sparing": "Rheumatoid synovitis preferentially targets synovium-rich MCP/PIP and wrist joints via immune complex and citrullinated-protein-driven autoimmune synovitis; DIPs have less synovial lining and are characteristically spared, unlike OA",
+    "anaemia of chronic disease and reactive thrombocytosis": "Chronic IL-6 driven inflammation increases hepcidin (blocking iron release, causing anaemia) and stimulates hepatic thrombopoietin and marrow megakaryocyte activity (reactive thrombocytosis)",
+    "ulnar deviation and MCP subluxation": "Chronic synovitis stretches and weakens the joint capsule, collateral ligaments and extensor tendons, allowing the pull of flexor tendons to gradually sublux the MCP joints ulnarly over time",
+    "dry eyes and dry mouth (sicca symptoms)": "Secondary Sjögren's syndrome commonly co-occurs with RA due to lymphocytic infiltration of exocrine lacrimal and salivary glands as part of the same autoimmune process"
+  },
+  "staging": "Early rheumatoid arthritis, seropositive (RF and anti-CCP positive), pre-erosive on imaging; disease duration approximately 3 months, warrants urgent DMARD initiation within the treatment window",
+  "management": {
+    "immediate": [
+      "Analgesia with paracetamol; short-course NSAID (e.g. ibuprofen) with gastric cover if no contraindication, used cautiously given occasional OTC NSAID use already",
+      "Confirm no contraindication to DMARD therapy (baseline FBC, LFTs, U&E, HIV test already done)",
+      "Reassure and counsel that this is a chronic disease requiring early treatment to prevent joint damage"
+    ],
+    "definitive": [
+      "Start methotrexate 7.5mg weekly, up-titrate as tolerated toward 15-25mg/week, WITH folic acid 5mg once weekly (different day) to reduce toxicity",
+      "Alternative/add-on: sulfasalazine 500mg bd, titrate up to 1g bd, with monthly bloods during titration",
+      "Consider short bridging course of oral prednisone (e.g. 15mg daily, tapering) while DMARD takes effect (onset of action 6-12 weeks)",
+      "If chloroquine considered as an additional agent, arrange baseline ophthalmological exam and annual review for retinopathy risk",
+      "Refer to rheumatology for specialist input and consideration of escalation (second DMARD or biologic) if inadequate response at 3 months"
+    ],
+    "supportive": [
+      "Occupational therapy referral for joint protection techniques and adaptive tools given her manual domestic work",
+      "Physiotherapy for hand exercises and grip strengthening",
+      "Patient education on disease course, medication adherence, and importance of not stopping DMARDs abruptly",
+      "Address dry eyes/mouth symptomatically (artificial tears) and consider Sjögren's overlap on follow-up"
+    ],
+    "followUp": [
+      "Monitor FBC and ALT every 4-6 weeks initially on methotrexate, then every 3 months once stable",
+      "Repeat ESR/CRP and clinical joint counts at each visit to track disease activity (aim for low disease activity/remission)",
+      "Annual ophthalmology review if chloroquine used",
+      "Screen for osteoporosis if prolonged steroid use required; consider calcium/vitamin D supplementation",
+      "Reassess HIV status periodically given ongoing immunosuppressive therapy"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, establishes rapport and consent",
+      "answer": null,
+      "why": "Professionalism and communication baseline",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-pattern",
+      "phase": "history",
+      "item": "Establishes joint distribution: number of joints, symmetry, small vs large joints, DIP involvement",
+      "answer": "Symmetrical MCP/PIP and wrist involvement bilaterally, DIPs spared",
+      "why": "Oligo vs polyarthritis and symmetry/DIP-sparing are the key entry point distinguishing RA from OA per the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-stiffness-duration",
+      "phase": "history",
+      "item": "Specifically quantifies duration of morning stiffness",
+      "answer": ">1.5 hours, easing with movement",
+      "why": "Duration of morning stiffness is the single most stressed discriminator between RA and OA",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-inflammatory-vs-mechanical",
+      "phase": "history",
+      "item": "Establishes whether pain is inflammatory (improves with movement, worse at rest) or mechanical (worse with activity)",
+      "answer": "Improves with gentle movement through the day, worse after rest — inflammatory pattern",
+      "why": "Core acute/chronic and inflammatory/mechanical framework step",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-extra-articular",
+      "phase": "history",
+      "item": "Screens extra-articular features: skin, eyes/dry mouth, TB contact, HIV status, GI/GU preceding symptoms, weight loss/fever",
+      "answer": "Dry eyes/mouth present, no rash, no TB contact, HIV negative, no preceding GI/GU infection, mild low-grade fevers and fatigue but no weight loss",
+      "why": "Extra-articular screen distinguishes RA/overlap syndromes from spondyloarthropathy, TB, or reactive causes, and is emphasised for HIV/TB endemic setting",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-redflag-septic",
+      "phase": "history",
+      "item": "Actively excludes red flags for septic arthritis (acute hot single joint, systemic sepsis, immunosuppression)",
+      "answer": "No acute hot single joint, not systemically septic, HIV negative — low suspicion for septic arthritis",
+      "why": "Septic arthritis must always be excluded first in any acute presentation per framework red flags",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-look-feel-move",
+      "phase": "examination",
+      "item": "Examines hands systematically: look (swelling, deformity), feel (warmth, tenderness grading, bogginess vs bony), move (ROM, grip)",
+      "answer": "Boggy synovitis and warmth over MCPs/PIPs bilaterally, tenderness grade 2, early ulnar deviation, reduced grip strength, DIPs spared",
+      "why": "Look-feel-move-measure-compare is the systematic examination method taught in the framework",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-extraarticular",
+      "phase": "examination",
+      "item": "Looks for extra-articular signs: nodules, nail-fold changes, splenomegaly/lymphadenopathy (Felty's), eyes, lungs, heart",
+      "answer": "No nodules, no nail-fold infarcts, no splenomegaly, mild dry eye signs, chest and heart clear",
+      "why": "Felty's triad and extra-articular RA manifestations are specifically flagged as exam-testable",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Generates a ranked differential (RA > OA > seronegative spondyloarthropathy > SLE) with reasoning linked to findings",
+      "answer": null,
+      "why": "Symptom-to-differential reasoning central to case philosophy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix",
+      "phase": "investigations",
+      "item": "Requests appropriate first-line bloods (FBC, ESR/CRP, RF, anti-CCP, HIV), baseline renal/liver function, and hand/wrist X-rays",
+      "answer": "RF and anti-CCP positive, raised ESR/CRP, anaemia of chronic disease, normal renal/liver function, X-ray shows osteopenia and early joint space narrowing",
+      "why": "Confirmatory pathway per framework: bloods and imaging before committing to DMARD therapy",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-sequencing",
+      "phase": "management",
+      "item": "Outlines DMARD initiation (methotrexate + folic acid, or sulfasalazine with monitoring), bridging steroids, and monitoring schedule; mentions urgency of starting within 3 months of symptom onset",
+      "answer": "Methotrexate weekly with folic acid, monitor FBC/ALT, bridging prednisone taper, refer rheumatology if inadequate response",
+      "why": "Specific DMARD doses/monitoring and early treatment window are explicitly flagged as exam-testable",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 12,
+    "management": 13
+  }
+}
