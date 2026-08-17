@@ -1,0 +1,646 @@
+{
+  "id": "haem-005-thrombotic-thrombocytopenic-purpura-hiv",
+  "version": 1,
+  "discipline": "haem",
+  "diagnosis": "Thrombotic thrombocytopenic purpura (HIV-associated)",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this woman's bruising, jaundice and confusion, and how you would use the initial blood results to distinguish between them.",
+      "modelAnswer": "Top of the list is TTP given the classic pentad — fever, microangiopathic haemolytic anaemia, thrombocytopenia, neurological signs and mild renal impairment — in a young HIV-positive woman with poor ART adherence, a recognised precipitant. DIC is next but the normal PT/APTT/fibrinogen argue strongly against it. HUS is possible given the MAHA and renal impairment but there's no diarrhoeal prodrome and neurological signs are more prominent than typical. Severe ITP would explain the thrombocytopenia and bleeding but not the schistocytes, raised LDH or undetectable haptoglobin — those findings mean there is ongoing intravascular haemolysis, not simple immune platelet destruction. Cerebral malaria is worth considering given fever and confusion but there's no travel history and no parasites would be expected on this smear pattern.",
+      "gradingNotes": "Expect explicit use of the coagulation screen and smear/haemolysis markers to discriminate diagnoses, not just a list of names."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "history",
+      "question": "Why is it important to ask about her ART adherence in this presentation, and how does it change your thinking?",
+      "modelAnswer": "HIV infection and immune dysregulation are recognised precipitants of TTP through autoantibody formation against ADAMTS13. Poor adherence with a detectable viral load suggests ongoing immune activation, which is the likely trigger here. It also means that alongside the acute emergency treatment (plasma exchange, steroids), we must address the underlying driver — re-establishing ART adherence — to reduce the risk of relapse.",
+      "gradingNotes": "Wants the link between HIV-driven immune dysregulation and ADAMTS13 autoantibody formation, and the dual-track management implication."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "examination",
+      "question": "Explain the mechanism behind the schistocytes you'd expect to see on this patient's blood smear.",
+      "modelAnswer": "Severe ADAMTS13 deficiency means ultra-large von Willebrand factor multimers aren't cleaved and accumulate, promoting spontaneous platelet aggregation and microthrombus formation in small vessels throughout the body. As red blood cells attempt to pass through these partially occluded, fibrin/platelet-laden microvessels, they are mechanically sheared, producing the fragmented red cells (schistocytes) seen on the smear — a hallmark of microangiopathic haemolytic anaemia.",
+      "gradingNotes": "Wants the ADAMTS13-vWF-microthrombus-shearing mechanism explicitly, not just 'red cells get damaged'."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "management",
+      "question": "The nursing staff want to give platelets because her count is 11. What do you tell them, and why?",
+      "modelAnswer": "Platelet transfusion should be avoided in TTP unless there is life-threatening haemorrhage, because giving platelets can fuel further microthrombus formation and precipitate or worsen ischaemic organ damage, including stroke. The definitive emergency treatment is urgent plasma exchange, which removes the ADAMTS13 autoantibody and ultra-large vWF multimers while replacing functional ADAMTS13; corticosteroids are given alongside to suppress the autoantibody response.",
+      "gradingNotes": "This is a critical safety point — must clearly state platelets are contraindicated except in life-threatening bleeding, and correctly identify plasma exchange as definitive treatment."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "investigations",
+      "question": "Her ADAMTS13 result will take days to come back from the referral laboratory. Does that change your immediate management plan?",
+      "modelAnswer": "No — TTP is a clinical diagnosis in the acute setting. With 4 of the 5 classic pentad features present (fever, MAHA on smear with raised LDH and undetectable haptoglobin, thrombocytopenia, neurological signs, and renal impairment) and a normal coagulation screen excluding DIC, plasma exchange must be started urgently without waiting for ADAMTS13 confirmation, as delay significantly increases mortality.",
+      "gradingNotes": "Tests understanding that TTP treatment cannot wait for confirmatory ADAMTS13 results given the high mortality of untreated disease."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "anaemia work-up: confirm anaemia on FBC, classify by MCV, assess acuity, screen for driving chronic illness (HIV/TB), separate haemolytic/consumptive causes from ACD/nutritional causes via retic count, smear and iron studies, identify red-flag pentad, treat underlying cause",
+  "patient": {
+    "name": "Nokuthula Mthembu",
+    "age": 32,
+    "sex": "F",
+    "occupation": "domestic worker in Pinetown",
+    "personality": "frightened, slightly confused at times, husband present and answers some questions for her",
+    "openingLine": "Doctor, I feel so tired and my head is banging, and my sister says my eyes look yellow..."
+  },
+  "presentingComplaint": "3-day history of confusion, fatigue, easy bruising and yellow eyes",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Symptoms began abruptly 3 days ago with severe fatigue and headache, then family noticed her becoming muddled and slow to answer questions yesterday",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-bruising",
+      "fact": "Noticed new bruises on her arms and legs over the past 2 days without any injury, and small red-purple spots on her shins",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bruise",
+        "bruising",
+        "rash",
+        "spots",
+        "purpura",
+        "petechiae",
+        "skin",
+        "marks",
+        "black and blue",
+        "bleeding under skin",
+        "black",
+        "blue",
+        "bleeding",
+        "under"
+      ]
+    },
+    {
+      "id": "hx-bleeding",
+      "fact": "Gums bled slightly when brushing teeth this morning; no nosebleeds, no blood in urine or stool",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bleeding",
+        "gums",
+        "blood",
+        "nosebleed",
+        "urine",
+        "stool",
+        "blood in urine",
+        "blood in stool",
+        "bleed"
+      ]
+    },
+    {
+      "id": "hx-jaundice",
+      "fact": "Family noticed her eyes turning yellow yesterday; urine has looked darker than usual",
+      "disclosure": "onAsk",
+      "triggers": [
+        "yellow",
+        "jaundice",
+        "eyes",
+        "dark urine",
+        "urine colour",
+        "icterus",
+        "tea coloured",
+        "dark",
+        "urine",
+        "colour",
+        "tea",
+        "coloured"
+      ]
+    },
+    {
+      "id": "hx-confusion",
+      "fact": "Husband reports she has been confused, calling him by the wrong name, and briefly did not know where she was this morning; no seizure witnessed",
+      "disclosure": "onAsk",
+      "triggers": [
+        "confusion",
+        "confused",
+        "memory",
+        "not making sense",
+        "disorientated",
+        "seizure",
+        "fit",
+        "behaviour change",
+        "strange",
+        "mental state",
+        "not",
+        "making",
+        "sense",
+        "behaviour",
+        "change",
+        "mental",
+        "state"
+      ]
+    },
+    {
+      "id": "hx-fever",
+      "fact": "Mild fever, subjectively hot, no rigors, no measured temperature at home",
+      "disclosure": "onAsk",
+      "triggers": [
+        "fever",
+        "hot",
+        "temperature",
+        "chills",
+        "rigors"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "Known HIV positive for 4 years, on ART but admits she has missed doses for the past 2 months after moving house and losing her clinic card",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "status",
+        "art",
+        "antiretroviral",
+        "tablets",
+        "treatment",
+        "adherence",
+        "clinic",
+        "cd4",
+        "viral load",
+        "medication",
+        "viral",
+        "load"
+      ]
+    },
+    {
+      "id": "hx-tb",
+      "fact": "No cough, no night sweats, no weight loss, no known TB contact",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "cough",
+        "night sweats",
+        "weight loss",
+        "contact",
+        "household",
+        "night",
+        "sweats",
+        "weight",
+        "loss"
+      ]
+    },
+    {
+      "id": "hx-urine",
+      "fact": "Passing less urine than usual over the last day, describes it as dark and 'strong'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine output",
+        "passing urine",
+        "wee",
+        "kidney",
+        "less urine",
+        "dark urine",
+        "oliguria",
+        "urine",
+        "output",
+        "passing",
+        "less",
+        "dark"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "No prior episodes like this; no known bleeding disorder; no previous blood transfusions",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "previous",
+        "before",
+        "illnesses",
+        "conditions",
+        "past",
+        "transfusion",
+        "bleeding disorder",
+        "medical",
+        "history",
+        "bleeding",
+        "disorder"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "On TLD (tenofovir/lamivudine/dolutegravir) but poorly adherent recently; no other regular medication, no herbal remedies or muti reported",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "muti",
+        "herbal",
+        "traditional",
+        "taking anything",
+        "taking"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Lives in Pinetown with her husband and two children; does not smoke, drinks alcohol occasionally on weekends only",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "children",
+        "work"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of bleeding disorders, no family history of kidney disease or blood conditions",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in family",
+        "blood disorder",
+        "family",
+        "history",
+        "runs",
+        "blood",
+        "disorder"
+      ]
+    },
+    {
+      "id": "hx-menstrual",
+      "fact": "Last menstrual period 2 weeks ago, normal flow, no menorrhagia",
+      "disclosure": "onAsk",
+      "triggers": [
+        "periods",
+        "menstrual",
+        "menorrhagia",
+        "gynae",
+        "cycle"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No joint pains, no rash elsewhere, no recent diarrhoeal illness, no recent antibiotic use",
+      "disclosure": "onAsk",
+      "triggers": [
+        "joint pain",
+        "rash",
+        "diarrhoea",
+        "antibiotics",
+        "other symptoms",
+        "anything else",
+        "recent illness",
+        "joint",
+        "pain",
+        "symptoms",
+        "recent",
+        "illness"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Confused but rousable, oriented to person only, not to place or time. Jaundiced sclera. Pallor of conjunctivae. Widespread petechiae over both shins and forearms, scattered ecchymoses. No lymphadenopathy. No oral thrush.",
+    "vitals": {
+      "hr": 118,
+      "bp": "142/92",
+      "rr": 20,
+      "temp": 38.1,
+      "spo2": "97% on room air",
+      "bmi": 22
+    },
+    "respiratory": "Clear breath sounds bilaterally, no crackles, no bronchial breathing",
+    "cardio": "Tachycardic, normal heart sounds, no murmurs, no oedema, JVP not elevated",
+    "abdo": "Soft, mildly tender in the right upper quadrant, liver edge just palpable, no splenomegaly, no ascites",
+    "neuro": "Fluctuating confusion (GCS 13/15 — E4V4M5), no focal limb weakness, no neck stiffness, pupils equal and reactive, no papilloedema",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 6.8 g/dL, MCV 89 fL (normocytic), Platelets 11 x10^9/L, WCC 8.9 x10^9/L",
+      "key": true
+    },
+    {
+      "name": "Peripheral blood smear",
+      "result": "Numerous schistocytes (fragmented red cells) per high power field, polychromasia, thrombocytopenia confirmed, no blasts",
+      "key": true
+    },
+    {
+      "name": "Reticulocyte count",
+      "result": "Elevated at 8% (absolute reticulocyte count raised) — consistent with haemolysis",
+      "key": true
+    },
+    {
+      "name": "LDH",
+      "result": "Markedly elevated at 1450 U/L",
+      "key": true
+    },
+    {
+      "name": "Haptoglobin",
+      "result": "Undetectable (<0.1 g/L)",
+      "key": true
+    },
+    {
+      "name": "Direct antiglobulin test (Coombs)",
+      "result": "Negative",
+      "key": true
+    },
+    {
+      "name": "Coagulation screen (PT/APTT/fibrinogen)",
+      "result": "Normal PT and APTT, normal fibrinogen — helps exclude DIC",
+      "key": true
+    },
+    {
+      "name": "ADAMTS13 activity",
+      "result": "Severely reduced at <5% (sent to referral laboratory, result pending at time of initial management)",
+      "key": true
+    },
+    {
+      "name": "U&E and creatinine",
+      "result": "Creatinine 178 µmol/L (mildly elevated), urea 11 mmol/L — mild renal impairment",
+      "key": false
+    },
+    {
+      "name": "Bilirubin (total and indirect)",
+      "result": "Total bilirubin 58 µmol/L, predominantly unconjugated",
+      "key": false
+    },
+    {
+      "name": "HIV viral load and CD4 count",
+      "result": "Viral load 34,000 copies/mL (detectable, consistent with poor adherence), CD4 count 310 cells/µL",
+      "key": false
+    },
+    {
+      "name": "GeneXpert MTB/RIF (sputum)",
+      "result": "Not sent — no respiratory symptoms or TB contact",
+      "key": false
+    },
+    {
+      "name": "Urinalysis",
+      "result": "Trace protein, no red cell casts",
+      "key": false
+    },
+    {
+      "name": "Iron studies",
+      "result": "Ferritin markedly raised (acute phase reactant in context of acute illness), serum iron low — not the primary driver here",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Thrombotic thrombocytopenic purpura (HIV-associated)",
+      "rank": 1,
+      "for": [
+        "classic pentad — fever, fluctuating neurological signs, thrombocytopenia, microangiopathic haemolytic anaemia (schistocytes, raised LDH, undetectable haptoglobin, negative DAT), renal impairment",
+        "known HIV positive with poor ART adherence (established precipitant)",
+        "normal coagulation screen argues against DIC"
+      ],
+      "against": [
+        "ADAMTS13 result pending at initial presentation — diagnosis is clinical pending confirmation"
+      ]
+    },
+    {
+      "dx": "Disseminated intravascular coagulation (DIC)",
+      "rank": 2,
+      "for": [
+        "thrombocytopenia",
+        "bleeding tendency",
+        "can complicate sepsis"
+      ],
+      "against": [
+        "normal PT/APTT and fibrinogen",
+        "no clear septic focus",
+        "schistocytes less florid typically without coagulopathy"
+      ]
+    },
+    {
+      "dx": "Haemolytic uraemic syndrome (HUS)",
+      "rank": 3,
+      "for": [
+        "microangiopathic haemolytic anaemia",
+        "thrombocytopenia",
+        "renal impairment"
+      ],
+      "against": [
+        "no preceding diarrhoeal illness",
+        "neurological signs more prominent than typical HUS",
+        "more common in children post-diarrhoeal E. coli O157"
+      ]
+    },
+    {
+      "dx": "Severe HIV-related immune thrombocytopenia (ITP)",
+      "rank": 4,
+      "for": [
+        "known HIV positive",
+        "thrombocytopenia"
+      ],
+      "against": [
+        "no schistocytes in isolated ITP",
+        "LDH and haptoglobin normal in pure ITP",
+        "no haemolysis expected"
+      ]
+    },
+    {
+      "dx": "Malaria (severe/cerebral)",
+      "rank": 5,
+      "for": [
+        "fever",
+        "confusion",
+        "anaemia",
+        "thrombocytopenia can occur"
+      ],
+      "against": [
+        "no travel history to endemic area given",
+        "schistocytes not typical",
+        "would expect parasites on smear"
+      ]
+    }
+  ],
+  "pathophys": {
+    "microangiopathic haemolytic anaemia (schistocytes)": "Severe ADAMTS13 deficiency (autoantibody-mediated, exacerbated by HIV-driven immune dysregulation) prevents cleavage of ultra-large von Willebrand factor multimers; these form platelet-rich microthrombi in small vessels that shear passing red cells into fragments (schistocytes) as they squeeze through partially occluded capillaries and arterioles",
+    "thrombocytopenia": "Widespread platelet consumption within microthrombi throughout the microvasculature depletes circulating platelet count, distinct from marrow failure or peripheral destruction by antibody alone",
+    "fluctuating neurological signs / confusion": "Microthrombi occluding cerebral microvasculature cause transient, patchy ischaemia; the fluctuating and multifocal nature (rather than a fixed vascular territory) reflects intermittent microvascular occlusion and reperfusion rather than a single large-vessel stroke",
+    "renal impairment": "Microthrombi within the renal microvasculature (afferent arterioles and glomerular capillaries) cause ischaemic injury, though renal involvement is typically milder in TTP than in HUS because ADAMTS13-mediated microthrombosis is less renal-tropic than the endothelial toxin-mediated injury of HUS",
+    "jaundice": "Unconjugated hyperbilirubinaemia from accelerated intravascular haemolysis exceeds hepatic conjugation capacity, plus haptoglobin is consumed mopping up free haemoglobin, explaining the undetectable haptoglobin",
+    "fever": "Cytokine release accompanying widespread microvascular endothelial injury and tissue ischaemia; not typically due to a co-existing infective source in this context"
+  },
+  "staging": "WHO HIV clinical stage 3 (severe haematological disorder attributable to HIV); acute presentation of TTP with classic pentad (fever, MAHA, thrombocytopenia, neurological signs, renal impairment) — 4 of 5 features present, satisfying clinical criteria to treat as TTP without delay",
+  "management": {
+    "immediate": [
+      "Treat as a haematological emergency — this is a medical emergency requiring urgent same-day plasma exchange (therapeutic plasma exchange/TPE), do not wait for ADAMTS13 confirmation",
+      "Urgent referral/discussion with haematology and transfer to a centre capable of plasma exchange (regional/tertiary level)",
+      "AVOID platelet transfusion unless life-threatening haemorrhage — platelet transfusion can fuel further microthrombosis and worsen ischaemic organ damage",
+      "Start high-dose corticosteroids (e.g. methylprednisolone) alongside plasma exchange as first-line immunosuppression",
+      "Continue/optimise ART — re-establish adherence to TLD, address barriers (lost clinic card, relocation)"
+    ],
+    "definitive": [
+      "Daily therapeutic plasma exchange until platelet count normalises and haemolysis resolves (LDH normalises), then taper",
+      "Corticosteroid taper once remission achieved",
+      "Consider rituximab in refractory or relapsing HIV-associated TTP (as per haematology input)",
+      "ADAMTS13 activity level to confirm diagnosis and guide long-term monitoring for relapse"
+    ],
+    "supportive": [
+      "Folic acid supplementation given ongoing haemolysis",
+      "Monitor renal function and fluid balance closely",
+      "Adherence counselling and re-linkage to ART clinic, address the missed-dose history directly",
+      "Psychosocial support given confusion/frightening presentation for both patient and family"
+    ],
+    "followUp": [
+      "Serial FBC, LDH, haptoglobin and platelet count to confirm remission and monitor for relapse",
+      "Repeat ADAMTS13 activity once recovered to assess for persistent severe deficiency (relapse risk)",
+      "Ongoing HIV viral load and CD4 monitoring; re-confirm ART adherence at follow-up visits",
+      "Education on recognising relapse symptoms (bruising, confusion, fatigue) and when to seek urgent care"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-confirm-anaemia",
+      "phase": "history",
+      "item": "Confirms anaemia/bleeding tendency symptoms and establishes acuity of onset (days, not weeks)",
+      "answer": "Abrupt 3-day onset of fatigue, bruising and confusion",
+      "why": "Acute onset over days is a red flag distinguishing TTP from chronic ACD/nutritional anaemias",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-bleeding-bruising",
+      "phase": "history",
+      "item": "Asks specifically about bruising, petechiae, and mucosal bleeding (gums, epistaxis, haematuria, melaena)",
+      "answer": "New bruising and petechiae over 2 days, mild gum bleeding, no nosebleed/blood in urine or stool",
+      "why": "Establishes thrombocytopenic bleeding pattern versus a coagulopathy pattern",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-jaundice-urine",
+      "phase": "history",
+      "item": "Asks about jaundice and urine colour change",
+      "answer": "Yellow eyes since yesterday, dark urine, reduced urine output",
+      "why": "Points toward concurrent haemolysis and possible renal involvement — part of the pentad",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-neuro-symptoms",
+      "phase": "history",
+      "item": "Screens for neurological symptoms (confusion, seizures, focal weakness, behaviour change)",
+      "answer": "Fluctuating confusion, disorientation, no witnessed seizure or focal weakness",
+      "why": "Neurological involvement is a core pentad feature and drives the emergency classification",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-screen",
+      "phase": "history",
+      "item": "Establishes HIV status, ART regimen and adherence, and recent CD4/viral load if known",
+      "answer": "Known HIV positive 4 years, on TLD but non-adherent for 2 months after relocation",
+      "why": "HIV is the key precipitant in this case and directs both diagnosis and management (poor adherence, detectable viral load)",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-tb-screen",
+      "phase": "history",
+      "item": "Screens for TB symptoms and contacts given HIV-positive status",
+      "answer": "No cough, no night sweats, no weight loss, no known TB contact",
+      "why": "Standard co-morbidity screen in any HIV-positive KZN patient, even when negative it must be documented",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-petechiae",
+      "phase": "examination",
+      "item": "Examines skin thoroughly for petechiae, purpura and ecchymoses, and checks for signs of trauma to exclude non-accidental bruising",
+      "answer": "Widespread petechiae on shins/forearms and scattered ecchymoses without trauma",
+      "why": "Confirms thrombocytopenic bleeding pattern on examination",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-neuro",
+      "phase": "examination",
+      "item": "Performs a focused neurological assessment including GCS/mental status and looks for focal deficits",
+      "answer": "GCS 13/15, oriented to person only, no focal weakness, no meningism",
+      "why": "Documents and quantifies the neurological component of the pentad, guides urgency",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-jaundice-organomegaly",
+      "phase": "examination",
+      "item": "Looks for jaundice, hepatosplenomegaly and signs of chronic HIV disease (thrush, wasting, lymphadenopathy)",
+      "answer": "Jaundiced sclera, mild RUQ tenderness, liver edge palpable, no splenomegaly, no thrush",
+      "why": "Supports haemolysis and screens for competing/co-existing HIV-related pathology",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-ddx-reasoning",
+      "phase": "differentials",
+      "item": "Generates a ranked differential distinguishing TTP from DIC, HUS, severe ITP and malaria, using coagulation screen and smear findings to discriminate",
+      "answer": "TTP most likely given pentad and normal coagulation screen; DIC excluded by normal PT/APTT/fibrinogen; HUS less likely without diarrhoeal prodrome; ITP excluded by presence of schistocytes and haemolysis markers",
+      "why": "This is the core clinical reasoning skill being tested — using the smear and coagulation screen to separate consumptive/microangiopathic processes from isolated thrombocytopenia",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-key",
+      "phase": "investigations",
+      "item": "Requests FBC with platelets, peripheral smear, reticulocyte count, LDH, haptoglobin, DAT, and coagulation screen as the core confirmatory bundle; requests ADAMTS13 level",
+      "answer": "Schistocytes, thrombocytopenia 11, LDH 1450, undetectable haptoglobin, negative DAT, normal coagulation screen, ADAMTS13 <5%",
+      "why": "This bundle is the confirmatory pathway for TTP and is what distinguishes it from DIC/HUS/ITP",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-emergency",
+      "phase": "management",
+      "item": "Recognises TTP as a haematological emergency requiring urgent plasma exchange and does NOT recommend platelet transfusion",
+      "answer": "Urgent plasma exchange plus corticosteroids; platelet transfusion avoided unless life-threatening bleeding",
+      "why": "Missing this is a patient-safety critical error — platelet transfusion can precipitate fatal microvascular thrombosis in TTP",
+      "weight": 4,
+      "critical": true
+    },
+    {
+      "id": "cl-mx-hiv",
+      "phase": "management",
+      "item": "Addresses ART adherence and re-linkage to HIV care as part of the management plan",
+      "answer": "Re-establish TLD adherence, address barriers to care, arrange follow-up viral load/CD4",
+      "why": "HIV-associated TTP requires treatment of both the acute emergency and the underlying driver to prevent relapse",
+      "weight": 2,
+      "critical": false
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 20,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 15
+  }
+}

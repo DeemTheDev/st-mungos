@@ -1,0 +1,684 @@
+{
+  "id": "haem-006-multiple-myeloma",
+  "version": 1,
+  "discipline": "haem",
+  "diagnosis": "Multiple myeloma",
+  "commonness": "uncommon",
+  "difficulty": 3,
+  "examinerBank": [
+    {
+      "id": "ex-1",
+      "triggerPhase": "differentials",
+      "question": "Walk me through your differential diagnosis for this man's anaemia and back pain, and how you would rank them.",
+      "modelAnswer": "Top of the list is multiple myeloma — an older man with bone pain, normocytic anaemia with rouleaux, renal impairment and features of hypercalcaemia (thirst, nocturia, confusion) forms a classic CRAB picture. Anaemia of chronic disease is possible but he has no HIV, TB or known CKD to anchor it, and doesn't explain the paraprotein or hypercalcaemia. Metastatic bone disease from an occult solid organ primary is possible given his age and bone pain but there's no localising primary and the biochemistry fits myeloma better. Mechanical back pain from NSAID-related or osteoporotic collapse doesn't explain the systemic findings. Lymphoproliferative disease is less likely without lymphadenopathy or organomegaly.",
+      "gradingNotes": "Full marks for ranked list with reasoning that synthesises across systems (bone pain + anaemia + renal + calcium) rather than listing differentials for anaemia alone."
+    },
+    {
+      "id": "ex-2",
+      "triggerPhase": "examination",
+      "question": "He has marked rouleaux formation on his blood film. What is the mechanism behind this finding, and what does it point towards?",
+      "modelAnswer": "Rouleaux forms when abnormally high concentrations of circulating immunoglobulin (paraprotein) reduce the electrostatic repulsion (zeta potential) between red cells, allowing them to stack together like coins on the film. It's a classic clue to a paraproteinaemia such as multiple myeloma, and the same mechanism drives a markedly raised ESR.",
+      "gradingNotes": "Wants the zeta potential/charge mechanism explained, not just 'it means high protein'. Should link to ESR and paraproteinaemia."
+    },
+    {
+      "id": "ex-3",
+      "triggerPhase": "investigations",
+      "question": "His corrected calcium comes back at 3.1 mmol/L. Talk me through why this is happening and what you'd do about it right now.",
+      "modelAnswer": "Myeloma cells secrete osteoclast-activating factors (notably RANKL) that drive uncoupled bone resorption, releasing calcium into the circulation faster than the kidneys can clear it; this is compounded by dehydration reducing renal calcium clearance further. Immediate management is aggressive IV rehydration with normal saline to improve renal perfusion and calcium excretion, stopping any nephrotoxic drugs like his NSAID, and once rehydrated, giving an IV bisphosphonate such as zoledronic acid to inhibit osteoclast activity.",
+      "gradingNotes": "Needs mechanism (RANKL/osteoclast activation) AND a stepwise immediate management answer (fluids first, then bisphosphonate) — full marks require both."
+    },
+    {
+      "id": "ex-4",
+      "triggerPhase": "history",
+      "question": "Why is it important that you specifically asked about his over-the-counter medication use here?",
+      "modelAnswer": "He has been taking regular ibuprofen for his back pain, which is nephrotoxic and is likely compounding his renal impairment on top of light-chain cast nephropathy from the myeloma itself. Identifying and stopping this is an immediately actionable, reversible contributor to his renal failure, which is critical given how renal impairment affects both his prognosis and treatment options.",
+      "gradingNotes": "Should identify NSAID nephrotoxicity as a modifiable factor and link it to the broader mechanism of renal impairment in myeloma (light chain cast nephropathy, hypercalcaemia, dehydration)."
+    },
+    {
+      "id": "ex-5",
+      "triggerPhase": "management",
+      "question": "His renal function is impaired and he has anaemia and bone lesions. How does this change your choice and urgency of anti-myeloma treatment, and who should be managing this going forward?",
+      "modelAnswer": "Meeting CRAB criteria (hypercalcaemia, renal impairment, anaemia, bone lesions) confirms this is symptomatic myeloma requiring treatment, not smouldering disease that can be observed. This needs urgent haematology referral for a bortezomib-based combination regimen, which is renally safer than some alternatives, alongside correction of hypercalcaemia and stopping nephrotoxins to try to recover renal function. Autologous stem cell transplant eligibility would be assessed by haematology based on age, performance status and organ recovery.",
+      "gradingNotes": "Wants recognition that CRAB criteria mandate treatment urgency, correct first-line regimen choice mindful of renal function, and appropriate referral/escalation — partial credit for generic 'refer to haematology' without the reasoning."
+    }
+  ],
+  "stationType": "clinical",
+  "framework": "anaemia work-up: confirm anaemia symptomatically/haemodynamically, classify by MCV and retic count, distinguish loss vs decreased production vs destruction, screen the 'big four' KZN drivers (HIV, TB, CKD, nutrition), then targeted second-line tests before labelling a diagnosis of exclusion",
+  "patient": {
+    "name": "Muzi Ngcobo",
+    "age": 64,
+    "sex": "M",
+    "occupation": "retired municipal security guard",
+    "personality": "stoic, downplays his back pain as 'just old age', becomes anxious when the word 'cancer' is mentioned",
+    "openingLine": "Doctor, I'm just so tired all the time now, and my back has been giving me trouble."
+  },
+  "presentingComplaint": "3-month history of worsening fatigue and low back pain",
+  "history": [
+    {
+      "id": "hx-onset",
+      "fact": "Fatigue has been gradually worsening over about 3 months, now struggles to finish his gardening",
+      "disclosure": "volunteered",
+      "triggers": []
+    },
+    {
+      "id": "hx-backpain",
+      "fact": "Constant dull low back pain for 2-3 months, worse with movement and at night, not relieved by rest, no radiation down the legs",
+      "disclosure": "onAsk",
+      "triggers": [
+        "back pain",
+        "backache",
+        "back",
+        "spine",
+        "bone pain",
+        "pain at night",
+        "worse at night",
+        "radiate",
+        "legs",
+        "sciatica",
+        "pain",
+        "bone",
+        "night",
+        "worse"
+      ]
+    },
+    {
+      "id": "hx-dyspnoea",
+      "fact": "Gets short of breath and palpitations walking to the shop, which is new for him",
+      "disclosure": "onAsk",
+      "triggers": [
+        "breath",
+        "breathing",
+        "dyspnoea",
+        "palpitations",
+        "heart racing",
+        "exertion",
+        "walking",
+        "tired walking",
+        "short of breath",
+        "heart",
+        "racing",
+        "tired",
+        "short"
+      ]
+    },
+    {
+      "id": "hx-bruising",
+      "fact": "Noticed easy bruising on his arms over the past month, no obvious trauma",
+      "disclosure": "onAsk",
+      "triggers": [
+        "bruising",
+        "bruise",
+        "bleeding",
+        "spots",
+        "marks on skin",
+        "easy bruising",
+        "gums bleed",
+        "marks",
+        "skin",
+        "easy",
+        "gums",
+        "bleed"
+      ]
+    },
+    {
+      "id": "hx-infections",
+      "fact": "Had two chest infections treated by the clinic in the last 4 months, more than usual for him",
+      "disclosure": "onAsk",
+      "triggers": [
+        "infection",
+        "infections",
+        "chest infection",
+        "pneumonia",
+        "sick often",
+        "recurrent",
+        "frequent illness",
+        "chest",
+        "sick",
+        "often",
+        "frequent",
+        "illness"
+      ]
+    },
+    {
+      "id": "hx-constitutional",
+      "fact": "Has lost around 4 kg without trying, appetite reduced, no drenching night sweats",
+      "disclosure": "onAsk",
+      "triggers": [
+        "weight",
+        "lost weight",
+        "appetite",
+        "eating",
+        "night sweats",
+        "sweating",
+        "fever",
+        "chills",
+        "lost",
+        "night",
+        "sweats"
+      ]
+    },
+    {
+      "id": "hx-cough",
+      "fact": "No cough, no haemoptysis",
+      "disclosure": "onAsk",
+      "triggers": [
+        "cough",
+        "tb",
+        "tuberculosis",
+        "phlegm",
+        "sputum",
+        "coughing up",
+        "blood",
+        "haemoptysis",
+        "coughing"
+      ]
+    },
+    {
+      "id": "hx-urinary",
+      "fact": "Urinating more at night (nocturia x3), no dysuria, no frank haematuria, but urine has looked 'foamy' at times",
+      "disclosure": "onAsk",
+      "triggers": [
+        "urine",
+        "urinary",
+        "waterworks",
+        "nocturia",
+        "peeing at night",
+        "foamy",
+        "kidney",
+        "bladder",
+        "dysuria",
+        "blood in urine",
+        "peeing",
+        "night",
+        "blood"
+      ]
+    },
+    {
+      "id": "hx-thirst",
+      "fact": "Feels thirsty and drinks more water than before, sometimes feels confused or muddled by mid-afternoon",
+      "disclosure": "onAsk",
+      "triggers": [
+        "thirst",
+        "thirsty",
+        "drinking water",
+        "confused",
+        "confusion",
+        "muddled",
+        "concentration",
+        "memory",
+        "dizzy",
+        "drinking",
+        "water"
+      ]
+    },
+    {
+      "id": "hx-hiv",
+      "fact": "HIV tested negative 8 months ago at the clinic, no new risk since then",
+      "disclosure": "onAsk",
+      "triggers": [
+        "hiv",
+        "test",
+        "tested",
+        "status",
+        "aids"
+      ]
+    },
+    {
+      "id": "hx-tb-contact",
+      "fact": "No known TB contacts, no one at home coughing or unwell",
+      "disclosure": "onAsk",
+      "triggers": [
+        "tb",
+        "tuberculosis",
+        "contact",
+        "household",
+        "family sick",
+        "anyone sick",
+        "exposure",
+        "family",
+        "sick",
+        "anyone"
+      ]
+    },
+    {
+      "id": "hx-pmh",
+      "fact": "Known hypertensive for 10 years, no diabetes, no previous fractures, no known kidney disease",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medical history",
+        "illnesses",
+        "conditions",
+        "hospital",
+        "admitted",
+        "before",
+        "previous",
+        "past",
+        "hypertension",
+        "blood pressure",
+        "diabetes",
+        "kidney disease",
+        "medical",
+        "history",
+        "blood",
+        "pressure",
+        "kidney",
+        "disease"
+      ]
+    },
+    {
+      "id": "hx-meds",
+      "fact": "Takes amlodipine 10mg daily for blood pressure; recently started taking ibuprofen bought over the counter for the back pain, several times a day",
+      "disclosure": "onAsk",
+      "triggers": [
+        "medication",
+        "medicine",
+        "pills",
+        "tablets",
+        "treatment",
+        "taking anything",
+        "painkillers",
+        "ibuprofen",
+        "nsaid",
+        "muti",
+        "over the counter",
+        "taking",
+        "over",
+        "counter"
+      ]
+    },
+    {
+      "id": "hx-allergies",
+      "fact": "No known drug allergies",
+      "disclosure": "onAsk",
+      "triggers": [
+        "allergies",
+        "allergic",
+        "reactions"
+      ]
+    },
+    {
+      "id": "hx-social",
+      "fact": "Never smoked, drinks a beer occasionally on weekends only; lives in KwaMashu with his wife; retired 3 years ago",
+      "disclosure": "onAsk",
+      "triggers": [
+        "smoke",
+        "smoking",
+        "cigarettes",
+        "alcohol",
+        "drink",
+        "social",
+        "live",
+        "home",
+        "house",
+        "work",
+        "occupation"
+      ]
+    },
+    {
+      "id": "hx-family",
+      "fact": "No family history of cancer or blood disorders that he knows of; father died of 'heart problems'",
+      "disclosure": "onAsk",
+      "triggers": [
+        "family history",
+        "mother",
+        "father",
+        "parents",
+        "genetic",
+        "runs in the family",
+        "cancer in family",
+        "family",
+        "history",
+        "runs",
+        "cancer"
+      ]
+    },
+    {
+      "id": "hx-sysreview",
+      "fact": "No headache, no visual disturbance, no vomiting, no diarrhoea, no rash, no joint swelling",
+      "disclosure": "onAsk",
+      "triggers": [
+        "headache",
+        "vomiting",
+        "diarrhoea",
+        "rash",
+        "joint",
+        "other symptoms",
+        "anything else",
+        "vision",
+        "visual",
+        "symptoms"
+      ]
+    }
+  ],
+  "examination": {
+    "general": "Elderly-looking man for his stated age, pale conjunctivae, mild scattered bruising on both forearms. No jaundice, no lymphadenopathy, no oedema. Looks fatigued but not acutely unwell.",
+    "vitals": {
+      "hr": 98,
+      "bp": "142/88",
+      "rr": 18,
+      "temp": 36.8,
+      "spo2": "97% on room air",
+      "bmi": 23
+    },
+    "respiratory": "Chest clear, no crackles, no dullness, equal air entry bilaterally",
+    "cardio": "Soft ejection systolic murmur at the left sternal edge, no radiation, JVP not raised, no peripheral oedema",
+    "abdo": "Soft, non-tender, no hepatosplenomegaly, no masses",
+    "neuro": "Alert but slightly slow to answer some questions; no focal deficit; no lower limb weakness or sensory level; reflexes normal",
+    "other": {}
+  },
+  "investigations": [
+    {
+      "name": "Full blood count",
+      "result": "Hb 7.9 g/dL (normocytic, normochromic), WCC 3.1 (mild leucopenia), Plt 98 (mild thrombocytopenia)",
+      "key": true
+    },
+    {
+      "name": "Blood film",
+      "result": "Marked rouleaux formation, background of normocytic red cells, no schistocytes, no blasts",
+      "key": true
+    },
+    {
+      "name": "Urea & electrolytes",
+      "result": "Urea 18 mmol/L, Creatinine 220 µmol/L (acute-on-chronic renal impairment), Corrected calcium 3.1 mmol/L (elevated)",
+      "key": true
+    },
+    {
+      "name": "Serum protein electrophoresis + immunofixation",
+      "result": "Dense monoclonal (M) band in the gamma region; immunofixation confirms IgG kappa paraprotein",
+      "key": true
+    },
+    {
+      "name": "Skeletal survey / X-ray spine and pelvis",
+      "result": "Multiple lytic 'punched-out' lesions in the lumbar vertebrae and pelvis; wedge compression of L3",
+      "key": true
+    },
+    {
+      "name": "Bone marrow aspirate and trephine",
+      "result": "38% clonal plasma cells on morphology, confirmed kappa-restricted on flow cytometry/immunohistochemistry",
+      "key": true
+    },
+    {
+      "name": "Serum free light chain assay",
+      "result": "Markedly elevated kappa free light chains with abnormal kappa:lambda ratio",
+      "key": false
+    },
+    {
+      "name": "ESR",
+      "result": "128 mm/hr (markedly elevated)",
+      "key": false
+    },
+    {
+      "name": "HIV test",
+      "result": "Negative (repeat, consistent with prior result)",
+      "key": false
+    },
+    {
+      "name": "Chest X-ray",
+      "result": "No consolidation, no lytic rib lesions clearly seen, no lymphadenopathy",
+      "key": false
+    },
+    {
+      "name": "Urine Bence Jones protein / urine electrophoresis",
+      "result": "Positive for free kappa light chains in urine",
+      "key": false
+    },
+    {
+      "name": "LDH, haptoglobin, direct Coombs (haemolysis screen)",
+      "result": "LDH normal, haptoglobin normal, Coombs negative — no evidence of haemolysis",
+      "key": false
+    }
+  ],
+  "differentials": [
+    {
+      "dx": "Multiple myeloma",
+      "rank": 1,
+      "for": [
+        "older adult with bone pain and lytic lesions",
+        "normocytic anaemia with rouleaux on film",
+        "hypercalcaemia (thirst, confusion, nocturia)",
+        "renal impairment",
+        "monoclonal paraprotein on electrophoresis",
+        "recurrent infections from immune paresis"
+      ],
+      "against": []
+    },
+    {
+      "dx": "Anaemia of chronic disease (from an underlying chronic illness such as HIV/TB/CKD)",
+      "rank": 2,
+      "for": [
+        "normocytic anaemia",
+        "fatigue",
+        "renal impairment could suggest CKD-driven anaemia"
+      ],
+      "against": [
+        "HIV negative",
+        "no TB contact or constitutional TB features",
+        "marked rouleaux and paraprotein not explained",
+        "hypercalcaemia not explained by CKD alone"
+      ]
+    },
+    {
+      "dx": "Metastatic bone disease (e.g. prostate, lung primary)",
+      "rank": 3,
+      "for": [
+        "older man with bone pain and lytic-appearing lesions on X-ray",
+        "weight loss"
+      ],
+      "against": [
+        "no localising primary symptoms",
+        "no lymphadenopathy or organomegaly",
+        "monoclonal paraprotein points away from solid organ metastasis"
+      ]
+    },
+    {
+      "dx": "Vertebral compression fracture from osteoporosis/NSAID-related mechanical back pain",
+      "rank": 4,
+      "for": [
+        "back pain worse with movement",
+        "recent NSAID use"
+      ],
+      "against": [
+        "does not explain anaemia, renal impairment, hypercalcaemia or paraprotein",
+        "lytic lesions rather than simple osteoporotic collapse"
+      ]
+    },
+    {
+      "dx": "Chronic lymphocytic leukaemia / lymphoma with marrow infiltration",
+      "rank": 5,
+      "for": [
+        "cytopenias",
+        "fatigue",
+        "possible marrow infiltration"
+      ],
+      "against": [
+        "no lymphadenopathy or hepatosplenomegaly",
+        "bone marrow shows clonal plasma cells not lymphocytes",
+        "monoclonal paraprotein pattern fits plasma cell dyscrasia"
+      ]
+    }
+  ],
+  "pathophys": {
+    "normocytic anaemia / fatigue": "clonal plasma cells infiltrate and crowd out normal haematopoietic marrow, and cytokines (IL-6) suppress erythropoiesis; reduced red cell mass lowers O2-carrying capacity causing compensatory tachycardia and fatigue",
+    "bone pain and lytic lesions": "myeloma cells secrete RANKL and other osteoclast-activating factors while suppressing osteoblast activity, producing uncoupled bone resorption and characteristic 'punched-out' lytic lesions, most often in the axial skeleton",
+    "hypercalcaemia (thirst, confusion, nocturia)": "osteoclastic bone resorption releases calcium into the circulation faster than the kidneys can excrete it, causing polyuria (nephrogenic diabetes insipidus-like effect on collecting duct), dehydration, and CNS depression",
+    "renal impairment": "free monoclonal light chains are directly nephrotoxic to proximal tubular cells and precipitate with Tamm-Horsfall protein in the distal tubule forming obstructive casts ('myeloma kidney'), compounded by hypercalcaemia and NSAID use",
+    "recurrent infections": "suppression of normal polyclonal immunoglobulin production ('immune paresis') by the malignant clone impairs humoral immunity against encapsulated organisms",
+    "easy bruising": "marrow infiltration by plasma cells causes thrombocytopenia, and paraprotein can interfere with clotting factor function and platelet aggregation",
+    "rouleaux formation on blood film": "high circulating monoclonal immunoglobulin reduces the charge (zeta potential) between red cells, allowing them to stack together like coins, which also elevates the ESR"
+  },
+  "staging": "Revised International Staging System (R-ISS) pending beta-2-microglobulin, albumin and LDH results; working diagnosis consistent with at least ISS stage II given renal impairment and anaemia; CRAB criteria met (hyperCalcaemia, Renal impairment, Anaemia, Bone lesions) confirming symptomatic myeloma requiring treatment",
+  "management": {
+    "immediate": [
+      "Aggressive IV fluid rehydration (0.9% saline) for hypercalcaemia and renal impairment",
+      "Stop the NSAID (ibuprofen) immediately — nephrotoxic and worsening renal function",
+      "IV bisphosphonate (e.g. zoledronic acid) once rehydrated and renal function reassessed, for hypercalcaemia and bone disease",
+      "Analgesia for bone pain (avoid NSAIDs, consider paracetamol/opioids)",
+      "Urgent referral to haematology given renal impairment and hypercalcaemia"
+    ],
+    "definitive": [
+      "Confirm diagnosis with bone marrow biopsy, serum/urine electrophoresis and free light chains (as above)",
+      "Systemic anti-myeloma therapy per haematology protocol — bortezomib-based combination regimen (e.g. bortezomib-thalidomide-dexamethasone, resource-dependent) is standard first-line in SA state sector",
+      "Consider autologous stem cell transplant referral if patient is transplant-eligible (age, performance status, organ function)",
+      "Radiotherapy to symptomatic lytic lesions/impending fracture sites if needed"
+    ],
+    "supportive": [
+      "Blood transfusion if symptomatic/Hb <7 g/dL per unit protocol",
+      "Co-trimoxazole and antimicrobial vigilance given immune paresis and infection risk",
+      "Bone protection with ongoing bisphosphonates",
+      "Physiotherapy and mobility support; spinal precautions given vertebral compression risk",
+      "Renal function monitoring, avoid further nephrotoxins (NSAIDs, contrast where possible)",
+      "Psychosocial support and counselling given new cancer diagnosis"
+    ],
+    "followUp": [
+      "Serial FBC, U&E, calcium and paraprotein levels to monitor response to treatment",
+      "Regular skeletal survey/imaging if new bone symptoms",
+      "Haematology outpatient follow-up for ongoing chemotherapy cycles and transplant work-up",
+      "Screen for and manage treatment complications (peripheral neuropathy from bortezomib/thalidomide, infection)"
+    ]
+  },
+  "stationChecklist": [
+    {
+      "id": "cl-intro",
+      "phase": "history",
+      "item": "Introduces self, confirms patient identity, gains consent",
+      "answer": null,
+      "why": "Professionalism / communication",
+      "weight": 1,
+      "critical": false
+    },
+    {
+      "id": "cl-confirm-anaemia",
+      "phase": "history",
+      "item": "Confirms anaemia symptomatically (fatigue, dyspnoea, palpitations) and screens haemodynamic significance",
+      "answer": "Progressive fatigue, exertional dyspnoea and palpitations over 3 months",
+      "why": "First step of the anaemia framework — confirm symptomatically before classifying",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-bonepain",
+      "phase": "history",
+      "item": "Characterises the back pain in detail (onset, character, worse at night, radiation, red flags)",
+      "answer": "Constant, worse at night, not relieved by rest, no radicular features — her notes emphasise bone pain as a key driver of this case",
+      "why": "Bone pain plus anaemia in an older adult should raise marrow infiltration/malignancy on the differential",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-constitutional",
+      "phase": "history",
+      "item": "Screens constitutional/TB symptoms (weight loss, night sweats, fever, cough) and TB contacts",
+      "answer": "Mild weight loss, no night sweats, no cough, no TB contact",
+      "why": "Per framework, TB/HIV must be screened early as major KZN anaemia drivers before other causes considered",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hiv-ckd",
+      "phase": "history",
+      "item": "Establishes HIV status and screens for CKD risk factors (hypertension, diabetes, prior renal disease)",
+      "answer": "HIV negative 8 months ago; known hypertensive, no prior CKD",
+      "why": "Big four KZN drivers must be actively excluded before further work-up",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-bleeding-loss",
+      "phase": "history",
+      "item": "Screens for bleeding/loss source and asks about easy bruising/infections",
+      "answer": "No overt bleeding source; easy bruising and 2 recent chest infections noted",
+      "why": "Distinguishes loss vs production failure vs destruction — also surfaces cytopenia clues",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-meds",
+      "phase": "history",
+      "item": "Takes a full drug history including over-the-counter NSAID use",
+      "answer": "Recently started regular ibuprofen for back pain in addition to amlodipine",
+      "why": "NSAID use is directly relevant to renal impairment and is a modifiable immediate management step",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-hypercalcaemia-symptoms",
+      "phase": "history",
+      "item": "Asks about symptoms of hypercalcaemia (thirst, polyuria, confusion, constipation)",
+      "answer": "Increased thirst, nocturia, mid-afternoon confusion",
+      "why": "Directly probes for the 'C' in CRAB criteria and a key differentiator toward myeloma",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-exam-general",
+      "phase": "examination",
+      "item": "Performs general examination for pallor, bruising, lymphadenopathy, organomegaly",
+      "answer": "Pallor and scattered bruising present; no lymphadenopathy or organomegaly",
+      "why": "Distinguishes myeloma (no lymphadenopathy typically) from lymphoma/leukaemia differentials",
+      "weight": 2,
+      "critical": false
+    },
+    {
+      "id": "cl-exam-spine",
+      "phase": "examination",
+      "item": "Performs focused musculoskeletal/spinal examination including palpation for point tenderness and neurological screen of the legs",
+      "answer": "Point tenderness at L3-L4, no neurological deficit in the legs",
+      "why": "Localises bone pathology and screens for cord compression, a myeloma emergency",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-mcv-classify",
+      "phase": "differentials",
+      "item": "Correctly classifies the anaemia by MCV and retic count and reasons through loss/production/destruction",
+      "answer": "Normocytic, low-normal reticulocyte response consistent with marrow production failure",
+      "why": "Core reasoning step of the anaemia framework before committing to a cause",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ddx",
+      "phase": "differentials",
+      "item": "Offers a ranked differential linking bone pain, anaemia, renal impairment and hypercalcaemia together rather than treating them separately",
+      "answer": null,
+      "why": "Symptom-to-differential synthesis is the exam philosophy — recognising a unifying diagnosis is critical here",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-firstline",
+      "phase": "investigations",
+      "item": "Requests first-line tests: FBC with film, U&E/creatinine, calcium, HIV test",
+      "answer": "See investigations catalogue",
+      "why": "Standard first-line anaemia work-up per framework, also captures CRAB criteria",
+      "weight": 2,
+      "critical": true
+    },
+    {
+      "id": "cl-ix-confirm",
+      "phase": "investigations",
+      "item": "Requests confirmatory tests for myeloma: serum protein electrophoresis/immunofixation, serum free light chains, skeletal survey, bone marrow biopsy",
+      "answer": "M-band IgG kappa, elevated kappa light chains, lytic lesions, 38% clonal plasma cells on marrow",
+      "why": "Confirmatory pathway once marrow infiltration/paraproteinaemia is suspected",
+      "weight": 3,
+      "critical": true
+    },
+    {
+      "id": "cl-mx",
+      "phase": "management",
+      "item": "Outlines immediate management (stop NSAID, IV fluids, bisphosphonate for hypercalcaemia) and definitive haematology referral for anti-myeloma therapy",
+      "answer": null,
+      "why": "Immediate reversible harms (NSAID, hypercalcaemia) must be addressed before definitive oncological treatment",
+      "weight": 3,
+      "critical": true
+    }
+  ],
+  "rubric": {
+    "communication": 10,
+    "historyTaking": 25,
+    "examination": 15,
+    "clinicalReasoning": 25,
+    "investigations": 15,
+    "management": 10
+  }
+}
