@@ -20,7 +20,7 @@ import {
   type DeckTopic,
   type DocumentInfo,
 } from "./api";
-import { QuestionBody } from "./question-body";
+import { CaseContext, QuestionBody } from "./question-body";
 
 const TILE = "rounded-xl border border-neutral-800/60 bg-neutral-900/40";
 const SELECT =
@@ -218,6 +218,9 @@ export function BrowseClient({ initialQuery, initialTopic }: { initialQuery: str
                     )}
                   </div>
                   <div className="mt-2.5">
+                    {/* Front-of-card, so it prints above the question on the
+                        study sheet too — never inside the answer block. */}
+                    <CaseContext context={card.context ?? ""} compact />
                     <QuestionBody question={card.question} compact />
                   </div>
                   <button

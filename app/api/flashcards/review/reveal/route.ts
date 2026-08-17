@@ -22,7 +22,9 @@ export async function POST(request: Request) {
 
   return Response.json({
     answer: card.answer,
-    source_pages: card.sourcePages,
+    // camelCase to match the typed client (components/flashcards/api.ts); the
+    // old snake_case key meant the provenance badge never rendered.
+    sourcePages: card.sourcePages,
     explanation: null,
   });
 }

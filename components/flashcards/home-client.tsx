@@ -25,11 +25,13 @@ import {
   getDecks,
   isProcessing,
   pollDocumentJob,
+  rebuildDocument,
   uploadDocument,
   type DeckTopic,
   type DocumentInfo,
   type DocumentStatus,
   type JobStep,
+  type RebuildPreview,
 } from "./api";
 
 const TILE = "rounded-xl border border-neutral-800/60 bg-neutral-900/40";
@@ -96,6 +98,12 @@ export function HomeClient() {
   const [uploadError, setUploadError] = useState("");
   const [dragOver, setDragOver] = useState(false);
   const [search, setSearch] = useState("");
+
+  // The pending "are you sure?" for a document rebuild — at most one at a time.
+  const [rebuild, setRebuild] = useState<{ documentId: string; preview: RebuildPreview; busy: boolean } | null>(
+    null,
+  );
+  const [rebuildError, setRebuildError] = useState("");
 
   const pollsRef = useRef(new Map<string, AbortController>());
 
@@ -226,8 +234,50 @@ export function HomeClient() {
     [startPolling],
   );
 
+  // Rebuild is two-tap on purpose: the first tap only asks the server what
+  // would be lost, the second commits. Wiping her scheduling must never be an
+  // accident.
+  const previewRebuild = useCallback(async (documentId: string) => {
+    setRebuildError("");
+    try {
+      setRebuild({ documentId, preview: await rebuildDocument(documentId, false), busy: false });
+    } catch (err) {
+      setRebuildError(
+        err instanceof FlashcardsUnavailableError
+          ? "The rebuild endpoint isn't live yet."
+          : err instanceof Error
+            ? err.message
+            : String(err),
+      );
+    }
+  }, []);
+
+  const confirmRebuild = useCallback(
+    async (documentId: string) => {
+      setRebuild((prev) => (prev ? { ...prev, busy: true } : prev));
+      setRebuildError("");
+      try {
+        await rebuildDocument(documentId, true);
+        setRebuild(null);
+        setDocLive((prev) => ({ ...prev, [documentId]: {} }));
+        await refresh();
+        startPolling(documentId); // status is back to "uploaded" — drive the job
+      } catch (err) {
+        setRebuild((prev) => (prev ? { ...prev, busy: false } : prev));
+        setRebuildError(err instanceof Error ? err.message : String(err));
+      }
+    },
+    [refresh, startPolling],
+  );
+
   const dueToday = topics.reduce((sum, t) => sum + (t.dueToday || 0), 0);
+  const newCards = topics.reduce((sum, t) => sum + (t.newCards || 0), 0);
   const totalCards = topics.reduce((sum, t) => sum + (t.count || 0), 0);
+  // A freshly extracted deck has no review rows at all, so a pure "due" count
+  // reads 0 on the exact day she has 800 cards waiting. What she wants to know
+  // is how many she can study right now: everything scheduled plus everything
+  // never seen. buildReviewQueue serves both, so the number matches the player.
+  const readyToStudy = dueToday + newCards;
   const backendMissing = deckState.kind === "unavailable";
 
   return (
@@ -236,12 +286,12 @@ export function HomeClient() {
       <div className="grid gap-3 lg:grid-cols-3">
         <section className={`${TILE} flex flex-col justify-between p-6 lg:col-span-2`}>
           <div>
-            <p className={LABEL}>Due today</p>
+            <p className={LABEL}>Ready to study</p>
             <p className="mt-2 text-5xl font-semibold tabular-nums text-neutral-100 sm:text-6xl">
               {deckState.kind === "loading" ? (
                 <span className="text-neutral-700">…</span>
               ) : deckState.kind === "ready" ? (
-                dueToday
+                readyToStudy
               ) : (
                 <span className="text-neutral-700">—</span>
               )}
@@ -252,7 +302,7 @@ export function HomeClient() {
                 : deckState.kind === "error"
                   ? `Couldn't load the decks: ${deckState.message}`
                   : totalCards > 0
-                    ? `across ${topics.length} topic${topics.length === 1 ? "" : "s"} · ${totalCards} cards in the box`
+                    ? `${dueToday} due · ${newCards} new · ${totalCards} cards in the box across ${topics.length} topic${topics.length === 1 ? "" : "s"}`
                     : "cards scheduled for review land here"}
             </p>
           </div>
@@ -260,7 +310,7 @@ export function HomeClient() {
             <Link
               href="/flashcards/review"
               className={
-                dueToday > 0
+                readyToStudy > 0
                   ? "rounded-lg bg-emerald-700 px-5 py-2.5 text-sm font-medium text-emerald-50 transition-colors hover:bg-emerald-600"
                   : "rounded-lg border border-neutral-700 px-5 py-2.5 text-sm font-medium text-neutral-300 transition-colors hover:border-neutral-500 hover:bg-neutral-900"
               }
@@ -382,6 +432,11 @@ export function HomeClient() {
                       <span className="shrink-0 rounded-full bg-emerald-950 px-2 py-0.5 text-xs tabular-nums text-emerald-300">
                         {t.dueToday} due
                       </span>
+                    ) : t.newCards > 0 ? (
+                      // "clear" would be a lie on a deck she has simply never opened.
+                      <span className="shrink-0 rounded-full bg-sky-950 px-2 py-0.5 text-xs tabular-nums text-sky-300">
+                        {t.newCards} new
+                      </span>
                     ) : (
                       <span className="shrink-0 rounded-full bg-neutral-800 px-2 py-0.5 text-xs text-neutral-500">
                         clear
@@ -457,6 +512,60 @@ export function HomeClient() {
                       >
                         Retry
                       </button>
+                    </div>
+                  )}
+
+                  {/* Rebuild — re-extract from the file already in storage. */}
+                  {!active && (status === "ready" || status === "failed") && rebuild?.documentId !== doc.id && (
+                    <div className="mt-2 flex flex-wrap items-center justify-end gap-2">
+                      {rebuildError && !rebuild && <p className="text-xs text-red-300">{rebuildError}</p>}
+                      <button
+                        type="button"
+                        onClick={() => void previewRebuild(doc.id)}
+                        className="rounded-lg border border-neutral-800 px-2.5 py-1 text-xs text-neutral-500 transition-colors hover:border-amber-800 hover:text-amber-300"
+                      >
+                        Rebuild cards from this document
+                      </button>
+                    </div>
+                  )}
+
+                  {rebuild?.documentId === doc.id && (
+                    <div className="mt-2 rounded-lg border border-amber-900/60 bg-amber-950/15 p-3">
+                      <p className="text-xs text-amber-200">
+                        Re-extracting <span className="font-medium">{rebuild.preview.filename}</span> deletes its{" "}
+                        <span className="tabular-nums">{rebuild.preview.cardCount}</span> existing card
+                        {rebuild.preview.cardCount === 1 ? "" : "s"} and builds them again from the stored file.
+                      </p>
+                      <p className="mt-1.5 text-xs text-amber-300">
+                        {rebuild.preview.reviewCount > 0 ? (
+                          <>
+                            <span className="tabular-nums">{rebuild.preview.reviewCount}</span> card
+                            {rebuild.preview.reviewCount === 1 ? " has" : "s have"} been studied — their review
+                            scheduling is lost and they start again as new. This cannot be undone.
+                          </>
+                        ) : (
+                          "Nothing has been studied from this document yet, so no review scheduling is lost."
+                        )}
+                      </p>
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
+                        <button
+                          type="button"
+                          disabled={rebuild.busy}
+                          onClick={() => void confirmRebuild(doc.id)}
+                          className="rounded-lg bg-amber-800 px-3 py-1.5 text-xs font-medium text-amber-50 transition-colors hover:bg-amber-700 disabled:opacity-50"
+                        >
+                          {rebuild.busy ? "Rebuilding…" : "Delete and re-extract"}
+                        </button>
+                        <button
+                          type="button"
+                          disabled={rebuild.busy}
+                          onClick={() => setRebuild(null)}
+                          className="rounded-lg border border-neutral-700 px-3 py-1.5 text-xs text-neutral-300 transition-colors hover:border-neutral-500 disabled:opacity-50"
+                        >
+                          Keep them
+                        </button>
+                      </div>
+                      {rebuildError && <p className="mt-2 text-xs text-red-300">{rebuildError}</p>}
                     </div>
                   )}
                 </li>

@@ -21,7 +21,7 @@ import {
   type ReviewCard,
   type ReviewGrade,
 } from "./api";
-import { QuestionBody } from "./question-body";
+import { CaseContext, QuestionBody } from "./question-body";
 
 const TILE = "rounded-xl border border-neutral-800/60 bg-neutral-900/40";
 
@@ -342,6 +342,7 @@ export function ReviewClient({ topic }: { topic: string | null }) {
                   </span>
                 </div>
                 <div className="mt-4">
+                  <CaseContext context={phase.card.context ?? ""} />
                   <QuestionBody question={phase.card.question} />
                 </div>
                 <p className="mt-6 text-center text-xs text-neutral-600">
@@ -359,6 +360,9 @@ export function ReviewClient({ topic }: { topic: string | null }) {
                   )}
                 </div>
                 <div className="mt-4">
+                  {/* The vignette stays visible after the reveal — she needs it
+                      to judge her own answer against the model one. */}
+                  <CaseContext context={phase.card.context ?? ""} compact />
                   <QuestionBody question={phase.card.question} compact />
                 </div>
                 <hr className="my-4 border-neutral-800" />

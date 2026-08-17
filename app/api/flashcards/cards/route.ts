@@ -44,6 +44,8 @@ export async function GET(request: Request) {
       documentId: c.documentId,
       sectionId: c.sectionId,
       topic: c.topic,
+      context: c.context,
+      groupId: c.groupId,
       question: c.question,
       options: c.options,
       answer: c.answer,

@@ -59,6 +59,12 @@ create table if not exists fc_cards (
   document_id uuid not null references fc_documents(id) on delete cascade,
   section_id uuid references fc_sections(id) on delete set null,
   topic text not null default '',
+  -- the governing vignette/case stem, verbatim; '' when the question stands
+  -- alone. FRONT-of-card content — a card must be answerable from
+  -- context + question alone (docs/FLASHCARDS.md §5.5)
+  context text not null default '',
+  -- shared by every sub-question of one vignette, so siblings schedule together
+  group_id text,
   question text not null,
   -- MCQ options (jsonb string array), kept on the card front; '[]' = open question
   options jsonb not null default '[]'::jsonb,
@@ -67,16 +73,51 @@ create table if not exists fc_cards (
   source_pages int[] not null default '{}',
   confidence real,
   status text not null default 'auto' check (status in ('auto','needs_review')),
-  -- normalized-question hash: the cross-window dedupe key, unique per document
+  -- normalized (context + question) hash: the cross-window dedupe key, unique
+  -- per document. Context is part of the identity — "What is the diagnosis?"
+  -- under two vignettes is two cards, not one.
   qhash text not null,
   created_at timestamptz not null default now(),
-  -- full-text search over topic + question + answer (docs/FLASHCARDS.md §4)
+  -- full-text search over topic + context + question + answer
+  -- (docs/FLASHCARDS.md §4) — including context so a card is findable by its
+  -- vignette ("the 45-year-old with the barrel chest")
   tsv tsvector generated always as (
     to_tsvector('english'::regconfig,
-      coalesce(topic, '') || ' ' || coalesce(question, '') || ' ' || coalesce(answer, ''))
+      coalesce(topic, '') || ' ' || coalesce(context, '') || ' ' ||
+      coalesce(question, '') || ' ' || coalesce(answer, ''))
   ) stored,
   unique (document_id, qhash)
 );
+
+-- ---------------------------------------------------------------------------
+-- migration for databases created before the self-containment work. This file
+-- has already been run once, so everything below has to be safe to re-run.
+-- ---------------------------------------------------------------------------
+alter table fc_cards add column if not exists context text not null default '';
+alter table fc_cards add column if not exists group_id text;
+
+-- A generated column's expression cannot be ALTERed in place, so the tsvector
+-- is dropped and rebuilt — but only when it doesn't already cover `context`,
+-- otherwise a re-run would needlessly reindex every card.
+do $$
+declare tsv_expr text;
+begin
+  select pg_get_expr(d.adbin, d.adrelid) into tsv_expr
+    from pg_attrdef d
+    join pg_attribute a on a.attrelid = d.adrelid and a.attnum = d.adnum
+   where d.adrelid = 'fc_cards'::regclass and a.attname = 'tsv';
+
+  if tsv_expr is null or position('context' in tsv_expr) = 0 then
+    alter table fc_cards drop column if exists tsv;
+    alter table fc_cards add column tsv tsvector generated always as (
+      to_tsvector('english'::regconfig,
+        coalesce(topic, '') || ' ' || coalesce(context, '') || ' ' ||
+        coalesce(question, '') || ' ' || coalesce(answer, ''))
+    ) stored;
+    -- dropping the column dropped its index with it
+    create index if not exists fc_cards_tsv_idx on fc_cards using gin (tsv);
+  end if;
+end $$;
 
 -- ---------------------------------------------------------------------------
 -- reviews: FSRS state, one row per studied card (absent row = new card)
@@ -104,6 +145,8 @@ create index if not exists fc_sections_document_idx on fc_sections (document_id,
 create index if not exists fc_cards_document_idx on fc_cards (document_id);
 create index if not exists fc_cards_topic_idx on fc_cards (topic);
 create index if not exists fc_cards_status_idx on fc_cards (status);
+-- sub-questions of one vignette are fetched and scheduled as a block
+create index if not exists fc_cards_group_idx on fc_cards (group_id);
 create index if not exists fc_cards_tsv_idx on fc_cards using gin (tsv);
 create index if not exists fc_reviews_due_idx on fc_reviews (due_at);
 

@@ -43,6 +43,31 @@ export function parseMcq(question: string): McqParts | null {
   return { stem, options };
 }
 
+/**
+ * The governing vignette, rendered ABOVE the question and visually secondary.
+ * It is front-of-card content: it appears at the same moment as the question,
+ * never behind the reveal, because it is the question's other half. Muted and
+ * a size down so the eye still lands on what is being asked.
+ */
+export function CaseContext({ context, compact = false }: { context: string; compact?: boolean }) {
+  const text = context.trim();
+  if (!text) return null;
+  return (
+    <div
+      className={`rounded-lg border-l-2 border-neutral-700 bg-neutral-950/40 ${
+        compact ? "mb-2.5 py-1.5 pr-2.5 pl-3" : "mb-4 py-2.5 pr-3 pl-4"
+      }`}
+    >
+      <p className="text-[10px] font-semibold tracking-widest text-neutral-500 uppercase">The case</p>
+      <p
+        className={`mt-1 whitespace-pre-wrap text-neutral-400 ${compact ? "text-xs" : "text-sm"}`}
+      >
+        {text}
+      </p>
+    </div>
+  );
+}
+
 export function QuestionBody({ question, compact = false }: { question: string; compact?: boolean }) {
   const mcq = parseMcq(question);
   const stemClass = compact

@@ -39,6 +39,9 @@ export interface DeckTopic {
   topic: string;
   count: number;
   dueToday: number;
+  /** Never studied. Counted separately because a due count alone reads as 0 on a
+   *  brand-new deck, which is exactly when she has the most to do. */
+  newCards: number;
 }
 
 export interface DecksResponse {
@@ -51,6 +54,8 @@ export type CardStatus = "auto" | "needs_review";
 export interface CardInfo {
   id: string;
   topic: string;
+  /** The governing vignette. Front-of-card content — shown WITH the question. */
+  context?: string;
   question: string;
   answer: string;
   sourcePages: number[];
@@ -65,6 +70,11 @@ export interface CardsResponse {
 export interface ReviewCard {
   id: string;
   topic: string;
+  /**
+   * The governing vignette, when this card is one sub-question of a case.
+   * Rendered ABOVE the question at the same moment — never behind the reveal.
+   */
+  context?: string;
   /** May embed MCQ options as lines — see parseMcq in question-body.tsx. */
   question: string;
 }
@@ -144,6 +154,28 @@ export async function uploadDocument(file: File): Promise<{ documentId: string }
   return request<{ documentId: string }>("/api/flashcards/upload", { method: "POST", body });
 }
 
+export interface RebuildPreview {
+  /** null when the caller only asked what a rebuild would cost. */
+  applied: boolean;
+  filename: string;
+  cardCount: number;
+  /** Cards with FSRS scheduling that a rebuild destroys. */
+  reviewCount: number;
+}
+
+/**
+ * Rebuild one document's cards from the already-stored file. `apply: false`
+ * (the default) only reports what would be lost — the UI shows that first so a
+ * destructive rebuild is never one tap away.
+ */
+export async function rebuildDocument(documentId: string, apply: boolean): Promise<RebuildPreview> {
+  return request<RebuildPreview>(`/api/flashcards/documents/${encodeURIComponent(documentId)}/rebuild`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ apply }),
+  });
+}
+
 export async function stepJob(documentId: string, signal?: AbortSignal): Promise<JobStep> {
   return request<JobStep>(`/api/flashcards/job/${encodeURIComponent(documentId)}/step`, {
     method: "POST",
@@ -152,15 +184,40 @@ export async function stepJob(documentId: string, signal?: AbortSignal): Promise
 }
 
 export async function getDocuments(signal?: AbortSignal): Promise<DocumentInfo[]> {
-  const data = await request<DocumentInfo[]>("/api/flashcards/documents", { signal });
-  return Array.isArray(data) ? data : [];
+  // The route answers { documents: [...] }, not a bare array.
+  const data = await request<{ documents?: DocumentInfo[] } | DocumentInfo[]>("/api/flashcards/documents", {
+    signal,
+  });
+  if (Array.isArray(data)) return data;
+  return Array.isArray(data?.documents) ? data.documents : [];
+}
+
+/** The decks route's per-topic row, which uses fuller field names than the UI. */
+interface DeckTopicRow {
+  topic: string;
+  cardCount?: number;
+  dueCount?: number;
+  newCount?: number;
+  count?: number;
+  dueToday?: number;
 }
 
 export async function getDecks(signal?: AbortSignal): Promise<DecksResponse> {
-  const data = await request<Partial<DecksResponse>>("/api/flashcards/decks", { signal });
+  // Decks and documents are separate endpoints; the home page wants both, and
+  // the document rows are what carry the rebuild control.
+  const [decks, documents] = await Promise.all([
+    request<{ topics?: DeckTopicRow[] }>("/api/flashcards/decks", { signal }),
+    getDocuments(signal).catch(() => [] as DocumentInfo[]),
+  ]);
+  const rows = Array.isArray(decks?.topics) ? decks.topics : [];
   return {
-    topics: Array.isArray(data?.topics) ? data.topics : [],
-    documents: Array.isArray(data?.documents) ? data.documents : [],
+    topics: rows.map((t) => ({
+      topic: t.topic,
+      count: t.cardCount ?? t.count ?? 0,
+      dueToday: t.dueCount ?? t.dueToday ?? 0,
+      newCards: t.newCount ?? 0,
+    })),
+    documents,
   };
 }
 

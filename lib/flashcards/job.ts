@@ -8,6 +8,8 @@
 // step. Only structurally hopeless documents (scans, unsupported, corrupt)
 // are marked failed.
 
+import { createHash } from "node:crypto";
+
 import type Anthropic from "@anthropic-ai/sdk";
 
 import { CostTracker, createFcAnthropicClient } from "./anthropic";
@@ -16,12 +18,14 @@ import {
   buildAnswerKeyMap,
   dedupeOrphans,
   deterministicReconcile,
+  normalizeQuestion,
   planWindows,
   qhashOf,
   runExtractionPass,
   runReconcilePass,
   runSurveyPass,
 } from "./pipeline";
+import { isSelfContained } from "./self-contained";
 import type { ExtractedCard, OrphanAnswer, OrphanQuestion } from "./schema";
 import type { FcStore } from "./store";
 import type { FcCheckpoint, FcDocument, FcSection, JobStepResult, NewFcCard } from "./types";
@@ -93,6 +97,18 @@ function sectionFor(sections: FcSection[], page: number | undefined): FcSection 
   );
 }
 
+/**
+ * Group id for storage. Derived from the CONTEXT text rather than trusting the
+ * model's per-window label: windows overlap, so "v1" in window 3 and "v1" in
+ * window 4 are unrelated, while the same vignette seen in both windows must
+ * land in the same group. Hashing the stem gets both right for free.
+ */
+function groupIdFor(context: string): string | null {
+  const key = normalizeQuestion(context);
+  if (key.length === 0) return null;
+  return `ctx-${createHash("sha256").update(key).digest("hex").slice(0, 16)}`;
+}
+
 function toNewCard(
   documentId: string,
   sections: FcSection[],
@@ -101,21 +117,28 @@ function toNewCard(
 ): NewFcCard | null {
   const question = card.question.trim();
   if (question.length === 0) return null;
+  const context = card.context.trim();
   const sourcePages = [...new Set(card.source_pages.filter((p) => p > 0))].sort((a, b) => a - b);
   const section = sectionFor(sections, sourcePages[0]);
   const topic = card.topic.trim() || section?.title || "General";
+  const options = card.options.map((o) => o.trim()).filter((o) => o.length > 0);
   return {
     documentId,
     sectionId: section?.id ?? null,
     topic,
+    context,
+    groupId: groupIdFor(context),
     question,
-    options: card.options.map((o) => o.trim()).filter((o) => o.length > 0),
+    options,
     answer: card.answer.trim(),
     qnum: card.qnum.trim() || null,
     sourcePages,
     confidence: Math.min(Math.max(card.confidence, 0), 1),
-    status,
-    qhash: qhashOf(question),
+    // Fail closed at WRITE time as well as at queue time: if the prompt ever
+    // regresses and emits a stem-less sub-question, it lands in the tray
+    // instead of in her deck.
+    status: status === "auto" && !isSelfContained({ context, question, options }) ? "needs_review" : status,
+    qhash: qhashOf(question, context),
   };
 }
 
@@ -244,6 +267,8 @@ async function extractStep(store: FcStore, doc: FcDocument, opts: JobStepOptions
       checkpoint.orphanQuestions.push({
         qnum: built.qnum ?? "",
         topic: built.topic,
+        context: built.context,
+        group_id: built.groupId ?? "",
         question: built.question,
         options: built.options,
         source_pages: built.sourcePages,
@@ -306,7 +331,17 @@ async function reconcileStep(store: FcStore, doc: FcDocument, opts: JobStepOptio
     const built = toNewCard(
       doc.id,
       sections,
-      { topic: q.topic, question: q.question, options: q.options, answer: "", qnum: q.qnum, confidence: 0, source_pages: q.source_pages },
+      {
+        topic: q.topic,
+        context: q.context,
+        group_id: q.group_id,
+        question: q.question,
+        options: q.options,
+        answer: "",
+        qnum: q.qnum,
+        confidence: 0,
+        source_pages: q.source_pages,
+      },
       "needs_review",
     );
     if (built) needsReview.push(built);
@@ -316,7 +351,17 @@ async function reconcileStep(store: FcStore, doc: FcDocument, opts: JobStepOptio
     const built = toNewCard(
       doc.id,
       sections,
-      { topic: "", question: syntheticQuestion, options: [], answer: a.answer, qnum: a.qnum, confidence: 0, source_pages: a.source_pages },
+      {
+        topic: "",
+        context: "",
+        group_id: "",
+        question: syntheticQuestion,
+        options: [],
+        answer: a.answer,
+        qnum: a.qnum,
+        confidence: 0,
+        source_pages: a.source_pages,
+      },
       "needs_review",
     );
     if (built) needsReview.push(built);

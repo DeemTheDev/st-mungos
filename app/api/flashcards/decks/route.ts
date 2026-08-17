@@ -1,9 +1,12 @@
 // GET /api/flashcards/decks — topics + sections with card counts and
 // due-today counts (docs/FLASHCARDS.md §6). "Due" = has a review row with
 // due_at inside today (local); "new" = never studied. needs_review cards are
-// excluded from due/new (they're not studiable yet) but reported separately.
+// excluded from due/new (they're not studiable yet) but reported separately —
+// and so is anything the review queue would refuse as not self-contained,
+// otherwise a deck would advertise cards the player will never serve.
 import { endOfLocalDay } from "@/lib/flashcards/fsrs";
 import { requireFcAdmin } from "@/lib/flashcards/route-auth";
+import { isSelfContained } from "@/lib/flashcards/self-contained";
 import { getFcStore } from "@/lib/flashcards/store";
 
 export const runtime = "nodejs";
@@ -46,7 +49,7 @@ export async function GET() {
     const buckets = sectionBucket ? [topicBucket, sectionBucket, totals] : [topicBucket, totals];
     for (const b of buckets) {
       b.cardCount += 1;
-      if (card.status === "needs_review") {
+      if (card.status === "needs_review" || !isSelfContained({ context: card.context, question: card.question })) {
         b.needsReviewCount += 1;
       } else if (card.dueAt === null) {
         b.newCount += 1;

@@ -42,6 +42,9 @@ function printCard(card: FcCard, label: string): void {
   console.log(`\n  --- ${label} ---`);
   console.log(`  topic:  ${card.topic}`);
   console.log(`  pages:  ${card.sourcePages.join(", ") || "(none)"}${card.qnum ? `   qnum: ${card.qnum}` : ""}   status: ${card.status}   confidence: ${card.confidence}`);
+  // Context first: a sample card is only useful if you can see whether the
+  // governing vignette survived extraction.
+  if (card.context) console.log(`  CASE: ${card.context}`);
   console.log(`  Q: ${card.question}`);
   for (const opt of card.options) console.log(`     ${opt}`);
   console.log(`  A: ${card.answer || "(needs review — no answer matched)"}`);
@@ -112,6 +115,10 @@ async function runDocument(
   );
   console.log(`  needs_review: ${needsReview.length}`);
   console.log(`  total cards: ${cards.length}`);
+  // The self-containment invariant, measured (docs/FLASHCARDS.md §5.5).
+  const withContext = cards.filter((c) => c.context.trim().length > 0);
+  console.log(`  cards carrying their case vignette: ${withContext.length}/${cards.length}`);
+  console.log(`  vignette groups: ${new Set(cards.map((c) => c.groupId).filter(Boolean)).size}`);
 
   console.log(`\n5 SAMPLE CARDS (verbatim)`);
   const pool = auto.length >= 5 ? auto : cards;

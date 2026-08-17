@@ -37,6 +37,18 @@ export type SurveyResult = z.infer<typeof SurveySchema>;
 export const ExtractedCardSchema = z.object({
   /** Short study topic, e.g. "Cardiology — heart failure". "" when unclear. */
   topic: z.string(),
+  /**
+   * The governing vignette/case stem, copied VERBATIM. Required (structured
+   * outputs allow no optionals) — "" when the question is already
+   * self-contained. This is the fix for the sub-questions that shipped with
+   * their case stem discarded ("How do you manage the patient?" — which one?).
+   */
+  context: z.string(),
+  /**
+   * Shared id for every sub-question hanging off one stem, unique within the
+   * window (e.g. "v1", "v2"). "" for standalone questions.
+   */
+  group_id: z.string(),
   /** The complete question stem, verbatim from the document. */
   question: z.string(),
   /** MCQ options verbatim (with their letters), in order. Empty for open questions. */
@@ -54,6 +66,9 @@ export const ExtractedCardSchema = z.object({
 export const OrphanQuestionSchema = z.object({
   qnum: z.string(),
   topic: z.string(),
+  /** The governing vignette, verbatim, so an orphan keeps its stem through reconciliation. */
+  context: z.string(),
+  group_id: z.string(),
   question: z.string(),
   options: z.array(z.string()),
   source_pages: z.array(z.number().int()),

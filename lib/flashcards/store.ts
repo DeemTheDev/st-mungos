@@ -56,6 +56,19 @@ export interface FcStore {
 
   getReview(cardId: string): Promise<FcReview | null>;
   upsertReview(review: FcReview): Promise<void>;
+
+  /** Overwrite one card in place (repair script — deterministic data surgery). */
+  updateCard(id: string, patch: Partial<Omit<FcCard, "id" | "documentId" | "createdAt">>): Promise<void>;
+  /** Hard-delete cards by id, and their review rows. Returns the number removed. */
+  deleteCards(ids: string[]): Promise<number>;
+  /** How many of this document's cards have FSRS scheduling that a rebuild would destroy. */
+  countReviewsForDocument(documentId: string): Promise<number>;
+  /**
+   * Rebuild prep: drop the document's cards, sections and reviews and rewind
+   * its job state to "uploaded", KEEPING the document row and its stored blob
+   * so the normal poll loop re-runs the pipeline without a re-upload.
+   */
+  resetDocumentForRebuild(documentId: string): Promise<{ cardsDeleted: number; reviewsDeleted: number }>;
 }
 
 export function getFcStore(): FcStore {
@@ -255,8 +268,10 @@ export class FileFcStore implements FcStore {
     if (opts.status) all = all.filter((c) => c.status === opts.status);
     if (opts.query) {
       const needle = opts.query.toLowerCase();
+      // Mirrors the Postgres tsvector (topic + context + question + answer) so a
+      // card stays findable by its vignette in both stores.
       all = all.filter((c) =>
-        `${c.topic}\n${c.question}\n${c.answer}`.toLowerCase().includes(needle),
+        `${c.topic}\n${c.context}\n${c.question}\n${c.answer}`.toLowerCase().includes(needle),
       );
     }
     all.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
@@ -277,6 +292,10 @@ export class FileFcStore implements FcStore {
           sectionId: c.sectionId,
           topic: c.topic,
           status: c.status,
+          question: c.question,
+          context: c.context,
+          groupId: c.groupId,
+          qnum: c.qnum,
           dueAt: review?.dueAt ?? null,
           state: review?.state ?? null,
         });
@@ -293,6 +312,78 @@ export class FileFcStore implements FcStore {
     const reviews = this.readReviews();
     reviews[review.cardId] = review;
     this.writeReviews(reviews);
+  }
+
+  async updateCard(id: string, patch: Partial<Omit<FcCard, "id" | "documentId" | "createdAt">>): Promise<void> {
+    for (const documentId of this.documentIds()) {
+      const cards = this.readCards(documentId);
+      const idx = cards.findIndex((c) => c.id === id);
+      if (idx < 0) continue;
+      cards[idx] = { ...cards[idx], ...patch, id, documentId, createdAt: cards[idx].createdAt };
+      this.writeCards(documentId, cards);
+      return;
+    }
+    throw new Error(`flashcard ${id} not found`);
+  }
+
+  async deleteCards(ids: string[]): Promise<number> {
+    if (ids.length === 0) return 0;
+    const doomed = new Set(ids);
+    let removed = 0;
+    for (const documentId of this.documentIds()) {
+      const cards = this.readCards(documentId);
+      const kept = cards.filter((c) => !doomed.has(c.id));
+      if (kept.length === cards.length) continue;
+      removed += cards.length - kept.length;
+      this.writeCards(documentId, kept);
+    }
+    const reviews = this.readReviews();
+    let touched = false;
+    for (const id of doomed) {
+      if (reviews[id]) {
+        delete reviews[id];
+        touched = true;
+      }
+    }
+    if (touched) this.writeReviews(reviews);
+    return removed;
+  }
+
+  async countReviewsForDocument(documentId: string): Promise<number> {
+    const reviews = this.readReviews();
+    return this.readCards(documentId).filter((c) => reviews[c.id]).length;
+  }
+
+  async resetDocumentForRebuild(documentId: string): Promise<{ cardsDeleted: number; reviewsDeleted: number }> {
+    const file = this.readDocFile(documentId);
+    if (!file) throw new Error(`flashcard document ${documentId} not found`);
+    const cards = this.readCards(documentId);
+    const reviews = this.readReviews();
+    let reviewsDeleted = 0;
+    for (const c of cards) {
+      if (reviews[c.id]) {
+        delete reviews[c.id];
+        reviewsDeleted += 1;
+      }
+    }
+    this.writeReviews(reviews);
+    this.writeCards(documentId, []);
+    file.sections = [];
+    // The raw upload under .flashcards/raw/ is deliberately untouched — that is
+    // what makes the rebuild work without a re-upload.
+    file.document = {
+      ...file.document,
+      status: "uploaded",
+      progress: { done: 0, total: 0 },
+      layout: null,
+      toc: null,
+      checkpoint: null,
+      cardCount: 0,
+      error: null,
+      updatedAt: new Date().toISOString(),
+    };
+    this.writeDocFile(file);
+    return { cardsDeleted: cards.length, reviewsDeleted };
   }
 }
 
@@ -324,6 +415,8 @@ interface CardRow {
   document_id: string;
   section_id: string | null;
   topic: string;
+  context: string | null;
+  group_id: string | null;
   question: string;
   options: string[] | null;
   answer: string;
@@ -360,6 +453,8 @@ function cardFromRow(row: CardRow): FcCard {
     documentId: row.document_id,
     sectionId: row.section_id,
     topic: row.topic,
+    context: row.context ?? "",
+    groupId: row.group_id,
     question: row.question,
     options: row.options ?? [],
     answer: row.answer,
@@ -505,6 +600,8 @@ export class SupabaseFcStore implements FcStore {
       document_id: c.documentId,
       section_id: c.sectionId,
       topic: c.topic,
+      context: c.context,
+      group_id: c.groupId,
       question: c.question,
       options: c.options,
       answer: c.answer,
@@ -551,7 +648,11 @@ export class SupabaseFcStore implements FcStore {
   }
 
   async listCardMeta(opts?: { topic?: string; documentId?: string }): Promise<FcCardMeta[]> {
-    let q = this.client.from("fc_cards").select("id, document_id, section_id, topic, status");
+    // question/context/group_id are part of the projection because the queue
+    // builder re-runs the self-containment check before serving a card.
+    let q = this.client
+      .from("fc_cards")
+      .select("id, document_id, section_id, topic, status, question, context, group_id, qnum");
     if (opts?.topic) q = q.eq("topic", opts.topic);
     if (opts?.documentId) q = q.eq("document_id", opts.documentId);
     const cardsRes = await q.limit(20000);
@@ -564,20 +665,33 @@ export class SupabaseFcStore implements FcStore {
         r,
       ]),
     );
-    return ((cardsRes.data ?? []) as { id: string; document_id: string; section_id: string | null; topic: string; status: FcCardStatus }[]).map(
-      (c) => {
-        const r = reviewByCard.get(c.id);
-        return {
-          id: c.id,
-          documentId: c.document_id,
-          sectionId: c.section_id,
-          topic: c.topic,
-          status: c.status,
-          dueAt: r?.due_at ?? null,
-          state: r?.state ?? null,
-        };
-      },
-    );
+    type MetaRow = {
+      id: string;
+      document_id: string;
+      section_id: string | null;
+      topic: string;
+      status: FcCardStatus;
+      question: string;
+      context: string | null;
+      group_id: string | null;
+      qnum: string | null;
+    };
+    return ((cardsRes.data ?? []) as MetaRow[]).map((c) => {
+      const r = reviewByCard.get(c.id);
+      return {
+        id: c.id,
+        documentId: c.document_id,
+        sectionId: c.section_id,
+        topic: c.topic,
+        status: c.status,
+        question: c.question,
+        context: c.context ?? "",
+        groupId: c.group_id,
+        qnum: c.qnum,
+        dueAt: r?.due_at ?? null,
+        state: r?.state ?? null,
+      };
+    });
   }
 
   async getReview(cardId: string): Promise<FcReview | null> {
@@ -627,5 +741,68 @@ export class SupabaseFcStore implements FcStore {
       last_reviewed_at: review.lastReviewedAt,
     });
     if (error) throw new Error(`supabase upsertReview failed: ${error.message}`);
+  }
+
+  async updateCard(id: string, patch: Partial<Omit<FcCard, "id" | "documentId" | "createdAt">>): Promise<void> {
+    const row: Record<string, unknown> = {};
+    if (patch.sectionId !== undefined) row.section_id = patch.sectionId;
+    if (patch.topic !== undefined) row.topic = patch.topic;
+    if (patch.context !== undefined) row.context = patch.context;
+    if (patch.groupId !== undefined) row.group_id = patch.groupId;
+    if (patch.question !== undefined) row.question = patch.question;
+    if (patch.options !== undefined) row.options = patch.options;
+    if (patch.answer !== undefined) row.answer = patch.answer;
+    if (patch.qnum !== undefined) row.qnum = patch.qnum;
+    if (patch.sourcePages !== undefined) row.source_pages = patch.sourcePages;
+    if (patch.confidence !== undefined) row.confidence = patch.confidence;
+    if (patch.status !== undefined) row.status = patch.status;
+    if (patch.qhash !== undefined) row.qhash = patch.qhash;
+    if (Object.keys(row).length === 0) return;
+    const { error } = await this.client.from("fc_cards").update(row).eq("id", id);
+    if (error) throw new Error(`supabase updateCard failed: ${error.message}`);
+  }
+
+  async deleteCards(ids: string[]): Promise<number> {
+    if (ids.length === 0) return 0;
+    // fc_reviews.card_id cascades on delete, so the review rows go with them.
+    const { data, error } = await this.client.from("fc_cards").delete().in("id", ids).select("id");
+    if (error) throw new Error(`supabase deleteCards failed: ${error.message}`);
+    return data?.length ?? 0;
+  }
+
+  async countReviewsForDocument(documentId: string): Promise<number> {
+    const cardsRes = await this.client.from("fc_cards").select("id").eq("document_id", documentId).limit(20000);
+    if (cardsRes.error) throw new Error(`supabase countReviewsForDocument failed: ${cardsRes.error.message}`);
+    const ids = ((cardsRes.data ?? []) as { id: string }[]).map((c) => c.id);
+    if (ids.length === 0) return 0;
+    const { count, error } = await this.client
+      .from("fc_reviews")
+      .select("card_id", { count: "exact", head: true })
+      .in("card_id", ids);
+    if (error) throw new Error(`supabase countReviewsForDocument reviews failed: ${error.message}`);
+    return count ?? 0;
+  }
+
+  async resetDocumentForRebuild(documentId: string): Promise<{ cardsDeleted: number; reviewsDeleted: number }> {
+    const reviewsDeleted = await this.countReviewsForDocument(documentId);
+    // Order matters even with cascades: reviews reference cards, cards
+    // reference sections. Delete children first so a partial failure can't
+    // leave a card pointing at a section that is already gone.
+    const cardsRes = await this.client.from("fc_cards").delete().eq("document_id", documentId).select("id");
+    if (cardsRes.error) throw new Error(`supabase rebuild (cards) failed: ${cardsRes.error.message}`);
+    const sectionsRes = await this.client.from("fc_sections").delete().eq("document_id", documentId);
+    if (sectionsRes.error) throw new Error(`supabase rebuild (sections) failed: ${sectionsRes.error.message}`);
+    // The Storage blob is deliberately left in place — that is what lets the
+    // job re-run survey → extraction without a re-upload.
+    await this.updateDocument(documentId, {
+      status: "uploaded",
+      progress: { done: 0, total: 0 },
+      layout: null,
+      toc: null,
+      checkpoint: null,
+      cardCount: 0,
+      error: null,
+    });
+    return { cardsDeleted: cardsRes.data?.length ?? 0, reviewsDeleted };
   }
 }

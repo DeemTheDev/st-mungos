@@ -19,8 +19,20 @@ export async function POST(request: Request) {
   const store = getFcStore();
   const meta = await store.listCardMeta({ topic });
   // needs_review cards aren't studiable (no trusted answer yet) — skip them.
+  // buildReviewQueue then drops anything that isn't self-contained, so a card
+  // whose vignette went missing can never be asked as if it were answerable.
   const queue = buildReviewQueue(
-    meta.filter((m) => m.status === "auto").map((m) => ({ id: m.id, topic: m.topic, dueAt: m.dueAt })),
+    meta
+      .filter((m) => m.status === "auto")
+      .map((m) => ({
+        id: m.id,
+        topic: m.topic,
+        dueAt: m.dueAt,
+        question: m.question,
+        context: m.context,
+        groupId: m.groupId,
+        qnum: m.qnum,
+      })),
   );
 
   if (queue.length === 0) {
@@ -37,6 +49,10 @@ export async function POST(request: Request) {
       id: card.id,
       documentId: card.documentId,
       topic: card.topic,
+      // The vignette ships WITH the question, never behind the reveal — it is
+      // the question's other half, not part of the answer.
+      context: card.context,
+      groupId: card.groupId,
       question: card.question,
       options: card.options,
       qnum: card.qnum,

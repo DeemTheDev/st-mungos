@@ -81,6 +81,17 @@ export interface FcCard {
   documentId: string;
   sectionId: string | null;
   topic: string;
+  /**
+   * The governing vignette/stem, verbatim. "" when the question already stands
+   * alone. Front-of-card content, NOT part of the answer — a card must be
+   * answerable from context + question (see lib/flashcards/self-contained.ts).
+   */
+  context: string;
+  /**
+   * Shared by every sub-question hanging off one vignette, so siblings are
+   * scheduled together instead of scattered across weeks. null = standalone.
+   */
+  groupId: string | null;
   question: string;
   /** MCQ options, kept on the card front. Empty for open questions. */
   options: string[];
@@ -123,6 +134,16 @@ export interface FcCardMeta {
   sectionId: string | null;
   topic: string;
   status: FcCardStatus;
+  /**
+   * question/context/groupId ride along because the queue builder re-checks
+   * self-containment before serving a card — the net has to hold for rows that
+   * were inserted before the check existed.
+   */
+  question: string;
+  context: string;
+  groupId: string | null;
+  /** Printed question number — orders sub-questions within a vignette. */
+  qnum: string | null;
   /** Due timestamp when a review row exists; null = never studied ("new"). */
   dueAt: string | null;
   state: FcReviewState | null;

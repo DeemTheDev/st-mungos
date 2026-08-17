@@ -60,9 +60,11 @@ information" (cover pages, indexes, ads) *before* we pay to extract them.
   matching slice of the answer key** (paired by question numbering from the
   survey). Locality restored by construction.
 - Model output per window (structured outputs, schema-enforced):
-  `{ cards: [{topic, question, answer, qnum?, confidence}], orphan_questions: [...], orphan_answers: [...] }`
+  `{ cards: [{topic, context, group_id, question, options, answer, qnum, confidence, source_pages}], orphan_questions: [...], orphan_answers: [...] }`
 - Instructions: pair Q↔A by numbering/format/adjacency; never invent an answer;
-  when unsure, emit an orphan rather than a guess.
+  when unsure, emit an orphan rather than a guess; **and every card must be
+  self-contained** — see §5.5, this is the rule the prompt spends most of its
+  words on.
 
 ### Pass 3 — reconciliation (0–1 call)
 Deterministic first: match orphan questions ↔ orphan answers across windows by
@@ -107,17 +109,29 @@ pipeline). For big documents we can later submit all windows as one Anthropic
 ```
 fc_documents (id, filename, status, progress, layout, toc jsonb, error, created_at)
 fc_sections  (id, document_id, title, ord, page_range)
-fc_cards     (id, document_id, section_id, topic, question, answer, qnum,
-              source_pages int[], confidence, status auto|needs_review,
-              qhash unique-per-doc, created_at)
+fc_cards     (id, document_id, section_id, topic, context, group_id, question,
+              options jsonb, answer, qnum, source_pages int[], confidence,
+              status auto|needs_review, qhash unique-per-doc, created_at)
 fc_reviews   (card_id pk, due_at, stability, difficulty, reps, lapses,
               state, last_grade, last_reviewed_at)   -- FSRS state
 ```
-- Raw uploads → private Supabase Storage bucket.
+- `context` = the governing vignette (§5.5). `group_id` = shared by all
+  sub-questions of one vignette. Both are front-of-card.
+- `qhash` hashes **context + question**, not the question alone: "What is the
+  diagnosis?" under two different cases is two cards, and hashing the question
+  alone would silently drop one of them.
+- Raw uploads → private Supabase Storage bucket. They stay there after
+  processing, which is what makes `pnpm fc:rebuild` possible without a
+  re-upload.
 - **Search: Postgres full-text search** (generated tsvector over
-  topic+question+answer) — free, built-in, covers "search by topic or even
-  question and answers". Embeddings/pgvector deferred until FTS provably falls short.
-- Migration file: `supabase/schema-flashcards.sql`, same run-once pattern.
+  topic+context+question+answer) — free, built-in, covers "search by topic or
+  even question and answers", and including `context` means she can find a card
+  by the case ("the 45-year-old with the barrel chest"). Embeddings/pgvector
+  deferred until FTS provably falls short.
+- Migration file: `supabase/schema-flashcards.sql`, same run-once pattern —
+  idempotent, so re-running it on a live database only adds what's missing.
+  (The tsvector is a generated column, so widening it means drop + recreate;
+  the file guards that behind a check so a re-run doesn't reindex needlessly.)
 
 ## 5. Learning science (what actually makes it absorb)
 
@@ -136,8 +150,78 @@ The two effects with the strongest evidence in all of learning research:
      intervals — retention targeted *at the exam*, not at the ideal long-term curve.
 3. **Interleaving** — sessions mix topics rather than blocking one topic, which
    feels harder and works better. Default review deck = due cards shuffled across
-   all topics; topic filter is opt-in for targeted drilling.
+   all topics; topic filter is opt-in for targeted drilling. Interleaving happens
+   between *units*, and a vignette + its sub-questions is one unit (§5.5).
 4. **Provenance** — every card links to its source pages; trust drives usage.
+
+### 5.5 The self-containment invariant
+
+**A card must be answerable from what is ON the card: `context` + `question`,
+by someone who has never seen the source document.** Everything else in this
+document is a preference; this one is the load-bearing rule.
+
+*Why it exists.* The first shipped extraction split clinical vignettes into
+their sub-questions and threw the case stem away. She was served
+`"How do you manage the patient?"` — **which patient?** — with no way to answer
+it, and cards like `"What is the diagnosis?"` and
+`"What are 5 complications of this condition?"`. A card like that doesn't just
+fail; it actively corrodes the thing that makes flashcards work. Retrieval
+practice is effective because recall is *possible but effortful*. A prompt with
+no retrievable target isn't difficulty, it's noise — she can't grade herself
+honestly, so the FSRS signal is garbage too. **The atomic unit is
+(vignette + one sub-question), not the sub-question.**
+
+Four mechanisms enforce it, deliberately layered so no single one is a single
+point of failure:
+
+1. **Extraction prompt** (`EXTRACT_SYSTEM` in `lib/flashcards/pipeline.ts`) —
+   the governing stem is copied VERBATIM into `context` on *every* sub-question
+   it governs (repeating 40 words across eight cards is correct: each is
+   studied alone, weeks apart), they share a `group_id`, a bare stem is never
+   emitted as a card of its own, and a question whose stem isn't visible in the
+   window becomes an **orphan** rather than a confident context-free card.
+2. **Write-time check** (`toNewCard` in `job.ts`) — anything that slips through
+   is stored as `needs_review`, not `auto`.
+3. **Queue-time check** (`buildReviewQueue` in `fsrs.ts`) — the queue **fails
+   closed**: a card that isn't self-contained is never served, even if it is due
+   and marked `auto`. This has to hold for rows written before the check
+   existed, and for whatever a future prompt edit does.
+4. **The detector itself** (`lib/flashcards/self-contained.ts`) — one exported,
+   model-free function, asserted by `pnpm fc:selfcheck`.
+
+**The rule.** A card fails when *all* of these hold:
+its `context` is empty, **and** its front reads as a question/instruction,
+**and** it leans on an anaphor (a third-person pronoun, `the/this` + a generic
+clinical noun like *patient · condition · diagnosis · management*, or `the
+above`), **and** it names nothing specific of its own — no token survives after
+stripping function words, that generic clinical vocabulary, and numbers.
+Biased hard toward **precision**: a false positive pulls a good card out of
+study, a false negative just leaves one for the tray. So
+`"How do you manage the patient?"` is caught and
+`"What is the management of cirrhosis?"` is not.
+
+**Scheduling.** Cards sharing a `group_id` move through the queue as one block,
+so the case she is reasoning about is introduced in one session and scheduled
+adjacently rather than scattered across weeks. Interleaving *between* blocks
+stays — that's the evidence-based part.
+
+**UI.** The vignette renders above the question, muted and a size down, labelled
+"The case" — present at the same moment as the question in the review player,
+in browse, and on the print sheet. It is never behind the reveal: it is the
+question's other half, not part of the answer.
+
+**Repair and rebuild.** `pnpm fc:repair` recovers vignettes for
+already-extracted cards deterministically, with zero model calls (splitting a
+vignette out of a card's own question, recovering it from a duplicate twin left
+by overlapping windows, inheriting from a preceding stem or a numbered
+sibling); whatever it can't recover it marks `needs_review` rather than
+guessing. Vignettes that were never extracted at all can only come back from
+the source document — that is what `pnpm fc:rebuild` is for: it clears a
+document's cards/sections/reviews and rewinds its job to `uploaded` **without a
+re-upload** (the raw file stays in the bucket), so the normal poll loop
+re-extracts with the current prompt. Rebuilding destroys FSRS scheduling, so it
+refuses without `--force` when studied cards exist, and the UI control states
+the count before it will proceed.
 
 **The killer integration (fast-follow, near-zero cost):** St Mungo's already knows
 her weaknesses — `/notes` aggregates most-missed checklist items across stations.
@@ -172,3 +256,14 @@ Batches optimization, explain-why button, cloze.
 2. MCQ handling: keep distractor options on the card (front shows options like the
    real exam) or strip to open Q→A? Default plan: keep options when detected,
    card front = stem + options, back = correct option + any explanation text.
+
+## 9. Scripts
+
+| Command | What it does | Cost |
+|---|---|---|
+| `pnpm fc:test` | Full pipeline against `grounding/flashcard-ref-1.*` into `.flashcards/fc-test`, with budget guards. Prints sample cards including their `context`. | real API calls |
+| `pnpm fc:selfcheck` | Asserts the self-containment detector against known-good/known-bad questions, then reports how the local store scores. Exit 1 on regression. | $0, offline |
+| `pnpm fc:repair` | Deterministic context repair of already-extracted cards. `--dry-run` is the DEFAULT; `--apply` commits. `--dir <path>` targets a file store other than `.flashcards`. | $0, no model calls |
+| `pnpm fc:rebuild` | `--doc <id>` / `--all`: clears a document's cards+sections+reviews and rewinds it to `uploaded` for re-extraction from the stored file. `--dry-run` default, `--apply` commits, `--force` required when studied cards would lose scheduling. | $0 itself; the re-extraction it enables costs the usual per-document rate |
+
+All four honour `STORE=file` (default) and `STORE=supabase`.
