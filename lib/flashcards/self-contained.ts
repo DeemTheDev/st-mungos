@@ -148,7 +148,24 @@ export type DanglingReason = "dangling-referent" | null;
  * Tokens that could anchor recall: everything left after function words,
  * domain-generic scaffolding, numbers and short fragments are removed.
  */
+/**
+ * Uppercase clinical abbreviations are among the MOST specific things a question
+ * can name — "What is the management of TB?" needs no vignette — but they are
+ * two or three letters, so a plain length filter throws them away and the card
+ * gets pulled from study as if it were dangling. Collected before lowercasing,
+ * minus the shouty MCQ scaffolding that carries no meaning.
+ */
+const SHOUTY_NON_CLINICAL = new Set([
+  "EXCEPT", "TRUE", "FALSE", "ALL", "NOT", "AND", "OR", "THE", "NONE", "BEST", "MOST", "LEAST", "NB",
+]);
+
+function abbreviations(text: string): string[] {
+  return (text.match(/\b[A-Z][A-Z0-9]{1,5}\b/g) ?? []).filter((t) => !SHOUTY_NON_CLINICAL.has(t));
+}
+
 function specificTokens(text: string): string[] {
+  const abbrevs = abbreviations(text);
+  if (abbrevs.length > 0) return abbrevs;
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s-]+/g, " ")

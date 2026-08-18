@@ -139,10 +139,47 @@ function reportStore(baseDir: string): void {
   for (const [topic, n] of worst) console.log(`      ${String(n).padStart(4)}  ${topic}`);
 }
 
-function main(): void {
+/** The same report, but against whatever store STORE points at (--store). */
+async function reportLiveStore(): Promise<void> {
+  try {
+    process.loadEnvFile(".env.local");
+  } catch {
+    // Fine — the store constructor says what it needs.
+  }
+  const { getFcStore } = await import("../lib/flashcards/store");
+  const store = getFcStore();
+  const docs = await store.listDocuments();
+  const cards = [];
+  for (const d of docs) {
+    // Paged: one document can hold ~1000 cards and searchCards caps a page.
+    for (let offset = 0; ; offset += 500) {
+      const page = await store.searchCards({ documentId: d.id, limit: 500, offset });
+      cards.push(...page.cards);
+      if (page.cards.length < 500) break;
+    }
+  }
+  if (cards.length === 0) {
+    console.log("\n(live store holds no cards — skipping)");
+    return;
+  }
+  const flagged = cards.filter(
+    (c) => danglingReferentReason({ context: c.context ?? "", question: c.question, options: c.options }) !== null,
+  );
+  console.log(`\nCORPUS REPORT — live store (STORE=${process.env.STORE ?? "file"})`);
+  console.log(`  documents:             ${docs.length}`);
+  console.log(`  cards:                 ${cards.length}`);
+  console.log(`  with context:          ${cards.filter((c) => (c.context ?? "").trim().length > 0).length}`);
+  console.log(`  caught by the net:     ${flagged.length}`);
+  for (const c of flagged.slice(0, 10)) {
+    console.log(`      [${c.topic} q${c.qnum ?? "?"}] ${c.question.slice(0, 90)}`);
+  }
+}
+
+async function main(): Promise<void> {
   const failures = assertCases();
   reportStore(join(process.cwd(), ".flashcards", "fc-test"));
   reportStore(join(process.cwd(), ".flashcards"));
+  if (process.argv.includes("--live")) await reportLiveStore();
   if (failures > 0) {
     console.error(`\n${failures} assertion(s) failed — the safety net has regressed.`);
     process.exit(1);
@@ -150,4 +187,4 @@ function main(): void {
   console.log("\nAll detector assertions passed.");
 }
 
-main();
+void main();
