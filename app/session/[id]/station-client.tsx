@@ -580,6 +580,7 @@ export function StationClient({ sessionId }: { sessionId: string }) {
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [addressee, setAddressee] = useState<"auto" | "patient" | "examiner">("auto");
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Transcript follow state: stick to the newest line unless she has
@@ -775,6 +776,11 @@ export function StationClient({ sessionId }: { sessionId: string }) {
     }
   }
 
+  // Who she means to address. "auto" lets the engine infer it from the
+  // conversation (right nearly always, and the only option voice input has);
+  // the explicit settings exist for when it would guess wrong and she needs to
+  // be certain — presenting to the examiner while the patient is mid-sentence,
+  // say. Sticky, because a viva is a run of examiner turns, not one.
   // One submission path for BOTH typed and spoken utterances — voice rides the
   // existing turn flow (same POST, same rendering).
   async function submitUtterance(utterance: string) {
@@ -787,7 +793,7 @@ export function StationClient({ sessionId }: { sessionId: string }) {
       const res = await fetch(`/api/session/${sessionId}/turn`, {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ utterance }),
+        body: JSON.stringify(addressee === "auto" ? { utterance } : { utterance, addressee }),
       });
       if (!res.ok) {
         setError(await res.text());
@@ -1359,6 +1365,33 @@ export function StationClient({ sessionId }: { sessionId: string }) {
                     </button>
                   )}
 
+                  <div
+                    role="radiogroup"
+                    aria-label="Who are you speaking to?"
+                    className="flex shrink-0 gap-1 rounded-lg border border-neutral-800 bg-neutral-950 p-1"
+                  >
+                    {(["auto", "patient", "examiner"] as const).map((who) => (
+                      <button
+                        key={who}
+                        role="radio"
+                        aria-checked={addressee === who}
+                        onClick={() => setAddressee(who)}
+                        title={
+                          who === "auto"
+                            ? "Let the station work out who you're talking to"
+                            : `Send everything to the ${who} until you change this`
+                        }
+                        className={`rounded px-2.5 py-1.5 text-xs font-medium capitalize transition-colors ${
+                          addressee === who
+                            ? "bg-neutral-200 text-neutral-900"
+                            : "text-neutral-500 hover:text-neutral-300"
+                        }`}
+                      >
+                        {who}
+                      </button>
+                    ))}
+                  </div>
+
                   <div className="flex flex-1 gap-2">
                     <input
                       ref={inputRef}
@@ -1370,7 +1403,13 @@ export function StationClient({ sessionId }: { sessionId: string }) {
                       disabled={busy}
                       autoFocus={voiceState === "off"}
                       aria-label="Say something to the patient or examiner"
-                      placeholder={busy ? "…" : "Speak to the patient or examiner, then press Enter"}
+                      placeholder={
+                        busy
+                          ? "…"
+                          : addressee === "auto"
+                            ? "Speak to the patient or examiner, then press Enter"
+                            : `Speaking to the ${addressee} — press Enter`
+                      }
                       className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2.5 text-sm text-neutral-100 placeholder:text-neutral-600 focus:border-neutral-500 focus:outline-none disabled:opacity-50"
                     />
                     <button

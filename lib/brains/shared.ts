@@ -29,6 +29,8 @@ export function examinerCannedLine(directive: ExaminerDirective): string {
       return directive.question;
     case "followup-or-continue":
       return "Thank you, doctor. Carry on.";
+    case "reply":
+      return "Thank you, doctor. Carry on.";
     case "nudge":
       return `In the interest of time, doctor, let's move on to your ${directive.toPhase}.`;
     case "timer-warning":

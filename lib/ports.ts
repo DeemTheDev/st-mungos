@@ -82,6 +82,14 @@ export interface SessionState {
   answeredExaminerQIds: string[];
   /** Bank question awaiting the student's answer, if any. */
   pendingExaminerQId: string | null;
+  /**
+   * Who is waiting on an answer from the candidate — set whenever a reply ends
+   * in a direct question, cleared when she speaks. This is what lets her answer
+   * an examiner's spontaneous follow-up (or a patient's "am I going to be all
+   * right, doctor?") without the engine mis-routing it to the other one.
+   * Sessions persisted before this field existed read back undefined → null.
+   */
+  floor?: Speaker | null;
   /** Investigations whose result is withheld until the student interprets the stimulus (§6). */
   pendingInterpretations: string[];
   /** Timer-warning thresholds (seconds) already announced. */
@@ -127,6 +135,11 @@ export interface PatientTurnCtx {
 export type ExaminerDirective =
   | { type: "bank-question"; questionId: string; question: string }
   | { type: "followup-or-continue"; questionId: string; question: string; modelAnswer: string; gradingNotes: string; studentAnswer: string }
+  // A free conversational reply to something the candidate said directly to the
+  // examiner, outside the question bank. Without this the examiner could only
+  // speak from a script, so a spontaneous follow-up ("why that antibiotic?")
+  // had no way to receive an answer and the reply fell through to the patient.
+  | { type: "reply"; studentUtterance: string }
   | { type: "nudge"; fromPhase: Phase; toPhase: Phase }
   | { type: "timer-warning"; minutesLeft: number }
   | { type: "time-up" }

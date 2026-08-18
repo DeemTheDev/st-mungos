@@ -344,6 +344,11 @@ export class AnthropicBrain implements Brain {
   }
 
   async examinerTurn(ctx: ExaminerTurnCtx): Promise<string> {
+    // A free reply to the candidate — she addressed the examiner directly, or
+    // answered a follow-up he asked off-script. There is no bank question to
+    // grade against, so this is the one examiner path that is pure conversation.
+    if (ctx.directive.type === "reply") return this.examinerReply(ctx, ctx.directive.studentUtterance);
+
     // Verbatim bank questions and scripted timer/nudge lines never need an LLM.
     if (ctx.directive.type !== "followup-or-continue") return examinerCannedLine(ctx.directive);
 
@@ -373,6 +378,45 @@ export class AnthropicBrain implements Brain {
       ],
     });
     return textOf(response) || examinerCannedLine(d);
+  }
+
+  /**
+   * Free examiner conversation. Deliberately given the transcript rather than
+   * the case internals: an examiner who can see the model answers starts
+   * teaching, and an OSCE examiner never teaches mid-station. He may probe, or
+   * simply acknowledge and hand the floor back to the bedside.
+   */
+  private async examinerReply(ctx: ExaminerTurnCtx, utterance: string): Promise<string> {
+    const recent = ctx.transcript
+      .slice(-10)
+      .map((t) => `${t.speaker.toUpperCase()}: ${t.text}`)
+      .join("\n");
+    const response = await this.client.messages.create({
+      model: EXAMINER_MODEL,
+      max_tokens: 250,
+      thinking: { type: "disabled" },
+      system: [
+        {
+          type: "text",
+          text: `You are a professional UKZN internal medicine OSCE examiner. Firm, fair, economical with words. The candidate has just addressed YOU directly (not the patient) — she is answering something you asked, presenting, or asking you a procedural question.
+
+Rules:
+- NEVER reveal whether her answer was right, and never teach mid-station.
+- If she asked a procedural question ("may I examine the patient?", "can I have the results?"), answer it plainly and briefly.
+- You may ask AT MOST ONE short probing follow-up if her statement clearly begs one. Otherwise acknowledge and hand the floor back ("Thank you, doctor. Carry on.").
+- Never answer as the patient and never speak for the patient.
+- One or two sentences. Output only your spoken line.`,
+          cache_control: { type: "ephemeral" },
+        },
+      ],
+      messages: [
+        {
+          role: "user",
+          content: `STATION: ${ctx.osceCase.diagnosis} (${ctx.osceCase.stationType})\n\nRECENT EXCHANGE:\n${recent}\n\nCANDIDATE, TO YOU: ${utterance}\n\nYour spoken reply:`,
+        },
+      ],
+    });
+    return textOf(response) || "Thank you, doctor. Carry on.";
   }
 
   async mark(ctx: MarkingCtx): Promise<MarkingReport> {

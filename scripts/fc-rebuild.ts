@@ -53,7 +53,17 @@ function usage(): never {
   process.exit(1);
 }
 
+/** Scripts run outside Next, so .env.local is not loaded for us. */
+function loadLocalEnv(): void {
+  try {
+    process.loadEnvFile(".env.local");
+  } catch {
+    // Absent is fine for STORE=file; the store constructor reports what it needs.
+  }
+}
+
 async function main(): Promise<void> {
+  loadLocalEnv();
   const argv = process.argv.slice(2);
   const apply = argv.includes("--apply");
   const force = argv.includes("--force");

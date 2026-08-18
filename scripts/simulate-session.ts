@@ -292,6 +292,81 @@ async function conversationalFloorRun(engine: SessionEngine): Promise<void> {
   await engine.endSession(s.id, "abandon", at(60));
 }
 
+// ---------------------------------------------------------------------------
+// RUN 5: speaker arbitration — who answers when she speaks.
+//
+// The station has two people in it. Before this, routing keyed off the phase,
+// so an examiner's spontaneous follow-up was answered by the PATIENT — Azra hit
+// exactly that in a real session. MockBrain never asks anything off-script, so
+// this run supplies a brain that does.
+
+class InquisitiveBrain extends MockBrain {
+  async examinerTurn(ctx: Parameters<MockBrain["examinerTurn"]>[0]): Promise<string> {
+    // A follow-up or a free reply comes back as a QUESTION, which is what makes
+    // the examiner hold the floor.
+    if (ctx.directive.type === "reply" || ctx.directive.type === "followup-or-continue") {
+      return "And why do you favour that, doctor?";
+    }
+    return super.examinerTurn(ctx);
+  }
+  async patientTurn(ctx: Parameters<MockBrain["patientTurn"]>[0]): Promise<string> {
+    return `PATIENT_SPOKE: ${await super.patientTurn(ctx)}`;
+  }
+}
+
+function spokeTo(result: TurnResult): string {
+  return result.replies.map((r) => r.speaker).join(",");
+}
+
+async function speakerArbitrationRun(): Promise<void> {
+  console.log("\n=== RUN 5: speaker arbitration ===");
+  const dir = mkdtempSync(join(tmpdir(), "st-mungos-sim-arb-"));
+  const engine = new SessionEngine({
+    caseStore: new FsCaseStore(),
+    sessionStore: new FileSessionStore(dir),
+    brain: new InquisitiveBrain(),
+  });
+  try {
+    const s = await engine.createSession(CASE_ID, at(0));
+    await engine.takeTurn(s.id, "Good morning, I am Dr Azra. May I ask you some questions?", at(10));
+
+    // She presents to the examiner; he answers with a QUESTION and holds the floor.
+    const presented = await engine.takeTurn(s.id, "My differential is pulmonary tuberculosis.", at(300));
+    check("presenting a differential is answered by the examiner",
+      spokeTo(presented).includes("examiner"), spokeTo(presented));
+    check("the examiner's follow-up is a question", replyText(presented).includes("?"), replyText(presented));
+
+    // THE BUG: a bare answer with no address cues used to fall through to the patient.
+    const answered = await engine.takeTurn(s.id, "The night sweats and the weight loss.", at(330));
+    check("her answer to the examiner's follow-up goes to the EXAMINER, not the patient",
+      !replyText(answered).includes("PATIENT_SPOKE"), replyText(answered));
+
+    // She can always turn back to the bedside by naming the patient.
+    const back = await engine.takeTurn(s.id, "Mrs Dlamini, do you smoke at all?", at(360));
+    check("naming the patient returns the floor to the bedside",
+      replyText(back).includes("PATIENT_SPOKE"), replyText(back));
+
+    // Once answered, the floor goes back to the room default (the patient).
+    const bedside = await engine.takeTurn(s.id, "And how long has that been going on?", at(390));
+    check("with nothing pending, an ordinary question goes to the patient",
+      replyText(bedside).includes("PATIENT_SPOKE"), replyText(bedside));
+
+    // The explicit override wins even when the words sound like bedside talk.
+    const forced = await engine.takeTurn(s.id, "Do you have the chest x-ray for me?", at(420), "examiner");
+    check("an explicit addressee override routes to the examiner",
+      !replyText(forced).includes("PATIENT_SPOKE"), replyText(forced));
+
+    // ...and in the other direction.
+    const forcedPatient = await engine.takeTurn(s.id, "My impression is that this is tuberculosis.", at(450), "patient");
+    check("an explicit patient override beats presentation phrasing",
+      replyText(forcedPatient).includes("PATIENT_SPOKE"), replyText(forcedPatient));
+
+    await engine.endSession(s.id, "abandon", at(500));
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
 async function main(): Promise<void> {
   const dir = mkdtempSync(join(tmpdir(), "st-mungos-sim-"));
   const engine = new SessionEngine({
@@ -307,6 +382,7 @@ async function main(): Promise<void> {
     bad = await badStudentRun(engine);
     await timerResumeCheck(engine);
     await conversationalFloorRun(engine);
+    await speakerArbitrationRun();
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

@@ -23,7 +23,8 @@
     "verify:framing": "tsx components/ward/verify-framing.ts",
     "verify:speech-token": "tsx scripts/verify-speech-token.ts",
     "voices:list": "tsx scripts/list-voices.ts",
-    "smoke:speech": "tsx scripts/smoke-speech-logic.ts"
+    "smoke:speech": "tsx scripts/smoke-speech-logic.ts",
+    "fc:run": "tsx scripts/fc-run-job.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",

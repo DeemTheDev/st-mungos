@@ -80,6 +80,18 @@ export function getFcStore(): FcStore {
   return new FileFcStore();
 }
 
+// PostgREST encodes .in() lists into the request URL, and one document holds
+// ~1000 cards — far past the URL length the server will accept. It rejects the
+// request with an EMPTY error message, which is a miserable thing to debug, so
+// every id list is chunked rather than trusted to fit.
+const IN_CHUNK = 100;
+
+function chunkIds(ids: string[]): string[][] {
+  const out: string[][] = [];
+  for (let i = 0; i < ids.length; i += IN_CHUNK) out.push(ids.slice(i, i + IN_CHUNK));
+  return out;
+}
+
 // ---------------------------------------------------------------------------
 // file adapter
 // ---------------------------------------------------------------------------
@@ -765,9 +777,13 @@ export class SupabaseFcStore implements FcStore {
   async deleteCards(ids: string[]): Promise<number> {
     if (ids.length === 0) return 0;
     // fc_reviews.card_id cascades on delete, so the review rows go with them.
-    const { data, error } = await this.client.from("fc_cards").delete().in("id", ids).select("id");
-    if (error) throw new Error(`supabase deleteCards failed: ${error.message}`);
-    return data?.length ?? 0;
+    let deleted = 0;
+    for (const batch of chunkIds(ids)) {
+      const { data, error } = await this.client.from("fc_cards").delete().in("id", batch).select("id");
+      if (error) throw new Error(`supabase deleteCards failed: ${error.message}`);
+      deleted += data?.length ?? 0;
+    }
+    return deleted;
   }
 
   async countReviewsForDocument(documentId: string): Promise<number> {
@@ -775,12 +791,16 @@ export class SupabaseFcStore implements FcStore {
     if (cardsRes.error) throw new Error(`supabase countReviewsForDocument failed: ${cardsRes.error.message}`);
     const ids = ((cardsRes.data ?? []) as { id: string }[]).map((c) => c.id);
     if (ids.length === 0) return 0;
-    const { count, error } = await this.client
-      .from("fc_reviews")
-      .select("card_id", { count: "exact", head: true })
-      .in("card_id", ids);
-    if (error) throw new Error(`supabase countReviewsForDocument reviews failed: ${error.message}`);
-    return count ?? 0;
+    let total = 0;
+    for (const batch of chunkIds(ids)) {
+      const { count, error } = await this.client
+        .from("fc_reviews")
+        .select("card_id", { count: "exact", head: true })
+        .in("card_id", batch);
+      if (error) throw new Error(`supabase countReviewsForDocument reviews failed: ${error.message}`);
+      total += count ?? 0;
+    }
+    return total;
   }
 
   async resetDocumentForRebuild(documentId: string): Promise<{ cardsDeleted: number; reviewsDeleted: number }> {

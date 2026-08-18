@@ -18,6 +18,7 @@ import type {
   CaseStore,
   CaseSummary,
   ExamSection,
+  ExaminerDirective,
   SessionMode,
   SessionState,
   SessionStore,
@@ -61,6 +62,68 @@ const DDX_INTENT =
 const INV_INTENT =
   /\b(order|request|send|arrange|run|book)\b.*\b(test\w*|investigation\w*|blood\w*|labs?|imaging)\b|\bmov(e|ing) (on )?to investigations?\b/;
 const EXAM_INTENT = /\bexamin(e|es|ed|ing|ation)\b|\bmov(e|ing) (on )?to (the )?exam\b/;
+
+// -- who is she talking to? (speaker arbitration) ---------------------------
+// An OSCE has two people in the room and the candidate may address either at
+// any moment. Routing purely off the phase meant an examiner's spontaneous
+// follow-up got answered by the patient, which is the most immersion-breaking
+// thing a station can do.
+
+/** Addressing the examiner explicitly, or saying something only he receives. */
+const EXAMINER_ADDRESS =
+  /\bexaminer\b|\bsir\b|\bma'?am\b|\bmadam\b|\bmy (differential|diagnosis|management|plan|impression|findings)\b|\bi (would|'d) like to (present|summaris|summariz)|\bto (summarise|summarize)\b|\bmay i\b|\bcan i (please )?(have|examine|order|proceed)/;
+
+/** Naming the patient — the one signal strong enough to override a question
+ *  the examiner is still waiting on ("Sorry doctor — Mrs Dlamini, one more thing"). */
+const PATIENT_NAMED = /\b(mr|mrs|ms|miss|mister)\b|\bsorry to (bother|trouble) you\b/;
+
+/** Ordinary bedside questioning: second-person, symptom-directed. */
+const PATIENT_SECOND_PERSON =
+  /\bhow are you (feeling|doing)\b|\bcan you tell me\b|\bdo you (have|get|feel|know|mind)\b|\bhave you (ever|had|been|noticed)\b|\bany (pain|fever|cough|nausea)\b|\bare you\b/;
+
+function asksTheCandidate(text: string): boolean {
+  if (!text.includes("?")) return false;
+  // Rhetorical scene-setting ("shall we move on?") is a nudge, not a question
+  // she must answer — holding the floor for it would misroute her next
+  // clinical sentence, which is worse than the bug being fixed.
+  return !/\b(shall we|let'?s|would you like to (move|continue)|ready to (move|proceed))\b/i.test(text);
+}
+
+/** The room's default listener when nothing more specific decides it. */
+function defaultAddressee(state: SessionState): Speaker {
+  // Management vivas and interpretation stations have no bedside to talk to.
+  if (state.mode === "management" || state.stationType === "interpretation") return "examiner";
+  return "patient";
+}
+
+/**
+ * Resolve who the candidate is speaking to, most explicit signal first:
+ *   1. an explicit UI choice (she tapped "Examiner"),
+ *   2. naming the person ("Mrs Dlamini, do you..." / "my differential is..."),
+ *   3. an unanswered question — whoever asked it is owed the answer,
+ *   4. the room default (the patient, at the bedside).
+ */
+function resolveAddressee(
+  state: SessionState,
+  norm: string,
+  override: Speaker | null | undefined,
+): Speaker {
+  if (override === "patient" || override === "examiner") return override;
+  if (state.mode === "management" || state.stationType === "interpretation") return "examiner";
+  // Naming the patient outranks everything: she is allowed to turn back to the
+  // bedside mid-viva, and only she knows she means to.
+  if (PATIENT_NAMED.test(norm)) return "patient";
+  // A bank question the examiner is still waiting on outranks loose bedside
+  // phrasing — a viva answer can easily contain "do you have" without being
+  // addressed to the patient.
+  if (state.pendingExaminerQId) return "examiner";
+  if (EXAMINER_ADDRESS.test(norm)) return "examiner";
+  if (PATIENT_SECOND_PERSON.test(norm)) return "patient";
+  // Nothing explicit: whoever asked the last unanswered question is owed it.
+  if (state.floor === "patient" || state.floor === "examiner") return state.floor;
+  return defaultAddressee(state);
+}
+
 
 function detectPhaseIntent(norm: string): Phase | null {
   if (MGMT_INTENT.test(norm)) return "management";
@@ -326,6 +389,7 @@ export class SessionEngine {
       askedExaminerQIds: [],
       answeredExaminerQIds: [],
       pendingExaminerQId: null,
+      floor: null,
       pendingInterpretations: [],
       issuedWarningsSec: [],
       nudgedPhases: [],
@@ -376,7 +440,18 @@ export class SessionEngine {
 
   // -------------------------------------------------------------------------
 
-  async takeTurn(sessionId: string, utterance: string, nowMs: number = Date.now()): Promise<TurnResult> {
+  /**
+   * `addressee` is the candidate's explicit choice of who she is speaking to.
+   * Voice input carries no such signal, so it is normally null and the engine
+   * infers it (see resolveAddressee); the UI control exists for the times the
+   * inference would be wrong and she needs to be certain.
+   */
+  async takeTurn(
+    sessionId: string,
+    utterance: string,
+    nowMs: number = Date.now(),
+    addressee: Speaker | null = null,
+  ): Promise<TurnResult> {
     const state = await this.mustGet(sessionId);
     if (state.status !== "active") throw new Error(`Session is ${state.status} — start a new station.`);
     const osceCase = await this.loadCase(state.caseId);
@@ -386,6 +461,9 @@ export class SessionEngine {
     const say = async (speaker: Speaker, text: string): Promise<void> => {
       replies.push({ speaker, text });
       pushEntry(state, speaker, text, nowMs);
+      // Whoever just put a question to her is owed the next answer; a line that
+      // is not a question hands the floor back to the room default.
+      state.floor = asksTheCandidate(text) ? speaker : null;
     };
 
     if (state.phase === "wrap") {
@@ -409,7 +487,11 @@ export class SessionEngine {
 
     const norm = normalizeText(utterance);
 
-    if (state.pendingExaminerQId) {
+    const speakingTo = resolveAddressee(state, norm, addressee);
+    // She has taken her turn: the floor is consumed either way.
+    state.floor = null;
+
+    if (state.pendingExaminerQId && speakingTo === "examiner") {
       // The student is answering the examiner — no phase change, no disclosure,
       // the examiner (Brain) decides between ONE spontaneous follow-up and a
       // neutral continue (§6: that judgment is the Brain's job, not the engine's).
@@ -433,7 +515,7 @@ export class SessionEngine {
         await say("examiner", line);
       }
     } else if (osceCase.stationType === "clinical") {
-      await this.clinicalStudentTurn(state, osceCase, utterance, norm, nowMs, say);
+      await this.clinicalStudentTurn(state, osceCase, utterance, norm, nowMs, say, speakingTo);
     } else {
       await this.interpretationStudentTurn(state, utterance, nowMs);
     }
@@ -511,6 +593,7 @@ export class SessionEngine {
     norm: string,
     nowMs: number,
     say: (speaker: Speaker, text: string) => Promise<void>,
+    speakingTo: Speaker,
   ): Promise<void> {
     // Student-driven phase transitions (§6) — detected before the entry is
     // recorded so the utterance is tagged with the phase it belongs to.
@@ -572,12 +655,12 @@ export class SessionEngine {
     // examiner (phase announcement / differential or management presentation).
     // In management focus there is no bedside left to run: the examiner holds
     // the floor for the whole viva.
+    // resolveAddressee has already weighed explicit address and the held floor
+    // (an unanswered examiner follow-up). Phase announcements and presentations
+    // are additionally examiner-directed by nature — she is telling the examiner
+    // what she intends to do, not asking the patient's permission.
     const examinerDirected =
-      state.mode === "management" ||
-      phaseChanged ||
-      DDX_INTENT.test(norm) ||
-      MGMT_INTENT.test(norm) ||
-      /\bexaminer\b/.test(norm);
+      speakingTo === "examiner" || phaseChanged || DDX_INTENT.test(norm) || MGMT_INTENT.test(norm);
 
     const producedReply = state.transcript[state.transcript.length - 1]?.speaker !== "student";
     if (!producedReply) {
@@ -592,11 +675,16 @@ export class SessionEngine {
             (q.triggerAfterSec == null || elapsed >= q.triggerAfterSec),
         );
         if (!due) {
-          const line = await this.deps.brain.examinerTurn({
-            osceCase,
-            directive: { type: "acknowledge" },
-            transcript: state.transcript,
-          });
+          // "I'd like to examine her now" is a phase announcement and only wants
+          // an acknowledgement. A differential or a management plan is the viva
+          // itself — that is precisely where an examiner probes, so it gets a
+          // real reply even though it also moves the phase on.
+          const presented = DDX_INTENT.test(norm) || MGMT_INTENT.test(norm);
+          const directive: ExaminerDirective =
+            speakingTo === "examiner" && (presented || !phaseChanged)
+              ? { type: "reply", studentUtterance: utterance }
+              : { type: "acknowledge" };
+          const line = await this.deps.brain.examinerTurn({ osceCase, directive, transcript: state.transcript });
           await say("examiner", line);
         }
       } else {
