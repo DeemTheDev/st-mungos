@@ -22,6 +22,7 @@ import {
   type ReviewGrade,
 } from "./api";
 import { CaseContext, QuestionBody } from "./question-body";
+import { CardEditor } from "./card-editor";
 
 const TILE = "rounded-xl border border-neutral-800/60 bg-neutral-900/40";
 
@@ -78,6 +79,9 @@ export function ReviewClient({ topic }: { topic: string | null }) {
   const [reviewed, setReviewed] = useState(0);
   const [againCount, setAgainCount] = useState(0);
   const [busy, setBusy] = useState(false); // a reveal or grade round-trip is in flight
+  // Mid-study correction: editing hides the grade bar (grading a card she is
+  // rewriting is meaningless) and is reset whenever the card advances.
+  const [editing, setEditing] = useState(false);
   const [flipping, setFlipping] = useState(false);
 
   // Mirrors `reviewed` for use inside loadNext without re-creating the
@@ -131,6 +135,7 @@ export function ReviewClient({ topic }: { topic: string | null }) {
     if (phase.kind !== "question" || busy) return;
     setBusy(true);
     try {
+      setEditing(false);
       const { answer, sourcePages } = await reviewReveal(phase.card.id);
       swapWithFlip(() =>
         setPhase({ kind: "revealed", card: phase.card, remaining: phase.remaining, answer, sourcePages }),
@@ -359,6 +364,33 @@ export function ReviewClient({ topic }: { topic: string | null }) {
                     <span className="rounded-full bg-neutral-800 px-2.5 py-0.5 text-xs text-neutral-400">{pages}</span>
                   )}
                 </div>
+                {editing ? (
+                  <div className="mt-4">
+                    <CardEditor
+                      cardId={phase.card.id}
+                      initial={{
+                        context: phase.card.context ?? "",
+                        question: phase.card.question,
+                        answer: phase.answer,
+                      }}
+                      status="auto"
+                      onSaved={(updated) => {
+                        setEditing(false);
+                        setPhase((prev) =>
+                          prev.kind === "revealed"
+                            ? {
+                                ...prev,
+                                card: { ...prev.card, context: updated.context ?? "", question: updated.question },
+                                answer: updated.answer,
+                              }
+                            : prev,
+                        );
+                      }}
+                      onCancel={() => setEditing(false)}
+                    />
+                  </div>
+                ) : (
+                  <>
                 <div className="mt-4">
                   {/* The vignette stays visible after the reveal — she needs it
                       to judge her own answer against the model one. */}
@@ -372,6 +404,15 @@ export function ReviewClient({ topic }: { topic: string | null }) {
                     {phase.answer || "(no answer text — check the source pages)"}
                   </p>
                 </div>
+                <button
+                  type="button"
+                  onClick={() => setEditing(true)}
+                  className="mt-4 text-xs text-neutral-600 underline-offset-4 transition-colors hover:text-neutral-300 hover:underline focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:outline-none"
+                >
+                  Something wrong? Fix this card
+                </button>
+                  </>
+                )}
               </div>
             )}
           </div>
@@ -381,7 +422,7 @@ export function ReviewClient({ topic }: { topic: string | null }) {
       {/* footer: grade bar (revealed) or hint (question) — fixed-height area so
           nothing jumps under her thumb */}
       <div className="min-h-16">
-        {phase.kind === "revealed" && (
+        {phase.kind === "revealed" && !editing && (
           <div className="grid grid-cols-4 gap-2">
             {GRADES.map((g) => (
               <button

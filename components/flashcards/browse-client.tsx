@@ -21,6 +21,7 @@ import {
   type DocumentInfo,
 } from "./api";
 import { CaseContext, QuestionBody } from "./question-body";
+import { CardEditor } from "./card-editor";
 
 const TILE = "rounded-xl border border-neutral-800/60 bg-neutral-900/40";
 const SELECT =
@@ -56,6 +57,8 @@ export function BrowseClient({ initialQuery, initialTopic }: { initialQuery: str
   const [documents, setDocuments] = useState<DocumentInfo[]>([]);
 
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [savedNotice, setSavedNotice] = useState<{ id: string; warning: string | null } | null>(null);
   const allExpanded = cards.length > 0 && cards.every((c) => expanded.has(c.id));
 
   // debounce the free-text query
@@ -217,21 +220,56 @@ export function BrowseClient({ initialQuery, initialTopic }: { initialQuery: str
                       <span className="rounded-full bg-amber-950 px-2 py-0.5 text-xs text-amber-300">needs a look</span>
                     )}
                   </div>
-                  <div className="mt-2.5">
-                    {/* Front-of-card, so it prints above the question on the
-                        study sheet too — never inside the answer block. */}
-                    <CaseContext context={card.context ?? ""} compact />
-                    <QuestionBody question={card.question} compact />
-                  </div>
+                  {editingId === card.id ? (
+                    <div className="no-print mt-2.5">
+                      <CardEditor
+                        cardId={card.id}
+                        initial={{ context: card.context ?? "", question: card.question, answer: card.answer }}
+                        status={card.status}
+                        onSaved={(updated, warning) => {
+                          setCards((prev) => prev.map((c) => (c.id === card.id ? { ...c, ...updated } : c)));
+                          setEditingId(null);
+                          setSavedNotice({ id: card.id, warning });
+                        }}
+                        onCancel={() => setEditingId(null)}
+                      />
+                    </div>
+                  ) : (
+                    <div className="mt-2.5">
+                      {/* Front-of-card, so it prints above the question on the
+                          study sheet too — never inside the answer block. */}
+                      <CaseContext context={card.context ?? ""} compact />
+                      <QuestionBody question={card.question} compact />
+                    </div>
+                  )}
+                  {savedNotice?.id === card.id && (
+                    <p aria-live="polite" className="no-print mt-2 text-xs text-emerald-400">
+                      Saved.{savedNotice.warning ? ` ${savedNotice.warning}` : ""}
+                    </p>
+                  )}
+                  {editingId !== card.id && (
+                  <div className="no-print mt-2.5 flex gap-2">
                   <button
                     type="button"
                     onClick={() => toggle(card.id)}
                     aria-expanded={isOpen}
-                    className="no-print mt-2.5 rounded-lg border border-neutral-800 px-2.5 py-1 text-xs text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-200 focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:outline-none"
+                    className="rounded-lg border border-neutral-800 px-2.5 py-1 text-xs text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-200 focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:outline-none"
                   >
                     {isOpen ? "Hide answer" : "Show answer"}
                   </button>
-                  <div className={`${isOpen ? "block" : "hidden"} print:block mt-2.5`}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSavedNotice(null);
+                      setEditingId(card.id);
+                    }}
+                    className="rounded-lg border border-neutral-800 px-2.5 py-1 text-xs text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-200 focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:outline-none"
+                  >
+                    Edit
+                  </button>
+                  </div>
+                  )}
+                  <div className={`${isOpen && editingId !== card.id ? "block" : "hidden"} print:block mt-2.5`}>
                     <p className="text-xs font-semibold tracking-widest text-emerald-400 uppercase">Answer</p>
                     <p className="mt-1 text-sm whitespace-pre-wrap text-neutral-200">
                       {card.answer || "(no answer text)"}

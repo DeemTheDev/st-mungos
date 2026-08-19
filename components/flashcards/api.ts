@@ -263,6 +263,42 @@ export async function reviewReveal(cardId: string): Promise<{ answer: string; so
   };
 }
 
+export interface CardEditPatch {
+  question?: string;
+  answer?: string;
+  context?: string;
+  status?: CardStatus;
+}
+
+/**
+ * Save a manual correction to one card. Deliberately NOT routed through
+ * request(): there a 404 means "backend not deployed", but here it means THIS
+ * card is gone (rebuilt away mid-edit) — collapsing that into "not wired up
+ * yet" would hide what happened to her.
+ */
+export async function updateCard(
+  cardId: string,
+  patch: CardEditPatch,
+): Promise<{ card: CardInfo; warning: string | null }> {
+  let res: Response;
+  try {
+    res = await fetch(`/api/flashcards/cards/${encodeURIComponent(cardId)}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(patch),
+    });
+  } catch (err) {
+    if (err instanceof DOMException && err.name === "AbortError") throw err;
+    throw new FlashcardsUnavailableError();
+  }
+  if (res.status === 405 || res.status === 501) throw new FlashcardsUnavailableError();
+  const text = await res.text();
+  if (!res.ok) {
+    throw new FlashcardsApiError(text || `Couldn't save the change (${res.status}).`, res.status);
+  }
+  return JSON.parse(text) as { card: CardInfo; warning: string | null };
+}
+
 export async function reviewGrade(cardId: string, grade: ReviewGrade): Promise<{ nextDueAt: string | null }> {
   const data = await request<{ nextDueAt?: string }>("/api/flashcards/review/grade", {
     method: "POST",
